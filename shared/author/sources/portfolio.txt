@@ -1,0 +1,399 @@
+PORTFOLIO SCRAPE - kaleemahmed.in
+Scraped 2026-08-30. Source of truth for personal details, real project material,
+and writing voice to be reused in the ebook.
+
+================================================================================
+1. IDENTITY
+================================================================================
+
+Name              Kaleem Ahmed
+Headline          Backend & Full-Stack Engineer, Noida
+Location          Noida, Uttar Pradesh, India
+Current role      Astrea IT Services
+Email             shaamidreez@gmail.com
+Phone             +91 6306026859
+Site              kaleemahmed.in
+GitHub            github.com/KaleemAhmed123
+LinkedIn          linkedin.com/in/kaleem-ahmed-
+LeetCode          leetcode.com/Kaleem_Ahmed/
+GeeksforGeeks     geeksforgeeks.org/user/kaleem530/
+Education         B.Tech CSE, Dr. A.P.J. Abdul Kalam Technical University, 2020-2024, CGPA 8.3
+Achievements      1500+ DSA problems solved. Peak LeetCode 1798, Global Rank 812 in Weekly Contest 359.
+                  Global Rank 800 in TCS CodeVita Season 11 out of 110,000+.
+
+Self-description from the site:
+  "a backend-heavy full-stack engineer based in Noida, Uttar Pradesh, India,
+   currently at Astrea IT Services"
+  "Node, TypeScript, Python and FastAPI, building microservices, RabbitMQ event
+   pipelines, payment and order flows, role-based authorization models, and the
+   observability around them"
+
+Other names available for examples: Rabiya (friend). Hamza (collaborator on GAZA40+).
+
+================================================================================
+2. WRITING VOICE - study this before writing any ebook page
+================================================================================
+
+The portfolio is written in a very particular voice. The ebook should sound like
+the same person. Characteristics:
+
+  * Short declarative sentences. Subject, verb, point.
+  * States the uncomfortable thing plainly instead of softening it.
+  * Owns gaps openly. Every case study has a "what is missing" section.
+  * Prefers concrete nouns over abstract ones. "a sales order that exists in
+    Salesforce and does not exist in SAP" instead of "data inconsistency".
+  * Uses a rule-of-thumb sentence as a closer, not a summary paragraph.
+  * Almost never uses marketing adjectives. No "robust", "seamless", "powerful",
+    "cutting-edge", "leverage", "delve", "in today's world".
+  * Comfortable saying "I was wrong" and showing the old code.
+
+Verbatim lines worth echoing in tone:
+
+  "the person with the least information is the one who has to start every conversation"
+  "Deleting working code you wrote is harder than adding more."
+  "A service count you can develop with is not automatically a service count you can deploy."
+  "Synchronous when the caller needs the answer to make its next decision,
+   asynchronous when the caller's job is finished."
+  "Most AI products decide what the model should say. This one is mostly about
+   deciding what the model is allowed to know."
+  "Graceful degradation without instrumentation is just silent failure with better manners."
+  "A sanitizer without an adversarial test for its boundary condition is a
+   sanitizer you are guessing about."
+  "Model proposes and code constrains."
+  "A prompt-based safety rule is only as reliable as the model's attention on
+   that particular turn."
+  "The hard part was never the screens. It was modelling who is allowed to see what."
+  "The frontend hides routes and disables buttons, but it is not a boundary."
+  "Nineteen enforcement points is nineteen chances to forget."
+  "This page gives no usage numbers, because nothing in the system measures them
+   and I would rather leave a gap than invent one."
+  "The honest version is also the useful one. This is not a solo project."
+  "Every dependency I did not add is a thing that cannot break during an upgrade
+   on a host nobody wants to touch."
+  "Recognising which constraints are technical and which are organisational, and
+   not spending effort fighting the second kind, is most of what made this
+   project tractable."
+  "a message costs money and can't be unsent"
+
+================================================================================
+3. PROJECT: EUDORO  (eudoro.art)
+================================================================================
+
+Tagline   A multi-vendor marketplace for personalized products, where the
+          customization requirements are part of checkout instead of a chat thread.
+Scale     8+ months, solo. 12 backend services, 3 Next.js apps, 78 test files.
+Live      eudoro.art
+
+PROBLEM
+  Sellers ran custom orders through Instagram DMs. Multiple round trips before
+  work could start. Payment disconnected from order context. Addresses re-typed
+  into the shipping system every time. Overhead grew linearly with success.
+  Buyers did not know what to send, sent personal photos over unsecured channels,
+  paid strangers in advance with no escrow, and had no order visibility.
+
+CORE IDEA
+  The seller authors a customization schema once. A purchase is not valid until
+  the buyer satisfies it. Re-validated at checkout so a stale tab cannot smuggle
+  an edited payload past payment.
+
+SERVICES (12)
+  api-gateway            routing, CORS, rate limiting, correlation IDs, no business logic
+  auth-service           users, credentials, OTP, sessions
+  product-service        products, inventory, customization schemas
+  order-service          orders, items, status, delivery projection
+  payment-service        Razorpay, owns no persisted state
+  delivery-service       Shiprocket, tracking
+  notification-service   email and in-app
+  chat-service           real-time buyer-seller messaging
+  payout-wallet-service  seller ledger, payouts, wallet state
+  admin-service          verification, moderation, oversight
+  seller-service         shop management
+  analytics-service      scaffolded, not deployed
+
+  Frontends: user-ui :3000, seller-ui :3001, admin-ui :3002. Three apps so admin
+  code never ships to a buyer's browser.
+
+  Rule: "A service writes its own models freely. Reading another service's model
+  is tolerated only as a documented non-mutating projection."
+
+TECH STACK
+  TypeScript, Node, Express, Next.js 15, React 19, Tailwind, React Query, Zustand
+  MongoDB Atlas, Prisma, Redis, RabbitMQ (topic exchanges), Socket.IO
+  Razorpay, Shiprocket, opossum circuit breaker
+  Docker Compose, Nginx, AWS EC2, Prometheus, Grafana, Loki, Promtail
+  Jest, Playwright, Nx, pnpm
+
+REAL BUGS AND FIXES - excellent raw material for ebook examples
+  1. Payment succeeded, order creation failed.
+     Fix: invert the flow. Webhook verifies payment, publishes an event,
+     order-service consumes it idempotently keyed on the Razorpay payment id.
+  2. Concurrent payout locking. Read-check-write let the same money be locked twice.
+     Fix: fold the check into a conditional atomic update. The losing request
+     matches zero rows and is refused. (This is the TOCTOU story.)
+  3. Circuit breaker manufactured fake success. A Shiprocket outage fallback
+     returned null carrier ids that looked like real shipments and advanced orders.
+     Fix: validate real identifiers, absence means failure.
+  4. Reversing money for a delivered-then-returned order.
+     Fix: one idempotent reversal path, safe in either order. Sellers are allowed
+     to go negative on involuntary losses and net it against future earnings.
+  5. Cart identity. Two differently-engraved units of the same product are separate
+     lines. JavaScript object key order follows insertion order, so the same
+     customization typed in a different sequence produced a different cart line.
+     Fix: sort the customization keys before serializing into the cart item id.
+  6. Docker Compose full rebuild exhausted 2GB on the EC2 instance.
+     Fix: surgical per-service builds, per-service CPU (0.05-0.3) and memory
+     (128-512MB) limits tiered by criticality.
+  7. Wrote a custom logging service, it worked, then deleted it because it was a
+     single point of failure during incidents. Replaced with Promtail, Loki,
+     Prometheus, Grafana, where log collection does not depend on the application
+     being healthy.
+
+SECURITY
+  OTP-verified registration, HTTP-only cookies so tokens are unreachable from JS,
+  JWT verified downstream rather than calling auth-service per request,
+  server recomputes price, stock, commission and coupon at checkout,
+  HMAC webhook verification with constant-time comparison,
+  wallet operations via conditional atomic updates,
+  tiered Redis-backed rate limiting, opossum circuit breaker on Shiprocket,
+  30s configurable upstream timeout, audit records on money-affecting admin actions,
+  scheduled reconciliation asserting financial invariants (locked > total is impossible).
+
+ROADMAP HE NAMED
+  Extract wallet into a payout-service-owned model, transactional outbox for event
+  publication, uniform strict TypeScript, per-service physical database separation,
+  customization template versioning, distributed tracing as the primary debugging
+  path, Redis adapter for Socket.IO horizontal scaling.
+
+================================================================================
+4. PROJECT: SHAZA  (Forever Yours)
+================================================================================
+
+Tagline   A couples app where the AI is built on the relationship rather than
+          bolted onto it.
+Scale     17k backend lines, 23 controllers, 33 models, 11 background jobs.
+
+CORE IDEA
+  The couple is one tenancy unit, coupleId is the universal key. Every AI surface
+  reads one substrate (imported memory, extracted persona, mood, relationship
+  state) but is restricted to a different slice. The companion cannot read
+  mediation intakes. The coach cannot touch companion memory.
+
+TECH STACK
+  Next.js 15, Redux Toolkit, React Query, Tailwind
+  Express 5, MongoDB Atlas Vector Search, Socket.IO
+  WebRTC via PeerJS, Liveblocks/Yjs, Excalidraw
+  Gemini, Groq, Jina embeddings (768-dim)
+  Render, Cloudinary, SendGrid, Pusher Beams, Razorpay
+
+REAL BUGS AND FIXES - strong material for the AI SDK booklet
+  1. Mediation intake leakage. Both partners' private accounts in one context
+     window turns injection into exfiltration.
+     Fix: map-reduce isolation. Partner A in isolated call 1, Partner B in
+     isolated call 2, only call 3 sees the two summaries and never the raw text.
+     He keeps the vulnerable version next to the fixed one, marked deprecated.
+  2. Stream parser privacy bug. Private reasoning blocks had to be stripped before
+     display. The parser accumulated the buffer once per network chunk but
+     inspected once per character, so tag checks only matched when chunk
+     boundaries happened to align. Tests passed because they fed a single chunk.
+     Fix: move accumulation inside the character loop. Twelve-case regression test
+     with deliberately misaligned chunk boundaries. Six failed before the fix.
+  3. Cold-start embedding timeout. Embeddings take 4-8s to cold-start, the timeout
+     was 4s. Retrieval failure degraded silently to persona-only replies, so the
+     companion had intermittent amnesia with no error signal.
+     Fix: every graceful-degradation path now logs.
+  4. Memory consolidation. The model decided which facts to retire.
+     Fix: the model proposes, code constrains. The response is filtered against
+     the input id set by a pure function with unit tests.
+  5. Privacy flag leak. Stripping a private mood note but still showing "something
+     was hidden" leaks the fact that something was hidden.
+     Fix: strip the content and the flag together.
+  6. Quadratic cost growth in mediation. Early design resent the whole transcript
+     every turn, so the longest sessions were the slowest and most expensive.
+     Fix: window recent turns while pinning the reflection.
+
+FIVE SAFETY LAYERS
+  L1 18+ gates and consent checks, fail-closed when data is missing
+  L2 deterministic keyword floor, under 1ms, before any model call
+  L3 prompt-level safety as the primary instruction layer
+  L4 output interception that can halt the stream
+  L5 terminal session, 24h lockout, crisis resources
+
+  The deterministic floor catches explicit disclosures. The prompt layer catches
+  coercion patterns with no danger words in them, like "I just agree because of
+  how he gets". Neither alone is enough.
+
+HONEST GAPS HE PUBLISHED
+  No output checking on companion replies, only on agreement proposals.
+  No companion eval harness for hallucination, sycophancy, persona fidelity.
+  No encryption at rest, intakes are plaintext.
+  Unverified scrubbing on error-reporting payloads.
+  Authorization duplicated across six controllers instead of centralised.
+
+================================================================================
+5. PROJECT: GAZA40+ STUDENT PORTAL  (portal.gaza40plus.co.uk)
+================================================================================
+
+Tagline   The hard part was never the screens. It was modelling who is allowed to
+          see what.
+Team      Built with Hamza, who led overall implementation. Kaleem did backend
+          architecture, the authorization model, module structure, services,
+          workflows and frontend scaffolding.
+Scale     500+ daily active users.
+
+PROBLEM
+  A humanitarian organisation coordinated university placements across Notion,
+  spreadsheets, WhatsApp, Slack, Drive folders and human memory. You cannot
+  express "who is allowed to see this" when the rule depends on a relationship
+  between three entities living in three different systems.
+
+THE DECISION WORTH TEACHING
+  Region derives from the offer's university country, never from the student's
+  location. Every student is in Gaza, so scoping admins by the student would give
+  every admin every student. One student can sit in three regional queues at once,
+  visible to UK, Spain and Turkey admins through their respective offers.
+
+AUTHORIZATION
+  Eight layered checks: authentication, role, ownership, assignment, region,
+  resource type, action, business state. Enforced at the service layer.
+  5-tier RBAC with a canonical scope resolver returning a discriminated union.
+  Document-type allowlists held in code so a database write cannot grant access.
+
+TECH STACK
+  Next.js 16, React 19, Express, TypeScript, Prisma, MongoDB, Cloudflare R2,
+  Socket.IO, JWT, Tailwind, Docker, Nginx
+
+CHALLENGES
+  Nineteen surfaces return data and each needs regional filtering.
+  Revision tracking snapshots before and after, computes changed fields, writes an
+  OfferRevision, resets status and notifies admins atomically. No-op edits are
+  free, so a student pressing save does not un-approve their own offer.
+  Documents live in R2 under random keys with no public URLs, four checks on
+  download, streamed server-side, audited per access.
+  Conditional requirements: students without passports are not asked for one.
+  Financial gap engine is a pure function computed on read from a database rules
+  row, returning source attribution, so an admin sees "the system applied the
+  configured rule" rather than "the system says X".
+  Background CSV export jobs, capped per user, deduplicated on repeated filters
+  within five minutes, columns allowlisted, authorization scope frozen at creation.
+
+PUBLISHED GAPS
+  No automated tests, authorization rests on code review.
+  Administrator plaintext passwords stored for invite resending.
+  Assigned mentors can approve offers through an admin route.
+  No time-based escalation.
+  MongoDB has no row-level security, isolation is convention.
+
+================================================================================
+6. PROJECT: DATA SYNC ETL HUB
+================================================================================
+
+Tagline   Middleware replacing a commercial ETL platform to keep ERP, CRM and
+          storefront synchronized across three incompatible identifier systems.
+Status    UAT only, never production. Salesforce sandbox plus real SAP-format files.
+Scale     23 watched folders, 32 handlers, 14 object types. 94 residual files from
+          real runs verified on the share, March 2026.
+
+PROBLEM
+  SAP, Salesforce and the storefront each hold correct data inside their own
+  boundary but give the same customer a different primary key. No shared database,
+  no distributed transactions, and SAP only speaks file drops.
+
+DECISIONS
+  File-first. The whole system is built around SAP's batch file interface rather
+  than fighting it. Files are routing addresses, not data containers.
+  Failure is first-class data. Errors write enriched files to error folders that
+  trigger their own handlers and end as error records in Salesforce. The same
+  mechanism the happy path uses carries the sad path.
+  Four npm packages only: Express, chokidar, ftp-srv, dotenv.
+  Identity assembled over time. A record legitimately holds two of three
+  identifiers while it waits for an async SAP acknowledgment.
+  Outbound files are written before optional notification work, so SAP always
+  receives the document even if a downstream step fails.
+
+CHALLENGES
+  SAP's client lists directories with *.json wildcards, which breaks standard
+  filesystem assumptions. Fixed with a ~40 line filesystem subclass overriding
+  stat and list.
+  Three different error field spellings across systems, handled with explicit
+  fallback chains.
+  One error handler factory of 15 lines removed copy-paste across four object types.
+  Per-request log files instead of one shared stream.
+
+PUBLISHED GAPS
+  No idempotency, the same document twice creates duplicates.
+  No retry on Salesforce or storefront calls, while the safest local HTTP call has
+  five retries with exponential backoff. He calls this inversion out himself.
+  Error files are write-only and never re-attempted. ignoreInitial means files
+  present at startup are skipped.
+  A 3-minute setTimeout archiving delay left in from joint testing.
+  Nine statements in the architecture doc no longer match the code.
+  Salesforce and the storefront currently share one credential pair.
+
+================================================================================
+7. PROJECT: ECOU  (voice-first B2B ordering, Romania)
+================================================================================
+
+Tagline   A voice-first marketplace connecting buyers and suppliers in Romania
+          with zero-friction account setup.
+
+DECISIONS
+  Gemini native audio detects the spoken language, Romanian or English.
+  Grounded extraction resolves product, quantity, unit and location against
+  catalogue IDs so the model cannot invent entities.
+  Deterministic unit conversion, not model arithmetic.
+  Bounded spoken clarifications in the buyer's original language when data is missing.
+  Geospatial widening expands the supplier search outward from the buyer's county.
+  A human confirmation gate before dispatch, because a message costs money and
+  cannot be unsent.
+  WhatsApp Cloud API and Twilio sit behind one provider interface.
+
+TECH STACK
+  Next.js 16, PostgreSQL, Prisma, WhatsApp Cloud API, Twilio. Bilingual EN/RO.
+  Admin back office for catalogue, pricing and stock.
+
+================================================================================
+8. PROJECT: PRIMBLE  (AI document automation, from the resume, not on the site)
+================================================================================
+
+  Fills insurance forms of up to 1,135 fields each from an uploaded policy PDF.
+  Google Vision OCR, LLM fact extraction, then a deterministic-first hybrid fill:
+  rule and alias passes cover most fields at zero token cost, and a single
+  combined LLM pass handles only the true gaps across every selected form at once.
+  Quality scoring, AI suggestions, form generation for missing fields.
+  Evidence-gated answers and type-aware rejection enforce a strict
+  blank-over-wrong rule on a legal document.
+  Cut manual data entry by 80%+ per submission.
+
+================================================================================
+9. HOW TO USE THIS IN THE EBOOK
+================================================================================
+
+  Names in examples        Kaleem, Rabiya. Hamza if a third is needed.
+  Domain flavour           orders, sellers, wallets, payouts, shipments, offers,
+                           students, suppliers, catalogue items. Not foo/bar.
+  Real war stories         the TOCTOU wallet race, the cart identity key-order bug,
+                           the circuit breaker faking success, the stream parser
+                           chunk-boundary bug, the 4s embedding timeout.
+  Money and ids            Razorpay payment ids, AWB numbers, coupleId, offer region.
+  Voice                    short sentences, name the failure concretely, admit the
+                           gap, close with a rule of thumb.
+
+================================================================================
+10. EBOOKS & AUTHORSHIP
+================================================================================
+
+I wrote the books I needed when I was learning to build production systems. 
+Most tutorials end at a working localhost. These books start there and focus on 
+what happens when the network fails, data is messy, and users do the unexpected.
+
+1. TypeScript to AWS: The Backend Engineering Series (9 Booklets)
+A 750-page deep dive from Node.js internals to AWS deployment, covering API design, 
+data pipelines, and AI SDKs. No fluff. Real code, real failures, real fixes.
+Available as a complete master bundle or individual booklets.
+
+2. Modern React with AI: Spec-Driven Frontend Engineering
+Building frontend interfaces is no longer about typing boilerplate. It is about 
+writing strict specs, guiding AI like Cursor or Claude, and engineering the result. 
+This book shows you how to stop generating bad React and start engineering great apps.
+
+Grab my ebooks on Gumroad. Available in PDF and EPUB.

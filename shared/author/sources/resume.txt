@@ -1,0 +1,130 @@
+                          KALEEM AHMED
+
+                                     +91 6306026859  Noida, India
+            Portfolio  shaamidreez@gmail.com  LinkedIn  GitHub  LeetCode
+
+SUMMARY
+
+Backend-focused Software Engineer building distributed systems in Node.js, TypeScript and Python/FastAPI: mi-
+croservices, event-driven pipelines, idempotent payment flows and production LLM/RAG features, owned end to end
+from service boundaries to deployment and observability.
+
+SKILLS
+
+Languages & Backend: Node.js, Express.js, TypeScript, JavaScript, React/Next, Python, REST API Design
+Data & Messaging: MongoDB, PostgreSQL, Prisma, SQL, Redis, RabbitMQ, Message Queues
+AI/LLM Engineering: LLM-Powered Applications, RAG, Vector Search, Prompt & Context Engineering, Agentic
+Workflows, OCR, Spec-Driven Development, Human-in-the-Loop Guardrails
+Real-Time & Frontend: Socket.IO, WebRTC, WebSockets, Next.js, React.js, Tailwind CSS
+DevOps & Observability: Docker, AWS (IAM, EC2, Lambda, S3, VPC), Nginx, Prometheus, Grafana, Winston
+Integrations & Payments: Razorpay, Shiprocket, Stripe, Salesforce REST & Metadata APIs, WhatsApp API
+
+EXPERIENCE
+
+Software Developer -- Astrea IT Services                                  Apr 2024 ­ Present
+
+Backend, AI and full-stack delivery on client platforms using Node.js, Python, Docker, AWS, Next.js and Salesforce
+
+· AI Document Automation (Primble): Contributed to Primble, platform that fills Insurance forms (up to
+   1,135 fields each) from an uploaded policy PDF -- Google Vision OCR, LLM fact extraction, then a deterministic-
+   first hybrid fill where rule and alias passes cover most fields at zero token cost and a single combined LLM pass
+   handles only the true gaps across every selected form at once, Quality Scoring, AI suggestions, form generation for
+   missing fields. Evidence-gated answers and type-aware rejection enforce a strict blank-over-wrong rule on a legal
+   document. Cut manual data entry 80%+ per submission.
+
+· Data Synchronization ETL Hub: Built a Node.js middleware server keeping a file-based SAP system, Sales-
+   force and an ecommerce platform consistent in both directions across 14 business object types, cutting manual
+   reconciliation an estimated 70­75%. An embedded FTP server and file watcher ingest SAP JSON into async
+   pipelines with auto-discovered routing, so a new integration is a single file. Implemented source-aware idempo-
+   tent UPSERTs on composite keys with transaction boundaries, OAuth2 token caching, retry with backoff, and
+   failures written back to Salesforce as records.
+
+· ECOU -- Voice-First B2B Ordering Platform (client): Built a voice-driven ordering and dispatch platform for
+   a Romanian agriculture client. Gemini native-audio transcription detects the spoken language and a grounded
+   extraction step resolves product, quantity, unit and location against catalogue IDs, so the model cannot invent
+   entities. Added deterministic unit conversion, bounded spoken clarifications, and a human confirmation gate
+   before dispatch; matched orders fan out over WhatsApp Cloud API and Twilio behind one provider interface.
+   Next.js 16, PostgreSQL, Prisma, bilingual EN/RO, plus an admin back office for catalogue, pricing and stock.
+
+· Delivery and ownership: Took features from requirement to production across three client platforms -- writing the
+   spec, designing the data model and service boundaries, building both halves and deploying them. Dockerised services
+   behind Nginx on AWS, CI/CD pipelines, structured logging and Sentry error tracking, and handover documentation
+   on each system, since none of them stays with its author.
+
+AI ENGINEERING & ADAPTABILITY
+Actively practicing AI-assisted development -- AI as a force multiplier, with full engineering ownership and
+human-in-the-loop oversight, and judgment applied to every output by reviewing, challenging and overriding it. The
+durable advantages are still human: focus, discipline, adaptive learning and product taste.
+Tools & Focus: OpenAI Codex, Claude, Cursor, context management, N8N, AI-assisted debugging, engineering
+automation.
+
+PROJECTS
+Eudoro (Loved Gifts) -- Personalized Commerce Platform                 June 2025 ­ Present
+
+User | Seller | Admin | Test Login
+
+Next.js, TypeScript, Express.js, MongoDB, Prisma, Redis, RabbitMQ, Docker, AWS EC2, Nginx, Razorpay, Shiprocket,
+
+Socket.IO
+
+· Built as the sole engineer -- a multi-vendor marketplace driven by a seller-authored customization schema
+   (typed fields, validation rules, reusable templates); a purchase is invalid until the buyer satisfies it, re-validated at
+   checkout so a stale tab cannot smuggle an edited payload past payment.
+
+· 12 backend microservices and 3 independently deployed Next.js apps. Orders are never created in the
+   checkout request: a signed Razorpay webhook publishes an event and idempotent RabbitMQ consumers
+   drive order lifecycle, wallet accounting, inventory sync, refunds and payouts, with retries and dead-letter queues.
+   Immutable wallet ledgers with atomic conditional updates closing a TOCTOU race found in a self-audit, delivery-
+   gated payouts, JWT-based RBAC, Redis caching, rate limiting and Prometheus/Grafana/Loki observability.
+
+· Full commerce surface: multi-vendor storefronts, search and shop reviews; a cart treating two differently-
+   customized units of the same product as separate lines; server-recomputed pricing, stock and coupons at checkout;
+   Shiprocket shipping behind a circuit breaker with AWB generation and webhook-driven tracking; seller verification,
+   moderation and Socket.IO chat.
+
+Forever Yours (Shaza) -- Real-Time Couples Platform with AI Companion                               Live App
+
+Node.js, Express.js, Socket.IO, WebRTC, Next.js, MongoDB Atlas Vector Search, Redis, Jina Embeddings, Groq/Gemini
+
+· WebRTC voice and video calling with a host-authoritative synced watch-together room over Socket.IO signalling,
+   handling ICE-candidate buffering, call glare, presence and reconnect recovery.
+
+· Production RAG companion learning a partner's texting style from imported chat exports over MongoDB
+   Atlas Vector Search, using a composite retrieval score (relevance dominant, recency and importance bounded),
+   reliability-tiered retrieval and a fact-check protocol that refuses to fabricate memories; a paired AI mediator's
+   map-reduce design structurally isolates each partner's private input.
+
+· Product surface: Watch Together synced playback, a collaborative canvas on Liveblocks/Yjs, memories with
+   map and graph views, scheduled letters and cron-unlocked gifts. A mood tracker of 8 moods, 32 sub-moods and
+   12 needs tags, with per-field privacy enforced at a single projection choke point, streaks, cycle tracking and async AI
+   summaries off the save path. An AI Clash Resolver running a five-state machine with two-party consent on every
+   transition that matters, plus a private coach, a breakup-discernment path, and HMAC Razorpay subscriptions.
+
+Gaza40+ Student Portal -- Humanitarian Operations Platform                                          Live App
+
+Next.js, Express.js, TypeScript, MongoDB, Prisma, Socket.IO, Cloudflare R2, AWS SDK, JWT, Tailwind
+
+· Humanitarian operations platform serving 500+ DAUs, replacing coordination across Notion, WhatsApp and
+   spreadsheets with one system for onboarding, offers, documents and case lifecycle.
+
+· Layered authorization model -- 5-tier RBAC with a canonical scope resolver returning a discriminated union,
+   case region derived from the university's country rather than the user's profile, and document-type allowlists held
+   in code so a database write cannot grant access. Configurable visa and financial-gap engine computed on read,
+   real-time chat, and Cloudflare R2 documents streamed through the API.
+
+· Operational workflows: country-routed query triage with routing held in configuration rather than an enum,
+   where escalation releases the assignment and counts how many people it reached before declaring success; offer
+   review with normalized before/after revision snapshots and a no-op return when nothing changed; and background
+   CSV export jobs, capped per user, deduplicated on repeated filters within five minutes, columns allowlisted, and
+   the authorization scope frozen at creation.
+
+EDUCATION                                                                                2020 ­ 2024
+B.Tech in Computer Science Engineering -- Abdul Kalam Technical University, CGPA 8.3/10
+
+ACHIEVEMENTS
+
+· Solved 1500+ DSA problems across LeetCode and GeeksforGeeks; peak LeetCode rating 1798, Global Rank
+   812 in Weekly Contest 359.
+
+· Global Rank 800 in TCS CodeVita Season 11 among 110,000+ participants worldwide.
+
