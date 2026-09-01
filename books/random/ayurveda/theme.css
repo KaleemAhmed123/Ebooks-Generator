@@ -1,0 +1,34 @@
+/* Ayurveda — a SERIES theme sitting under the random domain.
+   This is the fourth cascade layer, and it shows what one normally costs:
+   redefine the tokens, restyle the one block that needs it, done. Everything
+   else is inherited from books/random/theme.css above it.
+
+   Loaded after the domain theme, so these win. */
+
+:root {
+  --accent: #6b8e23;
+  --accent-soft: #f0f4e4;
+  --warn: #8b5a2b;
+  --warn-soft: #f7efe4;
+  --link: #4a6b18;
+  --body-font: "Georgia", "Cambria", serif;
+  --head-font: "Segoe UI", "Inter", Helvetica, sans-serif;
+}
+
+body { line-height: 1.6; }
+
+/* A dosha or herb name that recurs. Set apart from the running prose. */
+.tip::before {
+  content: "In practice";
+  display: block;
+  font-family: var(--head-font);
+  font-size: 7.5pt;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5mm;
+}
+
+/* Sanskrit terms inside English prose. */
+[lang="sa"] { font-style: italic; letter-spacing: 0.01em; }

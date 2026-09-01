@@ -1,0 +1,128 @@
+/* Random Topics domain — the neutral fallback.
+   Deliberately plain. This domain holds unrelated subjects (NLP, Ayurveda,
+   gut health, gym supplements, YouTube), so the DOMAIN look stays quiet and
+   each SERIES supplies its own personality in its own theme.css.
+
+   A series theme loads after this one and overrides it. Usually it only needs
+   to redefine the tokens below plus its own :::blocks. See
+   books/random/ayurveda/theme.css for a worked example. */
+
+:root {
+  --ink: #1a1a1e;
+  --muted: #6b6b74;
+  --accent: #3b5bdb;
+  --accent-soft: #eaeeff;
+  --warn: #b8860b;
+  --warn-soft: #fdf6e3;
+  --rule: #e0e0e4;
+  --code-bg: #16161c;
+  --code-fg: #f0f0f3;
+  --link: #3b5bdb;
+  --body-font: "Segoe UI", "Inter", Helvetica, Arial, sans-serif;
+  --head-font: "Segoe UI", "Inter", Helvetica, Arial, sans-serif;
+}
+
+html, body {
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--body-font);
+  font-size: 9pt;
+  line-height: 1.5;
+}
+
+h1 {
+  font-family: var(--head-font);
+  font-weight: 700;
+  font-size: 20pt;
+  line-height: 1.15;
+  margin: 0 0 5mm 0;
+  padding-bottom: 3mm;
+  border-bottom: 1.2pt solid var(--accent);
+}
+h2 { font-family: var(--head-font); font-weight: 700; font-size: 12pt; margin: 0 0 4mm 0; }
+h3 { font-weight: 600; font-size: 9.5pt; color: var(--muted); margin: 4.5mm 0 2mm 0; }
+
+p { margin: 0 0 2.5mm 0; }
+ul, ol { margin: 0 0 3mm 0; padding-left: 5.5mm; }
+li { margin: 0 0 1mm 0; }
+a { color: var(--link); text-decoration: none; }
+strong { font-weight: 700; }
+
+/* ---------- :::note ---------- */
+.note {
+  background: #f4f4f6;
+  border-left: 1mm solid var(--muted);
+  padding: 3mm 4mm;
+  margin: 3mm 0;
+}
+.note p:last-child { margin-bottom: 0; }
+
+/* ---------- :::tip ---------- */
+.tip {
+  background: var(--accent-soft);
+  border-left: 1mm solid var(--accent);
+  padding: 3mm 4mm;
+  margin: 3mm 0;
+}
+.tip p:last-child { margin-bottom: 0; }
+
+/* ---------- :::warning ---------- */
+.warning {
+  background: var(--warn-soft);
+  border-left: 1mm solid var(--warn);
+  padding: 3mm 4mm;
+  margin: 3mm 0;
+}
+.warning::before {
+  content: "Careful";
+  display: block;
+  font-size: 7.5pt;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--warn);
+  margin-bottom: 1.5mm;
+}
+.warning p:last-child { margin-bottom: 0; }
+
+/* ---------- :::source ----------
+   Where a claim came from. These are research-heavy topics; a claim without
+   a source does not belong on the page. */
+.source {
+  font-size: 7.6pt;
+  color: var(--muted);
+  border-top: 0.5pt solid var(--rule);
+  padding-top: 1.5mm;
+  margin: 2mm 0 4mm 0;
+}
+.source p { margin: 0; }
+
+/* ---------- code ---------- */
+code { font-family: "Consolas", monospace; font-size: 8.5pt; color: var(--accent); }
+pre { background: var(--code-bg); border-radius: 2mm; padding: 3.2mm 3.8mm; margin: 3mm 0; }
+pre code { color: var(--code-fg); font-size: 7.6pt; line-height: 1.4; white-space: pre-wrap; }
+
+/* ---------- cover ---------- */
+.cover { text-align: left; }
+.cover h1 { font-size: 40pt; line-height: 1.05; margin-top: 42mm; padding-bottom: 6mm; border-bottom: 2.5pt solid var(--accent); }
+.cover .cover-sub { font-size: 13pt; color: var(--muted); margin-top: 5mm; }
+.cover .cover-book { font-size: 7.5pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-top: 22mm; }
+
+/* ---------- part divider ---------- */
+.page.part h1 { font-size: 28pt; margin-top: 52mm; }
+.page.part .part-num { font-size: 7.5pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+.page.part .part-sub { font-size: 11pt; color: var(--muted); margin-top: 4mm; }
+
+/* ---------- contents ---------- */
+.toc h2 { margin-bottom: 7mm; }
+.toc ul ul { padding-left: 4mm; }
+.toc li { font-size: 8.2pt; line-height: 1.35; }
+.toc li.lvl1 { font-size: 9.2pt; font-weight: 700; margin-top: 3.5mm; }
+.toc a { color: var(--ink); }
+.toc li > .dots { border-bottom: 0.5pt dotted #c9c9d0; transform: translateY(-0.5mm); }
+.toc li > .p { font-size: 7pt; color: var(--muted); }
+
+/* ---------- tables ---------- */
+table { width: 100%; border-collapse: collapse; margin: 3mm 0; font-size: 8.2pt; }
+th, td { border: 0.5pt solid var(--rule); padding: 1.8mm 2mm; text-align: left; vertical-align: top; }
+th { background: #f6f6f8; font-weight: 700; }
