@@ -1,0 +1,14 @@
+# Installed packages — restored with `npm install` in tools/
+node_modules/
+
+# Generated output — rebuilt from books/ with `node tools/build.mjs --all`
+dist/
+
+# Pre-restructure PDFs, kept as an archive. 240MB+ of binaries do not belong
+# in git history.
+pdf-snapshots/
+
+# Build scratch
+*.cover.pdf
+*.tmp.pdf
+docs/tasks/reference/HTML-to-REACT.pdf
