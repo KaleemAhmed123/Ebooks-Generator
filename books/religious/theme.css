@@ -1,0 +1,184 @@
+/* Religious domain — a starter look, meant to be argued with.
+   Warm paper, deep ink, gold rules, serif throughout. Quiet, not decorative.
+   A larger trim (156x234mm) with generous margins, set in meta.json, because
+   this kind of reading wants air around the text. */
+
+:root {
+  --ink: #22201c;
+  --paper: #fdfbf6;
+  --gold: #a8862f;
+  --deep: #1f4034;
+  --muted: #6f6a61;
+  --rule: #cbb98a;
+  --verse-bg: #f6f1e4;
+  --link: #1f4034;
+}
+
+html, body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Georgia", "Cambria", "Times New Roman", serif;
+  font-size: 10pt;
+  line-height: 1.6;
+}
+
+/* ---------- headings ----------
+   No shadows, no display tricks. Weight and space carry the hierarchy. */
+
+h1 {
+  font-family: "Georgia", serif;
+  font-weight: 400;
+  font-size: 22pt;
+  line-height: 1.2;
+  color: var(--deep);
+  text-align: center;
+  margin: 0 0 6mm 0;
+  padding-bottom: 4mm;
+  border-bottom: 0.8pt solid var(--rule);
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 13pt;
+  color: var(--deep);
+  text-align: center;
+  letter-spacing: 0.01em;
+  margin: 0 0 5mm 0;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 10.5pt;
+  color: var(--ink);
+  margin: 5mm 0 2mm 0;
+}
+
+/* ---------- body ---------- */
+
+p { margin: 0 0 3mm 0; text-align: justify; hyphens: auto; }
+ul, ol { margin: 0 0 3mm 0; padding-left: 6mm; }
+li { margin: 0 0 1mm 0; }
+a { color: var(--link); text-decoration: none; }
+strong { font-weight: 700; }
+
+/* ---------- :::verse ----------
+   A quoted passage. Centred, on tinted paper, with a gold hairline above and
+   below rather than a border box. Arabic and Urdu inside an English page get
+   their own face and a larger size, since they read smaller at the same pt. */
+
+.verse {
+  background: var(--verse-bg);
+  border-top: 0.6pt solid var(--rule);
+  border-bottom: 0.6pt solid var(--rule);
+  padding: 5mm 6mm;
+  margin: 5mm 0;
+  text-align: center;
+  font-size: 10.5pt;
+  line-height: 1.75;
+}
+.verse p:last-child { margin-bottom: 0; }
+.verse em { color: var(--muted); font-size: 9pt; }
+
+/* Inline non-Latin script. Wrap it: <span lang="ar">…</span> */
+[lang="ar"], [lang="ur"], [lang="fa"] {
+  font-family: "Traditional Arabic", "Amiri", "Scheherazade New", "Segoe UI", serif;
+  font-size: 1.45em;
+  line-height: 2;
+  direction: rtl;
+  unicode-bidi: isolate;
+}
+
+/* ---------- :::source ----------
+   Where the quote came from. Small, muted, right-aligned under a verse. */
+
+.source {
+  font-size: 8pt;
+  color: var(--muted);
+  text-align: right;
+  margin: -3mm 0 5mm 0;
+  font-style: italic;
+}
+.source p { margin: 0; text-align: right; }
+
+/* ---------- :::reflection ----------
+   A question put to the reader. Indented, no box, marked by a gold rule. */
+
+.reflection {
+  border-left: 0.8mm solid var(--gold);
+  padding: 1mm 0 1mm 5mm;
+  margin: 5mm 0;
+  color: var(--deep);
+}
+.reflection p:last-child { margin-bottom: 0; }
+
+/* ---------- :::note ---------- */
+
+.note {
+  background: #f2f0ea;
+  padding: 4mm 5mm;
+  margin: 4mm 0;
+  font-size: 9.5pt;
+}
+.note p:last-child { margin-bottom: 0; }
+
+/* ---------- code, used rarely here ---------- */
+
+code { font-family: "Consolas", monospace; font-size: 9pt; color: var(--deep); }
+pre {
+  background: #f2f0ea;
+  padding: 3.5mm 4mm;
+  margin: 3mm 0;
+  border-left: 0.6mm solid var(--rule);
+}
+pre code { font-size: 8.2pt; line-height: 1.4; white-space: pre-wrap; }
+
+/* ---------- cover ---------- */
+
+.cover { text-align: center; }
+.cover h1 {
+  font-size: 34pt;
+  border-bottom: none;
+  margin-top: 60mm;
+  padding-bottom: 0;
+}
+.cover .cover-sub {
+  font-size: 13pt;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 6mm;
+}
+.cover .cover-book {
+  font-size: 8.5pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 30mm;
+}
+
+/* ---------- part divider ---------- */
+
+.page.part { text-align: center; }
+.page.part h1 { font-size: 26pt; margin-top: 70mm; border-bottom: none; }
+.page.part .part-num {
+  font-size: 8.5pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.page.part .part-sub { color: var(--muted); font-style: italic; margin-top: 5mm; }
+
+/* ---------- contents ---------- */
+
+.toc h2 { margin-bottom: 9mm; }
+.toc ul ul { padding-left: 5mm; }
+.toc li { font-size: 9.5pt; line-height: 1.5; }
+.toc li.lvl1 { font-size: 10.5pt; font-weight: 700; color: var(--deep); margin-top: 4mm; }
+.toc a { color: var(--ink); }
+.toc li > .dots { border-bottom: 0.5pt dotted var(--rule); transform: translateY(-0.6mm); }
+.toc li > .p { font-size: 8pt; color: var(--muted); }
+
+/* ---------- tables ---------- */
+
+table { width: 100%; border-collapse: collapse; margin: 4mm 0; font-size: 9pt; }
+th, td { border: 0.5pt solid var(--rule); padding: 2mm 2.5mm; text-align: left; vertical-align: top; }
+th { background: var(--verse-bg); font-weight: 700; color: var(--deep); }

@@ -1,0 +1,9 @@
+{
+  "name": "Religious",
+  "blocks": ["verse", "note", "reflection", "source"],
+  "page": {
+    "width": "156mm",
+    "height": "234mm",
+    "margin": { "top": "16mm", "bottom": "14mm", "left": "14mm", "right": "14mm" }
+  }
+}
