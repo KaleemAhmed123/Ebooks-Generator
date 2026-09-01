@@ -1,0 +1,47 @@
+{
+  "title": "Data & Messaging",
+  "cover": {
+    "accent": "#2a5673",
+    "title": [
+      "Data &",
+      "Messaging"
+    ],
+    "banner": "THE DATA MODEL IS THE SYSTEM.",
+    "kicker": "POSTGRES · MONGODB · REDIS · RABBITMQ · KAFKA",
+    "term": [
+      [
+        "$ psql -U app",
+        0
+      ],
+      [
+        "✓ 1 row in 2.1ms",
+        1
+      ],
+      [
+        "$ redis-cli ping",
+        0
+      ],
+      [
+        "✓ PONG",
+        1
+      ],
+      [
+        "$ _",
+        2
+      ]
+    ],
+    "stack": [
+      "Postgres · Prisma",
+      "MongoDB · Mongoose",
+      "indexes · query plans",
+      "transactions",
+      "Redis · caching",
+      "queues · the outbox"
+    ],
+    "face": {
+      "brow": "flat",
+      "mouth": "flat",
+      "tilt": 3
+    }
+  }
+}

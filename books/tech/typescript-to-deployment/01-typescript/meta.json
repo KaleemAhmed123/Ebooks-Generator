@@ -1,0 +1,48 @@
+{
+  "title": "TypeScript",
+  "subtitle": "For Backend",
+  "cover": {
+    "accent": "#2b5fa8",
+    "title": [
+      "TypeScript",
+      "for Backend"
+    ],
+    "banner": "TYPE IT ONCE. TRUST IT EVERYWHERE.",
+    "kicker": "STRICT MODE · GENERICS · GUARDS · UTILITY TYPES",
+    "term": [
+      [
+        "$ npx tsc --noEmit",
+        0
+      ],
+      [
+        "✓ 0 errors",
+        1
+      ],
+      [
+        "$ npx tsx src/index.ts",
+        0
+      ],
+      [
+        "✓ listening :3000",
+        1
+      ],
+      [
+        "$ _",
+        2
+      ]
+    ],
+    "stack": [
+      "tsc · tsx · tsup",
+      "strict flags",
+      "discriminated unions",
+      "generics · infer",
+      "utility types",
+      "ESM & CJS interop"
+    ],
+    "face": {
+      "brow": "sharp",
+      "mouth": "flat",
+      "tilt": -3
+    }
+  }
+}

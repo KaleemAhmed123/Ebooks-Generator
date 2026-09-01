@@ -1,0 +1,53 @@
+{
+  "title": "Frontend Mastery",
+  "subtitle": "Zero to Scalability",
+  "cover": {
+    "accent": "#1f6f8b",
+    "title": [
+      "Frontend",
+      "Mastery"
+    ],
+    "banner": "THE BROWSER IS NOT A BLACK BOX.",
+    "kicker": "REACT 19 · NEXT 16 · TAILWIND 4 · VITE 8 · A11Y · CSP · OTEL",
+    "term": [
+      [
+        "$ npx vitest run",
+        0
+      ],
+      [
+        "  ✓ 214 passed",
+        1
+      ],
+      [
+        "$ npx playwright test",
+        0
+      ],
+      [
+        "  ✓ 18 passed  3 browsers",
+        1
+      ],
+      [
+        "$ _",
+        2
+      ]
+    ],
+    "stack": [
+      "rendering path · CSS",
+      "closures · the event loop",
+      "React 19 · the compiler",
+      "Next 16 · cache components",
+      "Tailwind 4 · design systems",
+      "vitals · speculation rules",
+      "a11y · the law · CSP",
+      "supply chain · OpenTelemetry"
+    ],
+    "face": {
+      "brow": "flat",
+      "mouth": "smile",
+      "tilt": -3
+    },
+    "companion": true,
+    "label": "COMPANION BOOKLET",
+    "setLine": "STANDALONE COMPANION BOOKLET"
+  }
+}

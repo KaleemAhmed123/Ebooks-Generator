@@ -1,0 +1,47 @@
+{
+  "title": "AI-Assisted Engineering",
+  "cover": {
+    "accent": "#0d7a7a",
+    "title": [
+      "AI-Assisted",
+      "Engineering"
+    ],
+    "banner": "YOU OWN EVERY LINE YOU MERGE.",
+    "kicker": "AGENTS.MD · SPEC-DRIVEN · REVIEW · SECURITY",
+    "term": [
+      [
+        "$ git diff --stat",
+        0
+      ],
+      [
+        "  6 files, +142 -18",
+        0
+      ],
+      [
+        "$ npx vitest run",
+        0
+      ],
+      [
+        "✓ 20/20 evals pass",
+        1
+      ],
+      [
+        "$ _",
+        2
+      ]
+    ],
+    "stack": [
+      "AGENTS.md",
+      "spec-driven dev",
+      "reviewing AI code",
+      "slopsquatting",
+      "verification loops",
+      "team practice"
+    ],
+    "face": {
+      "brow": "flat",
+      "mouth": "smile",
+      "tilt": -2
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "title": "AI SDKs for Backend",
+  "cover": {
+    "accent": "#c25a35",
+    "title": [
+      "AI SDKs",
+      "for Backend"
+    ],
+    "banner": "A MODEL IS A STATELESS HTTP CALL.",
+    "kicker": "TOOLS · STREAMING · RAG · AGENTS · COST",
+    "term": [
+      [
+        "$ node agent.js",
+        0
+      ],
+      [
+        "→ tool: get_order",
+        3
+      ],
+      [
+        "✓ 2 steps · 1.2k tok",
+        1
+      ],
+      [
+        "✓ $0.004",
+        1
+      ],
+      [
+        "$ _",
+        2
+      ]
+    ],
+    "stack": [
+      "OpenAI · Anthropic",
+      "AI SDK 7",
+      "tool calling",
+      "prompt caching",
+      "RAG · pgvector",
+      "agents · MCP"
+    ],
+    "face": {
+      "brow": "raised",
+      "mouth": "flat",
+      "tilt": 2
+    }
+  }
+}

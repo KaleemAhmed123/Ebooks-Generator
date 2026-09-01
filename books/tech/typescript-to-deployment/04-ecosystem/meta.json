@@ -1,0 +1,47 @@
+{
+  "title": "The Node Ecosystem",
+  "cover": {
+    "accent": "#b32d2b",
+    "title": [
+      "The Node",
+      "Ecosystem"
+    ],
+    "banner": "KNOW THE BASICS. KNOW THE GOTCHA.",
+    "kicker": "EXPRESS · ZOD · BULLMQ · PINO · VITEST",
+    "term": [
+      [
+        "$ npm ci --omit=dev",
+        0
+      ],
+      [
+        "✓ 412 packages",
+        1
+      ],
+      [
+        "$ npx vitest run",
+        0
+      ],
+      [
+        "✓ 318 passed",
+        1
+      ],
+      [
+        "$ _",
+        2
+      ]
+    ],
+    "stack": [
+      "Express 5",
+      "Zod · validation",
+      "BullMQ · queues",
+      "pino · logging",
+      "Vitest · testing",
+      "Socket.IO · realtime"
+    ],
+    "face": {
+      "brow": "raised",
+      "mouth": "smile",
+      "tilt": -2
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "title": "Next.js",
+  "subtitle": "The Backend Half",
+  "cover": {
+    "accent": "#121218",
+    "title": [
+      "Next.js",
+      "The Backend Half"
+    ],
+    "banner": "SERVER FIRST. CLIENT WHEN NEEDED.",
+    "kicker": "ROUTE HANDLERS · SERVER ACTIONS · CACHING · RUNTIMES",
+    "term": [
+      [
+        "$ next build",
+        0
+      ],
+      [
+        "✓ 42 static",
+        1
+      ],
+      [
+        "✓ 8 dynamic",
+        1
+      ],
+      [
+        "$ next start",
+        0
+      ],
+      [
+        "$ _",
+        2
+      ]
+    ],
+    "stack": [
+      "Route Handlers",
+      "Server Actions",
+      "the four caches",
+      "instrumentation.ts",
+      "server-only",
+      "edge vs node"
+    ],
+    "face": {
+      "brow": "raised",
+      "mouth": "smile",
+      "tilt": 2
+    }
+  }
+}

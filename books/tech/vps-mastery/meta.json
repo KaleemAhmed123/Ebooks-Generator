@@ -1,0 +1,51 @@
+{
+  "title": "VPS Deployment & Ops",
+  "subtitle": "From Localhost to Production",
+  "cover": {
+    "accent": "#8a4bd0",
+    "title": [
+      "VPS Deployment",
+      "& Ops"
+    ],
+    "banner": "ONE BOX. NO DOWNTIME. A WAY BACK.",
+    "kicker": "UBUNTU · DOCKER · NGINX · ACTIONS · BLUE-GREEN · RECOVERY",
+    "term": [
+      [
+        "$ ./deploy.sh",
+        0
+      ],
+      [
+        "  green healthy 14/14",
+        1
+      ],
+      [
+        "  flip -> green",
+        1
+      ],
+      [
+        "✓ 0 dropped requests",
+        1
+      ],
+      [
+        "$ _",
+        2
+      ]
+    ],
+    "stack": [
+      "hardening · ufw",
+      "Docker · Compose",
+      "Nginx · Let's Encrypt",
+      "GitHub Actions · GHCR",
+      "blue-green deploys",
+      "restic · 30-min rebuild"
+    ],
+    "face": {
+      "brow": "raised",
+      "mouth": "flat",
+      "tilt": 3
+    },
+    "companion": true,
+    "label": "COMPANION BOOKLET",
+    "setLine": "STANDALONE COMPANION BOOKLET"
+  }
+}

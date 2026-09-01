@@ -1,0 +1,47 @@
+{
+  "title": "Node.js Core",
+  "cover": {
+    "accent": "#3f7a33",
+    "title": [
+      "Node.js",
+      "Core"
+    ],
+    "banner": "ONE THREAD. NEVER BLOCK IT.",
+    "kicker": "EVENT LOOP · STREAMS · WORKERS · SHUTDOWN",
+    "term": [
+      [
+        "$ node --import ./t.js app",
+        0
+      ],
+      [
+        "✓ loop lag 0.4ms",
+        1
+      ],
+      [
+        "$ kill -TERM 1",
+        0
+      ],
+      [
+        "✓ drained, exit 0",
+        1
+      ],
+      [
+        "$ _",
+        2
+      ]
+    ],
+    "stack": [
+      "event loop phases",
+      "streams · backpressure",
+      "worker_threads",
+      "crypto · net",
+      "diagnostics_channel",
+      "SIGTERM handling"
+    ],
+    "face": {
+      "brow": "sharp",
+      "mouth": "flat",
+      "tilt": 0
+    }
+  }
+}

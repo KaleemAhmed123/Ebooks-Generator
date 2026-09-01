@@ -1,0 +1,47 @@
+{
+  "title": "Deployment & Ops on AWS",
+  "cover": {
+    "accent": "#d0212f",
+    "title": [
+      "Deployment",
+      "& Ops on AWS"
+    ],
+    "banner": "GET IT LIVE. KEEP IT UP.",
+    "kicker": "DOCKER · VPS · SELF-HOSTING · AWS · MONITORING",
+    "term": [
+      [
+        "$ ssh prod",
+        0
+      ],
+      [
+        "✓ healthy",
+        1
+      ],
+      [
+        "$ ./deploy.sh",
+        0
+      ],
+      [
+        "✓ migrated · 200 OK",
+        1
+      ],
+      [
+        "$ _",
+        2
+      ]
+    ],
+    "stack": [
+      "Docker · Compose",
+      "VPS · Caddy · Nginx",
+      "GitHub Actions",
+      "EC2 · ECS · RDS",
+      "Prometheus · Loki",
+      "Grafana · playbooks"
+    ],
+    "face": {
+      "brow": "sharp",
+      "mouth": "flat",
+      "tilt": 0
+    }
+  }
+}
