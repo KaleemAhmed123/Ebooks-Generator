@@ -1,0 +1,30 @@
+/* Structural rules every book in every domain depends on.
+   A domain theme may restyle anything; it must not remove these.
+   Loaded first, so a domain theme always wins on a genuine conflict. */
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* One markdown file = one printed page. This is the rule the whole
+   pipeline is built on, including the auto-splitter. */
+.page { break-after: page; page-break-after: always; }
+.page:last-child { break-after: auto; page-break-after: auto; }
+
+/* Never tear these across a page break. Domain-declared :::blocks get the
+   same treatment automatically, injected by the build. */
+pre, table { break-inside: avoid; page-break-inside: avoid; }
+
+/* Contents page: leader-dot layout. Mechanics only — every colour, font and
+   size belongs to the domain theme. */
+.toc ul { list-style: none; padding-left: 0; margin: 0; }
+.toc li { display: flex; align-items: baseline; }
+.toc li > a    { flex: 0 1 auto; }
+.toc li > .dots { flex: 1 1 auto; min-width: 3mm; margin: 0 1.5mm; }
+.toc li > .p    { flex: 0 0 auto; }

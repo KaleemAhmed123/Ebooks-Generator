@@ -1,0 +1,13 @@
+{
+  "author": "Kaleem Ahmed",
+  "site": "kaleemahmed.in",
+  "year": "2026",
+  "edition": "First edition",
+  "runningHeader": "Kaleem Ahmed | All Rights Reserved",
+  "page": {
+    "width": "148mm",
+    "height": "210mm",
+    "margin": { "top": "13mm", "bottom": "11mm", "left": "11mm", "right": "11mm" }
+  },
+  "blocks": ["note"]
+}
