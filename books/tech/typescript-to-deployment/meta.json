@@ -1,0 +1,16 @@
+{
+  "title": "TypeScript to Deployment",
+  "subtitle": "The Ultimate Guide",
+  "masterVolume": true,
+  "order": [
+    "01-typescript",
+    "02-nextjs",
+    "03-node-core",
+    "04-ecosystem",
+    "05-data",
+    "06-api-design",
+    "07-ai-sdks",
+    "08-deployment",
+    "09-ai-practices"
+  ]
+}

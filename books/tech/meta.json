@@ -1,0 +1,5 @@
+{
+  "name": "Tech",
+  "blocks": ["mint", "note", "interview"],
+  "seriesLine": "TypeScript to Deployment · The Ultimate Guide"
+}
