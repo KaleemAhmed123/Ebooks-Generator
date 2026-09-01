@@ -1,0 +1,309 @@
+/* Theme for "TypeScript to Deployment".
+   Colours sampled directly from the source book (NgNinja HTML-to-React). */
+
+:root {
+  --ink: #1a1a1a;
+  --pink: #ef476e;
+  --pink-shadow: #ffd166;
+  --code-bg: #13213d;
+  --code-fg: #f1f1f3;
+  --inline-code: #c8ae75;
+  --mint: #e2fcf3;
+  --link: #2020ee;
+  --rule: #1a1a1a;
+  --callout-bar: #4a90d9;
+  --callout-bg: #f2f2f2;
+}
+
+@page {
+  size: 148mm 210mm;
+  margin: 13mm 11mm 11mm 11mm;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: var(--ink);
+  font-family: "Century Gothic", "Questrial", "Trebuchet MS", sans-serif;
+  font-size: 8.5pt;
+  line-height: 1.38;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ---------- page container: one markdown file = one page ---------- */
+
+.page {
+  break-after: page;
+  page-break-after: always;
+}
+.page:last-child { break-after: auto; page-break-after: auto; }
+
+/* ---------- heading level 1: module / booklet title ----------
+   Display weight, pink with a yellow offset shadow, sitting alone
+   above a full-width rule. Matches the source's module openers. */
+
+h1 {
+  font-family: "Verdana", "Trebuchet MS", sans-serif;
+  font-style: italic;
+  font-weight: 800;
+  font-size: 19pt;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--pink);
+  text-shadow: 3px 3px 0 var(--pink-shadow);
+  margin: 0 0 4mm 0;
+  padding-bottom: 3mm;
+  border-bottom: 1.2pt solid var(--rule);
+}
+
+/* ---------- heading level 2: section title ----------
+   Serif, centered, underlined. */
+
+h2 {
+  font-family: "Georgia", "Cambria", serif;
+  font-weight: 400;
+  font-size: 12.5pt;
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  margin: 0 0 4.5mm 0;
+}
+
+/* ---------- heading level 3: sub-heading ----------
+   Serif, centered, bold, no underline. */
+
+h3 {
+  font-family: "Georgia", "Cambria", serif;
+  font-weight: 700;
+  font-size: 10pt;
+  text-align: center;
+  margin: 4mm 0 2.5mm 0;
+}
+
+/* ---------- body ---------- */
+
+p { margin: 0 0 2mm 0; }
+
+ul, ol { margin: 0 0 2.4mm 0; padding-left: 5mm; }
+li { margin: 0 0 0.7mm 0; }
+li > ul, li > ol { margin-top: 1mm; }
+
+ul { list-style-type: disc; }
+ul ul { list-style-type: circle; }
+ul ul ul { list-style-type: square; }
+
+strong { font-weight: 700; }
+
+a { color: var(--link); text-decoration: none; }
+
+/* ---------- code ---------- */
+
+code {
+  font-family: "Consolas", "DejaVu Sans Mono", monospace;
+  font-size: 8.6pt;
+  color: var(--inline-code);
+  white-space: pre-wrap;
+}
+
+pre {
+  background: var(--code-bg);
+  border-radius: 2mm;
+  padding: 3.2mm 3.8mm;
+  margin: 2.8mm 0;
+  overflow: hidden;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+pre code {
+  color: var(--code-fg);
+  font-size: 7.4pt;
+  line-height: 1.34;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ---------- mint illustration block ---------- */
+
+.mint {
+  background: var(--mint);
+  padding: 3.5mm;
+  margin: 3mm 0;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  text-align: center;
+}
+.mint svg, .mint img { max-width: 100%; height: auto; }
+.mint pre {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  display: inline-block;
+}
+.mint pre code { color: #1a1a1a; font-size: 8pt; }
+
+/* ---------- callout ---------- */
+
+.note {
+  background: var(--callout-bg);
+  border-left: 1mm solid var(--callout-bar);
+  padding: 3mm 4mm;
+  margin: 3mm 0;
+  break-inside: avoid;
+}
+.note p:last-child { margin-bottom: 0; }
+
+/* ---------- interview-question flag ----------
+   The label, then the question in the sub-heading style, then normal body. */
+
+.interview { margin: 6mm 0 4mm 0; }
+.interview::before {
+  content: "Interview Question";
+  display: block;
+  font-family: "Consolas", monospace;
+  font-size: 7.5pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pink);
+  text-align: center;
+  margin-bottom: 2mm;
+}
+.interview > p:first-of-type {
+  font-family: "Georgia", "Cambria", serif;
+  font-weight: 700;
+  font-size: 11.5pt;
+  text-align: center;
+  margin-bottom: 6mm;
+}
+
+/* ---------- booklet cover ---------- */
+
+.cover { text-align: left; }
+.cover h1 {
+  font-size: 46pt;
+  line-height: 1.05;
+  text-shadow: 5px 5px 0 var(--pink-shadow);
+  border-bottom: 1.6pt solid var(--rule);
+  margin-top: 34mm;
+  padding-bottom: 7mm;
+}
+.cover .cover-sub {
+  font-family: "Georgia", serif;
+  font-size: 14pt;
+  margin-top: 5mm;
+}
+.cover .cover-book {
+  font-family: "Consolas", monospace;
+  font-size: 8pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6b6b6b;
+  margin-top: 20mm;
+}
+
+/* ---------- table of contents ---------- */
+
+.toc h2 { margin-bottom: 7mm; }
+.toc ul { list-style: none; padding-left: 0; margin: 0; }
+.toc ul ul { padding-left: 4mm; }
+.toc li { margin-bottom: 0.2mm; font-size: 7.8pt; line-height: 1.28; }
+.toc li.lvl1 {
+  font-size: 8.6pt;
+  font-weight: 700;
+  margin-top: 3mm;
+  margin-bottom: 1mm;
+}
+.toc a { color: var(--link); }
+.toc .lvl3 > a { color: #5a5ad8; }
+
+/* ---------- verified-against stamp ---------- */
+
+.verified {
+  font-family: "Consolas", monospace;
+  font-size: 7.2pt;
+  color: #6b6b6b;
+  margin-top: 8mm;
+  border-top: 0.5pt solid #ddd;
+  padding-top: 2mm;
+}
+
+/* ---------- tables (used sparingly, e.g. comparisons) ---------- */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 3mm 0;
+  font-size: 8pt;
+  break-inside: avoid;
+}
+th, td {
+  border: 0.5pt solid #ccc;
+  padding: 1.4mm 2mm;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #f6f6f6; font-weight: 700; }
+
+/* ---------- part divider ----------
+   A full page separating the major parts of a long booklet.
+   Same display treatment as a cover, one step smaller. */
+
+.page.part { text-align: left; }
+.page.part h1 {
+  font-size: 30pt;
+  line-height: 1.06;
+  text-shadow: 4px 4px 0 var(--pink-shadow);
+  border-bottom: 1.4pt solid var(--rule);
+  margin-top: 46mm;
+  padding-bottom: 6mm;
+}
+.page.part .part-num {
+  font-family: "Consolas", monospace;
+  font-size: 8pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6b6b6b;
+  margin: 0;
+}
+.page.part .part-sub {
+  font-family: "Georgia", serif;
+  font-size: 11.5pt;
+  color: #3a3a3a;
+  margin-top: 5mm;
+}
+.page.part ul {
+  margin-top: 9mm;
+  font-size: 8.6pt;
+  line-height: 1.5;
+  color: #4a4a4a;
+}
+
+/* ---------- contents: leader dots and a page number ----------
+   The TOC is the cheat sheet, so every entry carries the page it
+   lands on. One markdown file is one printed page, which is what
+   makes the number computable before the PDF exists. */
+
+.toc li {
+  display: flex;
+  align-items: baseline;
+}
+.toc li > a { flex: 0 1 auto; }
+.toc li > .dots {
+  flex: 1 1 auto;
+  min-width: 3mm;
+  margin: 0 1.5mm;
+  border-bottom: 0.5pt dotted #bcbcbc;
+  transform: translateY(-0.5mm);
+}
+.toc li > .p {
+  flex: 0 0 auto;
+  font-family: "Consolas", monospace;
+  font-size: 6.6pt;
+  color: #6a6a72;
+}
+.toc li.lvl1 > .p { font-size: 7.4pt; font-weight: 700; color: var(--ink); }
