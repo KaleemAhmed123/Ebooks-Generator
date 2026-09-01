@@ -1,0 +1,183 @@
+/* Personal Growth domain — a starter look, meant to be argued with.
+   Bright, clean, sans-serif. Structure over decoration. Exercises and
+   takeaways are the things a reader flips back to, so they are the only
+   elements allowed to shout. Keeps the 148x210mm trim. */
+
+:root {
+  --ink: #1c1c22;
+  --muted: #6a6a75;
+  --accent: #e8622c;
+  --accent-soft: #fdece4;
+  --calm: #1d7a6c;
+  --calm-soft: #e4f4f1;
+  --rule: #e2e2e6;
+  --code-bg: #1c1c22;
+  --code-fg: #f2f2f4;
+  --link: #1d7a6c;
+}
+
+html, body {
+  background: #fff;
+  color: var(--ink);
+  font-family: "Segoe UI", "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 9pt;
+  line-height: 1.55;
+}
+
+/* ---------- headings ----------
+   A heavy left-aligned h1 with an accent underline. The eye finds the start
+   of a chapter without a full display treatment. */
+
+h1 {
+  font-weight: 800;
+  font-size: 21pt;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 5mm 0;
+  padding-bottom: 3mm;
+  border-bottom: 1.5pt solid var(--accent);
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 12pt;
+  letter-spacing: -0.01em;
+  margin: 0 0 4mm 0;
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 9.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 5mm 0 2mm 0;
+}
+
+/* ---------- body ---------- */
+
+p { margin: 0 0 2.5mm 0; }
+ul, ol { margin: 0 0 3mm 0; padding-left: 5.5mm; }
+li { margin: 0 0 1.2mm 0; }
+a { color: var(--link); text-decoration: none; border-bottom: 0.4pt solid var(--link); }
+strong { font-weight: 700; }
+
+/* ---------- :::exercise ----------
+   The thing the reader is asked to do. Numbered, boxed, unmissable. */
+
+.exercise {
+  background: var(--accent-soft);
+  border: 0.5pt solid var(--accent);
+  border-radius: 2mm;
+  padding: 4mm 5mm;
+  margin: 4mm 0;
+}
+.exercise::before {
+  content: "Try this";
+  display: block;
+  font-size: 7.5pt;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2mm;
+}
+.exercise p:last-child, .exercise ol:last-child, .exercise ul:last-child { margin-bottom: 0; }
+
+/* ---------- :::takeaway ----------
+   One sentence worth remembering. Big, calm, no box — just breathing room. */
+
+.takeaway {
+  border-top: 0.5pt solid var(--rule);
+  border-bottom: 0.5pt solid var(--rule);
+  padding: 4mm 0;
+  margin: 5mm 0;
+  font-size: 11pt;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  color: var(--calm);
+}
+.takeaway p:last-child { margin-bottom: 0; }
+
+/* ---------- :::reflection ----------
+   A question to sit with. Quiet counterweight to the exercise box. */
+
+.reflection {
+  background: var(--calm-soft);
+  border-left: 1mm solid var(--calm);
+  padding: 3.5mm 4.5mm;
+  margin: 4mm 0;
+  font-style: italic;
+}
+.reflection p:last-child { margin-bottom: 0; }
+
+/* ---------- :::note ---------- */
+
+.note {
+  background: #f4f4f6;
+  border-left: 1mm solid var(--muted);
+  padding: 3mm 4mm;
+  margin: 3mm 0;
+  font-size: 8.5pt;
+}
+.note p:last-child { margin-bottom: 0; }
+
+/* ---------- code, occasional ---------- */
+
+code { font-family: "Consolas", monospace; font-size: 8.5pt; color: var(--accent); }
+pre {
+  background: var(--code-bg);
+  border-radius: 2mm;
+  padding: 3.2mm 3.8mm;
+  margin: 3mm 0;
+}
+pre code { color: var(--code-fg); font-size: 7.6pt; line-height: 1.4; white-space: pre-wrap; }
+
+/* ---------- cover ---------- */
+
+.cover { text-align: left; }
+.cover h1 {
+  font-size: 44pt;
+  line-height: 1.02;
+  border-bottom: 3pt solid var(--accent);
+  margin-top: 40mm;
+  padding-bottom: 6mm;
+}
+.cover .cover-sub { font-size: 13pt; color: var(--muted); margin-top: 5mm; }
+.cover .cover-book {
+  font-size: 7.5pt;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin-top: 22mm;
+}
+
+/* ---------- part divider ---------- */
+
+.page.part h1 { font-size: 30pt; margin-top: 50mm; }
+.page.part .part-num {
+  font-size: 7.5pt;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.page.part .part-sub { font-size: 11pt; color: var(--muted); margin-top: 4mm; }
+
+/* ---------- contents ---------- */
+
+.toc h2 { margin-bottom: 7mm; }
+.toc ul ul { padding-left: 4mm; }
+.toc li { font-size: 8.2pt; line-height: 1.35; }
+.toc li.lvl1 { font-size: 9.2pt; font-weight: 800; margin-top: 3.5mm; }
+.toc a { color: var(--ink); border-bottom: none; }
+.toc li > .dots { border-bottom: 0.5pt dotted #c9c9d0; transform: translateY(-0.5mm); }
+.toc li > .p { font-size: 7pt; color: var(--muted); }
+
+/* ---------- tables ---------- */
+
+table { width: 100%; border-collapse: collapse; margin: 3mm 0; font-size: 8.2pt; }
+th, td { border-bottom: 0.5pt solid var(--rule); padding: 1.8mm 2mm; text-align: left; vertical-align: top; }
+th { font-weight: 700; border-bottom: 1pt solid var(--ink); }
