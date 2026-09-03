@@ -1,0 +1,284 @@
+/* The Vocabulary of Production — series theme.
+
+   Sits on top of books/tech/theme.css. A teaching page wants a centred,
+   underlined section title with air around it. A reference wants the opposite:
+   an entry you can find by scanning down the left edge, with an unmistakable
+   start.
+
+   `--accent` is set on each page section by the build. A standalone booklet
+   uses its own `cover.accent`, so its pages match its cover. The merged volume
+   sets one accent for all 287 pages: colouring each topic differently made a
+   single book look like eight stapled together, and the divider page had
+   already said the topic changed. */
+
+:root {
+  --accent: #1f6f8b;      /* replaced per section; this is only a fallback */
+  --muted: #6b6b6b;
+  --hair: #e0e0e4;
+}
+
+/* ---------- the term counter ----------
+   "TERM 35/57" — position inside this topic, not inside the volume. Small
+   enough to ignore while reading, present enough to tell you how far in you
+   are. It is the first thing on the entry, so it doubles as the marker that a
+   new term has started. */
+
+.termno {
+  display: inline-block;
+  font-family: "Consolas", "SF Mono", monospace;
+  font-size: 5.6pt;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 9%, #fff);
+  border-radius: 1mm;
+  padding: 0.5mm 1.6mm;
+  margin: 0 0 1.1mm 0;
+}
+/* First entry on a page sits flush with the top margin. */
+.page > .termno:first-child { margin-top: 0; }
+/* Every later entry gets the air that separates it from the one above. */
+.page > .termno { margin-top: 5mm; }
+.page > .termno:first-child { margin-top: 0; }
+
+/* ---------- the term name ----------
+   Heavy and large against a light sans body. This is the single biggest change
+   from the old dictionary setting, and the one that makes a new entry
+   unmistakable at a glance. */
+
+h2 {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 15.5pt;
+  line-height: 1.08;
+  /* Positive tracking, not the display-type default of negative. At this
+     weight the letters close up and long terms read as one block. */
+  letter-spacing: 0.012em;
+  text-align: left;
+  text-decoration: none;
+  /* Softer than the body ink. Full black at 15.5pt heavy was a slab on the
+     page and pulled the eye off the prose it is supposed to introduce. */
+  color: #33343a;
+  margin: 0 0 1.5mm 0;
+  padding: 0 0 1.4mm 0;
+  border-bottom: none;
+  /* A short accent rule under the name, with a hairline running the rest of
+     the measure. Reads as a heading underline at a glance and as a topic
+     colour on a second look. */
+  background-image:
+    linear-gradient(var(--accent), var(--accent)),
+    linear-gradient(var(--hair), var(--hair));
+  background-size: 16mm 1pt, 100% 0.5pt;
+  background-position: left bottom, left bottom;
+  background-repeat: no-repeat;
+}
+.page > h2:first-child { margin-top: 0; }
+
+/* An alternative name or acronym under the term — "*escalation*", "*CSP*".
+   marked renders it as a paragraph of pure <em>, so it is targeted that way. */
+h2 + p > em:only-child {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 7.6pt;
+}
+h2 + p:has(> em:only-child) { margin: -0.6mm 0 1.6mm 0; }
+
+/* ---------- body ---------- */
+
+p  { margin: 0 0 1.7mm 0; }
+ul, ol { margin: 0 0 1.7mm 0; }
+li { margin: 0 0 0.4mm 0; }
+
+/* ---------- the failure-mode line ----------
+   Every entry ends on the thing nobody warns you about, written as a paragraph
+   opening in bold. That is the payload of the book, so it gets the one piece of
+   real furniture on the page: an accent bar and a tint.
+
+   :has() picks it out with no change to the markdown. If a paragraph does not
+   open in bold it is ordinary prose and stays plain. */
+
+p:has(> strong:first-child) {
+  background: color-mix(in srgb, var(--accent) 5%, #fff);
+  border-left: 1.4pt solid var(--accent);
+  padding: 1.4mm 2mm 1.4mm 2.2mm;
+  margin: 0 0 1.7mm 0;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+p:has(> strong:first-child) > strong { color: var(--ink); }
+
+/* ---------- diagrams ----------
+   Only terms whose picture shows real structure get an SVG. It sits on the page
+   as an object, not inside a tinted box, so several fit per page. */
+
+svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 1.5mm auto 1.8mm auto;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* ---------- comparison tables ----------
+   Half the source material's "diagrams" were really two-column comparisons.
+   They belong in a table, set quietly, with the header rule in topic colour. */
+
+table { margin: 2mm 0; font-size: 7.4pt; break-inside: avoid; }
+th, td { border: none; border-bottom: 0.4pt solid var(--hair); padding: 0.9mm 2mm; }
+thead th {
+  border-bottom: 0.9pt solid var(--accent);
+  font-weight: 700;
+  background: none;
+  text-align: left;
+}
+tbody tr:last-child td { border-bottom: 0.6pt solid #cfcfcf; }
+
+/* ---------- the opener page ---------- */
+
+h3 {
+  text-align: left;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 9.5pt;
+  color: var(--accent);
+  margin: 4mm 0 1.6mm 0;
+}
+
+/* ---------- topic divider, master volume only ----------
+   One page announcing a topic: its number, its name, its term count, and the
+   accent that will run through every page until the next divider. */
+
+.page.topic {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: color-mix(in srgb, var(--accent) 6%, #fff);
+}
+.page.topic h1 {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 30pt;
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  color: var(--accent);
+  text-shadow: none;
+  border-bottom: none;
+  margin: 0 0 4mm 0;
+  padding: 0;
+}
+.page.topic .topic-no {
+  font-family: "Consolas", "SF Mono", monospace;
+  font-size: 7pt;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 3mm 0;
+}
+.page.topic .topic-count {
+  font-family: "Consolas", "SF Mono", monospace;
+  font-size: 8pt;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  border-top: 1.2pt solid var(--accent);
+  padding-top: 2.5mm;
+  margin: 4mm 0 0 0;
+}
+.page.topic p { font-size: 9pt; line-height: 1.5; max-width: 92%; }
+
+/* ---------- module / topic title ----------
+   The domain sets h1 in pink with a yellow offset shadow, which belongs to the
+   teaching books. A reference gets the series accent and nothing else. */
+
+h1 {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20pt;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  text-shadow: none;
+  border-bottom: 1.2pt solid var(--accent);
+  margin: 0 0 4mm 0;
+  padding-bottom: 2.4mm;
+}
+
+/* ---------- contents ----------
+   456 entries. At one column this ran to nine pages, which is a table of
+   contents nobody uses. Three columns of small type puts the whole index in
+   three, and it reads better because a term and its page number are close
+   together instead of separated by 100mm of leader dots. */
+
+.toc h2 {
+  font-size: 12pt;
+  margin: 0 0 3mm 0;
+  padding-bottom: 1.4mm;
+  background-image: none;
+  border-bottom: 1.2pt solid var(--accent);
+  color: var(--ink);
+  column-span: all;
+}
+.toc > ul {
+  column-count: 3;
+  column-gap: 5mm;
+  /* balance, not auto: the build measures this element to work out how many
+     printed pages the contents needs, and only a balanced multicol reports a
+     height that matches what Chrome actually prints. */
+  column-fill: balance;
+}
+.toc ul { padding-left: 0; }
+.toc li {
+  font-size: 5.6pt;
+  line-height: 1.24;
+  margin-bottom: 0;
+  break-inside: avoid;
+}
+.toc li.lvl1 {
+  font-size: 6.6pt;
+  font-weight: 700;
+  color: var(--accent);
+  margin-top: 1.8mm;
+  margin-bottom: 0.5mm;
+  break-after: avoid;
+}
+/* The leader dots are what made a one-column contents readable. At this width
+   they are noise, so the page number simply sits at the right edge. */
+.toc li > .dots { border-bottom: none; margin: 0 1mm; }
+.toc li > .p { font-size: 5pt; color: var(--muted); }
+/* The domain styles links blue. An index of 456 entries set in blue is a wall
+   of blue, and it is the wrong colour for this book. Entries read as text; the
+   topic lines keep the accent. */
+.toc a { color: var(--ink); text-decoration: none; }
+.toc li.lvl1 a { color: var(--accent); }
+
+/* The divider's teaser: an even spread across the topic's alphabet, so the page
+   samples the whole subject instead of everything filed under A. */
+.page.topic .topic-terms {
+  list-style: none;
+  padding: 0;
+  margin: 5mm 0 0 0;
+  columns: 2;
+  column-gap: 8mm;
+}
+.page.topic .topic-terms li {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 8.4pt;
+  font-weight: 600;
+  color: var(--ink);
+  padding: 0 0 0 3.4mm;
+  margin: 0 0 1.5mm 0;
+  break-inside: avoid;
+  position: relative;
+}
+.page.topic .topic-terms li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.1mm;
+  width: 1.6mm;
+  height: 1.6mm;
+  background: var(--accent);
+}

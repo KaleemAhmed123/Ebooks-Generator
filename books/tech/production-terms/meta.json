@@ -1,0 +1,71 @@
+{
+  "title": "The Vocabulary of Production",
+  "subtitle": "What senior engineers actually mean",
+  "seriesLine": "The Vocabulary of Production",
+  "masterVolume": {
+    "name": "the-vocabulary-of-production"
+  },
+  "order": [
+    "01-ai-engineering",
+    "02-design-distributed",
+    "03-engineering-practice",
+    "04-data-stores",
+    "05-reliability-observability",
+    "06-frontend-realtime",
+    "07-language-runtime",
+    "08-infra-cloud-security"
+  ],
+  "cover": {
+    "accent": "#0d7a7a",
+    "title": [
+      "The Vocabulary",
+      "of Production"
+    ],
+    "banner": "PRODUCTION TERMS ENGINEERS NEED TO KNOW.",
+    "kicker": "AI \u00b7 DISTRIBUTED \u00b7 DATA \u00b7 RELIABILITY \u00b7 FRONTEND \u00b7 INFRA",
+    "term": [
+      [
+        "$ grep -c '^## ' books/**/*.md",
+        0
+      ],
+      [
+        "  456",
+        2
+      ],
+      [
+        "$ ls topics/ | wc -l",
+        0
+      ],
+      [
+        "  8",
+        2
+      ],
+      [
+        "$ _",
+        2
+      ]
+    ],
+    "stack": [
+      "AI Engineering \u00b7 101",
+      "Design & Distributed \u00b7 75",
+      "Engineering Practice \u00b7 57",
+      "Data Stores \u00b7 52",
+      "Reliability & Obs. \u00b7 49",
+      "Frontend & Realtime \u00b7 43",
+      "Language & Runtime \u00b7 41",
+      "Infra, Cloud & Security \u00b7 38"
+    ],
+    "moreWord": "TERMS",
+    "label": "COMPLETE VOLUME",
+    "setLine": "ALL 8 BOOKLETS IN ONE VOLUME",
+    "face": {
+      "brow": "raised",
+      "mouth": "smile",
+      "tilt": -3
+    },
+    "burst": [
+      "#eaf7f1",
+      "#5cb49c"
+    ]
+  }
+}
