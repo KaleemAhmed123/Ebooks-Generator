@@ -62,9 +62,12 @@ const character = (f, accent) => `
     <rect x="344" y="296" width="28" height="50" rx="11" fill="${accent}"/>
   </g>`;
 
-const paperDefs = (id) => `
+// The ground is the domain's yellow burst unless a book asks for another. A
+// merged volume wants a ground that agrees with the accent running through its
+// interior, which the booklet yellow does not.
+const paperDefs = (id, burst = ["#ffe98f", "#f2b40c"]) => `
     <radialGradient id="burst${id}" cx=".5" cy=".38" r=".72">
-      <stop offset="0" stop-color="#ffe98f"/><stop offset="1" stop-color="#f2b40c"/>
+      <stop offset="0" stop-color="${burst[0]}"/><stop offset="1" stop-color="${burst[1]}"/>
     </radialGradient>
     <pattern id="tone${id}" width="7" height="7" patternUnits="userSpaceOnUse">
       <circle cx="1.6" cy="1.6" r="1.5" fill="#12121a" fill-opacity=".38"/>
@@ -95,13 +98,19 @@ export function cover(meta, ctx) {
     .map(([txt, c], i) =>
       `<text x="372" y="${266 + i * 22}" fill="${TERM_FILL[c]}">${esc(txt)}</text>`)
     .join("\n    ");
+  // The topics panel runs 402..560 with the "+ N MORE" line pinned at 550, so
+  // the rows have 424..542 to live in. Six or fewer keep the original setting;
+  // more than that tighten to fit rather than spill over the frame.
+  const rows = (b.stack ?? []).length;
+  const stackStep = rows > 6 ? Math.floor(118 / rows) : 20;
+  const stackSize = rows > 6 ? 10.5 : 12.5;
   const stack = (b.stack ?? [])
-    .map((s, i) => `<text x="374" y="${428 + i * 20}">${esc(s)}</text>`)
+    .map((s, i) => `<text x="374" y="${428 + i * stackStep}">${esc(s)}</text>`)
     .join("\n    ");
 
   return `<svg viewBox="0 0 592 840" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    ${paperDefs(id)}
+    ${paperDefs(id, b.burst)}
     <clipPath id="clipChar${id}"><rect x="28" y="232" width="314" height="326"/></clipPath>
   </defs>
 
@@ -139,11 +148,11 @@ export function cover(meta, ctx) {
 
   <!-- panel 4 : topics -->
   <rect x="356" y="402" width="210" height="158" fill="#faf7ef" stroke="#12121a" stroke-width="4"/>
-  <g font-family="Georgia, serif" font-size="12.5" fill="#12121a">
+  <g font-family="Georgia, serif" font-size="${stackSize}" fill="#12121a">
     ${stack}
   </g>
   <text x="374" y="550" font-family="Consolas, monospace" font-size="10" font-weight="700"
-        letter-spacing="1" fill="${b.accent}">+ ${ctx.more} MORE TOPICS INSIDE</text>
+        letter-spacing="1" fill="${b.accent}">+ ${ctx.more} MORE ${b.moreWord ?? "TOPICS"} INSIDE</text>
 
   <!-- panel 5 : banner -->
   <rect x="26" y="574" width="540" height="94" fill="${b.accent}" stroke="#12121a" stroke-width="4"/>
@@ -165,8 +174,8 @@ export function cover(meta, ctx) {
         letter-spacing="2" fill="#4a4a52">${ctx.pages} PAGES</text>
   <path d="M26 758 H566" stroke="#12121a" stroke-width="3"/>
   <text x="26" y="784" font-family="Consolas, monospace" font-size="9" letter-spacing="1.4"
-        fill="#4a4a52">© ${ctx.year} ${esc(ctx.author).toUpperCase()} · ALL RIGHTS RESERVED · NOT FOR RESALE</text>
+        fill="#4a4a52">© ${ctx.year} ${esc(ctx.author).toUpperCase()} · ALL RIGHTS RESERVED</text>
   <text x="26" y="802" font-family="Consolas, monospace" font-size="9" letter-spacing="1.4"
-        fill="#4a4a52">${esc(ctx.edition).toUpperCase()} · ${esc(b.setLine ?? `PART OF A ${ctx.total} BOOKLET SET`)}</text>
+        fill="#4a4a52">${esc(ctx.edition).toUpperCase()} · ${esc(b.setLine ?? `PART OF A${/^[80-9]/.test(String(ctx.total)) ? "N" : ""} ${ctx.total} BOOKLET SET`)}</text>
 </svg>`;
 }
