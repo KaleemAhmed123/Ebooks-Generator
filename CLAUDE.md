@@ -10,8 +10,8 @@ Read this before writing a single page.
 ## Where things live
 
 ```
-books/<domain>/<series>/<book>/pages/*.md    the content — you write here
-books/<domain>/<series>/<book>/meta.json     this book's title and cover data
+books/<domain>/[series]/<book>/pages/*.md    the content — you write here
+books/<domain>/[series]/<book>/meta.json     this book's title and cover data
 shared/about-the-author.md                   one bio, used by every book
 tools/build.mjs                              the build — do not edit while writing
 dist/                                        output, generated, never edited by hand
@@ -52,12 +52,17 @@ proves it, name the failure mode nobody warns you about. Then stop.
 - A diagram replaces prose — it does not decorate it. If the paragraph still
   has to say the same thing, the diagram failed.
 
-## Voice
+## Voice & UX Philosophy
 
-- Plain English. Short sentences not because of constraints but because it is just my style to say a para in just a few sentance and still people should understand. One idea each.
-- Every term gets a one-line meaning the first time it appears.
-- Professional and kinda academic. Confident, not salesy. Zero motivational filler.
-- 
+Our PDFs stand out because they respect the reader's time and intelligence. The UX is defined by extreme clarity, deep research, and simplicity. We are writing elite-level content that does not sound like typical AI output.
+
+- **Plain English & Hyper-Concise:** Short sentences not because of constraints, but because it is my style to say a paragraph in just a few sentences and still have people understand perfectly. One idea per sentence. If a sentence carries no new factual information, delete it immediately.
+- **The "Kinda Academic" Tone:** Professional, authoritative, and kinda academic. Confident, not salesy. You are writing for peers, not beginners. Never talk down to the reader. 
+- **Ban all AI Tropes and Meta-Commentary:** Never use words like "delve," "foster," "robust," "demystify," or "embark." Absolutely zero throat-clearing ("In this section we will...", "It is important to note that...", "In conclusion..."). Start immediately with the core assertion, prove it, and stop.
+- **Show, Don't Tell:** Never say a tool or concept is "powerful" or "efficient." Show the code or the mechanism that makes it so, and let the reader conclude it is powerful.
+- **Accessible & Glossary-Driven:** Every term gets a one-line meaning the exact first time it appears, and is logged in the glossary. Do not assume the reader knows proprietary acronyms, but do not waste time explaining industry-standard basics.
+- **Visual First:** Prose is expensive; diagrams are cheap. Maximize the use of diagrams to explain complex flows, architecture, or data structures. If it takes more than 3 sentences to describe a relationship, draw it instead.
+- **Accuracy is Non-Negotiable:** Content must be relentlessly researched and factually flawless as of the build date. No generic blog summaries—rely only on the source code, specs, and official docs.
 
 ## Glossary
 
