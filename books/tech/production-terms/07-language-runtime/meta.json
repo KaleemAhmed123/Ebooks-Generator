@@ -1,0 +1,48 @@
+{
+  "title": "Language, Runtime & Platform",
+  "subtitle": "Where Each Runtime Bites",
+  "cover": {
+    "accent": "#5b2fa8",
+    "title": [
+      "Language &",
+      "Runtime"
+    ],
+    "banner": "EVERY RUNTIME BITES SOMEWHERE.",
+    "kicker": "EVENT LOOP · GIL · GOVERNOR LIMITS · NARROWING",
+    "term": [
+      [
+        "$ node --prof app.js",
+        0
+      ],
+      [
+        "  loop lag  240ms",
+        2
+      ],
+      [
+        "$ sf apex run",
+        0
+      ],
+      [
+        "  101 SOQL queries",
+        2
+      ],
+      [
+        "$ _",
+        2
+      ]
+    ],
+    "stack": [
+      "event loop · microtasks",
+      "worker threads · cluster",
+      "GIL · ASGI vs WSGI",
+      "narrowing · satisfies",
+      "governor limits · bulkify",
+      "graceful shutdown"
+    ],
+    "face": {
+      "brow": "flat",
+      "mouth": "flat",
+      "tilt": 3
+    }
+  }
+}
