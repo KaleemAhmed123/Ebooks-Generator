@@ -1,0 +1,48 @@
+{
+  "title": "Data Stores",
+  "subtitle": "Postgres, Redis, Mongo, Queues",
+  "cover": {
+    "accent": "#2a5673",
+    "title": [
+      "Data",
+      "Stores"
+    ],
+    "banner": "THE ORM IS NEVER THE PROBLEM.",
+    "kicker": "POSTGRES · REDIS · MONGODB · RABBITMQ",
+    "term": [
+      [
+        "$ EXPLAIN ANALYZE …",
+        0
+      ],
+      [
+        "  Seq Scan   4.2s",
+        2
+      ],
+      [
+        "  + index →  3ms",
+        1
+      ],
+      [
+        "$ redis-cli --bigkeys",
+        0
+      ],
+      [
+        "$ _",
+        2
+      ]
+    ],
+    "stack": [
+      "MVCC · isolation levels",
+      "indexes · EXPLAIN",
+      "VACUUM · WAL · PITR",
+      "eviction · hot keys",
+      "DLQ · poison messages",
+      "read & write concern"
+    ],
+    "face": {
+      "brow": "sharp",
+      "mouth": "flat",
+      "tilt": 0
+    }
+  }
+}
