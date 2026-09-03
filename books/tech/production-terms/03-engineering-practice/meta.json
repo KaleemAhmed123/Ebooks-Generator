@@ -1,0 +1,48 @@
+{
+  "title": "Engineering Practice",
+  "subtitle": "Testing, Cost, Performance, Process",
+  "cover": {
+    "accent": "#0d7a7a",
+    "title": [
+      "Engineering",
+      "Practice"
+    ],
+    "banner": "THE PARTS NOBODY WRITES DOWN.",
+    "kicker": "TESTING · PERFORMANCE · COST · PROCESS",
+    "term": [
+      [
+        "$ npm test -- --shard 3/4",
+        0
+      ],
+      [
+        "  214 passed, 2 flaky",
+        2
+      ],
+      [
+        "$ cost-report --by feature",
+        0
+      ],
+      [
+        "  export: 41% of spend",
+        2
+      ],
+      [
+        "$ _",
+        2
+      ]
+    ],
+    "stack": [
+      "flaky tests · quarantine",
+      "test doubles · fixtures",
+      "flame graphs · profiling",
+      "unit economics · tagging",
+      "ADRs · incident command",
+      "trunk-based · change freeze"
+    ],
+    "face": {
+      "brow": "flat",
+      "mouth": "smile",
+      "tilt": -2
+    }
+  }
+}
