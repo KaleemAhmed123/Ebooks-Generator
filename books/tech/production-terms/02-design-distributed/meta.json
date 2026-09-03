@@ -1,0 +1,26 @@
+{
+  "title": "Design & Distributed",
+  "subtitle": "The Words Used in a Design Review",
+  "cover": {
+    "accent": "#2b5fa8",
+    "title": ["Design &", "Distributed"],
+    "banner": "KNOW THE WORD. KNOW THE TRADE-OFF.",
+    "kicker": "CONSISTENCY · PARTITIONING · FAILURE MODES · BOUNDARIES",
+    "term": [
+      ["$ grep -i 'quorum' notes.md", 0],
+      ["  → p. 41", 1],
+      ["$ grep -i 'outbox' notes.md", 0],
+      ["  → p. 34", 1],
+      ["$ _", 2]
+    ],
+    "stack": [
+      "CAP · quorum · split brain",
+      "saga · outbox · CQRS",
+      "sharding · hot partition",
+      "idempotency · retries",
+      "bounded context · ACL",
+      "multi-region · residency"
+    ],
+    "face": { "brow": "sharp", "mouth": "flat", "tilt": -2 }
+  }
+}
