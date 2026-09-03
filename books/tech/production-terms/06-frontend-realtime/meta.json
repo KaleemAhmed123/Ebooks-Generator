@@ -1,0 +1,48 @@
+{
+  "title": "Frontend & Realtime",
+  "subtitle": "Browser, React, Sockets",
+  "cover": {
+    "accent": "#1f6f8b",
+    "title": [
+      "Frontend &",
+      "Realtime"
+    ],
+    "banner": "THE BROWSER IS NOT A BLACK BOX.",
+    "kicker": "HYDRATION · STREAMING · SOCKETS · WEB VITALS",
+    "term": [
+      [
+        "$ npx lighthouse ./",
+        0
+      ],
+      [
+        "  LCP 1.2s  CLS 0.01",
+        1
+      ],
+      [
+        "$ wscat -c wss://…",
+        0
+      ],
+      [
+        "  reconnect  backoff 2s",
+        2
+      ],
+      [
+        "$ _",
+        2
+      ]
+    ],
+    "stack": [
+      "hydration · mismatch",
+      "server components · ISR",
+      "stale closures · memo",
+      "reflow · repaint · CLS",
+      "CSP · XSS · same-origin",
+      "presence · rooms · TURN"
+    ],
+    "face": {
+      "brow": "raised",
+      "mouth": "smile",
+      "tilt": -3
+    }
+  }
+}
