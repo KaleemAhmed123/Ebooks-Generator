@@ -1,0 +1,48 @@
+{
+  "title": "Infra, Cloud & Security",
+  "subtitle": "Containers, Cloud, the Edge, the Attack Surface",
+  "cover": {
+    "accent": "#3f7a33",
+    "title": [
+      "Infra, Cloud",
+      "& Security"
+    ],
+    "banner": "LEAST PRIVILEGE, OR NONE AT ALL.",
+    "kicker": "CONTAINERS · VPC · IAM · TLS · SUPPLY CHAIN",
+    "term": [
+      [
+        "$ docker build .",
+        0
+      ],
+      [
+        "  layers cached  8/9",
+        1
+      ],
+      [
+        "$ aws iam simulate …",
+        0
+      ],
+      [
+        "  DENY  s3:DeleteBucket",
+        1
+      ],
+      [
+        "$ _",
+        2
+      ]
+    ],
+    "stack": [
+      "multi-stage · distroless",
+      "OOMKill · resource limits",
+      "IAM roles · least privilege",
+      "VPC · subnets · NAT",
+      "TLS termination · mTLS",
+      "SSRF · IDOR · secrets"
+    ],
+    "face": {
+      "brow": "sharp",
+      "mouth": "flat",
+      "tilt": -2
+    }
+  }
+}
