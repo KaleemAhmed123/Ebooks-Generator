@@ -6,6 +6,8 @@ Do not delete them; append a dated update instead.
 
 | Task | Status | Started |
 |---|---|---|
+| [**production-terms-NEXT**](production-terms-NEXT.md) — **start here to resume the glossary series** | 7 of 8 booklets done, 400/457 terms | 2026-09-02 |
+| [production-terms-ebook](production-terms-ebook.md) — "The Vocabulary of Production": 607-term glossary artifact cut to 403 and rebuilt as eight booklets | in progress — cut done, series scaffolded, page format proven | 2026-09-01 |
 | [multi-domain-ebook-structure](multi-domain-ebook-structure.md) — one book factory, many domains. Folder walk replaces four duplicated book lists; styles and settings cascade domain → series → book | in progress — tech migrated, 12/12 PDFs verified identical, covers drawing | 2026-09-01 |
 | [frontend-mastery-ebook](frontend-mastery-ebook.md) — accuracy, recency and correctness pass on the Frontend Mastery companion | shipped — 385 pages, 24 modules, 29 diagrams | 2026-09-01 |
 | [frontend-mastery-market-research](frontend-mastery-market-research.md) — what companies were asking for as of Sept 2026, and the topic list it produced | shipped — all three tiers written into the booklet | 2026-09-01 |
