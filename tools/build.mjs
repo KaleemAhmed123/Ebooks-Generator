@@ -50,6 +50,25 @@ async function discover(dir, chain) {
         chain: next,
       });
     }
+    // A series may also publish itself as one merged volume. It has no pages/
+    // of its own — its pages are its children's, in `order`, with a divider
+    // before each. `masterVolume` names the output, so building the series by
+    // name still means the individual booklets and nothing else.
+    const meta = path.join(full, "meta.json");
+    if (existsSync(meta)) {
+      const m = JSON.parse(await readFile(meta, "utf8"));
+      if (m.masterVolume) {
+        const mv = typeof m.masterVolume === "string" ? { name: m.masterVolume } : m.masterVolume;
+        found.push({
+          rel: path.join(path.relative(BOOKS, path.dirname(full)), mv.name ?? name)
+            .split(path.sep)
+            .join("/"),
+          dir: full,
+          chain: next,
+          master: mv,
+        });
+      }
+    }
     // A one-book series has its own pages/ and no children. A multi-book
     // series has children and no pages/. Recursing either way costs one
     // wasted readdir and saves a special case.
@@ -114,15 +133,29 @@ function protectSvg(md) {
 
 /* ------------------------------- one markdown file -> one printed page --- */
 
-async function renderPage(file, headings, pageIdx, blocks) {
+async function renderPage(file, headings, pageIdx, blocks, term, accent, recolor) {
   const raw = await readFile(file, "utf8");
   const name = path.basename(file, ".md");
   const isCover = name.startsWith("00-cover");
   const isPart = /^\d+-00-part/.test(name);
+  const isTopic = /^\d+-00-topic/.test(name);
+  // Term pages are the `02-` files. Their h2s are the entries that get a
+  // counter; an opener page's h2 is a section title and gets none.
+  const isTerm = /^02-/.test(name) && !!term;
 
   const [guarded, svgs] = protectSvg(containers(raw, blocks));
   let html = marked.parse(guarded, { mangle: false, headerIds: false });
-  html = html.replace(/<!--SVG(\d+)-->/g, (_, i) => svgs[Number(i)]);
+  // A diagram's accent is written into the SVG as a literal colour, where no
+  // stylesheet can reach it. When a book is reprinted under a different accent
+  // — a booklet inside the merged volume — its diagrams are remapped here, so
+  // the markdown keeps a real, previewable colour and the build decides what
+  // is actually printed.
+  html = html.replace(/<!--SVG(\d+)-->/g, (_, i) => {
+    const svg = svgs[Number(i)];
+    return recolor && recolor.from && recolor.from !== recolor.to
+      ? svg.replaceAll(recolor.from, recolor.to).replaceAll(recolor.from.toUpperCase(), recolor.to)
+      : svg;
+  });
 
   const anchored = html.replace(/<h([123])>([\s\S]*?)<\/h\1>/g, (m, lvl, text) => {
     const plain = text.replace(/<[^>]+>/g, "").trim();
@@ -131,11 +164,21 @@ async function renderPage(file, headings, pageIdx, blocks) {
     // "- continued" page add length without helping anyone find anything.
     const inToc = !isCover && Number(lvl) <= 2 && !/-\s*continued$/i.test(plain);
     if (inToc) headings.push({ lvl: Number(lvl), text: plain, id, page: pageIdx });
-    return `<h${lvl} id="${id}">${text}</h${lvl}>`;
+    // "TERM 35/57" — where this entry sits in its own topic. Counted here, so
+    // it can never disagree with what is actually on the page.
+    const badge =
+      isTerm && Number(lvl) === 2
+        ? `<p class="termno">Term ${++term.n}/${term.total}</p>\n`
+        : "";
+    return `${badge}<h${lvl} id="${id}">${text}</h${lvl}>`;
   });
 
-  const cls = "page" + (isCover ? " cover" : "") + (isPart ? " part" : "");
-  return `<section class="${cls}" data-src="${name}">\n${anchored}\n</section>`;
+  const cls =
+    "page" + (isCover ? " cover" : "") + (isPart ? " part" : "") + (isTopic ? " topic" : "");
+  // Every topic owns a colour. Setting it on the section rather than on :root
+  // is what lets the merged volume change accent as the topic changes.
+  const style = accent ? ` style="--accent:${accent}"` : "";
+  return `<section class="${cls}" data-src="${name}"${style}>\n${anchored}\n</section>`;
 }
 
 function tocPage(headings, before) {
@@ -153,7 +196,92 @@ function tocPage(headings, before) {
   return html + "</section>";
 }
 
+/* ------------------------------------------------- the merged volume ---
+   Every topic in `order`, in one book: a divider page announcing the topic,
+   then that topic's own pages. Each topic keeps its own accent colour and its
+   own term counter, so "Term 35/57" still means position inside the topic and
+   the page furniture changes colour when the subject changes.
+
+   The child booklets are read straight off disk rather than resolved through
+   discovery, so the volume cannot drift from what the booklets actually build. */
+
+async function buildMaster(book) {
+  const headings = [];
+  const pages = [];
+  const blocks = book.config.blocks ?? [];
+  const order = book.config.order ?? [];
+  const topics = [];
+  // One accent for the whole volume. Colouring each topic differently made a
+  // single book look like eight books stapled together — the divider told you
+  // the topic had changed already, and the colour change only broke the set.
+  // The booklets keep their own accents; each is internally consistent and
+  // matches its own cover.
+  const accent = book.config.cover?.accent ?? null;
+
+  for (const [i, child] of order.entries()) {
+    const dir = path.join(book.dir, child);
+    const meta = JSON.parse(await readFile(path.join(dir, "meta.json"), "utf8"));
+    const src = path.join(dir, "pages");
+    const files = (await readdir(src))
+      .filter((f) => f.endsWith(".md") && !f.startsWith("00-cover"))
+      .sort();
+
+    const names = [];
+    for (const f of files.filter((f) => /^02-/.test(f))) {
+      for (const m of (await readFile(path.join(src, f), "utf8")).matchAll(/^## (.+)$/gm)) {
+        names.push(m[1].trim());
+      }
+    }
+    const total = names.length;
+    const term = total ? { n: 0, total } : null;
+    topics.push({ title: meta.title, terms: total, accent });
+
+    // The divider is generated, not a file. Nothing to keep in sync by hand,
+    // and its term count is counted rather than typed.
+    //
+    // The teaser is an even spread across the topic's alphabet rather than the
+    // first few, so it samples the whole subject instead of everything filed
+    // under A.
+    const teaser = Array.from({ length: Math.min(9, total) }, (_, k) =>
+      names[Math.round((k * (total - 1)) / Math.max(1, Math.min(9, total) - 1))]
+    ).filter((v, k, a) => a.indexOf(v) === k);
+
+    const id = `topic-${slug(meta.title)}`;
+    headings.push({ lvl: 1, text: meta.title, id, page: pages.length });
+    pages.push(
+      `<section class="page topic" data-src="topic-${child}" style="--accent:${accent}">\n` +
+        `<p class="topic-no">Topic ${i + 1} of ${order.length}</p>\n` +
+        `<h1 id="${id}">${meta.title}</h1>\n` +
+        (meta.subtitle ? `<p>${meta.subtitle}</p>\n` : "") +
+        `<ul class="topic-terms">${teaser.map((t) => `<li>${t}</li>`).join("")}</ul>\n` +
+        `<p class="topic-count">${total} terms · alphabetical</p>\n</section>`
+    );
+
+    // The booklet's own accent is what its diagrams were drawn in; the volume's
+    // is what they are printed in here.
+    const recolor = { from: meta.cover?.accent ?? null, to: accent };
+    for (const f of files) {
+      pages.push(
+        await renderPage(path.join(src, f), headings, pages.length, blocks, term, accent, recolor)
+      );
+    }
+  }
+
+  // The volume's own cover page, replaced by the drawn cover afterwards.
+  const c = book.config;
+  const coverHtml =
+    `<section class="page cover" data-src="00-cover">\n` +
+    `<p class="cover-book">${c.seriesLine ?? ""}</p>\n` +
+    `<h1>${c.title}</h1>\n` +
+    `<p class="cover-sub">${c.subtitle ?? ""}</p>\n</section>`;
+
+  book.topics = topics;
+  book.termTotal = topics.reduce((a, t) => a + t.terms, 0);
+  return { coverHtml, pages, headings };
+}
+
 async function buildBook(book) {
+  if (book.master) return buildMaster(book);
   const src = path.join(book.dir, "pages");
   const files = (await readdir(src)).filter((f) => f.endsWith(".md")).sort();
   if (!files.length) throw new Error(`no markdown pages in ${book.rel}`);
@@ -164,9 +292,18 @@ async function buildBook(book) {
   const cover = files.find((f) => f.startsWith("00-cover"));
   const rest = files.filter((f) => f !== cover);
 
-  const coverHtml = cover ? await renderPage(path.join(src, cover), [], 0, blocks) : "";
+  // The counter's denominator is every term in this topic, so it has to be
+  // known before the first page renders. Counted from the files themselves.
+  let total = 0;
+  for (const f of rest.filter((f) => /^02-/.test(f))) {
+    total += ((await readFile(path.join(src, f), "utf8")).match(/^## /gm) ?? []).length;
+  }
+  const term = total ? { n: 0, total } : null;
+  const accent = book.config.cover?.accent ?? null;
+
+  const coverHtml = cover ? await renderPage(path.join(src, cover), [], 0, blocks, null, accent) : "";
   for (let i = 0; i < rest.length; i++) {
-    pages.push(await renderPage(path.join(src, rest[i]), headings, i, blocks));
+    pages.push(await renderPage(path.join(src, rest[i]), headings, i, blocks, term, accent));
   }
   return { coverHtml, pages, headings };
 }
@@ -505,6 +642,10 @@ for (const b of books) {
   const name = path.basename(b.dir);
   b.index = b.order ? b.order.indexOf(name) + 1 || 1 : 1;
   b.seriesTotal = b.order ? b.order.length : 1;
+  // A merged volume is not a booklet and must not wear a booklet's cover. It
+  // names its own generator, which is the one case where the cascade's
+  // deepest-wins rule gives the wrong answer.
+  if (b.master?.cover) b.coverModule = path.join(b.dir, b.master.cover);
   // A drawn cover needs both halves: the domain's generator and this book's
   // cover data. Missing either, the book's own 00-cover.md page is used.
   b.cover = b.coverModule && b.config.cover
@@ -568,9 +709,13 @@ for (const book of books) {
       // Both of these were typed by hand in the old cover data and went stale
       // on every rebuild. They are counted here instead.
       pages: 1 + tocPages + parts.pages.length,
-      more: Math.max(0, parts.headings.length - (c.cover.stack?.length ?? 0)),
+      more: Math.max(0, (book.termTotal ?? parts.headings.length) - (c.cover.stack?.length ?? 0)),
       index: book.index,
       total: book.seriesTotal,
+      // Only a merged volume has these. Counted from what was actually built,
+      // so the number on the cover cannot disagree with the book behind it.
+      topics: book.topics ?? null,
+      terms: book.termTotal ?? null,
     });
     const coverPdf = out + ".cover.pdf";
     await renderCoverPdf(book, svg, coverPdf);
