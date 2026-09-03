@@ -1,0 +1,458 @@
+[
+ {
+  "term": "ADR",
+  "sub": "Architecture Decision Record",
+  "cat": "Team & Process",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Amdahl's Law",
+  "sub": "",
+  "cat": "Performance Engineering",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Arrange-Act-Assert",
+  "sub": "",
+  "cat": "Testing & Quality",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Async Overhead",
+  "sub": "",
+  "cat": "Performance Engineering",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Batch Size Tuning",
+  "sub": "",
+  "cat": "Performance Engineering",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Bus Factor",
+  "sub": "",
+  "cat": "Team & Process",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Change Freeze",
+  "sub": "",
+  "cat": "Team & Process",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "CI Minutes Cost",
+  "sub": "",
+  "cat": "Cost & FinOps",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Code Review Latency",
+  "sub": "",
+  "cat": "Team & Process",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Committed Use Discount",
+  "sub": "",
+  "cat": "Cost & FinOps",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Connection Pool Sizing",
+  "sub": "",
+  "cat": "Performance Engineering",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Contract Testing",
+  "sub": "",
+  "cat": "Testing & Quality",
+  "means": "Testing that a provider still satisfies what its consumers actually depend on, without spinning up both systems.",
+  "example": "The provider's own tests pass while a field a consumer relies on gets renamed. A consumer-driven contract test fails in the provider's CI, before the deploy.",
+  "diagram": "consumer records its expectations → contract\nprovider's CI verifies the contract\n\nBreaks in the PROVIDER's pipeline ✓\nnot in the consumer's production ✗"
+ },
+ {
+  "term": "Cost Anomaly Detection",
+  "sub": "",
+  "cat": "Cost & FinOps",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Cost Attribution & Tagging",
+  "sub": "",
+  "cat": "Cost & FinOps",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Coverage Is Not Confidence",
+  "sub": "",
+  "cat": "Testing & Quality",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Definition of Done",
+  "sub": "",
+  "cat": "Team & Process",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Deterministic Test",
+  "sub": "",
+  "cat": "Testing & Quality",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Egress Cost",
+  "sub": "",
+  "cat": "Cost & FinOps",
+  "means": "Data leaving the cloud (and crossing AZs and regions) is billed. Ingress is usually free, which shapes a lot of architecture decisions.",
+  "example": "A service in AZ-a chatting constantly with a database in AZ-b pays cross-AZ transfer on every query. Zone-aware routing removed a five-figure annual line item.",
+  "diagram": "ingress        free\ncross-AZ       $ per GB (both directions)\ncross-region   $$ per GB\ninternet out   $$$ per GB\n\nChatty cross-AZ services quietly cost real money"
+ },
+ {
+  "term": "Escalation Policy",
+  "sub": "",
+  "cat": "Team & Process",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Fixture vs Factory",
+  "sub": "",
+  "cat": "Testing & Quality",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Flaky Test",
+  "sub": "",
+  "cat": "Testing & Quality",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Flaky Test Quarantine",
+  "sub": "",
+  "cat": "Testing & Quality",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Flame Graph",
+  "sub": "",
+  "cat": "Performance Engineering",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "GC Pressure & Allocation Rate",
+  "sub": "",
+  "cat": "Performance Engineering",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Golden File Test",
+  "sub": "",
+  "cat": "Testing & Quality",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Heap Snapshot vs Memory Profile",
+  "sub": "",
+  "cat": "Performance Engineering",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Idle Spend",
+  "sub": "",
+  "cat": "Cost & FinOps",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Incident Command",
+  "sub": "",
+  "cat": "Team & Process",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Integration vs End-to-End",
+  "sub": "",
+  "cat": "Testing & Quality",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Load vs Stress vs Soak",
+  "sub": "",
+  "cat": "Performance Engineering",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Log Volume Cost",
+  "sub": "",
+  "cat": "Cost & FinOps",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Microbenchmark Trap",
+  "sub": "",
+  "cat": "Performance Engineering",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Mutation Testing",
+  "sub": "",
+  "cat": "Testing & Quality",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "NAT Gateway Cost",
+  "sub": "",
+  "cat": "Cost & FinOps",
+  "means": "Private subnets reach the internet through a NAT gateway that charges per hour and per gigabyte processed. It's a classic surprise line item.",
+  "example": "A service pulling 8TB/month of container images through NAT costs more in data processing than the compute running it. A VPC endpoint for ECR removes that entirely.",
+  "diagram": "private subnet → NAT GW → internet\n  hourly + per-GB processed\n\n8TB/month through NAT = significant $$\nFix: VPC endpoints for S3/ECR/DynamoDB"
+ },
+ {
+  "term": "On-Call Rotation & Handover",
+  "sub": "",
+  "cat": "Team & Process",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Property-Based Testing",
+  "sub": "",
+  "cat": "Testing & Quality",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Release Train",
+  "sub": "",
+  "cat": "Team & Process",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Resource Saturation",
+  "sub": "",
+  "cat": "Performance Engineering",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "RFC / Design Doc",
+  "sub": "",
+  "cat": "Team & Process",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Right-Sizing",
+  "sub": "",
+  "cat": "Cost & FinOps",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Sampling vs Instrumentation Profiling",
+  "sub": "",
+  "cat": "Performance Engineering",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Showback vs Chargeback",
+  "sub": "",
+  "cat": "Cost & FinOps",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Smoke Test",
+  "sub": "",
+  "cat": "Testing & Quality",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Snapshot Test",
+  "sub": "",
+  "cat": "Testing & Quality",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Spot vs On-Demand vs Reserved",
+  "sub": "",
+  "cat": "Cost & FinOps",
+  "means": "Spot is cheap capacity reclaimed with two minutes' notice. Reserved trades commitment for discount. On-demand is flexible and most expensive.",
+  "example": "Batch OCR on spot instances cuts cost 70% and needs checkpointing so a reclaim resumes rather than restarts. Never put a stateful primary on spot.",
+  "diagram": "On-demand  baseline price, no commitment\nReserved    ~40-60% off, 1-3 yr commitment\nSpot        ~70-90% off, 2-min eviction notice\n\nSpot: stateless, checkpointed, retryable work"
+ },
+ {
+  "term": "Storage Class Lifecycle",
+  "sub": "",
+  "cat": "Cost & FinOps",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Tail-at-Scale",
+  "sub": "",
+  "cat": "Performance Engineering",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Tech Debt Register",
+  "sub": "",
+  "cat": "Team & Process",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Test Data Management",
+  "sub": "",
+  "cat": "Testing & Quality",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Test Double",
+  "sub": "",
+  "cat": "Testing & Quality",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Test Isolation",
+  "sub": "",
+  "cat": "Testing & Quality",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Test Pyramid",
+  "sub": "",
+  "cat": "Testing & Quality",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Testing in Production",
+  "sub": "",
+  "cat": "Testing & Quality",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "The Observability Bill",
+  "sub": "",
+  "cat": "Cost & FinOps",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Trunk-Based Development",
+  "sub": "",
+  "cat": "Team & Process",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Unit Economics of a Feature",
+  "sub": "",
+  "cat": "Cost & FinOps",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ },
+ {
+  "term": "Warm-Up & JIT Effects",
+  "sub": "",
+  "cat": "Performance Engineering",
+  "means": "",
+  "example": "",
+  "diagram": ""
+ }
+]
