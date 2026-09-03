@@ -1,0 +1,26 @@
+{
+  "title": "AI Engineering",
+  "subtitle": "Building on Models You Do Not Own",
+  "cover": {
+    "accent": "#c25a35",
+    "title": ["AI", "Engineering"],
+    "banner": "THE MODEL IS THE EASY PART.",
+    "kicker": "RAG · EVALS · AGENTS · GUARDRAILS · COST · OCR",
+    "term": [
+      ["$ eval run --suite golden", 0],
+      ["  92/100 pass", 1],
+      ["  groundedness 0.94", 1],
+      ["  spend $2.10", 2],
+      ["$ _", 2]
+    ],
+    "stack": [
+      "retrieval · chunking",
+      "evals · golden sets",
+      "agents · tool schemas",
+      "guardrails · injection",
+      "routing · fallback",
+      "token & spend accounting"
+    ],
+    "face": { "brow": "raised", "mouth": "flat", "tilt": 2 }
+  }
+}
