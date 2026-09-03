@@ -1,0 +1,48 @@
+{
+  "title": "Reliability & Observability",
+  "subtitle": "The Words Used in a Postmortem",
+  "cover": {
+    "accent": "#d0212f",
+    "title": [
+      "Reliability &",
+      "Observability"
+    ],
+    "banner": "IT IS UP. IT IS NOT WORKING.",
+    "kicker": "SLO · ERROR BUDGET · BACKPRESSURE · TRACING",
+    "term": [
+      [
+        "$ burn-rate --window 1h",
+        0
+      ],
+      [
+        "  14.4x   page",
+        2
+      ],
+      [
+        "$ trace 9f2c",
+        0
+      ],
+      [
+        "  span db.query  4.1s",
+        2
+      ],
+      [
+        "$ _",
+        2
+      ]
+    ],
+    "stack": [
+      "SLI · SLO · error budget",
+      "circuit breaker · bulkhead",
+      "backpressure · load shed",
+      "P50 · P95 · P99.9",
+      "RED · USE · golden signals",
+      "cardinality · sampling"
+    ],
+    "face": {
+      "brow": "sharp",
+      "mouth": "flat",
+      "tilt": 2
+    }
+  }
+}
