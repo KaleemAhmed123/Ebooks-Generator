@@ -6,14 +6,14 @@
     "name": "the-vocabulary-of-production"
   },
   "order": [
-    "01-ai-engineering",
     "02-design-distributed",
     "03-engineering-practice",
     "04-data-stores",
     "05-reliability-observability",
     "06-frontend-realtime",
     "07-language-runtime",
-    "08-infra-cloud-security"
+    "08-infra-cloud-security",
+    "01-ai-engineering"
   ],
   "cover": {
     "accent": "#0d7a7a",
@@ -22,14 +22,14 @@
       "of Production"
     ],
     "banner": "PRODUCTION TERMS ENGINEERS NEED TO KNOW.",
-    "kicker": "AI \u00b7 DISTRIBUTED \u00b7 DATA \u00b7 RELIABILITY \u00b7 FRONTEND \u00b7 INFRA",
+    "kicker": "AI · DISTRIBUTED · DATA · RELIABILITY · FRONTEND · INFRA",
     "term": [
       [
         "$ grep -c '^## ' books/**/*.md",
         0
       ],
       [
-        "  456",
+        "  471",
         2
       ],
       [
@@ -46,14 +46,14 @@
       ]
     ],
     "stack": [
-      "AI Engineering \u00b7 101",
-      "Design & Distributed \u00b7 75",
-      "Engineering Practice \u00b7 57",
-      "Data Stores \u00b7 52",
-      "Reliability & Obs. \u00b7 49",
-      "Frontend & Realtime \u00b7 43",
-      "Language & Runtime \u00b7 41",
-      "Infra, Cloud & Security \u00b7 38"
+      "Design & Distributed · 75",
+      "Engineering Practice · 57",
+      "Data Stores · 52",
+      "Reliability & Obs. · 49",
+      "Frontend & Realtime · 43",
+      "Language & Runtime · 41",
+      "Infra, Cloud & Security · 38",
+      "AI Engineering · 116"
     ],
     "moreWord": "TERMS",
     "label": "COMPLETE VOLUME",
