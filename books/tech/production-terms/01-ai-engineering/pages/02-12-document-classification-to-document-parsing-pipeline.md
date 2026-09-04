@@ -29,7 +29,7 @@ handed.
   <path d="M78 42 H112" stroke="#1a1a1a" stroke-width="1.2"/><path d="M112 42 l-6 -3.5 v7 z" fill="#1a1a1a"/>
   <rect x="116" y="8" width="164" height="22" fill="none" stroke="#6b6b6b" stroke-width="1.2"/>
   <text x="126" y="23" font-family="Georgia,serif" font-size="9" fill="#6b6b6b">extract all text</text>
-  <rect x="116" y="32" width="164" height="22" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="116" y="32" width="164" height="22" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="126" y="47" font-family="Georgia,serif" font-size="9" fill="#c25a35">layout analysis, then text</text>
   <path d="M282 20 H316" stroke="#6b6b6b" stroke-width="1.2"/><path d="M316 20 l-6 -3.5 v7 z" fill="#6b6b6b"/>
   <path d="M282 42 H316" stroke="#1a1a1a" stroke-width="1.2"/><path d="M316 42 l-6 -3.5 v7 z" fill="#1a1a1a"/>

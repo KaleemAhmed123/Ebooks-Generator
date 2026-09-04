@@ -8,7 +8,7 @@ and you have thrown the document's structure away.
 <svg viewBox="0 0 460 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The token Total and the token for the amount share a vertical band with the amount immediately to the right, which is what identifies it as the total">
   <rect x="60" y="14" width="72" height="20" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="96" y="28" text-anchor="middle" font-family="Consolas,monospace" font-size="9" fill="#1a1a1a">Total</text>
-  <rect x="152" y="14" width="86" height="20" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="152" y="14" width="86" height="20" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="195" y="28" text-anchor="middle" font-family="Consolas,monospace" font-size="9" fill="#c25a35">4,500</text>
   <path d="M56 10 H244" stroke="#c25a35" stroke-width="0.7" stroke-dasharray="3 2"/>
   <path d="M56 38 H244" stroke="#c25a35" stroke-width="0.7" stroke-dasharray="3 2"/>

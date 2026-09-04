@@ -27,7 +27,7 @@ well by both lists rise; a retriever's claimed confidence is irrelevant.
   <path d="M152 52 H184" stroke="#1a1a1a" stroke-width="1.2"/><path d="M186 52 l-7 -4 v8 z" fill="#1a1a1a"/>
   <text x="106" y="46" font-family="Consolas,monospace" font-size="7.5" fill="#6b6b6b">sum 1/(60+rank)</text>
 
-  <rect x="188" y="30" width="140" height="18" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="188" y="30" width="140" height="18" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="196" y="43" font-family="Consolas,monospace" font-size="8" fill="#c25a35">1. doc-7  (both lists)</text>
   <rect x="188" y="52" width="140" height="18" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="196" y="65" font-family="Consolas,monospace" font-size="8" fill="#1a1a1a">2. doc-3  (one list)</text>

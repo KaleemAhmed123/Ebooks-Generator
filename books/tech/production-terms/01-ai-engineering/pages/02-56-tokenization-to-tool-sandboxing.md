@@ -13,8 +13,8 @@ inside the context window.
 
 <svg viewBox="0 0 460 78" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The word unbelievable splits into a few subword tokens while a UUID of similar length splits into many more, showing that token count does not track character count">
   <text x="4" y="16" font-family="Georgia,serif" font-size="9" fill="#6b6b6b">12 characters, 2 tokens</text>
-  <rect x="4" y="22" width="52" height="18" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/><text x="30" y="35" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">unbeliev</text>
-  <rect x="58" y="22" width="34" height="18" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/><text x="75" y="35" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">able</text>
+  <rect x="4" y="22" width="52" height="18" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/><text x="30" y="35" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">unbeliev</text>
+  <rect x="58" y="22" width="34" height="18" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/><text x="75" y="35" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">able</text>
   <text x="236" y="16" font-family="Georgia,serif" font-size="9" fill="#6b6b6b">a UUID of similar length</text>
   <rect x="236" y="22" width="26" height="18" fill="none" stroke="#1a1a1a" stroke-width="1.2"/><text x="249" y="35" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#1a1a1a">7f</text>
   <rect x="264" y="22" width="26" height="18" fill="none" stroke="#1a1a1a" stroke-width="1.2"/><text x="277" y="35" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#1a1a1a">3a</text>

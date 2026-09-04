@@ -38,7 +38,7 @@ and interactive share one account budget by default.
   <text x="4" y="54" font-family="Georgia,serif" font-size="9" fill="#6b6b6b">separate</text>
   <rect x="58" y="44" width="180" height="16" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="66" y="56" font-family="Consolas,monospace" font-size="7.5" fill="#1a1a1a">batch key — hard ceiling</text>
-  <rect x="242" y="44" width="184" height="16" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="242" y="44" width="184" height="16" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="250" y="56" font-family="Consolas,monospace" font-size="7.5" fill="#c25a35">interactive key — headroom kept free</text>
 
   <text x="4" y="80" font-family="Georgia,serif" font-size="9" fill="#6b6b6b">the split is configuration, and it is what stops a bulk job becoming an outage</text>

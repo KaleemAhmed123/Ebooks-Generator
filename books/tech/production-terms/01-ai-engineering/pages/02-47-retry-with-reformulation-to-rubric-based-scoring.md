@@ -20,7 +20,7 @@ own output.
   <rect x="238" y="2" width="218" height="24" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="250" y="17" font-family="Consolas,monospace" font-size="8.5" fill="#1a1a1a">yes: send the same request again</text>
   <path d="M152 58 V72 H236" stroke="#1a1a1a" stroke-width="1.2"/><path d="M236 72 l-7 -4 v8 z" fill="#1a1a1a"/>
-  <rect x="238" y="60" width="218" height="24" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="238" y="60" width="218" height="24" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="250" y="75" font-family="Consolas,monospace" font-size="8.5" fill="#c25a35">no: change it, then send</text>
 </svg>
 

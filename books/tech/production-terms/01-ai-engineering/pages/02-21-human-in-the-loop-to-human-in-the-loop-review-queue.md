@@ -33,7 +33,7 @@ on everything.
   <rect x="232" y="6" width="106" height="22" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="285" y="20" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#1a1a1a">passes through</text>
   <path d="M198 50 L226 70" stroke="#c25a35" stroke-width="1.2"/><path d="M228 71 l-4 -7 -4 5 z" fill="#c25a35"/>
-  <rect x="232" y="58" width="106" height="22" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="232" y="58" width="106" height="22" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="285" y="72" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#c25a35">reviewer</text>
   <path d="M338 69 H400" stroke="#c25a35" stroke-width="1.2"/><path d="M400 69 l-7 -4 v8 z" fill="#c25a35"/>
   <text x="342" y="64" font-family="Georgia,serif" font-size="8.5" fill="#c25a35">labelled data</text>

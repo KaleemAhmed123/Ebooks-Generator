@@ -31,7 +31,7 @@ request makes it the natural thing to cache; anything volatile placed inside it
 on every single call.
 
 <svg viewBox="0 0 460 74" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The system prompt sits as a stable cacheable prefix in front of the varying conversation turns, so anything volatile placed inside it destroys the cacheable prefix">
-  <rect x="4" y="16" width="188" height="28" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="4" y="16" width="188" height="28" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="98" y="34" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#c25a35">system — identical every call</text>
   <rect x="196" y="16" width="82" height="28" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="237" y="34" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#1a1a1a">turn 1</text>

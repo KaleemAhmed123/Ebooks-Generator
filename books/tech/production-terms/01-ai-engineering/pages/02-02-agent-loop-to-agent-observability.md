@@ -6,7 +6,7 @@ and feeds the result back into context. Everything sold as agentic is a version
 of this loop.
 
 <svg viewBox="0 0 460 106" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The model either answers and the run ends, or it calls a tool; your code runs the tool and the result returns to context, repeating the loop">
-  <rect x="6" y="18" width="126" height="44" fill="#fdece5" stroke="#c25a35" stroke-width="1.5"/>
+  <rect x="6" y="18" width="126" height="44" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.5"/>
   <text x="69" y="45" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" fill="#c25a35">model decides</text>
   <path d="M134 30 H180" stroke="#1a1a1a" stroke-width="1.2"/><path d="M180 30 l-7 -4 v8 z" fill="#1a1a1a"/>
   <text x="188" y="34" font-family="Georgia,serif" font-size="10" fill="#1a1a1a">answer — the run ends</text>

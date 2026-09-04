@@ -15,7 +15,7 @@ because those requests run long enough to hit system timeouts.
   <text x="12" y="33" font-family="Consolas,monospace" font-size="8" fill="#1a1a1a">prompt</text>
   <path d="M64 29 H90" stroke="#1a1a1a" stroke-width="1.2"/><path d="M92 29 l-7 -4 v8 z" fill="#1a1a1a"/>
 
-  <rect x="94" y="16" width="230" height="26" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="94" y="16" width="230" height="26" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="104" y="33" font-family="Consolas,monospace" font-size="8.5" fill="#c25a35">thinking tokens — billed, returned summarised or not at all</text>
   <rect x="326" y="16" width="100" height="26" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="336" y="33" font-family="Consolas,monospace" font-size="8.5" fill="#1a1a1a">the answer</text>
@@ -44,7 +44,7 @@ reranked and filtered.
   <text x="12" y="38" font-family="Consolas,monospace" font-size="7.5" fill="#6b6b6b">maximise recall@50</text>
   <path d="M154 29 H180" stroke="#1a1a1a" stroke-width="1.2"/><path d="M182 29 l-7 -4 v8 z" fill="#1a1a1a"/>
 
-  <rect x="184" y="14" width="134" height="30" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="184" y="14" width="134" height="30" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="192" y="27" font-family="Consolas,monospace" font-size="8" fill="#c25a35">rerank to top 3</text>
   <text x="192" y="38" font-family="Consolas,monospace" font-size="7.5" fill="#c25a35">maximise precision@3</text>
   <path d="M318 29 H344" stroke="#1a1a1a" stroke-width="1.2"/><path d="M346 29 l-7 -4 v8 z" fill="#1a1a1a"/>

@@ -25,7 +25,7 @@ call the same model, and nobody else has your corrections.
   <rect x="4" y="16" width="88" height="24" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="48" y="32" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#1a1a1a">usage</text>
   <path d="M94 28 H124" stroke="#1a1a1a" stroke-width="1.2"/><path d="M124 28 l-6 -3.5 v7 z" fill="#1a1a1a"/>
-  <rect x="128" y="16" width="126" height="24" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="128" y="16" width="126" height="24" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="191" y="32" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#c25a35">capture mechanism</text>
   <path d="M256 28 H286" stroke="#1a1a1a" stroke-width="1.2"/><path d="M286 28 l-6 -3.5 v7 z" fill="#1a1a1a"/>
   <rect x="290" y="16" width="110" height="24" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>

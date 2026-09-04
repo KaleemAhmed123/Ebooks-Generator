@@ -12,7 +12,7 @@ true neighbour. The fraction it does find is **recall**.
   <rect x="4" y="22" width="214" height="22" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="14" y="37" font-family="Georgia,serif" font-size="9.5" fill="#1a1a1a">exact — compare all N</text>
   <text x="210" y="37" text-anchor="end" font-family="Consolas,monospace" font-size="8.5" fill="#1a1a1a">recall 1.0</text>
-  <rect x="242" y="22" width="214" height="22" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="242" y="22" width="214" height="22" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="252" y="37" font-family="Georgia,serif" font-size="9.5" fill="#c25a35">ANN — visit ef_search candidates</text>
   <text x="448" y="37" text-anchor="end" font-family="Consolas,monospace" font-size="8.5" fill="#c25a35">recall &lt; 1.0</text>
   <text x="4" y="62" font-family="Georgia,serif" font-size="9.5" fill="#1a1a1a">a missed neighbour raises no error and writes no log line —</text>

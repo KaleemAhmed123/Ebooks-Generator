@@ -16,7 +16,7 @@ text, closes with `message_stop`, and scatters `ping` events throughout.
   <text x="199" y="33" text-anchor="middle" font-family="Consolas,monospace" font-size="7.5" fill="#1a1a1a">ping</text>
   <rect x="222" y="18" width="42" height="22" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="243" y="33" text-anchor="middle" font-family="Consolas,monospace" font-size="7.5" fill="#1a1a1a">delta</text>
-  <rect x="268" y="18" width="76" height="22" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="268" y="18" width="76" height="22" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="306" y="33" text-anchor="middle" font-family="Consolas,monospace" font-size="7.5" fill="#c25a35">error</text>
   <path d="M348 29 H380" stroke="#1a1a1a" stroke-width="1.2" stroke-dasharray="3 3"/>
   <text x="386" y="32" font-family="Consolas,monospace" font-size="7.5" fill="#1a1a1a">no stop</text>
@@ -48,9 +48,9 @@ unusual inputs you cared about.
 
 <svg viewBox="0 0 460 88" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="At one decoding step the grammar sets the probability of illegal next tokens to zero before sampling, leaving only schema-legal tokens available">
   <text x="4" y="16" font-family="Georgia,serif" font-size="9" fill="#6b6b6b">next-token probabilities, one step inside a JSON string</text>
-  <rect x="8" y="24" width="30" height="40" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/><text x="23" y="76" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">"a"</text>
-  <rect x="48" y="34" width="30" height="30" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/><text x="63" y="76" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">"b"</text>
-  <rect x="88" y="44" width="30" height="20" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/><text x="103" y="76" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">"c"</text>
+  <rect x="8" y="24" width="30" height="40" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/><text x="23" y="76" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">"a"</text>
+  <rect x="48" y="34" width="30" height="30" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/><text x="63" y="76" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">"b"</text>
+  <rect x="88" y="44" width="30" height="20" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/><text x="103" y="76" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">"c"</text>
   <path d="M128 30 L158 64 M158 30 L128 64" stroke="#1a1a1a" stroke-width="1.2"/><text x="143" y="76" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#1a1a1a">}</text>
   <path d="M168 30 L198 64 M198 30 L168 64" stroke="#1a1a1a" stroke-width="1.2"/><text x="183" y="76" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#1a1a1a">,</text>
   <path d="M208 30 L238 64 M238 30 L208 64" stroke="#1a1a1a" stroke-width="1.2"/><text x="223" y="76" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#1a1a1a">]</text>

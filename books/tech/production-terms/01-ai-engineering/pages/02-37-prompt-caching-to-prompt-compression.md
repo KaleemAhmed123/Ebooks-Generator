@@ -10,7 +10,7 @@ five-minute TTL or 2× on the one-hour TTL, and a read costs 0.1×. Two requests
 break even on the short TTL.
 
 <svg viewBox="0 0 460 82" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A prompt drawn as one bar: the stable prefix is cached, and everything after the first differing character is recomputed on every request">
-  <rect x="4" y="16" width="252" height="26" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="4" y="16" width="252" height="26" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="14" y="33" font-family="Consolas,monospace" font-size="8.5" fill="#c25a35">system prompt + tool definitions — cached</text>
   <path d="M258 10 V50" stroke="#1a1a1a" stroke-width="1.2" stroke-dasharray="3 2"/>
   <text x="262" y="9" font-family="Georgia,serif" font-size="8.5" fill="#1a1a1a">first difference</text>

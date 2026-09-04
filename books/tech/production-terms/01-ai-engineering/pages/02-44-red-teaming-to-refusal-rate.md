@@ -33,7 +33,7 @@ tool.
 <svg viewBox="0 0 460 82" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A band showing over-refusal on the left, a narrow usable middle, and under-refusal on the right; only the right-hand failure is visible on a safety dashboard">
   <rect x="4" y="16" width="150" height="30" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="79" y="35" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#1a1a1a">over-refusal</text>
-  <rect x="154" y="16" width="110" height="30" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="154" y="16" width="110" height="30" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="209" y="35" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#c25a35">usable band</text>
   <rect x="264" y="16" width="150" height="30" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="339" y="35" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#1a1a1a">under-refusal</text>

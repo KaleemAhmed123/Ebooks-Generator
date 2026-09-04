@@ -15,9 +15,9 @@ inference from alignment, and that is where it breaks.
   <text x="10" y="51" font-family="Consolas,monospace" font-size="8" fill="#1a1a1a">rev   120  |  140  |  160</text>
   <path d="M212 40 H246" stroke="#1a1a1a" stroke-width="1.2"/><path d="M246 40 l-7 -4 v8 z" fill="#1a1a1a"/>
   <text x="256" y="14" font-family="Georgia,serif" font-size="9" fill="#6b6b6b">what you get</text>
-  <rect x="256" y="20" width="200" height="18" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="256" y="20" width="200" height="18" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="262" y="33" font-family="Consolas,monospace" font-size="8" fill="#c25a35">Q3 | net | Q4</text>
-  <rect x="256" y="38" width="200" height="18" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="256" y="38" width="200" height="18" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="262" y="51" font-family="Consolas,monospace" font-size="8" fill="#c25a35">120 | 140 | 160</text>
   <text x="4" y="80" font-family="Georgia,serif" font-size="9" fill="#6b6b6b">nothing throws; Q4 now reports Q3's number</text>
 </svg>
@@ -47,11 +47,11 @@ of hiding inside a single opaque call.
   <path d="M244 31 H272" stroke="#1a1a1a" stroke-width="1.2"/><path d="M272 31 l-7 -4 v8 z" fill="#1a1a1a"/>
   <text x="278" y="34" font-family="Consolas,monospace" font-size="8.5" fill="#1a1a1a">wrong. where?</text>
   <text x="4" y="60" font-family="Georgia,serif" font-size="9" fill="#6b6b6b">three calls, three checkpoints</text>
-  <rect x="4" y="66" width="72" height="20" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/><text x="40" y="80" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">extract</text>
+  <rect x="4" y="66" width="72" height="20" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/><text x="40" y="80" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">extract</text>
   <path d="M76 76 H98" stroke="#1a1a1a" stroke-width="1.2"/><path d="M98 76 l-7 -4 v8 z" fill="#1a1a1a"/>
-  <rect x="100" y="66" width="72" height="20" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/><text x="136" y="80" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">validate</text>
+  <rect x="100" y="66" width="72" height="20" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/><text x="136" y="80" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">validate</text>
   <path d="M172 76 H194" stroke="#1a1a1a" stroke-width="1.2"/><path d="M194 76 l-7 -4 v8 z" fill="#1a1a1a"/>
-  <rect x="196" y="66" width="72" height="20" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/><text x="232" y="80" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">summarise</text>
+  <rect x="196" y="66" width="72" height="20" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/><text x="232" y="80" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">summarise</text>
   <path d="M268 76 H290" stroke="#1a1a1a" stroke-width="1.2"/><path d="M290 76 l-7 -4 v8 z" fill="#1a1a1a"/>
   <text x="296" y="79" font-family="Consolas,monospace" font-size="8.5" fill="#1a1a1a">wrong at step 2</text>
 </svg>

@@ -39,11 +39,11 @@ of the model.
     <path d="M222 36 H252"/><path d="M252 36 l-7 -4 v8 z" fill="#c25a35"/>
     <path d="M222 60 H252"/><path d="M252 60 l-7 -4 v8 z" fill="#c25a35"/>
   </g>
-  <rect x="254" y="2" width="128" height="20" fill="#fdece5" stroke="#c25a35" stroke-width="1.3"/>
+  <rect x="254" y="2" width="128" height="20" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.3"/>
   <text x="318" y="16" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#c25a35">adapter — tenant A</text>
-  <rect x="254" y="26" width="128" height="20" fill="#fdece5" stroke="#c25a35" stroke-width="1.3"/>
+  <rect x="254" y="26" width="128" height="20" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.3"/>
   <text x="318" y="40" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#c25a35">adapter — tenant B</text>
-  <rect x="254" y="50" width="128" height="20" fill="#fdece5" stroke="#c25a35" stroke-width="1.3"/>
+  <rect x="254" y="50" width="128" height="20" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.3"/>
   <text x="318" y="64" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#c25a35">adapter — tenant C</text>
   <text x="390" y="40" font-family="Georgia,serif" font-size="9" fill="#6b6b6b">chosen per</text>
   <text x="390" y="51" font-family="Georgia,serif" font-size="9" fill="#6b6b6b">request</text>

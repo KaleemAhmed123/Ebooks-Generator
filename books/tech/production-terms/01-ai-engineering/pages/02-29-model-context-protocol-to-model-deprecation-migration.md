@@ -12,7 +12,7 @@ messages carried over stdio or Streamable HTTP.
   <text x="52" y="34" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#1a1a1a">host + client</text>
   <path d="M100 31 H186" stroke="#1a1a1a" stroke-width="1.2"/><path d="M186 31 l-7 -4 v8 z" fill="#1a1a1a"/>
   <text x="104" y="26" font-family="Consolas,monospace" font-size="8" fill="#6b6b6b">stdio | Streamable HTTP</text>
-  <rect x="188" y="8" width="152" height="46" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="188" y="8" width="152" height="46" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="264" y="23" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#c25a35">server</text>
   <text x="264" y="36" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#c25a35">resources · prompts</text>
   <text x="264" y="49" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#c25a35">tools</text>

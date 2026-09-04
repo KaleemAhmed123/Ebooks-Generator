@@ -39,7 +39,7 @@ write them down.
   <path d="M218 18 H300" stroke="#1a1a1a" stroke-width="1.2"/><path d="M300 18 l-7 -4 v8 z" fill="#1a1a1a"/>
   <text x="304" y="21" font-family="Consolas,monospace" font-size="8.5" fill="#1a1a1a">user</text>
   <path d="M100 40 V62 H112" stroke="#1a1a1a" stroke-width="1.2" stroke-dasharray="3 3"/><path d="M112 62 l-7 -4 v8 z" fill="#1a1a1a"/>
-  <rect x="114" y="48" width="104" height="28" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="114" y="48" width="104" height="28" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="166" y="66" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#c25a35">candidate</text>
   <path d="M218 62 H300" stroke="#1a1a1a" stroke-width="1.2" stroke-dasharray="3 3"/><path d="M300 62 l-7 -4 v8 z" fill="#1a1a1a"/>
   <text x="304" y="65" font-family="Consolas,monospace" font-size="8.5" fill="#1a1a1a">log, discard</text>

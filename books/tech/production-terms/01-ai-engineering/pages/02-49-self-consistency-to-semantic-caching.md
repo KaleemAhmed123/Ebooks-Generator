@@ -13,9 +13,9 @@ latency unless you run them in parallel.
   <rect x="4" y="26" width="76" height="30" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="42" y="45" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#1a1a1a">prompt</text>
   <path d="M80 41 H108" stroke="#1a1a1a" stroke-width="1.2"/><path d="M108 41 l-7 -4 v8 z" fill="#1a1a1a"/>
-  <rect x="112" y="6" width="52" height="18" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/><text x="138" y="19" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">42</text>
-  <rect x="112" y="28" width="52" height="18" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/><text x="138" y="41" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">42</text>
-  <rect x="112" y="50" width="52" height="18" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/><text x="138" y="63" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">42</text>
+  <rect x="112" y="6" width="52" height="18" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/><text x="138" y="19" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">42</text>
+  <rect x="112" y="28" width="52" height="18" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/><text x="138" y="41" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">42</text>
+  <rect x="112" y="50" width="52" height="18" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/><text x="138" y="63" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">42</text>
   <rect x="112" y="72" width="52" height="16" fill="none" stroke="#1a1a1a" stroke-width="1.2"/><text x="138" y="84" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#1a1a1a">17</text>
   <path d="M164 41 H196" stroke="#1a1a1a" stroke-width="1.2"/><path d="M196 41 l-7 -4 v8 z" fill="#1a1a1a"/>
   <rect x="198" y="26" width="90" height="30" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
@@ -48,7 +48,7 @@ wrong.
   <rect x="102" y="12" width="86" height="28" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="145" y="30" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#1a1a1a">embed</text>
   <path d="M188 26 H212" stroke="#1a1a1a" stroke-width="1.2"/><path d="M212 26 l-7 -4 v8 z" fill="#1a1a1a"/>
-  <rect x="214" y="12" width="104" height="28" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="214" y="12" width="104" height="28" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="266" y="30" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">sim &gt; threshold?</text>
   <path d="M318 20 H396" stroke="#1a1a1a" stroke-width="1.2"/><path d="M396 20 l-7 -4 v8 z" fill="#1a1a1a"/>
   <text x="398" y="23" font-family="Consolas,monospace" font-size="8" fill="#1a1a1a">hit</text>

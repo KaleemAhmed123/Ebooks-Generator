@@ -13,13 +13,13 @@ The classifier's verdict is not negotiable by anything in the context.
   <rect x="4" y="18" width="60" height="28" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="34" y="36" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#1a1a1a">user</text>
   <path d="M64 32 H84" stroke="#1a1a1a" stroke-width="1.2"/><path d="M84 32 l-7 -4 v8 z" fill="#1a1a1a"/>
-  <rect x="86" y="18" width="88" height="28" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="86" y="18" width="88" height="28" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="130" y="36" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">input check</text>
   <path d="M174 32 H194" stroke="#1a1a1a" stroke-width="1.2"/><path d="M194 32 l-7 -4 v8 z" fill="#1a1a1a"/>
   <rect x="196" y="18" width="68" height="28" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="230" y="36" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#1a1a1a">model</text>
   <path d="M264 32 H284" stroke="#1a1a1a" stroke-width="1.2"/><path d="M284 32 l-7 -4 v8 z" fill="#1a1a1a"/>
-  <rect x="286" y="18" width="94" height="28" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="286" y="18" width="94" height="28" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="333" y="36" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">output check</text>
   <path d="M380 32 H400" stroke="#1a1a1a" stroke-width="1.2"/><path d="M400 32 l-7 -4 v8 z" fill="#1a1a1a"/>
   <rect x="402" y="18" width="54" height="28" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>

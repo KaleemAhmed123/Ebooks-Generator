@@ -10,7 +10,7 @@ and cheap for every token after.
 
 <svg viewBox="0 0 460 76" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The first pass computes keys and values for the whole prompt, and each subsequent token reads that cache and appends one entry rather than recomputing the prompt">
   <text x="4" y="18" font-family="Consolas,monospace" font-size="8" fill="#6b6b6b">prefill</text>
-  <rect x="60" y="8" width="220" height="18" fill="#fdece5" stroke="#c25a35" stroke-width="1.3"/>
+  <rect x="60" y="8" width="220" height="18" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.3"/>
   <text x="170" y="21" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#c25a35">whole prompt computed once</text>
   <text x="4" y="48" font-family="Consolas,monospace" font-size="8" fill="#6b6b6b">decode</text>
   <rect x="60" y="38" width="220" height="18" fill="none" stroke="#c25a35" stroke-width="1" stroke-dasharray="3 2"/>
@@ -41,7 +41,7 @@ traces; the total says there is a problem, the breakdown says where.
 <svg viewBox="0 0 460 68" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="An example three second budget drawn as a bar: a short retrieval segment, a shorter rerank segment, a time-to-first-token segment, and a long streaming tail">
   <rect x="4" y="16" width="52" height="20" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <rect x="56" y="16" width="38" height="20" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
-  <rect x="94" y="16" width="96" height="20" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="94" y="16" width="96" height="20" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <rect x="190" y="16" width="266" height="20" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="30" y="30" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#1a1a1a">retrieve</text>
   <text x="75" y="30" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#1a1a1a">rerank</text>

@@ -14,7 +14,7 @@ human attention on the fraction that needs it.
   <text x="14" y="31" font-family="Consolas,monospace" font-size="8.5" fill="#1a1a1a">human review</text>
   <rect x="134" y="14" width="150" height="26" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="144" y="31" font-family="Consolas,monospace" font-size="8.5" fill="#1a1a1a">validate: do totals sum?</text>
-  <rect x="284" y="14" width="142" height="26" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="284" y="14" width="142" height="26" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="294" y="31" font-family="Consolas,monospace" font-size="8.5" fill="#c25a35">accept automatically</text>
 
   <path d="M4 48 H426" stroke="#6b6b6b" stroke-width="1"/>

@@ -38,7 +38,7 @@ about 5 seconds.
   <rect x="264" y="14" width="88" height="30" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="308" y="33" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#1a1a1a">50 candidates</text>
   <path d="M352 29 H376" stroke="#1a1a1a" stroke-width="1.2"/><path d="M376 29 l-7 -4 v8 z" fill="#1a1a1a"/>
-  <rect x="378" y="14" width="78" height="30" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="378" y="14" width="78" height="30" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="417" y="33" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#c25a35">cross-enc</text>
   <text x="4" y="66" font-family="Georgia,serif" font-size="9" fill="#6b6b6b">separate encodings, indexed ahead of time</text>
   <text x="456" y="66" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#6b6b6b">query and doc read together</text>

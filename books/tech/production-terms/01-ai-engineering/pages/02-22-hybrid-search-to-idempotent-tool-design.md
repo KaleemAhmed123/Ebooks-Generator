@@ -19,7 +19,7 @@ covers the other's blind spot.
   <text x="169" y="70" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#1a1a1a">sparse — ERR_4471</text>
   <path d="M228 17 L262 36" stroke="#1a1a1a" stroke-width="1.2"/><path d="M264 37 l-4 -7 -4 5 z" fill="#1a1a1a"/>
   <path d="M228 67 L262 48" stroke="#1a1a1a" stroke-width="1.2"/><path d="M264 47 l-8 1 4 5 z" fill="#1a1a1a"/>
-  <rect x="268" y="30" width="126" height="24" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="268" y="30" width="126" height="24" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="331" y="45" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#c25a35">rank fusion, not scores</text>
   <path d="M394 42 H428" stroke="#c25a35" stroke-width="1.2"/><path d="M428 42 l-7 -4 v8 z" fill="#c25a35"/>
 </svg>

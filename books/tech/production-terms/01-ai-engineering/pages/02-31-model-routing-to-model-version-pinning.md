@@ -17,7 +17,7 @@ which is a common way to build a router that costs more than it saves.
   <text x="106" y="45" font-family="Consolas,monospace" font-size="8" fill="#1a1a1a">length / keyword</text>
 
   <path d="M196 42 H220 V22 H248" stroke="#1a1a1a" stroke-width="1.2" fill="none"/><path d="M250 22 l-7 -4 v8 z" fill="#1a1a1a"/>
-  <rect x="252" y="10" width="120" height="24" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="252" y="10" width="120" height="24" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="262" y="25" font-family="Consolas,monospace" font-size="8.5" fill="#c25a35">small model</text>
 
   <path d="M312 34 V60" stroke="#1a1a1a" stroke-width="1.2" stroke-dasharray="3 2"/><path d="M312 62 l-4 -7 h8 z" fill="#1a1a1a"/>

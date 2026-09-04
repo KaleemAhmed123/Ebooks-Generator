@@ -22,7 +22,7 @@ change rather than a coordinated deploy across six repositories.
   <path d="M78 61 H108 V44" stroke="#1a1a1a" stroke-width="1.2" fill="none"/>
   <path d="M114 39 l-7 -4 v8 z" fill="#1a1a1a"/>
 
-  <rect x="116" y="24" width="126" height="30" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="116" y="24" width="126" height="30" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="128" y="37" font-family="Consolas,monospace" font-size="8.5" fill="#c25a35">gateway</text>
   <text x="128" y="48" font-family="Consolas,monospace" font-size="7.5" fill="#c25a35">keys · retries · spend</text>
 

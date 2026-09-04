@@ -30,12 +30,12 @@ order. None of them look like bugs in review.
   <rect x="4" y="6" width="88" height="22" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="48" y="21" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#1a1a1a">training data</text>
   <path d="M92 17 H118" stroke="#1a1a1a" stroke-width="1.2"/><path d="M118 17 l-7 -4 v8 z" fill="#1a1a1a"/>
-  <rect x="120" y="6" width="112" height="22" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="120" y="6" width="112" height="22" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="176" y="21" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">prep_v1 (notebook)</text>
   <rect x="4" y="52" width="88" height="22" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="48" y="67" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#1a1a1a">live request</text>
   <path d="M92 63 H118" stroke="#1a1a1a" stroke-width="1.2"/><path d="M118 63 l-7 -4 v8 z" fill="#1a1a1a"/>
-  <rect x="120" y="52" width="112" height="22" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="120" y="52" width="112" height="22" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="176" y="67" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">prep_v2 (service)</text>
   <path d="M232 17 H286 V32" stroke="#1a1a1a" stroke-width="1.2"/>
   <path d="M232 63 H286 V48" stroke="#1a1a1a" stroke-width="1.2"/>

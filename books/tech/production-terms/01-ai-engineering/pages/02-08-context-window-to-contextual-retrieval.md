@@ -13,7 +13,7 @@ maximum output as of September 2026; Haiku 4.5 carries 200K.
   <text x="173" y="33" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#1a1a1a">history</text>
   <rect x="222" y="18" width="150" height="22" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="297" y="33" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#1a1a1a">retrieved chunks</text>
-  <rect x="372" y="18" width="84" height="22" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="372" y="18" width="84" height="22" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="414" y="33" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">the answer</text>
   <text x="4" y="12" font-family="Consolas,monospace" font-size="8" fill="#6b6b6b">ONE WINDOW</text>
   <text x="4" y="58" font-family="Georgia,serif" font-size="9.5" fill="#1a1a1a">every token spent on the left is a token the reply cannot have —</text>
@@ -41,7 +41,7 @@ not in the text.
   <text x="14" y="26" font-family="Georgia,serif" font-size="9" fill="#1a1a1a">"the rate increased by 3%"</text>
   <text x="14" y="50" font-family="Georgia,serif" font-size="9" fill="#6b6b6b">which rate? whose report? which year?</text>
   <path d="M212 22 H244" stroke="#1a1a1a" stroke-width="1.2"/><path d="M244 22 l-6 -3.5 v7 z" fill="#1a1a1a"/>
-  <rect x="250" y="4" width="206" height="18" fill="#fdece5" stroke="#c25a35" stroke-width="1.3"/>
+  <rect x="250" y="4" width="206" height="18" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.3"/>
   <text x="258" y="17" font-family="Georgia,serif" font-size="8.5" fill="#c25a35">Acme Q3 2025 report, interest rates</text>
   <rect x="250" y="24" width="206" height="18" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="258" y="37" font-family="Georgia,serif" font-size="8.5" fill="#1a1a1a">"the rate increased by 3%"</text>

@@ -13,7 +13,7 @@ internally inconsistent throughout, with retrieval quality nobody can predict.
 <svg viewBox="0 0 460 86" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The live index keeps serving reads while a second index is built and verified beside it, and reads are switched only after verification passes">
   <rect x="4" y="10" width="120" height="26" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="64" y="27" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#1a1a1a">index_v1 (serving)</text>
-  <rect x="4" y="48" width="120" height="26" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="4" y="48" width="120" height="26" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="64" y="65" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#c25a35">index_v2 (filling)</text>
   <path d="M124 23 H176" stroke="#1a1a1a" stroke-width="1.2"/><path d="M176 23 l-7 -4 v8 z" fill="#1a1a1a"/>
   <text x="182" y="26" font-family="Consolas,monospace" font-size="8" fill="#1a1a1a">reads</text>

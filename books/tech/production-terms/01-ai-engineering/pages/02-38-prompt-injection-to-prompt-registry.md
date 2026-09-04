@@ -25,7 +25,7 @@ separate channels for code and for values. A model has one.
   <path d="M116 74 H150 V48" stroke="#1a1a1a" stroke-width="1.2" fill="none"/>
   <path d="M152 44 H180" stroke="#1a1a1a" stroke-width="1.2"/><path d="M182 44 l-7 -4 v8 z" fill="#1a1a1a"/>
 
-  <rect x="184" y="30" width="242" height="28" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="184" y="30" width="242" height="28" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="194" y="48" font-family="Consolas,monospace" font-size="8.5" fill="#c25a35">one token stream — no channel marks any of it as data</text>
 </svg>
 

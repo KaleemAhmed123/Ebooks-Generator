@@ -21,7 +21,7 @@ the content is invented — it is only ever a search key.
   <rect x="4" y="44" width="118" height="22" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="12" y="59" font-family="Consolas,monospace" font-size="8" fill="#1a1a1a">raw question</text>
   <path d="M122 55 H154" stroke="#1a1a1a" stroke-width="1.2"/><path d="M156 55 l-7 -4 v8 z" fill="#1a1a1a"/>
-  <rect x="158" y="44" width="140" height="22" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="158" y="44" width="140" height="22" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="166" y="59" font-family="Consolas,monospace" font-size="8" fill="#c25a35">invented answer</text>
   <path d="M298 55 H330" stroke="#1a1a1a" stroke-width="1.2"/><path d="M332 55 l-7 -4 v8 z" fill="#1a1a1a"/>
 

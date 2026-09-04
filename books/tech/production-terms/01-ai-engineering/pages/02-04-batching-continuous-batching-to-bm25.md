@@ -10,7 +10,7 @@ immediately and a waiting request takes it.
 <svg viewBox="0 0 460 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Under static batching a short request holds an idle slot until the longest request in its batch finishes; under continuous batching the freed slot is refilled at the next generation step">
   <text x="4" y="12" font-family="Consolas,monospace" font-size="8.5" fill="#6b6b6b">STATIC</text>
   <rect x="70" y="18" width="70" height="12" fill="#c25a35"/>
-  <rect x="140" y="18" width="180" height="12" fill="#fdece5" stroke="#6b6b6b" stroke-width="0.6"/>
+  <rect x="140" y="18" width="180" height="12" fill="#e2fcf3" stroke="#6b6b6b" stroke-width="0.6"/>
   <text x="326" y="28" font-family="Georgia,serif" font-size="9" fill="#6b6b6b">done, still holding a slot</text>
   <rect x="70" y="34" width="250" height="12" fill="#1a1a1a"/>
   <text x="326" y="44" font-family="Georgia,serif" font-size="9" fill="#1a1a1a">everyone waits for this one</text>

@@ -15,7 +15,7 @@ neither be matched properly nor answered from.
   <text x="14" y="50" font-family="Georgia,serif" font-size="9" fill="#6b6b6b">a subject with no number</text>
   <text x="220" y="50" font-family="Georgia,serif" font-size="9" fill="#6b6b6b">a number with no subject</text>
   <text x="4" y="72" font-family="Consolas,monospace" font-size="8.5" fill="#6b6b6b">STRUCTURE-AWARE</text>
-  <rect x="140" y="62" width="270" height="18" fill="#fdece5" stroke="#c25a35" stroke-width="1.3"/>
+  <rect x="140" y="62" width="270" height="18" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.3"/>
   <text x="150" y="75" font-family="Georgia,serif" font-size="9" fill="#c25a35">split on headings, sections, whole table rows</text>
 </svg>
 

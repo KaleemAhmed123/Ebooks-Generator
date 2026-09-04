@@ -16,7 +16,7 @@ autoregressively costs that many sequential passes.
   <rect x="232" y="18" width="100" height="22" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="282" y="33" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#1a1a1a">one verify pass</text>
   <text x="4" y="60" font-family="Georgia,serif" font-size="9" fill="#6b6b6b">large model keeps</text>
-  <rect x="4" y="64" width="34" height="18" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/><rect x="42" y="64" width="34" height="18" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/><rect x="80" y="64" width="34" height="18" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="4" y="64" width="34" height="18" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/><rect x="42" y="64" width="34" height="18" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/><rect x="80" y="64" width="34" height="18" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <rect x="118" y="64" width="34" height="18" fill="none" stroke="#c25a35" stroke-width="1.4" stroke-dasharray="3 2"/>
   <text x="135" y="77" text-anchor="middle" font-family="Consolas,monospace" font-size="7.5" fill="#c25a35">fixed</text>
   <path d="M156 73 L190 73" stroke="#1a1a1a" stroke-width="1.2" stroke-dasharray="3 3"/>

@@ -16,7 +16,7 @@ the instruction and never saw it; it was white text on white, or an HTML comment
   <rect x="152" y="16" width="104" height="26" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="204" y="32" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#1a1a1a">context</text>
   <path d="M256 29 H298" stroke="#1a1a1a" stroke-width="1.2"/><path d="M298 29 l-7 -4 v8 z" fill="#1a1a1a"/>
-  <rect x="300" y="16" width="128" height="26" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="300" y="16" width="128" height="26" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="364" y="32" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#c25a35">send_email, pay, delete</text>
   <text x="4" y="60" font-family="Georgia,serif" font-size="9" fill="#6b6b6b">no boundary is crossed anywhere on this line — the instruction is only more text</text>
   <text x="4" y="71" font-family="Georgia,serif" font-size="9" fill="#c25a35">the tools on the right decide how bad it gets</text>
@@ -45,7 +45,7 @@ reason attached, never to a swallowed exception.
     <rect x="80" y="20" width="62" height="20" fill="none" stroke="#1a1a1a" stroke-width="1.1"/><text x="111" y="34" text-anchor="middle">parse</text>
     <rect x="156" y="20" width="62" height="20" fill="none" stroke="#1a1a1a" stroke-width="1.1"/><text x="187" y="34" text-anchor="middle">chunk</text>
     <rect x="232" y="20" width="62" height="20" fill="none" stroke="#1a1a1a" stroke-width="1.1"/><text x="263" y="34" text-anchor="middle">embed</text>
-    <rect x="308" y="20" width="62" height="20" fill="#fdece5" stroke="#c25a35" stroke-width="1.2"/><text x="339" y="34" text-anchor="middle" fill="#c25a35">upsert</text>
+    <rect x="308" y="20" width="62" height="20" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.2"/><text x="339" y="34" text-anchor="middle" fill="#c25a35">upsert</text>
   </g>
   <g stroke="#1a1a1a" stroke-width="1.1" fill="#1a1a1a">
     <path d="M68 30 H76"/><path d="M76 30 l-5 -3 v6 z"/>

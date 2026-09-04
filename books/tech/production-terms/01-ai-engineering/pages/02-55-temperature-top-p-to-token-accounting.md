@@ -16,7 +16,7 @@ sampling happens only among what survived.
   <path d="M88 44 H100" stroke="#1a1a1a" stroke-width="1.2"/><path d="M100 44 l-7 -4 v8 z" fill="#1a1a1a"/>
   <text x="256" y="14" font-family="Georgia,serif" font-size="9" fill="#6b6b6b">top-p: same curve, fewer tokens</text>
   <path d="M260 60 h12 v-38 h-12 z M276 60 h12 v-26 h-12 z M292 60 h12 v-16 h-12 z M308 60 h12 v-9 h-12 z M324 60 h12 v-5 h-12 z" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
-  <path d="M360 60 h12 v-38 h-12 z M376 60 h12 v-26 h-12 z M392 60 h12 v-16 h-12 z" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <path d="M360 60 h12 v-38 h-12 z M376 60 h12 v-26 h-12 z M392 60 h12 v-16 h-12 z" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <path d="M340 44 H352" stroke="#1a1a1a" stroke-width="1.2"/><path d="M352 44 l-7 -4 v8 z" fill="#1a1a1a"/>
   <text x="416" y="60" font-family="Consolas,monospace" font-size="8" fill="#1a1a1a">tail cut</text>
   <text x="4" y="82" font-family="Georgia,serif" font-size="9" fill="#6b6b6b">one rescales every bar; the other deletes bars</text>

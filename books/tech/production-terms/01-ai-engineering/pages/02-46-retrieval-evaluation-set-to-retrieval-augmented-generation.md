@@ -45,7 +45,7 @@ question, retrieve the nearest chunks, prepend them to the prompt.
   <rect x="4" y="52" width="80" height="22" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="44" y="67" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#1a1a1a">question</text>
   <path d="M84 63 H104" stroke="#1a1a1a" stroke-width="1.2"/><path d="M104 63 l-7 -4 v8 z" fill="#1a1a1a"/>
-  <rect x="106" y="52" width="96" height="22" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="106" y="52" width="96" height="22" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="154" y="67" text-anchor="middle" font-family="Consolas,monospace" font-size="8" fill="#c25a35">top-k chunks</text>
   <path d="M202 63 H222" stroke="#1a1a1a" stroke-width="1.2"/><path d="M222 63 l-7 -4 v8 z" fill="#1a1a1a"/>
   <rect x="224" y="52" width="76" height="22" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>

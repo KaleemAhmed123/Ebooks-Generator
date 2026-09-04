@@ -17,7 +17,7 @@ user's permissions, never with broad service credentials.
   <text x="47" y="30" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#1a1a1a">model</text>
   <path d="M90 27 H144" stroke="#1a1a1a" stroke-width="1.2"/><path d="M144 27 l-7 -4 v8 z" fill="#1a1a1a"/>
   <text x="94" y="22" font-family="Consolas,monospace" font-size="8" fill="#6b6b6b">tool_use</text>
-  <rect x="146" y="14" width="122" height="26" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="146" y="14" width="122" height="26" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="207" y="30" text-anchor="middle" font-family="Consolas,monospace" font-size="8.5" fill="#c25a35">your code executes</text>
   <path d="M268 27 H322" stroke="#1a1a1a" stroke-width="1.2"/><path d="M322 27 l-7 -4 v8 z" fill="#1a1a1a"/>
   <text x="272" y="22" font-family="Consolas,monospace" font-size="8" fill="#6b6b6b">tool_result</text>
