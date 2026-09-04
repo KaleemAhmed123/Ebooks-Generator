@@ -130,7 +130,7 @@ House SVG style, hand-written, self-contained, no image files:
   <rect x="4" y="12" width="132" height="26" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="14" y="29" font-family="Consolas,monospace" font-size="8.5" fill="#1a1a1a">plain box</text>
   <path d="M136 25 H168" stroke="#1a1a1a" stroke-width="1.2"/><path d="M168 25 l-7 -4 v8 z" fill="#1a1a1a"/>
-  <rect x="170" y="12" width="96" height="26" fill="#fdece5" stroke="#c25a35" stroke-width="1.4"/>
+  <rect x="170" y="12" width="96" height="26" fill="#e2fcf3" stroke="#c25a35" stroke-width="1.4"/>
   <text x="196" y="29" font-family="Consolas,monospace" font-size="8.5" fill="#c25a35">the important box</text>
   <text x="4" y="70" font-family="Georgia,serif" font-size="9" fill="#6b6b6b">the caption carries the punchline, not a label</text>
 </svg>
@@ -141,7 +141,7 @@ Hard constraints:
 - **`viewBox="0 0 460 H"`** — width is always 460. Height 60–110. Nothing wider,
   or it overflows the printed measure.
 - **Colours: exactly these four.** `#1a1a1a` neutral ink, `#6b6b6b` caption
-  grey, `#c25a35` accent, `#fdece5` accent tint fill. **`#c25a35` is booklet
+  grey, `#c25a35` accent, `#e2fcf3` accent tint fill. **`#c25a35` is booklet
   01's accent and the build rewrites it to the volume's green automatically** —
   so use that literal hex and no other accent colour, or your diagram will print
   orange inside a green book.

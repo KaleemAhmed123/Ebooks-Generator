@@ -921,3 +921,24 @@ palette         #1a1a1a #c25a35 #6b6b6b #fdece5 only
 
 Stale "456" references updated in `meta.json`, `front/01-how-to-read.md` and
 `theme.css`.
+
+### 2026-09-04 — the tint colour was wrong in booklet 01
+
+The rewrite brief told the agents to use `#fdece5`, a peach tint, to sit beside
+booklet 01's orange accent. That was my mistake and it cost a rebuild.
+
+The build remaps only one colour: a booklet's `cover.accent` becomes the
+volume's accent. The tint is not remapped, because until now it never needed to
+be — **all seven other booklets use `#e2fcf3`**, a mint that reads as neutral
+next to any accent. Booklet 05 pairs it with red, 07 with purple, 02 with blue.
+
+So booklet 01's diagram boxes printed peach inside the green volume while their
+strokes correctly turned teal. Fixed by replacing all 70 occurrences with
+`#e2fcf3` and correcting the brief.
+
+**The rule for anyone adding a booklet:** the accent is per-booklet and gets
+remapped; the tint is `#e2fcf3` everywhere and does not.
+
+Final state: booklet 01 is 116 terms over 59 term pages, 61 printed pages
+standalone. The volume is 232 pages, down from 274, with 471 terms. Build-reported
+and actual page counts match in both.
