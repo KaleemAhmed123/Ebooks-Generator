@@ -218,6 +218,21 @@ async function buildMaster(book) {
   // matches its own cover.
   const accent = book.config.cover?.accent ?? null;
 
+  // Anything in the series' own front/ folder is printed after the contents and
+  // before the first topic. A booklet has no use for it; a 273-page volume that
+  // opens straight onto an entry does.
+  const frontDir = path.join(book.dir, "front");
+  if (existsSync(frontDir)) {
+    for (const f of (await readdir(frontDir)).filter((f) => f.endsWith(".md")).sort()) {
+      // Front matter contributes its title to the contents and nothing else.
+      // Its sub-headings would otherwise sit above the index as three lines all
+      // pointing at the same page.
+      const own = [];
+      pages.push(await renderPage(path.join(frontDir, f), own, pages.length, blocks, null, accent));
+      headings.push(...own.filter((h) => h.lvl === 1));
+    }
+  }
+
   for (const [i, child] of order.entries()) {
     const dir = path.join(book.dir, child);
     const meta = JSON.parse(await readFile(path.join(dir, "meta.json"), "utf8"));
