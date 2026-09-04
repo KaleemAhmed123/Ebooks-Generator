@@ -207,7 +207,7 @@ h1 {
 }
 
 /* ---------- contents ----------
-   456 entries. At one column this ran to nine pages, which is a table of
+   471 entries. At one column this ran to nine pages, which is a table of
    contents nobody uses. Three columns of small type puts the whole index in
    three, and it reads better because a term and its page number are close
    together instead of separated by 100mm of leader dots. */
@@ -248,7 +248,7 @@ h1 {
    they are noise, so the page number simply sits at the right edge. */
 .toc li > .dots { border-bottom: none; margin: 0 1mm; }
 .toc li > .p { font-size: 5pt; color: var(--muted); }
-/* The domain styles links blue. An index of 456 entries set in blue is a wall
+/* The domain styles links blue. An index of 471 entries set in blue is a wall
    of blue, and it is the wrong colour for this book. Entries read as text; the
    topic lines keep the accent. */
 .toc a { color: var(--ink); text-decoration: none; }

@@ -1,6 +1,6 @@
 # How to read this volume
 
-Four hundred and fifty-six terms in eight topics, alphabetical inside each one.
+Four hundred and seventy-one terms in eight topics, alphabetical inside each one.
 The contents lists every one with its page. You half-remember a phrase from a
 design review, you look it up, you have the real meaning in twenty seconds.
 
