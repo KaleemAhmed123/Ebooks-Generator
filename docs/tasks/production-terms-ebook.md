@@ -846,3 +846,78 @@ either way now.
 
 Final: **274 pages** — cover, 3 contents, 1 introduction, 8 dividers, 261 term
 pages. All eight booklets rebuilt clean.
+
+---
+
+## Update — 2026-09-04 — booklet 01 rewritten to house format
+
+**The problem.** Booklet 01 (AI Engineering) was the only one of eight using
+`### How it works` / `### In practice` subheadings. Git shows why: it was
+written first, before the format settled, to an early "one page per term" idea
+copied from the source PDF. Those headings were scaffolding to fill 186mm.
+
+| | words/term | `###` | pages |
+|---|---|---|---|
+| booklet 01, before | 273 | 203 | 101 for 101 terms |
+| booklets 02–08 | ~130 | 0 | 2–3 terms per page |
+| booklet 01, after | ~135 | 0 | 59 for 116 terms |
+
+`split-pages.mjs` was not at fault. It measured each term and packed correctly —
+one per page, because each term genuinely was a page tall. The tool reported
+success, which is why this went unnoticed. **A height-aware packer cannot detect
+content that is uniformly too long.**
+
+**What was done.** Four subagents, partitioned by file, working from one shared
+brief (`production-terms-01-rewrite-brief.md`). Every term rewritten to the
+house shape: meaning, where it bites, optional SVG, one bold failure-mode
+paragraph.
+
+**Accuracy, not just length.** The rewrite uncovered invented figures in the
+shipped text — "nine-point accuracy drop", "forty-minute provider degradation",
+"cut manual review volume by 70%", "3.2s vs 0.4s", "97%/71%/94% field
+accuracies", "94% extraction accuracy". None traceable to a primary source; all
+plausible-sounding padding the page-filling format encouraged. All cut. One
+outright error corrected: Anthropic's deprecation notice is **at least 60 days**,
+not the "three months" the book claimed.
+
+Verified replacements include Anthropic cache-write multipliers (1.25× on the
+5-minute TTL, 2× on the 1-hour, 0.1× read), the 28×28-pixel image patch formula,
+llama.cpp's Llama 3 8B quantization scoreboard, pgvector HNSW defaults
+(`m=16`, `hnsw.ef_search=40`), vLLM PagedAttention 2–4× throughput, LoRA's
+10,000× parameter reduction, Elasticsearch `rank_constant` 60, and MCP spec
+revision 2026-07-28.
+
+Two illustrative figures the agents kept but could not source were also cut
+(Hallucination, Guardrails). The Latency Budget example was kept — its numbers
+are arithmetic inside a stated hypothetical, not a claim about the world.
+
+**15 terms added.** The booklet used these words throughout and never defined
+them: Retrieval-Augmented Generation (the acronym appeared everywhere, the term
+did not), Embedding (though `Embedding Drift` and `Embedding Model Migration`
+both existed), Vector Database (though `Vector Index Rebuild` existed),
+Tokenization (though `Token Accounting` and `Context Window` existed), plus
+BM25, Chain of Thought, Cosine Similarity, Distillation, Few-Shot Prompting,
+Model Context Protocol, Quantization, Reasoning Model, Speculative Decoding,
+Streaming Response, System Prompt.
+
+**Diagrams.** 56 across 116 terms, up from roughly one in five. All on the
+460-wide grid, all four-colour palette.
+
+**A latent rendering bug fixed on the way.** The old text carried off-palette
+SVG hexes — `#b32d2b`, `#e2fcf3`, `#e0e0e0`. The build rewrites only the
+booklet's declared accent (`#c25a35`) to the volume's green, so those would have
+printed off-colour inside the merged volume. The whole booklet is now
+four-colour clean.
+
+**Result, verified.**
+
+```
+terms          456 -> 471, all unique, no cross-booklet duplication
+booklet 01      101 -> 59 term pages (61 with cover and contents)
+volume          274 -> 232 pages, build-reported == actual
+PDF grep        "How it works" 0, "In practice" 0
+palette         #1a1a1a #c25a35 #6b6b6b #fdece5 only
+```
+
+Stale "456" references updated in `meta.json`, `front/01-how-to-read.md` and
+`theme.css`.
