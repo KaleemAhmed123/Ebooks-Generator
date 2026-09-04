@@ -1,8 +1,7 @@
 ## Event Sourcing
 
 Storing the sequence of changes as the source of truth and deriving current
-state by replaying them. Genuinely powerful, and heavier than teams expect when
-they adopt it.
+state by replaying them. Heavier than teams expect when they adopt it.
 
 Instead of a row saying `balance = 400`, you store `Deposited 500` and
 `Withdrew 100`. You get a perfect audit trail and the ability to reconstruct any
