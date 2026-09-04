@@ -767,3 +767,82 @@ inventory rather than an assertion.
 
 Final: **volume 273 pages** (1 cover, 3 contents, 8 dividers, 261 term pages),
 all eight booklets clean, no overflow anywhere.
+
+---
+
+## Update — 2026-09-03: consistency pass applied, volume gains an introduction
+
+A review agent read booklet 03 against the other seven and reported findings
+only. Twenty-six edits followed.
+
+### Contradictions the volume was carrying
+
+| Where | Was | Now |
+|---|---|---|
+| Log Volume Cost | "sampling at the emitter is the control that works" | says it is head sampling and names what it discards, which is what booklets 01 and 05 warn about |
+| Tail-at-Scale | ruled out the median, named no remedy | names cutting fan-out and hedging, matching booklet 05 |
+| Change Freeze | "the preceding four-week window" | "a rolling four-week window", so it reads as a policy window and not booklet 05's monthly SLO period |
+| Egress Cost | warned against the zone spread booklet 08 tells you to buy | separates the query path from the replication path |
+| Testing in Production | required a kill switch for everything, including shadow traffic, which booklet 02 calls risk-free | scopes the kill switch to canaries and flags |
+
+### Entries that were doing the same job
+
+- **Deterministic Test** ended on the retry habit, which is **Flaky Test**'s
+  point one page later. It now ends on its own material: the leak is usually in
+  code you did not write.
+- **Snapshot Test** repeated **Golden File Test**'s regeneration risk. Golden
+  keeps the update flag; Snapshot keeps unreviewable size.
+- **Fixture vs Factory** ended on sharding, which **Test Isolation** owns. It
+  now ends on the seeded row nobody dares change.
+- **Integration vs End-to-End** restated the 70/20/10 mix that **Test Pyramid**
+  already carries. Dropped, and its failure mode now shows the cost rather than
+  asserting it.
+
+### Terms used and never explained
+
+JMH, NIMS, SAFe, `effective_spindle_count`, "branch by abstraction", "flame
+chart" and Google's "CL" all now carry a one-line gloss at first use.
+
+### Numbers
+
+- **The GitHub CI minute prices were re-checked against GitHub's own billing
+  docs and are correct**: $0.006 Linux, $0.010 Windows, $0.062 macOS. The review
+  had flagged them against a 2x Windows multiplier GitHub no longer publishes —
+  it publishes these per-minute rates instead. **No change made.** This is the
+  one finding that was wrong.
+- Connection Pool Sizing said nine "rounded to ten". Nine does not round to ten;
+  it now attributes the ten to HikariCP's own worked example.
+- Storage Class Lifecycle had two units under one column head. Split.
+- Committed Use Discount's 66% and the Spot table's 72% were the same row
+  collapsing two products. The table now reads 66-72%.
+- Tail-at-Scale used 10ms as two different statistics on one page. The second is
+  now labelled as Google's own measured service.
+- The Observability Bill's cardinality magnitude now states its assumption, so
+  it and booklet 05's 960,000,000 describe one mechanism at two scales.
+
+### Voice
+
+"Genuinely powerful" in Event Sourcing (the brief bans telling the reader a
+thing is powerful), "simply" in Smoke Test, and one American "utilization" three
+lines from two British ones. Three slips in 456 terms.
+
+### The volume has an introduction again
+
+Removing the per-booklet openers left the volume opening straight onto an entry.
+The build now prints anything in the series' `front/` folder after the contents
+and before the first topic; a booklet ignores it.
+
+`front/01-how-to-read.md` is one page: what the three parts of an entry are,
+what is deliberately not in the book, and that unverifiable claims were cut
+rather than softened.
+
+**Front matter contributes only its title to the contents.** Its sub-headings
+would otherwise sit above the index as three lines pointing at the same page.
+
+The first draft ran 204mm against the 186mm page, which also put the build's
+page count one out from the PDF's — a one-file-one-page violation shows up as
+wrong page numbers throughout. Trimmed to fit; build-reported and actual are 274
+either way now.
+
+Final: **274 pages** — cover, 3 contents, 1 introduction, 8 dividers, 261 term
+pages. All eight booklets rebuilt clean.
