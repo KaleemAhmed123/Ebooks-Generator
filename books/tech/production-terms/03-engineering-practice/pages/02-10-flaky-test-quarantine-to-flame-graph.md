@@ -38,5 +38,5 @@ everything under it is its ancestry.
 
 **Frames are sorted alphabetically so identical stacks merge.** A wide box means
 "often on-CPU", never "ran for a long stretch", and reading left to right as a
-sequence is the standard mistake. That picture is a flame chart, and it is a
+sequence is the standard mistake. That picture is a flame chart, where the x-axis really is time, and it is a
 different tool.

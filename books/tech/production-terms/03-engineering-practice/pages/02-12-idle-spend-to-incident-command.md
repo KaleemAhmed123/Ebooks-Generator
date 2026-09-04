@@ -14,7 +14,8 @@ resources finds it.
 
 ## Incident Command
 
-The response structure borrowed from emergency management, where NIMS defines
+The response structure borrowed from emergency management, where the US National Incident
+Management System defines
 the Incident Command System. PagerDuty keeps the shape intact: their incident
 commander is "the single source of truth of what is currently happening" and is
 explicitly "NOT a resolver".

@@ -6,9 +6,9 @@ machine, in any order.
 Three things leak in: the clock, the random seed, the network. A `new Date()`
 inside an assertion passes for eleven months and fails at a year boundary.
 
-**Determinism is what makes a failure worth reading.** A suite that is right
-almost every time trains the team to re-run rather than investigate, and once
-that habit exists a real regression looks exactly like noise.
+**The leak is usually in code you did not write.** A library seeding from the
+system clock, a container on a different timezone, a pool handing out sockets in
+arrival order: none of it appears in your test, and all of it changes the result.
 
 ## Egress Cost
 
@@ -17,7 +17,8 @@ services, caches and databases are allowed to sit.
 
 Traffic between EC2 instances in different Availability Zones of one region
 costs $0.01 per GB **in each direction** (AWS list price, 2026), so a chatty
-service-and-database pair split across zones pays twice on every query.
+service-and-database pair split across zones pays twice on every query. Replication is the exception: cross-AZ
+transfer is what surviving a zone failure costs.
 
 | Path | Charged |
 |---|---|

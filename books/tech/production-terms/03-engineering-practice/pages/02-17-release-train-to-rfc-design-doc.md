@@ -1,7 +1,7 @@
 ## Release Train
 
 Shipping on a fixed cadence. What is ready when the window opens departs; what
-is not waits for the next one. SAFe's Agile Release Train is the formal version:
+is not waits for the next one. The Scaled Agile Framework's Agile Release Train is the formal version:
 50 to 125 people delivering inside a Planning Interval, "a timebox of 8-12
 weeks".
 
@@ -12,10 +12,9 @@ every hour of it widens the gap between the branch and what it will merge into.
 
 ## Resource Saturation
 
-From Brendan Gregg's USE method: for every resource, check utilization,
-saturation and errors. Utilization is "the average time that the resource was
-busy servicing work". Saturation is "the degree to which the resource has extra
-work which it can't service, often queued".
+From Brendan Gregg's USE method, which pairs it with utilisation and errors.
+Saturation is "the degree to which the resource has extra work which it can't
+service, often queued".
 
 Saturation is the one that predicts latency. Utilisation at 70% says nothing
 about the queue; run-queue depth, pool wait time and buffer occupancy do.

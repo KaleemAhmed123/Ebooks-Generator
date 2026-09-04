@@ -4,7 +4,8 @@
 single branch called 'trunk' and resist any pressure to create other long-lived
 development branches." At scale it still uses branches — but only for code
 review and CI before the commit lands on trunk, never for building or publishing
-artefacts. Feature flags and branch by abstraction are what let a large change
+artefacts. Feature flags, and branch by abstraction — routing callers through a seam so old
+and new implementations can coexist — are what let a large change
 arrive in pieces.
 
 <svg viewBox="0 0 460 88" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Short-lived branches leave the trunk and rejoin it within hours, while a long-lived branch diverges and never returns, deferring every conflict to a single merge">

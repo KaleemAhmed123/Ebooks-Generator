@@ -20,8 +20,10 @@ five.
 ## Connection Pool Sizing
 
 Smaller pools go faster. The PostgreSQL sizing rule HikariCP documents is
-`connections = ((core_count * 2) + effective_spindle_count)` — nine for a
-four-core server with one disk, rounded to ten.
+`connections = ((core_count * 2) + effective_spindle_count)`, where spindles are
+the independent disks the database can seek in parallel and a single SSD counts
+as one — A four-core server with one disk gives nine;
+HikariCP's own worked example rounds it to ten.
 
 HikariCP puts that ten-connection pool at roughly 3,000 front-end users and
 about 6,000 transactions per second. In the Oracle Real-World Performance

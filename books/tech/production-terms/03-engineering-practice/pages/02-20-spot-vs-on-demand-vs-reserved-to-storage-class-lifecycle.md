@@ -5,7 +5,7 @@ Three ways to buy the same instance, trading flexibility for price.
 | Purchase | Discount claimed | What you give up |
 |---|---|---|
 | On-demand | baseline | nothing |
-| Savings Plan / Reserved | up to 72% | 1 or 3 years, no cancellation |
+| Savings Plan / Reserved | up to 66-72% | 1 or 3 years, no cancellation |
 | Spot | up to 90% | the capacity, on two minutes' notice |
 
 Spot reclamation arrives as an interruption notice in instance metadata and on
@@ -22,7 +22,7 @@ compute to produce nothing.
 Rules that move objects to colder, cheaper classes as they age. The saving is on
 storage; the cost is in transitions and minimum durations.
 
-| S3 class | Minimum billed duration | Minimum billable size |
+| S3 class | Minimum billed duration | Minimum size / overhead |
 |---|---|---|
 | Standard-IA, One Zone-IA | 30 days | 128 KB |
 | Glacier Instant Retrieval | 90 days | 128 KB |

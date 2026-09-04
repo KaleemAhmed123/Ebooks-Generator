@@ -4,16 +4,15 @@ An integration test runs your code against one real dependency — the actual
 database, the actual broker — with the rest stubbed. An end-to-end test drives
 the deployed system the way a user would.
 
-Google's published guidance puts the mix near 70% unit, 20% integration, 10%
-end-to-end, on the grounds that an end-to-end failure reports a symptom.
-
 | | Integration | End-to-end |
 |---|---|---|
 | Real components | one | all of them |
 | A failure tells you | which boundary broke | that something broke |
 | Feedback | seconds | minutes |
 
-**The cost of an end-to-end suite is triage, not runtime.**
+**The cost of an end-to-end suite is triage, not runtime.** A red end-to-end run
+costs an engineer an hour deciding which of nine services broke. A red
+integration test names the boundary in its failure message.
 
 ## Load vs Stress vs Soak
 

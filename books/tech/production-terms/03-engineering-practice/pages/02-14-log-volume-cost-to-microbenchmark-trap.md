@@ -13,8 +13,8 @@ different amounts depending on which stage it survives to.
 
 **Ingest dominates, and ingest is priced on bytes nobody ever reads.** One debug
 line added to a hot path becomes a permanent per-request tax. Sampling at the
-emitter is the control that works; shortening retention only touches the $0.03
-column.
+emitter is the control that works, and it is head sampling: it discards the rare
+slow request before anyone knows it mattered.
 
 ## Microbenchmark Trap
 
@@ -23,7 +23,7 @@ elimination, where an unused result lets the whole computation be optimised
 away, and constant folding, where a fixed input lets the compiler compute the
 answer once, outside the loop.
 
-JMH names both and handles both — return the result or pass it to a `Blackhole`,
+JMH, the Java Microbenchmark Harness, names both and handles both — return the result or pass it to a `Blackhole`,
 and read inputs from non-final `@State` fields rather than constants.
 
 **A suspiciously good number is the symptom, and almost nobody treats it as

@@ -17,8 +17,8 @@ credentials — none of that leaves a trace in `git log`.
 ## Change Freeze
 
 A window in which production changes are blocked. Google's SRE workbook makes
-the trigger measured rather than seasonal: exceed the error budget over the
-preceding four-week window and the team halts "all changes and releases other
+the trigger measured rather than seasonal: exceed the error budget over a rolling
+four-week window and the team halts "all changes and releases other
 than P0 issues or security fixes" until the service is back inside its SLO.
 
 A calendar freeze inverts that logic. It defers change on a date, without any

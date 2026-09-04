@@ -20,7 +20,9 @@ engineering practices set the ceiling at one business day, and expect a reviewer
 who is not in deep focus to answer sooner.
 
 The cost is in the rounds, not the round: features and fixes "are delayed by
-days, weeks, or months as each CL waits for review and re-review."
+days, weeks, or months as each CL waits for review and re-review" — a CL, in
+Google's vocabulary, being one changelist, what everyone else calls a pull
+request.
 
 | Round | Google's maximum | Elapsed |
 |---|---|---|

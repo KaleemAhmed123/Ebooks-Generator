@@ -23,9 +23,10 @@ parallel and 63% of user requests take more than one second.
   <text x="238" y="60" font-family="Georgia,serif" font-size="10" fill="#0d7a7a">63% of requests exceed 1s</text>
 </svg>
 
-**Optimising the median buys nothing here.** In the real Google service they
-measured, the 99th-percentile for one random request at the root is 10ms and for
-all requests to finish it is 140ms.
+**Optimising the median buys nothing here.** Cut the fan-out, or hedge: send a
+second copy to another replica and take whichever answers first. In Google's own
+measured service, the root p99 for a single random request is 10ms; for all of
+them to finish, 140ms.
 
 ## Tech Debt Register
 

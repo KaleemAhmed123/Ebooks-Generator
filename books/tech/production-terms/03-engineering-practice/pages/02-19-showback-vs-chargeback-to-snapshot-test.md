@@ -23,7 +23,7 @@ forty minutes of end-to-end tests is forty minutes spent proving something
 already known.
 
 **A smoke test that grows stops being one.** Its whole value is finishing in
-under a minute; at ten minutes it is simply the first slow suite, and nobody gets
+under a minute; at ten minutes it is the first slow suite, and nobody gets
 the early answer any more.
 
 ## Snapshot Test
@@ -36,6 +36,6 @@ changes, and reviewed as part of your code review process", and names the habit
 it is fighting: "regenerating snapshots when test suites fail instead of
 examining the root causes of their failure".
 
-**A large snapshot is unreviewable, which makes `-u` the default response.**
-Snapshot two hundred lines of rendered markup and no reviewer can separate an
-intended class change from a deleted button.
+**A snapshot too large to read is not a test, it is a receipt.** Two hundred
+lines of rendered markup, and no reviewer can separate an intended class change
+from a deleted button.

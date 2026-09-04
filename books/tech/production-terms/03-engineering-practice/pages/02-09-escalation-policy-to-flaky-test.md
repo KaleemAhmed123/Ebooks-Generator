@@ -24,8 +24,8 @@ factory builds a fresh object per test from defaults the test overrides.
 | Breaks when | someone edits it | rarely |
 
 **pytest's scopes are where this bites.** A `session`-scoped fixture is created
-once and then mutated by every test that touches it, so the suite passes in file
-order and fails the day it is sharded across machines.
+once and then mutated by every test that touches it, so nobody dares change the seeded
+row that forty other tests quietly depend on.
 
 ## Flaky Test
 
