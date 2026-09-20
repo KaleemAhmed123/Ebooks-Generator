@@ -1,7 +1,6 @@
 ## In-memory still needs a log
 
-- An in-memory database like Redis stores its entire dataset in RAM, bypassing the disk entirely for reads. This provides microsecond latency
-- However, if the server restarts, RAM is wiped. To prevent catastrophic data loss, in-memory databases still write to disk in the background
+- Redis keeps the whole dataset in RAM: no disk on the read path. A restart empties RAM, so persistence still means a file on disk
 
 <svg viewBox="0 0 460 140" role="img" aria-label="Redis persistence options. RDB takes a slow snapshot. AOF appends to a log. On restart, the log is replayed into RAM." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
   <rect x="50" y="20" width="100" height="40" rx="3" fill="#e2fcf3" stroke="#1d4e89"/>
@@ -20,10 +19,9 @@
   <path d="M300 60 L220 90" stroke="#b8541a" fill="none"/><path d="M220 90 l-3 -6 h6 z" fill="#b8541a" transform="rotate(-60 220 90)"/>
 </svg>
 
-- **RDB**: Redis dumps a full snapshot of memory to disk every few minutes. If it crashes, you lose the last few minutes of writes
-- **AOF**: Redis acts like a WAL, appending every command to an Append Only File. By default (`appendfsync everysec`), it flushes to disk once per second. You may lose exactly 1 second of writes
+- **RDB**: a point-in-time snapshot of memory, written on a schedule. A crash loses everything since the last one, "the latest minutes" in Redis's own words
+- **AOF** (append-only file): every write command appended to a log, replayed on restart; the WAL again. With the default `appendfsync everysec` "you may lose 1 second"; `always` fsyncs per write; `no` leaves it to the OS
 
 ### The failure
 
-- A Redis master configured with persistence turned completely off (to maximize write throughput). It crashes and auto-restarts via a systemd script. It wakes up completely empty
-- Because it is the master, it immediately syncs its new, empty state to all its replicas. The replicas delete all their data to match the master. The entire dataset is wiped out in less than a second (a documented Redis failure mode)
+- A master with persistence off, restarted automatically after a crash. It comes back empty, and because it is the master, its replicas sync to it and empty themselves. Redis documents this exact sequence and its advice is blunt: with persistence off, do not auto-restart the master

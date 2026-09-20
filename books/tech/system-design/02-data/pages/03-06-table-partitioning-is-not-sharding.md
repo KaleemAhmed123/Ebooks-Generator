@@ -1,7 +1,7 @@
 ## Table partitioning on one node
 
-- When a Postgres table grows to hundreds of gigabytes, indexes become too large to fit in memory, and B-tree maintenance (like `VACUUM`) slows to a crawl
-- You can split the table into smaller, physical tables (partitions) under the hood. To the application, it still looks like one logical table
+- A table of hundreds of gigabytes has indexes that no longer fit in memory and a `VACUUM` that takes hours per pass
+- **Table partitioning** splits it into smaller physical tables, by range, list or hash of a column, behind one logical table the application still queries by name
 
 <svg viewBox="0 0 460 140" role="img" aria-label="Table partitioning. The logical 'sales' table is split into physical partitions by year: sales_2024, sales_2025, sales_2026. A query for 2026 prunes the others." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
   <rect x="180" y="10" width="100" height="30" rx="3" fill="#e2fcf3" stroke="#1d4e89" stroke-dasharray="2 2"/>
@@ -27,10 +27,10 @@
   <text x="380" y="46" text-anchor="middle" font-size="7">SELECT WHERE year=2026</text>
 </svg>
 
-- **Partition pruning**: When you query `WHERE year = 2026`, Postgres skips the 2024 and 2025 tables entirely
-- **Instant drop**: Dropping old time-series data with a bulk `DELETE` creates millions of dead rows that stall `VACUUM`. With table partitioning, you run `DETACH PARTITION`, which instantly drops the physical table (an `O(1)` operation)
+- **Partition pruning**: `WHERE created_at >= '2026-01-01'` never opens the 2024 and 2025 partitions
+- Expiry: a bulk `DELETE` of a year leaves millions of dead rows for `VACUUM`. `DETACH PARTITION` (or `DROP`) removes the year as one file operation and leaves nothing to clean
 
 ### The failure
 
-- Calling it sharding. Table partitioning splits a table, but all the partitions still live on the exact same machine. They share the same CPU, RAM, and disk head
-- When the server runs out of physical hardware capacity, table partitioning will not save you. You must shard the database across multiple machines (Module 8)
+- Calling it sharding. Every partition is on the same machine, sharing one CPU, one RAM, one disk, one write throughput
+- When that machine is the limit, partitioning changes nothing. Sharding, splitting across machines, is Module 8

@@ -1,7 +1,7 @@
 ## SSTables and Bloom filters
 
-- The file flushed to disk is a Sorted String Table (SSTable). Because the keys are perfectly sorted, the database does not need an index for every key. It keeps a sparse index in memory (e.g., one key for every 4 kB block) to tell it where to seek
-- The real defense against read amplification is the **Bloom filter**. A Bloom filter is a probabilistic data structure in memory that answers one question: "Is this key in this file?"
+- The flushed file is an **SSTable** (sorted string table): sorted, immutable, with a sparse index in memory, one entry per block, so a lookup seeks once and scans one block
+- The **Bloom filter** is a small bit array per file that answers "is this key in this file?" with two answers: definitely not, or probably yes
 
 <svg viewBox="0 0 460 140" role="img" aria-label="A Bloom filter. The read checks the Bloom filter first. If it says 'no', the SSTable is skipped entirely. If it says 'yes', the read proceeds to disk." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
   <rect x="20" y="50" width="80" height="24" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/><text x="60" y="66" text-anchor="middle">Read: "Bob"</text>
@@ -26,8 +26,8 @@
   <text x="270" y="27" text-anchor="middle" fill="#6b6b6b">File 1 skipped</text>
 </svg>
 
-- If the filter says "definitely not here", the database skips the file entirely. If it says "probably here", the database reads the file. Cassandra sets the false positive chance to 0.00075 by default
+- "Definitely not" skips the file without a disk read. "Probably" costs a read that may find nothing; Cassandra's default false-positive chance per table is 0.00075
 
 ### The failure
 
-- Searching for a key that does not exist in a database with no Bloom filters. The database will check every single SSTable on disk, from the newest to the oldest, attempting to find it. This destroys read latency
+- A read for a key that does not exist, with no filter. Nothing can stop early, so the read visits every file at every level before it can say "not found". Missing keys are the expensive reads in an LSM engine

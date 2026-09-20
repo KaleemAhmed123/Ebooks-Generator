@@ -1,7 +1,7 @@
 ## Row vs column storage
 
-- An **OLTP** (Online Transaction Processing) workload reads or updates a single row at a time. The database stores the data on disk row-by-row. If you read the row, you pull the whole row from the disk into memory
-- An **OLAP** (Online Analytical Processing) workload calculates aggregates across millions of rows, but only looks at a few columns (e.g., "what is the average `price`?"). Pulling millions of whole rows into memory just to read one column wastes disk I/O and RAM
+- **OLTP** (online transaction processing) touches one row at a time, so the row is stored whole: one read fetches all its columns
+- **OLAP** (online analytical processing) aggregates a few columns across millions of rows: "average `price` by month". Row storage drags every other column through the disk and the cache to get at one
 
 <svg viewBox="0 0 460 140" role="img" aria-label="Row store vs Column store. Row store interleaves columns on disk. Column store groups columns together, so scanning the Price column reads only price data." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
   <text x="120" y="20" text-anchor="middle" font-weight="bold" fill="#1d4e89">Row Store (OLTP)</text>
@@ -26,8 +26,8 @@
   <text x="340" y="115" text-anchor="middle" font-size="7" fill="#6b6b6b">Reads only the required column</text>
 </svg>
 
-- **Parquet** is a hybrid. It stores "row groups", but inside the group, the data is stored column-by-column. A query engine (like Presto or BigQuery) can skip entire columns it does not need
+- **Parquet** stores row groups, and inside each group a column chunk per column. A reader first reads the file metadata "to find all the column chunks they are interested in" and fetches only those
 
 ### The failure
 
-- Running analytical scans on the OLTP primary or its read replica. A heavy `SUM()` across an unindexed column will lock pages, evict useful rows from the cache, and stall live user traffic. OLTP and OLAP are fundamentally opposed; you must separate them
+- Running the analytics scan on the OLTP primary or its replica. A `SUM()` over an unindexed column reads the whole table, evicts the hot rows from cache, and the live traffic behind it slows down. Copy the data into a column store and scan there

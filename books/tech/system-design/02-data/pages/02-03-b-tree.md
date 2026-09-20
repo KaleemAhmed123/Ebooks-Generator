@@ -1,7 +1,7 @@
 ## The B-tree
 
-- To solve the Bitcask problem (cannot query a range, index must fit in RAM), most relational databases (Postgres, MySQL) use a **B-tree**
-- A B-tree splits the disk into fixed-size pages (Postgres uses 8 kB, InnoDB defaults to 16 kB). The tree is balanced: every leaf is exactly the same number of hops from the root (typically 3 or 4)
+- A **B-tree** fixes both Bitcask limits: keys are sorted, and only the top levels need to stay in memory. It is the default index in Postgres and the table itself in InnoDB
+- The tree is made of fixed-size pages (Postgres 8 kB, InnoDB 16 kB), each holding sorted keys and pointers to child pages. Every leaf sits at the same depth
 
 <svg viewBox="0 0 460 120" role="img" aria-label="A B-tree with root, branch, and leaf pages. The tree is shallow. Leaf pages contain the sorted data." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
   <rect x="180" y="10" width="100" height="24" rx="3" fill="#e2fcf3" stroke="#1d4e89"/>
@@ -29,10 +29,10 @@
   <path d="M300 74 L285 90" stroke="#1d4e89" fill="none"/>
 </svg>
 
-- **Strengths**: Because the leaves are sorted, finding all users from ID 10 to 49 requires jumping to leaf 10 and reading sequentially. Because the tree is shallow, finding a single key takes only 3 or 4 page reads
-- **Use for**: Extremely read-heavy workloads (99% reads) where most queries look up a single row or scan a contiguous range
+- The depth is the arithmetic: an 8 kB page holds a few hundred keys, so three levels address a few hundred cubed, tens of millions of rows. A point read is that many page reads, most of them cached
+- A range, `id BETWEEN 10 AND 49`, is one descent to the first leaf and a walk along the leaves
 
 ### The failure
 
-- The B-tree is updated in place. If you change one string from "Alice" to "Bob", the database must overwrite the entire 8 kB page on disk
-- A random write workload (like UUID inserts) is hostile to a B-tree. The inserts land in random leaves, forcing the disk head to thrash. When a leaf page fills up, the database must halt to split the page in half, cascading splits up the tree
+- Pages are updated in place. Changing one value rewrites the whole page, and the WAL carries the change first
+- Random keys (UUIDv4) land in random leaves: random I/O per insert, and a full leaf splits, which can cascade up a level. Sorted keys append to the rightmost leaf instead

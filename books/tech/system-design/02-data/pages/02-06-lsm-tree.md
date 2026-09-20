@@ -1,7 +1,7 @@
 ## The LSM tree
 
-- To solve the random-write problem of the B-tree, databases like Cassandra and RocksDB use a Log-Structured Merge (LSM) tree. It optimizes entirely for writes
-- Instead of updating pages on disk, all writes go straight into memory (into a sorted structure called the `memtable`). When the memtable fills up (e.g., 64 MB in RocksDB), it flushes to disk as an immutable file
+- The **LSM tree** (log-structured merge tree) never updates a page in place. Cassandra, RocksDB, and everything built on RocksDB use it
+- A write goes to the commit log, then into the **memtable**, a sorted structure in memory. When the memtable is full (RocksDB `write_buffer_size`, 64 MB by default) it is flushed to disk as one immutable sorted file. Old files are merged in the background (page 8)
 
 <svg viewBox="0 0 460 140" role="img" aria-label="LSM tree. Writes go to RAM memtable. Memtable flushes to immutable SSTables on disk. Reads check memtable, then L0 SSTables, then L1." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
   <rect x="20" y="20" width="80" height="24" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/><text x="60" y="36" text-anchor="middle">Write</text>
@@ -31,9 +31,12 @@
   <rect x="20" y="88" width="80" height="24" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/><text x="60" y="104" text-anchor="middle">Read</text>
 </svg>
 
-- **Strengths**: Because the database never modifies an existing file, all disk writes are sequential. Sequential I/O is the fastest thing a disk can do. You get extreme write throughput
-- **Use for**: Metrics, logging, time-series, messaging, and workloads where writes heavily outnumber reads
+- Every disk write is a sequential append or a sequential flush. Nothing seeks to a random page to update it; that is the whole reason the engine is write-fast
+
+:::interview
+"Why is Cassandra fast at writes?" — A write is an append to the commit log plus an insert into an in-memory memtable. No page on disk is read or modified. The disk sees sequential writes only; the merging is deferred to compaction.
+:::
 
 ### The failure
 
-- Read amplification. To answer a read query, the database checks the memtable. If the key is not there, it must check the newest file on disk, then the next newest, cascading downward. A single logical read triggers many physical disk reads
+- Read amplification. A read checks the memtable, then the newest file, then the next, until it finds the key. One logical read can touch several files; page 7 is how the engine skips most of them

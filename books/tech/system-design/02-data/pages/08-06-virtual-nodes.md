@@ -1,0 +1,35 @@
+## Virtual nodes
+
+- **Virtual nodes**: each physical node owns many points on the ring, not one. Dynamo calls the points tokens; Cassandra's `num_tokens` sets how many per node, 16 by default
+
+<svg viewBox="0 0 460 140" role="img" aria-label="Virtual nodes. Node A is green, Node B is orange. Node A owns three non-adjacent slices of the ring. Node B owns the others. Load is perfectly balanced." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
+  <circle cx="230" cy="70" r="50" fill="none" stroke="#6b6b6b" stroke-width="1"/>
+  
+  <!-- Node A vnodes -->
+  <path d="M230 20 A50 50 0 0 1 278 55" fill="none" stroke="#1d4e89" stroke-width="4"/>
+  <text x="270" y="30" font-weight="bold" fill="#1d4e89" font-size="7">A</text>
+  
+  <path d="M265 105 A50 50 0 0 1 205 113" fill="none" stroke="#1d4e89" stroke-width="4"/>
+  <text x="240" y="125" font-weight="bold" fill="#1d4e89" font-size="7">A</text>
+  
+  <path d="M182 55 A50 50 0 0 1 205 27" fill="none" stroke="#1d4e89" stroke-width="4"/>
+  <text x="180" y="40" font-weight="bold" fill="#1d4e89" font-size="7">A</text>
+  
+  <!-- Node B vnodes -->
+  <path d="M278 55 A50 50 0 0 1 265 105" fill="none" stroke="#b8541a" stroke-width="4"/>
+  <text x="290" y="85" font-weight="bold" fill="#b8541a" font-size="7">B</text>
+  
+  <path d="M205 113 A50 50 0 0 1 182 55" fill="none" stroke="#b8541a" stroke-width="4"/>
+  <text x="175" y="95" font-weight="bold" fill="#b8541a" font-size="7">B</text>
+  
+  <path d="M205 27 A50 50 0 0 1 230 20" fill="none" stroke="#b8541a" stroke-width="4"/>
+  <text x="220" y="15" font-weight="bold" fill="#b8541a" font-size="7">B</text>
+  
+</svg>
+
+- Many small arcs per node average out the unevenness of a few large ones. A bigger machine gets more tokens and, with them, a proportionally larger share
+- When a node dies, its arcs are scattered around the ring, so their successors are every other node. The dead node's load spreads across the whole cluster instead of landing on one neighbour. Adding a node takes a little from everyone the same way
+
+### The failure
+
+- Replicas placed by ring position alone. With replication factor 3, a key's copies go to the next three tokens clockwise, and two of those may belong to the same physical machine, or to two machines in one rack. Dynamo's preference list skips positions until it has N distinct physical nodes; Cassandra's replication strategy does the same across racks. Redundancy is counted in machines, not tokens

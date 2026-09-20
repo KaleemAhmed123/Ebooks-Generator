@@ -1,7 +1,7 @@
 ## The covering index
 
-- The cost of an index is the second hop (the random jump from the B-tree to the heap). A **covering index** eliminates this hop by storing the requested payload directly inside the index itself
-- Postgres allows you to `INCLUDE` payload columns. These columns are not part of the search key, so they do not affect the tree sorting, but they are carried along in the leaf nodes
+- The expensive half of page 2 is the heap fetch. A **covering index** removes it by carrying the columns the query returns inside the index
+- Postgres: `CREATE INDEX ON orders (customer_id) INCLUDE (total)`. `INCLUDE` columns are stored in the leaf but are not part of the key, so they do not change the sort order or count against uniqueness
 
 <svg viewBox="0 0 460 140" role="img" aria-label="A covering index. The index leaf contains the search key (country) and the included payload (name). The query returns immediately without visiting the heap." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
   <rect x="20" y="50" width="100" height="30" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
@@ -20,9 +20,9 @@
   <path d="M320 70 L360 70" stroke="#6b6b6b" fill="none"/><line x1="335" y1="65" x2="345" y2="75" stroke="#b8541a" stroke-width="2"/><line x1="345" y1="65" x2="335" y2="75" stroke="#b8541a" stroke-width="2"/>
 </svg>
 
-- If a query only asks for columns present in the index, Postgres can perform an **index-only scan**. It reads the B-tree leaf and returns immediately, dodging the random read penalty
+- When every column the query touches is in the index, the planner can choose an **index-only scan**: read the leaf, return, never visit the heap
 
 ### The failure
 
-- An index-only scan relies on the Visibility Map. Postgres must ensure the row in the index hasn't been deleted by a recent transaction. If the table changes rapidly and `VACUUM` lags behind, the visibility map is out of date
-- When the map is stale, Postgres cannot trust the index payload. It must visit the heap anyway to check if the row is still alive, turning your carefully designed covering index back into an expensive two-hop query
+- The index does not know whether a row version is visible to this transaction (MVCC, Module 2, page 4). Postgres checks the **visibility map**, one bit per heap page set by `VACUUM` when every row on the page is visible to everyone
+- On a table that changes fast the bits are mostly unset, so the "index-only" scan visits the heap after all. A covering index on a hot table earns its keep only when `VACUUM` keeps up

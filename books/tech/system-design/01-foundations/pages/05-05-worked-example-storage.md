@@ -11,7 +11,7 @@ Per year:     500 GB × 365 ≈ 180 TB
 Five-year retention:          ~5 PB
 ```
 
-- Five petabytes does not fit one database. That number alone puts **sharding**, splitting the data across machines, on the whiteboard from day one. Booklet 02, Module 6
+- Five petabytes does not fit one database. That number alone puts **sharding**, splitting the data across machines, on the whiteboard from day one. Booklet 02, Module 8
 
 ### The numbers that get forgotten
 

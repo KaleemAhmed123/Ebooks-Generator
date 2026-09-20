@@ -1,15 +1,15 @@
 ## Beyond B-tree
 
-- A B-tree is exceptional at sorting, which makes it perfect for range queries (`> 5`). But not all queries are ranges. Postgres provides specialized indexes (via the `USING` clause) for different data shapes
+- A B-tree answers equality and ranges over one ordering. Other questions have other shapes, and Postgres has an index type for each (`CREATE INDEX … USING gin`)
 
 | Index | What it does | When to use it |
 |---|---|---|
-| **B-Tree** | Sorts keys into a balanced tree. | Default. Equality and range scans (`=`, `<`, `>`). |
-| **Hash** | Hashes the key to a bucket. `O(1)` lookup. | Equality only (`=`). Cannot do ranges. |
-| **GIN** | Inverted index. Maps elements inside a structure to the row ID. | Full-text search, checking if an element exists inside a JSON array. |
-| **BRIN** | Stores min/max summaries for blocks of pages (Block Range Index). | Massive, physically ordered time-series data. |
+| **B-tree** | Sorted keys, balanced tree | The default: `=`, `<`, `>`, `BETWEEN`, `ORDER BY` |
+| **Hash** | Hash of the key → bucket | "Can only handle simple equality comparisons"; no ranges, no ordering |
+| **GIN** | Inverted index: each element inside a value → the rows containing it | Arrays, `jsonb`, full-text search; "which rows contain X" |
+| **BRIN** | Block-range index: min and max per range of pages | Huge tables whose physical order matches the column (append-only timestamps); tiny index |
 
 ### The failure
 
-- Using a B-tree to index an array column. The B-tree indexes the entire array as a single string. If you want to find rows where the array *contains* "admin", the B-tree is useless. You must use a GIN index
-- Creating a BRIN index on a UUID column. BRIN only works if the data is physically correlated on disk (like an auto-incrementing timestamp). Because UUIDs are random, every block contains a completely random min/max range, making the BRIN useless
+- A B-tree on an array column, then a query for rows whose array contains `'admin'`. The B-tree compares whole arrays; it cannot look inside. GIN can
+- A BRIN on a column with no physical order (a UUID, a status). Every page range spans nearly the whole value space, so no range is ever skipped and the index filters nothing

@@ -1,7 +1,7 @@
 ## The graph model
 
-- **Relationships are the data**. In a relational database, you find relationships at read time by matching IDs across tables (a JOIN). In a property graph (Neo4j, Memgraph), the relationships are physically stored as pointers on the disk
-- A graph consists of **nodes** (entities), **relationships** (edges between them), and **properties** (key-value data on both nodes and edges)
+- **Relationships are the data**. A relational database finds a relationship at read time by matching IDs (a join). A property graph (Neo4j, Memgraph) stores the relationship itself, with its own type and properties
+- A **property graph** has nodes (with labels and properties) and relationships (typed, directed source → target, with properties)
 
 <svg viewBox="0 0 460 140" role="img" aria-label="A property graph. A User node connected to a City node via a LIVES_IN relationship, and to a Product node via a BOUGHT relationship. Edges have properties like date_bought." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
   <circle cx="100" cy="70" r="25" fill="#fcfcfc" stroke="#1d4e89"/>
@@ -25,10 +25,10 @@
   <text x="185" y="109" text-anchor="middle" font-size="6" fill="#6b6b6b">{date: "2026-09"}</text>
 </svg>
 
-- **Strengths**: Deep traversal. Asking "who are the friends of the friends of my friends?" is just three pointer hops. In SQL, this is a three-level recursive JOIN that might scan millions of rows
-- **Use for**: Fraud detection networks, recommendation engines, knowledge graphs, and anything where the connections matter more than the entities themselves
+- "Friends of friends of friends" is three hops from one starting node. In SQL it is a three-level self-join over the whole friendship table
+- Fits: fraud rings, recommendations, knowledge graphs, anything where the connections matter more than the entities
 
 ### The failure
 
-- Using a graph database for data that is naturally a tree (use a document store) or a grid (use a relational store)
-- Graph traversals over "super-nodes". If you try to traverse the graph starting from a node with ten million edges (e.g., the root "User" label), the query will explode in latency as it visits every neighbor
+- A graph store for data that is really a tree (a document) or a table (relational)
+- Multi-hop traversal through a hot node. Start from a node with ten million edges and every hop visits every neighbour; the query's cost is the degree of the busiest node on the path

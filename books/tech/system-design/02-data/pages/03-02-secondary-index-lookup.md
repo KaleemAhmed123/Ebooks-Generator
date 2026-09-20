@@ -1,7 +1,7 @@
 ## What a secondary index lookup costs
 
-- In Postgres, a secondary index does not store the row data. It stores the indexed value (e.g., `UK`) and a pointer to the physical location of the row on the heap
-- An index lookup therefore costs two completely separate disk seeks. First, walk the B-tree to find the pointer. Second, jump to the heap (a random read) to fetch the actual row
+- A Postgres index entry is the indexed value plus a pointer to the row's place in the heap. It does not hold the row
+- So a lookup is two steps: walk the tree to the pointer, then one random read into the heap for the row
 
 <svg viewBox="0 0 460 140" role="img" aria-label="Index lookup. 1. Find 'UK' in the B-tree to get the heap pointer. 2. Fetch the row from the random heap location." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
   <rect x="20" y="50" width="80" height="24" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
@@ -25,9 +25,9 @@
   <text x="275" y="75" text-anchor="middle" font-size="6" fill="#6b6b6b">Random read</text>
 </svg>
 
-- If a query matches many rows, those rows will be scattered randomly across the heap. The database must execute a random read for every single match
-- Because random disk seeks are slow, the query planner checks the table statistics first. If the planner believes the index lookup will match a large percentage of the table (low selectivity), it ignores the index entirely and performs a sequential table scan. A sequential read of the whole table is faster than ten thousand random jumps
+- Many matches means many random heap reads, one per row, scattered across the file
+- The planner knows this from the table statistics. When a predicate matches a large fraction of the table it skips the index and reads the table sequentially, because one sequential pass beats thousands of random reads
 
 ### The failure
 
-- Creating an index on a low-cardinality column like `status` (which only has three values: `PENDING`, `ACTIVE`, `DELETED`). The planner sees that `ACTIVE` makes up 90% of the table and never uses the index. You pay the write penalty on every insert for an index that is never read
+- An index on `status` with three values, where `ACTIVE` is 90% of the rows. The planner never picks it for `status = 'ACTIVE'`, and every insert pays for it anyway. A partial index on the rare value (`WHERE status = 'PENDING'`) is the shape that gets used

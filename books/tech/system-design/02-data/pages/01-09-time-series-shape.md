@@ -1,7 +1,7 @@
 ## The time-series shape
 
-- Time-series data has a unique physical shape. It is strictly append-only (sensors do not edit the past). The recent data is extremely hot (read constantly for dashboards). The old data is freezing cold (read only for historical aggregates)
-- Because the data is immutable and expires predictably, you should physically group it by time period (one table or partition per day/week/month)
+- Time-series data is append-only (nobody edits the past), recent-hot (dashboards read the last hour) and old-cold (history is read for the occasional aggregate)
+- Immutable data that expires on a schedule should be grouped by period: one table or partition per day, week or month. DynamoDB's pattern is one table per period, with the old tables' write capacity cut to the minimum
 
 <svg viewBox="0 0 460 140" role="img" aria-label="Time-series structure. A series of tables by week. The current week is hot (gets all writes). The oldest week is dropped instantly without a delete query." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
   <rect x="50" y="20" width="80" height="40" rx="3" fill="#fcfcfc" stroke="#1a1a1a" stroke-dasharray="2 2"/>
@@ -23,9 +23,9 @@
   <text x="90" y="95" text-anchor="middle" font-size="7">Instant reclaim</text>
 </svg>
 
-- When Week 1 expires, you do not run a massive `DELETE FROM metrics WHERE time < X`. That would create millions of tombstones and stall the database (Module 2). Instead, you simply delete the Week 1 table entirely (an `O(1)` filesystem operation)
-- Cassandra formalizes this with TimeWindowCompactionStrategy (TWCS) for "TTL'ed, mostly immutable time-series data"
+- When week 1 expires, nobody runs `DELETE FROM metrics WHERE time < X`: that is millions of dead rows or tombstones (Module 2, page 9). Drop the week-1 table instead
+- Cassandra's time-window compaction (TWCS) is this idea inside the storage engine, for "TTL'ed, mostly immutable time-series data"
 
 ### The failure
 
-- Using today's date as the partition key. All inserts for the entire system will hit a single partition on a single node (a hotspot). You must salt the key (e.g., `device_id + date`) to spread the write load across the cluster (Module 8)
+- Today's date as the partition key. Every insert in the system lands on one partition: today's. Put the device or tenant in the key (`device_id`, then time as the sort key) so the writes spread; Module 8, pages 10 and 11 cover the hot key and the salted fix

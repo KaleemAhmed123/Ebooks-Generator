@@ -2,8 +2,8 @@
 
 ## The simplest database
 
-- A storage engine dictates how bytes are physically laid out on the disk
-- The simplest possible database writes every update to the end of a file (an append-only log). Because it never modifies existing bytes, the disk head never seeks backward. Writes are sequentially fast
+- A **storage engine** is the part of a database that lays bytes out on disk and finds them again
+- The simplest one appends every write to the end of a file. Nothing is modified in place, so every write is sequential
 
 <svg viewBox="0 0 460 140" role="img" aria-label="Append-only log with an in-memory hash index. The file stores sequential writes. The RAM stores a hash map from the key to the file offset." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
   <rect x="50" y="20" width="120" height="90" rx="3" fill="#fcfcfc" stroke="#b8541a"/>
@@ -31,10 +31,10 @@
   <path d="M150 92 L250 92" stroke="#1a1a1a" fill="none"/><path d="M250 92 l-6 -3 v6 z" fill="#1a1a1a"/>
 </svg>
 
-- To read data quickly, the database keeps a hash map in memory (`key → offset`). To read a key, it checks the map, seeks to the offset on disk, and reads the value (exactly one disk seek)
-- This is the design of Bitcask (the default storage engine in Riak). Over time, old updates are superseded, so a background thread merges old log files to reclaim space
+- Reads use an in-memory hash map, `key → (file, offset, size)`: look up the key, one seek, read the value
+- This is Bitcask (Riak). Old values are superseded, not overwritten, so a background merge rewrites old files keeping only the live value per key, and writes a hint file so the map rebuilds fast on restart
 
 ### The failure
 
-- The hash index must fit entirely in RAM. If you have billions of keys, the memory requirement is insurmountable
-- You cannot perform range queries. If you want keys from `user:100` to `user:200`, you must read every single key from the hash map, because they are not sorted
+- Every key must fit in RAM. Bitcask's paper says it outright: the keydir "must fit entirely in RAM". Billions of keys means billions of map entries
+- No range queries. `user:100` to `user:200` is a scan of the whole map, because a hash map has no order

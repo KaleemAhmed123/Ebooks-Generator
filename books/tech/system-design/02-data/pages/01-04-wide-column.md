@@ -1,7 +1,7 @@
 ## The wide-column model
 
-- The term is confusing: wide-column stores (Cassandra, ScyllaDB) are **not** column-oriented analytical databases. They are distributed hash tables with sorting
-- A table has a **partition key** (which node holds the data) and **clustering columns** (how the data is sorted on that node)
+- Wide-column stores (Cassandra, ScyllaDB) are **not** column-oriented analytical stores (page 7). Cassandra's own words: a "partitioned wide-column storage model". Rows are grouped by a key and sorted inside the group
+- A table has a **partition key** (rows with the same key sit on the same replicas) and **clustering columns** (the sort order inside that partition)
 
 <svg viewBox="0 0 460 140" role="img" aria-label="Wide-column structure. Partition key determines the node. Inside the node, rows are sorted by the clustering column. Allowed query: partition key + clustering range." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
   <rect x="80" y="20" width="300" height="100" rx="3" fill="#fcfcfc" stroke="#1d4e89"/>
@@ -23,9 +23,9 @@
   <text x="330" y="105" text-anchor="middle">21.8</text>
 </svg>
 
-- **Strengths**: Extreme write throughput. Time-series data is perfectly sorted on disk. To get the last 50 readings for a sensor, you hash to the correct node and read sequentially
-- **Use for**: High-velocity time-series, IoT, messaging histories. You must design the table specifically for the query you intend to run
+- The last 50 readings for a sensor: hash to the partition, read one sorted run. One table per query, designed from the query backwards
+- Fits: time-series, device telemetry, message history, anything written far more than it is read back
 
 ### The failure
 
-- A partition that grows without bound. If you partition by `device_id`, a device that sends 10,000 messages a second will create a massive partition. A single node becomes a hotspot. Cassandra's rule is that a partition must be "not too big nor too small"
+- A partition that grows without bound. Partition by `device_id` and the chattiest device becomes one giant partition on one set of replicas. Cassandra's rule for a partition: "not too big nor too small". Module 8, page 10 is the hot-partition page

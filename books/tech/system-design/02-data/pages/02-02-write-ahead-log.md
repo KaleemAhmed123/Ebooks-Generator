@@ -1,7 +1,6 @@
 ## The write-ahead log
 
-- A database crashes in the middle of a write. The file on disk is half-written and corrupted. The data is gone
-- To prevent this, almost every database (Postgres, MySQL, Cassandra, RocksDB) uses a Write-Ahead Log (WAL)
+- A crash mid-write leaves a half-written page on disk. The **write-ahead log (WAL)** is how Postgres, MySQL, Cassandra (its commit log) and RocksDB survive that
 
 <svg viewBox="0 0 460 140" role="img" aria-label="Write-Ahead Log process. 1. Client sends write. 2. Append to sequential WAL file on disk. 3. fsync. 4. Return success to client. 5. Update main data structure." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
   <rect x="20" y="50" width="60" height="24" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/><text x="50" y="66" text-anchor="middle">Client</text>
@@ -28,10 +27,10 @@
   <rect x="260" y="55" width="12" height="12" rx="6" fill="#fff" stroke="#1a1a1a"/><text x="266" y="64" text-anchor="middle" font-size="7">4</text>
 </svg>
 
-- Before the database touches its actual B-tree or tables, it appends a note to the WAL file: "I am about to change User 10's name." It calls `fsync()` to ensure the disk platter physically wrote the bytes. Only then does it return "Success" to the client
-- When the database restarts after a crash, it reads the WAL from the last known checkpoint and replays the notes to repair the broken data structure
+- Before the engine touches the B-tree or the memtable, it appends the change to the log and calls `fsync` so the bytes are on stable storage, not in the OS cache. Only then is the commit acknowledged
+- After a crash, recovery replays the log from the last checkpoint. The data structure is rebuilt from the log; the log is the truth
 
 ### The failure
 
-- Running a database with `fsync = off` to make writes faster. The database writes the WAL to the operating system's memory cache, but returns success before the disk spins
-- Postgres documentation warns that disabling fsync "can result in unrecoverable data corruption in the event of a power failure or system crash"
+- `fsync = off` for speed. The log sits in the OS cache and the commit is acknowledged before it is durable. Postgres: this "can result in unrecoverable data corruption in the event of a power failure or system crash"
+- The softer knob, `synchronous_commit = off`, keeps the data consistent but reports success before the log is flushed; a crash loses the last few commits, and the clients were told they succeeded

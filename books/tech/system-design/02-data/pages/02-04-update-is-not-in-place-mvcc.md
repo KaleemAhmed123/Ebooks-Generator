@@ -1,7 +1,7 @@
 ## Update is not in-place (MVCC)
 
-- The B-tree page is updated in-place, but the data itself is not. If two transactions try to read and write the same row at the same time, an in-place update would tear the row (Module 3)
-- Instead, databases like Postgres use Multi-Version Concurrency Control (MVCC). An `UPDATE` does not overwrite the old row. It writes a completely new row (with a new transaction ID) and marks the old one for deletion
+- Postgres never overwrites a live row. An `UPDATE` writes a new row version and leaves the old one in place, invisible to transactions that started later
+- This is **MVCC**, multi-version concurrency control: readers see the version that was current when their snapshot began, so readers and writers do not block each other. Booklet 03 is the isolation story
 
 <svg viewBox="0 0 460 120" role="img" aria-label="MVCC in Postgres. Updating Alice's balance writes a new row (XID 50) and leaves the old row (XID 40) intact for concurrent readers, until VACUUM reclaims it." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
   <rect x="50" y="20" width="160" height="30" rx="3" fill="#fce4e2" stroke="#b8541a" stroke-dasharray="2 2"/>
@@ -16,10 +16,14 @@
   <text x="140" y="63" font-size="7">UPDATE</text>
 </svg>
 
-- This means readers never block writers, and writers never block readers. A long-running report reading from the database sees a consistent snapshot of the past
-- The database eventually runs a background process (`VACUUM` in Postgres) to delete the old, dead row versions once no active transaction can see them
+- Dead versions are reclaimed by `VACUUM` once no transaction can still see them. A **HOT update** (heap-only tuple) skips the index writes when no indexed column changed and the page has room; a lower `fillfactor` leaves that room
+- Every `UPDATE` is therefore an insert plus, eventually, a delete. A hot table that updates in place elsewhere bloats here
 
 ### The failure
 
-- Table bloat. If you update rows faster than `VACUUM` can delete the old versions, the table grows on disk forever
-- Transaction-ID wraparound. Postgres uses 32-bit transaction IDs. After 2 billion transactions, the IDs wrap back to zero, and the database suddenly believes all recent rows are from the distant past. Postgres will shut itself down to prevent corruption if `VACUUM` fails to run
+- Bloat: updates outrun `VACUUM` and the table keeps its dead versions on disk. A long-running transaction pins them all
+- Wraparound: transaction IDs are 32-bit, so Postgres must "vacuum every table in every database at least once every two billion transactions" or stop accepting writes to protect the data. Notion's Postgres hit this wall in 2021 and sharded to escape it (Module 8, page 17)
+
+:::interview
+"Why does Postgres need VACUUM?" — Because updates and deletes leave the old row version in place for MVCC. VACUUM reclaims the versions nobody can see and freezes old transaction IDs so the 32-bit counter can wrap safely.
+:::

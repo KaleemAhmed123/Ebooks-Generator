@@ -1,8 +1,8 @@
 ## Clustered vs heap
 
-- A table must physically store the row data somewhere. The two great relational databases differ entirely on where this happens
-- **InnoDB (MySQL)** uses a clustered index. The actual row data (the name, the email) is physically stored inside the leaf nodes of the primary key B-tree
-- **Postgres** uses a heap. The row data is stored in an unsorted pile (the heap). The primary key B-tree only stores the ID and a physical pointer to the heap location
+- Where does the row itself live? InnoDB and Postgres answer differently
+- **InnoDB** uses a clustered index: the row is stored in the leaf of the primary-key B-tree. Every secondary index stores the primary key as its pointer
+- **Postgres** stores rows in a heap, an unordered file. Every index, including the primary key, points at a heap location
 
 <svg viewBox="0 0 460 140" role="img" aria-label="Clustered vs Heap. InnoDB stores data inside the PK leaf, and secondary indexes point to the PK. Postgres stores data in a heap, and all indexes point to the heap." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
   <text x="120" y="20" text-anchor="middle" font-weight="bold" fill="#1d4e89">InnoDB (Clustered)</text>
@@ -26,9 +26,13 @@
   <path d="M400 80 L370 54" stroke="#1a1a1a" fill="none"/><path d="M370 54 l-6 2 v6 z" fill="#1a1a1a" transform="rotate(20 370 54)"/>
 </svg>
 
-- In MySQL, a secondary index lookup costs two B-tree walks: first the secondary index to find the primary key, then the primary index to find the row. Postgres does it in one (secondary index straight to the heap pointer)
+- A secondary-index lookup in InnoDB is two tree walks: secondary index → primary key → primary tree → row. In Postgres it is one walk and one heap fetch
 
 ### The failure
 
-- Using a UUIDv4 (a random, 36-character string) as the primary key in InnoDB. Because the row data lives inside the primary key leaf, a random insert scatters the actual rows wildly across the disk
-- Furthermore, because every MySQL secondary index carries a copy of the primary key, a long UUID physically bloats every single index on the table. You should use sequential IDs or time-sorted UUIDs (UUIDv7)
+- A random UUIDv4 primary key in InnoDB. Rows are stored in key order, so random keys scatter inserts across the whole tree, and "if the primary key is long, the secondary indexes use more space": 16 bytes copied into every index entry
+- Use a sequential integer or a time-ordered UUID (v7) so inserts append and the key stays short
+
+:::interview
+"Why not a UUID as the primary key?" — In a clustered table a random key means random inserts and page splits, and the 16-byte key is copied into every secondary index. A time-ordered UUIDv7 keeps the global uniqueness and fixes the ordering.
+:::

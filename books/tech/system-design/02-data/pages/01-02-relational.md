@@ -28,10 +28,10 @@
   <text x="295" y="47" text-anchor="middle" font-size="7">M:N</text>
 </svg>
 
-- **Strengths**: Many-to-many relationships are cheap (just a mapping table). The query language is declarative (you say what you want, the database figures out the fastest execution plan). Strong consistency and transactions are native
-- **Use for**: Financial ledgers, inventory, enterprise data where relationships are dense and the schema is known
+- Many-to-many relationships cost one mapping table. The query is declarative: you say what you want, the planner picks the access path. Transactions are native
+- Fits: ledgers, inventory, anything where relationships are dense and the schema is known
 
 ### The failure
 
-- The schema has fifty tables, and displaying a single user profile requires an eight-table join. As the tables grow to millions of rows, the database spends all its CPU and memory calculating the joins
-- Normalization prevents write anomalies, but it penalizes reads. If the workload is extremely read-heavy, reassembling the data on every request is wasted effort
+- Join fan-out. One profile page needs an eight-table join; at millions of rows the CPU goes to reassembling, not serving. The other shape is N+1: one query for the list, one more per row
+- Normalization protects writes and charges reads. A read-heavy workload pays that charge on every request; page 8 is the answer

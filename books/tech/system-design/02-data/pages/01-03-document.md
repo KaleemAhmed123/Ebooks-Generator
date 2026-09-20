@@ -17,10 +17,10 @@
   <text x="85" y="73" text-anchor="end" font-size="8">One disk seek</text>
 </svg>
 
-- **Strengths**: Read locality (fast single-record reads). Schema-on-read allows different documents in the same collection to have different structures, which handles rapid application iteration
-- **Use for**: Catalogs, content management, user profiles, and workloads where you usually read the entire entity at once
+- **Schema-on-read** means the structure is enforced by the code that reads the document, not by the database. Two documents in one collection may differ; the reader copes
+- Fits: catalogs, content, profiles, anything read whole
 
 ### The failure
 
-- Unbounded embedded arrays. A user's `orders` array grows every time they buy something. The document grows until it hits the database limit (MongoDB caps documents at 16 MiB and 100 nesting levels)
-- Furthermore, updating a massive document to add one item to an array is write-heavy. If the array is unbounded, it must be normalized out into a separate collection
+- Unbounded embedded arrays. A user's `orders` array grows with every purchase until the document hits the limit: MongoDB caps a BSON document at 16 MiB and 100 nesting levels
+- Long before the cap, every append rewrites a large document. An array that grows without bound belongs in its own collection
