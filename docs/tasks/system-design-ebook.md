@@ -109,7 +109,7 @@ Same shape as `typescript-to-deployment`. The build already knows how to bind
 - [x] Series and booklet `meta.json`
 - [x] Booklet 01 drafted, fact + consistency passes clean, builds with 0 overflow (87 content pages)
 - [x] Booklet 02 drafted, fact + consistency passes clean, builds with 0 overflow (64 content pages)
-- [x] Booklet 03 drafted, fact + consistency passes clean, builds with 0 overflow (93 content pages)
+- [x] Booklet 03 drafted (93), rewritten to house style: 82 pages, fact pass clean, 0 overflow
 - [x] Booklet 04 drafted, fact + consistency passes clean, builds with 0 overflow (70 content pages)
 - [x] Booklet 05 drafted, fact + consistency passes clean, builds with 0 overflow (109 content pages)
 - [x] Booklet 06
@@ -402,6 +402,54 @@ move (`git rm`, `mv`), so the 75 stray draft files (old module 2–4 names
 and the off-script modules 5–8) are still in `pages/` and in this build's
 PDF. One command, given in chat, prunes them to the 37 kept files; run it
 before the commit.
+
+### 2026-09-21 — booklet 03 Consistency, part 2: modules 5–9 written, checked, committed
+
+**45 pages written from the research lines, none edited from the draft;
+booklet at 82 pages, zero overflow.** Module 5 Consistency models (11: stale
+reads + pick-per-operation merged), 6 CAP and PACELC (5: "P is not optional"
+folded into CAP-as-proved), 7 Consensus (12: why + problem statement merged;
+membership and snapshots reduced to one line each on the majority and cost
+pages), 8 Leader election, split brain, locks (10), 9 Clocks (7: TrueTime
+cut to one clause on the HLC page and one cell on 07-11; leap seconds folded
+into NTP/drift; timeouts-prove-nothing into the closing rule). Interview
+blocks placed as planned: "leader dies mid-write" on 07-05, "why not Redis
+for the lock" on 08-08. Five parked draft SVGs reused (eventual-consistency
+timeline, monotonic reads, split brain, GC-pause/fencing); fourteen drawn
+new. Chubby "sequencer" dropped from 08-05 (§5: not fetched). The Google
+24-hour smear claim (§5) is not on any page; 09-02 says "some operators
+smear the second" without a number.
+
+**Checks:** `check-pages.mjs`: 82 pages, 9 modules, no problems. Three PDF
+builds (four overflows after the first: 05-11, 07-11, 08-08 at 218 mm,
+09-07; table rows cut and cells shortened; 08-08 needed a second trim);
+final build zero overflow, 86 built pages. Six page screenshots
+(scratchpad puppeteer script, deleted): one label error found and fixed
+(Figure-8 page had S4 sharing S5's term-3 entry; S4 holds index 1 only).
+`code-check.ts` in the scratchpad ran the four samples against mocks under
+Node 24 type stripping: 05-09 routes to the primary when
+`pg_wal_lsn_diff(replay, token) < 0` and to the replica once caught up or
+when no token; 08-07 second acquire returns null, release with the wrong
+token returns false, release after expiry returns false; 08-09 second
+lock fails and revokes its lease, token is monotonic across grants, the
+`fence < token` update refuses the older holder; 09-01 monotonic deltas
+≥ the awaited delay. Sonnet fact agent on modules 5–9, 8 fetches, ~48
+claims: **zero WRONG**, zero CODE, zero broken cross-references; two
+OVERSTATED fixed (Raft broadcast time is 0.5–20 ms "depending on storage",
+not "on a LAN"; an invented quotation on the Paxos page replaced with the
+paper's own framing); three UNVERIFIED all pre-flagged in §5 (Paxos Made
+Simple, Terry 1994, Lamport 1978: textbook-level, left as written).
+Confirmed live by the agent and now usable as facts: KIP-595 is "A Raft
+Protocol for the Metadata Quorum"; DynamoDB eventually consistent reads
+are half the cost of strongly consistent ones and GSIs support only
+eventually consistent reads (closes the §5 item); etcdctl `--consistency`
+is `l` default, `s` serializable; the three Postgres LSN functions; the
+Raft paper's no-op entry at term start and the heartbeat-with-a-majority
+read check; the HLC receive table matches the paper's Figure 5.
+
+**Also caught while writing:** the Lamport page said "equal or nearby
+numbers" imply concurrency (only equal numbers on different nodes do);
+07-11 pointed TrueTime at Module 9 after the plan had cut it.
 
 ## Explanation
 
