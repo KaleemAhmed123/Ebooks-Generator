@@ -1,0 +1,48 @@
+{
+  "title": "Foundations",
+  "subtitle": "Promises, Numbers, Failure",
+  "cover": {
+    "accent": "#1d4e89",
+    "title": [
+      "Foundations",
+      "Promises & Failure"
+    ],
+    "banner": "THE NETWORK IS NOT A FUNCTION CALL.",
+    "kicker": "AVAILABILITY · LATENCY · TIMEOUTS · RETRIES · IDEMPOTENCY",
+    "term": [
+      [
+        "$ curl -m 2 api/pay",
+        0
+      ],
+      [
+        "✗ timeout after 2000ms",
+        3
+      ],
+      [
+        "$ curl -H 'Idempotency-Key: 8f14' api/pay",
+        0
+      ],
+      [
+        "✓ 200 (already processed)",
+        1
+      ],
+      [
+        "$ _",
+        2
+      ]
+    ],
+    "stack": [
+      "the nines · error budgets",
+      "latency numbers",
+      "back-of-the-envelope",
+      "partial failure",
+      "backoff · jitter",
+      "idempotency keys"
+    ],
+    "face": {
+      "brow": "sharp",
+      "mouth": "flat",
+      "tilt": -3
+    }
+  }
+}

@@ -6,6 +6,9 @@ Do not delete them; append a dated update instead.
 
 | Task | Status | Started |
 |---|---|---|
+| [ts2d-complete-volume](ts2d-complete-volume.md) — the nine TypeScript-to-Deployment booklets bound as one 1,166-page volume: one drawn cover, a six-page three-column index, and all the back matter in one place | shipped — built and verified, 0 overflowing pages | 2026-09-08 |
+| [frontend-mastery-audit](frontend-mastery-audit.md) — technical-editor pass over the 381-page Frontend Mastery book: fact, consistency, voice, structure | in progress — 8 agents auditing, one per part | 2026-09-04 |
+| [system-design-ebook](system-design-ebook.md) — "System Design": six booklets on distributed systems, events and microservices, bound into one volume like TS2D | planned — topic list awaiting approval | 2026-09-19 |
 | [**production-terms-NEXT**](production-terms-NEXT.md) — **start here to resume the glossary series** | 7 of 8 booklets done, 400/457 terms | 2026-09-02 |
 | [production-terms-ebook](production-terms-ebook.md) — "The Vocabulary of Production": 607-term glossary artifact cut to 403 and rebuilt as eight booklets | in progress — cut done, series scaffolded, page format proven | 2026-09-01 |
 | [multi-domain-ebook-structure](multi-domain-ebook-structure.md) — one book factory, many domains. Folder walk replaces four duplicated book lists; styles and settings cascade domain → series → book | in progress — tech migrated, 12/12 PDFs verified identical, covers drawing | 2026-09-01 |

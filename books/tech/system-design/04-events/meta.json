@@ -1,0 +1,48 @@
+{
+  "title": "Messaging",
+  "subtitle": "Queues, Logs, Event-Driven",
+  "cover": {
+    "accent": "#bf4c28",
+    "title": [
+      "Messaging",
+      "& Events"
+    ],
+    "banner": "A QUEUE IS NOT A DATABASE.",
+    "kicker": "KAFKA · RABBITMQ · SQS · CDC · CQRS · LOGS",
+    "term": [
+      [
+        "$ kafka-consumer-groups --describe",
+        0
+      ],
+      [
+        "GROUP           LAG",
+        1
+      ],
+      [
+        "billing-svc     10",
+        1
+      ],
+      [
+        "analytics-job   4000000",
+        1
+      ],
+      [
+        "$ _",
+        2
+      ]
+    ],
+    "stack": [
+      "pub/sub",
+      "partitioned logs",
+      "delivery semantics",
+      "dead-letter queues",
+      "outbox pattern",
+      "event sourcing"
+    ],
+    "face": {
+      "brow": "neutral",
+      "mouth": "flat",
+      "tilt": 2
+    }
+  }
+}

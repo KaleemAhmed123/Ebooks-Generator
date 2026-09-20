@@ -1,0 +1,48 @@
+{
+  "title": "Consistency",
+  "subtitle": "Transactions, Models, Consensus",
+  "cover": {
+    "accent": "#7a1f6b",
+    "title": [
+      "Consistency",
+      "& Consensus"
+    ],
+    "banner": "A TIMEOUT PROVES NOTHING.",
+    "kicker": "ISOLATION · 2PC · SAGAS · CAP · RAFT · CLOCKS",
+    "term": [
+      [
+        "BEGIN ISOLATION LEVEL SERIALIZABLE;",
+        0
+      ],
+      [
+        "ERROR: 40001 serialization failure",
+        3
+      ],
+      [
+        "$ etcdctl elect leader",
+        0
+      ],
+      [
+        "▶ term 7 · fencing token 42",
+        1
+      ],
+      [
+        "$ _",
+        2
+      ]
+    ],
+    "stack": [
+      "write skew",
+      "MVCC · SSI",
+      "2PC · sagas",
+      "linearizability",
+      "Raft",
+      "fencing tokens"
+    ],
+    "face": {
+      "brow": "sharp",
+      "mouth": "smile",
+      "tilt": -3
+    }
+  }
+}

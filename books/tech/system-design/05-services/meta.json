@@ -1,0 +1,48 @@
+{
+  "title": "Services",
+  "subtitle": "Boundaries, Resilience, Building Blocks",
+  "cover": {
+    "accent": "#2f6f73",
+    "title": [
+      "Services",
+      "& Building Blocks"
+    ],
+    "banner": "EVERY DEPENDENCY WILL FAIL. DESIGN FOR THE DAY IT DOES.",
+    "kicker": "GATEWAY · CIRCUIT BREAKER · CACHING · CDN · RATE LIMITS",
+    "term": [
+      [
+        "$ curl -i api/feed",
+        0
+      ],
+      [
+        "RateLimit: \"default\";r=0;t=30",
+        3
+      ],
+      [
+        "$ redis-cli --hotkeys",
+        0
+      ],
+      [
+        "hot key: user:1 · 71% of gets",
+        1
+      ],
+      [
+        "$ _",
+        2
+      ]
+    ],
+    "stack": [
+      "data ownership",
+      "deadlines · budgets",
+      "cache stampede",
+      "L4 vs L7",
+      "token bucket",
+      "UUIDv7 · Snowflake"
+    ],
+    "face": {
+      "brow": "sharp",
+      "mouth": "flat",
+      "tilt": -3
+    }
+  }
+}

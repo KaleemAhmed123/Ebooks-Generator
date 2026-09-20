@@ -1,0 +1,48 @@
+{
+  "title": "Data",
+  "subtitle": "Storage, Replication, Partitioning",
+  "cover": {
+    "accent": "#0b6e4f",
+    "title": [
+      "Data",
+      "Storage & Replication"
+    ],
+    "banner": "THE WORKLOAD DECIDES THE DATABASE.",
+    "kicker": "B-TREE · LSM · REPLICATION · QUORUMS · SHARDING",
+    "term": [
+      [
+        "$ psql -c 'EXPLAIN ANALYZE ...'",
+        0
+      ],
+      [
+        "Index Scan  0.04ms",
+        1
+      ],
+      [
+        "$ nodetool status",
+        0
+      ],
+      [
+        "UN  3 nodes · 256 tokens",
+        1
+      ],
+      [
+        "$ _",
+        2
+      ]
+    ],
+    "stack": [
+      "storage engines",
+      "indexes",
+      "schema evolution",
+      "leader · multi-leader · leaderless",
+      "N · W · R",
+      "consistent hashing"
+    ],
+    "face": {
+      "brow": "raised",
+      "mouth": "flat",
+      "tilt": -3
+    }
+  }
+}

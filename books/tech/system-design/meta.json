@@ -1,0 +1,40 @@
+{
+  "title": "System Design",
+  "subtitle": "Distributed Systems · Events · Microservices",
+  "seriesLine": "System Design · Distributed Systems · Events · Microservices",
+  "tocTitle": "Contents",
+  "contents": "per-topic",
+  "masterVolume": { "name": "system-design-complete" },
+  "order": [
+    "01-foundations",
+    "02-data",
+    "03-consistency",
+    "04-events",
+    "05-services",
+    "06-case-studies"
+  ],
+  "cover": {
+    "accent": "#24405e",
+    "title": ["System", "Design"],
+    "banner": "EVERY BOX ON THE WHITEBOARD IS A PROMISE.",
+    "kicker": "DATA · CONSISTENCY · EVENTS · SERVICES · CASE STUDIES",
+    "term": [
+      ["$ curl -m 2 api/orders", 0],
+      ["✗ timeout — did it commit?", 3],
+      ["$ retry --idempotency-key 8f14", 0],
+      ["✓ 201 (replayed)", 1],
+      ["$ _", 2]
+    ],
+    "stack": [
+      "Foundations",
+      "Data",
+      "Consistency",
+      "Events",
+      "Services",
+      "Case Studies"
+    ],
+    "label": "COMPLETE VOLUME",
+    "setLine": "ALL 6 BOOKLETS IN ONE VOLUME",
+    "face": { "brow": "raised", "mouth": "smile", "tilt": -3 }
+  }
+}
