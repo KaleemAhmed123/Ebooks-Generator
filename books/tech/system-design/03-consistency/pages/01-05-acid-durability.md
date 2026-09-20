@@ -1,7 +1,7 @@
 ## Durability ends at fsync
 
-- **Durability** guarantees that once a transaction commits, the data will not be lost, even if the database power cable is immediately unplugged
-- A transaction is durable only when the database issues an `fsync` command, forcing the operating system to flush the Write-Ahead Log (WAL) from memory down to the physical disk platter or SSD cells
+- **Durability**: once `COMMIT` returns, the write survives a crash or power loss. The mechanism is the **write-ahead log (WAL)**, an append-only file the database writes and flushes before it acknowledges
+- **`fsync`** is the system call that makes the operating system push its buffered writes to the disk. Until it returns, "written" means "in memory"
 
 <svg viewBox="0 0 460 140" role="img" aria-label="Durability ends at fsync. Client writes to Leader, Leader fsyncs to disk, then replies 'Committed'. The Follower has not yet received the write." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
   <rect x="20" y="55" width="60" height="30" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
@@ -32,9 +32,9 @@
   <text x="290" y="35" text-anchor="middle" font-size="6" fill="#b8541a">4. Async stream</text>
 </svg>
 
-- **The limit**: Durability defines what happens on a single machine. It does not dictate what happens across the network
-- As we covered in Booklet 02, if you are using Single-leader Asynchronous replication, the database will `fsync` the write to the Leader's disk and reply "Committed" to the client *before* the Follower receives it. If the Leader's motherboard catches fire a millisecond later, that "durable" write is permanently lost
+- That is where the promise stops: one machine's disk. With asynchronous replication the leader acknowledges after its own fsync and ships the change to followers later. Lose the leader in that window and the committed write is gone, and the client that got the acknowledgement does not know
+- Booklet 02's replication module has the knob: Postgres `synchronous_commit` chooses whether "committed" waits for a standby, and what each setting costs
 
 ### The failure
 
-- Reading "Committed" to mean "on every replica". A transaction guarantee ends exactly where your hardware configuration tells it to end. If you want a transaction to survive the physical destruction of the primary datacenter, you must pay the latency cost of Synchronous replication
+- Treating "committed" as "on every replica". Durability is a per-machine promise unless replication is synchronous. The design has to say which writes are worth the extra round-trip; most designs have not said

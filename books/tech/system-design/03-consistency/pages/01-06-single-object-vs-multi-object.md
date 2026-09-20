@@ -1,19 +1,17 @@
 ## Single-object vs multi-object
 
-- When a database marketing page advertises "ACID transactions", you must immediately ask: single-object or multi-object?
-- A **single-object transaction** guarantees atomicity and isolation, but only for a single key or row. Almost every database in existence provides this. You can increment a counter or compare-and-set a single JSON document safely
-- A **multi-object transaction** guarantees atomicity and isolation across completely unrelated rows, tables, or collections
+- Nearly every store makes one write to one key atomic: increment, compare-and-set, replace a document. That is a **single-object** operation, and it needs no coordination beyond one row lock
+- A **multi-object transaction** makes writes to several rows or tables commit or abort together. It needs a log and locks that span the objects, and stores built for throughput leave it out or fence it in
 
-| Database | Multi-object transactions? | Single-object transactions? |
+| Store | Single-object | Multi-object |
 |---|---|---|
-| **Postgres** | Yes (across all tables) | Yes |
-| **Redis** | No | Yes (atomic commands, Lua scripts) |
-| **DynamoDB** | Yes (via `TransactWriteItems`) | Yes (via `ConditionExpression`) |
-| **Cassandra** | No (Batch applies to one partition) | Yes (Lightweight Transactions) |
+| Postgres | any row | any rows, any tables, one transaction |
+| Redis | every command | `MULTI`/`EXEC` runs a block with no other client served in between; a failed command inside it does not roll back the rest |
+| DynamoDB | conditional writes (`ConditionExpression`) | `TransactWriteItems`: up to 100 items, 4 MB, one Region; two underlying writes per item, prepare then commit |
+| Cassandra | lightweight transactions (`IF`), one partition | logged `BATCH`: all operations eventually complete or none do, but isolated only within one partition |
 
-- **Why multi-object is hard**: To coordinate writes across different physical disk blocks (or different physical servers), the database must use memory-heavy locks and complex crash-recovery logs. Many NoSQL stores abandoned multi-object transactions entirely to achieve higher throughput
+- Every row's marketing page says "transactions". Ask which column it means before the data model depends on it
 
 ### The failure
 
-- Assuming your NoSQL database's "batch" endpoint is atomic. Developers frequently write code assuming that inserting two users into DynamoDB using `BatchWriteItem` is a transaction. It is not. The first insert might succeed while the second fails
-- If you need a true multi-object transaction in DynamoDB, you must use the `TransactWriteItems` API, which costs twice as much capacity and has strict limits on item count
+- `BatchWriteItem` treated as a transaction. It is a batch: some puts succeed, some come back unprocessed, and the caller retries those. Two items that must agree go through `TransactWriteItems`, or become one item

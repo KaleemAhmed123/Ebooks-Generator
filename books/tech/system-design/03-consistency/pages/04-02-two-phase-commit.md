@@ -1,7 +1,8 @@
-## Two-Phase Commit (2PC)
+## Two-phase commit (2PC)
 
-- The oldest algorithm for achieving atomic writes across multiple databases is **Two-Phase Commit (2PC)**. It introduces a central node called the **Coordinator**
-- Instead of just asking the databases to write the data, the Coordinator splits the process into two strictly enforced phases
+- **Two-phase commit** makes several databases commit or abort together by adding a **coordinator** and splitting commit in two
+- **Phase 1, prepare**: the coordinator asks each participant to prepare. A participant writes the transaction's changes and its "yes" durably to its own log, keeps its locks, and answers. From then on it may not abort on its own
+- **Phase 2, commit**: when every vote is yes, the coordinator writes the decision to its own log; that write is the commit point. It then tells every participant to commit, and they release their locks. One "no", or one timeout, and the decision is abort
 
 <svg viewBox="0 0 460 140" role="img" aria-label="Two-Phase Commit. Phase 1: Prepare (databases acquire locks and promise to commit). Phase 2: Commit (coordinator logs the decision and tells them to execute)." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
   <rect x="20" y="20" width="200" height="100" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
@@ -34,10 +35,8 @@
   <path d="M350 70 L390 90" stroke="#1d4e89" fill="none" stroke-width="2"/><path d="M390 90 l-6 -1 v5 z" fill="#1d4e89" transform="rotate(-30 390 90)"/>
 </svg>
 
-- **Phase 1: Prepare**. The Coordinator asks every database: "Can you commit this?" The databases write the data to their transaction logs, acquire all necessary row locks, and reply "Yes, I promise I can."
-- **Phase 2: Commit**. Once every single database says "Yes", the Coordinator durably writes the word "COMMIT" to its own disk. It then tells the databases to execute the commit and drop their locks
-- The "promise" is the expensive part. By saying "Yes", the database is giving up its right to independently abort the transaction. It must hold those row locks indefinitely until the Coordinator gives the final order
+- The vote is the expensive part. A prepared participant has surrendered the right to decide: it holds its row locks until the coordinator tells it what happened, however long that takes
 
 ### The failure
 
-- Assuming 2PC is just two network calls. 2PC forces the databases to hold pessimistic row locks across multiple network round-trips. If the network is slow, those row locks stay open, bringing your databases to a crawl. For this reason, 2PC is almost completely banned in microservice architectures
+- Reading 2PC as two network calls. Between prepare and commit every participant holds pessimistic locks across a network round-trip, and a slow coordinator or a slow peer stretches that window for everybody. Latency in one service becomes lock contention in all of them

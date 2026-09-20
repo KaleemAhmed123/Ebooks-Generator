@@ -1,35 +1,27 @@
 ## Retrying aborted transactions
 
-- When two transactions conflict at a high isolation level (like Repeatable Read or Serializable), the database resolves the conflict by safely aborting one of them. The aborted transaction receives a serialization failure (SQLSTATE `40001`)
-- **A serialization failure is not a bug**. It is the database doing exactly what you paid it to do. Your application is expected to catch the error, discard the aborted state, and re-run the entire transaction from the beginning
+- At Repeatable Read and Serializable, Postgres resolves some conflicts by aborting one transaction with SQLSTATE `40001`, "could not serialize access". The abort is the isolation level working, not a bug
+- The contract is on the application: catch `40001`, roll back, and run the **whole transaction** again from `BEGIN`, re-reading every value. The first attempt's reads are exactly what the conflict made stale
 
 ```typescript
-async function safeTransfer() {
-  const MAX_RETRIES = 3;
-  
-  for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+async function withRetry(db: Client, work: () => Promise<void>, maxAttempts = 3) {
+  for (let attempt = 1; ; attempt++) {
+    await db.query("BEGIN ISOLATION LEVEL SERIALIZABLE");
     try {
-      await db.query('BEGIN ISOLATION LEVEL SERIALIZABLE');
-      // Read balances, verify funds, write new balances...
-      await db.query('COMMIT');
-      return; // Success, exit the loop
-      
-    } catch (err) {
-      await db.query('ROLLBACK');
-      
-      // 40001 is the standard SQLSTATE for serialization failure
-      if (err.code === '40001' && attempt < MAX_RETRIES) {
-        continue; // Try the whole transaction again
-      }
-      throw err; // Real error, or out of retries
+      await work();                      // every read and write, from scratch
+      await db.query("COMMIT");          // COMMIT itself can raise 40001
+      return;
+    } catch (err: any) {
+      await db.query("ROLLBACK");
+      if (err.code !== "40001" || attempt >= maxAttempts) throw err;
     }
   }
 }
 ```
 
-- Notice that the `BEGIN` statement is *inside* the retry loop. You must re-read all the data, because the underlying rows have changed since your first attempt
+- The loop wraps the transaction, never one statement. After any error Postgres marks the transaction aborted and rejects every further statement until `ROLLBACK`
+- Booklet 01 owns the general retry rules: budget, backoff, jitter. The only addition here is which errors to retry: `40001`, and the deadlock code `40P01` (Module 3, page 3)
 
 ### The failure
 
-- Putting side-effects inside a retriable transaction. If your transaction code sends a "Payment Successful" email, and then the database throws a `40001` serialization failure on `COMMIT`, your code will loop and run again. The user will receive two emails for one transaction
-- Only database writes can be safely rolled back. Side-effects (emails, analytics, API calls) must happen *after* the `COMMIT` returns successfully
+- A side effect inside the loop. The transaction sends the "payment received" email, `COMMIT` fails with `40001`, the loop runs again: two emails, one payment. Anything that cannot be rolled back happens after `COMMIT` returns, or goes through the outbox (booklet 04)

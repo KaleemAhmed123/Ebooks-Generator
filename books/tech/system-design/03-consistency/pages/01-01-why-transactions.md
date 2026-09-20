@@ -2,8 +2,8 @@
 
 ## Why transactions exist
 
-- The hardware running your database will fail. The network will drop packets. The application will crash halfway through executing a function. If you are writing a banking application, you cannot allow a crash between debiting Account A and crediting Account B
-- Transactions exist to turn many partial-failure scenarios into exactly two outcomes: either the entire operation succeeds, or it fails safely and cleanly. A transaction provides an abstraction over hardware failures
+- A transfer is two writes: debit one account, credit another. The process can die between them, the disk can fill, the connection can drop. Each gap is a different half-done state
+- A **transaction** groups the writes so there are exactly two outcomes: all of them took effect, or none did. The application no longer has to enumerate the crash points
 
 <svg viewBox="0 0 460 140" role="img" aria-label="A timeline of a crash. Without transactions, a crash after step 1 leaves money missing. With transactions, the database undoes step 1." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
   <text x="20" y="20" font-weight="bold">Without Transactions</text>
@@ -33,9 +33,9 @@
   <text x="240" y="125" font-size="7">Nothing happened.</text>
 </svg>
 
-- **The promise**: A transaction provides safety guarantees (commonly known as ACID). It allows application developers to write code assuming that the database will magically handle concurrent execution and partial failures
-- **The reality**: ACID guarantees are not a binary switch. Different databases implement different definitions of the letters. If you do not understand the exact level of isolation your database provides, you will write bugs that destroy data
+- **ACID** names four separate promises: atomicity, consistency, isolation, durability. They are not one switch. Each has a different owner and a different cost, and the next four pages take them one at a time
+- "Transaction" also names something weaker in many stores: a write that is atomic for one key only (page 6)
 
 ### The failure
 
-- Writing critical multi-step operations without a transaction. If a crash occurs between debiting and crediting, the money is destroyed. Neither you, nor the database, nor the user knows which half of the operation ran
+- The debit commits, the process dies, the credit never runs. No error reaches anyone; the debit looked like a success. The money is missing until a reconciliation job notices, and by then other code has read the balance

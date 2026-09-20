@@ -1,27 +1,25 @@
-## Optimistic: Validate at commit
+## Optimistic: validate at commit
 
-- Pessimistic locking (lock first) wastes time if conflicts are rare. **Optimistic concurrency control** assumes that conflicts are rare. You read the data, do your work locally without holding any locks, and only check for conflicts at the exact moment you try to write
-- We saw the most common implementation of this earlier: the compare-and-set version column
+- **Optimistic concurrency control** holds no lock. Read a version number with the data, do the work, write with `WHERE version = $seen`. A conflict surfaces as zero rows updated, and the application decides: re-read and retry, merge, or tell the user
 
 ```typescript
-async function updateProfileOptimistic(userId: string, newBio: string) {
-  // 1. Read without locking
-  const user = await db.query('SELECT bio, version FROM users WHERE id = $1', [userId]);
-  
-  // 2. Write, but only if the version hasn't changed
-  const result = await db.query(
-    'UPDATE users SET bio = $1, version = version + 1 WHERE id = $2 AND version = $3', 
-    [newBio, userId, user.version]
-  );
-  
-  if (result.rowCount === 0) {
-    throw new Error('Conflict detected! Someone else updated this profile.');
-  }
-}
+const { rows } = await db.query("SELECT bio, version FROM users WHERE id = $1", [id]);
+const r = await db.query(
+  "UPDATE users SET bio = $1, version = version + 1 WHERE id = $2 AND version = $3",
+  [newBio, id, rows[0].version],
+);
+if (r.rowCount === 0) throw new ConflictError();   // someone wrote in between
 ```
 
-- Notice that conflicts do not surface as database errors or deadlocks. They surface as `0 rows updated`. The application code must manually detect this and retry the entire operation (fetch the new version, re-apply the change, write again)
+- Contention decides between the two schools. Low contention: optimistic wins, no lock wait, and it works across stateless HTTP requests where a lock cannot be held. High contention: pessimistic wins, because waiting in a queue is cheaper than doing the work, failing, and redoing it
+
+| | optimistic | pessimistic |
+|---|---|---|
+| cost when nobody conflicts | none | a lock wait, usually short |
+| cost when everybody conflicts | wasted work and a retry per loser | a queue |
+| spans a user's think-time | yes: the version travels with the form | no: the lock would outlive the request |
+| typical use | profiles, documents, settings | inventory, balances, counters |
 
 ### The failure
 
-- Using optimistic concurrency on high-contention rows. If 10,000 users try to like a post at the same time using optimistic concurrency, exactly one user will succeed on their first try. The other 9,999 will see a conflict and retry. On the second try, one succeeds, and 9,998 retry. You have built an infinite loop of retries that will melt your application servers
+- Optimistic on a hot row. Ten thousand writers hit one counter; one wins per round and the rest retry, and the database spends its time on writes that match zero rows. A counter is an atomic `UPDATE … SET n = n + 1`; the version column belongs on rows people edit, not rows machines hammer

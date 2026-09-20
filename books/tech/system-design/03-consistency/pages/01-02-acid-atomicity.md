@@ -1,29 +1,25 @@
 ## Atomicity is abortability
 
-- The word "atomic" in concurrent programming usually means "something that cannot be broken down into smaller parts" (e.g., atomic variables in Java). In the context of ACID databases, it means something entirely different
-- **Atomicity means abortability**. It guarantees that if a transaction fails halfway through, the database will safely undo all the writes that occurred before the error. The transaction is either committed in its entirety, or rolled back in its entirety (all or nothing)
+- **Atomicity** in ACID means: if the transaction cannot finish, every write it made is undone. It says nothing about other transactions seeing a half-finished state; that is isolation (page 4)
+- The mechanism is the abort. A crash before `COMMIT` leaves no commit record in the write-ahead log, so recovery discards the writes. An error in the middle lets the client say `ROLLBACK`
 
 ```typescript
-async function transferMoney(db: Client, fromId: string, toId: string, amount: number) {
+async function transfer(db: Client, from: string, to: string, amount: number) {
+  await db.query("BEGIN");
   try {
-    await db.query('BEGIN'); // Start transaction
-    await db.query('UPDATE accounts SET balance = balance - $1 WHERE id = $2', [amount, fromId]);
-    
-    // If the server crashes here, the database will automatically ROLLBACK 
-    // when it restarts, because the transaction never COMMITted.
-    
-    await db.query('UPDATE accounts SET balance = balance + $1 WHERE id = $2', [amount, toId]);
-    await db.query('COMMIT'); // Success: persist all changes
+    await db.query("UPDATE accounts SET balance = balance - $1 WHERE id = $2", [amount, from]);
+    // a crash here leaves no commit record; recovery discards the debit
+    await db.query("UPDATE accounts SET balance = balance + $1 WHERE id = $2", [amount, to]);
+    await db.query("COMMIT");
   } catch (err) {
-    await db.query('ROLLBACK'); // Safety: undo all changes
+    await db.query("ROLLBACK");
     throw err;
   }
 }
 ```
 
-- Atomicity has nothing to do with concurrent transactions. (The guarantee that a concurrent user won't see half your transaction is **Isolation**, not Atomicity)
+- The point of abortability is that a failed attempt leaves nothing behind, so the caller can run it again from a clean state
 
 ### The failure
 
-- Retrying a non-atomic operation. If a client calls an API to charge a credit card, and the network drops the connection before the server can reply "Success", the client will try again
-- If the API is not atomic, the second request charges the card a second time. Atomicity ensures that the first attempt either fully rolled back or fully succeeded, making retries safe to reason about
+- Retrying an operation that is not atomic. "Charge the card and record the order" times out; the charge ran, the record did not; the retry charges again. Atomicity guarantees a failed attempt left nothing. It does not tell the client whether the attempt failed or only the reply was lost; that is the idempotency-key problem, booklet 01

@@ -1,7 +1,9 @@
+# Module 4 - Transactions across services
+
 ## Why one transaction cannot span services
 
-- Everything we have discussed so far assumes that all your data lives in a single database. When you move to a microservices architecture, every service owns its own database. The network now sits between your writes
-- If a user places an order, you must create the order (Service A), charge their credit card (Service B), and reserve the inventory (Service C). How do you make all three happen atomically?
+- A transaction is a promise one database makes about its own log. Split the writes across two services, each with its own database, and the network sits between them. No `COMMIT` covers both
+- The running example for this module: place an order, charge the card, reserve the stock. Three services, three databases, one business action
 
 <svg viewBox="0 0 460 140" role="img" aria-label="The distributed transaction problem. An order succeeds, a payment succeeds, but the network drops the request to the inventory service. The system is now inconsistent." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
   <rect x="20" y="50" width="100" height="40" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
@@ -36,8 +38,9 @@
   <text x="300" y="105" font-size="7">and run a ROLLBACK.</text>
 </svg>
 
-- A single transaction can only `COMMIT` or `ROLLBACK` on a single connection. The Checkout API cannot rollback the Payment DB if the Inventory DB fails, because the Payment DB already successfully committed its local transaction
+- The first write commits; the request to the second is lost, or the second commits and the caller crashes before the third. Each gap is a state the business never defined: a paid order with no stock reserved, a reservation for an order nobody paid for
+- The rest of this module is the two answers: make the databases agree before any of them commits (2PC), or let each commit and make the sequence recoverable (sagas)
 
 ### The failure
 
-- "We'll just call both services in a try/catch." This is the most common distributed systems bug written by junior engineers. They place three HTTP calls inside a `try` block, and if one fails, they assume the `catch` block can safely clean up. What happens if the server running the `catch` block loses power before it finishes cleaning up? You are permanently stuck in a broken state
+- Three HTTP calls in a `try`, with the `catch` undoing them. The undo runs only if the process survives to run it. Kill the process between call two and the catch and nothing undoes anything; and even alive, the catch's own calls can fail. A cleanup that lives only in memory is not a cleanup

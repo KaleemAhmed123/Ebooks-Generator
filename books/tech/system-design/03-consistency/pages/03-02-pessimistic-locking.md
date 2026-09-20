@@ -1,17 +1,17 @@
-## Pessimistic: Lock first
+## Pessimistic: lock first
 
-- MVCC is optimistic for readers, but what about writers? When two transactions want to modify the exact same row at the exact same time, the database must enforce order. The traditional method is **pessimistic locking**: acquire a lock *before* doing the work
-- If you run a plain `UPDATE`, the database automatically acquires an exclusive lock on the row, modifies the data, and holds the lock until `COMMIT`. If another transaction tries to update the same row, it is shoved into a queue and forced to wait
+- **Pessimistic locking** takes the lock before the work. A plain `UPDATE` or `DELETE` does it implicitly; `SELECT … FOR UPDATE` does it for a read whose result you intend to write. The lock lives until `COMMIT` or `ROLLBACK`
+- A row lock is a queue. The second transaction that wants the same row waits, in arrival order, for the first to finish. Postgres has four row-lock modes so that weaker intents queue behind fewer things
 
-| Postgres Row-Lock Mode | Acquired by | Blocks |
+| Mode | Taken by | Blocks |
 |---|---|---|
-| `FOR UPDATE` | `SELECT FOR UPDATE` or plain `UPDATE` | `UPDATE`, `DELETE`, `SELECT FOR UPDATE`, `FOR SHARE` |
-| `FOR NO KEY UPDATE` | `UPDATE` (not changing primary key) | `UPDATE`, `DELETE`, `SELECT FOR UPDATE` |
-| `FOR SHARE` | `SELECT FOR SHARE` | `UPDATE`, `DELETE`, `SELECT FOR UPDATE` |
-| `FOR KEY SHARE` | Validating Foreign Keys | `DELETE`, `SELECT FOR UPDATE` |
+| `FOR KEY SHARE` | a foreign-key check on the referenced row | `FOR UPDATE` only: a `DELETE` or a key change |
+| `FOR SHARE` | `SELECT … FOR SHARE` | any `UPDATE`, `DELETE`, `FOR UPDATE`, `FOR NO KEY UPDATE` |
+| `FOR NO KEY UPDATE` | an `UPDATE` that leaves key columns alone | the same, plus `FOR SHARE`; not `FOR KEY SHARE`, so foreign-key inserts still flow |
+| `FOR UPDATE` | `DELETE`, a key-changing `UPDATE`, `SELECT … FOR UPDATE` | every mode |
 
-- A row lock never blocks a plain `SELECT`. Thanks to MVCC, readers can always read the old version of the row while writers fight over the lock
+- No row-lock mode blocks a plain `SELECT`. MVCC hands readers the last committed version while the writers queue
 
 ### The failure
 
-- Acquiring a lock and then waiting for a human. If you build an admin dashboard that runs `SELECT FOR UPDATE` when an admin opens a support ticket, and only runs `COMMIT` when they click "Save", you have created a disaster. A row lock is a queue. If the admin goes to lunch, every other admin trying to view or update that ticket is frozen until the lock drops
+- A lock held across a human. The admin screen runs `SELECT … FOR UPDATE` when the ticket opens and `COMMIT` when someone clicks Save; the second admin's screen hangs until the first one returns from lunch, and every pooled connection behind them waits in the same queue

@@ -1,14 +1,13 @@
 ## Isolation is the expensive letter
 
-- If two clients modify the same data at exactly the same time, what happens? **Isolation** guarantees that concurrently executing transactions do not step on each other's toes
-- The strongest level of isolation is **Serializable**. It guarantees that the outcome of executing multiple transactions concurrently is exactly the same as if they had executed sequentially (one after another, with no overlap)
-- But Serializable isolation requires the database to carefully coordinate reads and writes, which is slow. To improve performance, databases offer weaker isolation levels (like Read Committed) that allow transactions to overlap in unsafe ways
+- **Isolation** decides what a transaction may see of others running at the same time. The strongest level, **serializable**, promises the result equals some one-at-a-time order of the transactions
+- Every level below serializable lets named interleavings through. The level is a contract; the anomalies it permits are the small print, and Module 2 reads it line by line
+- Serializable costs coordination: locks, or tracking who read what and aborting on conflict (Module 3). So vendors default lower. Postgres defaults to Read Committed, InnoDB to Repeatable Read, and the two Repeatable Reads are not the same thing (Module 2, page 5)
 
 :::interview
-**The contract you didn't read**
-Every isolation level below Serializable is a compromise. It explicitly permits certain concurrency bugs (anomalies) to pass through to your application in exchange for speed. The isolation level is a contract you are signing. If you don't know what anomalies it allows, you don't know what bugs are running in your production database.
+"We wrap it in a transaction, so it is safe. Is it?" — Against crashes, yes. Against concurrent transactions, only as safe as the isolation level. At Postgres's default, Read Committed, two transactions can both read a balance of 100, both compute 40, and both commit; the balance ends at 40 instead of below zero. Safety needs an atomic update, a lock, or a higher level, and each is a page in Module 2.
 :::
 
 ### The failure
 
-- Assuming "we use transactions, so it is safe." If your database is running at Read Committed isolation (which is the default in Postgres), your transactions are absolutely overlapping. The database will happily allow two users to withdraw the last $100 from an account at the same time, unless you explicitly lock the rows or upgrade the isolation level
+- Trusting the level's name instead of its anomaly list. Repeatable Read sounds complete; in Postgres it still permits write skew (Module 2, page 9), the on-call roster bug. Check the table on Module 2, page 1 before trusting any name

@@ -1,7 +1,6 @@
 ## Deadlocks are detected, not prevented
 
-- Because locks force transactions to wait, it is entirely possible for two transactions to wait for each other. Transaction A locks Row 1 and waits for Row 2. Transaction B locks Row 2 and waits for Row 1. They are now in a **deadlock**
-- Databases do not prevent deadlocks from happening. Instead, they let them happen, detect them, and kill one of the transactions to break the cycle
+- A **deadlock**: transaction A holds row 1 and waits for row 2; B holds row 2 and waits for row 1. Neither can finish, so neither releases. Databases let it happen and break it: find the cycle in the wait-for graph, abort one transaction, let the other proceed
 
 <svg viewBox="0 0 460 140" role="img" aria-label="A deadlock cycle. Tx A locks User 1 and waits for User 2. Tx B locks User 2 and waits for User 1. The database detects the cycle and aborts Tx B." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
   <rect x="50" y="30" width="100" height="30" rx="15" fill="#fff" stroke="#1d4e89" stroke-width="2"/>
@@ -35,8 +34,9 @@
   <text x="230" y="20" text-anchor="middle" font-weight="bold" fill="#b8541a">DEADLOCK CYCLE DETECTED</text>
 </svg>
 
-- Postgres checks for deadlocks automatically. However, searching the dependency graph for cycles is CPU-intensive. Postgres waits `deadlock_timeout` (default 1 second) before it even bothers looking for a deadlock
+- Postgres runs the check only after a lock wait has lasted `deadlock_timeout`, one second by default, because the cycle search is not free. The victim gets SQLSTATE `40P01`, "deadlock detected", and its transaction is rolled back. The application retries it whole, with the loop from Module 1, page 8
+- A deadlock is not a bug in the database; it is two code paths that lock the same rows in different orders
 
 ### The failure
 
-- Acquiring rows in different orders. Deadlocks are entirely preventable if you always acquire locks in the exact same order (e.g., sorting user IDs before writing to them). If your "Transfer Money" endpoint locks the sender then the receiver, transferring A→B and B→A concurrently will deadlock. If it sorts the IDs and locks the smallest ID first, it will never deadlock
+- `transfer(a, b)` locks the sender then the receiver. Run `transfer(1, 2)` and `transfer(2, 1)` at once: each holds one row and waits for the other. The prevention is an ordering rule: lock rows in a fixed order, smallest id first, on every code path that touches more than one

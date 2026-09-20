@@ -334,6 +334,75 @@ target; merging one-idea pairs kept this at 78 with nothing lost. The draft
 was weakest exactly where it was shortest (replication), so a short draft
 module is a signal to write from the research line, not to edit.
 
+### 2026-09-21 — booklet 03 Consistency, part 1: modules 1–4 rewritten, checked
+
+**Draft 93 pages → 37 kept for modules 1–4; modules 5–9 not yet written.**
+The finding that reshaped the plan: the draft tracks the approved list only
+for modules 1–4 (41 pages). Its modules 5–8 (52 pages) are off-script:
+replication/CRDTs/quorums (already booklet 02), a Figma case study (02's
+sharding pages), a Ticketmaster case study (06's Module 12). None of the
+approved modules 5–9 (consistency models, CAP/PACELC, consensus, leader
+election and locks, clocks) exist in the draft. So this booklet is half
+edit, half write, and was split across two sessions: this one edited 1–4;
+the next writes 5–9 from the research lines (plan below), then one
+fact-check of 5–9 and the commit for the whole booklet.
+
+**Plan for the booklet, 82 pages:** 1 (8) · 2 (10: dirty read+write merged;
+non-repeatable read folded into Read Committed) · 3 (9: choosing folded
+into optimistic) · 4 (10: 3PC cut to one line on the failure-cases page) ·
+5 (11: stale-reads + pick-per-operation merged) · 6 (5: "P is not optional"
+folded into CAP-as-proved) · 7 (12: why + problem statement merged;
+membership/snapshots cut) · 8 (10) · 9 (7: TrueTime cut; leap seconds into
+NTP/drift; timeouts-prove-nothing into the closing rule; the interview
+checkpoint page cut, its three questions placed as `:::interview` blocks
+on 02-10 double booking, and in the next session on Raft log replication
+and Redlock). Fifteen off-script pages with reusable material are parked in
+the session scratchpad (`parked/`): linearizability, fencing tokens, split
+brain, majority quorum, ZooKeeper election, Redis locks, read-your-writes,
+CAP; each still gets rewritten to its research line.
+
+**What the edit caught in the draft (modules 1–4):** the write-skew page
+said `SELECT … FOR UPDATE` cannot prevent it (it can, on the rows the check
+read); the materializing-conflicts recipe (`FOR UPDATE` the slot row, then
+`count(*)`, then insert) double-books at Postgres Repeatable Read because
+the count still reads the old snapshot — replaced with a conditional
+`UPDATE` on the slot row, and the RR trap is now the page's failure; the
+2PC crash table had "coordinator crashes before logging → participants
+abort" (a prepared participant cannot abort; that is the in-doubt case);
+the Cassandra row said logged BATCH is single-partition (it spans
+partitions, isolation is per partition); the `CHECK (balance >= 0)` row said
+a concurrent withdrawal "bypasses the check" (it does not; the app-computed
+write is a lost update the check passes); CockroachDB "only supports
+Serializable" (Read Committed is opt-in); `row.likes` / `user.version` on
+node-postgres results; a page with no failure section; interview blocks
+that were essays, not questions. All 37 pages rewritten in full (prose
+rewritten, SVGs kept, one moved), four scripts with `{SVG}` splicing.
+
+**Checks:** `check-pages.mjs` on a clean copy of the 37 files: only the
+expected "Module 7 does not exist here" note. Two PDF builds: one overflow
+(anomaly map, 205 mm), fixed by shortening table cells; second build zero
+overflow across all 116 built pages. `retry-check.mjs` (scratchpad): the
+`withRetry` sample with a mock `db` — COMMIT fails once with `40001` →
+work runs twice, log is BEGIN/COMMIT/ROLLBACK/BEGIN/COMMIT; fails always
+→ rethrows after 3; a `23505` is not retried. Sonnet fact agent on modules
+1–4, 11 fetches, ~84 facts: **zero WRONG**; one cross-ref broken (the 2PL
+page pointed InnoDB Serializable at the Repeatable Read page; now page 8);
+five UNVERIFIED, of which two verified by hand afterwards (Redis
+`MULTI`/`EXEC` no rollback + no other client served in between; Cassandra
+logged BATCH "eventually complete or none", "isolated only within a single
+partition") and the Redis cluster hash-slot clause cut; `hashtext` replaced
+with the documented two-int `pg_advisory_xact_lock(1, 42)` form. Confirmed
+live by the agent: the Postgres row-lock conflict matrix, `40P01`, `55P03`,
+the RR lock-without-modification rule behind 02-10, SSI since 9.1 and
+`max_pred_locks_per_*`, InnoDB gap lock on an empty range, DynamoDB
+transaction limits and `TransactionCanceledException`.
+
+**Blocked on the user:** the auto-mode classifier refused every delete or
+move (`git rm`, `mv`), so the 75 stray draft files (old module 2–4 names
+and the off-script modules 5–8) are still in `pages/` and in this build's
+PDF. One command, given in chat, prunes them to the 37 kept files; run it
+before the commit.
+
 ## Explanation
 
 ### 1. What changed

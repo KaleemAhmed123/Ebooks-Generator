@@ -1,18 +1,17 @@
 ## Consistency is your invariant
 
-- The C in ACID stands for Consistency. It is the most misunderstood letter in the acronym. Unlike Atomicity, Isolation, and Durability, Consistency is not a guarantee provided by the database
-- **Consistency is an application property**. It simply means that your data must always obey your business rules (invariants). For example, "credits and debits across all accounts must always sum to exactly zero"
+- The C in ACID is not a database guarantee. **Consistency** here means the data obeys your rules: every order points at a customer, credits and debits sum to zero, no seat is sold twice
+- The database enforces only the rules you declare as constraints. The rest is application code, and atomicity and isolation are the tools it uses to keep a rule true across a crash or a concurrent writer
 
-| Invariant | Who enforces it | How it breaks |
+| Invariant | Who enforces it | How it still breaks |
 |---|---|---|
-| A user's `email` must be unique | Database (via `UNIQUE` constraint) | Two concurrent inserts without a constraint. |
-| A row in `orders` must point to a real `users` row | Database (via `FOREIGN KEY`) | The user is deleted without `CASCADE`. |
-| Account balances cannot be negative | Database (via `CHECK (balance >= 0)`) | A concurrent withdrawal bypasses the check. |
-| **Credits minus debits must equal zero** | **Application code** | A bug in the application's math. |
+| `email` is unique | database, `UNIQUE` | it does not; two inserts race and one fails |
+| every order has a customer | database, `FOREIGN KEY` | a bulk load run with constraints off |
+| balance never below zero | database, `CHECK (balance >= 0)` | the app reads 100, computes 40, writes 40; so does a second app; the check passes twice (lost update, Module 2) |
+| **credits and debits sum to zero** | **application code** | one code path credits without debiting; the database commits it |
 
-- The database cannot mathematically prove that your application code is correct. It only provides the tools (Atomicity and Isolation) that allow you to keep the data consistent
+- "We use Postgres, so the data is consistent" claims the last row from the first three. Only what is declared is checked
 
 ### The failure
 
-- Assuming the database magically prevents bad data. You will hear engineers say, "We use Postgres, so our data is ACID compliant and consistent." 
-- If your application code has a bug that accidentally credits Bob $100 without debiting Alice, the database will happily commit the transaction. The transaction was Atomic and Isolated, but the state of the system is now mathematically inconsistent. The database only enforces what you explicitly declare
+- An invariant that lives in a comment. Two services each believe the other checks that a booking has a paid invoice; neither does. Write the rule as a constraint where the database can hold it. Where it cannot, name the one code path that owns it

@@ -1,24 +1,18 @@
 ## 2PC in real systems
 
-- Despite its reputation in microservices, 2PC is actively used in modern distributed systems. You just don't see it, because it is hidden entirely within the boundaries of a single system where network latency is strictly controlled
+- 2PC is not gone; it moved inside systems where one operator controls the coordinator and the network. Postgres exposes the participant side, XA transaction managers play coordinator, and DynamoDB runs the whole protocol behind one API call
 
 ```sql
--- Postgres exposes 2PC manually, but warns against using it
--- in application code. It is meant for XA Transaction Managers.
 BEGIN;
 UPDATE accounts SET balance = balance - 100 WHERE id = 1;
-PREPARE TRANSACTION 'tx_42'; 
--- Locks are now held, connection can be closed.
-
--- ... Coordinator does its work ...
-
-COMMIT PREPARED 'tx_42'; 
--- Locks are released.
+PREPARE TRANSACTION 'order-42';   -- durable, locks held, detached from this session
+-- the transaction manager collects every participant's vote, then:
+COMMIT PREPARED 'order-42';       -- or ROLLBACK PREPARED 'order-42'
 ```
 
-- In Postgres, 2PC is considered so dangerous that `max_prepared_transactions` defaults to `0`. It is literally turned off by default to protect you from yourself
-- **DynamoDB**: When you use the `TransactWriteItems` API in DynamoDB, Amazon uses a custom 2PC protocol under the hood across its storage nodes. This is why a transaction costs twice as much capacity as a normal write: the storage nodes must do one write for the Prepare phase, and one write for the Commit phase
+- The Postgres docs say the command is "not intended for use in applications"; it exists so an external transaction manager can drive phase 2. `max_prepared_transactions` defaults to 0, which disables it, and a prepared transaction survives a server restart with its locks
+- DynamoDB `TransactWriteItems` is 2PC inside one service: two underlying writes per item, prepare and commit, which is why a transaction consumes double capacity; up to 100 items and 4 MB, one Region, with a `ClientRequestToken` that makes a retry idempotent for 10 minutes
 
 ### The failure
 
-- Treating `PREPARE TRANSACTION` as an application feature. If you try to use Postgres's 2PC commands manually from a Node.js API to orchestrate writes across two databases, you are building a custom Distributed Transaction Manager. You will inevitably introduce an "in doubt" bug during a deploy, locking up production tables until someone drops the database
+- `PREPARE TRANSACTION` driven from application code. A deploy restarts the process between prepare and commit, and the prepared transaction sits in `pg_prepared_xacts` holding its locks until an operator finds it. The transaction manager's job is exactly to survive that restart; an API server is not one
