@@ -17,13 +17,13 @@
   <path d="M222 14 L240 14" stroke="#b8541a"/><text x="246" y="18" font-size="8" fill="#b8541a">cancel</text>
 </svg>
 
-- **Tied requests**: send to two servers immediately; the first to start processing cancels the other after 1 ms. Google measured: median latency −16%, p99.9 nearly −40%, disk overhead under 1%
+- **Tied requests**: send to one server, then to a second about 1 ms later, two network hops on the hardware of the paper; whichever server *starts executing* first tells the other to drop it. Google measured: median latency −16%, p99.9 nearly −40%, disk overhead under 1%
 
 ### The rule
 
 - Hedging works only for **idempotent, read-only** requests. A hedged POST that mutates state will run twice
-- The cost is small — 2% extra load — because most requests come back before the hedge fires. The p95 threshold means only the slow 5% trigger a second copy
+- Hedging after the p95 adds about 5% load, because only the slow 5% ever send a second copy. The BigTable run above, with a fixed 10 ms hedge, cost 2%
 
 ### The failure
 
-- Hedging a write that creates a payment. Both copies arrive. Two charges. The defence is idempotency (Module 11 of this booklet), not hedging
+- Hedging a write that creates a payment. Both copies arrive. Two charges. The defence is idempotency (Module 10 of this booklet), not hedging

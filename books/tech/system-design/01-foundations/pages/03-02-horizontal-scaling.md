@@ -30,4 +30,4 @@
 
 ### The failure
 
-- Scaling out the web tier to twenty pods and watching throughput plateau. The bottleneck was never CPU — it was the single database behind them, now with twenty connection pools instead of one
+- Scaling out the web tier to twenty **pods** (Kubernetes' unit of one running copy) and watching throughput plateau. The bottleneck was never CPU — it was the single database behind them, now with twenty connection pools instead of one

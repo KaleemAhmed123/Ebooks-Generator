@@ -19,10 +19,10 @@
   <text x="359" y="49" text-anchor="middle" font-size="8" fill="#6b6b6b">max_connections = 100</text>
 </svg>
 
-- Postgres default `max_connections` is 100. The database starts refusing connections at the 101st. The autoscaler, which was supposed to help, is the thing that pushes it over
+- Postgres default `max_connections` is 100. A few of those are reserved for the superuser, so ordinary clients are refused before the 100th. The autoscaler, which was supposed to help, is the thing that pushes it over
 - **Size by Little's law** (Module 3, page 6): connections needed = QPS per pod × average query time. 200 req/s × 2 ms = 0.4 connections. A pool of 5 is generous. A pool of 20 is wasted and dangerous
 
 ### The failure
 
 - The autoscaler adds pods because CPU is high. Each pod opens 20 connections. At 50 pods the database says "too many connections." New pods fail health checks, the autoscaler adds more, each adding 20 more refused connections
-- A **connection pooler** like PgBouncer sits between the pods and the database, multiplexing thousands of app connections into a small fixed set of database connections
+- A **connection pooler** such as PgBouncer, a small proxy that speaks the Postgres protocol, sits between the pods and the database, multiplexing thousands of app connections into a small fixed set of database connections

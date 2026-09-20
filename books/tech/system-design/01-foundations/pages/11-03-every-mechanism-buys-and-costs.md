@@ -1,6 +1,6 @@
 ## Every mechanism buys and costs
 
-- There is no perfect architecture. There is only a trade-off between competing constraints. You must know what you are buying, and what it will cost you
+- Every mechanism in this series is a purchase. The ledger below is the price list
 
 | Mechanism | It buys | It costs |
 |---|---|---|
@@ -14,7 +14,6 @@
 ### The failure
 
 - "We'll add a cache to make it faster" without an invalidation plan. The cache buys speed, but costs staleness. If the business requires strict consistency, a cache is the wrong mechanism
-- System design is the act of balancing these ledgers. The remaining booklets explore them in detail
 
 :::interview
 "Should we use a queue here?" — State the trade-off. "A queue decouples the services and absorbs spikes, but it introduces eventual consistency. If the user expects to see their update immediately, we should do it synchronously instead."

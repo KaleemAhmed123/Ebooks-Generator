@@ -19,7 +19,7 @@
 
 ### The assumption that fails
 
-- "The rack won't die this quarter" is a bet at roughly 5-to-1 against, every quarter
+- "The rack won't die this quarter" is a bet against twenty rack failures a year
 - Any design that puts all copies of one thing in one rack, or one zone, has decided that row does not apply to it
 - The same arithmetic applies to your dependencies. A service calling ten others sees ten times their failure rates, combined
 

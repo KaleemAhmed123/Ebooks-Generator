@@ -7,18 +7,18 @@
 
 Per year:     500 GB × 365 ≈ 180 TB
 × 3 replicas:                 540 TB
-× 2 for indexes/overhead:    ~1 PB
+× ~2 for indexes and logs:   ~1 PB
 Five-year retention:          ~5 PB
 ```
 
-- That is the number that decides: does this fit in one database? No. It needs sharding from day one. Booklet 02, Module 8
+- Five petabytes does not fit one database. That number alone puts **sharding**, splitting the data across machines, on the whiteboard from day one. Booklet 02, Module 6
 
 ### The numbers that get forgotten
 
-- **Replication factor.** Most production databases keep 3 copies. Storage triples
-- **Indexes.** A primary key index roughly doubles the row data. Each secondary index adds more
+- **Replication factor.** Three copies is the usual production setting. Storage triples
+- **Indexes.** Each index stores the columns it covers plus pointers, in the same order of size as the data. Count every secondary index
 - **WAL / redo log.** Transaction logs consume disk proportional to write rate. They are recycled, but the working set is real
-- **Compression.** Text data compresses 2–4× (Module 4, page 9). Images and video do not compress further. State whether your payload compresses
+- **Compression.** Text compresses; images and video are already compressed and do not. State which your payload is
 
 ### The failure
 

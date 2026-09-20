@@ -2,20 +2,19 @@
 
 ## The five questions
 
-- Every system design is an assembly of building blocks: databases, queues, caches, load balancers, services. You cannot know if an assembly works until you ask five questions of it
-- These questions tie together everything in this booklet:
+- Boxes and arrows are a drawing. A design is the drawing plus an answer to five questions, asked of every box
 
-| Question | What it reveals |
-|---|---|
-| **1. Where is the state?** | Durability, consistency, and what a crash destroys |
-| **2. Who owns the state?** | Bottlenecks, race conditions, and boundaries |
-| **3. What if a node dies?** | The availability strategy (replica, failover, or downtime) |
-| **4. What if a message is duplicated?** | The idempotency strategy |
-| **5. What if communication fails?** | The timeout, retry, and fallback strategy |
+| Question | What it exposes | The answer this booklet gives |
+|---|---|---|
+| **1. Where is the state?** | what a crash destroys | "stateless" only moves state. Memory, local disk, cache, replicated database: four durability levels; every datum is placed on one |
+| **2. Who owns the state?** | race conditions, boundaries | one writer per datum; everyone else reads via its API or a subscribed copy. Two services writing one table is no owner |
+| **3. What if a node dies?** | the availability strategy | stateless: a replica behind the balancer. Stateful: failover, quorum, or replay. "Down until restarted" is valid for a monthly report, if said out loud |
+| **4. What if a message is duplicated?** | the idempotency strategy | it will be (Module 7). Every consumer dedups, and the dedup store keeps keys longer than the sender retries (Module 10, page 4) |
+| **5. What if communication fails?** | timeout, retry, fallback | timeout, classified retry with backoff and budget, then a named fallback or a compensation (Modules 8, 9, next page) |
 
-- A design that draws boxes with lines between them is a whiteboard drawing. A design that answers these five questions is an architecture
+- Ask them in a design review. Ask them in an interview, about your own design, before the interviewer does
 
 ### The failure
 
-- A team spends three weeks debating GraphQL vs REST, and zero minutes debating what happens when the payment service times out. The API protocol does not matter if the system double-charges customers because it failed to answer Question 4
-- The infrastructure tools you choose (Kafka, Postgres, Redis) are just implementations. The five questions are the physics of the system. You must answer them no matter what tools you use
+- Three weeks on REST versus GraphQL, zero minutes on what happens when the payment service times out. The protocol was never the risk. Question 5 was
+- "We have a read replica, so the database is highly available." A replica with no failover procedure protects reads only. When the primary dies, writes stop until a human acts. Question 3 was answered for half the traffic

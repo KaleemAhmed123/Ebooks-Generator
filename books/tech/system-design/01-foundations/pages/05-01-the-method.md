@@ -7,9 +7,9 @@
 
 ### Step by step
 
-- **State your assumptions.** "100M registered users, 10% DAU, each visits 5 times and clicks 3 items per visit." Write them down. They are your answer's error budget
+- **State your assumptions.** "100M registered users, 10% **DAU** (daily active users), each visits 5 times and clicks 3 items per visit." Write them down. They are your answer's error budget
 - **Multiply in powers of ten.** 10M DAU × 5 × 3 = 150M clicks/day ≈ 1.5 × 10⁸. Do not reach for a calculator; round everything to the nearest power of ten and multiply the exponents
-- **Sanity-check.** "150M clicks/day ≈ 1,700/s. Twitter had about 6,000 tweets/s at peak in 2014. Our service is smaller. 1,700/s sounds plausible." If the answer is wildly different from something real, recheck the assumptions
+- **Sanity-check.** "150M clicks/day ≈ 1,700/s. One well-tuned Postgres box handles that; a fleet is not needed yet." Compare the answer to something you have actually run. If it is wildly off, the assumption is wrong, not the arithmetic
 
 ### The failure
 

@@ -25,7 +25,7 @@ Parallel (all 30 at once)
   <text x="8" y="64" font-size="8" fill="#6b6b6b">speedup: 10–30× from parallelism alone</text>
 </svg>
 
-### Why this matters
+### The tail, again
 
 - The arithmetic said 18 ms. The tail said 30–60 ms. That gap is Module 4's fan-out lesson: the slowest of N parallel calls sets the latency
 - In an interview, do the parallel estimate, then add: "the tail of 30 requests will push this to 2–3× the single-request time"

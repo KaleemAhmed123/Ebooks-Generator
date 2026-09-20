@@ -24,7 +24,7 @@
   <text x="410" y="60" text-anchor="middle" font-weight="bold" fill="#b8541a">27 requests</text>
   
   <path d="M20 70 L440 70" stroke="#6b6b6b" stroke-dasharray="1 3"/>
-  <text x="230" y="90" text-anchor="middle" font-size="9" fill="#1d4e89">Rule: Retry at a single layer. Usually the one closest to the user.</text>
+  <text x="230" y="90" text-anchor="middle" font-size="9" fill="#1d4e89">Rule: retry at one layer, the one just above the failure.</text>
 </svg>
 
 - If every layer is configured to "be resilient" by retrying, the system becomes a load multiplier. A minor database hiccup generates 27× the traffic, guaranteeing the hiccup becomes a full outage

@@ -9,7 +9,7 @@
 | **SLA** — service level agreement | the contract, with consequences for missing it | credit 10% of the bill if the SLO is missed |
 
 - No SLI, no SLO. An objective with nothing measuring it is a wish
-- The SLO is stricter than the SLA. Google's SRE book: keep a safety margin, and do not overachieve, because users come to depend on the level you actually deliver
+- The SLO is stricter than the SLA. Google's SRE book (**site reliability engineering**, its name for running production): keep a safety margin, and do not overachieve, because users come to depend on the level you actually deliver
 
 ### The error budget
 

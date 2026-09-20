@@ -1,6 +1,6 @@
 ## One connection, many requests
 
-- **HTTP/1.1** serialises requests on a connection. The browser opens 6 connections per host to work around this
+- **HTTP/1.1** serialises requests on a connection. Browsers open a handful of connections per host to work around this
 - **HTTP/2** multiplexes many requests on one TCP connection as independent **streams**. But one lost TCP packet stalls every stream — **head-of-line blocking** at the transport layer. RFC 9114: "a lost or reordered packet causes all active transactions to experience a stall"
 - **HTTP/3** runs over **QUIC** (UDP + TLS 1.3). Each stream recovers independently; one lost packet stalls only that stream. Setup is 1 RTT (TCP handshake + TLS rolled into one); resumption is 0 RTT
 
@@ -26,4 +26,4 @@
 
 ### The failure
 
-- HTTP/1.1 with 6 connections per host: 6 in-flight requests at most. A waterfall of requests in the browser when there are 30 assets. HTTP/2 removes this limit; HTTP/3 removes the shared-loss problem too
+- HTTP/1.1 with a few connections per host: that many requests in flight, at most. A waterfall when a page has 30 assets. HTTP/2 raises the limit to a hundred or more streams per connection; HTTP/3 removes the shared-loss problem too

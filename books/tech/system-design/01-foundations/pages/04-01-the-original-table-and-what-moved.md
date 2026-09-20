@@ -10,12 +10,12 @@
 | L1 cache reference | 0.5 ns | ~1 ns | minor |
 | Main memory reference | 100 ns | ~100 ns | flat since ~2000 |
 | SSD random read | *not listed* | ~100 µs | SSDs were not on the 2010 list |
-| Datacenter RTT | 500 µs | ~100–250 µs | better fabric, same order |
+| Datacenter RTT, **round-trip time** | 500 µs | ~100–250 µs | better fabric, same order |
 | Disk seek (HDD) | 10 ms | ~10 ms | spinning disks have not changed |
 | CA → Netherlands → CA | 150 ms | ~150 ms | speed of light did not change |
 
 - Three things did not move: **memory latency** (physics of DRAM), **speed of light** (physics), and **HDD seek** (spinning platter)
-- What moved: **storage** (SSDs replaced most disk), **network bandwidth** (100 Gbps NICs), and the SSD row that was not on the original list
+- What moved: **storage** (SSDs replaced most disk), **network bandwidth**, and the SSD row that was not on the original list
 
 ### The failure
 

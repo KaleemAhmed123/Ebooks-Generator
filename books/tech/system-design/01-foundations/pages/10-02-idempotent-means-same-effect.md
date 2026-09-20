@@ -1,6 +1,6 @@
 ## Idempotent means "same effect"
 
-- RFC 9110 (HTTP Semantics) defines idempotency: a request method is idempotent if "the intended effect on the server of multiple identical requests is the same as the effect for a single such request"
+- RFC 9110 (HTTP Semantics) defines idempotency: a request method is idempotent if "the intended effect on the server of multiple identical requests with that method is the same as the effect for a single such request"
 - It does not mean the *response* is identical. The first delete might return `200 OK`; the second might return `404 Not Found`. But the *effect* on the server — the record being gone — is the same
 
 | Method | Idempotent? | Why |
@@ -11,7 +11,7 @@
 | **POST** | No | By default, it appends or executes. `array.push(5)` done twice adds two items |
 | **PATCH** | Usually no | `x += 5` done twice adds 10 |
 
-- The RFC adds the crucial rule: if a method is idempotent, the client "MAY automatically repeat the request if it experiences a communication failure"
+- The RFC then draws the line that matters: an idempotent request "can be repeated automatically if a communication failure occurs before the client is able to read the server's response", and a client "SHOULD NOT automatically retry a request with a non-idempotent method"
 
 ### The failure
 

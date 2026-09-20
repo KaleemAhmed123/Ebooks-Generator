@@ -24,11 +24,11 @@
 
 ### How wrong it gets
 
-- One request every 10 ms, each answered in 1 ms, then one 1-second pause. A hundred requests were owed during the pause; one was recorded. Naive p99: 1 ms. Truth: about 1% of requests waited up to a second
+- One request every 10 ms, each answered in 1 ms, then one 1-second pause. A hundred requests were owed during the pause; one was recorded. Naive p99: 1 ms. Truth: a hundred requests waited up to a second, and a 100-second run reports one of them
 - The benchmark reports a system with no tail. Production has a tail. The benchmark was the thing that was broken
 
 ### The fix
 
 - An **open-loop** generator sends on schedule whether or not the last reply came back. It measures what users would have experienced, and it loads the system the way real traffic does
-- Or correct after the fact: HdrHistogram's `recordValueWithExpectedInterval` fills in the missing samples from the intended send interval
+- Or correct after the fact: HdrHistogram, the latency-recording library, has `recordValueWithExpectedInterval`, which fills in the missing samples from the intended send interval
 - When someone quotes a p99 from a load test, ask which loop it was. A closed-loop p99 is a lower bound on the truth

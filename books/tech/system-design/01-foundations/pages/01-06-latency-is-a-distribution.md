@@ -16,11 +16,10 @@
   <text x="440" y="74" text-anchor="end" fill="#6b6b6b">the tail →</text>
 </svg>
 
-### Why p99 is the number that matters
+### The tail is where the users are
 
 - The users who make the most requests are the ones who hit the tail most often. Heavy users are usually the most valuable ones
-- A request that fans out to *n* backends waits for the slowest. With 100 backends each fine at p99, the chance that at least one is in its slow 1% is 1 − 0.99¹⁰⁰ ≈ 63%. The backend p99 becomes the user's p50
-- So a system is judged at its tail, and the tail is where the interesting engineering is
+- A request that fans out to many backends waits for the slowest one, so a backend's p99 can become the user's median. Module 4 has the arithmetic
 
 ### The failure
 

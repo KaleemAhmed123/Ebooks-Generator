@@ -1,8 +1,8 @@
-## 5. What if communication fails?
+## When communication fails, walk the tree
 
 - When a timeout fires, or a connection drops, the caller must navigate a decision tree. Silence is ambiguous, so the tree must handle the worst case (the work was done)
 
-<svg viewBox="0 0 460 180" role="img" aria-label="A decision tree for network failure. Fails → Is it idempotent? No → Reconcile state. Yes → Have attempts left? Yes → Retry with backoff. No → Core feature? Yes → Fail operation. No → Degrade gracefully." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
+<svg viewBox="0 0 460 180" role="img" aria-label="A decision tree for network failure. Fails → Is it idempotent? No → Reconcile state. Yes → Under retry budget? Yes → Retry with backoff. No → Core feature? Yes → Fail operation. No → Degrade gracefully." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
   <rect x="180" y="10" width="100" height="24" rx="3" fill="#e2fcf3" stroke="#1d4e89"/><text x="230" y="26" text-anchor="middle">Network fails</text>
   <path d="M230 34 L230 46" stroke="#1d4e89"/><path d="M230 46 l-3 -6 h6 z" fill="#1d4e89"/>
   
@@ -34,4 +34,4 @@
 </svg>
 
 - If a step is missing from the tree, you have a bug. Retrying without checking idempotency creates duplicates. Failing a non-core feature without degrading gracefully breaks the whole page for one minor widget
-- **Compensation** (Booklet 04, sagas) is required if the flow fails *after* partial state was written
+- **Compensation**, an action that undoes a step already committed, is required if the flow fails *after* partial state was written. Booklet 03, Module 4 (sagas)

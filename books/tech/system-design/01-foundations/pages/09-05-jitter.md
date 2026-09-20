@@ -29,10 +29,16 @@
 - **Full jitter** is the standard. You calculate the exponential backoff, then pick a random number between zero and that value:
   `random(0, min(cap, base × 2^attempt))`
 
-### Why full jitter wins
+- With 100 contending clients, AWS measured full jitter cutting the total calls to finish the work by more than half against plain backoff. Equal and decorrelated variants exist; full is the default answer
 
-- In an AWS study of 100 contending clients, full jitter cut the total number of calls required to complete the work by more than half compared to plain exponential backoff
-- Equal jitter (half flat, half random) and decorrelated jitter exist, but full jitter is the default industry answer for client retries
+### Jitter everything periodic
+
+| Many clients do this on a clock | The spike | The fix |
+|---|---|---|
+| cache entries expire | 10,000 keys expire at midnight, the database takes every miss | `ttl = base + random(0, 10 min)` |
+| cron at the top of the hour | 50 services clean up at `:00` | sleep `random(0, 5 min)` first |
+| reconnect after a balancer restart | 5,000 sockets reconnect in the same second | reconnect with full jitter |
+| tokens refresh after a fixed lifetime | every instance renews in the same millisecond | refresh at 75–90% of the lifetime, at random |
 
 :::interview
 "How do you prevent a retry storm?" — Exponential backoff to pace the load, plus full jitter to desynchronise the clients. Write the `random(0, backoff)` formula on the board.

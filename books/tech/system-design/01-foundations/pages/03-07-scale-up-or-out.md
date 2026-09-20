@@ -14,7 +14,7 @@
 
 - CPU at 30%, memory at 40%, but the p99 is climbing. The bottleneck is probably a lock, a sequential scan, or a dependency, not the box itself
 - Scaling out the web tier does nothing if the bottleneck is the database. Scaling up the database does nothing if the bottleneck is a distributed lock
-- Before adding resources, find the serial fraction (Amdahl, previous page) or the queue (Little, previous page). The constraint decides the fix
+- Before adding resources, find the serial fraction (Amdahl) or the queue (Little). The constraint decides the fix
 
 ### The failure
 

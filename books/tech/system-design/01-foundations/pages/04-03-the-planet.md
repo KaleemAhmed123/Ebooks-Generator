@@ -5,7 +5,7 @@
 
 | Route | Distance | One-way fiber | RTT (measured) |
 |---|---|---|---|
-| NY – London | 5,585 km | ~28 ms | ~56 ms (cloud: EU-West↔NA-East ~80 ms) |
+| NY – London | 5,585 km | ~28 ms | ~56 ms |
 | NA Central – NA East | — | — | ~25 ms |
 | NA East – NA West | — | — | ~60 ms |
 | NA West – Singapore | — | — | ~180 ms |
@@ -16,5 +16,5 @@
 
 ### The failure
 
-- A "global" product with one region in Virginia. Half the users are in Asia. Their floor is 180 ms RTT before the server does any work. Every click, every scroll that loads data, starts with 180 ms of physics
-- "Add a CDN" helps for static files. For an API call that hits the database, the RTT to the origin is still the floor
+- A "global" product with one region on the US west coast. Half the users are in Asia. Their floor is 180 ms RTT before the server does any work. Every click, every scroll that loads data, starts with 180 ms of physics
+- "Add a CDN", a **content delivery network** that caches copies near the user, helps for static files. For an API call that hits the database, the RTT to the origin is still the floor

@@ -23,6 +23,16 @@
 - The request may have been lost. The request may have arrived, been processed, and the reply lost. The request may arrive later, after the caller gave up and retried. The caller cannot tell which one happened
 - Every RPC, HTTP call, and message send is this diagram. Writing it as `await fetch()` hides it
 
+### The assumptions a local call lets you make, and the network does not
+
+| You assume | The network says |
+|---|---|
+| it arrives | it may be lost, delayed, duplicated, or reordered |
+| it arrives now | latency is never zero, and it has a tail |
+| the address is stable | DNS changes, nodes move, the balancer reroutes |
+| the other side is who it says | anything in between can read or forge it |
+| one call, one cost | every hop is a floor and a bill |
+
 ### The failure
 
-- Writing a service call as if it were a local function. No timeout, no retry, no fallback. When the remote side dies, the caller hangs until the OS gives up — minutes later
+- Writing a service call as if it were a local function. No timeout, no retry, no fallback. When the remote side dies, the caller hangs until the OS gives up, minutes later

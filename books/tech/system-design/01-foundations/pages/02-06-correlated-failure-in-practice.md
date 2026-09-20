@@ -29,5 +29,5 @@
 
 ### The failure
 
-- "We're in three availability zones" as the complete answer to "what happens if AWS has a bad day". Three zones share a region's control plane. The 2025 event was a control-plane failure
+- "We're in three availability zones" as the complete answer to "what happens if AWS has a bad day". Three zones share regional services. The 2025 event was a failure in one of them
 - The fix is not "avoid AWS". It is knowing which of your dependencies are regional, and having an answer for the day one of them is gone

@@ -6,7 +6,7 @@
 | Parameter | What it measures | Why it changes the design |
 |---|---|---|
 | **Requests per second** | arrival rate, peak and average | how many instances, how big a queue |
-| **Read/write ratio** | reads per write | caches and replicas help reads; writes need the primary |
+| **Read/write ratio** | reads per write | caches and **replicas** (read-only copies) help reads; writes need the **primary**, the one copy that accepts them |
 | **Data size** | total bytes and growth per month | when one disk, then one machine, stops fitting |
 | **Fan-out** | how many records one request touches | a feed for 1 follower and for 10M followers are different systems |
 | **Concurrent connections** | open sockets held at once | memory per connection, file-descriptor limits, long-lived vs short |

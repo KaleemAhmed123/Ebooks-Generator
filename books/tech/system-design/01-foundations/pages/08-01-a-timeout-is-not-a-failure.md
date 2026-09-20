@@ -24,9 +24,9 @@
 </svg>
 
 - In three of those five cases, the server did the work. A timeout does not mean the work failed. It means the caller stopped waiting
-- This ambiguity is why Module 10 (idempotency) exists. You cannot safely retry a timeout on a mutating request unless the receiver knows how to deduplicate it
+- A retry after a timeout is only safe when the receiver can recognise it as a retry. Module 10 is the mechanism
 
 ### The failure
 
-- Treating a timeout on a payment request as a declined payment. The server processed the charge, but the reply was lost. The client sees a timeout, tells the user "payment failed", and the user tries again. Two charges
+- Treating a timeout on "create virtual machine" as "no machine was created". The request was processed; the reply was lost. The client reports failure, the operator runs it again, and two machines bill by the hour
 - When a timeout fires on a mutating request, the state is **unknown**. The only safe actions are to check the status or send an idempotent retry

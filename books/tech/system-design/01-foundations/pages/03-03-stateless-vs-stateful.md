@@ -2,7 +2,7 @@
 
 - A **stateless** process can be replaced without anyone noticing. Kill it, start a new one, route the next request there. Nothing was lost
 - A **stateful** process holds data that no other process has. Kill it and that data is gone until it recovers
-- The twelve-factor app rule: "Processes are stateless and share-nothing. Any data that needs to persist must be stored in a stateful backing service" — meaning a database, a cache like Redis, or an object store
+- The twelve-factor rule: "Twelve-factor processes are stateless and share-nothing." Anything that must persist lives in a backing service: a database, Redis, an object store
 
 | Thing people store in process memory | Why it breaks on the second replica |
 |---|---|
@@ -11,7 +11,7 @@
 | Upload progress | the next chunk goes to a different node; the upload restarts |
 | In-process rate limiter | each node counts separately; the limit is N× what it should be |
 
-- Sticky sessions — routing a user to the same node — are a workaround, not a fix. The twelve-factor manifesto: "Sticky sessions should never be used or relied upon." They break on scale-in, deploys, and node failure
+- Sticky sessions — routing a user to the same node — are a workaround, not a fix. The twelve-factor manifesto: "Sticky sessions are a violation of twelve-factor and should never be used or relied upon." They break on scale-in, deploys, and node failure
 
 ### The test
 

@@ -6,12 +6,11 @@
 |---|---|
 | Proxy hop | ~50 µs |
 | Redis / Memcached query | ~500 µs |
-| MySQL / Postgres query | ~500 µs – 5 ms |
 | Blob GET (S3-class) | ~80 ms |
 | Blob PUT | ~200 ms |
 | Blob LIST | ~100 ms |
 
-- Twenty sequential 500 µs calls: **10 ms**. The same twenty in parallel: **~500 µs** plus the slowest (which is what the next page is about)
+- Twenty sequential 500 µs calls: **10 ms**. The same twenty in parallel: **~500 µs** plus the slowest, which is the next page
 
 <svg viewBox="0 0 460 78" role="img" aria-label="Serial: twenty 500-microsecond calls stacked end-to-end take 10 ms. Parallel: all twenty fire at once and finish in roughly 500 microseconds plus tail variance" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="9" fill="#1a1a1a">
   <text x="8" y="18" font-size="8.5" fill="#6b6b6b">serial</text>

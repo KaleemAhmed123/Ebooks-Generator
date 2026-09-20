@@ -6,9 +6,9 @@
 |---|---|
 | **99.9%** | monitoring that pages; a rollback that works; no single machine anyone cares about |
 | **99.99%** | 4 min/month: recovery must be automatic; every hard dependency must itself be four nines; deploys become gradual |
-| **99.999%** | 26 s/month: no human in any recovery path; multi-region automatic failover; usable dependencies shrink to the handful that promise five nines |
+| **99.999%** | 26 s/month: no human in any recovery path; multi-region automatic **failover** (a standby takes over without a human); usable dependencies shrink to the handful that promise five nines |
 
-- The dependency rule is the hidden cost. The product formula means a five-nines service needs five-nines parts. Most managed services promise four. DynamoDB commits to 99.999% only for global tables, 99.99% otherwise
+- The dependency rule is the hidden cost. The product formula means a five-nines service needs five-nines parts. Check what each one promises: DynamoDB commits to 99.999% only for global tables, 99.99% otherwise
 
 ### The nine nobody can see
 

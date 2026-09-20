@@ -37,4 +37,3 @@
 ### The bridge
 
 - Everything in booklets 02 and 03 follows from this split. Replication strategies, consistency models, consensus algorithms — they are all ways of managing the cost of having more than one copy of a fact
-- The rest of this module gives two tools for reasoning about how much parallelism a system can extract

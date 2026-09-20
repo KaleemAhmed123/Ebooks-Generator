@@ -6,7 +6,7 @@
 |---|---|---|
 | TCP connect | SYN retries | 6 retries ≈ 127 s |
 | TLS | handshake timeout | varies by library |
-| HTTP client headers | `headersTimeout` | undici: 300 s |
+| HTTP client headers | `headersTimeout` | undici (Node's `fetch`): 300 s |
 | HTTP client body | `bodyTimeout` | undici: 300 s |
 | HTTP client connect | `connectTimeout` | undici: 10 s |
 | HTTP server headers | `headersTimeout` | 60 s (408 + close) |
@@ -18,5 +18,5 @@
 
 ### The failure
 
-- A 2-second request timeout set on top of a 10-second connect timeout. The user sees a 10-second hang, not a 2-second one, because the connect timeout fires first. The request-level timeout only starts counting after the connection is open
-- Read the defaults for your stack before shipping. If you see a `0` or a large number, it means "no limit." Replace it with a number derived from Module 9's guidance: the callee's p99.9 plus a margin
+- A 2-second request timeout set on top of a 10-second connect timeout. With undici's header and body timeouts, the connect phase is counted separately, so the user sees a 10-second hang, not a 2-second one. The request-level timeout only starts counting after the connection is open
+- Read the defaults for your stack before shipping. If you see a `0` or a large number, it means "no limit." Replace it with a number derived from Module 8, page 4: the callee's p99.9 plus a margin

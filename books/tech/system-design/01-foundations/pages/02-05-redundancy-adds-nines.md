@@ -26,7 +26,7 @@ two independent 99.9% replicas
 ### The word that carries the whole formula
 
 - The product is only valid when the failures are **independent**: one replica failing tells you nothing about the other
-- Two replicas that share a deploy, a config, a DNS name, a control plane, a power feed, or a bug are not independent. They fail together, and together they are one 99.9% component with two copies of the same failure
+- Two replicas that share a deploy, a config, a DNS name, a **control plane** (the provider's own machinery that starts, stops and routes your machines), a power feed, or a bug are not independent. They fail together, and together they are one 99.9% component with two copies of the same failure
 - Real redundancy means different: a different zone, a different release, a different provider, a different code path. Each shared thing is a place where the product stops applying
 
 ### The failure

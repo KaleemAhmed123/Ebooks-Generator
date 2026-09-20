@@ -13,7 +13,7 @@ Retry-After: 60
 ### The clamp
 
 - The server's hint is still a hint. If 1,000 clients all obey `Retry-After: 60` exactly, they will all retry at exactly T+60, creating a new storm
-- Resilient clients (like the AWS SDK) use the header, but they apply a clamp and jitter to it: they wait `Retry-After` plus a random jitter up to 5 seconds. This spreads the returning wave
+- Treat it as a floor, not a schedule: wait at least `Retry-After`, then add jitter, and clamp it to your own cap so a hostile or broken server cannot park you for a day
 
 ### The failure
 

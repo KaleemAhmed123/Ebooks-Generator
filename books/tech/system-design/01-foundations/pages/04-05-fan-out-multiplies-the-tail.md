@@ -22,7 +22,7 @@
   <text x="370" y="44" fill="#6b6b6b" font-size="8.5">user sees 800 ms</text>
 </svg>
 
-- This is why a per-server p99 of 5 ms can produce a user-facing p50 of 800 ms. The backend looks fine; the user does not
+- So a per-server p99 that looks fine can become the user's median. The backend dashboards are green; the user is waiting on the one slow leaf
 
 ### The failure
 

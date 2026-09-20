@@ -6,11 +6,11 @@
 
 ### The Stripe standard (de facto)
 
-- The IETF attempted to standardise the `Idempotency-Key` header, but the draft expired in 2026 without becoming an RFC. The industry standard is Stripe's implementation:
-  1. Keys expire after 24 hours (the server cannot store them forever)
-  2. If the client sends the same key with a *different* request payload, the server returns a `422 Unprocessable Entity`
-  3. If the server receives a retry while the original request is *still executing*, it returns a `409 Conflict` (to prevent race conditions)
-  4. The server stores and replays *errors* too (even a 500), so retrying a key that previously crashed returns the same crash, preventing the client from hammering a broken code path
+- The IETF attempted to standardise the `Idempotency-Key` header, but the draft expired in 2026 without becoming an RFC. The de facto standard is Stripe's API:
+  1. Keys are kept at least 24 hours, then may be pruned. The client's retry window must be shorter than that, or a late retry is treated as new work
+  2. The same key with a *different* payload is rejected with an error (Stripe: `idempotency_error`; the expired IETF draft said `422`)
+  3. A retry that arrives while the first request is *still running* gets `409 Conflict`
+  4. Stripe saves the first result, including errors, once the endpoint starts executing. A retry replays it. A request that never started is not saved, so it can be retried
 
 ### The failure
 

@@ -18,14 +18,14 @@
   <text x="240" y="75" text-anchor="middle" font-family="Consolas,monospace" font-size="9.5">0.9999 × 0.9999 × 0.9999 = 0.9997 → 99.97%</text>
 </svg>
 
-- Three four-nines components in a row are a three-nines system. Each hard dependency subtracts; the more boxes on the whiteboard, the lower the number
+- Three four-nines components in a row are 99.97%: no longer four nines. Each hard dependency subtracts; the more boxes on the whiteboard, the lower the number
 - Six four-nines hard dependencies: 0.9999⁶ ≈ 99.94%. The "four nines" in the title was never available to that design
 
 ### Soft dependencies do not multiply
 
 - A **soft dependency** is one you can do without, badly. Recommendations missing from a product page. Search falling back to a simpler index. A profile picture replaced by initials
 - When it fails, the request still completes. Its availability does not enter the product
-- Turning a hard dependency soft is the cheapest nine there is: a timeout, a fallback value, and the code path that uses it. Module 9 covers the timeout; the services booklet covers the fallback
+- Turning a hard dependency soft is the cheapest nine there is: a timeout, a fallback value, and the code path that uses it. Module 8 covers the timeout; the services booklet covers the fallback
 
 ### The failure
 

@@ -15,4 +15,4 @@
 ### The combination
 
 - A message is delayed long enough that the sender retries, then both copies arrive, reordered. The system sees two different-looking requests for the same operation, in the wrong order
-- This is why **idempotency** (Module 10 in this booklet) exists: the system must produce the same result regardless of how many copies arrive or in what order
+- So the receiver must produce the same result however many copies arrive, in whatever order. That property is **idempotency**, Module 10
