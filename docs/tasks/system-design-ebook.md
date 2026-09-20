@@ -291,6 +291,49 @@ tracked the research list and mostly needed cutting and checking; the 04
 and 06 samples read earlier were chattier and will need more rewriting.
 Budget accordingly.
 
+### 2026-09-21 — booklet 02 Data rewritten, checked, committed
+
+**64 → 78 pages, 9 modules.** Commit `cd82b6f`. PDF at `dist/tech/system-design/02-data.pdf`, 81 pages with cover and contents, zero overflow on the first full build.
+
+Against the approved 81-page list: three merges (topologies into 06-01;
+read repair + anti-entropy into one repair page; sloppy quorum and hinted
+handoff folded into the quorums page as its failure mode, per the "already
+cut" decision) and two draft pages cut (rolling deployments, migrations in
+CI: process, not on the list). Module by module: 01–03 edited in place ·
+04 rebuilt: `data-outlives-code` and `schema-registry` new, protobuf rules
+rewritten, the Postgres `int→bigint` rewrite claim dropped as unsourced ·
+05–07 mostly new (14 pages written; the draft's 7 replication pages had
+`hash(userId) % N` for replica pinning, a `synchronous_commit` table that
+made `on` mean "standby flushed" with no `synchronous_standby_names`, and
+"the user screams") · 08 the draft's two partitioning modules made one,
+files renumbered · 09 renumbered. Cover term line `256 tokens` → `16`.
+Six interview blocks (VACUUM, Cassandra writes, UUID PK, read-your-writes,
+hash mod N, hot key).
+
+**Method that held:** one edit script per module group with `assert a in s`
+on every replacement (four scripts, zero failed asserts); `check-pages.mjs`
+clean before the build; one PDF build, no overflow, so the second build was
+only for the fact fixes; four new diagrams screenshotted with a throwaway
+puppeteer script (deleted before commit) — three label collisions found and
+moved. Code samples run in Node: `JSON.parse` of 2^53+1 → 2^53,
+`Number.isSafeInteger` false, string form intact; Map-based key-value
+`get`/`filter` sample.
+
+**The pass, and what it caught.** One Sonnet fact agent, 9 fetches, ~135
+facts checked: zero WRONG. One cross-ref off by one (08-15 said page 10 for
+the salting fix; it is 11). Two unverified lines cut or softened: "Cassandra
+5's" on UCS (docs do not say which version introduced it) and the
+Riak / Redis Enterprise / Automerge / Yjs name-drop on the CRDT page.
+Confirmed live: Redis persistence-off + auto-restart wipe and PSYNC backlog
+wording, `MOVED`, `mongos` reading config servers, the LSI 10 GB rejection
+(`ItemCollectionSizeLimitExceededException`), `pg_stat_user_indexes`, the
+DynamoDB design quote; the `mod 10` → `mod 11` arithmetic (1/11 stay).
+
+**Lesson for 03–06:** the research list's page count is a ceiling, not a
+target; merging one-idea pairs kept this at 78 with nothing lost. The draft
+was weakest exactly where it was shortest (replication), so a short draft
+module is a signal to write from the research line, not to edit.
+
 ## Explanation
 
 ### 1. What changed
