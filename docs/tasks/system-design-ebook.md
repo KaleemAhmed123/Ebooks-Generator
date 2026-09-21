@@ -556,6 +556,69 @@ exists on disk but is untracked and was never run (it would have deleted
 63 files; none are gone). Left those entries in place — this file is
 append-only — flagged to the user for a decision on how to annotate them.
 
+### 2026-09-21 — booklet 04 Events, part 2: modules 8–14 written, checked, committed. Booklet complete at 82 pages
+
+**38 pages, matching the approved plan exactly** (7+7+4+7+7+2+4). All written from
+the research file's lines for modules 8–14; none of it is the old draft, which
+covered different, scattered ground and was fully deleted in part 1's commit.
+Booklet 04 Events is now done: 82 pages across 14 modules, 44 from part 1 plus
+these 38.
+
+**Checks:** `check-pages.mjs` on all 82 pages: 14 modules, no problems, every
+forward-reference part 1 left pointing at modules 8–14 now resolves. One
+overflow on the first build (11-05-compatibility-modes, 200mm of 186mm — the
+`:::interview` block is heavier than it looks); cut a redundant bullet and
+folded its point into the table instead of dropping it, rebuilt clean. Final
+build: zero overflow, 86 printed pages.
+
+Screenshot pass on all 22 new diagrams (modules 8–14): found and fixed three
+real bugs by eye, none of them the label-collision class `scopeSvg` guards
+against — a rendering/content bug in each case. 12-02's "event time" label sat
+directly on top of its own curve (moved clear of it). 13-01's MapReduce
+shuffle lines stopped short of the reduce boxes instead of connecting to them
+— looked like a solid grey band, not a fan (redrawn as six curved paths
+actually reaching both boxes). 13-02's two Kappa labels ran past the SVG's
+right edge and got clipped in print (right-anchored them inside the frame).
+Rebuilt after each fix; final PDF confirmed clean by eye.
+
+Mock-based code checks (`code-check-04-part2.mjs`, scratchpad) on the four
+runnable samples: the event-sourcing fold sums `ItemAdded` onto `Placed` and
+applies `Cancelled` correctly; the projection's upsert applies both an insert
+and a status-only update, including the ternary's fallback to 0 when a field
+is absent; the polling publisher republishes nothing already marked sent; the
+saga envelope — after the fix below — traces causation to a unique message id,
+not a shared step label.
+
+Sonnet fact agent on modules 8–14, 1 of 10 fetches used (confirmed the
+MapReduce paper's authors and page numbers; everything else matched research
+§4 or was uncontested terminology), ~80 facts and cross-references checked:
+**zero WRONG, zero UNVERIFIED, zero broken cross-references, zero
+OVERSTATED**. One real **CODE** bug: `10-04-saga-message-contract.md`'s
+`SagaMessage` interface had no `id` field, and `next()` set `causationId:
+prev.step` — the step's *label* (`"OrderPlaced"`), not a unique message id.
+Every message at the same step in every saga run would have collapsed to the
+same causationId, defeating the exact "find the one stuck run at 3am" case
+the page teaches. Fixed: added a real `id: string` field, `next()` now sets
+`causationId: prev.id`. The agent separately verified all five cross-booklet
+pointers (→01, →02, →03) this part added resolve to the right topic in the
+sibling booklet's actual files, not just a plausible-sounding name.
+
+**Also worth recording:** the research file's module page counts (9: 8→7,
+10: 5→4, 11: 8→7, 12: 10→7, 13: 3→2, 14: 7→4) all landed exactly as merged in
+the approved plan; the fact agent confirmed every folded-in topic (hot keys,
+correlation/causation ids as their own page, notification-vs-state-transfer
+in practice) is still covered somewhere with a correct pointer, nothing
+vanished. Module numbering across the booklet has no slack left to insert a
+page without renumbering everything after it — noted for whoever touches this
+booklet next.
+
+**Booklet 04 Events: done.** 82 pages, 14 modules, committed. Booklets 05
+Services and 06 Case Studies remain — both still the untouched first draft
+(see the retraction above); next session's plan follows the same method:
+research-file plan per module, edit where good, write from the line where
+not, `check-pages.mjs`, two builds, screenshot new diagrams, run code samples,
+one fact agent per booklet, dated entry, one commit.
+
 ## Explanation
 
 ### 1. What changed
