@@ -1,26 +1,22 @@
 ## Distributed counters
 
-- A single server can store counters in memory, but a distributed system has many API gateways. If a user hits Gateway A for one request and Gateway B for the next, the limit must be enforced globally
-- The standard solution is a fast, in-memory distributed store like Redis. The gateways write to Redis. However, Redis operations must be atomic. If a gateway reads the counter, increments it, and writes it back, two gateways acting simultaneously will cause a race condition
-- The fix is to use Redis's `INCR` command, which is atomic, combined with an `EXPIRE` command to clear out old windows. To ensure both commands execute together without being interrupted, wrap them in a single Lua script
-- **Scaling the limiter:** A single global Redis cluster will buckle under the traffic of a massive API. Instead of a global limit, enforce limits per Point of Presence (PoP) or datacenter. If a user is allowed 100 requests, and you have two active datacenters, give each datacenter a limit of 50
+- Gateways are many and stateless; a client's requests land on any of them. A count kept in one gateway's memory is a limit per gateway, which with 20 gateways is 20× the limit. The count lives in a shared store, and the store is the limiter's only state
+- The store is a key-value cache, not a database: the value is an integer, the operation is increment, and a lost count costs a few extra requests, not money. Redis `INCR` is atomic on the server, so two gateways incrementing at once produce 7, never 6. The window's expiry has to be set in the same atomic step, or a key whose `EXPIRE` was lost counts forever
 
 ```lua
--- Redis Lua Script: Atomic increment and expire
-local count = redis.call("INCR", KEYS[1])
-if count == 1 then
-  -- If this is the first request in the window, set the expiry
-  redis.call("EXPIRE", KEYS[1], ARGV[1])
-end
-return count
+-- one Redis call per request, atomic: EVAL script 1 key window_seconds
+local n = redis.call("INCR", KEYS[1])
+if n == 1 then redis.call("EXPIRE", KEYS[1], ARGV[1]) end
+return n
 ```
+
+- Where the store lives decides the accuracy. Cloudflare keeps the counters in memcached inside each point of presence, spread across nodes by consistent hashing, so a limit is enforced per PoP and a client that reaches two PoPs gets two allowances. A single global store would be one round trip across the world per request; the per-PoP inaccuracy is the price of the latency budget on page 1, and it is stated as such
+- Key shape `rl:{tenant}:{route}:{window start}`; sliding (page 3) reads this window's key and the previous one's. A hot tenant is a hot key on one shard (booklet 02): split it into `key:0 … key:7` and sum on read, or batch increments in the gateway
+
+:::interview
+"How does the limit hold across many gateways?" — It does not hold in the gateways. Every gateway increments one key in a shared cache with an atomic `INCR` whose expiry is set in the same script. Then the two costs: one cache round trip per request, and a limit that is per cache, so per region or per PoP, not global, unless the design pays for a global round trip.
+:::
 
 ### The failure
 
-- The failure mode is describing a read-modify-write cycle in the application code without addressing race conditions
-- If you read `count = 5`, increment it to 6, and write it back, and another server does the exact same thing in the same millisecond, the final count is 6 instead of 7. You have effectively given the user free requests
-
-:::interview
-**The atomicity test**
-If you propose a distributed cache for counters, the interviewer expects you to immediately explain how you prevent race conditions. Mentioning Lua scripts or atomic increments is mandatory.
-:::
+- Read, add one, write back. Two gateways read 5 in the same millisecond, both write 6, and the client got a free request; at a thousand a second it gets hundreds. The store's atomic increment exists so that the count is never held in the caller's hands

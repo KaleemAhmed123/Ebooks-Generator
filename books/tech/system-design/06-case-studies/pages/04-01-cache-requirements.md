@@ -1,23 +1,22 @@
-## Distributed Cache: Requirements and numbers
+# Module 4 - Distributed cache
 
-- The prompt "design a distributed cache" (like Memcached or Redis) tests your understanding of memory management, hashing, and concurrency. It is asked frequently at scale-obsessed companies like Google and Stripe
-- The core requirements are storing key-value pairs, serving reads in under 1 millisecond, and gracefully handling eviction when memory is full. A distributed cache must also survive the loss of individual nodes
-- For numbers, memory is your primary constraint. A standard cache node might have 64 GB to 128 GB of RAM. If you need to cache 2 TB of data, you need roughly 20 to 30 nodes (factoring in replication and overhead)
-- The most important metric to define upfront is the target **hit ratio**. A cache with a 99% hit ratio protects the database entirely. A cache with a 40% hit ratio is just wasting memory and network hops
+## Requirements and numbers
 
-| Metric | Why it matters | Typical Value |
+- "Design a distributed cache" or "design a distributed LRU cache" is reported at Google, Stripe and Walmart. It is a memory problem first: what fits, what gets evicted, and what happens to the database when the cache is wrong or gone
+- Functional, three in: `get(key)`, `set(key, value, ttl)`, `delete(key)`; keys spread over many nodes; a node can be added or removed. Out: transactions across keys, persistence, secondary indexes, anything that makes it a database
+- Non-functional: p99 read under 1 ms inside the data centre; a target hit ratio, stated as a number; losing one node loses that node's share of the keys and nothing else
+- Inputs, as assumptions: say 2 TB of hot data, values averaging 1 KB, 500 000 reads a second, 64 GB usable memory per node
+
+| Quantity | Arithmetic | Result |
 | :--- | :--- | :--- |
-| **Hit Ratio** | Determines if the cache is actually useful | 80% to 99% |
-| **Read Latency** | Must be significantly faster than the database | < 1 ms (p99) |
-| **Item Size** | Dictates how many items fit in RAM | 100 bytes to 100 KB |
-| **Node Memory** | Determines the cluster size | 64 GB to 256 GB |
+| nodes | 2 TB ÷ 64 GB | 32 primaries at full memory, ≈ 42 with a third of headroom; pages 2 and 6 use 32. Replicas double it if the miss storm on page 6 must be survived |
+| reads per node | 500 000 ÷ 32 | ≈ 16 000/s, well inside one node |
+| misses at 99 % hit | 500 000 × 1 % | 5 000 reads/s reach the database |
+| misses at 90 % hit | 500 000 × 10 % | 50 000/s: the database is now sized by the cache's misses |
+
+- The hit ratio is the requirement everything else serves. 99 % and 90 % differ by 10× in database load; the eviction policy (page 3) and the TTL (page 5) are chosen to hit the number, and the number is watched in production (`hits / (hits + misses)`), because a cache cannot be seen to work any other way
+- A miss costs more than a hit saves: one cache round trip, then the database, then a cache write. Below roughly 50 % hit the cache is adding latency, not removing it
 
 ### The failure
 
-- The failure mode is designing a cache without stating a target hit ratio. If you do not know what hit ratio you are aiming for, you cannot choose an eviction policy or size the cluster
-- Caching is not a generic "make it fast" button. It is a mathematical trade-off between memory cost and database load. You must defend your memory sizing using the hit ratio
-
-:::interview
-**The measurement test**
-If you propose a cache, the interviewer will ask: "How do you know it is working?" If your answer is not "we monitor the hit ratio and eviction rate," you have missed the operational reality of caching.
-:::
+- A cache with no hit-ratio target. "We add Redis in front" and nothing is sized: not the memory, not the eviction policy, not the database behind it. When the interviewer asks "how do you know it is working?", the only answer is the number this page was for

@@ -1,22 +1,20 @@
 ## Every question is a recombination
 
-- You cannot memorise every possible interview question. The permutations are endless. However, every question is a recombination of the core mechanisms taught in this book
-- If you are asked to design an online auction system, you might panic because it is not on the standard study list. But an auction is just the inventory locking mechanism from **Ticket Booking** combined with the fast-moving leaderboard mechanism from **Top-K**
-- When faced with an unfamiliar prompt, break it down into the core data access patterns you recognise. You already know how to fan out reads, how to lock a row, and how to stream events
+- The seventeen designs in this booklet are not a list to memorise. They are the set of mechanisms that every other prompt is assembled from. An unfamiliar prompt is decomposed into two or three of them, and the deep dive is whichever mechanism the new prompt stresses hardest
 
-| Unfamiliar Question | It is just a recombination of... |
-| :--- | :--- |
-| Flash Sale | **Ticket Booking** (holding inventory under massive concurrent load) + **Rate Limiter** (shedding excess traffic) |
-| Live Video Comments | **Chat** (WebSocket fan-out to online presence) + **News Feed** (ranking and filtering spam) |
-| Job Scheduler | **Distributed Queue** (delayed execution) + **Leader Election** (so two workers do not run the same job) |
-| Food Delivery (DoorDash) | **Ride Matching** (driver proximity and locking) + **Payments** (split ledger between restaurant and driver) |
+| Prompt as asked | Mechanisms it is made of | Where the deep dive lives |
+| :--- | :--- | :--- |
+| flash sale | ticket booking (finite inventory, holds) + rate limiter (shed the surge) | Module 12, page 4: the waiting room |
+| live video comments | chat (fan-out to connected viewers) + top-K (surface the hot ones) | Module 6, page 5 |
+| online auction | ticket booking (one winner, locked) + leaderboard (current high bid) | Module 12, page 3; Module 17, page 2 |
+| job scheduler | delayed queue (booklet 04) + leader election (booklet 03) so a job runs once | the "exactly once" claim, booklet 01 |
+| food delivery | ride matching (courier proximity, offer lock) + payments (split ledger) | Module 8, page 5; Module 11, page 3 |
+| Twitter search | search autocomplete (offline index build) + news feed (ranking stage) | Module 13, page 3; Module 7, page 5 |
+| nearby friends | ride matching's moving-object index as pub/sub per cell | Module 8, page 4 |
+
+- The decomposition is said out loud in the first minute: "an auction is a booking problem with a leaderboard on top; the hard part is that the winning bid is a contended row". That sentence is the problem-navigation grade
+- One prompt that is not a recombination: a stock exchange. Its core is a single-node deterministic matching engine behind a sequencer, chosen for microsecond latency; its questions are about that core, not distribution, and it is outside this booklet by design
 
 ### The failure
 
-- The failure mode is treating an unseen prompt as a completely new problem that requires inventing a completely new architecture on the spot
-- If you try to invent a new distributed consensus protocol on a whiteboard, you will fail. The interviewer is waiting for you to map the business problem onto standard, proven infrastructure patterns
-
-:::interview
-**The pattern recognition test**
-Senior engineers do not reinvent the wheel. They look at a business request and instantly map it to the boring, reliable database and messaging primitives they have used for years.
-:::
+- Inventing on the spot. A new prompt, a new architecture, a new consensus protocol sketched at minute 20. The interviewer is waiting for the candidate to map the business problem onto boring, known parts; a novel design is a design with no known failure modes, which is the opposite of what page 8 is for

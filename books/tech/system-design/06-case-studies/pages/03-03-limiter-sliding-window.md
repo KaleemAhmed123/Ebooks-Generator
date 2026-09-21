@@ -1,24 +1,22 @@
 ## Sliding window approximation
 
-- To fix the fixed-window boundary problem without the memory cost of tracking every single request timestamp (a sliding log), we use a sliding window approximation. This is the exact algorithm Cloudflare uses to protect millions of websites
-- The algorithm tracks the counter for the previous window and the current window. It calculates the request rate by taking a weighted sum of the previous window and the current window
-- If you are 15 seconds into a 60-second window (25% through), the algorithm assumes the traffic in the previous window was evenly distributed. It takes 75% of the previous window's counter and adds it to the current window's counter
-- The formula is: `rate = previous_count * ((T - elapsed) / T) + current_count`. Cloudflare tested this against 400 million requests from 270,000 sources and found it made the wrong decision only 0.003% of the time, with zero false positives
+- The fixed window's boundary problem goes away if the count covers the last 60 seconds rather than the current clock minute. The exact way is a **sliding log**: store every request's timestamp per key and count those newer than now − 60 s. Memory is then proportional to requests, which is the attacker's choice of number
+- Cloudflare's approximation keeps two counters per key, the previous window's and the current one's, and assumes the previous window's requests were spread evenly across it
 
-```typescript
-function isAllowed(prev: number, curr: number, elapsed: number, window: number, limit: number) {
-  const previousWeight = (window - elapsed) / window;
-  const estimated = Math.floor(prev * previousWeight) + curr;
-  return estimated < limit;
+```ts
+// window T seconds; elapsed = seconds into the current window
+function estimate(prev: number, cur: number, elapsed: number, T: number): number {
+  return prev * ((T - elapsed) / T) + cur;
 }
+// limit 100/min, 15 s into the minute: prev 84, cur 36
+estimate(84, 36, 15, 60);   // 84 × 0.75 + 36 = 99  → allowed
+estimate(84, 37, 15, 60);   // 100  → refused
 ```
+
+- Memory is two integers per key regardless of load. Time is one read of each counter, or one read of a hash holding both. The window boundary still exists, but a burst straddling it is counted at its weighted share, so the 200-in-two-seconds case on page 2 is refused
+- Cloudflare measured it: over 400 M requests from 270 000 sources, 0.003 % of decisions were wrong in either direction, the average rate error was 6 %, and there were zero false positives. That is the number to give when the interviewer asks how much the approximation costs
+- The assumption is the only weakness: if last minute's 84 requests all arrived in its final second, the estimate is high; if in its first second, low. For a fence around an API the error is a few percent of the limit and nobody bills on it
 
 ### The failure
 
-- The failure mode is proposing an exact sliding log algorithm (storing a Redis sorted set of every timestamp per user) for a high-traffic API
-- Storing a timestamp for every request consumes massive amounts of memory. If a malicious user sends a million requests, your limiter must store a million timestamps before rejecting them. That is a Denial of Service attack against your rate limiter
-
-:::interview
-**The pragmatic memory test**
-Interviewers love the sliding window approximation because it proves you value O(1) memory and O(1) time complexity over perfect mathematical accuracy for a business problem.
-:::
+- A sorted set per key with one entry per request. The limiter now stores a timestamp for every request it will refuse, so a client sending a million requests forces a million writes into the limiter's store before being told no. The component built to shed load became the easiest thing to overload

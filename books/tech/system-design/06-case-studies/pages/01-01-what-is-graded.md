@@ -1,16 +1,20 @@
-## What the interviewer is actually grading
+# Module 1 - The method
 
-- A system design interview does not test whether you know the architecture of Twitter. Twitter has already been built. The interview tests whether you can build something you have never seen before, with a colleague you have just met
-- Interviewers evaluate four competencies, regardless of the prompt. First, how you **navigate ambiguity**: can you take a vague request and pin it down to concrete constraints?
-- Second, **solution design**: can you assemble a working, logical end-to-end flow? Third, **technical depth**: do you understand the trade-offs of the tools you pick? Fourth, **communication**: can you explain your choices and drive the meeting?
-- The level you are interviewing for changes the depth expected, not this list. A mid-level engineer must cover the basics and reach a working design. A senior engineer must breeze through the basics to leave maximum time for deep-diving the hard constraints
+## What the interviewer grades
+
+- The round does not test whether the candidate knows how Twitter is built. It tests whether they can build something they have not seen, with a colleague they met a minute ago
+- Hello Interview publishes the four things graded, and they are the same for every prompt. The level changes the depth expected on each, not the list
+
+| Competency | What it means in the room | Mid-level bar | Senior bar |
+| :--- | :--- | :--- | :--- |
+| Problem navigation | turn a vague prompt into numbered requirements and numbers | asks, writes them down | asks the two that change the design, moves on |
+| Solution design | a working end-to-end flow for every requirement | reaches a design that works | reaches it fast, leaves time |
+| Technical excellence | knows what each chosen part costs and where it breaks | names the trade-off | names it and the failure mode |
+| Communication | drives the meeting, checks in, changes course on feedback | explains choices | proposes the deep dive |
+
+- Meta's own guide: 45 minutes, whiteboard, "almost never involve coding". Amazon's SDE III guide lists six words it looks for, "Practicality, Accuracy, Efficiency, Reliability, Optimization, Scalability", and says to expect at least one design question. Both grade the *how*, not the drawing
+- The mid-level bar is "cover the basics well". The senior bar is "quickly work through the basics leaving time for deep dives". Same list, different pace
 
 ### The failure
 
-- The failure mode is treating the interview as a test of memorisation. A candidate walks in, gets asked to design WhatsApp, and immediately draws the architecture they read online
-- They skip the requirements gathering entirely because they "already know what WhatsApp does." The interviewer grades them poorly on navigating ambiguity and communication. A perfect architecture to the wrong requirements is a failed interview
-
-:::interview
-**The soft skill test**
-The interviewer is testing if they would want to work with you on a difficult project. If you jump to a solution without asking what the business actually needs, they will assume you do that on the job.
-:::
+- A memorised design. The candidate hears "design WhatsApp", skips requirements because they already know what WhatsApp does, and draws the architecture from a blog. It may even be right. It scores low on navigation and communication, because none of the four competencies is "recall"

@@ -619,6 +619,167 @@ research-file plan per module, edit where good, write from the line where
 not, `check-pages.mjs`, two builds, screenshot new diagrams, run code samples,
 one fact agent per booklet, dated entry, one commit.
 
+### 2026-09-21 — booklet 06 Case Studies, plan approved (110 pages, three sessions)
+
+**Draft 110 / approved 110, untouched (`git diff f0bf529` empty).** File
+names match research §1 one-for-one, so the skeleton stays. Content does
+not: 110/110 pages carry a quiz-style interview block ("The modulo test");
+prose is second-person and chatty throughout ("you must", "drastically",
+"magically"); numbers the research never verified appear as fact ("5-minute
+hold", "10-minute dedupe window", "signed webhook"); 30 diagrams, all thin
+(5–9 labels, no numbers, no failure markers), 80 pages with none; check-pages
+94 problems (no `# Module` lines, 12 opening pages with no `##`, 46 literal
+`\n`, 5 banned words). Verdict: rewrite from the research line at booklet
+04 depth, keeping draft tables and code shapes where they already read as
+house style.
+
+**New requirement for this booklet (user, 2026-09-21):** every design gets
+one anchor diagram — full architecture, every component labelled, data flow
+drawn, at least one §4 number — plus failure diagrams where the research
+line says `svg`, using the ✕-in-accent-orange marker from booklets 02–04.
+One diagram per page; the 2-visual cap stays.
+
+**Per module (pages; anchor diagram; failure diagrams; cross-refs):**
+1 The method 9 — edit not rewrite; 01-02 phase timeline with minutes; 01-06
+one traced request; 01-08 failure map, ✕ on the untagged arrow; 01-04 code
+run; 01-09 names Modules 2–18 · 2 URL shortener 5 — anchor 02-04 redirect
+path with 100:1, 62⁷, 302 vs 301, ✕ "301 never returns"; →05 ID gen, cache;
+→04 async analytics · 3 Rate limiter 6 — anchor 03-01 gateway placement,
+per-PoP counters, ✕ limiter after the work; 03-03 Cloudflare formula and
+0.003 %; 03-05 fail-open/closed; mechanism →05; hot keys →02 · 4 Cache 6 —
+anchor 04-02 consistent-hash ring, 1/N vs modulo ✕; 04-04 herd + lease;
+04-05 write-then-delete, stale-set ✕; ring →02, invalidation →05 · 5
+Notifications 6 — anchor 05-03 per-channel queues → providers, 10M/day ≈
+116/s, ✕ shared queue; 05-04 retry/DLQ/dedupe; 05-05 breaker + fallback ✕;
+→04, →01, →05 breaker · 6 Chat 6 — anchor 06-02 stateful gateways +
+registry, ✕ round-robin reconnect; 06-03 Discord key and numbers; 06-04
+receipts; 06-05 fan-out + presence ✕; →04 · 7 Feed 6 — anchor 07-03/04
+fan-out + celebrity hybrid, 800-entry cap attributed to the 2012 QCon talk;
+07-05 ranking stages, ≈50 % in-network; →02, →05 · 8 Uber 7 — anchor 08-04
+location gateway → cell index, matching → TTL lock → Spanner, H3 16
+resolutions, "20 drivers per core"; 08-02 geohash vs H3; 08-03 neighbours ✕;
+08-06 offer timeline; →01, →02, →03 · 9 Video 6 — anchor 09-03 transcode
+DAG ✕ one job one worker; 09-02 presigned upload; 09-04 ABR; 09-05 Open
+Connect; views → Module 17; →05, →04 · 10 File sync 6 — anchor 10-04 block
+protocol, 4 MB/SHA-256, ✕ commit before durable; 10-03 split; 10-05 vector →
+conflicted copy ✕ LWW; →05, →03 · 11 Payments 7 — anchor 11-04 PSP flow,
+webhook at-least-once, ✕ trust client; 11-05 state machine; 11-06
+reconciliation; Stripe ≤255 chars, ≥24 h, 2ⁿ+jitter; →01, →04 · 12 Tickets 6
+— anchor 12-04 waiting room → seat map → hold → pay, ✕ all at once; 12-03
+hold code; 12-05 hotel; →03, →05 · 13 Autocomplete 5 — anchor 13-03 offline
+build → swap, ✕ live update; 13-02 trie + code; →04 · 14 Crawler 6 — anchor
+14-02 front/back queues, ≈400 pages/s, ✕ one BFS queue; 14-04 Bloom +
+fingerprint; 14-03 robots code; →05 · 15 Metrics 6 — anchor 15-03 pull path
++ log path, 1M samples/s, ✕ pull for short jobs; 15-04 delta/XOR; 15-05
+rollups; →04, →05 · 16 Ad click 6 — anchor 16-02 log → window → dedupe →
+OLAP + batch, ≈12 000/s, Photon <10 s, ✕ no raw log; 16-03, 16-04, 16-05
+svg; →04, →02 · 17 Top-K 5 — anchor 17-04 partial top-K merge ✕ not exact;
+17-03 count-min; 17-02 code; →02 · 18 Docs 6 — anchor 18-04 one server per
+doc ✕ two; 18-02 OT; 18-03 CRDT ✕ growth; 18-05 replay; →03.
+
+**Decisions (user, 2026-09-21):** interview blocks 110 → ~18 (one per
+design on the page where the question is really asked, plus one in the
+method module). No hard page cap: add a page where a design needs it to be
+explained properly; report the count per part. Up to 7 own web fetches for
+§5 items (Netflix per-title, YouTube on Vitess, Gorilla numbers, count-min
+bounds, ES completion suggester, Stripe webhook signing, Cloudflare Waiting
+Room); anything that fails to verify is cut. Twitter 2012 numbers attributed
+to the QCon talk. Requirement-side numbers (10M/day, 100:1, 1B/day, 100 000
+at on-sale) are stated as assumptions on the requirements page; only §4
+numbers are stated as fact. Cross-booklet refs say "booklet 0N", never
+"Module N". Pointers 06 sets toward booklet 05 (to be honoured there):
+rate-limiter mechanism, cache invalidation, load shedding, ID generation,
+gateway, CDN, blob storage, Bloom filter, circuit breaker, observability.
+
+**Sessions:** part 1 = modules 1–6 (38 pages) · part 2 = 7–12 (38) · part 3
+= 13–18 (34). Per part: write, `check-pages`, one PDF build, screenshot
+every diagram (`tools/shot.mjs`, deleted before commit), run every code
+sample in the scratchpad, one Sonnet fact agent, dated entry, commit.
+
+### 2026-09-21 — booklet 06 Case Studies, part 1: modules 1–6 rewritten, checked, committed
+
+**38 pages, all rewritten** (9 + 5 + 6 + 6 + 6 + 6; page count unchanged
+from the approved list). Every page written from its research line; draft
+tables and code shapes kept where they already read as house style (module
+1 was closest, the five design modules were rewritten in full). Interview
+blocks 38 → 6: "what happens if this call fails" (01-08), "301 or 302"
+(02-04), "how does the limit hold across gateways" (03-04), "a viral post's
+cache entry expires" (04-04), "how do you avoid sending twice" (05-04), "how
+do you guarantee ordering" (06-04). All 32 quiz-style blocks cut.
+
+**Diagrams: 15, all new** (the draft's 12 in these modules were thin and
+off-palette; two used Tailwind hex colours). Each design's anchor carries
+every component labelled, the data flow, and a real number: 02-04 redirect
+path (4 000 reads/s, 40 writes/s, hit ≈ 99 %, 12 TB); 03-01 gateway placement
+(10 000/s, one round trip ≈ 1 ms, per-PoP store); 04-02 ring (32 nodes, 1/33
+≈ 3 % moves vs 32/33 ≈ 97 % under modulo); 05-03 per-channel queues (100/s in,
+60/30/10 split); 06-02 gateways and registry (10 M sockets ÷ 100 000 ≈ 100
+gateways). Failure diagrams with the ✕ marker: 01-02 minute-10, 01-08 the
+untagged arrow, 03-05 fail-open/closed/local, 04-04 herd vs lease, 04-05
+stale-set race, 05-04 retry loop, 05-05 breaker + capped fallback, 06-04
+lost ack, 06-05 heartbeat broadcast. Marker ids `d` (black), `b` (blue), `e`
+(orange), `o` (provider orange) defined in every SVG.
+
+**Corrections to the draft worth recording:** a 64-bit Snowflake id needs 11
+base-62 characters, so "counter + base-62" at 7 chars means a range-allocated
+sequence, not Snowflake (02-03); MD5-truncated codes collide by the birthday
+bound at ≈ 2.3 M rows, one day of writes (02-03); Cloudflare enforces limits
+per PoP, not by splitting a global quota per data centre (03-04); Discord's
+≈ 12 tombstones per message came from writing null columns, not from
+`UPDATE`s (06-03); "delete-before-write" and "update the cache on write" are
+both named as the wrong order with the race drawn (04-05).
+
+**Checks:** `check-pages.mjs` clean for modules 1–6 (the only lines are 13
+forward references to Modules 7–18, which resolve once those modules get
+their `# Module N` heading in parts 2–3; the page numbers were checked
+against research §1). PDF build: 7 overflows on the first build (01-09,
+02-04, 03-02, 03-04, 04-04, 05-04, 06-04), fixed by cutting redundant
+bullets and, on 02-04, the cache-aside code block (the diagram carries the
+flow, 02-02 carries the schema); zero overflow after four builds. Screenshot
+pass on all 15 diagrams (`tools/shot.mjs`, puppeteer-core, deleted before
+commit): 9 needed layout fixes — label collisions on 01-02 (phase labels
+wider than their boxes), 01-06 (caption clipped at the right edge), 02-04
+(✕ label over the Redis box), 03-01 (store box too narrow), 04-04 and 04-05
+(clipped captions), 05-03 (dead-letter box under a caption), 05-05 (breaker
+labels), 06-02 (arrow labels inside boxes), 06-04 (sequence arrows through
+the persist box; relaid out), 06-05 (notification arrow through a gateway
+box; relaid out). Code: `check-part1.mjs` in the scratchpad asserts the
+01-04 estimator, the 03-02 token bucket (burst of 100 passes, 101st refused,
+one token after 0.6 s, 100 not 200 after a minute), the 03-03 formula (99
+allowed, 100 refused, boundary burst refused), and every derived number on
+the requirements pages (62⁷, 41.7 bits, birthday ≈ 2.3 M, 11 chars for 2⁶⁴,
+2 900 years, 46 TB, 33 M pushes/s, 32 nodes, 3 % vs 97 %); all pass. SQL
+(02-02), CQL (06-03) and Lua (03-04) read-checked only, no engine installed.
+
+**Fact agent (Sonnet, 10 fetches):** WRONG 2 — "2 900 years" was computed
+from 100 M/month while the table's own rounded 40/s gives ≈ 2 800 (fixed by
+stating the input on the row); the cache node count ignored the headroom
+its own arithmetic column named (fixed: 32 at full memory, ≈ 42 with
+headroom, pages 2 and 6 use 32). UNVERIFIED 3, all cut or softened per the
+rule: the memcache "one token per 10 s per key" (PDF not extractable; label
+now "one token per key at a time"), APNs keeping only the most recent
+notification for an offline device (page not fetchable; now "not promised
+everything sent while it was away"), `noeviction` as Redis's default (docs
+page fetched did not say "default"; wording no longer claims it). CODE 0,
+CROSS-REF 0, OVERSTATED 0; ≈ 85 OK. It independently confirmed RFC 6585's
+429, RFC 9110's `Retry-After`, GitHub's `x-ratelimit-*` trio, Redis Lua
+atomicity and the INCR+EXPIRE pattern, and the Redis eviction page's policy
+list, sample default and LFU/LRM versions.
+
+**Pointers set toward booklet 05 in these modules** (05 must honour them):
+gateway (03-01), rate-limiter algorithms in depth (03-02), load shedding
+(03-05, 03-06, 04-06), cache-aside and invalidation (02-04, 04-05), ID
+generation / Snowflake (02-03, 06-03), circuit breaker (05-05). Toward
+booklet 04: async analytics (02-05), queues/DLQ/delayed delivery (05-03,
+05-04, 05-06), at-least-once + dedupe (06-04). Toward 03: locks and
+consistency (01-03), Snowflake ordering is booklet 05 not 03. Toward 02:
+consistent hashing (04-02), hot keys (03-04, 03-06), wide-column partitions
+(06-03). Toward 01: retries, backoff, idempotency keys, the latency table.
+
+**Next:** part 2 = modules 7–12 (feed, Uber, video, file sync, payments,
+tickets; 38 pages). Fetch budget for §5 items in part 2: Netflix per-title,
+YouTube on Vitess, Stripe webhook signing, Cloudflare Waiting Room (4 of 7).
+
 ## Explanation
 
 ### 1. What changed

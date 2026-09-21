@@ -1,25 +1,22 @@
-# Chat System
+# Module 6 - Chat
 
-### Requirements and numbers
+## Requirements and numbers
 
-- Chat (WhatsApp, Discord, Messenger) operates on a massive scale of tiny writes
-- **In scope:** 1:1 chat, group chat, online presence, message history
-- **Out of scope:** Voice/Video calling, media uploads (→09)
+- WhatsApp, Messenger, Discord: the prompt is asked at Meta and at most product companies. Two things make it unlike Modules 2–5: the connection has state, and a group turns one write into many deliveries
+- Functional, three in: 1:1 and group messages, delivered live to connected recipients; message history per conversation; online presence. Out: voice and video, media beyond a URL (Module 9 owns upload), end-to-end encryption's key exchange
+- Non-functional: a message reaches a connected recipient in under a second; messages in one conversation appear in one order on every device; history is never lost once the sender sees "sent"
+- Inputs, as assumptions: say 50 M daily users, 40 messages sent per user per day, groups average 10 members, a message row of 200 bytes
 
-| Metric | Requirement |
-|---|---|
-| **Write volume** | One write per message. Trillions of messages |
-| **Delivery latency** | Real-time (under 100ms) |
-| **Read/Write ratio** | 1:1 for DMs, 1:N for groups |
+| Quantity | Arithmetic | Result |
+| :--- | :--- | :--- |
+| messages written | 50 M × 40 ÷ 100 000 | ≈ 20 000/s average, 60 000/s peak |
+| deliveries pushed | writes × average group size 10 | ≈ 200 000/s average, 600 000/s peak |
+| open connections | 50 M daily, say 20 % connected at once | ≈ 10 M WebSockets held open |
+| storage | 2 B × 200 B per day | ≈ 400 GB/day, ≈ 150 TB/year, before media |
 
-- The scale is enormous. Discord stores trillions of messages. Sizing group chats as if they are 1:1 chats is a mistake. A 100-person group chat receiving one message is 1 write and 100 reads. A 10,000-person Discord server receiving one message is 1 write and 10,000 reads
+- The write rate is ordinary; the delivery rate and the connection count are not. Delivery is fan-out (page 5), and connections need servers that hold state (page 2). Discord's scale, trillions of stored messages, is the same shape with more zeros
+- Two read patterns: "everything since I was last here", which is the hot path, and "scroll back to last year", which is cold. The key design on page 3 serves both from one table
 
 ### The failure
 
-- Treating chat like a standard CRUD app where clients poll a database for new messages. If 100 million users poll a database every second, your database will melt
-
-:::interview
-You design a chat app where users HTTP GET `/messages` every 5 seconds. The interviewer says this will cost millions of dollars in compute. Why?
-
-Because 99% of those polls will return empty. You are paying for millions of TLS handshakes, network round-trips, and database queries just to confirm nothing happened. You must use push (WebSockets), not pull.
-:::
+- Polling. Every client asks `GET /messages` every few seconds; 10 M clients is 2 M requests a second of which nearly all return nothing. The cost is the TLS handshake and the query, paid to learn that nothing happened. Chat is push, and the whole design follows from holding the connection open

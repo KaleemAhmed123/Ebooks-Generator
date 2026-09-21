@@ -1,26 +1,23 @@
 ## Do the numbers in two minutes
 
-- Once you know the constraints, you must do a quick back-of-the-envelope estimation. You need three numbers: throughput (QPS), storage capacity, and network bandwidth
-- You only need rough estimates. 1 million requests a day is roughly 12 queries per second (QPS). To calculate this instantly, divide by 100,000 instead of 86,400. Remember that peak traffic is usually 3 to 5 times the average traffic
-- If you have 10 million DAU, and each user does 5 actions a day, that is 50 million actions a day. 50 million divided by 100,000 is 500 average QPS (2,500 peak). You now know you do not need a massive microservice cluster
-- Calculate storage by multiplying the daily writes by the average size of a row, then multiply by the retention period. Convert bytes to gigabytes using powers of 2
+- Three numbers, one order of magnitude each: requests per second, bytes stored, bytes per second on the wire. Everything else is derived from those and the latency table in booklet 01
+- A day is 86 400 seconds. Divide by 100 000 instead; the answer is 14 % low and arrives in one step. Peak is 3–5× the average unless the requirements say otherwise
+- Storage is writes per day × bytes per row × days kept. Bandwidth is requests per second × bytes per response. Round every input to one significant figure before multiplying, not after
 
-```typescript
-function estimateScale(dau: number, actionsPerUser: number): void {
-  const dailyActions = dau * actionsPerUser;
-  // Divide by 100,000 for quick math instead of 86,400
-  const averageQps = Math.ceil(dailyActions / 100_000);
-  console.log(`Average QPS: ${averageQps} | Peak QPS: ${averageQps * 5}`);
-}
-// 10M DAU x 5 actions = 50M/day -> 500 avg QPS -> 2,500 peak
+```ts
+const qps = (perDay: number) => perDay / 100_000;      // ≈ ÷ 86 400, 14 % low
+const bytes = (writesPerDay: number, rowBytes: number, days: number) =>
+  writesPerDay * rowBytes * days;
+
+// 10 M users × 5 actions/day
+qps(50e6);                       // 500 avg → 1 500–2 500 peak
+qps(50e6 * 100);                 // 100 reads per write → 50 000 read QPS
+bytes(50e6, 500, 365 * 5) / 1e12; // 500 B rows, 5 years → ≈ 46 TB
 ```
+
+- Say the shape, not the digits: "about 500 writes a second, fifty thousand reads, tens of terabytes over five years". The number that matters is the one that changes the design: 50 000 reads a second is a cache; 46 TB is not one machine
+- Each design module below opens with this page's arithmetic for its own inputs. The inputs are stated as assumptions ("say 10 M users"); the derived numbers are what the diagrams carry
 
 ### The failure
 
-- The failure mode is attempting to calculate numbers to three significant figures on a whiteboard, getting flustered, and wasting 10 minutes of the interview
-- Interviewers do not care about the exact math. They care about the order of magnitude. A system designed for 100 QPS looks entirely different from a system designed for 100,000 QPS
-
-:::interview
-**The pragmatic math test**
-Rounding 86,400 seconds to 100,000 shows you know how to operate pragmatically under pressure. Precision is the enemy of progress in the first 5 minutes.
-:::
+- Three significant figures on a whiteboard. Two minutes become ten, the arithmetic goes wrong in front of the interviewer, and the result was never going to change a decision. 579 and 500 buy the same cache

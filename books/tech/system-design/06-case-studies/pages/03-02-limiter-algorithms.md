@@ -1,29 +1,30 @@
-## Algorithms: Buckets and windows
+## Token bucket, leaky bucket, fixed window
 
-- The **Token Bucket** gives a bucket of size N. Tokens refill steadily. It allows bursts up to the bucket size
-- The **Leaky Bucket** uses a queue. Requests process at a fixed rate, preventing bursts entirely
-- The **Fixed Window** counts requests per time block. It's efficient but allows 2x boundary bursts
+- Three counters, distinguished by one question: what happens to a burst. Booklet 05 owns each algorithm in depth; the interview wants the comparison in one table and the choice defended by the burst behaviour the API needs
 
-```typescript
+| Algorithm | State per key | A burst of 100 at once, limit 100/min | Steady rate |
+| :--- | :--- | :--- | :--- |
+| token bucket | tokens, last refill time | all 100 pass if the bucket is full; then 100/min trickle | refill rate |
+| leaky bucket | a queue of pending requests | queued and released at 100/min; the queue is the delay | drain rate |
+| fixed window | one count per clock minute | 100 pass at 00:59, 100 more at 01:00: 200 in two seconds | resets on the boundary |
+
+- **Token bucket**: capacity B, refilled at r tokens a second; a request takes one token or is refused. B is the burst allowed, r the sustained rate, and public APIs document limits in exactly those two numbers
+
+```ts
 class TokenBucket {
-  tokens: number; lastRefill = Date.now();
-  constructor(public cap: number, public rateMs: number) { this.tokens = cap; }
-  allow(): boolean {
-    const now = Date.now();
-    this.tokens = Math.min(this.cap, this.tokens + ((now - this.lastRefill) * this.rateMs));
-    this.lastRefill = now;
+  private tokens: number; private last = Date.now();
+  constructor(private cap: number, private perSec: number) { this.tokens = cap; }
+  allow(now = Date.now()): boolean {
+    this.tokens = Math.min(this.cap, this.tokens + ((now - this.last) / 1000) * this.perSec);
+    this.last = now;
     if (this.tokens < 1) return false;
-    this.tokens--; return true;
+    this.tokens -= 1; return true;
   }
 }
 ```
 
+- **Leaky bucket** smooths instead of allowing: a queue drained at a fixed rate, for a backend that cannot burst, at the price of latency. **Fixed window** is one `INCR` per key per minute; its boundary is the failure below, and page 3 fixes it with one more counter
+
 ### The failure
 
-- The failure mode is choosing the fixed window algorithm without mentioning the boundary burst problem
-- If the limit is 100 requests per minute, a malicious user can send 100 requests at 00:59 and 100 requests at 01:00, forcing your server to handle 200 requests in two seconds. The fixed window alone is dangerous for APIs
-
-:::interview
-**The burst test**
-Interviewers ask "what if all the traffic comes at once?" to test if you understand token bucket burst capacity versus leaky bucket smoothing. Know which one your proposed API needs.
-:::
+- Fixed window with no mention of the boundary. A limit of 100 a minute admits 100 requests at 00:59 and 100 at 01:00: double the limit in two seconds, every minute, on purpose. The limiter is then a limiter of averages, and the backend was sized for the limit

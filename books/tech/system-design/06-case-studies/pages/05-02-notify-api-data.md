@@ -1,34 +1,30 @@
 ## API and data model
 
-- The API requires an idempotency key (→01) so upstream services can retry safely
+- One endpoint for callers, and it names a user and an event, never a phone number or a device token. The notification system owns the routing data; the billing service that wants to say "payment failed" should not know which of the user's three phones is current
+- The call carries an `Idempotency-Key` (booklet 01), because the caller will retry on a timeout and a retried "your order shipped" must not become two pushes
 
-```typescript
-POST /v1/notifications
-Headers:
-  Idempotency-Key: "uuid-1234"
-Body:
-  userId: "usr_99"
-  type: "ORDER_SHIPPED"
-  payload: { orderId: "123" }
+```ts
+// POST /notifications        Idempotency-Key: <caller's uuid>
+type Request = {
+  userId: string;
+  template: "ORDER_SHIPPED" | "PASSWORD_RESET" | "DIGEST";
+  data: Record<string, string>;                 // fills the template
+  channels?: ("push" | "sms" | "email")[];     // default: from preferences
+  priority: "transactional" | "bulk";           // page 6: separate lanes
+};
+// 202 Accepted { notificationId }  — accepted for delivery, not delivered
+
+// tables
+// notifications  (id PK, user_id, template, data, priority, created_at)
+// deliveries     (notification_id, channel, provider, status, attempts, last_error, updated_at)
+// devices        (user_id, token, platform, last_seen)      -- APNs / FCM tokens
+// preferences    (user_id, channel, opted_out, quiet_hours)
 ```
 
-- The model needs a device registry and opt-out preference table to avoid violating spam laws
-
-```typescript
-interface DeviceToken {
-  userId: string;       // PK
-  deviceToken: string;  // APNs/FCM token
-  platform: 'IOS' | 'ANDROID';
-}
-
-```
+- The response is `202`, not `200`: the request was durably accepted and will be attempted, which is all the caller can be told at that moment. Delivery state lives in `deliveries`, one row per channel attempt, and is what the status endpoint and the dashboard read
+- `devices` is a registry that decays: tokens go stale when the app is reinstalled, and the provider says so on the next send, which is a write back to this table, not an error to retry
+- `preferences` is a legal table as much as a product one. An opt-out that is not honoured is a complaint to a regulator; the check runs before the message reaches a queue, so an opted-out user costs nothing downstream
 
 ### The failure
 
-- Hardcoding the recipient's email or phone number in the API request. The upstream service shouldn't know the phone number. It should just say "notify user 99". The notification system looks up the routing info
-
-:::interview
-Your API requires the caller to provide the `deviceToken`. An upstream billing service wants to send a payment failed push. How does the billing service know the user's iPhone token?
-
-It shouldn't. Upstream provides a `userId`. The notification system maintains a registry mapping user IDs to active APNs/FCM tokens.
-:::
+- Caller supplies the destination. `POST { phone: "+44…" }` puts routing knowledge in every service, ignores preferences because the caller never sees them, and makes the opt-out table something each caller must remember to consult. The notification system is the only place that knows how to reach a user, and the API shape enforces it

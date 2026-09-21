@@ -1,16 +1,18 @@
 ## What the interviewer probes
 
-- **Telling the client:** Do not just drop the request silently. Return HTTP 429 (Too Many Requests) and include headers: `X-RateLimit-Limit`, `X-RateLimit-Remaining`, and critically, `Retry-After`. The client needs to know when it is safe to try again without guessing
-- **Client-side hints:** Can the client know it is near the limit *before* it gets a 429? Returning the remaining quota in the headers of successful requests (e.g. `200 OK`) allows well-behaved clients to slow themselves down gracefully
-- **Hot keys and shards:** If one customer launches a massive product and sends 10,000 requests per second, their specific limit key will hit a single Redis shard. That shard will melt (a hot partition). The solution is either local in-memory caching of the limit status for that specific key, or sharding the customer's limits across multiple nodes (as covered in Booklet 02)
-- **Per-tenant fairness:** In a B2B system, a single customer sending a burst of traffic should not degrade the system for other customers. Rate limiting is not just about protecting the database; it is about enforcing fair multi-tenancy
+| Probe | The answer that holds |
+| :--- | :--- |
+| what does the client see | `429 Too Many Requests` (RFC 6585) with `Retry-After` (RFC 9110) in seconds; and on every `200`, the remaining quota in `X-RateLimit-Limit / -Remaining / -Reset` headers, the trio GitHub and Stripe-style APIs send, so a well-behaved client slows down before the 429 |
+| which key | per API token for authenticated traffic, per IP for anonymous; per IP alone punishes everyone behind one NAT, per token alone lets an attacker rotate tokens. Both, with the stricter one winning |
+| fairness between tenants | one tenant's burst must not empty the backend for the rest: a limit per tenant on top of the limit per key, and a global admission limit at the gateway that sheds when the sum exceeds capacity (booklet 05) |
+| hot keys | one tenant, one shard: split the counter into k sub-keys or batch increments in the gateway (page 4); watch the shard's ops/s, not the tenant's |
+| different limits per route | `POST /payments` at 10 a minute, `GET /prices` at 1 000: the route is part of the key, and the config is data, not code |
+| what is not a rate limiter | volumetric DDoS: packets that never reach layer 7 are the network's problem, not this design's |
+
+- The headers are the design's user interface. Developers consume APIs through client libraries that read `Retry-After`; a limiter that returns a bare 429 produces retry storms (booklet 01) from clients guessing when to try again
+- Rate limiting and load shedding are different questions with similar mechanics. Limiting is per client, configured, fair; shedding is global, by measured load, and drops whoever arrives when the system is full. Booklet 05 owns shedding; the interviewer wants to hear that the two are separate and where each sits
+- The 6 % rate error on page 3 and the per-PoP inaccuracy on page 4 are both acceptable for the same reason: a limit is a fence. Where the count must be exact, a paid quota billed per call, it is a ledger problem (Module 11) and the rate limiter is only its first, approximate line
 
 ### The failure
 
-- The failure mode is missing the human element. An API is consumed by developers. If you rate-limit them without providing headers that explain why and when they can retry, they will file support tickets and write angry blogs
-- A complete design always considers the client's experience of a failure state
-
-:::interview
-**The developer experience test**
-Naming the specific HTTP status code (429) and the standard headers proves you have actually built and consumed public APIs in production.
-:::
+- A silent drop. Requests over the limit are closed without a status, the client retries immediately, and the limiter now serves 3× the traffic it refused. A limiter that does not say "wait 30 seconds" has told the client "try again now"

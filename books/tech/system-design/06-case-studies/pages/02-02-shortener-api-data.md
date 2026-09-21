@@ -1,28 +1,27 @@
 ## API and data model
 
-- The API requires two endpoints. One to create the short URL, and one to read it. The creation endpoint should accept the long URL and an optional custom alias
-- The read endpoint is a simple `GET /:code` that returns a 3xx redirect. The client does not expect a JSON response; it expects the browser to follow the `Location` header
-- The data model is a single table. The primary key must be the `short_code`. Since 12 TB of data will not fit in memory, the database will rely heavily on a B-tree index (as covered in Booklet 02). If the index is on the `short_code`, the database can find the row in milliseconds
+- Two endpoints, one per requirement. `POST /urls` takes the long URL and an optional expiry and returns the code. `GET /{code}` returns a redirect, not JSON: the browser follows the `Location` header and the service never sees a body
+- The create call carries an `Idempotency-Key` (booklet 01), because a client that retries a timed-out `POST` must get the same code back, not a second row
+- One table. The primary key is the code, because every read is a lookup by exact code and nothing else. The long URL is a plain column; the only other index is on the owner, for their list page
 
-```typescript
-// POST /api/v1/data/shorten
-type ShortenRequest = { longUrl: string; customAlias?: string };
+```ts
+// POST /urls  { longUrl, expiresAt? }  →  201 { code, shortUrl }
+// GET  /{code}  →  302 Location: longUrl   |  404  |  410 if expired
 
-// Database schema
-type UrlMapping = {
-  shortCode: string; // Primary Key, VARCHAR(7)
-  longUrl: string;   // VARCHAR(2048)
-  userId?: string;   // Indexed
-  createdAt: Date;
-};
+CREATE TABLE urls (
+  code        VARCHAR(7)   PRIMARY KEY,   -- base-62, page 3
+  long_url    VARCHAR(2048) NOT NULL,
+  owner_id    BIGINT,
+  created_at  TIMESTAMPTZ  NOT NULL DEFAULT now(),
+  expires_at  TIMESTAMPTZ                 -- NULL = never
+);
+CREATE INDEX urls_owner ON urls (owner_id, created_at DESC);
 ```
+
+- The row is small and the read touches one index probe plus one row fetch, so a B-tree on the code is a few disk pages at most (booklet 02). The store is not the bottleneck at 4 000 reads a second; the round trip to it is, and page 4 removes it from the hot path
+- Expiry is a column, not a job. The read checks `expires_at` and returns 410 Gone; a nightly sweep removes rows that have been gone for a month (page 5)
+- Same long URL twice gives two codes. Deduplicating by URL would need a second unique index on a 2 KB column and would break per-owner analytics; the requirement did not ask for it
 
 ### The failure
 
-- The failure mode is making the `long_url` the primary key. Candidates sometimes do this because they want to enforce uniqueness (so the same long URL always gets the same short code)
-- The read path looks up by the `short_code`. If `short_code` is not the primary key, the database must perform a secondary index lookup or a full table scan. In a read-heavy system, the primary key must serve the read path
-
-:::interview
-**The primary key test**
-When you define the schema, state what the primary key is and why. In a URL shortener, the primary key must be the short code, because 99% of queries are lookups by that exact code.
-:::
+- The long URL as the primary key, to "enforce uniqueness". Now the read path, which is 99 % of traffic, is a secondary-index lookup on a column nobody queries by, and the primary key is a 2 KB string copied into every secondary index. The primary key serves the hot path; the hot path is the code

@@ -1,41 +1,35 @@
 ## When the limiter store is down
 
-- A rate limiter requires an external dependency (like Redis). Dependencies fail. When the Redis cluster holding your counters goes down or a network partition isolates it, your gateways cannot check the limits
-- You have two choices: **fail-closed** or **fail-open**. Fail-closed means rejecting all traffic if the limiter cannot be reached. This turns a rate-limiter outage into a total system outage. For almost all public APIs, this is unacceptable
-- The correct choice is usually **fail-open**. If the gateway cannot reach Redis, it allows the request through to the business logic. It is better to temporarily risk backend overload than to proactively block all paying customers
-- Advanced systems use a local fallback. If Redis is unreachable, the gateway falls back to an in-memory token bucket. It will not be perfectly accurate across the cluster, but it protects the backend from severe spikes until Redis returns
+- The store on page 4 is one more dependency on the hot path, and it will be unreachable some minutes a year. What the gateway does in those minutes is a decision made now, in config, not by whichever exception handler runs first
 
-<svg viewBox="0 0 600 200" role="img" aria-label="Fail-open architecture when Redis is down." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="12">
-  <rect x="50" y="80" width="120" height="40" fill="#e0e7ff" stroke="#6366f1" rx="4"/>
-  <text x="110" y="105" text-anchor="middle" font-weight="bold" fill="#3730a3">API Gateway</text>
-  
-  <rect x="250" y="20" width="100" height="60" fill="#fef3c7" stroke="#f59e0b" stroke-dasharray="4" rx="4"/>
-  <text x="300" y="45" text-anchor="middle" fill="#92400e" font-weight="bold">Redis</text>
-  <text x="300" y="65" text-anchor="middle" fill="#92400e">(Down)</text>
-  
-  <rect x="420" y="80" width="120" height="40" fill="#e2fcf3" stroke="#10b981" rx="4"/>
-  <text x="480" y="105" text-anchor="middle" fill="#065f46" font-weight="bold">Backend Services</text>
-  
-  <path d="M 140 80 Q 180 50 240 50" stroke="#f43f5e" stroke-width="2" fill="none" marker-end="url(#arrow-red)"/>
-  <line x1="180" y1="45" x2="200" y2="75" stroke="#f43f5e" stroke-width="2"/>
-  <line x1="180" y1="75" x2="200" y2="45" stroke="#f43f5e" stroke-width="2"/>
-  <text x="170" y="30" fill="#9f1239" font-weight="bold">Timeout</text>
-  
-  <path d="M 170 100 L 410 100" stroke="#10b981" stroke-width="2" fill="none" marker-end="url(#arrow-green)"/>
-  <text x="290" y="125" text-anchor="middle" fill="#065f46" font-weight="bold">Fail-Open: Traffic allowed through</text>
-  
+<svg viewBox="0 0 460 150" role="img" aria-label="A gateway whose counter store is marked down with an orange cross. Three branches: fail-closed, every request gets 429, marked as a self-inflicted outage; fail-open, every request passes and the backend takes the unshed load; local fallback, each gateway runs its own token bucket at the limit divided by the gateway count, approximate but bounded. Timeout on the store call is 5 ms so the decision cannot stall the request." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
+  <rect x="8" y="56" width="80" height="34" rx="3" fill="#fff" stroke="#333"/><text x="48" y="70" text-anchor="middle">gateway</text><text x="48" y="82" text-anchor="middle" font-size="7.5">store call: 5 ms timeout</text>
+  <rect x="8" y="108" width="80" height="24" rx="3" fill="#fbe9e2" stroke="#bf4c28"/><text x="48" y="123" text-anchor="middle" fill="#bf4c28">✕ counter store</text>
+  <line x1="48" y1="90" x2="48" y2="108" stroke="#bf4c28" stroke-dasharray="3 3"/>
+  <line x1="88" y1="64" x2="150" y2="26" stroke="#333" marker-end="url(#d)"/>
+  <line x1="88" y1="73" x2="150" y2="73" stroke="#333" marker-end="url(#d)"/>
+  <line x1="88" y1="82" x2="150" y2="120" stroke="#1d4e89" marker-end="url(#b)"/>
+  <rect x="152" y="10" width="96" height="30" rx="3" fill="#fbe9e2" stroke="#bf4c28"/><text x="200" y="23" text-anchor="middle" fill="#bf4c28">fail-closed</text><text x="200" y="34" text-anchor="middle" font-size="7.5">every request → 429</text>
+  <text x="256" y="20" font-size="7.5" fill="#bf4c28">✕ a limiter outage is now a full outage</text>
+  <text x="256" y="31" font-size="7.5">right only where over-admitting costs money</text>
+  <rect x="152" y="58" width="96" height="30" rx="3" fill="#fff" stroke="#333"/><text x="200" y="71" text-anchor="middle">fail-open</text><text x="200" y="82" text-anchor="middle" font-size="7.5">every request passes</text>
+  <text x="256" y="68" font-size="7.5">backend takes the unshed load;</text>
+  <text x="256" y="79" font-size="7.5">safe while it has headroom, blind to abuse</text>
+  <rect x="152" y="106" width="96" height="30" rx="3" fill="#e6f2ff" stroke="#1d4e89"/><text x="200" y="119" text-anchor="middle" fill="#1d4e89">local fallback</text><text x="200" y="130" text-anchor="middle" font-size="7.5">in-process token bucket</text>
+  <text x="256" y="116" font-size="7.5" fill="#1d4e89">limit ÷ N gateways per key, per process</text>
+  <text x="256" y="127" font-size="7.5">approximate, bounded, no dependency</text>
+  <text x="8" y="146" font-size="7.5">while the store is down, an alert fires and a metric counts fallback decisions; the choice is logged, not silent</text>
   <defs>
-    <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#f43f5e"/></marker>
-    <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981"/></marker>
+    <marker id="d" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#333"/></marker>
+    <marker id="b" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#1d4e89"/></marker>
   </defs>
 </svg>
 
+- **Fail-open** admits everything when the store cannot answer. It is the default for a public API, because the limiter exists to protect availability and must not be the thing that removes it. The backend's own overload protection, shedding at the edge (booklet 05), is the second line
+- **Fail-closed** refuses everything. It is right where an over-admitted request costs real money, an SMS gateway or a paid third-party call, and wrong nearly everywhere else
+- The **local fallback** is the answer that shows the design was thought through: each gateway keeps a token bucket per key in memory, sized to the limit divided by the gateway count. Uneven traffic makes it strict for some clients and loose for others; both errors are bounded, which neither open nor closed can say
+- The store call has a short timeout of its own. A limiter that waits 30 s for a dead store has turned every request into a 30 s request, which is the outage arriving by another door
+
 ### The failure
 
-- The failure mode is building a rigid dependency. If your rate limiter is required for every request, and your rate limiter dies, you have engineered a self-inflicted outage
-- Infrastructure fails. You must explicitly state what the system does when the network drops a packet to the Redis cluster
-
-:::interview
-**The blast radius test**
-An interviewer wants to see if you can contain failures. A good answer explicitly defends the choice between fail-open (prioritising availability) and fail-closed (prioritising backend protection).
-:::
+- Not deciding. The store goes away, the client library throws, the exception propagates, and every request returns 500. Fail-closed was chosen by accident and nobody can say so on the incident call

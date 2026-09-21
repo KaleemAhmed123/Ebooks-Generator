@@ -1,21 +1,19 @@
 ## API and entities before boxes
 
-- Do not draw a single architecture box until you know the shape of the data. Start by listing the core entities (the nouns). For Twitter, the entities are `User`, `Tweet`, and `Follow`. For Uber, they are `Rider`, `Driver`, and `Trip`
-- Next, define the API. Map exactly one endpoint to each of the functional requirements you agreed upon earlier. Write out the HTTP method, the path, and the JSON payload
-- This is the moment to establish idempotency and pagination. If the endpoint is `POST /payments`, state out loud that you need an `Idempotency-Key` header so retries do not charge the user twice. If the endpoint is `GET /feed`, specify whether it uses offset pagination or cursor pagination
+- No box goes on the board until the shape of the data is known. First the nouns: for a feed, `User`, `Post`, `Follow`; for ride matching, `Rider`, `Driver`, `Trip`. Three to five entities, each with the two or three fields the requirements touch
+- Then one endpoint per functional requirement. Method, path, body, response. Nothing that does not map to a requirement gets an endpoint yet
+- Two decisions are made here, not later, because they change the storage design: which writes need an idempotency key (booklet 01) and how lists are paged
 
-| Requirement | API Endpoint | Notes |
+| Requirement | Endpoint | Decided here |
 | :--- | :--- | :--- |
-| User makes a post | `POST /v1/posts` | Body: `{ userId, content }`<br>Needs idempotency key |
-| Get news feed | `GET /v1/feed?cursor=` | Cursor pagination for shifting feeds |
-| Follow a user | `POST /v1/follows` | Body: `{ followerId, followeeId }` |
+| post something | `POST /posts` | `Idempotency-Key` header; retries must not double-post |
+| read the feed | `GET /feed?cursor=` | cursor, not offset: the list shifts under the reader |
+| follow someone | `PUT /follows/{userId}` | `PUT` is idempotent by definition; no key needed |
+| shorten a URL | `POST /urls` → `{ code }` | the response carries the key the read path is indexed on |
+
+- **Cursor pagination** returns an opaque token that encodes the last item seen, so the next page starts after it even if items were inserted above. Offset pagination (`?page=3`) skips or repeats items whenever the list moves
+- The endpoint list is also the checklist for the high-level design: every one of them gets a path traced through the boxes on the next page
 
 ### The failure
 
-- The failure mode is designing the database schema or the microservice boundaries before you know what the application actually writes or reads
-- If you start drawing load balancers and databases before defining the API, the interviewer will ask, "What data is actually flowing through that load balancer?" You will have to pause, break your flow, and invent the data model retroactively
-
-:::interview
-**The contract test**
-The API is the contract between the client and the backend. Great engineers design from the contract inwards, not from the database outwards.
-:::
+- Sharding the database before knowing the write shape. The interviewer asks "what is flowing through that arrow?" and the data model is invented backwards on the spot. A schema chosen before the API is a schema chosen for the wrong queries

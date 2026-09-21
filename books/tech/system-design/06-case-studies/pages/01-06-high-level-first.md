@@ -1,51 +1,36 @@
 ## High-level design and buy-in
 
-- Draw the simplest possible architecture that satisfies the API. Do not add caches, message queues, or CDNs yet. A high-level design has a client, a load balancer, an API gateway, a service, and a database
-- Trace one request path per functional requirement. Physically point to the diagram and walk the interviewer through it: "For the 'create post' requirement, the mobile client hits the load balancer, passes to the API gateway which checks auth, hits the Post Service, and writes to the primary database"
-- Once the basic paths are drawn, ask the interviewer for buy-in: "This satisfies our core requirements. Should we dive into how this scales to our target throughput, or is there a specific area you want to focus on?"
+- The simplest design that serves every endpoint on the previous page. Client, load balancer, one service, one database. No cache, queue or CDN until a number from page 4 demands one; each of those is added later as the answer to a stated problem, never as decoration
 
-<svg viewBox="0 0 600 200" role="img" aria-label="A simple high level design with Client, LB, Gateway, Service, and Database, tracing the write path." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="12">
-  <rect x="20" y="70" width="60" height="60" fill="#e2fcf3" stroke="#10b981" rx="4"/>
-  <text x="50" y="105" text-anchor="middle" fill="#065f46">Client</text>
-  
-  <rect x="140" y="60" width="40" height="80" fill="#f4f4f5" stroke="#52525b" rx="20"/>
-  <text x="160" y="105" text-anchor="middle" fill="#52525b" transform="rotate(-90 160 105)">LB</text>
-  
-  <rect x="240" y="70" width="80" height="60" fill="#e0e7ff" stroke="#6366f1" rx="4"/>
-  <text x="280" y="100" text-anchor="middle" fill="#3730a3">API</text>
-  <text x="280" y="115" text-anchor="middle" fill="#3730a3">Gateway</text>
-  
-  <rect x="380" y="70" width="80" height="60" fill="#fef3c7" stroke="#f59e0b" rx="4"/>
-  <text x="420" y="100" text-anchor="middle" fill="#92400e">Post</text>
-  <text x="420" y="115" text-anchor="middle" fill="#92400e">Service</text>
-  
-  <path d="M 520 70 Q 550 50 580 70 L 580 130 Q 550 150 520 130 Z" fill="#ffe4e6" stroke="#f43f5e"/>
-  <path d="M 520 70 Q 550 90 580 70" fill="none" stroke="#f43f5e"/>
-  <text x="550" y="110" text-anchor="middle" fill="#9f1239">Post DB</text>
-  
-  <path d="M 85 100 L 130 100" stroke="#10b981" fill="none" marker-end="url(#arrow-green)"/>
-  <path d="M 185 100 L 230 100" stroke="#52525b" fill="none" marker-end="url(#arrow-gray)"/>
-  <path d="M 325 100 L 370 100" stroke="#6366f1" fill="none" marker-end="url(#arrow-blue)"/>
-  <path d="M 465 100 L 510 100" stroke="#f59e0b" fill="none" marker-end="url(#arrow-orange)"/>
-  
-  <text x="300" y="40" text-anchor="middle" font-weight="bold" fill="#18181b">Trace the functional path first</text>
-  <path d="M 50 60 Q 250 20 420 60" stroke="#18181b" stroke-dasharray="4" fill="none" marker-end="url(#arrow-black)"/>
-  
+<svg viewBox="0 0 460 150" role="img" aria-label="Client, load balancer, API service and database in a row. Two request paths are traced across them: POST /posts as a write in blue, GET /feed as a read in black, each labelled with the requirement it serves. A dashed region below holds cache, queue and CDN marked 'not yet: added when a number demands it'." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
+  <rect x="14" y="30" width="60" height="30" rx="3" fill="#fff" stroke="#333"/><text x="44" y="49" text-anchor="middle">client</text>
+  <rect x="120" y="30" width="60" height="30" rx="3" fill="#fff" stroke="#333"/><text x="150" y="45" text-anchor="middle">load</text><text x="150" y="55" text-anchor="middle">balancer</text>
+  <rect x="226" y="30" width="80" height="30" rx="3" fill="#fff" stroke="#333"/><text x="266" y="45" text-anchor="middle">API service</text><text x="266" y="55" text-anchor="middle" font-size="7.5">stateless, N copies</text>
+  <rect x="356" y="30" width="90" height="30" rx="3" fill="#e6f2ff" stroke="#333"/><text x="401" y="45" text-anchor="middle">database</text><text x="401" y="55" text-anchor="middle" font-size="7.5">posts, follows</text>
+  <line x1="74" y1="38" x2="120" y2="38" stroke="#1d4e89" marker-end="url(#b)"/>
+  <line x1="180" y1="38" x2="226" y2="38" stroke="#1d4e89" marker-end="url(#b)"/>
+  <line x1="306" y1="38" x2="356" y2="38" stroke="#1d4e89" marker-end="url(#b)"/>
+  <text x="97" y="24" text-anchor="middle" font-size="7.5" fill="#1d4e89">POST /posts</text>
+  <text x="331" y="24" text-anchor="middle" font-size="7.5" fill="#1d4e89">INSERT post</text>
+  <line x1="120" y1="52" x2="74" y2="52" stroke="#333" marker-end="url(#d)"/>
+  <line x1="226" y1="52" x2="180" y2="52" stroke="#333" marker-end="url(#d)"/>
+  <line x1="356" y1="52" x2="306" y2="52" stroke="#333" marker-end="url(#d)"/>
+  <text x="97" y="74" text-anchor="middle" font-size="7.5">GET /feed?cursor=</text>
+  <text x="331" y="74" text-anchor="middle" font-size="7.5">SELECT … WHERE author IN (follows)</text>
+  <rect x="120" y="94" width="326" height="42" rx="3" fill="none" stroke="#999" stroke-dasharray="3 3"/>
+  <text x="130" y="108" font-size="7.5" fill="#666">not yet: cache · queue · CDN · search index</text>
+  <text x="130" y="122" font-size="7.5" fill="#666">each arrives as the answer to one number: 50 000 read QPS → cache; slow provider → queue</text>
+  <text x="14" y="147" font-size="7.5">requirement 1 traced in blue, requirement 2 in black; requirement 3 (follow) is one more row, same shape</text>
   <defs>
-    <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981"/></marker>
-    <marker id="arrow-gray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#52525b"/></marker>
-    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6366f1"/></marker>
-    <marker id="arrow-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#f59e0b"/></marker>
-    <marker id="arrow-black" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#18181b"/></marker>
+    <marker id="d" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#333"/></marker>
+    <marker id="b" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#1d4e89"/></marker>
+    <marker id="e" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#bf4c28"/></marker>
   </defs>
 </svg>
 
+- Trace one request per requirement, out loud, finger on the board: "the post goes to the balancer, to any API copy, one insert, 201 back". A path that cannot be traced is a requirement the design does not serve
+- Then ask for buy-in: "this serves all three; the number that breaks it first is 50 000 reads a second on the feed query. Deep dive there, or somewhere you prefer?" The interviewer now steers, which is the communication competency being graded
+
 ### The failure
 
-- The failure mode is drawing fifteen boxes on the board—adding Kafka, Redis, CDN, and Elasticsearch immediately—without ever tracing a request end to end
-- If you build a massive complex architecture before proving the simple one works, you have no baseline. You must start simple and add complexity only when the scaling numbers demand it
-
-:::interview
-**The buy-in test**
-Good candidates check in with their stakeholders. Asking the interviewer where they want to focus proves you view them as a collaborative partner, not an adversary.
-:::
+- Fifteen boxes, no path. Kafka, Redis, Elasticsearch and a CDN on the board by minute 15, and no request traced through any of them. There is no baseline to argue from, and every box is a question the candidate must now defend: "what happens when the consumer of that queue dies?"

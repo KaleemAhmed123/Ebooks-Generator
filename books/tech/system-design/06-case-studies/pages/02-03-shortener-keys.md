@@ -1,23 +1,18 @@
-## Generating the short code
+## Key generation
 
-- A 7-character string using base-62 (a–z, A–Z, 0–9) gives 62^7 combinations, which is roughly 3.5 trillion keys. This is plenty for a system generating 100 million links a month
-- The hard part is ensuring no two long URLs receive the same short code. There are three approaches: hashing, a distributed counter, or a pre-generated key table
-- **Hashing:** Run the long URL through MD5 or SHA-256 and take the first 7 characters. **The problem:** MD5 outputs 32 hex characters. If you truncate it to 7, you will inevitably hit collisions. Resolving collisions requires reading the database, appending a salt, and rehashing. This is slow
-- **Distributed Counter:** Use a distributed ID generator (like Snowflake, or a Redis counter, as covered in Booklet 05) to get a unique integer, then convert that integer to base-62. **The problem:** It is perfectly predictable. Competitors can scrape your links and deduce exactly how many URLs you generate per day
-- **Pre-generated Key Table:** A background worker generates random 7-character base-62 strings and stores them in a "keys" database. When a request comes in, it pops an unused key. **The advantage:** Fast, collision-free at write time, and unpredictable
+- Seven base-62 characters (`a–z A–Z 0–9`) hold 62⁷ ≈ 3.5 × 10¹² codes. The question is how to hand them out without two writers picking the same one, at 40 a second, from several service instances
 
-| Approach | Pros | Cons |
-| :--- | :--- | :--- |
-| **Hash (MD5 truncated)** | Deterministic | Collisions are guaranteed at scale; resolving them is expensive |
-| **Counter + Base62** | Guaranteed unique, no DB required for key | Sequential keys leak business metrics |
-| **Pre-generated Table** | O(1) fetch, no collisions on write | Requires a background worker and separate key storage |
+| Approach | How | Unique by | Cost |
+| :--- | :--- | :--- | :--- |
+| hash and truncate | first 7 chars of `MD5(url)` in base-62 | nothing: 41.7 bits of hash | birthday bound ≈ 2.3 M rows to the first collision, one day of writes; then check-and-rehash on every insert |
+| counter, encoded | a sequence number written in base-62 | the sequence | codes are guessable and count the business; needs a coordinator |
+| range allocation | each instance leases a block of 1 M numbers from a small coordinator, hands them out locally | the block lease | codes still sequential within a block; a crashed instance burns its block |
+| pre-generated table | an offline job fills a table with random unused codes; the write path pops one | the pop is a row delete | one more store; the pop must be atomic across instances |
+
+- **Base-62** is a change of number base, nothing more: `0 → "a"`, `61 → "9"`, `62 → "ba"`. Any integer under 3.5 × 10¹² fits in 7 characters
+- A 64-bit Snowflake id (41 bits of milliseconds, 10 of machine, 12 of sequence; booklet 05) does not: 2⁶⁴ needs 11 base-62 characters. Time-ordered ids buy nothing here anyway; a code is never range-scanned. So "counter" means a plain sequence with range allocation, not a Snowflake id
+- Guessability is fixed by encoding a random permutation of the sequence, or by picking the pre-generated table. Say which, and why: the requirements did not ask for unguessable codes, but abuse (page 5) will
 
 ### The failure
 
-- The failure mode is proposing the truncated hash approach without acknowledging collisions. If you truncate a hash, the pigeonhole principle guarantees collisions
-- The interviewer will ask, "What happens when it collides?" If your answer is "re-hash until it works," they will point out that as the database fills up, the write latency will degrade exponentially
-
-:::interview
-**The predictability test**
-If you choose the counter approach, the interviewer will ask about security. Sequential IDs allow anyone to scrape the entire dataset by iterating `0001`, `0002`, `0003`.
-:::
+- Truncated hash with no collision plan. "MD5 and take seven characters" sounds deterministic and free. The pigeonhole principle makes collisions certain, and the birthday bound makes them early: with 2.3 M rows the first pair has already landed. The write path then needs a read-before-write on every insert, which is the check the counter approach was chosen to avoid
