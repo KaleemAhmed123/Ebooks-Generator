@@ -1,39 +1,40 @@
 ## Fan-out on write
 
-- **Push model:** When Alice publishes a post, the API server drops an event onto a queue. A pool of workers fetches Alice's follower list. It then pushes the `post_id` into the Redis feed list of *every single follower*
-- If Alice has 500 followers, one post equals 500 Redis writes. This is called Fan-out on write
-- **Bounded lists:** We do not store infinite history in Redis. We cap the list at ~800 entries (Twitter 2012). Users rarely scroll past 800 posts. If they do, *then* we fall back to the slow database query
+- Alice posts. The API writes the post row, puts one message on a queue (booklet 04) and returns 201. A worker reads Alice's followers from `follows` and pushes the post id to the front of each follower's `feed:` list, trimming it to 800. A reader's request is then one list read and one hydration; nothing is computed at read time
 
-<svg viewBox="0 0 460 120" role="img" aria-label="Fan-out on write architecture pushing post IDs to follower caches" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
-  <rect x="10" y="45" width="50" height="30" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
-  <text x="35" y="64" text-anchor="middle" font-weight="bold">Alice</text>
-  
-  <rect x="80" y="45" width="70" height="30" rx="3" fill="#e2fcf3" stroke="#1d4e89"/>
-  <text x="115" y="64" text-anchor="middle" font-weight="bold" fill="#1d4e89">API Server</text>
-  
-  <rect x="170" y="45" width="70" height="30" rx="3" fill="#fcfcfc" stroke="#1a1a1a" stroke-dasharray="2 2"/>
-  <text x="205" y="64" text-anchor="middle" font-weight="bold">Workers</text>
-  
-  <rect x="280" y="10" width="80" height="25" rx="3" fill="#fce4e2" stroke="#b8541a"/>
-  <text x="320" y="27" text-anchor="middle" font-weight="bold" fill="#b8541a">Follower DB</text>
-  
-  <rect x="280" y="70" width="80" height="40" rx="3" fill="#fce4e2" stroke="#b8541a"/>
-  <text x="320" y="85" text-anchor="middle" font-weight="bold" fill="#b8541a">Redis Feeds</text>
-  <text x="320" y="95" text-anchor="middle" font-size="6" fill="#b8541a">User_A: [P1]</text>
-  <text x="320" y="103" text-anchor="middle" font-size="6" fill="#b8541a">User_B: [P1]</text>
-  
-  <path d="M60 60 L80 60" stroke="#1a1a1a" fill="none" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <path d="M150 60 L170 60" stroke="#1d4e89" fill="none" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <path d="M205 45 L280 25" stroke="#1a1a1a" fill="none" stroke-width="1.5" stroke-dasharray="2 2" marker-end="url(#arrow)"/>
-  <path d="M205 75 L280 90" stroke="#b8541a" fill="none" stroke-width="2" marker-end="url(#arrow)"/>
+<svg viewBox="0 0 460 152" role="img" aria-label="Fan-out on write. The post API writes the post row to the posts store and one message to the fan-out queue, then returns 201. Workers read the follower list from the follows store, 200 ids on average, and push the post id into each follower's feed list with LPUSH and LTRIM 800. A reader's GET /feed is one list read plus hydration. An orange cross marks the case of 10 million followers: 10 million list writes for one post, 100 seconds at 100 000 writes a second, with every other post queued behind it." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
+  <rect x="6" y="40" width="58" height="32" rx="3" fill="#fff" stroke="#1d4e89"/><text x="35" y="53" text-anchor="middle">post API</text><text x="35" y="65" text-anchor="middle" font-size="7.5">row + msg → 201</text>
+  <rect x="6" y="100" width="58" height="22" rx="3" fill="#e6f2ff" stroke="#333"/><text x="35" y="114" text-anchor="middle">posts</text>
+  <line x1="35" y1="72" x2="35" y2="100" stroke="#333" marker-end="url(#d)"/>
+  <rect x="94" y="45" width="64" height="22" rx="3" fill="#fff" stroke="#333" stroke-dasharray="3 3"/><text x="126" y="59" text-anchor="middle">fan-out queue</text>
+  <line x1="64" y1="56" x2="94" y2="56" stroke="#333" marker-end="url(#d)"/>
+  <text x="79" y="50" text-anchor="middle" font-size="7">500/s</text>
+  <rect x="186" y="45" width="56" height="22" rx="3" fill="#fff" stroke="#333"/><text x="214" y="59" text-anchor="middle">workers</text>
+  <line x1="158" y1="56" x2="186" y2="56" stroke="#333" marker-end="url(#d)"/>
+  <rect x="180" y="100" width="68" height="22" rx="3" fill="#e6f2ff" stroke="#333"/><text x="214" y="109" text-anchor="middle" font-size="7.5">follows</text><text x="214" y="118" text-anchor="middle" font-size="7">(followee → followers)</text>
+  <line x1="214" y1="100" x2="214" y2="67" stroke="#333" marker-end="url(#d)"/>
+  <text x="228" y="86" font-size="7">≈ 200 ids</text>
+  <rect x="284" y="12" width="66" height="20" rx="3" fill="#e6f2ff" stroke="#333"/><text x="317" y="25" text-anchor="middle" font-size="7.5">feed:bob</text>
+  <rect x="284" y="46" width="66" height="20" rx="3" fill="#e6f2ff" stroke="#333"/><text x="317" y="59" text-anchor="middle" font-size="7.5">feed:carol</text>
+  <rect x="284" y="80" width="66" height="20" rx="3" fill="#e6f2ff" stroke="#333"/><text x="317" y="93" text-anchor="middle" font-size="7.5">… × 200</text>
+  <line x1="242" y1="52" x2="284" y2="24" stroke="#333" marker-end="url(#d)"/>
+  <line x1="242" y1="56" x2="284" y2="56" stroke="#333" marker-end="url(#d)"/>
+  <line x1="242" y1="60" x2="284" y2="88" stroke="#333" marker-end="url(#d)"/>
+  <text x="317" y="8" text-anchor="middle" font-size="7">LPUSH id · LTRIM 0 799</text>
+  <rect x="384" y="12" width="70" height="34" rx="3" fill="#fff" stroke="#1d4e89"/><text x="419" y="25" text-anchor="middle">GET /feed</text><text x="419" y="37" text-anchor="middle" font-size="7">1 read + hydrate</text>
+  <line x1="384" y1="26" x2="350" y2="24" stroke="#1d4e89" marker-end="url(#b)"/>
+  <text x="367" y="20" text-anchor="middle" font-size="7" fill="#1d4e89">20 ids</text>
+  <text x="6" y="140" font-size="7.5" fill="#bf4c28">✕ 10 M followers = 10 M list writes for one post: 100 s at 100 000 writes/s,</text>
+  <text x="6" y="150" font-size="7.5" fill="#bf4c28">and every ordinary post queued behind it is late by that much (page 4)</text>
+  <defs>
+    <marker id="d" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#333"/></marker>
+    <marker id="b" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#1d4e89"/></marker>
+  </defs>
 </svg>
+
+- The 800-entry cap, from Twitter's 2012 QCon talk, bounds both the memory (page 1) and the cost of a trim. A user who scrolls past 800 falls through to the store, and is rare enough not to shape the design
+- Inactive followers skip the fan-out: no list for anyone who has not opened the app in 30 days. Their first open rebuilds it from the pull path (page 4), then push resumes. The saving is not memory, it is the queue's throughput, which is the scarce resource on this page
 
 ### The failure
 
-- Fanning out to inactive users. If a user hasn't logged in for two years, updating their Redis list every day is burning memory and CPU for a ghost. Only fan-out to users who have been active in the last 14 days
-
-:::interview
-Alice has 1,000 followers. She posts a status. How many database writes are generated by a pure fan-out-on-write architecture?
-
-One write to the core database (saving the post), and 1,000 writes to the Redis cache cluster (appending the ID to 1,000 lists).
-:::
+- One post, 10 million lists. At the cluster's 100 000 writes a second that is 100 seconds of the worker pool doing nothing else, and every ordinary post behind it is late by that much. The cost of a write is proportional to followers, so write cannot be the only path

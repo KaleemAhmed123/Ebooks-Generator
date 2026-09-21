@@ -1,25 +1,21 @@
-# Ride Matching (Uber)
+# Module 8 - Ride matching and proximity
 
-### Requirements and numbers
+## Requirements and numbers
 
-- Ride matching (Uber) connects moving riders with moving drivers. The core complexity is spatial indexing of moving objects
-- **In scope:** Driver location updates, rider requests, matching logic
-- **Out of scope:** Map routing (Google Maps API handles ETA and paths), payments (→11)
+- A ride-matching system takes a rider's request and a stream of driver positions, and pairs them within seconds. Two very different workloads share the design: a location firehose, written constantly and read by cell, and a trip record, written rarely and never allowed to be wrong
+- Functional, in: drivers report position while online; a rider requests a trip and is matched to a nearby driver; the trip moves through states to completion. Out: routing and maps, pricing beyond a surge multiplier (page 7), payment (Module 11)
+- Non-functional: a match in under 10 seconds; a driver offered to one rider at a time, never two; a lost position update costs nothing, a lost trip is unacceptable
+- Inputs, as assumptions: say 1 M drivers online at peak, each reporting every 4 s; 100 000 trip requests a minute at peak; a position update of 50 bytes. Uber's own scale for the trip side, from its 2021 fulfillment post: billions of trips a month across 10 000+ cities
 
-| Metric | Requirement |
-|---|---|
-| **Volume** | Drivers stream location every 4 seconds. Billions of trips |
-| **Latency** | Match must happen in < 10 seconds |
-| **Consistency** | Strong. No double-booking a driver |
+| Quantity | Arithmetic | Result |
+| :--- | :--- | :--- |
+| position updates | 1 M ÷ 4 s | 250 000 writes/s, all overwrites of the same 1 M keys |
+| position bytes | 250 000 × 50 B | 12.5 MB/s: small in bytes, enormous in write count |
+| trip requests | 100 000 ÷ 60 | ≈ 1 700/s at peak, each a handful of durable writes |
+| drivers per city | 1 M over 10 000 cities | ≈ 100 on average; a dense cell holds tens |
 
-- Note the volume disparity: Riders only write once when they request a ride. Drivers write every 4 seconds while online. If 1 million drivers are online, that is 250,000 writes per second. This is an extreme write-heavy system
+- A position is an overwrite: only the last value matters, and losing one costs nothing because the next arrives in 4 s. That property is what lets the location path skip the database entirely (page 4). The trip is money and a person in a car; it gets a transaction (page 5)
 
 ### The failure
 
-- Storing driver locations in a relational database (Postgres). 250,000 updates per second will thrash the disk and destroy the B-tree indexes. Driver locations are ephemeral; they belong in memory, not on disk
-
-:::interview
-You design an Uber clone where drivers HTTP PUT their location to a PostgreSQL `drivers` table every 4 seconds. The interviewer smiles and asks what happens to the DB's disk I/O. Why is this wrong?
-
-Relational databases use B-trees optimized for disk storage. 250k updates/sec creates massive write amplification and lock contention. Ephemeral location streams must go to an in-memory store like Redis.
-:::
+- Treating position updates as writes to the trip database. 250 000 row updates a second to a relational store, each made durable, each rewriting a lat/lng index, for values that are stale in 4 s. The interviewer asks why a value nobody will read after 4 seconds is being written to disk at all

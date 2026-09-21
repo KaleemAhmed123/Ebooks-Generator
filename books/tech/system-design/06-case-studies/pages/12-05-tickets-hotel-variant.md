@@ -1,17 +1,19 @@
-## Date-range inventory (hotel variant)
+## Date-range inventory
 
-- Booking a hotel room is similar to Ticketmaster, but you don't book a specific physical room (Room 101). You book a *Room Type* for a *Date Range*
-- **The inventory model:** `room_type_id`, `date`, `total_inventory`, `total_reserved`
-- If you book a King Suite from Jan 1st to Jan 5th, the system must decrement the inventory for all 5 specific date rows
-- **Overbooking:** Hotels and airlines deliberately oversell by ~10% because cancellations are guaranteed. The business logic allows `total_reserved` to exceed `total_inventory` by a configured margin
-- Because users browse for dates and rarely collide on the exact same second, you can use Optimistic Concurrency (a `version` column, →03) instead of strict locks
+- A hotel sells a room type for a range of nights, not a numbered seat for one event, so the row is `(room_type, night)` with a count, and a booking is one row per night in its range. Same invariants, different grain: the thing that must never go negative is the count for one night, and the thing that must never be locked is the whole room type
+
+| Ticket booking | Hotel booking |
+| :--- | :--- |
+| one row per seat, `status` is the invariant | one row per room type per night: `total`, `reserved`, `version` |
+| a booking is one seat | a booking spans consecutive nights: one conditional update per night, all in one transaction, any one failing rolls back the rest |
+| never sold twice | `reserved ≤ total × (1 + overbook)`: overbooking is a deliberate business percentage, set per property, because a known share of bookings cancel |
+| pessimistic: `FOR UPDATE NOWAIT` on the seat, because 10 buyers want the same row (page 3) | optimistic: `UPDATE … SET reserved = reserved + 1, version = version + 1 WHERE … AND version = $v AND reserved < limit`, because collisions on one night are rare (booklet 03) |
+| the hold is the seat row's state | the hold is a row in `holds` with an expiry that counts toward `reserved` until it expires or converts |
+| the physical seat is the product | the physical room is assigned at check-in; the product is a unit of inventory |
+
+- Optimistic concurrency, a `version` column checked on every update, fits because two guests wanting the same room type on the same night at the same instant is uncommon; a zero-row update means "retry with fresh numbers", and the retry almost always succeeds. Under the ticketing burst the same scheme would retry 90 % of writers, which is why page 3 locks instead
+- A five-night stay is five conditional updates in one transaction; if the fourth night is full, the transaction rolls back and the guest is offered other dates. Partial success would leave three nights reserved for nobody
 
 ### The failure
 
-- Locking the entire "King Suite" room type when a user is checking out. This prevents anyone else in the world from booking a King Suite for different dates. You must lock by date.
-
-:::interview
-You design a hotel booking system. A user books a room for December 15th. Why don't you assign them physical Room 402 in the database immediately?
-
-Because you want flexibility to shuffle physical rooms to accommodate longer stays. You only reserve inventory (1 unit of "Standard Room" on Dec 15th) and assign the physical room number when they check in.
-:::\n
+- Locking the room type instead of the night. A booking for one night in June takes a lock that blocks every booking for that room type on every date, and the hotel's whole inventory serialises on one row. The grain of the lock is the grain of the inventory, and the inventory is per night

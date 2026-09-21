@@ -1,22 +1,22 @@
-## Video Streaming: Requirements and numbers
+# Module 9 - Video upload and streaming
 
-- The prompt "design YouTube" or "design Netflix" tests your understanding of massive data throughput, Content Delivery Networks (CDNs), and asynchronous processing pipelines
-- The core requirements are uploading a video, processing it into multiple formats, and streaming it smoothly to users with varying internet speeds
-- For numbers, video dominates the internet. If 1 million users upload a 50 MB video every day, that is 50 TB of inbound data. But reads outnumber writes by a massive margin. If 100 million users watch 1 GB of video every day, that is 100 PB (Petabytes) of outbound bandwidth per day
+## Requirements and numbers
 
-| Metric | Calculation | Result |
+- A video platform takes one large file in, turns it into many files, and serves those files to a number of viewers that dwarfs the number of uploaders. Three pipelines, three different shapes: upload is a few large writes, transcoding is a batch of CPU, playback is a firehose of small reads from the edge
+- Functional, in: upload a video; transcode it into renditions for every screen and network; stream it with the quality adapting to the viewer's bandwidth. Out: recommendations (Module 7's ranking stage), live streaming, comments (Module 6)
+- Non-functional: an upload survives a dropped connection; a video is playable minutes after upload, not hours; playback starts in under a second and does not stall when bandwidth halves
+- Inputs, as assumptions: say 1 M uploads a day, 10 minutes each, so ≈ 167 000 hours in; 1080p source at 5 Mbit/s; a ladder of six renditions whose bitrates sum to ≈ 2.2× the source; 100 M view-hours a day at an average 2 Mbit/s
+
+| Quantity | Arithmetic | Result |
 | :--- | :--- | :--- |
-| **Inbound Storage** | 1M uploads × 50 MB | 50 TB / day |
-| **Outbound Bandwidth** | 100M views × 1 GB | 100 PB / day |
-| **Read/Write Ratio** | Bandwidth comparison | ~2000:1 |
-| **Latency Budget** | Time to first byte | < 200 ms |
+| one hour of 1080p source | 5 Mbit/s × 3 600 s ÷ 8 | ≈ 2.25 GB |
+| source in, per day | 167 000 h × 2.25 GB | ≈ 375 TB/day |
+| renditions out | ≈ 2.2 × source | ≈ 5 GB per hour; ≈ 1.2 PB/day stored in total |
+| egress | 100 M h × 900 MB ÷ 86 400 s | ≈ 90 PB/day ≈ 8 Tbit/s average, and none of it from the origin (page 5) |
+
+- Storage is dominated by the renditions, not the source: the estimate that counts the source alone is off by 3×. Bandwidth is dominated by playback, and playback is served by a CDN or it is not served at all
+- The upload path (page 2), the transcode DAG (page 3) and the player's manifest (page 4) are the three deep dives; page 5 is where the 8 Tbit/s goes
 
 ### The failure
 
-- The failure mode is focusing entirely on storage and ignoring outbound bandwidth. A candidate will meticulously calculate how many hard drives they need for 50 TB, but miss the fact that serving 100 PB of video from a single datacenter will saturate the region's internet backbone
-- Video streaming is fundamentally a network bandwidth problem, not a disk space problem
-
-:::interview
-**The bandwidth test**
-If you do not immediately state that serving this much data from one central server is impossible and that you require a global CDN, you have failed the scale test.
-:::
+- Estimating storage from the source size. 375 TB a day sounds like the number; the six renditions make it 1.2 PB, and the interviewer's next question, "how many copies at the edge?", makes it larger still. The source is the smallest thing the design stores

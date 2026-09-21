@@ -1,25 +1,27 @@
-## Matching and transactions
+## Matching
 
-- When a rider requests a trip, the Matcher gets the 10 closest drivers from the Location Service. It must now offer the ride to Driver 1
-- **The double-booking problem:** What if another rider requests a trip, and the Matcher offers it to Driver 1 at the exact same millisecond?
-- **State Machine & Locks:** The trip and the driver are entities in a database. Uber originally used an AP (Available/Partition-tolerant) in-memory system (Ringpop). It resulted in race conditions and double-booked drivers.
-- Uber rewrote this to use **Google Spanner** (a strongly consistent, distributed SQL database). When offering a ride, they execute a transaction to lock the driver's state to `OFFERED`. If it succeeds, the push notification is sent
+- The matcher takes the k nearest from the index (page 4), ranks them by ETA and offers the trip to one driver at a time: the driver row is `offered` until accept, decline or expiry; every transition is `WHERE status = <expected>` (Module 11, page 5)
+- Two riders, one driver, the same second: both matchers read `available`, both offer. The check and the mark must be one transaction over the driver row and the trip row. Uber's 2021 fulfillment post: an AP store (Ringpop over Redis) with saga compensations left entities inconsistent, so trip state moved to Spanner for one commit across both
 
-```sql
--- Transactional lock to prevent double booking
-BEGIN;
-SELECT status FROM drivers WHERE id = 'D1' FOR UPDATE;
--- Check if status is still 'AVAILABLE'
-UPDATE drivers SET status = 'OFFERED' WHERE id = 'D1';
-COMMIT;
+```typescript
+async function offer(tripId: string, driverId: string, ttlMs = 15_000) {
+  return db.transaction(async (tx) => {             // commit: both rows or neither
+    const d = await tx.one(
+      "SELECT status FROM drivers WHERE id=$1 FOR UPDATE", [driverId]);
+    if (d.status !== "available") return false;   // someone else got here first
+    await tx.run("UPDATE drivers SET status='offered', expires=$2 WHERE id=$1",
+      [driverId, new Date(Date.now() + ttlMs)]);
+    await tx.run("UPDATE trips SET status='offered', driver_id=$2 WHERE id=$1",
+      [tripId, driverId]);
+    return true;
+  });
+}
 ```
+
+:::interview
+"Two riders request at once and the nearest driver is the same. How do you stop both getting them?" — The offer is a transaction: lock the driver's row, check it is still available, mark it offered with an expiry, and update the trip in the same commit. The second matcher reads `offered` and moves on; that one serialised write per offer is why the position firehose stays out of this store.
+:::
 
 ### The failure
 
-- Using eventual consistency for ride matching. If you are handling real-world physics (a car cannot be in two places) and money, you need strong consistency (→03)
-
-:::interview
-Two riders request a car. The matcher selects the same driver for both. Because you used a NoSQL eventual consistency store, both riders see "Driver is on the way". Why did Uber abandon NoSQL for this?
-
-Because physical assets (cars, hotel rooms, event tickets) cannot tolerate eventual consistency. Double-booking ruins the physical world UX. Strong transactional consistency is required.
-:::
+- The match on an AP store. Two matchers read "available" from replicas that have not seen each other's write, both offer, and the driver's phone pings twice. Uber's reason for leaving Ringpop: a compensation does not un-offer a driver who already accepted

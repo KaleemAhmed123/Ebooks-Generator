@@ -1,28 +1,24 @@
 ## API and data model
 
-- The API is simple, but pagination is a trap. You cannot use `OFFSET/LIMIT` for a feed. If I read 10 posts, and while I read them 2 new posts arrive, requesting `OFFSET 10` will shift the window and show me duplicates
-- **Cursor-based pagination:** You must use a cursor (usually the `post_id` or timestamp). `GET /feed?max_id=98765`
+- `POST /posts {text, mediaIds}` → 201 with the post id; `PUT` and `DELETE /follows/{userId}`; `GET /feed?cursor=&limit=20` → the page and the next cursor. The idempotency key on `POST /posts` is booklet 01's
+- Three stores. `posts`, keyed by a time-ordered id (booklet 05) and partitioned by it. `follows`, stored twice, as `(follower, followee)` and as `(followee, follower)`: fan-out needs "who follows Alice", the pull path needs "whom does Bob follow", and one index cannot serve both cheaply (booklet 02 owns the partitioning). `feed:{userId}`, a list of post ids in the cache, page 3
 
 ```typescript
-POST /v1/posts
-Body: { content: "Hello world" }
-
-GET /v1/feed?max_id=12345&limit=20
-Response: {
-  posts: [...],
-  next_cursor: "12300"
+// GET /feed?cursor=<smallest post id on the previous page>&limit=20
+// ids are fixed-width and time-ordered, newest first, so "older than the cursor" is a compare
+async function feedPage(userId: string, cursor?: string, limit = 20) {
+  const ids = await cache.lrange(`feed:${userId}`, 0, 799);
+  const start = cursor ? ids.findIndex((id) => id < cursor) : 0;
+  if (start < 0) return { posts: [], nextCursor: null };
+  const page = ids.slice(start, start + limit);
+  const posts = await postStore.getMany(page);      // hydrate; a deleted id returns nothing
+  return { posts, nextCursor: page.at(-1) ?? null };
 }
 ```
 
-- **The Cache List:** We do not query the database for the feed. Every user has a Redis List (or Sorted Set) holding the IDs of the posts in their feed. 
-- `User123_feed: [post_9, post_7, post_2]`
+- The list holds ids, never post bodies. A post edited once would otherwise be rewritten in every follower's list; with ids, the body lives in the posts store and its cache (Module 4), and every feed hydrates it at read time. A deleted post disappears from every feed by returning nothing
+- The cursor is the last id the client saw, not a page number. A post that arrives while the user is reading goes to the front of the list and shifts nothing behind the cursor
 
 ### The failure
 
-- Storing the actual post content in the Redis feed list. If a post is edited, you have to find and update it in millions of lists. Store only the `post_id` in the list, and fetch the content from a separate cache (→04) at read time
-
-:::interview
-A user requests page 2 of their feed using `?page=2&limit=20`. They complain they are seeing posts they already saw on page 1. What caused this?
-
-Offset pagination. New posts were added to the top of the feed while they were reading page 1, pushing the old posts down into the page 2 offset window. Always use cursor pagination.
-:::
+- `GET /feed?page=2`. Two posts arrive while page 1 is read; `OFFSET 20` now starts two posts earlier, and page 2 repeats the last two of page 1. On a list that grows at the top, an offset is a moving target. The cursor costs one comparison and removes the bug

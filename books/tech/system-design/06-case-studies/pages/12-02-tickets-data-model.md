@@ -1,17 +1,33 @@
 ## Data model
 
-- A naive approach is to use a counter: `UPDATE events SET seats_remaining = seats_remaining - 1`. This is a disaster. What if a user cancels? Which specific seat did they buy?
-- **The Seat Row:** Every single physical seat in the stadium must have its own dedicated database row
-  - `id: 1, event_id: 42, row: A, seat: 14, status: AVAILABLE`
-- **The invariant:** The `status` column is the absolute source of truth. It can be `AVAILABLE`, `HELD`, or `BOOKED`
-- To show the seat map, the frontend queries all rows for the event. This is read-heavy, so the seat map is heavily cached
+- One row per seat per event, and its `status` is the invariant. `available`, `held` or `booked`, with `held_by` and `hold_expires` beside it: a seat's state is one row's columns, and the database's own row lock is what serialises two buyers (page 3)
+
+```sql
+CREATE TABLE seats (
+  event_id      bigint      NOT NULL,
+  seat_id       text        NOT NULL,          -- "A-14"
+  status        text        NOT NULL DEFAULT 'available'
+                CHECK (status IN ('available', 'held', 'booked')),
+  held_by       bigint,                        -- user id while held
+  hold_expires  timestamptz,                   -- NULL unless held
+  booking_id    bigint,                        -- set on booked, never cleared
+  PRIMARY KEY (event_id, seat_id)
+);
+
+CREATE TABLE bookings (
+  id          bigint PRIMARY KEY,
+  event_id    bigint NOT NULL,
+  user_id     bigint NOT NULL,
+  seat_ids    text[] NOT NULL,
+  payment_id  text,                            -- Module 11's row
+  status      text NOT NULL CHECK (status IN ('pending', 'confirmed', 'cancelled'))
+);
+```
+
+- The seat table is the hot one and it is small: 10 000 rows per event, so an event's map is one megabyte and fits any cache (page 6)
+- `booking_id` is never cleared, so "who bought A-14" is a lookup, not an archaeology. A cancellation writes `status = 'available'` and a new booking later sets a new id; the history is in `bookings`
+- Status is the invariant because the database can enforce it: a transition is `UPDATE … WHERE status = 'available'`, and the `CHECK` refuses any state the design did not name. Module 11, page 5 is the same idea for a payment
 
 ### The failure
 
-- Using a single integer counter for remaining inventory. A counter cannot track physical seat assignments, cannot be safely held without blocking all other users, and provides no audit trail of who owns which ticket.
-
-:::interview
-You design a booking system for a 50,000-seat stadium. Your database has an `Events` table with a `tickets_left` column. What is the fundamental flaw?
-
-A counter cannot track physical seat assignments (Row A, Seat 14), and it creates massive database lock contention when 10,000 users try to decrement the same integer row simultaneously. You need a dedicated row per seat.
-:::\n
+- A `seats_remaining` counter on the event row. Every buyer decrements one row, so the whole on-sale burst serialises on one lock; nobody can hold a specific seat; a cancellation is an increment that says nothing about which seat came back; and "who has A-14" cannot be answered. One row per seat costs 10 000 rows and buys every one of those answers

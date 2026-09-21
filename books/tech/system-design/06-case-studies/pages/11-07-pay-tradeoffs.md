@@ -1,15 +1,17 @@
 ## What the interviewer probes
 
-- **Retries:** When calling the PSP, use exponential backoff with jitter (→01). A retry storm of payments can result in thousands of dollars in authorization fees
-- **PCI compliance:** Never store the Primary Account Number (PAN). Use PSP tokenization (Elements/Elements.js) to keep your servers entirely out of PCI scope
-- **Multi-currency:** If the interviewer mentions FX (foreign exchange), the ledger must store the original currency, the target currency, and the exact exchange rate used at the microsecond of the transaction. Never recalculate FX at read time
+| Probe | The answer that holds |
+| :--- | :--- |
+| the PSP is slow or down | retries with exponential backoff and jitter, `2^n` plus a random offset, which is the pattern Stripe's own 2017 idempotency post recommends so that a recovering PSP is not hit by every client at once; the idempotency key (page 2) makes every retry safe. A breaker (Module 5, page 5) stops the storm at the source |
+| "order shipped" and "payment captured" must agree | the outbox (booklet 04): the transition, the ledger rows and the event row are one transaction, and a relay publishes the event afterwards. Publishing to the broker first and then committing is the failure below |
+| PCI scope | the card number, the **PAN**, never reaches the design's servers or logs: the browser sends it to the PSP (page 4), and the design stores the PSP's token. Scope is decided by where the PAN travels, not by encryption after the fact |
+| multi-currency | the ledger row carries the currency, and a posting is single-currency (page 3); a conversion is two postings through an FX account with the rate stored on the rows. Recomputing a historical balance with today's rate is the bug the auditor finds |
+| the balance page is slow | the balance is a cached sum, updated by the same transaction that inserts the rows, or rebuilt from the ledger by a read model (booklet 04). The ledger stays append-only; the cache is disposable |
+| refunds and chargebacks | new postings in reverse (page 3) through a transition on the state machine (page 5); a chargeback arrives as a webhook like any other event, months later, and the row's state decides what it may do |
+
+- The metric: unreconciled amount at the end of each day, which should be zero, and the age of the oldest item in the discrepancy queue. Latency is reported, not optimised
+- Cross-references the design leans on: idempotency and backoff (booklet 01); transactions and the row lock (booklet 03); outbox, queues and read models (booklet 04); the breaker (Module 5, page 5)
 
 ### The failure
 
-- Writing a SQL query to sum the ledger rows every time a user views their dashboard. It will take minutes for an old account. Use CQRS (→04) to maintain a fast read-optimised balance cache, rebuilt from the ledger
-
-:::interview
-A user views their account balance. You run `SELECT SUM(amount) FROM ledger WHERE user = 123`. It times out. How do you optimise reads without breaking the append-only ledger?
-
-Create a separate balance table that caches the current sum. When a ledger row is inserted, emit an event (CQRS) to update the balance table. The dashboard reads the fast balance table.
-:::\n
+- Publishing the event before the commit. The handler sends "payment captured" to the broker, then the transaction fails; a warehouse ships against a payment that was never captured, and no reconciliation catches it because the ledger is right. The event and the row leave in one transaction or the event does not leave

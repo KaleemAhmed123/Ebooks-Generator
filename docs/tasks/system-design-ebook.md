@@ -780,6 +780,112 @@ consistent hashing (04-02), hot keys (03-04, 03-06), wide-column partitions
 tickets; 38 pages). Fetch budget for §5 items in part 2: Netflix per-title,
 YouTube on Vitess, Stripe webhook signing, Cloudflare Waiting Room (4 of 7).
 
+### 2026-09-21 — booklet 06 Case Studies, part 2: modules 7–12 rewritten, checked, committed
+
+**38 pages, all rewritten from the research line** (6 + 7 + 6 + 6 + 7 + 6;
+page count unchanged from the approved list, no page added). The draft's six
+SVGs were replaced (one used Tailwind hex colours and a 600-wide viewBox);
+its quiz-style interview blocks, 38 of them, were cut. Interview blocks now
+6, one per design, on the page where the question is really asked: "fan-out
+on write or on read?" (07-04), "two riders, one nearest driver" (08-05),
+"how does playback adapt to bandwidth?" (09-04), "two devices edit the same
+file offline" (10-05), "how do you avoid charging twice?" (11-02), "two
+people click the same seat" (12-03).
+
+**§5 fetches (4 items, 5 WebFetch calls):** Netflix per-title encoding —
+403 on netflixtechblog.com, on the medium.com mirror and via curl with a
+browser UA; **cut**: 09-04 describes per-title ladders as reasoning and
+never names Netflix for it. YouTube on Vitess — verified on vitess.io's
+history page (created 2010 at YouTube for MySQL scaling; CNCF graduate
+November 2019), used on 09-06. Stripe webhook signing — verified on
+docs.stripe.com/webhooks: `Stripe-Signature` = `t=` timestamp + `v1=`
+HMAC-SHA256 over `timestamp.body`, 5-minute default tolerance,
+constant-time compare, retries up to 3 days with exponential backoff in
+live mode, no ordering guarantee, duplicates possible, dedupe by event id,
+return 2xx before the work; used on 11-04/11-05. Cloudflare Waiting Room —
+the configure page 404'd, the configuration-settings reference verified:
+total active users (> 200), new users per minute (> 200, ≤ total), session
+duration 1–30 min default 5; used on 12-04. Twitter 2012 numbers (300 000
+timeline reads/s, 150 M users, 800-entry cap) attributed to the QCon talk
+on 07-01, 07-03, 07-04.
+
+**Diagrams: 18, all new.** Anchors with every component labelled, the data
+flow and a real number: 07-04 hybrid feed (push lists + celebrity pull,
+800-id cap, 300 000 reads/s from the talk); 08-04 location gateway → cell
+index → matching → TTL lock → Spanner, H3's 16 resolutions, "20 online
+drivers per core"; 09-03 full pipeline with the DAG at its centre
+(1 800 segments × 6 renditions = 10 800 tasks); 10-04 block protocol as a
+sequence diagram (4 MB / SHA-256, Dropbox's ≈ 25 % streaming-sync gain);
+11-04 PSP flow (at-least-once signed webhook, Stripe's header and retry
+window); 12-04 waiting room → map cache → hold → pay (100 000 vs 10 000,
+Cloudflare's knobs). Failure diagrams with the ✕ marker: 07-03 (10 M
+followers), 07-05 (heavy ranker on every candidate), 08-02 (geohash edge),
+08-03 (one cell only), 08-06 (offer TTL shorter than the mobile tail, two
+timelines), 09-02 (bytes through the API), 09-04 (one ladder), 09-05
+(origin serves first viewers), 10-03 (bytes in the database), 10-05 (LWW
+by client clock), 11-05 (second capture), 11-06 (no reconciliation).
+
+**Checks:** `check-pages.mjs` clean for modules 7–12; the only lines are
+three forward references to Modules 17 and 18 (view counts, collaborative
+editing), which resolve in part 3. PDF build: 8 overflows on the first build
+(08-01, 08-05, 10-01, 10-05, 11-02, 11-03, 12-02, 12-03), the three
+code + interview pages by 56–63 mm; zero after the batch. Lesson recorded
+for part 3: an `:::interview` block renders bold at 11.5 pt and costs
+45–50 mm on its own, and code wraps at ≈ 80 characters (7.4 pt Consolas),
+so a page with code and an interview block has ≈ 90 mm for everything else
+— keep the code to ≤ 12 lines of ≤ 80 chars and the bullets to two.
+Screenshot pass on all 18 diagrams (`tools/shot.mjs`, puppeteer-core,
+with a `--measure` mode that prints per-block heights; deleted before
+commit): 12 needed layout fixes — labels wider than boxes on 07-05, 08-04,
+09-03, 09-05, 10-03, 11-04, 12-04; crossing arrows with overlapping labels
+on 08-04 and 09-02 (relaid out); labels on arrows on 11-05; clipped
+captions on 08-02, 10-04, 12-04; labels into the ✕ box on 10-05. Code:
+`check-part2.mjs` in the scratchpad runs the 07-02 cursor pager (page 2
+after a post arrives mid-read repeats nothing, a deleted id is dropped),
+the 08-03 nine-cell set and the geohash-6 cell size (360°/2¹⁵ ≈ 1.2 km,
+180°/2¹⁵ ≈ 0.6 km), the 08-05 offer under two concurrent matchers (exactly
+one wins), the 10-02 blocklist (9 MB → 3 hashes, an edit changes one, equal
+blocks share a name), the 11-02 idempotency handler (concurrent twin
+replays, one charge; different params → 400; other account → new charge),
+the 11-03 ledger (balanced insert, unbalanced rejected with nothing
+written), the 12-03 hold (second buyer refused, expired hold reclaimed,
+booked refused), and every derived number on the six requirements pages
+and in the diagram captions; all pass. SQL (12-02 schema, `FOR UPDATE
+NOWAIT`, `SKIP LOCKED`) read-checked only, no engine installed.
+
+**Fact agent (Sonnet, 0 of 10 fetches used — every external claim matched
+§4 or the four items above):** WRONG 1 — 10-03's ✕ caption computed "1 B
+files = 4 PB" from the 4 MB block size while 10-01 assumes 1 MB files
+(fixed: "a BLOB per block row; 1 B files of 1 MB = 1 PB"). CROSS-REF 1 —
+10-01 pointed at Module 6, page 6 for the connection registry; it is page 2
+(fixed). Two arithmetic notes, both fixed: 11-01's idempotency-key row
+read as a triple product (now "1 000/s × 86 400 s, retained 24 h"); 11-06's
+"86 000" is exactly 86 400. UNVERIFIED 0, CODE 0, OVERSTATED 0; ≈ 80 OK.
+It confirmed every cross-reference into Modules 3, 4, 6, 8, 9 and 11 lands
+on the right page, and that no page states a requirement-side number as
+fact.
+
+**Pointers set toward booklet 05 in these modules** (05 must honour them):
+CDN (07-06, 09-05, 09-06), blob storage and presigned upload (09-02, 09-06,
+10-03, 10-06), time-ordered ids (07-02, 07-06), cache invalidation (08-03),
+gateway/rate limiter and shedding vs queueing (12-04, 12-06). Toward 04:
+queues, idempotent tasks and the outbox (07-03, 09-02, 09-03, 11-05, 11-07),
+delayed delivery (07-06), batch vs stream (11-06), read models (11-07).
+Toward 03: transactions and row locks (08-05, 11-01, 12-03, 12-05),
+versions and vectors (10-05). Toward 02: partitioning of `follows` and hot
+keys (07-02, 07-06, 08-07), sharding by namespace (10-03), cross-region
+replication (08-06). Toward 01: idempotency keys, backoff and jitter (08-06,
+11-02, 11-07). Within the booklet: Module 6, page 2 for connection
+registries (08-04, 10-06), Module 4, page 4 for the herd (09-05), Module 3,
+page 4 for the hot cell (08-07), Module 17 for view counts (09-06), Module
+18 for merging documents (10-01, 10-05).
+
+**Next:** part 3 = modules 13–18 (autocomplete, crawler, metrics, ad click,
+top-K, docs; 34 pages). Remaining §5 fetch budget: Gorilla numbers,
+count-min bounds, ES completion suggester (3 of 7). After part 3 the
+Module 17/18 forward references from 09-06, 10-01 and 10-05 resolve, and
+the handoff moves to booklet 05.
+
 ## Explanation
 
 ### 1. What changed
