@@ -1,27 +1,20 @@
 ## Key to partition
 
-- If a Topic has 10 partitions, how does the Producer decide which partition to write a message to? It relies on the **Routing Key**
-- If you do not provide a key, the producer will usually default to "sticky partitioning", where it picks a random partition and sticks with it for the duration of a batch, then picks a new random one for the next batch. This evenly distributes load, but destroys any ordering guarantees
-- If you *do* provide a key, the producer uses a hashing algorithm: `hash(key) % total_partitions`. This guarantees that every message with the same key always lands on the exact same partition
+- The producer picks the partition. With a **key**, the default partitioner hashes it and takes the result modulo the partition count, so equal keys always land on the same partition. With no key, it fills a batch for one partition, then moves to another: even spread, no ordering between records
 
 ```typescript
-// Choosing a key for ordering
-const events = [
-  { event: 'OrderCreated', orderId: 'O-123', userId: 'U-99' },
-  { event: 'PaymentSuccess', orderId: 'O-123', userId: 'U-99' }
-];
-
-// Send to Kafka
 await producer.send({
-  topic: 'orders',
-  messages: events.map(e => ({
-    // IMPORTANT: The key guarantees both events go to the same partition
-    key: e.orderId, 
-    value: JSON.stringify(e)
-  }))
+  topic: "orders",
+  messages: events.map((e) => ({
+    key: e.orderId,             // every event about O-123 shares a partition
+    value: JSON.stringify(e),
+  })),
 });
 ```
 
+- The key is a routing decision, not data. It is the answer to "which events must stay in order with each other?", and it should be the id of that thing: the order, the account, the device
+- The key is also the spread. Its values are hashed across the partitions, so a key with a few distinct values fills a few partitions and leaves the rest empty
+
 ### The failure
 
-- Low-cardinality keys make a hot partition. A common mistake in multi-tenant SaaS is using the `tenantId` as the routing key. If you have 500 small tenants and 1 massive enterprise tenant (who generates 90% of your traffic), the hashing algorithm will map that massive tenant to a single partition. That partition will receive 90% of your traffic, overloading the broker it lives on and the single consumer assigned to read it. The other 49 consumers will be mostly idle. You must choose a high-cardinality key (like `userId` or `orderId`)
+- A low-cardinality key. `tenantId` in a system with 500 small tenants and one that produces 90% of the traffic puts 90% of the traffic on one partition and one consumer, whatever the partition count. Choose the key by ordering need and check its distribution; booklet 02's hot-partition pages are the same problem on a database

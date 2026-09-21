@@ -1,6 +1,9 @@
+# Module 1 - Why a broker at all
+
 ## The request that does too much
 
-- When you start building a system, everything is synchronous. A user clicks "Checkout", and your backend executes `POST /orders`. But as the company grows, that one endpoint is asked to do more and more
+- `POST /orders` starts as one insert. A year later it also charges the card, reserves stock, sends the receipt and reindexes search, each a synchronous call, each awaited before the user gets a response
+- Two things are now true at once. The response time is the sum of four calls. And the order fails if any one of them fails, including the one that only sends an email
 
 <svg viewBox="0 0 460 140" role="img" aria-label="One request fanning to four sync calls. The User Request hits the Order Service. The Order Service sequentially calls Payment (500ms), Inventory (200ms), Email (300ms), and Search Index (100ms). The user waits for the sum of all latencies." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
   <rect x="20" y="50" width="80" height="40" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
@@ -31,9 +34,10 @@
   <path d="M230 80 L300 110" stroke="#1a1a1a" fill="none" stroke-width="1"/><path d="M300 110 l-6 -3 v5 z" fill="#1a1a1a" transform="rotate(25 300 110)"/>
 </svg>
 
-- To place an order, the system must process payment, deduct inventory, send a confirmation email, and reindex the user's dashboard. If these are synchronous HTTP calls, the user is forced to wait for all of them to finish. 
-- Even worse, they are strictly coupled. If the third-party email provider is having an outage, the `POST /orders` request fails, and the user cannot buy anything. You are losing money because an email couldn't send
+- **p99** is the latency that 99 requests in 100 beat. Four calls in sequence do not add their averages; each slow tail adds to the wait, so the endpoint's p99 is close to the sum of the four p99s
+- The fix is not "make the calls parallel". Parallel calls still fail together, and the caller still holds a connection open until the slowest returns. The fix is to let the order commit and hand the rest to something that runs it later. That something is a **message broker**: a server that stores messages from producers and hands them to consumers
+- Booklet 05 owns the wider question of when one service should call another directly. This module is only the case for a broker
 
 ### The failure
 
-- p99 latency is the sum of every downstream p99. If you make 4 synchronous calls in sequence, your 99th-percentile (p99) latency is the sum of the p99 latencies of all 4 services. The more things your system does synchronously, the slower and more fragile it becomes. To survive, you must decouple the core action from the side effects
+- A payment that succeeded and an order that reported failure. The card was charged in call 1; call 3, the email, timed out; the endpoint returned 500; the user retried and was charged again. The request did too much, and what "failed" meant was nobody's design

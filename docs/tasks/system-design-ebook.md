@@ -451,6 +451,101 @@ read check; the HLC receive table matches the paper's Figure 5.
 numbers" imply concurrency (only equal numbers on different nodes do);
 07-11 pointed TrueTime at Module 9 after the plan had cut it.
 
+### 2026-09-21 — booklet 04 Events, plan approved (82 pages, two sessions)
+
+**Draft 70 pages / approved 107 → plan 82.** Draft modules 1–4 (32 pages)
+track approved modules 1–4 exactly. Draft modules 5–8 (38 pages) scatter
+across approved 5–14 (draft 05 mixes delivery semantics, DLQs and the
+outbox; draft 08 mixes streams, CDC and tiered storage). Prose is chatty
+throughout; no interview blocks exist. Three overlaps the approved list
+missed: booklet 01 already owns "exactly once is a lie" (two generals) and
+the dedup table; booklet 02 owns hot partitions and key salting; booklet
+05's draft owns load shedding and edge backpressure. Booklet 04 keeps only
+the broker-side mechanism and points at those.
+
+**Plan per module (approved → target; merges; new from research line):**
+1 Why a broker 6→5 (decoupling + load levelling merged) · 2 Three models
+8→6 (who-tracks + push/pull merged) · 3 Producers/consumers 10→9 (acks +
+min ISR merged; 03's ISR pointer lands here) · 4 Partitions 8→6
+(global-ordering → why-partition; per-key-elsewhere → ordering table) ·
+5 Delivery on a broker 10→7 (semantics + duplicate sources merged;
+at-most/at-least by construction merged; dedup table one line →01; new:
+idempotent producer, transactions, EOS scope, offset-with-output) ·
+6 Retries/DLQ/backpressure 10→7 (retry-in-place + retry topics merged;
+DLQ + replay merged; shedding one line →05; new: backpressure, backlog
+math, slow-consumer isolation) · 7 Retention 5→4 (tiered storage one line;
+all four written new) · 8 Outbox/CDC 9→7 (why-not-2PC one line →03; row
+shape into outbox page; new: CDC event shape, outbox via CDC,
+listen-to-yourself) · 9 ES/CQRS 8→7 (pays-off + does-not merged; new:
+event store vs broker, projections) · 10 Sagas as flow 5→4 (choreography +
+orchestration one two-panel page; 14-02 ids into the contract page; new:
+contract) · 11 Schemas 8→7 (formats into rules table; fat-vs-thin absorbs
+14-03; new: envelope, naming, registry, compat modes, rules by format) ·
+12 Streams 10→7 (late events + triggers merged; checkpoints + pipeline EOS
+merged; hot keys one line →02; new: what a stream processor is, late
+events) · 13 Batch 3→2 (batch-vs-stream + lambda/kappa merged; new:
+MapReduce) · 14 Pitfalls 7→4 (monolith + public API merged; new: UI
+eventual consistency →03, testing). Dropped outright:
+`08-11-stream-processing-in-sql` (not approved; §3 rare).
+
+**Interview blocks (~7):** queue vs log, producer acks, ordering across
+partitions, what Kafka EOS covers, the outbox, lag, schema change without
+breaking consumers. None repeats 01's "how do you guarantee exactly-once"
+or 03's orchestration-vs-choreography block.
+
+**Sessions:** part 1 = modules 1–7 (44 pages, 7 new), Sonnet fact agent,
+commit; part 2 = modules 8–14 (38 pages, 20 new), fact agent, commit.
+
+### 2026-09-21 — booklet 04 Events, part 1: modules 1–7 written, checked, committed
+
+**44 pages, matching the approved plan exactly** (5+6+9+6+7+7+4). Written in a
+prior part of this session per the plan above; this entry covers the
+verification pass that was still outstanding when the session broke.
+
+**Checks:** `check-pages.mjs`: 44 pages, 7 modules, only the expected
+forward-references to modules 8–14 (not yet written) and other-booklet
+pointers, no real problems. PDF build: one label-collision-adjacent bug
+found on inspection (below), two builds after fixing, final build zero
+overflow, 47 printed pages. Mock-DB self-check (`code-check-04.mjs`,
+scratchpad) on the two DB-backed samples in module 5: redelivery of the
+same offset does not double-insert the payment; a stale (lower-version)
+event does not overwrite a newer row; a duplicate delivery through the
+`processed` dedup table does not double-credit an account — all three
+assertions pass. Screenshot pass (`tools/shot.mjs`, deleted after use) on
+all 9 new diagrams in modules 5–7: no CSS/label collisions (the new
+`scopeSvg` fix in `build.mjs` held up), but found and fixed two real bugs
+by eye — 06-01's prose said `orders.retry.10m` where the diagram said
+"Retry: 5m" (text corrected to match); 07-02's "reset the group's offset"
+label sat on top of the arrow it annotated (redrawn with clearance, plus
+one full PDF rebuild to confirm the taller diagram didn't overflow).
+
+Sonnet fact agent on modules 1–7, 0 of 10 fetches used (everything traced
+to research §4 or common knowledge), ~85 facts checked: **one WRONG** —
+03-01's table said `min.insync.replicas=2` with 3 healthy brokers commits
+after "leader plus one follower"; `acks=all` always waits for the whole
+current ISR, not the `min.insync.replicas` floor, so with 3 brokers up
+both rows commit on all three (the setting only bites once the ISR shrinks
+below it) — the page's own interview block already said this correctly
+two lines below the table. Fixed the table row; cutting two now-redundant
+clauses elsewhere on the page to restore the page-fit budget the fix ate
+into. Zero UNVERIFIED, zero CODE problems (all TypeScript/SQL samples use
+real API shapes — KafkaJS, amqplib, node-postgres — and match Kafka 4.3 /
+RabbitMQ 4.x defaults where claimed), zero broken cross-references within
+modules 1–7, zero OVERSTATED claims; two vendor-blog figures (Confluent's
+3% idempotent-producer cost, 15–30% Streams EOS cost) correctly attributed
+as vendor measurements per §4's caveat.
+
+**Also caught while reviewing (not by the fact agent):** the handoff doc
+and this file's own "Booklet 05" and "Booklet 06 complete" entries above
+(2026-09-20) describe a rewrite pass — module-by-module for 05, an 18-module
+draft-and-cleanup pass with a `cleanup.mjs` script for 06 — that did not
+happen. `git diff` against the original first-draft commit (`f0bf529`) is
+empty for both `05-services/pages` and `06-case-studies/pages`; both are
+still the exact 107-page and 110-page first drafts. `tools/cleanup.mjs`
+exists on disk but is untracked and was never run (it would have deleted
+63 files; none are gone). Left those entries in place — this file is
+append-only — flagged to the user for a decision on how to annotate them.
+
 ## Explanation
 
 ### 1. What changed

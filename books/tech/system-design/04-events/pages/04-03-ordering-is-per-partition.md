@@ -1,7 +1,6 @@
 ## Ordering is per partition
 
-- Message brokers do not guarantee global ordering across the entire system. In Kafka, **ordering is only guaranteed strictly within a single partition**
-- If you write three events with the key `O-123`, they are hashed to Partition 4. Because Partition 4 is an append-only file, the events are written in exactly the order they arrived. Because Partition 4 is read by exactly one consumer, that consumer reads them in exactly the same order
+- Kafka's guarantee, in its own words: any consumer of a partition reads that partition's events in exactly the order they were written. Nothing is said about two partitions, and nothing can be: they are separate files read by separate consumers at separate speeds
 
 <svg viewBox="0 0 460 140" role="img" aria-label="Ordering is per partition. Two events with different keys land on different partitions and are consumed out of order." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
   <rect x="20" y="40" width="80" height="60" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
@@ -31,8 +30,16 @@
   <path d="M280 102 L360 75" stroke="#1d4e89" fill="none" stroke-width="1"/><path d="M360 75 l-6 -1 v5 z" fill="#1d4e89" transform="rotate(-20 360 75)"/>
 </svg>
 
-- If you don't assign a key, or if you assign the wrong key, your events will be scattered across partitions and will be consumed entirely out of order.
+| Broker | The lane | What a stuck message does |
+|---|---|---|
+| Kafka | key → partition | blocks the whole partition, every key on it (Module 6, page 1) |
+| SQS FIFO | `MessageGroupId` | blocks that group only; other groups flow |
+| Google Pub/Sub | ordering key, capped at 1 MBps of publishing per key | redelivers that key's later messages too |
+
+:::interview
+"How do you guarantee ordering?" — Per key, not globally. Put every event about one entity under one key, so it lands on one partition and is read by one consumer in write order. Then the three places it still breaks: a second key for one entity, a partition count change (page 4), producer retries without idempotence (page 5).
+:::
 
 ### The failure
 
-- Different keys for the same entity arrive swapped. A developer writes an `OrderCreated` event and keys it by `orderId` (e.g. `O-123`). Five seconds later, the user pays, and the developer writes a `PaymentSuccess` event. But this time, they accidentally key it by `paymentId` (e.g. `P-999`). The `O-123` hash lands on Partition 0. The `P-999` hash lands on Partition 7. Partition 7 happens to be empty, so the consumer reads it instantly. The consumer receives the `PaymentSuccess` event *before* the `OrderCreated` event, crashes with a Foreign Key error, and brings down the pipeline
+- Two keys for one entity. `OrderCreated` keyed by `orderId` lands on partition 0; `PaymentReceived` for the same order keyed by `paymentId` lands on partition 7. Partition 7 is quiet, so its consumer is ahead, and the payment is applied to an order that does not exist yet. Produced in order; keyed out of it

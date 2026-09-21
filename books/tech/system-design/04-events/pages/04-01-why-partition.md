@@ -1,32 +1,58 @@
+# Module 4 - Partitions, keys, ordering
+
 ## Why partition
 
-- A Partition is the atomic unit of parallelism in a distributed log. 
-- A Topic is just a logical name (e.g. `user-events`). Under the hood, the Topic is split into multiple Partitions (e.g. 10 partitions). Each partition is a physical, append-only file sitting on a hard drive somewhere in the cluster
+- A **partition** is one append-only log on one broker's disk. A topic is a set of them. The partition is the unit of two things at once: parallelism, because partitions spread across brokers and consumers, and ordering, because within one partition records are read in the order they were written
 
-<svg viewBox="0 0 460 140" role="img" aria-label="Why partition. A Topic is split into 3 partitions. Partition 0 is on Broker A, Partition 1 on Broker B, Partition 2 on Broker C. Shows horizontal scale." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
-  <rect x="20" y="50" width="80" height="40" rx="3" fill="#fcfcfc" stroke="#1a1a1a" stroke-dasharray="2 2"/>
-  <text x="60" y="74" text-anchor="middle" font-weight="bold">Topic: Users</text>
+<svg viewBox="0 0 460 140" role="img" aria-label="Global ordering kills scale. SVG showing one lane (Total Order) bottlenecking all producers into one disk and one consumer, compared to multiple lanes (Partial Order by Key) scaling horizontally." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
+  <text x="110" y="20" text-anchor="middle" font-weight="bold" fill="#b8541a">Total Order (1 Partition)</text>
   
-  <rect x="180" y="20" width="100" height="25" rx="3" fill="#e6f2ff" stroke="#1d4e89"/>
-  <text x="230" y="36" text-anchor="middle" font-weight="bold">Partition 0</text>
-  <text x="340" y="36" text-anchor="middle" font-size="6">Broker A (Disk 1)</text>
+  <rect x="20" y="30" width="30" height="20" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
+  <rect x="20" y="60" width="30" height="20" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
+  <rect x="20" y="90" width="30" height="20" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
+  <text x="35" y="44" text-anchor="middle" font-size="6">P1</text>
+  <text x="35" y="74" text-anchor="middle" font-size="6">P2</text>
+  <text x="35" y="104" text-anchor="middle" font-size="6">P3</text>
   
-  <rect x="180" y="55" width="100" height="25" rx="3" fill="#e6f2ff" stroke="#1d4e89"/>
-  <text x="230" y="71" text-anchor="middle" font-weight="bold">Partition 1</text>
-  <text x="340" y="71" text-anchor="middle" font-size="6">Broker B (Disk 2)</text>
+  <path d="M50 40 L80 65" stroke="#b8541a" fill="none" stroke-width="1"/><path d="M80 65 l-6 -3 v5 z" fill="#b8541a" transform="rotate(35 80 65)"/>
+  <path d="M50 70 L80 70" stroke="#b8541a" fill="none" stroke-width="1"/><path d="M80 70 l-6 -3 v6 z" fill="#b8541a"/>
+  <path d="M50 100 L80 75" stroke="#b8541a" fill="none" stroke-width="1"/><path d="M80 75 l-6 -1 v5 z" fill="#b8541a" transform="rotate(-35 80 75)"/>
   
-  <rect x="180" y="90" width="100" height="25" rx="3" fill="#e6f2ff" stroke="#1d4e89"/>
-  <text x="230" y="106" text-anchor="middle" font-weight="bold">Partition 2</text>
-  <text x="340" y="106" text-anchor="middle" font-size="6">Broker C (Disk 3)</text>
+  <rect x="90" y="60" width="60" height="20" rx="3" fill="#e6f2ff" stroke="#b8541a" stroke-width="2"/>
+  <text x="120" y="74" text-anchor="middle" font-size="6" font-weight="bold">Single Lane</text>
   
-  <path d="M100 65 L180 32" stroke="#1a1a1a" fill="none" stroke-width="1"/><path d="M180 32 l-6 -1 v5 z" fill="#1a1a1a" transform="rotate(-20 180 32)"/>
-  <path d="M100 70 L180 67" stroke="#1a1a1a" fill="none" stroke-width="1"/><path d="M180 67 l-6 -3 v6 z" fill="#1a1a1a"/>
-  <path d="M100 75 L180 102" stroke="#1a1a1a" fill="none" stroke-width="1"/><path d="M180 102 l-6 -3 v5 z" fill="#1a1a1a" transform="rotate(20 180 102)"/>
+  <path d="M150 70 L180 70" stroke="#b8541a" fill="none" stroke-width="1"/><path d="M180 70 l-6 -3 v6 z" fill="#b8541a"/>
+  
+  <rect x="190" y="60" width="30" height="20" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
+  <text x="205" y="74" text-anchor="middle" font-size="6">C1</text>
+  
+  <text x="340" y="20" text-anchor="middle" font-weight="bold" fill="#1d4e89">Partial Order by Key (N Partitions)</text>
+  
+  <rect x="250" y="30" width="30" height="20" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
+  <rect x="250" y="60" width="30" height="20" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
+  <rect x="250" y="90" width="30" height="20" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
+  
+  <path d="M280 40 L310 40" stroke="#1d4e89" fill="none" stroke-width="1"/><path d="M310 40 l-6 -3 v6 z" fill="#1d4e89"/>
+  <path d="M280 70 L310 70" stroke="#1d4e89" fill="none" stroke-width="1"/><path d="M310 70 l-6 -3 v6 z" fill="#1d4e89"/>
+  <path d="M280 100 L310 100" stroke="#1d4e89" fill="none" stroke-width="1"/><path d="M310 100 l-6 -3 v6 z" fill="#1d4e89"/>
+  
+  <rect x="320" y="30" width="60" height="20" rx="3" fill="#e2fcf3" stroke="#1d4e89"/>
+  <rect x="320" y="60" width="60" height="20" rx="3" fill="#e2fcf3" stroke="#1d4e89"/>
+  <rect x="320" y="90" width="60" height="20" rx="3" fill="#e2fcf3" stroke="#1d4e89"/>
+  
+  <path d="M380 40 L410 40" stroke="#1d4e89" fill="none" stroke-width="1"/><path d="M410 40 l-6 -3 v6 z" fill="#1d4e89"/>
+  <path d="M380 70 L410 70" stroke="#1d4e89" fill="none" stroke-width="1"/><path d="M410 70 l-6 -3 v6 z" fill="#1d4e89"/>
+  <path d="M380 100 L410 100" stroke="#1d4e89" fill="none" stroke-width="1"/><path d="M410 100 l-6 -3 v6 z" fill="#1d4e89"/>
+  
+  <rect x="420" y="30" width="30" height="20" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
+  <rect x="420" y="60" width="30" height="20" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
+  <rect x="420" y="90" width="30" height="20" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
 </svg>
 
-- Because one partition lives on one server, the max throughput of a single partition is bounded by the disk I/O of that server. To scale beyond one machine, you simply increase the partition count. 
-- Furthermore, because a partition is assigned to exactly one consumer, the partition count dictates the maximum number of parallel consumers you can deploy
+- Total order is one lane. If every event in the system must be ordered against every other, there is one log, one leader writing it, one disk, and one consumer reading it. That is the ceiling, and it is a single machine
+- Almost no system needs total order. Order matters between events about the same thing: user A's `AddToCart` before user A's `Checkout`. Nobody cares whether user A or user B checked out first. Partition by the thing whose events must stay in order, and each lane is ordered while the lanes scale
+- This is also booklet 03's single-writer partition: route every event for key K to one partition, and one consumer at a time applies K's events in sequence, with no lock
 
 ### The failure
 
-- One partition equals one consumer equals your ceiling. If you create a topic and forget to specify the partition count, many Kafka providers default to `partitions=1`. You deploy your app and everything runs fine for a month. Then Black Friday hits. You need to process 50x more orders. You scale your Kubernetes pods from 1 to 50. But because there is only 1 partition, 49 of those pods sit completely idle. Your entire system is bottlenecked by the single pod reading that single partition, and you suffer a massive outage
+- One partition "until it cannot keep up". A topic created with a single partition is ordered by construction, so nobody worries about keys. Traffic grows; one consumer is the limit; adding partitions now re-maps every key (page 4) and there is no going back. Decide the lanes on day one (page 6)
