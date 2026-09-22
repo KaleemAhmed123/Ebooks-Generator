@@ -1,31 +1,29 @@
+# Module 1 - The shape of the system
+
 ## The monolith
 
-- A monolith is a system built as a single deployable unit. The entire application runs in the same process, connects to a single database, and executes within a single transaction boundary
-- It is the default architecture, not an embarrassment. The network is absent, meaning function calls are nanoseconds instead of milliseconds. You never face partial failure, distributed transactions, or serialization overhead
+- A monolith is one deployable unit: one process, one database, one transaction boundary. A call between two parts of it is a function call, nanoseconds and no partial failure, and a write that touches three tables commits or rolls back as one
+- It is the default, not the embarrassment. Fowler's observation (2015): almost all the successful microservice stories started with a monolith that got too big and was broken up, and almost all the systems he had heard of that were built as microservices from scratch ended in serious trouble (page 4)
 
-<svg viewBox="0 0 460 140" role="img" aria-label="One big box labeled Monolith talking to one database. The box contains UI, Business Logic, and Data Access." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
-  <rect x="80" y="20" width="160" height="100" rx="4" fill="#fcfcfc" stroke="#1a1a1a"/>
-  <text x="160" y="35" text-anchor="middle" font-weight="bold">Monolith Process</text>
-  
-  <rect x="100" y="45" width="120" height="20" rx="2" fill="#e2fcf3" stroke="#1d4e89"/>
-  <text x="160" y="58" text-anchor="middle">UI / API Layer</text>
-  
-  <rect x="100" y="70" width="120" height="20" rx="2" fill="#fce4e2" stroke="#b8541a"/>
-  <text x="160" y="83" text-anchor="middle">Business Logic</text>
-  
-  <rect x="100" y="95" width="120" height="20" rx="2" fill="#fcfcfc" stroke="#1a1a1a"/>
-  <text x="160" y="108" text-anchor="middle">Data Access</text>
-
-  <path d="M240 70 L280 70" stroke="#1a1a1a" fill="none" stroke-width="2"/><path d="M280 70 l-6 -3 v6 z" fill="#1a1a1a"/>
-
-  <path d="M300 40 Q330 40 330 50 L330 90 Q330 100 300 100 Q270 100 270 90 L270 50 Q270 40 300 40 Z" fill="#e2fcf3" stroke="#1d4e89"/>
-  <path d="M270 50 Q300 60 330 50" fill="none" stroke="#1d4e89"/>
-  <text x="300" y="75" text-anchor="middle" font-weight="bold">Single DB</text>
+<svg viewBox="0 0 460 128" role="img" aria-label="A monolith. One process box holding three internal parts, orders, billing and inventory, calling each other by function call; one database; one transaction boundary drawn around a write that touches all three tables; a single deploy pipeline feeding the one process. Beside it, the two real failure modes: a deploy queue where fifty engineers wait on one build, and a schema where any module may join any table." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
+  <rect x="6" y="20" width="230" height="70" rx="4" fill="#fff" stroke="#1d4e89" stroke-width="1.5"/><text x="121" y="34" text-anchor="middle">one process</text>
+  <rect x="16" y="42" width="60" height="26" rx="3" fill="#fff" stroke="#333"/><text x="46" y="58" text-anchor="middle" font-size="7.5">orders</text>
+  <rect x="91" y="42" width="60" height="26" rx="3" fill="#fff" stroke="#333"/><text x="121" y="58" text-anchor="middle" font-size="7.5">billing</text>
+  <rect x="166" y="42" width="60" height="26" rx="3" fill="#fff" stroke="#333"/><text x="196" y="58" text-anchor="middle" font-size="7.5">inventory</text>
+  <line x1="76" y1="55" x2="91" y2="55" stroke="#333" marker-end="url(#d)"/><line x1="151" y1="55" x2="166" y2="55" stroke="#333" marker-end="url(#d)"/>
+  <text x="121" y="82" text-anchor="middle" font-size="7">calls are function calls: nanoseconds, no partial failure</text>
+  <rect x="266" y="28" width="80" height="54" rx="3" fill="#e6f2ff" stroke="#333"/><text x="306" y="44" text-anchor="middle">one database</text><text x="306" y="57" text-anchor="middle" font-size="7">one transaction spans</text><text x="306" y="68" text-anchor="middle" font-size="7">orders, invoices, stock</text>
+  <line x1="236" y1="55" x2="266" y2="55" stroke="#333" marker-end="url(#d)"/>
+  <rect x="376" y="28" width="78" height="54" rx="3" fill="#fff" stroke="#333"/><text x="415" y="44" text-anchor="middle">one deploy</text><text x="415" y="57" text-anchor="middle" font-size="7">the whole thing ships</text><text x="415" y="68" text-anchor="middle" font-size="7">or none of it does</text>
+  <line x1="376" y1="55" x2="346" y2="55" stroke="#333" stroke-dasharray="3 3"/>
+  <text x="6" y="108" font-size="7.5" fill="#bf4c28">✕ the real failure is not speed: fifty engineers queue on one build, and any module may join any table because nothing stops it</text>
+  <text x="6" y="122" font-size="7">a monolith scales out fine behind a balancer (Module 7); what does not scale is the number of teams changing one deployable</text>
+  <defs><marker id="d" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#333"/></marker></defs>
 </svg>
 
-- Because everything is in one process, a developer can trace a request end-to-end in one debugger window. Deployment is atomic: the new version is either entirely live or entirely not
+- One process means one debugger, one stack trace, one log, one deploy that is either fully live or not. Those are properties a distributed system spends this whole booklet buying back
+- What a monolith does not give: independent release of one part, independent scaling of one part, and a different data store for one part. Whether those are needed is the question on page 4, and it is answered by the team and the workload, not by taste
 
 ### The failure
 
-- The failure mode of a monolith is rarely performance; a single process can scale vertically to serve massive traffic. The real failure mode is the **build and deploy queue** and the **schema coupling**
-- When fifty engineers work on the same deployable unit, they step on each other. A broken test by the billing team blocks the core product team's urgent fix. The database schema becomes a tangled mess where "everyone touches everything" because no compiler prevents them from joining unrelated tables
+- Sizing the decision by performance. A monolith behind a load balancer serves large traffic; what breaks is the build and deploy queue when fifty engineers share one pipeline, and the schema where "everyone touches everything" because no compiler forbids a join across a boundary. Page 2 fixes the second without a network; page 3 is what it costs to fix the first

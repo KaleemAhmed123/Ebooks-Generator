@@ -1010,6 +1010,162 @@ diagrams (15 + 18 + 17), three commits. Next: booklet 05 Services, from the
 untouched draft, per the handoff.
 
 
+### 2026-09-22 — booklet 05 Services, plan approved (109 pages, three sessions)
+
+**Draft 107 / approved 107, untouched (`git diff f0bf529` empty).** File
+names match research §1 one-for-one, so the skeleton stays. The draft is
+closer to house style than 06's was: check-pages finds 17 problems (12
+missing `# Module` headings, 4 banned words), 58 SVGs with real but thin
+bodies (6–25 elements; 06's anchors ran 20–40), only 2 interview blocks,
+and second person ("you must") on 53 of 107 pages. Verdict: edit where the
+draft reads as house style, rewrite where it is chatty, redraw every anchor
+and add the ✕ diagrams the research lines name — booklet 04's job, not
+06's.
+
+**User decision (2026-09-22): cut nothing.** Every research page stays.
+Two pages added: `04-11-chaos-engineering` (the one chaos page the
+rare-topic rule promised to "Surviving a dependency") and
+`08-15-bloom-filter` (booklet 06's crawler pointed "Bloom filter → booklet
+05" from 14-04 and 14-06; the research list had no page for it). Total 109.
+
+**Per module (pages; anchor; code; interview block):** 01 Shape of the
+system 7 — anchor 01-07 shared database with the hidden edges ✕; code 01-02
+import rules; interview 01-04 "monolith or microservices?" · 02 Boundaries
+8 — anchor 02-05 composition fan-out vs read model (→ booklet 04); code
+02-04 ids not objects; interview 02-07 "a transaction across two services?"
+· 03 Talking 10 — anchors 03-05 gateway with its four jobs, 03-04 fan-out
+tail (Dean & Barroso 63 %); interview 03-03 "five services at 99.9 %
+each?" · 04 Surviving a dependency 11 — anchors 04-03 breaker state
+machine with Resilience4j defaults, 04-05 goodput curve ✕; code 04-01
+deadline, 04-03 breaker, 04-09 health endpoints; interview 04-02 "the
+retries made the outage worse, why?"; new 04-11 chaos engineering · 05
+Contracts and deploy 9 — anchor 05-08 canary vs same-sized control (SRE
+workbook); code 05-09 flag check; interview 05-08 "how do you roll out
+safely?" · 06 Observability 8 — anchor 06-03 trace id through hops and a
+queue (W3C `traceparent`); code 06-02, 06-03; interview 06-05 "why p99, not
+the average?" · 07 Load balancing 9 — anchors 07-01 LB + health + failover,
+07-04 P2C (Envoy `choice_count` 2); code 07-07 SIGTERM drain; interview
+07-04 "how does the balancer pick?" · 08 Caching 15 — anchors 08-06
+delete-on-write + mcsqueal (4 % real invalidations), 08-07 stampede ✕;
+code 08-02, 08-08, 08-14; interview 08-06 "how do you invalidate?"; new
+08-15 Bloom filter · 09 CDN 6 — anchor 09-01 origin → PoPs → user with
+Cloudflare's default TTLs; code 09-04 headers; interview 09-03 "no-cache vs
+no-store?" · 10 Rate limiting 7 — anchors 10-04 boundary burst ✕ +
+Cloudflare formula, 10-05 shared counter; code 10-02, 10-05, 10-06;
+interview 10-04 "fixed or sliding window?" · 11 IDs, blobs, search 10 —
+anchors 11-07 presigned three-party flow, 11-02 and 11-03 bit layouts; code
+11-02, 11-04, 11-07; interview 11-02 "UUID or auto-increment?" · 12
+Geography and real-time 9 — anchors 12-03 active-active with DynamoDB
+MREC/MRSC ✕, 12-08 socket tier + pub/sub; interview 12-03 "two regions
+accept the same username".
+
+**Pointers honoured:** 05 owns and writes gateway, limiter algorithms,
+shedding, cache-aside and invalidation, ids, breaker, CDN, blob storage and
+presigned upload, Bloom filter, DNS, observability. It refers with "booklet
+0N" to backpressure (03-10, 04-10 → 04), outbox and saga (02-07 → 04), 2PC
+and locks (02-07 → 03), consistent hashing (07-03 → 02), backoff and jitter
+(04-02, 10-06 → 01), encoding (05-02 → 02), multi-leader replication
+(12-03 → 02), CQRS read models (02-05 → 04). Booklet 06's designs are named
+by design ("booklet 06's crawler"), never "Module N".
+
+**§5 fetches, 7 total:** part 1 Fowler MonolithFirst, Envoy `retry_budget`;
+part 2 Fowler ParallelChange and BlueGreen, Hodgson feature toggles; part
+3 S3 quotas page (48.8 TiB, 11 nines), a cloud inter-region latency table
+for the "ocean" round trip. Anything that fails to verify is cut.
+
+**Sessions:** part 1 = modules 1–4 (36 pages) · part 2 = 5–8 (41) · part 3
+= 9–12 (32). Per part: write, `check-pages`, one PDF build, screenshot
+every new diagram (`tools/shot.mjs`, deleted before commit), run every
+code sample in the scratchpad, one Sonnet fact agent, dated entry, commit.
+
+
+### 2026-09-22 — booklet 05 Services, part 1: modules 1–4 written, checked, committed
+
+**36 pages** (7 + 8 + 10 + 11; `04-11-chaos-engineering` added, the one page
+the rare-topic rule promised). The draft was closer to house style than
+06's, so its structure was kept where it read well and the prose rewritten
+where it was second person; every anchor was redrawn. The draft's readiness
+probe queried the database, which is the research line's named failure;
+04-09 now keeps readiness to the instance's own state (warmed up, not
+draining) and says why a shared dependency in a probe turns one outage into
+two. Interview blocks 4: "monolith or microservices?" (01-04), "a
+transaction across two services?" (02-07), "five services at 99.9 % each?"
+(03-03), "the retries made the outage worse — why?" (04-02).
+
+**§5 fetches (2 of 7):** Fowler's MonolithFirst (3 June 2015) verified: the
+"almost all the successful microservice stories" and "serious trouble"
+sentences and both reasons, used on 01-01 and 01-04. Envoy's retry budget
+verified from the cluster circuit-breaker proto: `budget_percent` defaults
+to 20 % of active + pending requests, `min_retry_concurrency` to 3,
+`max_retries` to 3; used on 04-02.
+
+**Diagrams: 20, all new.** Anchors: 01-07 shared database with the hidden
+edges (billing writes orders.status, reporting joins nightly, a migration
+with no owner, ✕ the 09:00 index rebuild); 02-05 composition fan-out vs a
+read model (✕ N+1: 50 orders = 101 calls); 03-04 fan-out to 100 leaves
+(0.99¹⁰⁰ ≈ 37 %, 63 % see the slow leaf); 03-05 gateway with its four jobs
+(✕ business rules); 04-03 breaker state machine with Resilience4j's
+defaults; 04-05 goodput vs offered load with Stripe's four classes. Others:
+01-01 monolith, 01-03 deploy-alone vs distributed monolith, 02-01 two
+contexts one word, 02-03 database per service with the CDC path, 02-07
+wider boundary / outbox / saga (✕ 2PC), 03-06 two BFFs, 03-07 registry with
+a stale lease, 03-09 sidecars, 03-10 correlation id round trip, 04-01
+budget shrinking down a chain, 04-02 27× fan with the budget cap, 04-04
+shared vs partitioned pools, 04-06 hedge timeline (1 800 → 74 ms, 2 %),
+04-10 bounded queue (200 slots ≈ 80 ms).
+
+**Checks:** `check-pages.mjs` clean for modules 1–4; the 34 remaining lines
+are forward references into Modules 5–12, each page number checked against
+research §1 (the agent rechecked them). PDF build: 15 overflows on the first
+build (01-04 by 56 mm, 04-03 by 42, 04-08 by 35, 04-11 by 29, and eleven
+between 1 and 20), fixed in three batches by cutting table rows, folding
+bullets and compacting the breaker sample from 18 to 15 lines; zero
+overflow at 112 pages. Lesson: the `--measure` mode of `shot.mjs` reads
+the HTML preview, which under-reports the PDF height by roughly 15 %; use
+it for proportions, not for the limit. Screenshot pass on all 20 diagrams
+(`tools/shot.mjs`, deleted before commit): 12 needed a fix — labels wider
+than boxes on 02-05, 04-01, 04-04; a label on the boxes on 01-03 (relaid
+out); the CDC line through the database boxes on 02-03 (rerouted); a
+register label on its arrow on 03-07; the axis label colliding with the
+capacity label on 04-05; clipped captions on 02-07, 03-04, 03-10, 04-02,
+04-06, 04-10. Code: `check05-1.mjs` in the scratchpad runs the 04-03
+breaker (99 failures do not trip, the 100th does, open rejects without
+calling, 60 s later ten good trials close it, a fully alternating window
+opens it at 50 %, failing trials reopen it, a 10 % failure stream never
+trips), the 04-01 hop with a mock fetch (absolute deadline forwarded
+unchanged; zero budget fails before the call; a slow callee is aborted by
+`AbortSignal.timeout` with a TimeoutError), the 04-09 probes, and every
+number on 01-05, 03-03, 03-04, 04-02, 04-04, 04-10; all pass.
+
+**Fact agent (Sonnet, 7 of 10 fetches):** WRONG 0, UNVERIFIED 0, CROSS-REF
+0, CODE 1 — 04-03's sample threw an undeclared `REJECTED` (fixed: a
+`rej` field on the class). Two notes, both applied: 03-08 pointed "a
+sharded cache where the key picks the node" at Module 8, page 9 (hot keys),
+now "booklet 02" (consistent hashing); 01-06's Conway line read as a
+verbatim quote but is a paraphrase (the paper's wording has "which" and a
+qualifier), now introduced as "in one line". It confirmed Conway 1968 from
+melconway.com, the ESLint `no-restricted-imports` `patterns` shape,
+Chaos Monkey's random termination in business hours (Netflix's own post
+403'd; the GitHub README and a secondary source agree; the page now says
+"described publicly in 2011"), and recomputed every table; ≈ 80 OK.
+
+**Pointers honoured in these modules:** booklet 04 for outbox, saga, CQRS
+projections, queue backpressure, CDC, the broker (02-03, 02-05, 02-07,
+03-01, 03-10, 04-10); booklet 03 for 2PC and locks (02-07); booklet 02 for
+consistent hashing and other stores (01-04, 03-08); booklet 01 for
+idempotency, backoff and jitter, the latency table (01-05, 02-04, 04-02,
+04-06, 04-10); booklet 06 named by design, never by module (03-05, 04-05,
+04-07, 04-08). Within the booklet: Module 5 for contracts and flags, Module
+6 for tracing and percentiles, Module 7 for balancing and draining, Module
+8 for caches, Module 10 for the limiter, Module 11 for blob storage, Module
+12 for the socket tier — all page numbers from research §1.
+
+**Next:** part 2 = modules 5–8 (contracts and deploy, observability, load
+balancing, caching; 41 pages with `08-15-bloom-filter` added). Fetch
+budget: Fowler ParallelChange and BlueGreen, Hodgson feature toggles (3 of
+the remaining 5).
+
+
 ## Explanation
 
 ### 1. What changed

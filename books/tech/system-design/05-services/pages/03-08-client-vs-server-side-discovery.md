@@ -1,16 +1,18 @@
 ## Client-side vs server-side discovery
 
-- Once the IPs are discovered, someone has to pick one to route the traffic to. This happens on the client side or the server side
-- **Server-side discovery:** The client talks to a fixed proxy or VIP (Virtual IP). The proxy asks the registry and routes the traffic. Kubernetes `ClusterIP` works this way via `kube-proxy`
-- **Client-side discovery:** The client asks the registry for all IPs and runs a load balancing algorithm (like round-robin) locally to pick one. A Kubernetes "headless service" (`clusterIP: None`) returns all IPs directly to the client
+- Once the registry has answered "which instances", something picks one. **Client-side**: the caller receives the whole list and chooses, so the balancing logic lives in every caller. **Server-side**: the caller sends to one stable address, a virtual IP or a proxy, and that address chooses. Kubernetes has both: a ClusterIP Service is server-side, a virtual IP that kube-proxy programs into iptables, IPVS or nftables from the EndpointSlices; a headless Service (`clusterIP: None`) is client-side, DNS returns the pods' own A/AAAA records and the caller picks
 
-| | Client-side Discovery | Server-side Discovery |
-|---|---|---|
-| **Latency** | Faster (one less network hop) | Slower (passes through a proxy) |
-| **Logic** | Client must implement load balancing and retries | Client is dumb, just calls a fixed IP |
-| **Failover** | Client spots a failure and immediately picks another IP | Proxy must detect the failure before it routes traffic |
+| | Client-side | Server-side |
+| :--- | :--- | :--- |
+| **who picks** | the caller, from the full list | a proxy or a virtual IP, from its own view of the list |
+| **hops** | none extra: caller to instance | one, through the proxy, or none for a kernel-programmed VIP |
+| **logic lives in** | every client library, in every language | one place, upgraded once |
+| **algorithm** | whatever the library does: round robin, least-request, P2C (Module 7, pages 3–4) | whatever the proxy does, usually richer: outlier detection, slow start, retries with budgets (Module 4, page 2) |
+| **failover** | the caller sees the failure and picks another instance at once | the proxy must notice first, by probe or by observed failures (Module 7, page 5) |
+| **Kubernetes form** | headless Service, `clusterIP: None`; gRPC clients often want this to balance per connection | ClusterIP Service; `sessionAffinity: ClientIP` pins a client for `timeoutSeconds`, default 10 800 |
+
+- Client-side is right when the caller must know the instances: a gRPC client spreading streams over one connection per instance, a sharded cache where the key picks the node (booklet 02), a socket tier (Module 12, page 8). Everything else takes the stable address. The mesh (page 9) is client-side placement with server-side uniformity: one proxy implementation beside every caller
 
 ### The failure
 
-- The failure of client-side discovery is language proliferation. If you have services written in Node, Python, Go, and Rust, you must implement the exact same load balancing and retry logic in four different client libraries
-- If one library has a bug in its failover logic, that specific subset of your microservices will crash during an outage. Server-side discovery centralizes this logic into a single, robust proxy
+- Client-side balancing across twelve languages with twelve bugs. Each library retries differently, one ignores health, one never refreshes its list, and an outage that a single proxy would have absorbed becomes twelve different partial failures, debugged by twelve teams. The logic that decides where a request goes is written once, or it is wrong somewhere

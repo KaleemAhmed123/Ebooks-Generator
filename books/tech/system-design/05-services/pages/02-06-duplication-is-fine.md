@@ -1,17 +1,18 @@
 ## Replicated reference data
 
-- Sometimes building a full read model is overkill, but making a network call is too slow. The compromise is to duplicate a subset of the data
-- If the Order service needs to know the user's email address to send a receipt, it can store a copy of the email address in its own `orders` table
+- Copying the two fields a service needs is cheaper than calling for them: no hop on the critical path, no dependency at read time, and the copy is right by construction as of the event that filled it. The price is that the copy lags the source by the event delay and must never be edited where it lives
 
-| The Trade-off | Consequence |
-|---|---|
-| **Speed** | The Order service can send the receipt immediately, even if the Identity service is currently offline |
-| **Storage** | You are paying to store the email address twice. In modern systems, storage is cheap |
-| **Consistency** | If the user changes their email, the Order service has the old one until it processes an `EmailUpdated` event |
+| Question | Copy | Call |
+| :--- | :--- | :--- |
+| the receipt needs the customer's email | stored on the order at write time; the receipt goes out even if identity is down | `GET /users/{id}` on every receipt: identity's p99 and availability are now the receipt's (Module 1, page 5) |
+| the customer changes their email | orders applies `UserUpdated` and rewrites the copy; between the change and the event, the old email is used | always current; always a call |
+| the catalog renames a product | the order keeps the title it was placed with, which is what the customer bought | the order page shows the new title against an old price |
+| a copy is wrong | throw it away and refill from the owner's API or a replay of its events (booklet 04); the owner is always right | not applicable |
+| who may write it | the owner, through its events, only | the owner |
 
-- Copying data is cheaper than a network call. You must accept that the duplicated data is eventually consistent. You subscribe to domain events to keep your local copy fresh
+- A version column makes the copy safe: the event carries the source's version, the copy stores it, and an older event arriving late (booklet 04) is ignored; without it, two out-of-order updates leave the copy on the older value
+- The choice is per field, not per service: copy what is read on the hot path and changes rarely, an email, a name, a title; call for what must be current at the moment of use, a balance, a permission (Module 4, page 8)
 
 ### The failure
 
-- The failure mode is treating the copy as the source of truth. The Order service must never allow a user to update their email address through the Order API
-- The copy is read-only. If it gets out of sync, you throw it away and refetch it from the source of truth. Only the owning service (Identity) is allowed to mutate the data
+- The copy treated as the source of truth. A support tool lets someone edit the email on the order, the order's copy now disagrees with identity, the next `UserUpdated` event overwrites the edit, or does not and the two diverge forever. A copy is read-only where it lives; the write goes to the owner and comes back as an event, or the field is not a copy and should not be there

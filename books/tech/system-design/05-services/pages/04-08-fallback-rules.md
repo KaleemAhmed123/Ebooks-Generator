@@ -1,16 +1,17 @@
 ## Fallbacks that are safe
 
-- When implementing graceful degradation, the fallback data must be safe to serve. The most common fallbacks are a stale cache (serve yesterday's data instead of failing), a static default, or skipping the feature entirely
-- A fallback is not always better than an error. You must categorize dependencies by the risk of the fallback
+- A fallback is an answer given without the dependency. Three kinds: a stale value from a cache, a static default, or skipping the feature. Each is safe for some data and dangerous for other data, and the rule for telling them apart is the cost of being wrong: when a wrong answer costs money, permission or data, the safe fallback is the error
 
-| Dependency | Safe Fallback | Unsafe Fallback (Do not do this) |
-|---|---|---|
-| **User Profile API** | Stale cache (old avatar) | Empty profile (deletes data on save) |
-| **Pricing Service** | Hardcoded catalog price | $0.00 (giving products away for free) |
-| **Fraud Detection** | Block the transaction | Approve the transaction (losing money) |
-| **Authorization** | Deny access | Allow access (security breach) |
+| Dependency | Safe fallback | Unsafe fallback | Why |
+| :--- | :--- | :--- | :--- |
+| user profile | the cached copy: an old avatar | an empty profile the next save writes back | stale is harmless; an empty default that gets persisted destroys data |
+| pricing | the last price seen, with a bounded age, or "unavailable" | `0.00` or a hard-coded value | a wrong price is a loss on every order |
+| inventory | "availability unknown"; checkout decides | "in stock" | an oversold order is a refund; "unknown" is honest |
+| fraud check | decline, or hold for review | approve | approving everything is what the check exists to prevent |
+| authorisation | deny | allow | fail-open on permissions is a breach; "try again" is a ticket |
+
+- A stale value is safe when it was true once and its age is bounded: the fallback carries its timestamp, and past a maximum age it becomes "unavailable" rather than a lie. Fail-open and fail-closed are both right somewhere: a public rate limiter may fail open, because the cost is a burst; authorisation fails closed, because the cost is everything. The rule is per dependency, and the breaker's fallback function is where it lives
 
 ### The failure
 
-- The catastrophic failure is using a "fail open" fallback on an authorization or billing service. A developer wraps the Auth service call in a circuit breaker, and when the Auth service goes down, the fallback function simply returns `true`
-- During the outage, every request is authorized as an admin. The system stayed up, but the data was destroyed. When a fallback is worse than an error, you must return the error
+- Fallback "allow" on the authorisation service. The call was wrapped in a breaker, the breaker's fallback returned `true` so that "the site stays up", and for the length of the outage every request was authorised as whoever it claimed to be. The system was up and the data was gone. When a fallback is worse than an error, the fallback is the error

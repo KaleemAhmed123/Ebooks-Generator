@@ -1,30 +1,24 @@
 ## Liveness vs readiness
 
-- Infrastructure orchestrators like Kubernetes constantly probe your service to see if it is healthy. You must expose two distinct health checks: liveness and readiness
-- **Liveness** asks: "Are you deadlocked?" If this check fails, the orchestrator kills the process and restarts it
-- **Readiness** asks: "Can you handle traffic right now?" If this check fails, the orchestrator stops sending HTTP requests to the instance, but leaves the process running
+- Two questions, two endpoints, two consequences. **Liveness**: "is this process stuck?" A failure means restart me. **Readiness**: "can this instance take traffic right now?" A failure means stop routing to me, and leave me running. Kubernetes probes both and acts on each differently, and the balancer (Module 7, page 5) reads the second
 
-````typescript
-import express from 'express';
-const app = express();
+| | Liveness | Readiness |
+| :--- | :--- | :--- |
+| the question | is the process alive and able to run its event loop | is this instance able to serve: config loaded, caches warmed, not draining |
+| on failure | the orchestrator kills and restarts the container | the instance leaves the Service's endpoints; no new requests; the process keeps running |
+| checks | nothing but itself: return 200 if the handler ran | itself and its own startup state; never a shared dependency |
+| cost of a false failure | a restart, and a fleet-wide restart if every instance fails together | an instance out of rotation, and a fleet-wide outage if every instance fails together |
 
-// Liveness: Is the event loop running? (Shallow)
-app.get('/health/live', (req, res) => {
-  res.status(200).send('OK');
-});
+```typescript
+// shallow liveness; readiness reports this instance's own state, never a dependency's
+let ready = false;                      // set true after config + warm-up, false on SIGTERM
+app.get("/health/live", (_req, res) => res.status(200).send("ok"));
+app.get("/health/ready", (_req, res) => res.status(ready ? 200 : 503).send(ready ? "ok" : "not ready"));
+process.on("SIGTERM", () => { ready = false; /* then drain, Module 7 page 7 */ });
+```
 
-// Readiness: Are my dependencies available? (Deep)
-app.get('/health/ready', async (req, res) => {
-  if (await db.isConnected() && await cache.isReady()) {
-    res.status(200).send('OK');
-  } else {
-    // 503 removes this instance from the load balancer
-    res.status(503).send('Not Ready'); 
-  }
-});
-````
+- A dependency's health is not this instance's readiness. If the database is down, every instance is equally unable; taking them all out gives a connection error instead of a `503` with a fallback (page 8), restarting them all gives the database a reconnect storm. A dependency's state is a metric and a degraded response (Module 6, page 8), never a probe result
 
 ### The failure
 
-- The failure is writing a "deep" liveness check that pings the database. If the database blips and times out, every single instance of your application fails its liveness check simultaneously
-- Kubernetes reacts by aggressively killing and restarting your entire fleet. The database recovers a second later, but now it has to handle thousands of simultaneous reconnects from booting apps, which crashes the database again. Liveness checks must be shallow; readiness checks may be deep
+- A readiness or liveness check that queries the database. It blips for two seconds; every instance fails its probe in the same two seconds; the tier leaves rotation or restarts, and the database returns to a thousand simultaneous reconnects and falls over again. One outage became two, and the probe caused the second

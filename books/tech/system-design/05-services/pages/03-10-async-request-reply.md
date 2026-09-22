@@ -1,40 +1,29 @@
 ## Async request/reply
 
-- Sometimes you need an answer from a dependency, but the computation takes 10 minutes (like generating a massive PDF report). A synchronous HTTP call will timeout
-- You solve this with asynchronous request/reply. Service A drops a message in a queue, and immediately returns to the user. The message includes a `correlationId` and a "Reply-To" destination (a queue name or a webhook URL)
+- A reply is needed, but not now: a report that takes minutes, an export, a render. The request goes on a queue with a **correlation id** and a reply address, a reply queue or a callback URL; the caller records "pending" and returns; the worker does the job and sends the reply with the same id; a separate handler matches it and updates the record. Booklet 04 owns the queue; this page is the shape around it
 
-<svg viewBox="0 0 460 140" role="img" aria-label="Async Request/Reply. Service A sends a message with a correlation ID to a queue. Service B processes it and sends a reply to a callback queue with the same ID." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
-  <rect x="20" y="50" width="80" height="40" rx="3" fill="#e2fcf3" stroke="#1d4e89"/>
-  <text x="60" y="74" text-anchor="middle">Service A</text>
-  
-  <rect x="150" y="20" width="160" height="30" rx="3" fill="#fcfcfc" stroke="#1a1a1a" stroke-dasharray="2"/>
-  <text x="230" y="40" text-anchor="middle">Request Queue</text>
-  
-  <rect x="150" y="90" width="160" height="30" rx="3" fill="#fcfcfc" stroke="#1a1a1a" stroke-dasharray="2"/>
-  <text x="230" y="110" text-anchor="middle">Reply Queue</text>
-  
-  <rect x="360" y="50" width="80" height="40" rx="3" fill="#fce4e2" stroke="#b8541a"/>
-  <text x="400" y="74" text-anchor="middle">Service B</text>
-  
-  <path d="M70 50 L150 35" stroke="#1d4e89" fill="none"/>
-  <path d="M150 35 l-6 0 v5 z" fill="#1d4e89" transform="rotate(-15 150 35)"/>
-  <text x="120" y="30" text-anchor="middle" font-size="7">id: 42</text>
-  
-  <path d="M310 35 L390 50" stroke="#1a1a1a" fill="none"/>
-  <path d="M390 50 l-5 -3 v6 z" fill="#1a1a1a" transform="rotate(15 390 50)"/>
-  
-  <path d="M390 90 L310 105" stroke="#b8541a" fill="none"/>
-  <path d="M310 105 l6 0 v-5 z" fill="#b8541a" transform="rotate(-15 310 105)"/>
-  <text x="340" y="115" text-anchor="middle" font-size="7">id: 42</text>
-  
-  <path d="M150 105 L70 90" stroke="#1a1a1a" fill="none"/>
-  <path d="M70 90 l5 3 v-6 z" fill="#1a1a1a" transform="rotate(15 70 90)"/>
+<svg viewBox="0 0 460 136" role="img" aria-label="Async request and reply. A client asks the API for a report. The API writes a job row, status pending, with a correlation id, puts a message on a request queue carrying the id and a reply-to, and returns 202 with the id at once. A worker takes the message, runs for ten minutes, and sends the result to the reply queue with the same id. A reply handler in the API, not the original request thread, reads it, updates the job row to done with the result's location, and notifies the client by a callback or lets it poll GET jobs by id. An orange cross marks the API thread that blocks waiting for the reply: ten minutes per thread, and the pool is gone after a handful of requests." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
+  <rect x="6" y="10" width="52" height="26" rx="3" fill="#fff" stroke="#333"/><text x="32" y="26" text-anchor="middle">client</text>
+  <rect x="88" y="6" width="100" height="34" rx="3" fill="#fff" stroke="#1d4e89"/><text x="138" y="19" text-anchor="middle">API</text><text x="138" y="31" text-anchor="middle" font-size="7">job row: pending, id=c1</text>
+  <line x1="58" y1="18" x2="88" y2="18" stroke="#333" marker-end="url(#d)"/><text x="73" y="14" text-anchor="middle" font-size="7">POST</text>
+  <line x1="88" y1="30" x2="58" y2="30" stroke="#333" marker-end="url(#d)"/><text x="73" y="47" text-anchor="middle" font-size="7">202 {id: c1}</text>
+  <rect x="218" y="6" width="90" height="34" rx="3" fill="#e6f2ff" stroke="#333"/><text x="263" y="19" text-anchor="middle">request queue</text><text x="263" y="31" text-anchor="middle" font-size="7">{id: c1, replyTo: rq}</text>
+  <line x1="188" y1="23" x2="218" y2="23" stroke="#333" marker-end="url(#d)"/>
+  <rect x="338" y="6" width="116" height="34" rx="3" fill="#fff" stroke="#1d4e89"/><text x="396" y="19" text-anchor="middle">worker</text><text x="396" y="31" text-anchor="middle" font-size="7">runs 10 min, result to blob store</text>
+  <line x1="308" y1="23" x2="338" y2="23" stroke="#333" marker-end="url(#d)"/>
+  <rect x="218" y="60" width="90" height="34" rx="3" fill="#e6f2ff" stroke="#333"/><text x="263" y="73" text-anchor="middle">reply queue rq</text><text x="263" y="85" text-anchor="middle" font-size="7">{id: c1, url: …}</text>
+  <line x1="396" y1="40" x2="396" y2="77" stroke="#333"/><line x1="396" y1="77" x2="308" y2="77" stroke="#333" marker-end="url(#d)"/>
+  <rect x="88" y="60" width="100" height="34" rx="3" fill="#fff" stroke="#1d4e89"/><text x="138" y="73" text-anchor="middle">reply handler</text><text x="138" y="85" text-anchor="middle" font-size="7">match c1 → job done, url</text>
+  <line x1="218" y1="77" x2="188" y2="77" stroke="#333" marker-end="url(#d)"/>
+  <line x1="88" y1="84" x2="58" y2="84" stroke="#333" stroke-dasharray="3 3" marker-end="url(#d)"/><text x="32" y="70" text-anchor="middle" font-size="7">callback, or</text><text x="32" y="80" text-anchor="middle" font-size="7">GET /jobs/c1</text>
+  <text x="6" y="112" font-size="7">the id is the whole protocol: it is in the job row, the request, the reply, and the client's hand; nothing waits in memory</text>
+  <text x="6" y="130" font-size="7.5" fill="#bf4c28">✕ the request thread blocks on the reply queue: ten minutes per thread, the pool is empty after a handful of requests, and the API is down</text>
+  <defs><marker id="d" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#333"/></marker></defs>
 </svg>
 
-- When Service B finishes, it sends the response to the specified destination, attaching the same `correlationId`. Service A uses the ID to match the response back to the original request
-- (The deep mechanics of queues and message brokers are covered in the Events booklet)
+- Three rules make it work. The initial request completes at once, with a `202` and an id, and the state lives in a row, not a thread. The reply is handled by whoever is running when it arrives, matched by the id, because the process that sent the request may have restarted meanwhile. The worker's result goes somewhere durable, a blob store (Module 11, page 6), and the reply carries a pointer, not the bytes
+- The client learns the outcome by polling `GET /jobs/{id}` or by a callback the request named; both are the id again. Delivery to the reply queue is at-least-once (booklet 04), so the handler updating the row is idempotent: "done" twice is done
 
 ### The failure
 
-- The failure mode is building a system where Service A blocks a thread waiting for the reply to arrive. If Service B is slow, Service A runs out of threads and crashes
-- If you use this pattern, the initial request must complete immediately. Service A should save state to a database ("Report Status: Pending"), and the incoming reply message triggers a separate process to update the database
+- The reply arrives and nobody is waiting. The request thread blocked on the reply, the pod was replaced during the ten minutes, and the reply lands on a queue whose consumer is gone, or on a callback for a request nobody recorded. State that must outlive a request lives in a store keyed by the correlation id; a thread is not a place to wait

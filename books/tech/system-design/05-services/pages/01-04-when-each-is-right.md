@@ -1,17 +1,21 @@
 ## The workload decides
 
-- The choice between a monolith and microservices is not about which is "better" or more modern. It is an engineering trade-off driven by the workload and the organization
-- A monolith minimizes latency and cognitive overhead. Microservices isolate deployments, failures, and scaling constraints
+- Monolith or microservices is a decision table, not a preference: the rows are facts about the team and the workload, and the answer changes as they do
 
-| Constraint | Monolith | Microservices |
-|---|---|---|
-| **Team size** | Best for 1–20 engineers. Everyone understands the whole system | Required for 50+ engineers. Teams need independent release cycles |
-| **Scaling profile** | The whole system scales together. If video encoding needs CPU, the entire app scales up | Granular. You can scale the CPU-heavy encoder independently from the web tier |
-| **Data models** | All data lives in one relational store. Simple joins and transactions | Services can choose different stores (e.g., Graph for recommendations, Relational for billing) |
-| **Failure domain** | A memory leak in one module crashes the entire process | A memory leak crashes one service. The rest of the system stays up |
-| **Latency** | Function calls take nanoseconds. No network unreliability | Network hops take milliseconds and introduce partial failure |
+| Constraint | Monolith fits when | Microservices fit when |
+| :--- | :--- | :--- |
+| **teams** | one or a few; one release calendar | several, with colliding calendars; each must ship alone (page 3) |
+| **scaling** | everything scales together, affordably | one part needs 50 CPUs while the rest idles |
+| **data store** | one relational store serves all | one part needs a graph or a time series (booklet 02) |
+| **failure domain** | one crash takes all, acceptably | one part's leak must not take payments (Module 4) |
+| **understanding** | the domain is still being learned | the seams are known from running it (Module 2) |
+
+- Fowler's MonolithFirst (2015) is the last row measured: almost all the successful microservice stories started with a monolith that got too big and was broken up; almost all built as microservices from scratch ended in serious trouble, because the premium is paid before the product is proven and refactoring across services is much harder
+
+:::interview
+"Monolith or microservices for this?" — Neither by default; the table. For a new product with one team, a modular monolith: boundaries in the compiler, one transaction, one deploy, and extraction is mechanical later. Split when a row flips: two teams blocked on one release train, one component with its own scaling curve, or a failure that must be contained.
+:::
 
 ### The failure
 
-- The classic failure is splitting a system into microservices before the domain is understood. Martin Fowler coined the "MonolithFirst" strategy: start with a monolith, find the natural boundaries as the system grows, and extract services only when the monolith becomes a bottleneck
-- If you guess the boundaries wrong on day one, you will have to refactor across network calls, which is orders of magnitude harder than refactoring a single codebase
+- Splitting before the domain is understood. The boundaries are guessed and wrong, and a refactor that would be a rename in one codebase is a contract change across a network with two deploys and a migration. The monolith is the cheap place to be wrong
