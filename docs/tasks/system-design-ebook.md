@@ -112,7 +112,7 @@ Same shape as `typescript-to-deployment`. The build already knows how to bind
 - [x] Booklet 03 drafted (93), rewritten to house style: 82 pages, fact pass clean, 0 overflow
 - [x] Booklet 04 drafted, fact + consistency passes clean, builds with 0 overflow (70 content pages)
 - [x] Booklet 05 drafted, fact + consistency passes clean, builds with 0 overflow (109 content pages)
-- [x] Booklet 06
+- [x] Booklet 06 drafted (110), rewritten to house style in three parts: 110 pages, fact passes clean, 0 overflow
 - [ ] Glossary
 - [ ] Volume merge: contents, preface, final note, about, copyright
 - [ ] Explanation section below written
@@ -885,6 +885,130 @@ top-K, docs; 34 pages). Remaining §5 fetch budget: Gorilla numbers,
 count-min bounds, ES completion suggester (3 of 7). After part 3 the
 Module 17/18 forward references from 09-06, 10-01 and 10-05 resolve, and
 the handoff moves to booklet 05.
+
+### 2026-09-22 — booklet 06 Case Studies, part 3: modules 13–18 rewritten, checked, committed. Booklet complete at 110 pages
+
+**34 pages, all rewritten from the research line** (5 + 6 + 6 + 6 + 5 + 6;
+page count unchanged from the approved list, no page added). The draft's six
+SVGs in these modules were empty shells and were replaced; its 34 quiz-style
+interview blocks were cut. Interview blocks now 6, one per design, on the
+page where the question is really asked: "a term goes viral at 9:00, when
+does it show?" (13-03), "a thousand workers, one popular host" (14-02),
+"push or pull, and why?" (15-03), "the aggregator restarts and re-reads
+thirty seconds" (16-04), "is the merged top-100 exact?" (17-04), "OT or
+CRDT?" (18-03). Booklet total: 18 interview blocks (6 + 6 + 6), as planned.
+
+**§5 fetches (3 own, 2 failed):** Gorilla paper — WebFetch could not read
+the PDF text, but the file it saved was extracted locally with zlib and the
+numbers verified from the paper's own sentences: 1.37 bytes per point on
+average, 12× from 16 bytes, two-hour blocks, 26 hours in memory, "at least
+85 % of all queries to ODS was for data collected in the past 26 hours";
+used on 15-01 and 15-04. Count-min bounds — both dimacs.rutgers.edu URLs
+404'd, so the bounds (w = ⌈e/ε⌉, d = ⌈ln(1/δ)⌉, estimate ≤ true + ε·N with
+probability ≥ 1 − δ) were written on 17-03 and put first on the fact agent's
+fetch list; confirmed there against Wikipedia's page citing Cormode &
+Muthukrishnan, J. Algorithms 55 (2005). Elasticsearch completion suggester —
+not fetched by me; the fact agent confirmed on elastic.co that the structure
+is built at index time and held in memory, used on 13-03 as "the same shape".
+
+**Diagrams: 17, all new.** Anchors with every component labelled, the data
+flow and a real number: 13-03 log → hourly aggregator → builder → snapshot →
+atomic pointer swap (1 B requests/day ≈ 11 600/s, 60 000 peak); 14-02
+Mercator frontier, front queues by priority, back queues one per host, heap
+keyed by next-allowed time (400 pages/s ⇒ ≥ 400 hosts ready); 15-03 pull
+path (scrape every 10 s, 1 M samples/s, each server autonomous) and log path
+(agent → Kafka → indexer); 16-02 click → log by ad id → windows → dedupe →
+OLAP, raw log → nightly batch → final table (≈ 12 000/s, Photon < 10 s);
+17-04 per-partition sketch + heap → merger → minute boards → hour/day
+boards, batch for the exact day; 18-04 gateway → registry → one document
+server → journal, snapshots, crash reassignment (500 ops/s, ≈ 50 000
+msgs/s). Failure and mechanism diagrams with the ✕ marker: 13-02 trie
+(subtree walk per request), 14-04 Bloom + fingerprint (?utm= variants),
+15-04 delta-of-delta / XOR grid + tiers (row per sample), 15-05 rollup tiers
++ alert path (alerts reading cold storage), 16-03 event-time windows with
+watermark (processing-time windows), 16-04 checkpoint timeline (offset
+committed apart from state), 16-05 stream vs batch (no batch path), 17-03
+count-min grid + heap (hash map of every id), 18-02 OT sequence (no
+authority), 18-03 CRDT ids (metadata growth), 18-05 offline replay + undo
+(undo as rollback).
+
+**Corrections to the draft worth recording:** the draft's "merging partial
+top-Ks is always an approximation" is wrong as stated — with the topic keyed
+by id, a video in the global top 100 is in its own partition's top 100, so
+the cross-partition merge is exact given exact counts; the merge that loses
+information is the one across time (hour from 60 minute boards). 17-04 says
+which is which. The draft's "5xx on robots.txt = drop all queued URLs" was
+tightened to RFC 9309's actual rules (4xx allow all, 5xx assume disallow, a
+cached copy may serve, cache ≤ 24 h, parse ≥ 500 KiB) and coded on 14-03.
+The draft's "hash of the prefix breaks caching" argument on 13-04 was
+replaced with the real reason (a subtree is the build unit). The draft's
+"Prometheus drops data if overloaded" on 15-05 was replaced by the docs'
+own sentence about per-request billing. An unsourced "≈ 20 bytes of metadata
+per byte of text" for CRDTs was softened to "tens of bytes per character in
+a naive encoding".
+
+**Checks:** `check-pages.mjs` clean for the whole booklet, 110 pages, 18
+modules; the forward references from 01-09, 09-06, 10-01 and 10-05 resolve
+now that Modules 13, 17 and 18 have their headings. PDF build: 10 overflows
+on the first build (13-01, 14-01, 14-03, 14-05 by 48 mm, 15-01, 16-04,
+17-01, 18-01, 18-03, 18-06), fixed by cutting a table row or a redundant
+bullet each, in two batches plus two single-line trims; zero overflow at
+114 pages. Screenshot pass on all 17 diagrams (`tools/shot.mjs`,
+puppeteer-core, `--measure` mode, deleted before commit): 15 needed a
+fix — labels wider than boxes on 13-03, 15-03 (four), 16-02 (six), 17-04,
+18-04 (two); a node on the ✕ caption and an arrow through a list on 13-02;
+the new-URLs arrow through the front queues and the reinsert loop over the
+page store on 14-02 (right column relaid out); collapsed whitespace in the
+sample grid on 15-04 (redrawn as fixed columns); the firing arrow through
+the head block on 15-05 (rerouted); a dashed line through the raw log on
+16-02; A/B label collision on 16-03; the retry note under the commit label
+on 16-04; lifelines through state labels on 18-02; explanation lines under
+the Figma box on 18-03; arrow labels on the boxes on 18-05; clipped
+captions on 14-04, 15-03, 16-05, 17-04, 18-02, 18-05. Two clean first time
+(16-05, 17-03). Code: `check-part3.mjs` in the scratchpad runs the 13-02
+trie (bottom-up build, "app" → 5 results, "ap" list, empty for an unknown
+prefix), the 14-03 robots decision (200 parsed, cached copy served without
+a fetch, expired cache + 503 → cached rules, 404 → allow all, 500 with no
+cache → disallow all), the 17-02 sorted set against a mock Redis (ZADD INCR,
+ZRANGE REV WITHSCORES with a lexicographic tie, ZREVRANK 0-based and null
+when absent), a count-min sketch that never under-estimates over 5 000
+events, and every derived number on the six requirements pages, 14-04's
+Bloom sizing (9.585 bits, 12 GB), 15-05's tiers (1.65 TB + 1.5 TB + 90 GB ≈
+3.3 TB), 17-03's w, d and 76 KB; all pass.
+
+**Fact agent (Sonnet, 8 of 10 fetches):** WRONG 0, CODE 0, CROSS-REF 0,
+OVERSTATED 0, UNVERIFIED 1 — 18-02's "the model Google Docs is built on":
+Google's 2010 blog post would not extract (three attempts), only Wikipedia
+corroborates; **cut** to "the classic model for a centralised editor". It
+confirmed the four priority items (count-min bounds, Elasticsearch
+completion suggester in memory, Redis ZADD INCR / ZRANGE REV since 6.2 /
+±2⁵³ / lexicographic ties, Mercator's queue split), recomputed every
+requirements table and the Bloom, tier and sketch arithmetic, and checked
+all ≈ 91 in-booklet cross-references; ≈ 131 OK. One note, no error: the
+byte-per-point assumption behind the 1-minute and 1-hour tiers on 15-05 is
+implied (same 1.37 B/point at 1/6 and 1/360 the sample rate), not stated.
+
+**Pointers set toward booklet 05 in these modules** (05 must honour them):
+Bloom filter (14-04, 14-06), DNS caching (14-06), blob storage (14-01,
+14-02, 14-06, 15-04, 18-06), the observability stack, log tiers and cache
+headers (15-04, 15-05, 15-06, 13-05), object storage for snapshots (13-03).
+Toward 04: the query log and batch vs stream (13-03, 13-05, 16-05, 17-05),
+queue leases and checkpoints (14-05, 14-06), Kafka for logs (15-03, 15-06),
+partitioning, event time, watermarks, checkpoints and the broker's
+transactions (16-02, 16-03, 16-04, 16-06, 17-04). Toward 03: journal
+durability, leases and split brain (18-04, 18-06). Toward 02: hot
+partitions and salting (13-04, 16-06, 17-05), consistent hashing of hosts
+(14-06). Toward 01: backoff and `Retry-After` (14-05, 14-06), idempotency
+keys (16-06). Within the booklet: Module 3 for the gateway (13-04, 13-05),
+Module 5 for alert delivery (15-05, 15-06, 18-06), Module 6 page 2 for the
+registry (18-04, 18-06), Module 9 for the view events (17-01, 17-04, 17-05),
+Module 11 for the ledger (16-06), Module 16 for exact counting (15-05,
+15-06, 17-05), Module 17 for top-N per window (16-01, 16-06).
+
+**Booklet 06 is complete:** 110 pages, 18 modules, 18 interview blocks, 50
+diagrams (15 + 18 + 17), three commits. Next: booklet 05 Services, from the
+untouched draft, per the handoff.
+
 
 ## Explanation
 

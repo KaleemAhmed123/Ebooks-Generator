@@ -1,42 +1,45 @@
-## Trie with precomputed top-k
+## Trie with precomputed top-k per node
 
-- The standard data structure for prefix matching is a **Trie** (Prefix Tree)
-- Each node represents a character. To find completions for "app", you walk `a` → `p` → `p`, and then traverse all child nodes to find the most popular words
-- **The optimization:** Traversing children is too slow at runtime. Instead, *every single node* pre-stores a list of its top-k (e.g., top 5) completed strings
-- When the user types "app", the server walks to the "p" node, and simply returns the hardcoded list `['apple', 'app', 'application']` in O(1) time
+- A **trie** is a tree with one node per prefix: the root is the empty string, each edge adds a character, and "app" is the node three edges down `a`, `p`, `p`. Every query that begins with "app" lives in that node's subtree, which is why the structure fits the problem
+- The subtree is the problem too: the node for "a" has millions of descendants. So each node stores its own answer, the top 5 full queries in its subtree, filled once at build time (page 3). A lookup is a walk down the prefix and one array read
 
-<svg viewBox="0 0 460 110" role="img" aria-label="Trie where each node caches the top-K completed search terms" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
-  <circle cx="50" cy="55" r="20" fill="#fcfcfc" stroke="#1a1a1a"/>
-  <text x="50" y="58" text-anchor="middle" font-weight="bold">Root</text>
-  
-  <circle cx="150" cy="55" r="20" fill="#e2fcf3" stroke="#1d4e89"/>
-  <text x="150" y="58" text-anchor="middle" font-weight="bold" fill="#1d4e89">a</text>
-  <text x="150" y="90" text-anchor="middle" font-size="6" fill="#1d4e89">[apple, art]</text>
-  
-  <circle cx="250" cy="20" r="20" fill="#e2fcf3" stroke="#1d4e89"/>
-  <text x="250" y="23" text-anchor="middle" font-weight="bold" fill="#1d4e89">p</text>
-  <text x="250" y="50" text-anchor="middle" font-size="6" fill="#1d4e89">[apple, app]</text>
-  
-  <circle cx="250" cy="90" r="20" fill="#e2fcf3" stroke="#1d4e89"/>
-  <text x="250" y="93" text-anchor="middle" font-weight="bold" fill="#1d4e89">r</text>
-  <text x="250" y="120" text-anchor="middle" font-size="6" fill="#1d4e89">[art]</text>
-  
-  <circle cx="350" cy="20" r="20" fill="#fce4e2" stroke="#b8541a"/>
-  <text x="350" y="23" text-anchor="middle" font-weight="bold" fill="#b8541a">p</text>
-  <text x="350" y="50" text-anchor="middle" font-size="6" fill="#b8541a">[apple, app]</text>
-  
-  <path d="M70 55 L130 55" stroke="#1a1a1a" fill="none" stroke-width="1.5"/>
-  <path d="M165 45 L235 25" stroke="#1d4e89" fill="none" stroke-width="1.5"/>
-  <path d="M165 65 L235 85" stroke="#1d4e89" fill="none" stroke-width="1.5"/>
-  <path d="M270 20 L330 20" stroke="#b8541a" fill="none" stroke-width="1.5"/>
+<svg viewBox="0 0 460 128" role="img" aria-label="A trie for the queries apple, app store, apply and apt. The root has a child a, which has a child ap, which has a child app; app has children apple, app store and apply. Under each node a small list shows its precomputed top 5: the root lists the five most searched queries overall; a lists apple, amazon, app store; ap lists apple, app store, apply, apt; app lists apple, app store, apply. A lookup for the prefix app walks three edges and reads the list at app: three steps and one array, no subtree walk. An orange cross marks the alternative, walking the subtree of a on each request: millions of nodes per keystroke." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
+  <rect x="8" y="14" width="40" height="20" rx="3" fill="#fff" stroke="#333"/><text x="28" y="27" text-anchor="middle">root</text>
+  <rect x="8" y="40" width="72" height="34" rx="2" fill="#e6f2ff" stroke="#333"/><text x="12" y="50" font-size="7">top 5: amazon,</text><text x="12" y="59" font-size="7">apple, app store,</text><text x="12" y="68" font-size="7">airbnb, adidas</text>
+  <rect x="106" y="14" width="40" height="20" rx="3" fill="#fff" stroke="#333"/><text x="126" y="27" text-anchor="middle">a</text>
+  <line x1="48" y1="24" x2="106" y2="24" stroke="#333" marker-end="url(#d)"/><text x="77" y="20" text-anchor="middle" font-size="7">a</text>
+  <rect x="106" y="40" width="72" height="34" rx="2" fill="#e6f2ff" stroke="#333"/><text x="110" y="50" font-size="7">top 5: amazon,</text><text x="110" y="59" font-size="7">apple, app store,</text><text x="110" y="68" font-size="7">airbnb, adidas</text>
+  <rect x="204" y="14" width="40" height="20" rx="3" fill="#fff" stroke="#333"/><text x="224" y="27" text-anchor="middle">ap</text>
+  <line x1="146" y1="24" x2="204" y2="24" stroke="#333" marker-end="url(#d)"/><text x="175" y="20" text-anchor="middle" font-size="7">p</text>
+  <rect x="204" y="40" width="72" height="34" rx="2" fill="#e6f2ff" stroke="#333"/><text x="208" y="50" font-size="7">top 5: apple,</text><text x="208" y="59" font-size="7">app store, apply,</text><text x="208" y="68" font-size="7">apt, apex</text>
+  <rect x="302" y="14" width="40" height="20" rx="3" fill="#fff" stroke="#1d4e89" stroke-width="1.5"/><text x="322" y="27" text-anchor="middle">app</text>
+  <line x1="244" y1="24" x2="302" y2="24" stroke="#333" marker-end="url(#d)"/><text x="273" y="20" text-anchor="middle" font-size="7">p</text>
+  <rect x="302" y="40" width="72" height="34" rx="2" fill="#e6f2ff" stroke="#1d4e89"/><text x="306" y="50" font-size="7">top 5: apple,</text><text x="306" y="59" font-size="7">app store, apply,</text><text x="306" y="68" font-size="7">appointment, apps</text>
+  <rect x="398" y="6" width="56" height="16" rx="3" fill="#fff" stroke="#333"/><text x="426" y="17" text-anchor="middle" font-size="7.5">apple</text>
+  <rect x="398" y="28" width="56" height="16" rx="3" fill="#fff" stroke="#333"/><text x="426" y="39" text-anchor="middle" font-size="7.5">app store</text>
+  <rect x="398" y="50" width="56" height="16" rx="3" fill="#fff" stroke="#333"/><text x="426" y="61" text-anchor="middle" font-size="7.5">apply</text>
+  <line x1="342" y1="20" x2="398" y2="14" stroke="#333" marker-end="url(#d)"/><line x1="342" y1="26" x2="398" y2="36" stroke="#333" marker-end="url(#d)"/><line x1="342" y1="32" x2="398" y2="56" stroke="#333" marker-end="url(#d)"/>
+  <text x="6" y="92" font-size="7.5" fill="#1d4e89">lookup "app": three edges, then read the list at app — no walk below it</text>
+  <text x="6" y="106" font-size="7.5" fill="#bf4c28">✕ walking the subtree of "a" on each request: millions of nodes per keystroke, sorted 60 000 times a second</text>
+  <text x="6" y="120" font-size="7">the lists are filled bottom-up once at build time: a node's top 5 is the merge of its children's lists plus its own query, cut to 5</text>
+  <defs><marker id="d" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#333"/></marker></defs>
 </svg>
+
+```typescript
+type Node = { kids: Map<string, Node>; top: string[] };   // top: ≤ 5, set at build
+function suggest(root: Node, prefix: string): string[] {
+  let n = root;
+  for (const ch of prefix) {
+    const next = n.kids.get(ch);
+    if (!next) return [];              // nothing starts with this prefix
+    n = next;
+  }
+  return n.top;                        // O(prefix length); never walks below
+}
+```
+
+- The cost moves to the build: each node's list is the merge of its children's lists plus its own query, cut to 5, computed bottom-up in one pass. Memory is the price, a list per node, which is why the trie is sharded by prefix (page 4) rather than kept whole
 
 ### The failure
 
-- Recomputing the top 5 results by walking the entire subtree of the Trie on every request. If the user types "a", traversing the entire dictionary of "a" words to find the 5 most popular is a massive CPU spike.
-
-:::interview
-Your Trie is consuming too much CPU. It is walking millions of child nodes to find the most popular words starting with "a". How do you fix it?
-
-You must precompute the Top-K results and store them directly inside the node for "a". When the user types "a", you return the cached array instantly in O(1) time.
-:::\n
+- Computing the top 5 by walking the subtree per request. It is correct, it is what a first implementation does, and for the prefix "a" it visits millions of nodes and sorts their counts on every keystroke. The precomputed list turns that into one read; nothing else on this page matters as much

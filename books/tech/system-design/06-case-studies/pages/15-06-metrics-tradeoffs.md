@@ -1,18 +1,17 @@
 ## What the interviewer probes
 
-- **Logs vs Metrics vs Traces:** Know the difference. 
-  - *Metrics:* Aggregated numbers (CPU 90%). Cheap.
-  - *Logs:* Unstructured text of an event. Expensive to index.
-  - *Traces:* The lifecycle of a single request across microservices.
-- **Log Indexing Cost:** Indexing every single field in a log file (ElasticSearch) is ruinously expensive. Modern architectures (Loki) only index a few labels (app, region), and brute-force grep the raw text when a human actually searches for it
-- **Sampling:** For high-volume traces or logs, you cannot store 100%. You must sample. Head-based sampling randomly keeps 10%. Tail-based sampling keeps 100% of *errors* and 1% of successes
+| Probe | The answer that holds |
+| :--- | :--- |
+| logs, metrics, traces: which for what | a **metric** is a number sampled over time, cheap per point and cheap to query, and it carries no ids (page 2). A **log** is one event with all its fields, including the ids, expensive to keep and to search. A **trace** is the set of spans one request produced across services, joined by a trace id, and it is the only one that answers "where did this request spend its time". Each is a pipeline; they meet on the trace id, carried in the log line and as an exemplar on the metric |
+| the log index bill | index a few labels, service, host, level, and store the line compressed; search filters by label to a small slice and then scans the text. Indexing every field of every JSON line costs more than storing the lines, and most fields are never queried |
+| sampling | traces at 100 % are a second copy of the traffic; keep every trace with an error or over a latency threshold and a fixed fraction of the rest, decided after the request finishes, tail-based, so the interesting ones are never the ones dropped |
+| retention tiers | hot for days on fast disk, warm for weeks, cold in object storage for the year, with the query engine reading all three; logs and traces follow the same tiering as the samples on page 5 (booklet 05 owns the observability stack) |
+| high cardinality, again | a request id, user id or raw URL never goes on a metric; it goes in the log line and the trace, which are per event and do not create a series (page 2) |
+| the pipeline itself is down | the log agent buffers on the host's disk and pushes when Kafka is back (page 3); a scrape gap is visible as a gap, which is the correct thing for it to be; the alert on "no data" is the alert for the pipeline |
+
+- The metric: series count against the budget, and the log bytes ingested per day against the bytes queried, which says whether the index is earning its cost
+- Cross-references the design leans on: Kafka for the log path (booklet 04); the observability stack, object storage and its tiers (booklet 05); Module 5 for alert delivery; Module 16 for counting that must be exact
 
 ### The failure
 
-- Trying to put a 2 KB JSON payload of user details into a metric label. Metrics are numbers. Payloads go in logs.
-
-:::interview
-Your ElasticSearch cluster is costing $100,000 a month to index terabytes of logs. 99% of those logs are never searched. How do you reduce costs?
-
-Stop indexing every field in the JSON logs. Switch to a system like Grafana Loki, which only indexes the metadata labels (app name, region) and compresses the actual log text into cheap object storage.
-:::\n
+- Indexing every log field. Every JSON key becomes an index, every line a hundred index writes, the index outgrows the data, and the cluster is sized for a search nobody runs. Index what queries filter on; scan the rest, because a scan over a label-narrowed slice is fast and an index over everything is not

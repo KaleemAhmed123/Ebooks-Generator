@@ -1,15 +1,14 @@
 ## Traps and failure
 
-- **Spider traps:** The web is hostile. A site might generate a calendar with an infinite chain of "Next Month" links (`/2026/01`, `/2026/02`, `/2026/03`...). Your crawler will get stuck forever. You must enforce a **Maximum Depth limit** (e.g., 10 hops from the seed URL)
-- **Crawler restart:** If the crawler crashes, you cannot start from scratch. The URL Frontier must periodically snapshot its state (checkpointing) to disk or a database
-- **Worker death:** When a worker pulls a URL from a politeness queue, it takes a lease (→04) on it. If the worker dies before completing the parse, the lease expires and the URL becomes available again
+- Three things go wrong in a long crawl: the web feeds the crawler infinite work, the crawler itself dies, and one of its workers dies mid-page. Each has a small mechanism with a cost the interviewer will ask about
+
+| Failure | How it shows | Mechanism | Cost |
+| :--- | :--- | :--- | :--- |
+| a **spider trap**: a site that generates pages without end | a calendar with a next-month link forever; a filter page whose every combination is a URL | a depth limit from the seed, a URL-length limit, a per-host page budget; past any, the link is dropped | a deep legitimate site is cut at the limit; the budget is raised by hand for hosts that earn it |
+| the crawler restarts | the in-memory frontier is gone | the front queues, back queues and heap (page 2) are checkpointed on a schedule; URLs in flight at the checkpoint are re-queued on restart | a re-fetch of what was in flight, harmless after the fingerprint (page 4); the interval is traded against the work lost |
+| a worker dies mid-fetch | a URL popped and never finished; its host never reinserted | a **lease** on the host with a TTL, the queue lease of booklet 04: if the worker does not reinsert before the TTL, the frontier does, and the URL goes back to its queue | a host waits one TTL after a crash; a slow fetch must finish inside it or extend it |
+| a host that blocks the crawler | 403s, 429s, a captcha page with status 200 | back off on 429 and 503, honour `Retry-After` (booklet 01), identify with a real user agent and contact URL, drop the host for a while after repeated refusals | pages from that host go stale; the alternative is a permanent block |
 
 ### The failure
 
-- Following symbolic links or dynamically generated infinite directories without a depth limit. Your crawler will consume infinite storage indexing fake pages.
-
-:::interview
-Your crawler has been running for 3 days, but you notice it is entirely focused on a single website that sells t-shirts. What happened?
-
-It hit a spider trap. The website is likely dynamically generating infinite pages (e.g., combining filter parameters). You must enforce a strict maximum crawl depth and URL length limits.
-:::\n
+- A calendar page that generates infinite next-month links. Every page is new, every page has a link the filter has not seen, every fetch is polite and correct, and the crawler follows it into the year 3000. Nothing in the fetch path can tell; only a limit on depth or on pages per host stops it

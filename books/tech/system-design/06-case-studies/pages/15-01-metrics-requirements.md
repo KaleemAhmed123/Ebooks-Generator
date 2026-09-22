@@ -1,25 +1,21 @@
-# Metrics Pipeline
+# Module 15 - Metrics and logging pipeline
 
-### Requirements and numbers
+## Requirements and numbers
 
-- A metrics pipeline (Prometheus, Datadog) ingests massive amounts of operational data
-- **In scope:** Data ingestion, storage, querying, alerting
-- **Out of scope:** The UI dashboard rendering engine
+- A metrics pipeline collects one number per series every few seconds from every process in the fleet, keeps a year of it, and answers "what is happening now" in under a second. The shape: writes that never stop, reads that want the last hour, and a volume only downsampling makes affordable
+- Functional, in: collect samples from every service; query a series or an aggregate over a range; alert when a rule holds. Out: dashboards; tracing and logs beyond where they meet this pipeline (pages 3 and 6)
+- Non-functional: queries over the last hour in under a second; a year of history at coarser resolution; alerts evaluated on the freshest data
+- Inputs, as assumptions: 10 M active series; one sample per series every 10 s; a raw sample of 16 bytes, an 8-byte timestamp and an 8-byte float; one year of retention
 
-| Metric | Requirement |
-|---|---|
-| **Volume** | 10M time series, scraped every 10 seconds |
-| **Write/Read** | Write-heavy (99%), but reads must be fast |
-| **Retention** | Hot data for 7 days, cold data for 1 year |
+| Quantity | Arithmetic | Result |
+| :--- | :--- | :--- |
+| write rate | 10 M ÷ 10 s | 1 M samples/s, every second of the year |
+| volume | 1 M/s × 16 B × 86 400; then Gorilla's 1.37 B per point (page 4) | ≈ 1.4 TB a day raw, ≈ 500 TB a year; ≈ 120 GB a day compressed, ≈ 43 TB a year |
+| downsampled | 10 s for 2 weeks, 1 min to 3 months, 1 h for the year (page 5) | ≈ 3.3 TB for the year; the 10-second tier is half of it |
+| reads | Gorilla paper: ≥ 85 % of queries were for the past 26 hours | the hot window lives in memory; the rest on disk and cold |
 
-- **The core constraint:** 10M metrics updated every 10 seconds is 1 million writes per second. You cannot store 1 million writes per second in a standard database for a year. You must aggressively compress and downsample the data over time
+- The numbers say three tiers: an in-memory window for what people actually query, compressed blocks on disk, rollups for the year. The data model (page 2) decides how many series there are, the number every row multiplies
 
 ### The failure
 
-- Sizing storage based on raw ingestion rates without calculating downsampling. If you keep 10-second resolution data for a year, your storage costs will bankrupt the company.
-
-:::interview
-You design a metrics system for 10 million servers. You calculate it requires 500 PB of storage per year. The interviewer says this is unaffordable. How do you fix it?
-
-You must implement downsampling. You keep 10-second resolution for 7 days, then roll it up into 1-minute averages for 30 days, and 1-hour averages for a year, drastically reducing the storage requirement.
-:::\n
+- Sizing storage without downsampling. 500 TB of raw samples a year is a budget line nobody approves, and 43 TB compressed is still 10-second resolution that no query over last March needs. The retention schedule is a requirement, not an optimisation added later

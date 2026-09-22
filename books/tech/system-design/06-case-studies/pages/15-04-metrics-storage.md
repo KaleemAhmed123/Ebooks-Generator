@@ -1,18 +1,29 @@
 ## Time-series storage
 
-- We are storing a continuous stream of `(timestamp, value)` pairs. e.g. `(1620000000, 45.2), (1620000010, 45.3), (1620000020, 45.2)`
-- **Compression (The Gorilla Paper):** Storing raw 64-bit timestamps and 64-bit floats is too expensive (16 bytes per point). 
-  - Timestamps increase steadily by 10s. We store the "Delta of Deltas" (which is usually 0)
-  - Values change slowly. We XOR the current float against the previous float, which yields mostly zeros
-  - This compresses 16 bytes down to ~1.37 bytes per point (12x compression)
-- **Tiering:** Recent data (last 2 hours) is kept entirely in RAM. Older data is flushed to immutable blocks on disk. Very old data is pushed to cold Object Storage (S3)
+- A series is an append-only stream of (timestamp, value) pairs where the timestamps are nearly regular and the values nearly repeat, so the store compresses each series against its own previous sample and keeps the recent window in memory. Facebook's Gorilla paper (VLDB 2015) is the reference: delta-of-delta timestamps, XOR-encoded values, two-hour blocks, an average of 1.37 bytes per point against 16 raw, a 12× reduction, and the most recent 26 hours held in memory
+
+<svg viewBox="0 0 460 150" role="img" aria-label="Time-series storage. Left, one series' samples: timestamps 0, 10, 20, 30 seconds with values 45.2, 45.2, 45.3, 45.3. Timestamp deltas are 10, 10, 10, so the delta of delta is 0, 0, stored as a single bit each. Values are XORed with the previous value: an identical value XORs to zero and is stored as one bit; a small change shares leading and trailing zero bits and stores only the middle. Sixteen raw bytes per sample become 1.37 on average. Right, the tiers: a head block in memory holds the newest two hours per series and is what alerts read; sealed, immutable blocks on disk hold two-hour chunks per series plus an inverted index from each label pair to the series ids that carry it; cold blocks older than the local retention are copied to object storage, booklet 05, and read rarely. Writes append to the head; a query walks the index to the series, then the blocks in its time range. An orange cross marks a row per sample in Postgres: 1 million inserts a second into a B-tree, 16 bytes of data plus tens of bytes of row and index overhead each." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
+  <text x="6" y="12" font-size="7.5" fill="#1d4e89">one series, compressed against itself</text>
+  <text x="6" y="26" font-size="7">t (s)</text><text x="62" y="26" font-size="7" text-anchor="middle">0</text><text x="92" y="26" font-size="7" text-anchor="middle">10</text><text x="122" y="26" font-size="7" text-anchor="middle">20</text><text x="152" y="26" font-size="7" text-anchor="middle">30</text>
+  <text x="6" y="37" font-size="7">Δt</text><text x="62" y="37" font-size="7" text-anchor="middle"></text><text x="92" y="37" font-size="7" text-anchor="middle">10</text><text x="122" y="37" font-size="7" text-anchor="middle">10</text><text x="152" y="37" font-size="7" text-anchor="middle">10</text>
+  <text x="6" y="48" font-size="7">ΔΔt</text><text x="62" y="48" font-size="7" text-anchor="middle"></text><text x="92" y="48" font-size="7" text-anchor="middle"></text><text x="122" y="48" font-size="7" text-anchor="middle">0</text><text x="152" y="48" font-size="7" text-anchor="middle">0</text><text x="184" y="48" font-size="7">→ 1 bit each</text>
+  <text x="6" y="62" font-size="7">value</text><text x="62" y="62" font-size="7" text-anchor="middle">45.2</text><text x="92" y="62" font-size="7" text-anchor="middle">45.2</text><text x="122" y="62" font-size="7" text-anchor="middle">45.3</text><text x="152" y="62" font-size="7" text-anchor="middle">45.3</text>
+  <text x="6" y="73" font-size="7">XOR prev</text><text x="62" y="73" font-size="7" text-anchor="middle"></text><text x="92" y="73" font-size="7" text-anchor="middle">0</text><text x="122" y="73" font-size="7" text-anchor="middle">small</text><text x="152" y="73" font-size="7" text-anchor="middle">0</text><text x="184" y="73" font-size="7">→ 1 bit when 0</text>
+  <text x="62" y="84" font-size="7">else: only the changed middle bits</text>
+  <rect x="6" y="94" width="196" height="26" rx="3" fill="#e6f2ff" stroke="#333"/><text x="104" y="105" text-anchor="middle" font-size="7.5">Gorilla: 16 B → 1.37 B per point on average, 12×</text><text x="104" y="115" text-anchor="middle" font-size="7">two-hour blocks; 26 hours in memory</text>
+  <text x="236" y="12" font-size="7.5" fill="#1d4e89">the tiers</text>
+  <rect x="236" y="20" width="218" height="30" rx="3" fill="#fff" stroke="#1d4e89"/><text x="345" y="32" text-anchor="middle">head block, in memory</text><text x="345" y="43" text-anchor="middle" font-size="7">newest 2 h of every series (Gorilla kept 26 h); alerts read it</text>
+  <rect x="236" y="58" width="218" height="40" rx="3" fill="#e6f2ff" stroke="#333"/><text x="345" y="70" text-anchor="middle">sealed blocks on disk, immutable</text><text x="345" y="81" text-anchor="middle" font-size="7">2 h of every series per block, compressed as on the left;</text><text x="345" y="91" text-anchor="middle" font-size="7">inverted index: label pair → series ids</text>
+  <line x1="345" y1="50" x2="345" y2="58" stroke="#333" marker-end="url(#d)"/>
+  <rect x="236" y="106" width="218" height="26" rx="3" fill="#e6f2ff" stroke="#333"/><text x="345" y="117" text-anchor="middle">cold: object storage (booklet 05)</text><text x="345" y="127" text-anchor="middle" font-size="7">blocks past local retention; rollups (page 5); rarely read</text>
+  <line x1="345" y1="98" x2="345" y2="106" stroke="#333" marker-end="url(#d)"/>
+  <text x="6" y="146" font-size="7.5" fill="#bf4c28">✕ a row per sample in Postgres: 1 M inserts/s into a B-tree, and tens of bytes of row and index overhead on 16 bytes of data</text>
+  <defs><marker id="d" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#333"/></marker></defs>
+</svg>
+
+- Two ideas carry the design. Compress within a series, because the next sample is predictable from the last; and never update, only append and seal, because immutable blocks need no locks and can be dropped whole when their time is up. The index is separate from the samples: a label lookup gives series ids, the ids give blocks, the blocks give bytes
+- A query for the last hour touches only the head block; a query for last week walks a few sealed blocks; a query for last year reads rollups (page 5), not samples. The tiers are the read pattern from page 1 made physical
 
 ### The failure
 
-- Storing time-series data in a standard relational database with a row per sample `(id, metric_name, timestamp, value)`. The B-Tree indexes will thrash the disk to death on inserts.
-
-:::interview
-You are tasked with storing 10 million metrics per second. You propose writing them to PostgreSQL. Why will this fail?
-
-Standard B-Tree indexes degrade exponentially under massive, continuous insert load. You must use an optimized Time-Series Database (TSDB) that keeps recent data in memory and flushes to disk in compressed, append-only blocks.
-:::\n
+- A row per sample in a relational table. `(series_id, ts, value)` with an index is a million B-tree inserts a second, forty or more bytes per row for sixteen of data, and a `DELETE` of last year's data that takes longer than the year. The samples do not need a row each; they need a block each two hours, written once
