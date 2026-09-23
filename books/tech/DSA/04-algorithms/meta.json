@@ -1,0 +1,23 @@
+{
+  "title": "Algorithms",
+  "subtitle": "Searching, Sorting, Greedy",
+  "cover": {
+    "accent": "#2d6a4f",
+    "title": ["Algorithms", "Strategies"],
+    "banner": "KNOW WHEN EACH STRATEGY FAILS.",
+    "kicker": "BINARY SEARCH · SORTING · GREEDY · QUICKSELECT",
+    "term": [
+      ["binary search → O(log n)", 0],
+      ["merge sort → O(n log n) stable", 0],
+      ["greedy → exchange argument", 0],
+      ["$ _", 2]
+    ],
+    "stack": [
+      "searching",
+      "sorting",
+      "greedy detection",
+      "exchange & stays-ahead"
+    ],
+    "face": { "brow": "sharp", "mouth": "flat", "tilt": -3 }
+  }
+}
