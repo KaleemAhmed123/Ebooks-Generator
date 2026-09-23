@@ -1,0 +1,23 @@
+{
+  "title": "Foundations",
+  "subtitle": "Complexity, Constraints, Derivation",
+  "cover": {
+    "accent": "#2d6a4f",
+    "title": ["Foundations", "Constraints & Derivation"],
+    "banner": "CONSTRAINTS ARE A FINGERPRINT OF THE INTENDED ALGORITHM.",
+    "kicker": "COMPLEXITY · AMORTISED ANALYSIS · RECURRENCES · INVARIANTS",
+    "term": [
+      ["n ≤ 10⁵ → O(n log n)", 0],
+      ["n ≤ 20  → bitmask", 0],
+      ["brute force → why slow? → derive", 0],
+      ["$ _", 2]
+    ],
+    "stack": [
+      "complexity analysis",
+      "constraint fingerprints",
+      "the derivation method",
+      "invariants & correctness"
+    ],
+    "face": { "brow": "sharp", "mouth": "flat", "tilt": -3 }
+  }
+}
