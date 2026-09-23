@@ -1,4 +1,4 @@
-## Continued - continued
+## Building a Design System with Tailwind - continued
 
 ```tsx
 export function Button({ className, variant, size, ...props }: ButtonProps) {

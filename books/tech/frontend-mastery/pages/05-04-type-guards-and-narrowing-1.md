@@ -12,7 +12,7 @@ When you use a native `typeof` check, TypeScript instantly "narrows" the type in
 ```typescript
 function printId(id: number | string) {
   // At this point, TS doesn't know if 'id' is a number or string
-  // id.toUpperCase() would throw a compiler error here!
+  // id.toUpperCase() would throw a compiler error here.
 
   if (typeof id === "string") {
     // TS narrowed the type. It mathematically guarantees 'id' is a string here.

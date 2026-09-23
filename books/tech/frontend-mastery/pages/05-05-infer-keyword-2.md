@@ -10,12 +10,12 @@ type SingleItem = FlattenArray<StrArray>; // Type is 'string'
 ```
 
 ### The Native Utilities
-The `infer` keyword is so powerful that it actually powers almost all of TypeScript's native utility types.
+Almost all of TypeScript's native utility types are built on `infer`.
 
-For example, the native `ReturnType<T>` utility (which figures out what type a function returns) is just a single line of code using `infer` under the hood!
+For example, the native `ReturnType<T>` utility (which figures out what type a function returns) is just a single line of code using `infer` under the hood.
 
 ```typescript
-// This is exactly how TypeScript's native ReturnType is built!
+// This is exactly how TypeScript's native ReturnType is built.
 // "If T is a function that returns 'something', extract that 'something' and call it R"
 type MyReturnType<T> = T extends (...args: any[]) => infer R ? R : any;
 ```

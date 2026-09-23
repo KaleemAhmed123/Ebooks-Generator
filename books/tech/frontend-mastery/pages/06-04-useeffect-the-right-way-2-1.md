@@ -3,7 +3,7 @@
 The most common mistake is using `useEffect` to update a state variable based on a change to another state variable.
 
 ```jsx
-// BAD: the anti-pattern: This triggers an unnecessary double-render!
+// BAD: the anti-pattern: This triggers an unnecessary double-render.
 const [firstName, setFirstName] = useState('');
 const [lastName, setLastName] = useState('');
 const [fullName, setFullName] = useState('');
@@ -20,7 +20,7 @@ Why is this bad?
 
 You just forced the browser to do twice the work for a single keystroke.
 
-**The Solution:** Derive data during render. If you can calculate a value from existing state or props, just do it as a standard variable!
+**The Solution:** Derive data during render. If you can calculate a value from existing state or props, just do it as a standard variable.
 
 ```jsx
 // GOOD: THE REACT WAY: No useEffect required.

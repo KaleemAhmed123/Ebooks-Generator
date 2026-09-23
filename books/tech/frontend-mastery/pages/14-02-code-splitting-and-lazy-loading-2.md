@@ -6,7 +6,7 @@ React provides a built-in function called `lazy()` and a component called `<Susp
 import { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router';
 
-// BAD: The Old Way: This forces the Settings component into the main bundle!
+// BAD: The Old Way: This forces the Settings component into the main bundle.
 // import Settings from './pages/Settings';
 
 // GOOD: The Modern Way: This tells Webpack/Vite to create a separate "Settings.js" file
@@ -29,7 +29,7 @@ function App() {
 ```
 
 ### Component-Based Code Splitting
-You don't have to limit code splitting to routes! You can split massive components on the exact same page.
+You don't have to limit code splitting to routes. You can split massive components on the exact same page.
 
 Imagine a blog post page. At the very bottom of the page is a massive `<HeavyRichTextCommentEditor />` component. The user has to scroll for 2 minutes to even see it.
 Why should they download the 2MB Rich Text library when the page first loads?

@@ -8,7 +8,7 @@ When you use `useState` in React, you are interacting with a closure. React's in
 // This is exactly how React's useState works under the hood
 function Component() {
   const [value, setValue] = useState(0); 
-  // 'value' is preserved between renders entirely due to closures!
+  // 'value' is preserved between renders entirely due to closures.
 }
 ```
 

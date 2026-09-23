@@ -2,7 +2,8 @@
 
 Every request in this module so far travels from the browser to a server in one
 place. If your server is in Virginia and your user is in Sydney, the speed of
-light alone costs about 160ms each way, before the server does anything at all.
+light alone costs about 160ms round trip, before the server does anything at
+all.
 
 An **edge runtime** is a small execution environment running in hundreds of
 data centers worldwide. Your code runs in the one nearest the user.

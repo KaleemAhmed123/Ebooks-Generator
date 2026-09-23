@@ -1,4 +1,4 @@
-## Continued - continued
+## Virtualization for Long Lists - continued
 
 ```jsx
 return (
@@ -6,7 +6,7 @@ return (
       {/* We MUST set the total height of the inner container so the scrollbar represents all 100,000 items */}
       <div style={{ height: `${rowVirtualizer.getTotalSize()}px`, position: 'relative' }}>
         
-        {/* We ONLY map over the tiny subset of items currently visible in the window! */}
+        {/* We ONLY map over the tiny subset of items currently visible in the window. */}
         {rowVirtualizer.getVirtualItems().map((virtualRow) => (
           <div
             key={virtualRow.index}

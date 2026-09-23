@@ -26,7 +26,7 @@ function createCounter() {
 // createCounter finishes running completely.
 const myCounter = createCounter(); 
 
-// Yet, myCounter still remembers the 'count' variable!
+// Yet, myCounter still remembers the 'count' variable.
 myCounter(); // Count is now: 1
 myCounter(); // Count is now: 2
 ```

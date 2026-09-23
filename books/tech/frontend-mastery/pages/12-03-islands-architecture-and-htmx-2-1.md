@@ -2,7 +2,7 @@
 
 ```astro
 <!-- client:visible tells Astro to only load and execute the JS 
-         for this specific React component when it scrolls into view! -->
+         for this specific React component when it scrolls into view. -->
     <InteractiveCarousel client:visible />
   </body>
 </html>

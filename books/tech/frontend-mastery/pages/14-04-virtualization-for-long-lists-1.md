@@ -12,7 +12,7 @@ If you think about it, a user's screen is only tall enough to view about 20 rows
 
 As the user scrolls down, the Virtualization engine destroys the DOM nodes that moved off the top of the screen, and reuses that memory to create the new DOM nodes entering from the bottom. 
 
-No matter how far the user scrolls, there are never more than ~25 actual HTML elements in the DOM! The performance remains blazing fast whether your array has 100 items or 100,000 items.
+No matter how far the user scrolls, there are never more than ~25 actual HTML elements in the DOM. Render cost stays flat whether your array has 100 items or 100,000.
 
 ### How to implement Virtualization
 

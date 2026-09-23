@@ -30,4 +30,4 @@ The resulting type is:
 */
 ```
 
-This is incredibly powerful because if a developer later adds `email: string` to the `User` type, `UserPermissions` will *automatically* update to require `email: boolean`. You never have to manually sync the two types!
+This matters because if a developer later adds `email: string` to the `User` type, `UserPermissions` will *automatically* update to require `email: boolean`. You never have to manually sync the two types.

@@ -26,4 +26,4 @@ function UserProfile({ userId }) {
 }
 ```
 
-If your company uses GraphQL, Apollo Client is the most powerful piece of architecture in your frontend stack. If they use REST, stick to React Query.
+If your company uses GraphQL, Apollo Client is the centre of your frontend architecture. If they use REST, stick to React Query.

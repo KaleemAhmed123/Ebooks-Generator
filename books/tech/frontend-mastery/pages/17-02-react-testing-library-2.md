@@ -23,7 +23,7 @@ test('it increments the counter when the button is clicked', () => {
   render(<Counter />);
 
   // 2. Find the elements exactly how a screen-reader or user would find them
-  // We don't query by class name (e.g. document.querySelector('.btn')). We query by TEXT!
+  // We don't query by class name (e.g. document.querySelector('.btn')). We query by TEXT.
   const button = screen.getByRole('button', { name: /increment/i });
   const countText = screen.getByText(/current count: 0/i);
 
@@ -38,4 +38,4 @@ test('it increments the counter when the button is clicked', () => {
 });
 ```
 
-Because this test relies on what is visually printed to the DOM (and Accessibility roles like `button`), you could completely rewrite the `<Counter />` component in vanilla JavaScript, and this test would still pass! That is the power of React Testing Library.
+Because this test relies on what is visually printed to the DOM (and Accessibility roles like `button`), you could completely rewrite the `<Counter />` component in vanilla JavaScript, and this test would still pass. That is the power of React Testing Library.

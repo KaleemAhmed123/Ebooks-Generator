@@ -26,7 +26,7 @@ query GetUserFull {
 }
 ```
 
-If we run Request 1, and then navigate to the Profile page and run Request 2, Apollo Client does something magical:
+If we run Request 1, and then navigate to the Profile page and run Request 2, Apollo Client does something specific:
 1. It already knows the User's name from Request 1.
 2. It instantly displays the User's name on the screen from the cache.
 3. It makes Request 2 to the server, but it merges the new `email` field into the existing cache object for User `1`.

@@ -49,7 +49,7 @@
 
   <line class="ar" x1="86" y1="132" x2="108" y2="132" marker-end="url(#a)"/>
   <line class="hotln" x1="212" y1="132" x2="296" y2="132" marker-end="url(#r)"/>
-  <text x="254" y="126" class="hot" text-anchor="middle">160ms each way</text>
+  <text x="254" y="126" class="hot" text-anchor="middle">160ms round trip</text>
   <text x="254" y="158" class="hot" text-anchor="middle">the round trip happened anyway, and you added a hop</text>
 </svg>
 :::

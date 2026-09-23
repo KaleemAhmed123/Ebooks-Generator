@@ -1,6 +1,6 @@
 ## HTML5 Web APIs
 
-The modern browser is a powerful operating system in its own right, exposing dozens of hardware and software APIs to JavaScript. Mastering these APIs allows you to build rich, native-like experiences on the web.
+The modern browser is an operating system in its own right, exposing dozens of hardware and software APIs to JavaScript. Mastering these APIs allows you to build rich, native-like experiences on the web.
 
 Here are the critical Web APIs every senior frontend engineer must know.
 

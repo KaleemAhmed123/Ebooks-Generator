@@ -1,4 +1,4 @@
-## Continued - continued
+## Modern Layouts: Flexbox and Grid - continued
 
 ```css
 .header  { grid-area: header; }

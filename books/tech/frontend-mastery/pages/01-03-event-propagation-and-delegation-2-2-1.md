@@ -2,7 +2,7 @@
 
 Attaching event listeners consumes memory. If you have a list of 1,000 items, attaching 1,000 `click` listeners will bloat memory and degrade performance.
 
-Because events bubble, we can use a powerful pattern called **Event Delegation**. Instead of attaching 1,000 listeners to the children, we attach a single listener to the parent.
+Because events bubble, we can use a pattern called **Event Delegation**. Instead of attaching 1,000 listeners to the children, we attach a single listener to the parent.
 
 ```html
 <ul id="todo-list">

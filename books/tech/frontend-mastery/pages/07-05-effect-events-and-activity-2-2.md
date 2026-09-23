@@ -1,6 +1,7 @@
 ### Three smaller changes worth knowing
 
-**`ref` is now an ordinary prop.** `forwardRef` is deprecated.
+**`ref` is now an ordinary prop.** `forwardRef` is no longer necessary, and
+will be deprecated in a future release.
 
 ```jsx
 function MyInput({ placeholder, ref }) {

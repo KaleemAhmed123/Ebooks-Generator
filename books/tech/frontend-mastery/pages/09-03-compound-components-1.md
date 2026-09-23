@@ -18,4 +18,4 @@ This is terrible to read, hard to style, and impossible to extend. If a designer
 ### The Compound Components Solution
 Compound components are a pattern where two or more components work together to accomplish a single task. The most famous native example of this is `<select>` and `<option>`. 
 
-In React, we can build our own Compound Components using React Context to implicitly share state between the parent and the children, without requiring the developer to pass any props!
+In React, we can build our own Compound Components using React Context to implicitly share state between the parent and the children, without requiring the developer to pass any props.

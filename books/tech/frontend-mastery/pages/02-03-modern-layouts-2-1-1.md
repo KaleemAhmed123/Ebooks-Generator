@@ -1,6 +1,6 @@
 ### CSS Grid: The 2-Dimensional Engine
 
-If Flexbox is a single row of boxes, CSS Grid is a spreadsheet. It handles both columns and rows simultaneously. It is the most powerful layout system ever introduced to CSS.
+If Flexbox is a single row of boxes, CSS Grid is a spreadsheet. It handles both columns and rows simultaneously.
 
 Instead of writing complex math for column percentages and margins, Grid handles the geometry internally.
 

@@ -20,4 +20,4 @@ export const buttonClass = style({
 
 During your build step (Webpack/Vite), Vanilla Extract executes this TypeScript file, extracts the styles, generates a standard, static `.css` file, and replaces `buttonClass` with a hashed string (like CSS Modules).
 
-By the time it hits the browser, there is zero JavaScript overhead. It is purely static CSS, making it blazingly fast and fully compatible with React Server Components.
+By the time it hits the browser, there is zero JavaScript overhead. It is purely static CSS, making it fully compatible with React Server Components.

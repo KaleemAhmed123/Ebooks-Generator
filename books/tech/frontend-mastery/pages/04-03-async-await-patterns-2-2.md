@@ -17,7 +17,7 @@ Instead, you must trigger the network requests immediately, and use `Promise.all
 
 ```js
 // GOOD: the modern pattern: Concurrent Awaiting
-// Total wait time is only 3 seconds (the longest single request)!
+// Total wait time is only 3 seconds (the longest single request).
 async function loadPage() {
   const userPromise = fetch('/api/user');
   const productsPromise = fetch('/api/products');

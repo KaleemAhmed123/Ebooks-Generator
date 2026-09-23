@@ -1,6 +1,6 @@
 ### 3. Rapid Prototyping & "Throwaway Code"
 
-One of the most powerful shifts in frontend workflow is the concept of "Throwaway Code."
+One of the larger shifts in frontend workflow is the concept of "Throwaway Code."
 Historically, building a prototype took a week. Now, you can build a fully functional, database-connected prototype in 3 hours using tools like v0.dev or bolt.new.
 
 Senior engineers use these tools to validate product ideas instantly. They generate the UI, let the Product Manager interact with it, get approval, and *then* they delete the prototype and architect the real, scalable solution within their monorepo.

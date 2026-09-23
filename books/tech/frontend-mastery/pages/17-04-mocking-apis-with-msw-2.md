@@ -14,11 +14,11 @@ export const handlers = [
     })
   }),
 
-  // You can even simulate Server Errors easily to test your Error Boundaries!
+  // You can even simulate Server Errors easily to test your Error Boundaries.
   http.post('/api/checkout', () => {
     return new HttpResponse(null, { status: 500 })
   })
 ]
 ```
 
-Because MSW operates at the network level, you can use the exact same `handlers.js` file for your Vitest tests, your Playwright E2E tests, and your local development environment if the backend team hasn't finished building the API yet!
+Because MSW operates at the network level, you can use the exact same `handlers.js` file for your Vitest tests, your Playwright E2E tests, and your local development environment if the backend team hasn't finished building the API yet.

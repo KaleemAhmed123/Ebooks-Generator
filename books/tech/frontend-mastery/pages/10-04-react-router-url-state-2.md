@@ -18,7 +18,7 @@ function ProductList() {
   // If it doesn't exist, we default to "shoes"
   const category = searchParams.get("category") || "shoes";
 
-  // When the user clicks a filter, we update the URL, not local state!
+  // When the user clicks a filter, we update the URL, not local state.
   const updateFilter = (newCategory) => {
     setSearchParams({ category: newCategory });
   };

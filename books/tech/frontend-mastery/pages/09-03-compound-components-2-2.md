@@ -1,4 +1,4 @@
-## Continued - continued
+## Compound Components Pattern - continued
 
 4. **Stitch it to the Namespace (Optional but clean):**
 ```jsx
@@ -8,7 +8,7 @@ Accordion.Content = AccordionContent;
 ```
 
 ### The Beautiful API
-Now look at how clean and flexible the API is for the developer using it!
+Now look at how clean and flexible the API is for the developer using it.
 
 ```jsx
 <Accordion>

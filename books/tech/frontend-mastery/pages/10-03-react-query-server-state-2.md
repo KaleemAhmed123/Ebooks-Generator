@@ -13,7 +13,7 @@ const fetchUser = async (id) => {
 };
 
 function UserProfile({ userId }) {
-  // We pass a unique queryKey. This is how React Query caches the data!
+  // We pass a unique queryKey. This is how React Query caches the data.
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ['user', userId], 
     queryFn: () => fetchUser(userId),
@@ -26,10 +26,10 @@ function UserProfile({ userId }) {
 }
 ```
 
-### Powerful Defaults
+### The Defaults
 Out of the box, with zero configuration, React Query gives you:
 1. **Deduplication:** If 5 components on the page use the `['user', 1]` query, React Query only makes **1** network request and shares the result with all 5.
 2. **Window Focus Refetching:** If a user clicks away to another browser tab, and then clicks back to your app, React Query automatically refetches the data in the background to ensure they aren't looking at old information.
 3. **Retries:** If the API fails due to a quick network blip, React Query will automatically retry the request 3 times before finally showing the `isError` state.
 
-It is so powerful that it is often said that React Query replaces 50% of your legacy Redux code completely.
+In practice it removes most of the Redux code that existed only to cache server responses.

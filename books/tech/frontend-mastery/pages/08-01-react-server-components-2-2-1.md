@@ -12,4 +12,4 @@ Traditionally, "the server" meant a Node.js process running in a datacenter in `
 
 **Edge Computing** solves this. Providers like Vercel and Cloudflare deploy V8 isolates (extremely lightweight, fast-booting JavaScript environments) to hundreds of data centers globally.
 
-When combined with RSCs, Edge computing is magic. Your Server Component executes in Tokyo (5ms away from the user), fetches personalized data from a distributed Edge Database, renders the HTML, and streams it back to the user instantly.
+When combined with RSCs, Edge computing changes the shape of the request. Your Server Component executes in Tokyo (5ms away from the user), fetches personalized data from a distributed Edge Database, renders the HTML, and streams it back to the user instantly.

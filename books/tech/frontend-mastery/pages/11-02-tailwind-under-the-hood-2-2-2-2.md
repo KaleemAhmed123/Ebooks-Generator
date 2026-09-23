@@ -1,4 +1,4 @@
-## Continued - continued
+## Tailwind Under the Hood - continued
 
 | Thing | v3 | v4 |
 |---|---|---|

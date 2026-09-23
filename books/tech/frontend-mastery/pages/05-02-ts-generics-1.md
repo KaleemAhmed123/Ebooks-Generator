@@ -1,6 +1,6 @@
 ## Advanced TypeScript: Generics & Utility Types
 
-As your application grows, you will find yourself writing duplicate types. TypeScript provides powerful mechanisms to keep your types DRY (Don't Repeat Yourself).
+As your application grows, you will find yourself writing duplicate types. TypeScript provides mechanisms to keep your types DRY (Don't Repeat Yourself).
 
 ### Generics
 
@@ -26,4 +26,4 @@ const firstStr = getFirstItem(["apple", "banana"]);
 ```
 
 **Generics in React:**
-You use Generics in React all the time without realizing it. When you declare `const [count, setCount] = useState<number>(0)`, you are passing the `number` type into the `useState` Generic!
+You use Generics in React all the time without realizing it. When you declare `const [count, setCount] = useState<number>(0)`, you are passing the `number` type into the `useState` Generic.

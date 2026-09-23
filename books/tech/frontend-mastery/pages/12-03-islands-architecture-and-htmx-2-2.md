@@ -1,6 +1,6 @@
-## Islands Architecture and HTMX - continued - continued
+## Islands Architecture and HTMX - continued
 
-#### Why HTMX is powerful:
+#### What HTMX gives you:
 1. **Zero Client-Side State:** You don't need Zustand, Redux, or React Query. The server is the single source of truth.
 2. **Backend Agnostic:** You can use Python (Django), Go, Rust, or Node.js on the backend. The backend just renders HTML templates (like Jinja or EJS) and sends them over the wire.
 3. **Tiny Footprint:** HTMX is a single ~14kb library.

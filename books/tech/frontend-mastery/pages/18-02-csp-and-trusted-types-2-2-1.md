@@ -1,4 +1,4 @@
-## Continued - continued
+## Content Security Policy and Trusted Types - continued
 
 ```ts
 // proxy.ts

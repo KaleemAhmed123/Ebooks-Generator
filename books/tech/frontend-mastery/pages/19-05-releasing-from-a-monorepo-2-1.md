@@ -17,7 +17,7 @@ jobs:
       pull-requests: write
       id-token: write            # OIDC, so no long-lived npm token
     steps:
-      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v7.0.0
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
       - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v7
         with: { node-version: '24', cache: 'pnpm' }

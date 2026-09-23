@@ -23,7 +23,7 @@ import { db } from '@/lib/db';
 import { revalidatePath } from 'next/cache';
 
 export async function updateUser(formData: FormData) {
-  // We can securely read the database here because this is the server!
+  // We can securely read the database here because this is the server.
   const name = formData.get('name');
   
   await db.user.update({ name });

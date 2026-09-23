@@ -10,7 +10,7 @@ import localforage from 'localforage';
 
 async function saveOfflineData() {
   try {
-    // You can store full objects! No need for JSON.stringify()
+    // You can store full objects. No need for JSON.stringify()
     await localforage.setItem('user_drafts', [{ title: "My Draft", content: "..." }]);
     console.log("Draft saved securely to IndexedDB!");
   } catch (err) {

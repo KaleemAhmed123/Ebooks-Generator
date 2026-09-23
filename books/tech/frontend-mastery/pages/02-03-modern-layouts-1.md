@@ -2,7 +2,7 @@
 
 For over a decade, frontend layouts were built on hacks. We used `float: left` intended for text-wrapping to build navigation bars, and `display: table` to vertically center elements. It was a nightmare.
 
-Today, CSS provides two dedicated, immensely powerful layout algorithms: **Flexbox** (for 1-Dimensional layouts) and **CSS Grid** (for 2-Dimensional layouts).
+Today, CSS provides two dedicated layout algorithms: **Flexbox** (for 1-Dimensional layouts) and **CSS Grid** (for 2-Dimensional layouts).
 
 ### Flexbox: The 1-Dimensional Engine
 

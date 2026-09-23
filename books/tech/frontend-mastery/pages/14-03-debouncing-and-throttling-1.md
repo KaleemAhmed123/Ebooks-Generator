@@ -4,7 +4,7 @@ Imagine you have a search bar that makes an API call to fetch products every tim
 
 If the user types "Macbook" in 0.5 seconds, they just triggered 7 separate API calls to your database: `M`, `Ma`, `Mac`, `Macb`, `Macbo`, `Macboo`, `Macbook`.
 
-This is a catastrophe. Not only are you burning your server budget and potentially crashing your database, but the frontend will likely experience Race Conditions. The response for `Ma` might arrive from the server *after* the response for `Macbook`, meaning the user sees the wrong search results!
+This is a catastrophe. Not only are you burning your server budget and potentially crashing your database, but the frontend will likely experience Race Conditions. The response for `Ma` might arrive from the server *after* the response for `Macbook`, meaning the user sees the wrong search results.
 
 To fix this, we use two fundamental JavaScript rate-limiting techniques: **Debouncing** and **Throttling**.
 
@@ -28,7 +28,7 @@ function debounce(func, delay) {
 }
 
 // Now, no matter how fast the user types, we only make 1 API call,
-// exactly 500ms AFTER they completely stop typing!
+// exactly 500ms AFTER they completely stop typing.
 const searchApi = debounce((query) => fetch(`/api/search?q=${query}`), 500);
 ```
 **Best Used For:** Search bars, auto-saving forms, window resizing.

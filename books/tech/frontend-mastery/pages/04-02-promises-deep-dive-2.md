@@ -33,7 +33,7 @@ myPromise
     console.error(error); 
   })
   .finally(() => {
-    // This runs regardless of success or failure. Perfect for hiding loading spinners!
+    // This runs regardless of success or failure. Perfect for hiding loading spinners.
     console.log("Cleanup complete.");
   });
 ```

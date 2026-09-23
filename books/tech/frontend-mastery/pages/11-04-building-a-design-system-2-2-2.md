@@ -15,7 +15,8 @@ exactly the split you want.
 | **Ark UI** | React, Vue, Solid and Svelte from one codebase |
 | **React Aria** | Adobe's, the most rigorous accessibility work in the category |
 
-**shadcn/ui**, which crossed 75,000 GitHub stars, supports **both Radix and Base
+**shadcn/ui**, at about 123,000 GitHub stars as of September 2026, supports
+**both Radix and Base
 UI** primitives under the same component API. That is worth understanding
 because it explains the model: shadcn is not a dependency you install, it is
 code you copy into your repository. You own the file, you can edit it, and there

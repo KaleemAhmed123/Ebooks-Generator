@@ -7,7 +7,7 @@ import { useUser } from '../hooks/useUser';
 import { useWindowWidth } from '../hooks/useWindowWidth';
 
 function UserProfile() {
-  // We just declare what we need. The implementation details are hidden!
+  // We just declare what we need. The implementation details are hidden.
   const { user, loading } = useUser();
   const width = useWindowWidth();
 

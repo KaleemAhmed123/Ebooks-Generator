@@ -2,7 +2,7 @@
 
 If you declare a standard JavaScript variable inside a React component (`let count = 0;`), two things will go wrong when you try to update it:
 1. React will not know the variable changed, so it will not trigger a re-render to update the UI.
-2. Even if a re-render is triggered by something else, the entire component function runs again from top to bottom, which means `let count = 0;` will re-execute, wiping out your changes!
+2. Even if a re-render is triggered by something else, the entire component function runs again from top to bottom, which means `let count = 0;` will re-execute, wiping out your changes.
 
 To solve this, React gives us the `useState` hook. It solves both problems simultaneously:
 1. Calling the setter function (e.g., `setCount`) actively alerts React's engine that a change occurred, scheduling a re-render.
@@ -17,7 +17,7 @@ const [count, setCount] = useState(0);
 
 const handleClick = () => {
   setCount(1);
-  console.log(count); // Output: 0! Why isn't it 1?
+  console.log(count); // Output: 0. Why isn't it 1?
 };
 ```
 

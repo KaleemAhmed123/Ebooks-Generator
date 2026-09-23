@@ -15,5 +15,5 @@ class Animal {
 }
 
 const dog = new Animal("Rex");
-// Under the hood, dog.__proto__ points to Animal.prototype!
+// Under the hood, dog.__proto__ points to Animal.prototype.
 ```

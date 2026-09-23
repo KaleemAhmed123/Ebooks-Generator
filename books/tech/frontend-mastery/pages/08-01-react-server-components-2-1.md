@@ -55,7 +55,7 @@ import { MarkdownParser } from 'massive-2mb-library';
 import { LikeButton } from './LikeButton'; // Client Component
 
 export default async function Article({ id }) {
-  // Direct database access inside a component!
+  // Direct database access inside a component.
   const article = await db.article.findUnique({ where: { id } });
 
   return (

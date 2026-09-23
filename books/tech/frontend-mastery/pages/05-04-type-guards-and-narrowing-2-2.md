@@ -6,7 +6,7 @@ If you just return a boolean from that helper function, TypeScript will lose the
 type Admin = { role: "admin", accessLevel: number };
 type User = { role: "user", email: string };
 
-// BAD: WRONG: TS just sees a function returning a boolean. It won't narrow the type!
+// BAD: WRONG: TS just sees a function returning a boolean. It won't narrow the type.
 function isAdminWrong(person: Admin | User): boolean {
   return person.role === "admin";
 }
@@ -18,7 +18,7 @@ function isAdminRight(person: Admin | User): person is Admin {
 
 function login(person: Admin | User) {
   if (isAdminRight(person)) {
-    console.log(person.accessLevel); // Fully typed!
+    console.log(person.accessLevel); // Fully typed.
   }
 }
 ```

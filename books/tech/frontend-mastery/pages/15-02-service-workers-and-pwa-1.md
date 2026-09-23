@@ -15,7 +15,7 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     // Check if the user has an internet connection
     fetch(event.request).catch(() => {
-      // If offline, return a cached version of the data!
+      // If offline, return a cached version of the data.
       return caches.match(event.request);
     })
   );
@@ -25,6 +25,6 @@ self.addEventListener('fetch', (event) => {
 ### The Caching Strategies
 You must decide how your Service Worker handles data. The three most common strategies are:
 
-1. **Cache First (For Static Assets):** The worker checks the cache for `logo.png`. If it exists, it returns it instantly without ever hitting the network. This makes subsequent loads of your app blazing fast.
+1. **Cache First (For Static Assets):** The worker checks the cache for `logo.png`. If it exists, it returns it instantly without ever hitting the network. Subsequent loads never touch the network.
 2. **Network First (For Dynamic Data):** The worker tries to fetch `/api/user-profile` from the internet. If the internet fails (subway), it falls back to the last cached version.
 3. **Stale-While-Revalidate:** The worker instantly returns the cached data so the user sees *something* immediately, but secretly goes to the network in the background to fetch fresh data and updates the cache for next time.

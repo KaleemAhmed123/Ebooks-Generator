@@ -6,12 +6,12 @@ function Dashboard(props) {
   return <h1>Welcome to your Dashboard, {props.user}!</h1>;
 }
 
-// We "upgrade" the Dashboard. Now it magically has authentication checks!
+// We "upgrade" the Dashboard. Now it has authentication checks.
 export default withAuth(Dashboard);
 ```
 
 ### The "Wrapper Hell" Problem
-HOCs were powerful, but they caused massive problems. 
+HOCs worked, but they caused three problems. 
 If a component needed Authentication, Redux data, and React Router navigation, you had to wrap it multiple times:
 
 ```jsx

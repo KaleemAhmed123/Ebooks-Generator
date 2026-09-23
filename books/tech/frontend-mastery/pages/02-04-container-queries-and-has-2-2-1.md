@@ -1,4 +1,4 @@
-## Continued - continued
+## Container Queries and `:has()` - continued
 
 ```css
 .card-slot {

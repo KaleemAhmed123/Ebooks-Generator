@@ -15,7 +15,7 @@ let data: unknown;
 // BAD: COMPILER ERROR: "Object is of type 'unknown'"
 data.toLowerCase(); 
 
-// GOOD: You must prove it using a Type Guard first!
+// GOOD: You must prove it using a Type Guard first.
 if (typeof data === "string") {
   console.log(data.toLowerCase()); // Now it works perfectly
 }

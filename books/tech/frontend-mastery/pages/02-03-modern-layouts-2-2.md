@@ -1,4 +1,4 @@
-## Continued - continued
+## Modern Layouts: Flexbox and Grid - continued
 
 #### CSS Subgrid
 Historically, a Grid's tracks only applied to its direct children. If you had a nested component, it couldn't align itself to the parent's grid lines. 

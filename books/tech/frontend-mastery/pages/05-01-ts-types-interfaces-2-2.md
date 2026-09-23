@@ -1,5 +1,5 @@
 ### Type Aliases
-A `type` alias can define objects, just like an interface, but it is vastly more powerful. A `type` can define Primitives, Tuples, and Unions.
+A `type` alias can define objects, just like an interface, but it also covers Primitives, Tuples, and Unions.
 
 ```typescript
 // Interfaces CANNOT do this:

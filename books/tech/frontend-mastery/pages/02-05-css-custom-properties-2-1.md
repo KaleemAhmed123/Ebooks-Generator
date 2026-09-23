@@ -6,7 +6,7 @@ Imagine a highly reusable `Card` component.
 
 ```css
 .card {
-  /* It defaults to a white surface, but is overridable! */
+  /* It defaults to a white surface, but is overridable. */
   background-color: var(--card-bg, var(--surface)); 
   color: var(--text-color);
   padding: 1rem;
@@ -26,7 +26,7 @@ If we want a specific "Dark Card", we don't need to write `.card.dark-card { bac
 <!-- Renders as a white card -->
 <div class="card">Hello</div> 
 
-<!-- Renders as a dark card because the variables cascade down! -->
+<!-- Renders as a dark card because the variables cascade down. -->
 <div class="theme-dark">
   <div class="card">Dark Mode</div> 
 </div>

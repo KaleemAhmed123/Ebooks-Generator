@@ -6,7 +6,7 @@ CSRF forces an end user to execute unwanted actions on a web application in whic
 1. A user logs into `bank.com`. The browser saves their authentication cookie.
 2. The user visits a malicious forum, `evil.com`.
 3. `evil.com` contains a hidden image tag: `<img src="https://bank.com/transfer?amount=1000&to=attacker" />`.
-4. When the browser tries to load the image, it sends a GET request to `bank.com`. Because the browser automatically attaches all `bank.com` cookies to requests targeting `bank.com`, the bank sees a valid, authenticated request and executes the transfer!
+4. When the browser tries to load the image, it sends a GET request to `bank.com`. Because the browser automatically attaches all `bank.com` cookies to requests targeting `bank.com`, the bank sees a valid, authenticated request and executes the transfer.
 
 **The Defense:**
 1. **SameSite Cookies:** Modern browsers support the `SameSite` attribute for cookies. Setting `SameSite=Lax` or `SameSite=Strict` tells the browser: "Do not attach this cookie if the request is originating from a different domain (like `evil.com`)." This effectively neutralizes standard CSRF.

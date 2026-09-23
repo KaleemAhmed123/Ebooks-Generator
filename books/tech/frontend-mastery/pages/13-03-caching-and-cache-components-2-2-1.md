@@ -50,13 +50,14 @@ Cache Components remove the choice. The static shell is prerendered and served f
 :::
 
 ```tsx
-export default function ProductPage({ params }) {
+export default async function ProductPage({ params }) {
+  const { id } = await params;
   return (
     <>
       <Header />                              {/* cached, instant */}
-      <ProductDetails id={params.id} />       {/* cached, instant */}
+      <ProductDetails id={id} />              {/* cached, instant */}
       <Suspense fallback={<PriceSkeleton />}>
-        <LivePrice id={params.id} />          {/* per request, streams in */}
+        <LivePrice id={id} />                 {/* per request, streams in */}
       </Suspense>
       <Suspense fallback={<CartSkeleton />}>
         <CartWidget />                        {/* per user, streams in */}

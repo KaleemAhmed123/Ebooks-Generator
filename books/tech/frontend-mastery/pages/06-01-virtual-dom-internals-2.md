@@ -7,7 +7,7 @@ Instead, it follows a strict process called **Reconciliation**:
 2. **Diffing:** React takes this new Virtual DOM tree and compares it against the old Virtual DOM tree from the previous render. It looks for the exact differences.
 3. **Commit Phase:** Once React has mapped out the absolute minimum number of changes required (e.g., "Change the text of node #4" and "Delete node #9"), it batches all of these instructions together and updates the Real DOM in one single, highly-optimized operation.
 
-This guarantees that the browser only performs one single Layout and Paint, no matter how many state changes occurred!
+This guarantees that the browser only performs one single Layout and Paint, no matter how many state changes occurred.
 
 :::mint
 <svg viewBox="0 0 470 142" xmlns="http://www.w3.org/2000/svg" role="img">

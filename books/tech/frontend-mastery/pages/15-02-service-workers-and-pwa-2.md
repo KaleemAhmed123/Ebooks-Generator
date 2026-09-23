@@ -7,7 +7,7 @@ To make your React app a fully installable PWA (meaning the user can click "Add 
 ```json
 {
   "short_name": "MyReactApp",
-  "name": "My Awesome React Application",
+  "name": "My React Application",
   "icons": [
     {
       "src": "favicon.ico",
@@ -26,4 +26,4 @@ To make your React app a fully installable PWA (meaning the user can click "Add 
   "background_color": "#ffffff"
 }
 ```
-Setting `display: "standalone"` is what hides the browser's URL bar, making it feel exactly like a native application!
+Setting `display: "standalone"` is what hides the browser's URL bar, making it feel exactly like a native application.

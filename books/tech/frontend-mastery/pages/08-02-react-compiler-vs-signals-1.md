@@ -20,7 +20,7 @@ function Counter() {
   const [count, setCount] = createSignal(0);
 
   // When count changes, ONLY this specific DOM node updates.
-  // The Counter component function NEVER runs again!
+  // The Counter component function NEVER runs again.
   return <button onClick={() => setCount(c => c + 1)}>Count: {count()}</button>;
 }
 ```

@@ -4,7 +4,7 @@
 |---|---|
 | Content-led: marketing, docs, blog, commerce catalog | **Astro** |
 | A full-stack React application and you want the default | **Next.js** |
-| A full-stack React application and you want fewer abstractions | **Remix** |
+| A full-stack React application and you want fewer abstractions | **React Router v7** |
 | Type safety on routes and data matters more than ecosystem size | **TanStack Start** |
 | A dashboard behind a login, with no SEO requirement | **Vite plus React Router.** No framework needed |
 | The team already knows Vue or Svelte | **Nuxt** or **SvelteKit** |

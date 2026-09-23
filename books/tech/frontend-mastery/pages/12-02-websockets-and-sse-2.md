@@ -7,7 +7,7 @@ return <div>{messages.map(m => <p>{m.text}</p>)}</div>;
 **Best Used For:** Real-time multiplayer games, live chat apps, collaborative document editing (Google Docs).
 
 ### 3. Server-Sent Events (SSE)
-WebSockets are powerful but very difficult to scale on the backend (maintaining thousands of open TCP connections requires specialized architecture like Redis Pub/Sub).
+WebSockets are difficult to scale on the backend (maintaining thousands of open TCP connections requires specialized architecture like Redis Pub/Sub).
 
 Often, you don't need two-way communication. You just need the server to push updates (like a live stock ticker, or a streaming ChatGPT response). The client never needs to push massive amounts of data back over the socket.
 

@@ -4,7 +4,7 @@ The industry loves a pendulum swing. For the last ten years, the pendulum swung 
 
 By 2026, the pendulum has swung back. We have realized that sending massive JavaScript bundles just to render static text is a catastrophic waste of battery, bandwidth, and CPU cycles.
 
-This realization birthed two powerful architectural movements: **Islands Architecture** and the **Hypermedia (HTMX)** approach.
+This realization birthed two architectural movements: **Islands Architecture** and the **Hypermedia (HTMX)** approach.
 
 ### Islands Architecture (Astro)
 

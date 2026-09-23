@@ -9,7 +9,7 @@ A React application might build perfectly on your Mac, but fail completely on th
 
 To containerize a React application, we create a set of instructions called a `Dockerfile`.
 
-For a standard React Single Page Application built with Vite, you do not need Node.js in production! Node is only needed to *build* the HTML/CSS/JS files. Once built, we just need a blazing-fast web server like Nginx to serve those static files.
+For a standard React Single Page Application built with Vite, you do not need Node.js in production. Node is only needed to *build* the HTML/CSS/JS files. Once built, we just need a static web server like Nginx to serve those files.
 
 This is where **Multi-Stage Builds** come in.
 

@@ -15,7 +15,7 @@ interface User {
 // UserUpdate is exactly like User, but everything has a `?`
 type UserUpdate = Partial<User>; 
 
-const payload: UserUpdate = { name: "Bob" }; // Perfectly valid!
+const payload: UserUpdate = { name: "Bob" }; // Perfectly valid.
 ```
 
 #### 2. `Pick<T, Keys>`

@@ -5,13 +5,16 @@ split, and knowing which half you are looking at is the useful part.
 
 ### The numbers
 
-Between 2023 and 2026, **styled-components fell from roughly 8.5 million to 6.8
-million weekly downloads**, about a 20% decline, while **Tailwind doubled from 6
-million to 12 million**. New projects overwhelmingly choose Tailwind, CSS
-Modules, or a zero-runtime tool.
+As of September 2026, npm reports roughly **11.5 million weekly downloads for
+`styled-components`** and **126 million for `tailwindcss`**. Read both with
+care: download counts include CI runs, mirrors and transitive installs, so they
+measure how often a package is fetched, not how often a team chose it.
 
-But `vanilla-extract`, Panda CSS and StyleX are all growing. So the category did
-not die. **Runtime** CSS-in-JS declined.
+What they do show is that styled-components has not collapsed — it is not
+shrinking. New projects overwhelmingly choose Tailwind, CSS Modules or a
+zero-runtime tool, and `vanilla-extract`, Panda CSS and StyleX are all growing,
+but the runtime tools kept the codebases they already had. The category did not
+die. It split.
 
 ### Why the runtime kind lost
 

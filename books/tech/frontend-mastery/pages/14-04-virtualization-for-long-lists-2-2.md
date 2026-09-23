@@ -1,4 +1,4 @@
-## Continued - continued
+## Virtualization for Long Lists - continued
 
 The naive version is thirty lines and wrong in six ways: variable row heights,
 resizing, keyboard navigation into an unrendered row, screen readers announcing

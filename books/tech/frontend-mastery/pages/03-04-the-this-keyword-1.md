@@ -30,7 +30,7 @@ user.greet(); // Output: "Hello, my name is Alice"
 ```
 
 **The Danger Zone:**
-If you extract that method into a variable and call it without the object, it loses its binding!
+If you extract that method into a variable and call it without the object, it loses its binding.
 
 ```js
 const extractedGreet = user.greet;

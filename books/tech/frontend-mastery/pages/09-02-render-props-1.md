@@ -23,7 +23,7 @@ class MouseTracker extends React.Component {
   render() {
     return (
       <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
-        {/* Instead of hardcoding what to render, it calls a function passed as a prop! */}
+        {/* Instead of hardcoding what to render, it calls a function passed as a prop. */}
         {this.props.render(this.state)}
       </div>
     );

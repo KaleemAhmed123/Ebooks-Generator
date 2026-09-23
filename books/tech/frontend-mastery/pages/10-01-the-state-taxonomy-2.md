@@ -17,7 +17,7 @@ Today, Senior Frontend Engineers do not put everything in one bucket. We categor
 - **What it is:** State that a user might want to bookmark, share with a friend, or use the "Back" button to navigate.
 - **Examples:** The current search query (`?q=shoes`), active filters (`?color=red`), pagination (`?page=2`), or the currently selected item ID.
 - **The Tool:** React Router (`useSearchParams`) or Next.js App Router.
-- **Rule:** The URL is the most powerful state manager in your app. Use it heavily.
+- **Rule:** The URL is the one state manager users can bookmark, share and reload. Use it heavily.
 
 #### 4. Global UI State
 - **What it is:** State that truly belongs to the user's entire session and must be accessed by completely disconnected components across the app.

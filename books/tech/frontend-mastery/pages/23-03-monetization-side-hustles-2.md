@@ -1,5 +1,5 @@
 ### 3. Technical Content Creation
-The most powerful asset a developer can have is distribution (an audience).
+The asset that compounds fastest is distribution (an audience).
 - Write deep, technical articles on Medium or Dev.to. (e.g., *"How I reduced our React bundle size by 40%"*).
 - Start a technical Twitter/X account. Share small, actionable snippets of code.
 - Once you build an audience of even 2,000 developers, you can easily monetize by:

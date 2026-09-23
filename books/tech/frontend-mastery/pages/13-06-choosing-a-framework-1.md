@@ -13,11 +13,15 @@ the hosting story on Vercel is the smoothest available. Its costs are real: the
 caching model has changed three times, and the framework has opinions that are
 hard to opt out of.
 
-**Remix**, now built on React Router v7 and later, is **backed by Shopify**. It
-leans on web standards, `Request` and `Response` and real form submissions,
-rather than framework abstractions. Multiple comparisons put it as the
-lower-risk full-stack React choice for a new project, because there is less
-framework between you and the platform.
+**React Router v7** in framework mode is what the old Remix became: the two
+projects merged, and the result shipped under the React Router name. It leans on
+web standards, `Request` and `Response` and real form submissions, rather than
+framework abstractions. That makes it the lower-risk full-stack React choice for
+a new project, because there is less framework between you and the platform.
+
+**Remix v3** is a different thing and no longer a React framework. Shopify
+restarted it on a fork of Preact with its own component model. Do not reach for
+it expecting React.
 
 **TanStack Start** is the interesting entrant. Vite-native, and built for
 **end-to-end type safety**: routes, search parameters and loader data are all

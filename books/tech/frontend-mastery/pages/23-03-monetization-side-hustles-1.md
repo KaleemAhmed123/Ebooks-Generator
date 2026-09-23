@@ -8,7 +8,7 @@ They get zero clients. Why? Because clients on Upwork do not care about React. T
 
 **The Strategy:** Change your profile to "Shopify Conversion Rate Optimization Expert."
 Find local businesses with incredibly slow, non-mobile-friendly websites. 
-Do not email them asking for work. Instead, build a blazing-fast Next.js / Tailwind prototype of their homepage over the weekend. Host it on Vercel for free.
+Do not email them asking for work. Instead, build a Next.js / Tailwind prototype of their homepage over the weekend. Host it on Vercel for free.
 Email the owner: *"I noticed your site takes 8 seconds to load on mobile, which kills SEO. I rebuilt it to load in 0.5 seconds. Here is the link. If you want the source code and the rest of the pages, it's $1,500."*
 This "Proof of Work" strategy converts clients at a massively higher rate than applying to job boards.
 

@@ -10,13 +10,13 @@ import { db } from '@/lib/db';
 import { Sidebar } from './Sidebar';
 
 export default async function DashboardPage() {
-  // We can fetch data right here!
+  // We can fetch data right here.
   const user = await db.getUser();
 
   return (
     <div>
       <h1>Welcome, {user.name}</h1>
-      {/* Sidebar can fetch its OWN data internally! No prop drilling! */}
+      {/* Sidebar can fetch its OWN data internally. No prop drilling. */}
       <Sidebar /> 
     </div>
   );
@@ -28,4 +28,4 @@ In the App Router, files do not become routes. **Folders** become routes.
 If you create a folder `app/dashboard/settings/`, the URL `/dashboard/settings` is created.
 
 However, to actually render UI for that URL, you must put a file named strictly `page.tsx` inside that folder. 
-This allows you to safely colocate your components! You can put `Button.tsx` and `SettingsForm.tsx` right next to your `page.tsx` file inside the `app/dashboard/settings/` folder. Because they are not named `page.tsx`, Next.js will not turn them into public URLs.
+This allows you to safely colocate your components. You can put `Button.tsx` and `SettingsForm.tsx` right next to your `page.tsx` file inside the `app/dashboard/settings/` folder. Because they are not named `page.tsx`, Next.js will not turn them into public URLs.

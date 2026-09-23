@@ -1,4 +1,4 @@
-## Continued - continued
+## OpenTelemetry in the Browser - continued
 
 ```ts
 registerInstrumentations({

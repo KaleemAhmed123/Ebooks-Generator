@@ -4,7 +4,7 @@ When a recruiter or Senior Engineer looks at your portfolio, they spend less tha
 
 If your portfolio is full of "To-Do Lists," "Weather Apps," and "Pokedexes," you immediately signal that you are a beginner who only follows YouTube tutorials. These apps do not solve real-world business problems.
 
-To get hired as a React Engineer, you must prove that you can build **Enterprise-Grade Architecture**. You only need 3 projects to do this.
+To get hired as a React Engineer, you must prove that you can build **architecture that holds up in production**. You only need 3 projects to do this.
 
 ### Project 1: The B2B SaaS Dashboard (The Money Maker)
 80% of frontend jobs involve building internal dashboards or B2B (Business-to-Business) SaaS tools. 

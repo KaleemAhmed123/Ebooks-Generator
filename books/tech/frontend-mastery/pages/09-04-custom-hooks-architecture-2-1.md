@@ -14,7 +14,7 @@ export function useWindowWidth() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  return width; // We just return the primitive value!
+  return width; // We just return the primitive value.
 }
 ```
 
