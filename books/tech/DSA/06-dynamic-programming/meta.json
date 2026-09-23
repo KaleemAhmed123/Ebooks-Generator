@@ -1,0 +1,25 @@
+{
+  "title": "Dynamic Programming",
+  "subtitle": "State, Transition, Optimisation",
+  "cover": {
+    "accent": "#2d6a4f",
+    "title": ["Dynamic", "Programming"],
+    "banner": "WHAT MUST THE PAST REMEMBER FOR THE FUTURE TO BE FREE?",
+    "kicker": "FRAMEWORK · KNAPSACK · INTERVAL · TREE · BITMASK · DIGIT",
+    "term": [
+      ["state → meaning → transition", 0],
+      ["base case → evaluation order", 0],
+      ["invent the state, derive the rest", 0],
+      ["$ _", 2]
+    ],
+    "stack": [
+      "the DP framework",
+      "classical · grid · subsequence",
+      "knapsack & partition",
+      "interval · tree · DAG",
+      "bitmask · digit · game",
+      "optimisation"
+    ],
+    "face": { "brow": "sharp", "mouth": "flat", "tilt": -3 }
+  }
+}
