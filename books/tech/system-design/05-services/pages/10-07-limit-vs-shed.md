@@ -1,16 +1,20 @@
-## Rate limiting vs load shedding
+## Limiting and shedding are not the same thing
 
-- Rate limiting and load shedding both reject traffic, but for completely different reasons
-- **Rate limiting** is a business policy applied per-client. "User A paid for the Basic tier, so User A is only allowed 10 requests per second." It protects fairness
-- **Load shedding** is an emergency survival mechanism applied per-server. "The server's CPU is at 99%, so I am rejecting 20% of all incoming requests." It protects the server from crashing
+- Both reject requests, and that is all they share. A limit is a promise made to one caller about their own usage. Shedding is a server deciding it cannot serve everyone and choosing who to disappoint
 
-| Feature | Rate Limiting | Load Shedding |
+| | Rate limiting | Load shedding |
 |---|---|---|
-| **Why we reject** | The user exceeded their quota | The server is out of capacity |
-| **Who we reject** | The specific user | Anyone (except high priority requests) |
-| **Where it runs** | API Gateway or Application code | At the admission layer (TCP/HTTP queue) |
+| The question | has this caller exceeded their share | is this server past what it can serve |
+| Scope | one key | the whole instance |
+| Configured from | a plan, a contract, a fairness rule | measured capacity, right now |
+| Who gets refused | the caller who went over | whoever is least important (Module 4, page 5) |
+| Changes when | someone changes the policy | load changes, second by second |
+| Answer | `429` | `503`, fast and cheap |
+
+- The two are set by different numbers and should be, because they answer different questions. A limit derived from capacity goes stale the moment the fleet is resized; capacity derived from a limit is a guess about how many callers will be active at once
+- Stripe's published arrangement is the shape to copy: a request-rate limiter and a concurrency limiter for per-caller fairness, and separately a load shedder that reserves a fraction of the fleet — their example is 20 % — for critical traffic, plus a worker-utilisation shedder that drops by priority class
 
 ### The failure
 
-- The failure is thinking a rate limiter protects your server from crashing. If your server can handle 1,000 requests per second, and you set a rate limit of 10 requests per second per user, what happens when 10,000 well-behaved users log in at the same time?
-- 10,000 users × 10 requests/sec = 100,000 requests/sec. No user violated their rate limit, so the rate limiter lets all the traffic through, and your server crashes. You must have load shedding to survive aggregate overload, regardless of individual limits
+- Believing the limiter protects the server. Ten thousand well-behaved callers at ten requests per second each is a hundred thousand requests per second, no caller has exceeded anything, the limiter passes all of it through, and the service falls over
+- The limiter was never measuring the thing that kills the server. It counts per key, and the server dies of the sum. Fairness between callers and survival under aggregate load are separate problems, and a system with only one of the two mechanisms is missing a failure mode rather than covering it cheaply

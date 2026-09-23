@@ -1,17 +1,21 @@
-## Cache-Control
+## Cache-Control for shared caches
 
-- The `Cache-Control` HTTP header is how your origin server tells the CDN and the browser what they are allowed to store. According to RFC 9111, this header overrides all default CDN behaviors
+- `Cache-Control` is how the origin states intent, and it overrides every CDN default. RFC 9111 gives shared caches a strict order for deciding freshness: `s-maxage`, then `max-age`, then `Expires`, and only if none are present, a heuristic
 
-| Directive | What it means |
+| Directive | What it actually means |
 |---|---|
-| `public` / `private` | `public` means a shared cache (CDN) can store it. `private` means only the user's browser can store it. |
-| `max-age=60` | The browser can cache this for 60 seconds. |
-| `s-maxage=3600` | The shared cache (CDN) can cache this for 3,600 seconds, overriding `max-age`. |
-| `immutable` | This file will never change. (Used for hashed filenames like `app.v2a9f.js`). |
-| `no-store` | Do not store this anywhere, ever. Fetch it from the origin every time. |
-| `no-cache` | You can store it, but you **must** revalidate it with the origin before serving it. |
+| `public` / `private` | may a *shared* cache store it — `private` means browser only |
+| `max-age=60` | fresh for 60 s in any cache |
+| `s-maxage=3600` | fresh for 3 600 s in a shared cache; outranks `max-age` there |
+| `no-cache` | store it, but revalidate with the origin before every reuse |
+| `no-store` | do not write it down at all |
+
+- With no freshness directive at all a cache may invent one from `Last-Modified` — RFC 9111 names 10 % of the elapsed time as typical — so a file modified a year ago becomes cacheable for weeks by a rule nobody wrote
+
+:::interview
+"What's the difference between `no-cache` and `no-store`?" — `no-store` means keep no copy anywhere. `no-cache` permits storage and forbids *reuse without checking*, so the cache holds the bytes and revalidates first. That makes `no-cache` a performance choice — a `304` saves resending the body — and `no-store` the confidentiality one. Using `no-cache` to mean "don't cache this" leaves the sensitive response on disk, which is what it was meant to prevent.
+:::
 
 ### The failure
 
-- The failure is misunderstanding `no-cache`. Many developers use `Cache-Control: no-cache` thinking it means "do not store this file." It does not. It means "you can store it, but you have to ask me if it has changed before you serve it"
-- If you want to guarantee that a file is never written to a disk cache, you must use `no-store`. If you accidentally use `no-cache` on a sensitive banking API, the browser might write the JSON to the user's hard drive, where malware can find it
+- `no-cache` on a banking response, believed to prevent storage. The body is written to the browser's disk cache and to any shared cache in the path, readable by anyone with access to that machine, while the directive adds only a revalidation round trip

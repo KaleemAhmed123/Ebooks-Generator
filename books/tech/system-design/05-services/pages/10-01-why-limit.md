@@ -1,16 +1,21 @@
-## Why rate limit
+# Module 10 - Rate limiting
 
-- An API without limits is an API waiting to be taken down by a `while(true)` loop. Rate limiting protects your system from abuse (intentional or accidental), ensures fairness across all users, and controls infrastructure costs
-- A limit restricts the number of actions in a short time frame (e.g., 10 requests per second) to prevent spikes. A quota restricts the total usage over a long time frame (e.g., 10,000 requests per month) for billing purposes
-- You must decide what the "key" is for your limit:
+## Why limit, and on what key
 
-| Rate Limit Key | Pros | Cons |
+- Three separate reasons, often conflated: protecting capacity, keeping one caller from starving another, and controlling cost. They want different limits, and saying which one a limit serves is what makes its number defensible
+- A **limit** bounds a short interval — 10 per second, to stop a spike. A **quota** bounds a long one — 10 000 a month, because that is what was purchased. The first is engineering, the second is billing, and they fail differently
+
+| Key | Works for | Cost |
 |---|---|---|
-| **API Token / User ID** | Perfectly tracks exactly who is making the request | The user must be authenticated before you can limit them |
-| **IP Address** | Works for unauthenticated routes (like the login page itself) | Shared IPs (NAT) mean you might accidentally limit an entire office |
-| **Tenant / Workspace ID** | Ensures one customer account cannot starve another | Harder to implement if tenants have hundreds of sub-users |
+| API token or user id | anything authenticated | useless before the caller is identified |
+| IP address | login, signup, password reset | many strangers share one address |
+| Tenant or workspace | stopping one customer starving another | a busy tenant's own users compete |
+| Endpoint + key | protecting one expensive route | more counters, and more to reason about |
+
+- The key is the real decision. A limit on the wrong key either does nothing — the abuser rotates it — or punishes people who share it with the abuser
+- Unauthenticated routes have no good key, which is why login is both the route that most needs limiting and the one hardest to limit fairly. The usual answer is layered: a loose limit per address, a tight one per account, and a proof-of-work or challenge when either trips
 
 ### The failure
 
-- The failure is keying your rate limit on IP address for mobile phone users. Cellular networks use Carrier-Grade NAT (CGNAT)
-- This means 10,000 completely different people walking around a city might all share the exact same external IP address on their phones. If you set a rate limit of "10 requests per minute per IP", one aggressive user will cause you to accidentally block 9,999 innocent strangers. Always limit by API token or User ID when possible
+- Limiting by IP address for mobile traffic. Carrier-grade address translation puts thousands of unrelated subscribers behind one address, so "10 per minute per IP" is shared by a city, and the first heavy user exhausts it for everyone else on that carrier
+- University networks, offices and corporate VPNs do the same thing. The failure is silent and selective: the service works for most people, and is unusable for whole populations who have no way to tell you, because their requests are being rejected exactly as configured

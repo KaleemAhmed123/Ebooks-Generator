@@ -1,18 +1,20 @@
 ## Object storage
 
-- Relational databases are built for tiny, structured rows. If you try to save a 50MB video file in a Postgres `BYTEA` column, you will destroy the database's cache and disk performance
-- Large binary files (images, videos, backups) must be saved in Object Storage (like Amazon S3). Object storage is a flat Key-Value store where the Key is a string (like `/avatars/user-99.jpg`) and the Value is raw bytes
-- S3 provides "11 nines" of durability (99.999999999%). If you store 10,000 files in S3, you can expect to lose a single file once every 10 million years. It achieves this by silently replicating your bytes across at least three physically separate datacenters
+- A flat map from a string key to a blob of bytes, addressed over HTTP. There is no tree, no partial write, and no rename. Those absences are the design, and they are what lets a single object reach 48.8 TiB
 
-| Feature | File System (NFS) | Object Storage (S3) |
+| | File system | Object storage |
 |---|---|---|
-| **Structure** | Deep tree of directories | Flat list of keys |
-| **API** | OS Kernel (open, seek, read) | HTTP (PUT, GET) |
-| **Updates** | Can overwrite bytes in the middle | Immutable. Must overwrite the entire file |
-| **Durability** | Single datacenter | Multi-datacenter by default |
+| Structure | a tree of directories | flat keys; `/` is just a character |
+| Access | `open`, `seek`, `write` | `PUT`, `GET`, `DELETE` over HTTP |
+| Partial write | overwrite bytes in place | replace the whole object |
+| Rename | an inode operation | copy to the new key, delete the old |
+| Listing | cheap, per directory | paginated over the whole prefix |
+| Concurrent writers | locks | none — last writer wins |
+
+- S3 gives **strong read-after-write for `PUT` and `DELETE` in every region**, so a successful write is immediately visible to the next read. That removes a whole category of workaround code people still write out of habit
+- What it does not give is any arbitration between concurrent writers. AWS is explicit that it "does not support object locking for concurrent writers" and that with simultaneous `PUT`s "the request with the latest timestamp wins" — so two uploads of the same key produce one surviving object and no error for the loser
 
 ### The failure
 
-- The failure is treating Object Storage like a traditional File System. There is no concept of a "Folder" in S3, just keys that happen to have slashes in them
-- There is no "Rename" command in the S3 API. To rename `/videos/funny.mp4` to `/archive/funny.mp4`, you must command S3 to make a full copy of the bytes to the new key, and then issue a second command to delete the old key
-- If you build an app feature that lets users rename "folders", and a user renames a folder containing 10,000 files, your app will have to issue 20,000 separate HTTP requests to S3, which will take minutes and likely time out
+- Treating it as a filesystem, usually via a feature that lets users rename a folder. There are no folders, so renaming a prefix holding 10 000 objects is 10 000 server-side copies followed by 10 000 deletes — twenty thousand requests, charged, rate-limited, and far past any HTTP timeout the request began under
+- The same assumption produces the listing problem: `list` is paginated across the whole prefix, so a UI that shows "the files in this folder" on a prefix with a million keys is walking the entire prefix to filter it. Both are fine at the scale they are written at and become incidents later, because the API makes the expensive operation look identical to the cheap one

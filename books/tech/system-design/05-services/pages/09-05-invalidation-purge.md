@@ -1,15 +1,19 @@
 ## Purging and cache keys
 
-- If a file is cached in the CDN with a 1-year TTL, and you discover a typo in the file, you cannot wait a year for the cache to naturally expire. You must manually clear the cache. This is called a Purge (or Invalidation)
-- Most CDNs allow you to purge by exact URL (`/styles/app.css`) or by Tag (purging all files tagged `category:shoes`). Purging is slow. It takes time for the central CDN control plane to broadcast the purge command to all 300+ PoPs worldwide
+- A purge is a broadcast to every point of presence, and it is neither instant nor free. The design question is how to avoid needing one
 
-| Invalidation Strategy | How it works | When to use it |
+| Strategy | How a change takes effect | Cost |
 |---|---|---|
-| **Versioned URLs (Never Purge)** | You name the file `app.v2.css`. When you deploy, you upload `app.v3.css` and update your HTML to point to the new URL. The old file is simply abandoned. | **Best practice for all static assets.** No purging required. |
-| **Purge by URL** | You tell the CDN API: "Delete exactly `/api/products/123`." | When a database record changes. |
-| **Purge by Tag** | You tell the CDN: "Delete everything tagged `tenant_456`." | When a user deletes their account. |
+| Versioned URL | the HTML points at a new filename; the old one is simply abandoned | none — nothing is ever purged |
+| Purge by URL | one key is dropped at every PoP | a broadcast, and propagation lag |
+| Purge by tag | every object carrying a tag is dropped | a broadcast over a set nobody enumerated |
+| Purge everything | the whole cache is emptied | the origin takes 100 % of traffic |
+
+- Versioned URLs are the default for anything built by a pipeline. A content hash in the filename means the URL changes exactly when the bytes change, so the old copy can stay cached forever and the new one is fetched because it is a different key — no invalidation problem exists to solve
+- The **cache key** decides what "the same response" means, and `Vary` extends it. `Vary: Accept-Encoding` is routine. `Vary: Cookie` is close to fatal, because every distinct cookie value becomes its own cache entry and the hit rate collapses to nothing while the CDN bill does not
 
 ### The failure
 
-- The failure is the Purge Storm on deploy. If you deploy a new version of your frontend, and you issue a command to the CDN to "Purge Everything", you instantly wipe out 100% of the CDN's cache
-- The very next second, tens of thousands of users worldwide will request your HTML, JS, and CSS files. Every single one of those requests will miss the CDN and hit your origin server simultaneously, crushing it. You should never "Purge All" in production. Use Versioned URLs instead, so the new files are fetched gradually as users request the new HTML
+- Purge-everything on deploy. It is one button and it empties every PoP at once, so the next second the entire live traffic of the site misses at the edge and arrives at an origin that has been protected by a 95 % hit rate for months and is sized accordingly
+- It is the cold start of Module 8, page 7, with the whole internet on the other side. The origin was never capacity-tested for this, and the deploy that triggered it looks unrelated
+- Versioned URLs avoid it by construction: new assets are fetched gradually as users pick up the new HTML, so the shift in origin load is spread over however long it takes the HTML's own short TTL to turn over

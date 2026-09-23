@@ -1,43 +1,44 @@
 ## Token bucket
 
-- The Token Bucket is the industry-standard algorithm for rate limiting (used heavily by Stripe). It is intuitive and supports "bursts" of traffic
-- Imagine a bucket. The bucket holds a maximum number of tokens (the capacity, $b$). Every second, you add $r$ new tokens to the bucket. If the bucket is full, new tokens spill over and are lost
-- When a request arrives, you check if the bucket has at least 1 token. If it does, you take the token and allow the request. If the bucket is empty, you reject the request with HTTP 429
+- A bucket holds at most `b` tokens and gains `r` of them per second. A request takes one or is rejected. Two numbers, and they mean different things: `r` is the sustained rate, `b` is the largest burst the bucket can ever release at once
 
-<svg viewBox="0 0 460 140" role="img" aria-label="Token bucket algorithm. Tokens drip in at rate R. Requests take tokens out." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
-  <path d="M150 40 L150 110 L210 110 L210 40" stroke="#1a1a1a" fill="none" stroke-width="2"/>
-  
-  <circle cx="165" cy="100" r="8" fill="#e2fcf3" stroke="#1d4e89"/>
-  <circle cx="180" cy="100" r="8" fill="#e2fcf3" stroke="#1d4e89"/>
-  <circle cx="195" cy="100" r="8" fill="#e2fcf3" stroke="#1d4e89"/>
-  <circle cx="170" cy="85" r="8" fill="#e2fcf3" stroke="#1d4e89"/>
-  <circle cx="185" cy="85" r="8" fill="#e2fcf3" stroke="#1d4e89"/>
-  
-  <path d="M180 15 L180 35" stroke="#4a8f3c" stroke-width="2" fill="none"/>
-  <path d="M177 32 l3 5 l3 -5 z" fill="#4a8f3c"/>
-  <text x="180" y="10" text-anchor="middle" font-size="7">Refill Rate (r)</text>
-  
-  <path d="M220 95 L270 95" stroke="#b8541a" stroke-width="2" fill="none"/>
-  <path d="M267 92 l5 3 l-5 3 z" fill="#b8541a"/>
-  <text x="245" y="88" text-anchor="middle" font-size="7">Request Takes Token</text>
-  
-  <text x="180" y="125" text-anchor="middle" font-weight="bold">Capacity (b) = Max Burst</text>
+<svg viewBox="0 0 460 104" role="img" aria-label="A token bucket. Tokens arrive at r per second into a bucket of capacity b. Each request removes one token; when the bucket is empty the request is rejected with a 429. Capacity b is the maximum burst, because an idle client accumulates up to b tokens and can spend them all at once. An orange cross marks setting b to one thousand with r of ten: a quiet client can fire a thousand requests in one second and still be inside its policy." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
+  <text x="4" y="14" font-size="7.5">tokens arrive at r per second; capacity b is the largest burst the bucket can release</text>
+  <line x1="205" y1="22" x2="205" y2="32" stroke="#1d4e89" marker-end="url(#b)"/><text x="213" y="29" font-size="6.5">+ r per second</text>
+  <rect x="160" y="34" width="90" height="42" rx="3" fill="#fff" stroke="#1d4e89"/>
+  <rect x="163" y="54" width="84" height="19" fill="#e6f2ff"/>
+  <text x="205" y="68" text-anchor="middle" font-size="7">tokens</text>
+  <text x="205" y="48" text-anchor="middle" font-size="6" fill="#666">capacity b</text>
+  <line x1="250" y1="55" x2="300" y2="55" stroke="#1d4e89" marker-end="url(#b)"/><text x="275" y="51" text-anchor="middle" font-size="6.5">1 per request</text>
+  <rect x="304" y="46" width="100" height="18" rx="3" fill="#fbe9e2" stroke="#bf4c28"/><text x="354" y="58" text-anchor="middle" font-size="6.5" fill="#bf4c28">empty → 429</text>
+  <text x="100" y="56" font-size="6.5">an idle client</text>
+  <text x="100" y="66" font-size="6.5">fills up to b</text>
+  <text x="4" y="90" font-size="7">r is what the backend sustains; b is the spike it must survive — they are sized from different numbers</text>
+  <text x="4" y="101" font-size="7.5" fill="#bf4c28">✕ b = 1 000 with r = 10: a quiet client fires 1 000 in one second and is still inside its policy</text>
+  <defs><marker id="b" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#1d4e89"/></marker></defs>
 </svg>
 
-````typescript
+```typescript
 class TokenBucket {
-  tokens = 10; lastRefill = Date.now();
-  consume() {
-    const now = Date.now();
-    this.tokens = Math.min(10, this.tokens + ((now - this.lastRefill) / 1000 * 2));
-    this.lastRefill = now;
-    if (this.tokens < 1) return false; // Limited
-    this.tokens -= 1; return true; // Allowed
+  private tokens: number;
+  private last = Date.now();
+  constructor(private rate: number, private capacity: number) {
+    this.tokens = capacity;                    // starts full: the first burst is allowed
+  }
+  take(now = Date.now()): boolean {
+    const gained = ((now - this.last) / 1000) * this.rate;
+    this.tokens = Math.min(this.capacity, this.tokens + gained);
+    this.last = now;                           // refill is computed on read — no timer, no sweep
+    if (this.tokens < 1) return false;         // caller returns 429 (page 6)
+    this.tokens -= 1;
+    return true;
   }
 }
-````
+```
+
+- Computing the refill on read rather than on a timer makes it cheap per key: a bucket is two numbers, touched only when its owner sends a request, so idle keys cost nothing
+- Stripe runs this shape in Redis with a second limiter on *concurrent* requests, because a caller making few but slow requests exhausts workers without exceeding any rate
 
 ### The failure
 
-- The failure is making the bucket capacity ($b$) too large. Capacity is the maximum possible burst. If you refill at 10 requests per second, but capacity is 1,000, an idle user can suddenly send 1,000 requests in one second
-- If all users burst simultaneously, your database will crash. The burst capacity must be carefully tuned to what the backend can survive in a spike
+- Capacity chosen for generosity rather than from capacity. `b` is not a comfort setting; it is the number of requests every idle client is entitled to send simultaneously. With ten thousand idle clients and `b = 1 000`, the policy permits ten million requests in one second, and every one of them is compliant

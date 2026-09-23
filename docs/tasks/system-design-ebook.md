@@ -1276,6 +1276,84 @@ needed.
 quotas page and an inter-region latency table for 12-01's ocean round trip.
 
 
+### 2026-09-23 — booklet 05 Services, part 3: modules 9–12 written, checked, committed. Booklet complete at 109 pages
+
+**32 pages** (6 + 7 + 10 + 9), finishing booklet 05 at exactly the 109 pages
+the plan approved, and with that all six booklets of the series. Modules: 9
+CDN and the edge · 10 Rate limiting · 11 IDs, blobs, search · 12 Geography
+and real-time. `check-pages.mjs` reports **no problems** across all 109
+pages and 12 modules — the forward references from parts 1 and 2 into
+modules 10–12 resolved once those modules got their headings.
+
+**Module 12's draft was entirely off-plan and was rewritten from the
+research line.** The approved page list is multi-region, active-passive,
+active-active, data residency, DNS, anycast, real-time options, scaling
+connections, and a push-versus-pull summary. The cheap model had instead
+drafted real-time transports across four pages (polling, long polling, SSE,
+WebSockets) plus three pages of geospatial indexing (geospatial indexes,
+geohash, quadtrees/H3). The nine draft files were removed with `git rm` and
+nine new ones written; the transports collapsed into the single approved
+`12-07-realtime-options` table. **The geospatial material has no owner
+anywhere in the series** — booklet 06 cut "nearby friends" — so it is gone
+from the build and recoverable only from commit `f0bf529`. If it is wanted,
+it is a new module or a new booklet, not a patch to this one. Flagged to the
+user at the time rather than decided silently.
+
+**§5 fetches (the last 2 of 7).** S3 quotas page verified: maximum object
+**48.8 TiB**, parts 1–10 000, part size **5 MiB–5 GiB** with "no minimum
+size limit on the last part", and multipart suggested from ~100 MB — all
+used on 11-08. **The "11 nines" durability figure is not on that page, so it
+was cut from 11-06 rather than softened**, per the standing rule; 11-06 now
+rests on the verified consistency facts instead. Azure's published network
+latency statistics replaced §5's flagged folk number: P50 round-trip **East
+US ↔ West Europe 83 ms** and **East US → Japan East 162 ms**, measured by
+internal probes at 1-minute intervals over the 30 days ending 30 July 2026.
+Those two numbers now carry 12-01 and the whole CDN motivation on 09-01 and
+09-06. **Fetch budget for the booklet: 7 of 7 used.**
+
+**Diagrams: 18, all new.** Anchors: 09-01 origin → PoP → user with
+Cloudflare's default status TTLs and the measured 162 ms miss; 10-04 the
+fixed-window boundary burst against Cloudflare's weighted formula worked
+through; 10-05 a shared Redis counter against limit-÷-N with the 17-rejected
+arithmetic; 11-07 the presigned three-party flow; 12-03 active-active with
+MREC and MRSC; 12-08 the socket tier and its backplane. Others: 09-04 the
+stale-while-revalidate timeline, 09-06 edge compute and its single-region
+trap, 10-02 the token bucket, 10-03 the leaky bucket, 11-02 and 11-03 the
+UUIDv7 and Snowflake bit layouts, 11-08 multipart, 11-09 the inverted index,
+11-10 database → CDC → index with the alias swap, 12-02 active-passive,
+12-04 home-region routing, 12-06 anycast.
+
+**Checks.** PDF build: 6 overflows on the first build (09-03 by 38 mm, 11-02
+by 38, 12-03 by 25, 10-04 by 20, 10-02 by 5, 11-07 exactly at the limit),
+cleared in two passes to **zero overflow at 113 pages**. Code:
+`check05-3.mjs` in the scratchpad asserts the 10-02 token bucket (burst
+equals capacity at 10; empty refuses; 500 ms at r=2 yields exactly one
+token; refill clamps after an hour idle; 10 s from full passes 30), the
+10-05 limiter's semantics (**expiry set once and never extended by later
+hits**, a new window only after it lapses), the divided-limit arithmetic
+(100/3 = 33, 50 arrive → 17 refused of 60 total), Cloudflare's 42 × 0.75 +
+18 = 49.5, Snowflake's 1+41+10+12 = 64 with 41 bits of ms = 69.7 years,
+**Instagram's shift of 23 = 13 + 10 with all three fields round-tripping out
+of a real id and the sequence wrapping at exactly 1 024 per ms**, UUIDv7's
+48+4+12+2+62 = 128 and v4's 122 random bits, and 10 000 × 5 MiB = 48.83 GiB.
+One test initially failed on its own arithmetic — the mock's first hit is at
+t = 1 000, not 0 — which was the test being wrong, not the page.
+
+**Screenshot pass on all 18 diagrams** (`tools/shot.mjs`, deleted before
+commit): **only 2 needed a fix**, down from 5 of 24 in part 2, because the
+part-2 lessons were applied while drawing rather than after. 11-07's "2
+signed URL" label sat on its own arrow and moved into the gap between
+arrows 2 and 3; 10-02's capacity note was orphaned at the far left and moved
+alongside the bucket.
+
+**Lesson confirmed from part 2 and worth keeping:** reflowing a paragraph
+does not shrink a page. Both overflow passes here deleted whole bullets,
+table rows and code lines rather than rewording, and both landed first time.
+
+**Next:** the glossary, then the bound volume. Neither is scoped; plan both
+with the user first.
+
+
 ## Explanation
 
 ### 1. What changed

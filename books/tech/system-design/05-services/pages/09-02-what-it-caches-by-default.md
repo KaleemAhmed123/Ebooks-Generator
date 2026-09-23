@@ -1,16 +1,19 @@
 ## What it caches by default
 
-- Because caching the wrong thing causes massive security breaches, CDNs are extremely conservative about what they cache by default
-- By default (e.g., on Cloudflare), a CDN will **only** cache requests where the URL ends in a known static file extension (like `.jpg`, `.css`, `.js`, or `.pdf`). It will completely ignore your API endpoints (`/api/users`) and your HTML pages, passing them straight through to your origin
+- A CDN's defaults are deliberately timid, because the cost of caching the wrong thing is a data leak rather than a slow page. Cloudflare's rule is the representative one: cache by **file extension**, and do not cache HTML or JSON at all
 
-| Response Code | Default Cloudflare TTL |
+| Response | Default edge lifetime |
 |---|---|
-| **200 OK** | 120 minutes |
-| **301 Moved Permanently** | 120 minutes |
-| **302 Found** | 20 minutes |
-| **404 Not Found** | 3 minutes |
+| `200`, `206`, `301` | 120 minutes |
+| `302`, `303` | 20 minutes |
+| `404`, `410` | 3 minutes |
+| everything else | not cached |
+
+- Caching a `404` for three minutes is the detail worth noticing. It is negative caching (Module 8, page 14) applied at the edge, and it means a URL that was briefly broken stays broken at the edge for minutes after the fix
+- The origin overrides all of this with `Cache-Control` (page 3), and that is the only reliable way to state intent. Four values stop Cloudflare caching outright: `private`, `no-store`, `no-cache` and `max-age=0`
 
 ### The failure
 
-- The failure is expecting an API response to be cached just because it is a GET request. If you build a heavy `/api/products/trending` endpoint that takes 2 seconds to generate, and you put a CDN in front of it, the CDN will not cache it by default because it doesn't end in `.json` or `.html`
-- Your origin server will still receive 10,000 requests per second. To make a CDN cache an API response or an HTML page, your origin server must explicitly emit a `Cache-Control` header telling the CDN it is safe to do so
+- Expecting an API response to be cached because it is a `GET`. A `/api/products/trending` endpoint that takes two seconds to build is not cached by default — the path has no static extension and the body is JSON — so every request reaches the origin and the CDN contributes nothing
+- The mirror image is worse and comes from the same mechanism. A route that happens to end in something the extension list recognises gets cached whether or not anyone intended it: an endpoint serving a user's generated report at `/reports/2026-q3.pdf` matches on `.pdf`, and the default 120 minutes applies to a document that belongs to one person
+- Neither case is visible from the application. Both are decided by a list the CDN maintains and the origin never sees, which is why the header has to be set explicitly rather than inferred from how the URL happens to be spelled

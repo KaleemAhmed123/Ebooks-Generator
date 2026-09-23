@@ -1,33 +1,25 @@
-## Search as a service
+## Search as a separate system
 
-- Elasticsearch requires huge amounts of RAM to keep the Inverted Index fast. You should never run it on the same physical server as your primary relational database
-- The database remains the Source of Truth. The search engine is treated like a read-only cache. To keep them synchronized, you use Change Data Capture (CDC)
-- The CDC tool (like Debezium) listens to the Postgres transaction log. Every time a product is updated in Postgres, Debezium instantly streams a JSON update to Elasticsearch
+- The index is a derived copy, not a second source of truth. The database owns the data; the index is fed from it, may be rebuilt from it at any time, and is allowed to be slightly behind
 
-<svg viewBox="0 0 460 140" role="img" aria-label="Search architecture. DB streams CDC events to Search Index." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
-  <rect x="20" y="55" width="100" height="30" fill="#fcfcfc" stroke="#1a1a1a"/>
-  <text x="70" y="73" text-anchor="middle">Primary DB (Truth)</text>
-  
-  <rect x="170" y="55" width="100" height="30" fill="#e2fcf3" stroke="#1d4e89"/>
-  <text x="220" y="73" text-anchor="middle">CDC (Event Bus)</text>
-  
-  <rect x="320" y="55" width="100" height="30" fill="#fce4e2" stroke="#b8541a"/>
-  <text x="370" y="73" text-anchor="middle">Search Engine</text>
-  
-  <path d="M125 70 L165 70" stroke="#1a1a1a" fill="none"/>
-  <path d="M160 67 l5 3 l-5 3 z" fill="#1a1a1a"/>
-  
-  <path d="M275 70 L315 70" stroke="#1a1a1a" fill="none"/>
-  <path d="M310 67 l5 3 l-5 3 z" fill="#1a1a1a"/>
-  
-  <text x="145" y="65" text-anchor="middle" font-size="7">Write</text>
-  <text x="295" y="65" text-anchor="middle" font-size="7">Sync</text>
+<svg viewBox="0 0 460 98" role="img" aria-label="Search fed from the database. Postgres remains the source of truth; a change data capture stream carries every committed change into the search index, and queries read the index through an alias which can be swapped from one index version to the next. A write becomes searchable after the refresh, one second by default, and only on indices that have received a search in the last thirty seconds. An orange cross marks reading your own write from search: the refresh has not run, so the user is shown the value they just replaced." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
+  <text x="4" y="13" font-size="7.5">the database stays the source of truth; the index is derived and rebuildable</text>
+  <rect x="4" y="30" width="84" height="28" rx="3" fill="#fff" stroke="#1d4e89"/><text x="46" y="42" text-anchor="middle" font-size="7">Postgres</text><text x="46" y="53" text-anchor="middle" font-size="6">source of truth</text>
+  <rect x="134" y="30" width="84" height="28" rx="3" fill="#f3f3f3" stroke="#666"/><text x="176" y="42" text-anchor="middle" font-size="7">CDC stream</text><text x="176" y="53" text-anchor="middle" font-size="6">booklet 04</text>
+  <rect x="264" y="30" width="90" height="28" rx="3" fill="#e6f2ff" stroke="#1d4e89"/><text x="309" y="42" text-anchor="middle" font-size="7">index v2</text><text x="309" y="53" text-anchor="middle" font-size="6">rebuilt beside v1</text>
+  <rect x="392" y="30" width="62" height="28" rx="3" fill="#fff" stroke="#1d4e89"/><text x="423" y="42" text-anchor="middle" font-size="7">alias</text><text x="423" y="53" text-anchor="middle" font-size="6">v1 → v2</text>
+  <line x1="88" y1="44" x2="132" y2="44" stroke="#1d4e89" marker-end="url(#b)"/>
+  <line x1="218" y1="44" x2="262" y2="44" stroke="#1d4e89" marker-end="url(#b)"/>
+  <line x1="354" y1="44" x2="390" y2="44" stroke="#1d4e89" marker-end="url(#b)"/>
+  <text x="4" y="76" font-size="7">a write is searchable after the refresh — 1 s by default, and only on indices searched in the last 30 s</text>
+  <text x="4" y="92" font-size="7.5" fill="#bf4c28">✕ reading your own write from search: the refresh has not run, so the user sees the value they replaced</text>
+  <defs><marker id="b" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#1d4e89"/></marker></defs>
 </svg>
 
-- Search engines are Near-Real-Time. When a document arrives, Elasticsearch writes it to a memory buffer. Every 1 second (by default), it flushes the buffer into an immutable "Segment" that can be searched. A user's write is completely invisible to search for up to 1 second
+- "Near real-time" has a precise meaning. Elasticsearch's default refresh interval is **1 second**, and it applies only to indices that have received at least one search in the last 30 seconds — so an index nobody is querying may be much further behind than its configured interval suggests
+- Rebuilding is not an edit. Changing the analyser — adding a language, altering stemming — changes how every document was tokenised, so the existing index cannot be updated in place. Build a new index beside the live one, backfill it, and move the alias when it has caught up
 
 ### The failure
 
-- The failure is reading your own write from the search engine. If a user changes their profile name, and your application immediately issues a search query to verify it, the query will return the old name because the 1-second refresh hasn't happened yet
-- When a user edits an item, always read it back from the Primary Database, not the Search Engine
-- Another failure is rebuilding the index. If you need to change how tokens are generated (e.g., adding French support), you must rebuild the entire index. Never rebuild it in place. Build a completely new index in the background (v2), and when it finishes syncing, atomically swap the alias to point to v2
+- Reading your own write from search. The user renames something, the application immediately queries the index to show the result, and the refresh has not run — so the old name is displayed and the save appears to have failed, which is Module 8, page 12's read-your-writes problem arriving through a different door
+- The rule is the same: after a write, read the record from the database. Search answers "which records match", never "what does this record say now". Conflating the two is comfortable because the index usually catches up inside the time it takes to render a page, which makes the bug intermittent rather than absent
