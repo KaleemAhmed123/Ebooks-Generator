@@ -1,0 +1,26 @@
+{
+  "title": "Pattern Recognition",
+  "subtitle": "Named Families & the Patterns Nobody Named",
+  "cover": {
+    "accent": "#2d6a4f",
+    "title": ["Pattern", "Recognition"],
+    "banner": "LEARN WHY A TECHNIQUE WORKS, NOT JUST ITS NAME.",
+    "kicker": "LOCALITY · ORDER · EXTREMUM · RANGE · SEARCH SPACE · UNNAMED",
+    "term": [
+      ["sliding window → locality", 0],
+      ["monotonic stack → elimination", 0],
+      ["binary search → boundary finding", 0],
+      ["prefix sum → precompute", 0],
+      ["$ _", 2]
+    ],
+    "stack": [
+      "locality patterns",
+      "order & ranking",
+      "repeated extremum",
+      "range interaction",
+      "search space reduction",
+      "patterns nobody named"
+    ],
+    "face": { "brow": "sharp", "mouth": "flat", "tilt": -3 }
+  }
+}
