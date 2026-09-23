@@ -1,0 +1,46 @@
+{
+  "title": "The Algorithm Derivation Manual",
+  "subtitle": "Patterns · Structures · Proofs",
+  "seriesLine": "The Algorithm Derivation Manual",
+  "tocTitle": "Contents",
+  "contents": "per-topic",
+  "masterVolume": { "name": "dsa-complete" },
+  "order": [
+    "frontmatter",
+    "01-foundations",
+    "02-pattern-recognition",
+    "03-data-structures",
+    "04-algorithms",
+    "05-graphs",
+    "06-dynamic-programming",
+    "07-problem-solving-and-interviews",
+    "08-competitive-track",
+    "backmatter"
+  ],
+  "cover": {
+    "accent": "#2d6a4f",
+    "title": ["Algorithm", "Derivation", "Manual"],
+    "banner": "DERIVE THE SOLUTION. DON'T REMEMBER IT.",
+    "kicker": "PATTERNS · DATA STRUCTURES · GRAPHS · DP · INTERVIEWS · CP",
+    "term": [
+      ["n ≤ 10⁵ → O(n log n)", 0],
+      ["sorted? → binary search", 0],
+      ["repeated subproblem? → DP", 0],
+      ["connectivity? → DSU or BFS", 0],
+      ["$ _", 2]
+    ],
+    "stack": [
+      "Foundations",
+      "Pattern Recognition",
+      "Data Structures",
+      "Algorithms",
+      "Graphs",
+      "Dynamic Programming",
+      "Problem Solving & Interviews",
+      "Competitive Track"
+    ],
+    "label": "COMPLETE VOLUME",
+    "setLine": "ALL 8 BOOKLETS IN ONE VOLUME",
+    "face": { "brow": "sharp", "mouth": "flat", "tilt": -3 }
+  }
+}
