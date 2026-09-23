@@ -1,0 +1,24 @@
+{
+  "title": "Competitive Track",
+  "subtitle": "Number Theory, Strings, Geometry, Advanced",
+  "cover": {
+    "accent": "#2d6a4f",
+    "title": ["Competitive", "Track"],
+    "banner": "BEYOND INTERVIEWS.",
+    "kicker": "NUMBER THEORY · COMBINATORICS · STRINGS · GEOMETRY · ADVANCED",
+    "term": [
+      ["sieve → O(n log log n)", 0],
+      ["KMP → O(n + m)", 0],
+      ["convex hull → orientation test", 0],
+      ["$ _", 2]
+    ],
+    "stack": [
+      "number theory",
+      "combinatorics",
+      "string algorithms",
+      "geometry",
+      "advanced structures"
+    ],
+    "face": { "brow": "sharp", "mouth": "flat", "tilt": -3 }
+  }
+}
