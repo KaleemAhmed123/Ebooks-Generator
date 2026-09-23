@@ -1354,6 +1354,97 @@ table rows and code lines rather than rewording, and both landed first time.
 with the user first.
 
 
+### 2026-09-23 — glossary written and the bound volume assembled. Series complete at 592 printed pages
+
+**386 glossary entries across 30 pages, plus six front/back-matter pages, and
+the volume builds with zero overflow.** Nothing under the six booklets was
+edited: `git status books/tech/system-design/` shows only three new paths
+(`front/`, `backmatter/`, `theme.css`), and `check-pages.mjs` still reports
+**no problems** for all six booklets.
+
+**The `00-cover.md` question is answered: a leftover, and harmless.**
+`buildMaster` filters every child page with `!f.startsWith("00-cover")`, in the
+committed build and the working-tree one alike, and the volume draws its own
+cover. The built HTML carries exactly one `00-cover` section, the volume's own.
+In booklet 01's own build the file is used as the placeholder page 1 that the
+drawn cover replaces, which is why 01 numbers correctly at 71 content pages. It
+was left in place: deleting it would move booklet 01's own page numbering for
+no gain.
+
+**Harvest, and a correction to the handoff's figure.** The handoff's
+`grep -ho '\*\*[a-z][^*]*\*\*'` returns 379 spans, but `[a-z]` misses every
+capitalised term — a second pass on `[A-Z]` returns **373 more**, and that is
+where the acronyms live (ACID, BFF, BRIN, Anycast, B-tree, Backpressure,
+Amdahl's law, Anti-entropy). Normalised — case-folded, ≤ 4 words, SVG bodies and
+fenced code stripped, comma-bearing fragments dropped — the real candidate pool
+is **700 distinct spans**, 604 of them bolded on exactly one page, which is a
+strong first-use-definition signal. Triage kept 391, and merging variants
+(`Asynchronous` → asynchronous replication, `Row`/`Statement`/`Physical` → the
+three replication styles, `p50`/`p99` → one percentile entry) landed at **386**.
+
+**Method, to keep it cheap: the 532 pages were never re-read.** Two scripts did
+the work. `harvest.mjs` extracted every bolded span with its first-use location;
+`context.mjs` pulled the 250 characters around each kept term's first bolded
+use. Definitions were written from those snippets, so each one is a condensation
+of a page that had already been fact-checked rather than a fresh claim.
+`validate.mjs` then checked all 386 mechanically: no duplicate headword, strict
+alphabetical order on a punctuation-stripped key, every `booklet · module-page`
+pointer resolving to a real file, no definition containing its own headword, no
+banned word, nothing over 175 characters. First run found 16 ordering slips and
+one circular entry (`histogram` defined by "a latency histogram"); both fixed,
+the ordering by sorting mechanically rather than by hand. Second run: **all
+checks pass**.
+
+**Decisions taken with the user, 2026-09-23.** Provenance notation is
+`5 · 8-06` — booklet, module, page — which is literally the filename, so it is
+derivable and verifiable by script. Entry budget ~330 (landed at 386).
+`tools/build.mjs` is used exactly as found and kept out of the commit; the user
+was told plainly that `front/`/`backmatter/` rendering and `per-topic` contents
+exist **only** in the uncommitted working tree (the committed file has zero
+occurrences of "backmatter"), so the glossary does not render from a clean
+checkout until that file is committed separately.
+
+**Files added.** `front/01-preface.md`; `backmatter/00-00-topic-reference.md`
+(the back-of-book divider, matched by the build's `/^\d+-00-topic/`),
+`01-00-how-to-read.md` (`# Glossary` plus the pointer legend and a booklet
+table), `01-01…01-30-glossary-*.md`, `02-01-final-note.md`,
+`03-01-about-the-author.md`, `04-01-copyright.md`. The bio is TS2D's polished
+version rather than `shared/author/about-the-author.md`, which is a rougher
+draft ending in an unfinished working note; TS2D had already forked it the same
+way.
+
+**`books/tech/system-design/theme.css` added — a real defect, found by looking.**
+The series had no `theme.css`, and `.topic-terms` is styled in neither
+`shared/base.css` nor `books/tech/theme.css`. Every divider in the volume was
+rendering as an unstyled `<ul>` with default disc bullets — **including all six
+booklet dividers, which predates this work.** Screenshots caught it; the build
+reports nothing. Fixed by copying TS2D's `.page.topic` block (98 lines). Safe
+because the cascade **appends** CSS (`css += theme`) rather than replacing it —
+only `meta.json` merges and `cover.mjs` replaces — and `.page.topic` exists only
+in the merged volume. Verified inert: `01-foundations` still builds at 74 pages
+with zero overflow.
+
+**Not changed, on purpose:** `h1` renders in the domain's orange while the
+volume accent is navy `#24405e`. TS2D overrode this in its own theme. Here it is
+the established look of all six committed booklets, so overriding it would alter
+532 approved pages for an aesthetic call the user did not ask for. Recorded as an
+observation, not a defect.
+
+**Checks.** PDF build: one overflow on the first pass — `02-01-final-note` at
+188 mm of 186 — cleared by deleting one whole bullet rather than rewording, per
+the part-2 lesson; landed first time. **Zero overflow at 592 pages.** Structure
+verified by counting the HTML rather than assuming: 582 `.page` sections = 1
+cover + 7 contents + 7 dividers (6 booklets + Reference) + 1 preface + 532
+content + 1 how-to-read + 30 glossary + 1 final note + 1 author + 1 copyright,
+rendering to 592 printed sheets once the contents pages expand. Screenshot pass
+(`tools/shot.mjs`, recreated and deleted before commit) on the glossary A page,
+the W–Z page, both divider styles before and after the CSS fix, the how-to-read
+page, the preface and the final note.
+
+**No geospatial material was added.** Deferred to a possible booklet 07, per the
+2026-09-23 decision. The final note says so in the reader's own words rather
+than leaving the gap silent.
+
 ## Explanation
 
 ### 1. What changed

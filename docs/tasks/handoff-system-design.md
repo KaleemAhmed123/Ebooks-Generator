@@ -96,25 +96,62 @@ Do NOT edit any file. Reply with a concise report: WRONG (claim → correct valu
 
 ## Immediate next step
 
-**The six booklets are finished. Two things remain, in this order — the volume contains the glossary, so the glossary is built first.** The open questions on both were answered by the user on 2026-09-23 and are recorded below; do not re-ask them.
+**Nothing is outstanding. The series is finished and the volume is built.**
+Updated 2026-09-23, replacing the earlier "glossary, then the volume" plan now
+that both are done. The full record is the dated entry in
+`docs/tasks/system-design-ebook.md`; the short version follows.
 
-**1. The glossary.** One line per term, plain, never circular, no term twice. The sources are each booklet's bolded first-use definitions (`grep -ho '\*\*[a-z][^*]*\*\*' books/tech/system-design/*/pages/*.md` gets most of them) plus §4 of each research file, which lists the terms each booklet was built on. **Decided by the user on 2026-09-23, do not re-open:**
-- **Alphabetical, not order of first appearance.** A glossary is a random-access lookup: the reader hits a term mid-page and wants it now, and cannot be expected to know which booklet introduced it. A chronological glossary is a second table of contents.
-- **Every entry carries where the term is introduced** — booklet, module, page. That preserves the learning order without needing a second ordering, and makes each entry a jump-off point back into the text.
-- **One glossary, in the bound volume only.** Per-booklet copies would duplicate and drift apart.
-- **Entry shape:** term — one line, plain, never circular, no term defined twice — then the provenance pointer. That grep returns **379 distinct bolded spans** (measured 2026-09-23), but many are emphasis rather than first-use definitions, so the job is triage rather than transcription — a real piece of work, not an afternoon.
+**Done:** six booklets, 532 content pages, untouched by this session
+(`check-pages.mjs` clean on all six; `git status books/tech/system-design/`
+shows only new paths). A **386-entry alphabetical glossary** across 30 pages in
+`books/tech/system-design/backmatter/`, each entry one plain line plus a
+`booklet · module-page` pointer. Front matter (`front/01-preface.md`) and back
+matter (divider, how-to-read, final note, about-the-author, copyright). A new
+`books/tech/system-design/theme.css` carrying the volume's divider styling. The
+bound volume builds at **592 printed pages with zero overflow**.
 
-**2. The bound volume.** Model it on `books/tech/typescript-to-deployment`: contents, preface, glossary, final note, about-the-author, copyright. `books/tech/system-design/meta.json` already declares `masterVolume.name` as `system-design-complete` and an `order` array listing all six booklets, so the build side is largely in place — check `tools/build.mjs` for how TS2D's complete volume is assembled before planning. The cover is already configured in that meta.json, including the `title` two-element array that `books/tech/cover.mjs` requires.
+**The `00-cover.md` in `01-foundations/pages/` is settled: a harmless leftover,
+deliberately left in place.** `buildMaster` filters `00-cover*` out of every
+child booklet, so it cannot reach the volume — the built HTML has exactly one
+cover section, the volume's own. In booklet 01's own build it is the placeholder
+page 1 that the drawn cover replaces, which is what keeps 01's page numbering
+right. Do not "clean it up": deleting it moves booklet 01's numbering.
 
-**One inconsistency to resolve before building the volume:** `01-foundations/pages/` contains a `00-cover.md` that the other five booklets do not have, even though the build draws a cover itself ("cover drawn" appears in every build). So booklet 01 is 71 content pages plus that file, and the series is **532 content pages across 533 files**. Check whether that file is a deliberate override or a leftover before assembling the volume, or it may emit a stray page.
+**The one thing that is not self-contained — read this before touching the
+volume.** `front/` and `backmatter/` rendering, and `contents: "per-topic"`,
+exist **only in the uncommitted working-tree `tools/build.mjs`**. The committed
+file at `HEAD` has *zero* occurrences of "backmatter". The glossary therefore
+does not render from a clean checkout. Per the user's instruction on
+2026-09-23, that file was used exactly as found and kept out of every commit.
+**It still needs committing, by the user, under their own authorship.** Until
+then the volume is reproducible only on this working tree.
 
-**Before starting either, read** this file, `docs/tasks/system-design-ebook.md`'s three booklet-05 entries and the three booklet-06 entries, and CLAUDE.md. Do not touch any booklet's pages; both remaining tasks add new files rather than editing the 532 pages that are done.
+**If the glossary needs re-cutting**, do not hand-edit 30 files. The pipeline is
+three scripts, all of which were in the session scratchpad and are gone:
+`harvest.mjs` (every bolded span + first-use location), `context.mjs` (250
+characters around each first use), `validate.mjs` (duplicates, strict
+alphabetical order on a punctuation-stripped key, every pointer resolving to a
+real file, circularity, banned words, length). The generator took entries as a
+TSV and paginated at 13 rows a page. Two facts worth keeping: the handoff's
+original grep undercounts by half because `[a-z]` misses every capitalised term
+and acronym — the real pool is **700 distinct spans**, not 379 — and 13 entries
+a page fits A5 with no overflow.
 
-**Working method that produced all six booklets, unchanged and worth keeping:** read the draft stripped (`grep -v "^  <"`); write from the research line where the draft is off-script and edit where it is good; one anchor diagram per mechanism with a §4 number in it; "booklet 0N" for every cross-booklet reference; `node tools/check-pages.mjs <booklet>`; one PDF build with overflows fixed in batches; recreate `tools/shot.mjs` and look at every new diagram; run every code sample in the scratchpad with assertions; one Sonnet fact agent per part; dated task-file entry; delete `shot.mjs`; one commit per part.
+**Candidate for a future booklet 07, still not in scope:** geospatial indexing
+(geohash, quadtrees, H3). Cut from module 12 as off-plan, recoverable only from
+commit `f0bf529`, and it deserves its own 8–10 page module rather than a patch.
+The volume's final note names the gap to the reader rather than hiding it.
 
-**Three lessons, earned across parts 2 and 3, that save a build pass each:**
-1. **Reflowing a paragraph does not shrink a page.** Overflow is counted in rendered lines, so a rewrite of similar length saves nothing — delete whole bullets, table rows or lines of code. Roughly 4 mm per rendered line. Part 2 wasted a pass rewording; part 3 deleted and landed first time.
-2. **Screenshot every diagram; the build never reports a collision.** Part 2 had 5 of 24 wrong in ways the build called clean — clipped viewBox, an arrow leaving the wrong box, a label on its own arrow, an annotation crossing a curve, connectors implying a relationship that was not there. Part 3, drawing with those in mind, had only 2 of 18.
-3. **A line drawn from `x1` at the edge of a stack of boxes attaches to whichever box that `y` falls inside.** That is how a failover arrow ended up leaving the standby balancer in part 2.
-
-**Also found, unrelated, not touched:** the working tree still has substantial uncommitted work in `books/tech/frontend-mastery/`, `books/tech/typescript-to-deployment/`, `books/tech/cover.mjs`, `books/tech/theme.css`, `books/tech/production-terms/meta.json`, `tools/build.mjs`, an untracked `tools/cleanup.mjs`, `docs/tasks/frontend-mastery-audit.md` and its folder, `docs/tasks/ts2d-complete-volume.md` and `brag-output-20260917/`. None of it was created or touched by any system-design session; left exactly as found and excluded from every commit.
+**Also found, unrelated, not touched:** the working tree still has substantial
+uncommitted work in `books/tech/frontend-mastery/`,
+`books/tech/typescript-to-deployment/`, `books/tech/cover.mjs`,
+`books/tech/theme.css`, `books/tech/production-terms/meta.json`,
+`tools/build.mjs`, an untracked `tools/cleanup.mjs`,
+`docs/tasks/frontend-mastery-audit.md` and its folder,
+`docs/tasks/ts2d-complete-volume.md` and `brag-output-20260917/`. None of it was
+created or touched by any system-design session; left exactly as found and
+excluded from every commit. Two further pre-existing issues were observed and
+deliberately left alone: `tech/DSA/01-foundations` overflows by 56 mm on
+`01-03-the-constraint-table`, and TS2D's front matter sits in `frontmatter/`
+while the build reads `front/`, so its preface is currently dropped from its
+volume.
