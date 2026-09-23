@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/TextPlugin.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1920px; height: 1080px; overflow: hidden;
+        background: #000;
+        font-family: 'Inter', sans-serif;
+        color: #fff;
+      }
+      #root { position: relative; width: 100%; height: 100%; }
+      .clip { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+      
+      /* Global Helpers */
+      .bg-panel { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+      
+      /* S1: Terminal */
+      .terminal { font-family: 'JetBrains Mono', monospace; font-size: 50px; z-index: 10; font-weight: 700; color: #fff; }
+      .success { color: #00ffcc; display: none; margin-top: 20px;}
+      
+      /* S2: Stats Kinetic Sliding */
+      .stat-panel { width: 100%; height: 100%; position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fff; color: #000; }
+      .stat-text { font-size: 200px; font-weight: 900; letter-spacing: -0.05em; line-height: 1; text-transform: uppercase; text-align: center; }
+      .stat-sub { font-size: 60px; font-weight: 700; letter-spacing: -0.02em; margin-top: 20px; color: #555; }
+      
+      /* S3: Cover Carousel */
+      .cover-panel { width: 100%; height: 100%; position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 100px; text-align: center; }
+      .cover-title { font-size: 160px; font-weight: 900; letter-spacing: -0.04em; line-height: 1; text-transform: uppercase; color: #fff; }
+      .cover-banner { font-family: 'JetBrains Mono', monospace; font-size: 35px; letter-spacing: 0.1em; color: #000; background: #fff; padding: 15px 30px; margin-top: 60px; font-weight: 700; }
+
+      /* S4: Topic Flashcards */
+      .topic-panel { width: 100%; height: 100%; position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #000; }
+      .topic-text { font-size: 220px; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: -0.04em; text-align: center; line-height: 0.9; }
+
+      /* S5: Final Tagline */
+      .final-panel { width: 100%; height: 100%; position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #000; }
+      .tagline { font-size: 130px; font-weight: 900; color: #fff; text-align: center; line-height: 1.1; letter-spacing: -0.02em; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="35" data-width="1920" data-height="1080">
+      <audio id="bgm" src="assets/music/chaotic-energy.mp3" data-start="0" data-duration="35" data-track-index="1"></audio>
+      
+      <!-- S1: Terminal (0-3) -->
+      <div id="scene1" class="clip" data-start="0" data-duration="3" data-track-index="0">
+        <div class="terminal">
+          <div id="typewriter"></div>
+          <div class="success" id="terminal-success">✓ COMPILED 1,127 PAGES.</div>
+        </div>
+      </div>
+
+      <!-- S2: Stats Kinetic (3-9) -->
+      <div id="scene2" class="clip" data-layout-allow-overlap="true" data-start="3" data-duration="6" data-track-index="0">
+        
+        <div id="stat1" class="stat-panel" data-layout-allow-overlap="true" style="background: #111; color: #fff;">
+          <div class="stat-text" data-layout-allow-overlap="true">9 BOOKLETS</div>
+          <div class="stat-sub" data-layout-allow-overlap="true" style="color: #ccc;">ONE DEFINITIVE COLLECTION</div>
+        </div>
+
+        <div id="stat2" class="stat-panel" data-layout-allow-overlap="true" style="background: #e5e5e5; color: #000;">
+          <div class="stat-text" data-layout-allow-overlap="true">1,127 PAGES</div>
+          <div class="stat-sub" data-layout-allow-overlap="true" style="color: #666;">OF PURE ENGINEERING SIGNAL</div>
+        </div>
+
+        <div id="stat3" class="stat-panel" data-layout-allow-overlap="true" style="background: #1f6f8b; color: #fff;">
+          <div class="stat-text" data-layout-allow-overlap="true">0 FLUFF</div>
+          <div class="stat-sub" data-layout-allow-overlap="true" style="color: #e0f2f1;">ALL ARCHITECTURE</div>
+        </div>
+
+      </div>
+
+      <!-- S3: Cover Carousel (9-18) - 1 second each -->
+      <div id="scene3" class="clip" data-layout-allow-overlap="true" data-start="9" data-duration="9" data-track-index="0">
+
+        <div id="cover-0" class="cover-panel" data-layout-allow-overlap="true" style="background: #2b5fa8; z-index: 0;">
+          <h1 class="cover-title" data-layout-allow-overlap="true">TypeScript<br>for Backend</h1>
+          <div class="cover-banner" data-layout-allow-overlap="true">TYPE IT ONCE. TRUST IT EVERYWHERE.</div>
+        </div>
+  
+        <div id="cover-1" class="cover-panel" data-layout-allow-overlap="true" style="background: #121218; z-index: 1;">
+          <h1 class="cover-title" data-layout-allow-overlap="true">Next.js<br>The Backend Half</h1>
+          <div class="cover-banner" data-layout-allow-overlap="true">SERVER FIRST. CLIENT WHEN NEEDED.</div>
+        </div>
+  
+        <div id="cover-2" class="cover-panel" data-layout-allow-overlap="true" style="background: #3f7a33; z-index: 2;">
+          <h1 class="cover-title" data-layout-allow-overlap="true">Node.js<br>Core</h1>
+          <div class="cover-banner" data-layout-allow-overlap="true">ONE THREAD. NEVER BLOCK IT.</div>
+        </div>
+  
+        <div id="cover-3" class="cover-panel" data-layout-allow-overlap="true" style="background: #b32d2b; z-index: 3;">
+          <h1 class="cover-title" data-layout-allow-overlap="true">The Node<br>Ecosystem</h1>
+          <div class="cover-banner" data-layout-allow-overlap="true">KNOW THE BASICS. KNOW THE GOTCHA.</div>
+        </div>
+  
+        <div id="cover-4" class="cover-panel" data-layout-allow-overlap="true" style="background: #2a5673; z-index: 4;">
+          <h1 class="cover-title" data-layout-allow-overlap="true">Data &<br>Messaging</h1>
+          <div class="cover-banner" data-layout-allow-overlap="true">THE DATA MODEL IS THE SYSTEM.</div>
+        </div>
+  
+        <div id="cover-5" class="cover-panel" data-layout-allow-overlap="true" style="background: #5b2fa8; z-index: 5;">
+          <h1 class="cover-title" data-layout-allow-overlap="true">API & Service<br>Design</h1>
+          <div class="cover-banner" data-layout-allow-overlap="true">THE CONTRACT IS WHAT YOU CANNOT CHANGE.</div>
+        </div>
+  
+        <div id="cover-6" class="cover-panel" data-layout-allow-overlap="true" style="background: #c25a35; z-index: 6;">
+          <h1 class="cover-title" data-layout-allow-overlap="true">AI SDKs<br>for Backend</h1>
+          <div class="cover-banner" data-layout-allow-overlap="true">A MODEL IS A STATELESS HTTP CALL.</div>
+        </div>
+  
+        <div id="cover-7" class="cover-panel" data-layout-allow-overlap="true" style="background: #d0212f; z-index: 7;">
+          <h1 class="cover-title" data-layout-allow-overlap="true">Deployment<br>& Ops on AWS</h1>
+          <div class="cover-banner" data-layout-allow-overlap="true">GET IT LIVE. KEEP IT UP.</div>
+        </div>
+  
+        <div id="cover-8" class="cover-panel" data-layout-allow-overlap="true" style="background: #0d7a7a; z-index: 8;">
+          <h1 class="cover-title" data-layout-allow-overlap="true">AI-Assisted<br>Engineering</h1>
+          <div class="cover-banner" data-layout-allow-overlap="true">YOU OWN EVERY LINE YOU MERGE.</div>
+        </div>
+  
+      </div>
+
+      <!-- S4: Topic Flashcards (18-27) -->
+      <!-- 9 seconds for 9 topics => 1 sec each -->
+      <div id="scene4" class="clip" data-layout-allow-overlap="true" data-start="18" data-duration="9" data-track-index="0">
+
+        <div id="topic-0" class="topic-panel" data-layout-allow-overlap="true" style="z-index: 0;">
+          <div class="topic-text" data-layout-allow-overlap="true">tsc</div>
+        </div>
+  
+        <div id="topic-1" class="topic-panel" data-layout-allow-overlap="true" style="z-index: 1;">
+          <div class="topic-text" data-layout-allow-overlap="true">Route Handlers</div>
+        </div>
+  
+        <div id="topic-2" class="topic-panel" data-layout-allow-overlap="true" style="z-index: 2;">
+          <div class="topic-text" data-layout-allow-overlap="true">event loop phases</div>
+        </div>
+  
+        <div id="topic-3" class="topic-panel" data-layout-allow-overlap="true" style="z-index: 3;">
+          <div class="topic-text" data-layout-allow-overlap="true">Express 5</div>
+        </div>
+  
+        <div id="topic-4" class="topic-panel" data-layout-allow-overlap="true" style="z-index: 4;">
+          <div class="topic-text" data-layout-allow-overlap="true">Postgres</div>
+        </div>
+  
+        <div id="topic-5" class="topic-panel" data-layout-allow-overlap="true" style="z-index: 5;">
+          <div class="topic-text" data-layout-allow-overlap="true">REST</div>
+        </div>
+  
+        <div id="topic-6" class="topic-panel" data-layout-allow-overlap="true" style="z-index: 6;">
+          <div class="topic-text" data-layout-allow-overlap="true">OpenAI</div>
+        </div>
+  
+        <div id="topic-7" class="topic-panel" data-layout-allow-overlap="true" style="z-index: 7;">
+          <div class="topic-text" data-layout-allow-overlap="true">Docker</div>
+        </div>
+  
+        <div id="topic-8" class="topic-panel" data-layout-allow-overlap="true" style="z-index: 8;">
+          <div class="topic-text" data-layout-allow-overlap="true">AGENTS.md</div>
+        </div>
+  
+      </div>
+
+      <!-- S5: Final Tagline (27-35) -->
+      <div id="scene5" class="clip final-panel" data-start="27" data-duration="8" data-track-index="0">
+        <div id="tagline-text" class="tagline">KNOW WHAT YOU SHIP.<br/><br/>OWN WHAT YOU RUN.</div>
+      </div>
+
+    </div>
+    
+    <script>
+      gsap.registerPlugin(TextPlugin);
+      const tl = gsap.timeline({ paused: true });
+      
+      // ==========================================
+      // S1: Terminal (0 - 3s)
+      // ==========================================
+      tl.to("#typewriter", {
+        duration: 1.5,
+        text: { value: "$ build typescript-to-deployment", delimiter: "" },
+        ease: "none"
+      }, 0.5);
+      tl.set("#terminal-success", { display: "block" }, 2.2);
+
+      // ==========================================
+      // S2: Stats Kinetic (3 - 9s)
+      // ==========================================
+      // Set initial positions offscreen
+      tl.set("#stat1", { y: "100%" }, 0);
+      tl.set("#stat2", { x: "100%" }, 0);
+      tl.set("#stat3", { y: "-100%" }, 0);
+
+      // Stat 1 slides UP at 3s
+      tl.to("#stat1", { y: "0%", duration: 0.8, ease: "power4.out" }, 3);
+      
+      // Stat 2 slides LEFT at 5s (pushes stat1 out by being above it, or we move stat1)
+      tl.to("#stat1", { x: "-50%", opacity: 0.5, duration: 0.8, ease: "power4.out" }, 5);
+      tl.to("#stat2", { x: "0%", duration: 0.8, ease: "power4.out" }, 5);
+
+      // Stat 3 slides DOWN at 7s
+      tl.to("#stat2", { y: "50%", opacity: 0.5, duration: 0.8, ease: "power4.out" }, 7);
+      tl.to("#stat3", { y: "0%", duration: 0.8, ease: "power4.out" }, 7);
+
+      // ==========================================
+      // S3: Cover Carousel (9 - 18s) - 1s each
+      // ==========================================
+
+      // Set initial state offscreen
+      tl.set("#cover-0", { x: "100%" }, 0);
+      
+      // Slide in
+      tl.to("#cover-0", { x: "0%", duration: 0.7, ease: "expo.out" }, 9);
+  
+      // Set initial state offscreen
+      tl.set("#cover-1", { y: "100%" }, 0);
+      
+      // Slide in
+      tl.to("#cover-1", { y: "0%", duration: 0.7, ease: "expo.out" }, 10);
+  
+      tl.to("#cover-0", { y: "-20%", opacity: 0.5, duration: 0.7, ease: "expo.out" }, 10);
+    
+      // Set initial state offscreen
+      tl.set("#cover-2", { x: "100%" }, 0);
+      
+      // Slide in
+      tl.to("#cover-2", { x: "0%", duration: 0.7, ease: "expo.out" }, 11);
+  
+      tl.to("#cover-1", { x: "-20%", opacity: 0.5, duration: 0.7, ease: "expo.out" }, 11);
+    
+      // Set initial state offscreen
+      tl.set("#cover-3", { y: "100%" }, 0);
+      
+      // Slide in
+      tl.to("#cover-3", { y: "0%", duration: 0.7, ease: "expo.out" }, 12);
+  
+      tl.to("#cover-2", { y: "-20%", opacity: 0.5, duration: 0.7, ease: "expo.out" }, 12);
+    
+      // Set initial state offscreen
+      tl.set("#cover-4", { x: "100%" }, 0);
+      
+      // Slide in
+      tl.to("#cover-4", { x: "0%", duration: 0.7, ease: "expo.out" }, 13);
+  
+      tl.to("#cover-3", { x: "-20%", opacity: 0.5, duration: 0.7, ease: "expo.out" }, 13);
+    
+      // Set initial state offscreen
+      tl.set("#cover-5", { y: "100%" }, 0);
+      
+      // Slide in
+      tl.to("#cover-5", { y: "0%", duration: 0.7, ease: "expo.out" }, 14);
+  
+      tl.to("#cover-4", { y: "-20%", opacity: 0.5, duration: 0.7, ease: "expo.out" }, 14);
+    
+      // Set initial state offscreen
+      tl.set("#cover-6", { x: "100%" }, 0);
+      
+      // Slide in
+      tl.to("#cover-6", { x: "0%", duration: 0.7, ease: "expo.out" }, 15);
+  
+      tl.to("#cover-5", { x: "-20%", opacity: 0.5, duration: 0.7, ease: "expo.out" }, 15);
+    
+      // Set initial state offscreen
+      tl.set("#cover-7", { y: "100%" }, 0);
+      
+      // Slide in
+      tl.to("#cover-7", { y: "0%", duration: 0.7, ease: "expo.out" }, 16);
+  
+      tl.to("#cover-6", { y: "-20%", opacity: 0.5, duration: 0.7, ease: "expo.out" }, 16);
+    
+      // Set initial state offscreen
+      tl.set("#cover-8", { x: "100%" }, 0);
+      
+      // Slide in
+      tl.to("#cover-8", { x: "0%", duration: 0.7, ease: "expo.out" }, 17);
+  
+      tl.to("#cover-7", { x: "-20%", opacity: 0.5, duration: 0.7, ease: "expo.out" }, 17);
+    
+      // ==========================================
+      // S4: Topic Flashcards (18 - 27s) - 1s each
+      // ==========================================
+
+      // Init offscreen scale
+      tl.set("#topic-0", { scale: 3, opacity: 0 }, 0);
+      
+      // Slam in
+      tl.to("#topic-0", { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.5)" }, 18);
+  
+      // Init offscreen scale
+      tl.set("#topic-1", { scale: 3, opacity: 0 }, 0);
+      
+      // Slam in
+      tl.to("#topic-1", { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.5)" }, 19);
+  
+      tl.to("#topic-0", { scale: 0.5, opacity: 0, duration: 0.3, ease: "power2.in" }, 19);
+    
+      // Init offscreen scale
+      tl.set("#topic-2", { scale: 3, opacity: 0 }, 0);
+      
+      // Slam in
+      tl.to("#topic-2", { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.5)" }, 20);
+  
+      tl.to("#topic-1", { scale: 0.5, opacity: 0, duration: 0.3, ease: "power2.in" }, 20);
+    
+      // Init offscreen scale
+      tl.set("#topic-3", { scale: 3, opacity: 0 }, 0);
+      
+      // Slam in
+      tl.to("#topic-3", { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.5)" }, 21);
+  
+      tl.to("#topic-2", { scale: 0.5, opacity: 0, duration: 0.3, ease: "power2.in" }, 21);
+    
+      // Init offscreen scale
+      tl.set("#topic-4", { scale: 3, opacity: 0 }, 0);
+      
+      // Slam in
+      tl.to("#topic-4", { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.5)" }, 22);
+  
+      tl.to("#topic-3", { scale: 0.5, opacity: 0, duration: 0.3, ease: "power2.in" }, 22);
+    
+      // Init offscreen scale
+      tl.set("#topic-5", { scale: 3, opacity: 0 }, 0);
+      
+      // Slam in
+      tl.to("#topic-5", { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.5)" }, 23);
+  
+      tl.to("#topic-4", { scale: 0.5, opacity: 0, duration: 0.3, ease: "power2.in" }, 23);
+    
+      // Init offscreen scale
+      tl.set("#topic-6", { scale: 3, opacity: 0 }, 0);
+      
+      // Slam in
+      tl.to("#topic-6", { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.5)" }, 24);
+  
+      tl.to("#topic-5", { scale: 0.5, opacity: 0, duration: 0.3, ease: "power2.in" }, 24);
+    
+      // Init offscreen scale
+      tl.set("#topic-7", { scale: 3, opacity: 0 }, 0);
+      
+      // Slam in
+      tl.to("#topic-7", { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.5)" }, 25);
+  
+      tl.to("#topic-6", { scale: 0.5, opacity: 0, duration: 0.3, ease: "power2.in" }, 25);
+    
+      // Init offscreen scale
+      tl.set("#topic-8", { scale: 3, opacity: 0 }, 0);
+      
+      // Slam in
+      tl.to("#topic-8", { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.5)" }, 26);
+  
+      tl.to("#topic-7", { scale: 0.5, opacity: 0, duration: 0.3, ease: "power2.in" }, 26);
+    
+      // ==========================================
+      // S5: Final Tagline (27 - 35s)
+      // ==========================================
+      tl.set("#tagline-text", { opacity: 0, scale: 0.8, y: 50 }, 0);
+      tl.to("#tagline-text", { opacity: 1, scale: 1, y: 0, duration: 1.5, ease: "expo.out" }, 27);
+      
+      // Slow zoom in on the tagline to keep momentum until the very end
+      tl.to("#tagline-text", { scale: 1.05, duration: 8, ease: "none" }, 27);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
