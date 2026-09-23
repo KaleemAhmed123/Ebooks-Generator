@@ -1,24 +1,30 @@
 ## Structured logs
 
-- In a monolith, developers read logs by tailing a text file on the server. In a distributed system with 500 instances, logs are forwarded to a central database (like Elasticsearch or Datadog)
-- If your log is a free-text string (`"User 123 failed to purchase item 456"`), the database cannot easily query it. To find all failures for item 456, you have to write a slow, fragile regex
-- Structured logging means every log entry is a JSON object with fixed keys. You do not log sentences; you log data
+- Tailing a text file works on one server. Across a fleet, logs are shipped to a central store and read by query, and a sentence is the worst possible thing to hand a query engine
+- A **structured log** is one JSON object per event with stable keys. The message becomes an event name, and everything that varies becomes a field
 
-````typescript
-// Bad: free text
-logger.error(`User ${user.id} failed to purchase item ${item.id}`);
+```typescript
+// one JSON object per event, fixed keys, ids rather than objects
+const log = (level: string, event: string, fields: Record<string, unknown>) =>
+  console.log(JSON.stringify({ ts: new Date().toISOString(), level, event, ...fields }));
 
-// Good: structured log
-logger.error("Purchase failed", {
-  userId: user.id,
+// free text: readable by a regex, and only until someone rewords the sentence
+log("error", `user ${user.id} could not buy item ${item.id}`, {});
+
+// structured: every field is queryable, and the query survives a reworded message
+log("error", "purchase_failed", {
+  trace: ctx.traceId,        // joins this line to every other service on this request
+  userId: user.id,           // the id, never the user object
   itemId: item.id,
-  cartTotal: 150.00
+  amountMinor: 15_000,
+  reason: "card_declined",   // a closed set of values, so it groups and counts
 });
-````
+```
 
-- The central database parses the JSON and indexes every field. You can instantly query `WHERE itemId = 456 AND cartTotal > 100`.
+- The event name is the part to keep stable. `purchase_failed` can be counted, alerted on and graphed for years; the sentence it replaced changes every time someone improves the wording, silently breaking every saved query built on it
+- `reason` is deliberately an enumeration rather than the payment provider's message. Free-form strings from a third party become thousands of distinct values, which is unusable in a dashboard and expensive as a metric label (page 4)
 
 ### The failure
 
-- The failure is logging the entire object instead of the IDs: `logger.info("User profile", { user: userObject })`. If the user object contains a password hash, a credit card number, or an email address, you just leaked Personally Identifiable Information (PII) into the logs
-- Logs are widely accessible to developers. PII in logs is a major security breach. Log the ID, never the object
+- Logging the object rather than the identifier. `log("info", "profile_loaded", { user })` writes whatever the user record happens to contain — email, phone, address, a token, a password hash — into a store that most of engineering can read and that is retained for months
+- The leak arrives through a field nobody chose, added to the model long after the log line was written. Logging ids only is what makes that impossible by construction, rather than dependent on everyone remembering

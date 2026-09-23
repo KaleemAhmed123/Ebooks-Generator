@@ -1,16 +1,20 @@
-## In-process vs distributed caching
+## In-process and distributed caches
 
-- A Distributed Cache (like Redis or Memcached) is a separate cluster of servers over the network. All application instances talk to it. If Instance A writes a key, Instance B can immediately read it
-- An In-Process Cache (or Local Cache) is simply a hash map sitting in the RAM of the application process. It is thousands of times faster than Redis because there is no network hop, no JSON parsing, and no TCP socket to negotiate
+- A `Map` in the process and a Redis cluster over the network are not competing options; they sit at different points on one trade-off between latency and agreement
 
-| Feature | In-Process (Local Map) | Distributed (Redis) |
+| | In-process | Distributed |
 |---|---|---|
-| **Speed** | Nanoseconds | Milliseconds |
-| **Consistency** | Low (Instance A and B will disagree) | High (Single source of truth) |
-| **Cold Starts** | Every deploy wipes the cache | Survives app deploys |
-| **Best For** | Static config, extreme hot-keys | User sessions, rate limits |
+| Read latency | nanoseconds, no syscall | a network round trip, sub-millisecond at best |
+| Copies | one per instance | one, shared |
+| Invalidation | reaches one process | reaches everyone at once |
+| Memory cost | the working set × instance count | the working set, once |
+| Survives a deploy | no — the heap goes with the process | yes |
+| Right for | small, hot, tolerant of seconds of staleness | large, shared, or needing agreement |
+
+- The in-process cache wins decisively on one shape: a small set of very hot keys where a second of staleness is acceptable. Feature flags, configuration, the top hundred products, a hot key absorbed in front of a shard (page 9). Under those conditions it removes the network entirely
+- It loses just as decisively on size. Two gigabytes cached in each of forty instances is eighty gigabytes of RAM holding forty copies of the same thing, and each copy warms separately after every deploy
 
 ### The failure
 
-- The failure is caching massive datasets in-process across many instances. If you have a 2GB product catalog, and 40 application instances, an in-process cache means you are storing 40 identical copies of that 2GB catalog, wasting 80GB of RAM across your fleet
-- Furthermore, every one of those 40 instances will have to hit the database to warm up their own copy of the cache. For large datasets, use a distributed cache so the data is only stored and fetched once
+- Reaching for the local cache and then inheriting the staleness it implies. Invalidation cannot reach another process's heap, so the only bound on how wrong an instance can be is its own TTL — and with a long TTL, forty instances hold forty different versions of the same value at the same moment
+- Which instance the balancer picks then decides what the user sees, so a refresh flips between old and new. That is the shape of the bug: not stale, but *inconsistently* stale, and irreproducible for whoever gets the ticket. Local caches need TTLs short enough that the disagreement window is too small to notice — seconds, not minutes

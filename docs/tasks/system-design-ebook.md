@@ -1166,6 +1166,116 @@ budget: Fowler ParallelChange and BlueGreen, Hodgson feature toggles (3 of
 the remaining 5).
 
 
+### 2026-09-23 — booklet 05 Services, part 2: modules 5–8 written, checked, committed
+
+**41 pages** (9 + 8 + 9 + 15), taking the booklet to 77 of 109. Modules: 5
+Contracts, change and deploy safety · 6 Observability for distributed
+systems · 7 Load balancing and proxies · 8 Caching, with the new
+`08-15-bloom-filter` that booklet 06's crawler pointed at. The draft was
+second person on most of these pages and its 58 SVGs were empty shells, so
+every diagram here is new and most prose was rewritten rather than edited.
+Interview blocks 3, one per module where the question is genuinely asked:
+"how do you roll out a change safely?" (05-08), "why report p99 rather than
+the average?" (06-05), "how does a load balancer choose which instance gets
+the request?" (07-04), plus "how do you invalidate a cache?" (08-06) — four,
+one per module.
+
+**Two factual errors inherited from the draft, both corrected.** The draft
+said P2C is Envoy's default load balancing policy; it is not — Envoy's
+default cluster policy is round robin, and P2C is how its *least-request*
+policy works, with `choice_count` defaulting to 2 (§4). The draft also
+described NGINX active health checks with "three 500s in a row"; open-source
+NGINX has passive checks only (`max_fails` default **1**, `fail_timeout`
+default **10s**), and active `health_check`, `slow_start` and the
+shared-memory `zone` they need are commercial features. 07-05 now says so,
+because it is an expensive surprise.
+
+**§5 fetches (3 of the 5 remaining, 5 of 7 used overall):** Fowler/Sato's
+ParallelChange verified — "expand, migrate, and contract", first documented
+as a refactoring strategy by Joshua Kerievsky in 2006 (05-03). Fowler's
+BlueGreenDeployment (1 March 2010) verified — the router-switch and
+instant-rollback sentences and the shared-database variation (05-07).
+Hodgson's "Feature Toggles" (9 October 2017) verified — the four categories
+and the "inventory which comes with a carrying cost" line (05-09). **Two
+fetches remain for part 3:** the S3 quotas page and an inter-region latency
+table.
+
+**Diagrams: 24, all new.** Anchors: 06-03 one trace id across four hops and
+a queue with the W3C `traceparent` byte layout; 07-01 balancer with its
+three jobs, an active/standby pair on one floating address and a dead
+instance ✕; 07-04 herd-on-stale-data ✕ beside P2C sampling two; 08-06
+delete-from-the-app ✕ beside delete-from-the-commit-log, with Facebook's 4 %
+figure; 05-08 canary against a same-sized control ✕ against the fleet.
+Others: 05-03 expand/migrate/contract, 05-04 consumer contracts into
+provider CI, 05-05 the legacy share shrinking over 18 months, 05-06 the
+three data phases with CDC reversed, 05-07 blue-green over one shared
+database, 06-05 a long-tailed distribution with the mean out in the tail,
+06-06 a trace waterfall with one third-party span holding 170 of 240 ms,
+07-06 cookie affinity and the deploy that erases it, 07-07 the drain
+timeline, 07-08 a proxy absorbing a 3G client, 07-09 global over local,
+08-01 five cache layers by reachability, 08-02 the read-fill race, 08-04
+write-behind's un-durable window, 08-07 the stampede spike, 08-09 one hot
+shard among ten, 08-10 Redis I/O threads feeding one command thread, 08-12
+sync vs async invalidation against a 200 ms refresh, 08-15 a Bloom filter's
+one-zero-proves-absence asymmetry.
+
+**Checks.** `check-pages.mjs` clean for modules 5–8; the 14 remaining
+problems are all in modules 9–12 (untouched draft) or are forward references
+from modules 3–4 into 10–12, which resolve when part 3 writes those module
+headings. PDF build: **8 overflows on the first build** (05-09 by 65 mm,
+05-08 by 26, 08-08 by 20, 08-06 by 15, 07-04 by 13, 06-05 by 8, 07-07 by 3,
+08-14 by 2), cleared over four passes to **zero overflow at 113 pages**.
+Code: `check05-2.mjs` and `check05-2b.mjs` in the scratchpad assert the
+05-09 flag check (unknown flag → fallback both ways; kill switch outranks
+rollout; 0 % excludes and 100 % includes all; stable per user across repeat
+calls; a 10 % rollout hit **10.08 %** over 100 000 users; two flags at 10 %
+overlapped **1.10 %**, so the flag-name seeding works), the 08-08
+single-flight (50 concurrent callers → **1** database call, map cleared
+after settle, a rejection reaching all joiners), a real 10 000-key Bloom
+filter (**0** false negatives, **0.92 %** false positives at m/n=10, k=7,
+against the formula's 0.82 %), and every number on 05-08, 06-05, 06-06,
+06-07, 08-07, 08-09 and 08-13. The compacted one-line `bucket()` on 05-09
+was diffed against the original loop over 200 000 keys — identical.
+
+**Screenshot pass on all 24 diagrams** (`tools/shot.mjs`, deleted before
+commit): **5 needed a fix, none of which the build reports.** 06-03's bottom
+text line was clipped by its viewBox. 07-01's failover arrow left the
+*standby* balancer instead of the active one, because an `x1` on the right
+edge of a stack attaches to whichever box that `y` falls inside. 07-06's
+`srv=i2` label sat on its own arrow. 08-07's annotation ran straight through
+the decay curve. 05-07's dashed drops came only from the green box,
+implying green alone touched the shared database — removed, since the band
+spans both panels and says so.
+
+**Fact agent (Sonnet, 3 of 10 fetches):** WRONG 0, UNVERIFIED 0, CROSS-REF
+0, OVERSTATED 0, CODE 1. It confirmed `X-Accel-Buffering: no` from the NGINX
+proxy module docs, `KEYS` as O(N) with the docs' own SCAN warning, and the
+Bloom arithmetic. The code finding was real and is fixed: 08-02's prose said
+the fill "is deliberately not awaited for correctness: if Redis is down, the
+function still returns the user", while the sample did `await redis.set(...)`
+unguarded — so a dead cache would have thrown, the opposite of the page's
+stated property. Both cache calls are now guarded (`.catch(() => null)` on
+the read, `void … .catch(() => {})` on the fill), verified by running it
+against a cache that rejects every operation.
+
+**Lesson, for part 3.** Reflowing a paragraph does not shrink a page.
+Overflow is counted in rendered lines, so a rewrite of similar length saves
+nothing — batch 2 rewrote five pages and three of them did not move a
+millimetre. Delete whole bullets, table rows or lines of code; roughly 4 mm
+per rendered line.
+
+**Pointers honoured:** booklet 01 for idempotency in balancer retries
+(07-01); booklet 02 for encoding and tolerant readers (05-02) and consistent
+hashing (07-03); booklet 04 for CDC and the outbox (05-06). Module 5 owns
+contracts, Module 8 owns cache mechanism — 08-06 is the invalidation owner
+that booklet 06 points at, and 08-15 is the Bloom filter page 06's crawler
+needed.
+
+**Next:** part 3 = modules 9–12 (CDN 6, Rate limiting 7, IDs/blobs/search
+10, Geography and real-time 9; 32 pages). Fetch budget: 2 left — the S3
+quotas page and an inter-region latency table for 12-01's ocean round trip.
+
+
 ## Explanation
 
 ### 1. What changed

@@ -1,17 +1,18 @@
-## Cache eviction
+## Eviction
 
-- What happens when Redis runs out of memory? By default, nothing. The `maxmemory-policy` is set to `noeviction`. When the RAM is full, any new write command will fail with an OOM (Out of Memory) error
-- If you are using Redis as a database (where data must survive), `noeviction` is correct. If you are using Redis as a cache, you want it to automatically delete old data to make room for new data. This is called Eviction
+- When `maxmemory` is reached, `maxmemory-policy` decides what happens. The default is `noeviction`: writes start failing with an out-of-memory error and reads keep working. For a datastore that is correct; for a cache it is an outage
 
-| Policy | How it works | When to use it |
+| Policy | Evicts from | Use when |
 |---|---|---|
-| **`allkeys-lru`** | Evicts the Least Recently Used (oldest accessed) key out of all keys. | **Default choice for a cache.** Keeps popular data. |
-| **`allkeys-lfu`** | Evicts the Least Frequently Used key out of all keys. | Better than LRU if you have clear "hot" and "cold" data. |
-| **`volatile-lru`** | Evicts the LRU key, but only among keys that have a TTL set. | When you mix permanent DB data and temporary cache data in the same Redis instance (not recommended). |
+| `noeviction` (default) | nothing — writes fail | Redis is the source of truth, not a cache |
+| `allkeys-lru` | every key, least recently used | the default choice for a cache |
+| `allkeys-lfu` | every key, least frequently used | a stable hot set, and scans that must not evict it |
+| `volatile-*` | only keys with a TTL | one instance mixes cache and permanent data |
 
-- Redis does not perfectly sort all millions of keys to find the exact oldest one. That would waste CPU. It uses approximated LRU: it samples 5 random keys and evicts the oldest of those 5. This is fast and "good enough"
+- LRU and LFU are approximated, not exact. Redis samples `maxmemory-samples` keys — five by default — and evicts the best candidate among them, because tracking a true ordering over millions of keys would cost more than the eviction saves
+- LFU is the one to reach for when a nightly scan touches every key once. Under LRU that scan is the most recent access on everything and evicts the genuinely hot set; LFU counts frequency, so a single touch does not promote a cold key
 
 ### The failure
 
-- The failure is using `volatile-lru` on a cache where the developers forgot to set a TTL on the keys. If no keys have a TTL, `volatile-lru` behaves exactly like `noeviction`. The cache will fill up and crash
-- If you are deploying a dedicated Redis instance solely for caching, always use an `allkeys-*` policy so you are protected from memory exhaustion even if someone forgets to set an expiry
+- `volatile-lru` on an instance where nothing sets a TTL. The `volatile-*` policies consider only keys with an expiry, so with no expiring keys there are no eviction candidates, and the documented behaviour is that they "behave like `noeviction`"
+- Memory fills, writes begin failing, and the configuration looks correct in the file — it names an eviction policy, and it is even a reasonable one. The failure is the interaction between a policy chosen once and a code path added later that omits an expiry. A dedicated cache instance should use `allkeys-*` for exactly this reason: it stays safe when somebody forgets, which somebody eventually will

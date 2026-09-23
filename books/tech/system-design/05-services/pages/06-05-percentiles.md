@@ -1,32 +1,49 @@
 ## Percentiles, not averages
 
-- If 9 requests take 10ms, and 1 request takes 1,000ms, the average latency is 109ms. Measuring the average hides the fact that 90% of your users had a lightning-fast experience, and 10% of your users had a terrible experience
-- You must measure latency in percentiles:
-  - **p50 (Median):** 50% of requests are faster than this. This is the typical user experience
-  - **p95:** 95% of requests are faster than this
-  - **p99:** The tail latency. The worst 1% of requests
+- Nine requests at 10 ms and one at 1 000 ms: the mean is 109 ms, a latency none of the ten experienced. The median is 10 ms and the slowest is 1 000 ms, and those two numbers describe what actually happened
 
-<svg viewBox="0 0 460 140" role="img" aria-label="Latency distribution curve. A massive spike at 10ms (p50). A long flat tail extending out to 1000ms (p99)." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
-  <path d="M40 120 L420 120" stroke="#1a1a1a" stroke-width="1"/>
-  <path d="M40 120 L40 20" stroke="#1a1a1a" stroke-width="1"/>
-  <text x="230" y="135" text-anchor="middle">Latency (ms)</text>
-  <text x="30" y="70" text-anchor="middle" transform="rotate(-90 30 70)">Count</text>
-  
-  <path d="M40 120 Q50 120 70 30 Q90 120 150 115 Q300 110 400 118" stroke="#1d4e89" fill="none" stroke-width="2"/>
-  
-  <path d="M70 30 L70 120" stroke="#1a1a1a" stroke-dasharray="2"/>
-  <text x="70" y="25" text-anchor="middle" font-weight="bold">p50 (10ms)</text>
-  
-  <path d="M150 115 L150 120" stroke="#1a1a1a" stroke-dasharray="2"/>
-  <text x="150" y="105" text-anchor="middle" font-weight="bold">p95 (80ms)</text>
-  
-  <path d="M380 118 L380 120" stroke="#1a1a1a" stroke-dasharray="2"/>
-  <text x="380" y="105" text-anchor="middle" font-weight="bold">p99 (1000ms)</text>
+<svg viewBox="0 0 460 120" role="img" aria-label="A latency distribution with a long tail. Most requests pile up in a narrow spike on the left, marked p50. A thin tail stretches far to the right, with p95 partway along it and p99 near the end. The arithmetic mean, marked in orange, falls out in the sparse tail between p95 and p99, at a latency almost no request actually had, and it is the number shown on most dashboards." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
+  <rect x="44" y="86" width="12" height="4" fill="#e6f2ff" stroke="#1d4e89" stroke-width="0.5"/>
+  <rect x="60" y="76" width="12" height="14" fill="#e6f2ff" stroke="#1d4e89" stroke-width="0.5"/>
+  <rect x="76" y="52" width="12" height="38" fill="#e6f2ff" stroke="#1d4e89" stroke-width="0.5"/>
+  <rect x="92" y="28" width="12" height="62" fill="#e6f2ff" stroke="#1d4e89" stroke-width="0.5"/>
+  <rect x="108" y="20" width="12" height="70" fill="#e6f2ff" stroke="#1d4e89" stroke-width="0.5"/>
+  <rect x="124" y="38" width="12" height="52" fill="#e6f2ff" stroke="#1d4e89" stroke-width="0.5"/>
+  <rect x="140" y="56" width="12" height="34" fill="#e6f2ff" stroke="#1d4e89" stroke-width="0.5"/>
+  <rect x="156" y="68" width="12" height="22" fill="#e6f2ff" stroke="#1d4e89" stroke-width="0.5"/>
+  <rect x="172" y="75" width="12" height="15" fill="#e6f2ff" stroke="#1d4e89" stroke-width="0.5"/>
+  <rect x="188" y="79" width="12" height="11" fill="#e6f2ff" stroke="#1d4e89" stroke-width="0.5"/>
+  <rect x="204" y="82" width="12" height="8" fill="#e6f2ff" stroke="#1d4e89" stroke-width="0.5"/>
+  <rect x="220" y="84" width="12" height="6" fill="#e6f2ff" stroke="#1d4e89" stroke-width="0.5"/>
+  <rect x="236" y="85" width="12" height="5" fill="#e6f2ff" stroke="#1d4e89" stroke-width="0.5"/>
+  <rect x="252" y="86" width="12" height="4" fill="#e6f2ff" stroke="#1d4e89" stroke-width="0.5"/>
+  <rect x="268" y="87" width="12" height="3" fill="#e6f2ff" stroke="#1d4e89" stroke-width="0.5"/>
+  <rect x="284" y="87" width="12" height="3" fill="#e6f2ff" stroke="#1d4e89" stroke-width="0.5"/>
+  <rect x="300" y="88" width="12" height="2" fill="#e6f2ff" stroke="#1d4e89" stroke-width="0.5"/>
+  <rect x="316" y="88" width="12" height="2" fill="#e6f2ff" stroke="#1d4e89" stroke-width="0.5"/>
+  <rect x="332" y="88" width="12" height="2" fill="#e6f2ff" stroke="#1d4e89" stroke-width="0.5"/>
+  <rect x="348" y="89" width="12" height="1" fill="#e6f2ff" stroke="#1d4e89" stroke-width="0.5"/>
+  <rect x="364" y="89" width="12" height="1" fill="#e6f2ff" stroke="#1d4e89" stroke-width="0.5"/>
+  <rect x="380" y="89" width="12" height="1" fill="#e6f2ff" stroke="#1d4e89" stroke-width="0.5"/>
+  <rect x="396" y="89" width="12" height="1" fill="#e6f2ff" stroke="#1d4e89" stroke-width="0.5"/>
+  <rect x="412" y="89" width="12" height="1" fill="#e6f2ff" stroke="#1d4e89" stroke-width="0.5"/>
+  <line x1="114" y1="14" x2="114" y2="90" stroke="#1d4e89" stroke-dasharray="2 2"/><text x="114" y="11" text-anchor="middle" font-size="7" fill="#1d4e89">p50</text>
+  <line x1="290" y1="14" x2="290" y2="90" stroke="#1d4e89" stroke-dasharray="2 2"/><text x="290" y="11" text-anchor="middle" font-size="7" fill="#1d4e89">p95</text>
+  <line x1="386" y1="14" x2="386" y2="90" stroke="#1d4e89" stroke-dasharray="2 2"/><text x="386" y="11" text-anchor="middle" font-size="7" fill="#1d4e89">p99</text>
+  <line x1="322" y1="20" x2="322" y2="96" stroke="#bf4c28" stroke-dasharray="3 2"/><text x="322" y="105" text-anchor="middle" font-size="7" fill="#bf4c28">mean</text>
+  <line x1="40" y1="90" x2="446" y2="90" stroke="#333"/>
+  <text x="4" y="56" font-size="6.5">requests</text>
+  <text x="446" y="103" text-anchor="end" font-size="6.5">latency →</text>
+  <text x="4" y="117" font-size="7.5" fill="#bf4c28">✕ the mean lands in the sparse tail — a latency almost nobody had, and the number on most dashboards</text>
 </svg>
 
-- Why does the p99 matter so much? Because in a microservice architecture, a single user request might fan out to 100 backend services. If the p99 latency is 1,000ms, and you fan out to 100 services, 63% of your users will experience that 1,000ms delay
+- At fan-out the tail is the common case, not a rare inconvenience: one call in a hundred being slow becomes most requests being slow once a request touches a hundred services (Module 3, page 4)
+- Percentiles do not average. A p99 of 100 ms and one of 300 ms do not make a fleet p99 of 200 ms; the number is unrecoverable from the two summaries. Instances emit histogram buckets and the percentile is computed once, centrally
+
+:::interview
+"Why report p99 rather than the average?" — The average is a single number over a distribution with two populations in it: the fast normal path and a slow tail with a different cause. It moves when either one moves and tells you nothing about which, and a few very slow requests drag it to a value no user experienced. p50 describes the typical request, p99 describes the request that makes someone leave, and the two move independently — a change that helps the median and hurts the tail looks like an improvement on the average.
+:::
 
 ### The failure
 
-- The failure is averaging percentiles across instances. You cannot take the p99 latency of Node A (100ms) and the p99 latency of Node B (300ms), average them together, and say your fleet p99 is 200ms
-- Percentiles are not mathematically aggregatable. To get an accurate fleet-wide p99, your instances must emit histogram buckets (e.g., "count of requests in the 100ms-200ms bucket") to a central time-series database, which calculates the percentile across the aggregated histogram
+- Averaging percentiles across instances, usually by accident: a dashboard set to `avg` over a per-instance p99 series. The curve is plausible, no statistic produces it, it understates the tail, and nothing on the graph says so

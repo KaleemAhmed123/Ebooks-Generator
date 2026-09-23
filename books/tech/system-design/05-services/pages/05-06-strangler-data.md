@@ -1,42 +1,37 @@
 ## Strangling the data
 
-- Routing HTTP requests is the easy part of the Strangler Fig. The hard part is the data. When the new Billing service launches, it cannot share the legacy monolith's database, or it isn't a microservice
-- You must migrate the data safely. The naive approach is "dual writing" from the application, but this is dangerous. If one write succeeds and the other fails, the databases silently diverge
-- The robust approach uses Change Data Capture (CDC):
-  1. Set up CDC from the legacy DB to the new DB. The new DB is now a live read-replica
-  2. Route read traffic to the new service. Verify it works
-  3. Reverse the CDC (new DB → legacy DB) to keep the legacy system warm for rollback
-  4. Route write traffic to the new service
+- Routing is the easy half. The new service cannot share the old database — that is the shared-database antipattern (Module 1, page 7) — so the data has to move while both systems are live
+- The order is what makes it safe: replicate, move reads, move writes, and keep replication running backwards afterwards so the old store stays a valid rollback target
 
-<svg viewBox="0 0 460 140" role="img" aria-label="Data migration via CDC. Phase 1: Legacy DB uses CDC to replicate to New DB. Phase 2: Write shifts to New DB, which replicates back to Legacy via CDC." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
-  <rect x="20" y="20" width="200" height="100" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
-  <text x="120" y="35" text-anchor="middle" font-weight="bold">Phase 1: Syncing</text>
-  
-  <rect x="40" y="50" width="50" height="30" rx="3" fill="#fcfcfc" stroke="#1a1a1a" stroke-width="2"/>
-  <text x="65" y="68" text-anchor="middle">Legacy</text>
-  
-  <rect x="150" y="50" width="50" height="30" rx="3" fill="#e2fcf3" stroke="#1d4e89" stroke-width="2"/>
-  <text x="175" y="68" text-anchor="middle">New</text>
-  
-  <path d="M90 65 L150 65" stroke="#b8541a" fill="none" stroke-width="2" stroke-dasharray="2"/>
-  <path d="M150 65 l-5 -3 v6 z" fill="#b8541a"/>
-  <text x="120" y="60" text-anchor="middle" font-size="7" fill="#b8541a">CDC via log</text>
-  
-  <rect x="240" y="20" width="200" height="100" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
-  <text x="340" y="35" text-anchor="middle" font-weight="bold">Phase 2: Cutover (Warm Rollback)</text>
-  
-  <rect x="260" y="50" width="50" height="30" rx="3" fill="#fcfcfc" stroke="#1a1a1a" stroke-width="2"/>
-  <text x="285" y="68" text-anchor="middle">Legacy</text>
-  
-  <rect x="370" y="50" width="50" height="30" rx="3" fill="#e2fcf3" stroke="#1d4e89" stroke-width="2"/>
-  <text x="395" y="68" text-anchor="middle">New</text>
-  
-  <path d="M370 65 L310 65" stroke="#b8541a" fill="none" stroke-width="2" stroke-dasharray="2"/>
-  <path d="M310 65 l5 -3 v6 z" fill="#b8541a"/>
-  <text x="340" y="60" text-anchor="middle" font-size="7" fill="#b8541a">CDC reversed</text>
+<svg viewBox="0 0 460 126" role="img" aria-label="Migrating a store in three phases. Phase one, follow: change data capture streams from the legacy database to the new database while reads and writes still go to legacy and the new store catches up. Phase two, move reads: capture still flows legacy to new, reads are served from the new store and writes still go to legacy. Phase three, move writes: writes go to the new store and capture now flows backwards into legacy, which stays warm. Rollback stays possible at every step because the store being left behind is never more than replication lag stale. Capture and the outbox pattern are booklet 04; this page is only the order the phases run in. An orange cross marks dual-writing from the application: one write lands, one fails, nothing reconciles, and the stores drift apart silently." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
+  <text x="78" y="13" text-anchor="middle" font-size="7.5" fill="#1d4e89">1 · follow</text>
+  <rect x="14" y="22" width="52" height="26" rx="3" fill="#fff" stroke="#1d4e89"/><text x="40" y="38" text-anchor="middle" font-size="7">legacy DB</text>
+  <rect x="90" y="22" width="52" height="26" rx="3" fill="#fff" stroke="#1d4e89"/><text x="116" y="38" text-anchor="middle" font-size="7">new DB</text>
+  <line x1="68" y1="35" x2="88" y2="35" stroke="#1d4e89" marker-end="url(#b)"/><text x="78" y="31" text-anchor="middle" font-size="6.5">CDC</text>
+  <text x="78" y="62" text-anchor="middle" font-size="7">reads + writes: legacy</text>
+  <text x="78" y="72" text-anchor="middle" font-size="7">new DB catches up</text>
+  <text x="230" y="13" text-anchor="middle" font-size="7.5" fill="#1d4e89">2 · move reads</text>
+  <rect x="166" y="22" width="52" height="26" rx="3" fill="#fff" stroke="#1d4e89"/><text x="192" y="38" text-anchor="middle" font-size="7">legacy DB</text>
+  <rect x="242" y="22" width="52" height="26" rx="3" fill="#e6f2ff" stroke="#1d4e89"/><text x="268" y="38" text-anchor="middle" font-size="7">new DB</text>
+  <line x1="220" y1="35" x2="240" y2="35" stroke="#1d4e89" marker-end="url(#b)"/><text x="230" y="31" text-anchor="middle" font-size="6.5">CDC</text>
+  <text x="230" y="62" text-anchor="middle" font-size="7">reads: new</text>
+  <text x="230" y="72" text-anchor="middle" font-size="7">writes: legacy</text>
+  <text x="382" y="13" text-anchor="middle" font-size="7.5" fill="#1d4e89">3 · move writes</text>
+  <rect x="318" y="22" width="52" height="26" rx="3" fill="#fff" stroke="#1d4e89"/><text x="344" y="38" text-anchor="middle" font-size="7">legacy DB</text>
+  <rect x="394" y="22" width="52" height="26" rx="3" fill="#e6f2ff" stroke="#1d4e89"/><text x="420" y="38" text-anchor="middle" font-size="7">new DB</text>
+  <line x1="392" y1="35" x2="372" y2="35" stroke="#1d4e89" marker-end="url(#b)"/><text x="382" y="31" text-anchor="middle" font-size="6.5">back</text>
+  <text x="382" y="62" text-anchor="middle" font-size="7">writes: new</text>
+  <text x="382" y="72" text-anchor="middle" font-size="7">legacy stays warm</text>
+  <text x="6" y="92" font-size="7">rollback stays possible at every step: the store being left behind is never more than replication lag stale</text>
+  <text x="6" y="106" font-size="7">change data capture and the outbox are booklet 04; this page is only the order the phases run in</text>
+  <text x="6" y="120" font-size="7.5" fill="#bf4c28">✕ dual-write from the app: one write lands, one fails, nothing reconciles, and the stores drift apart silently</text>
+  <defs><marker id="b" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#1d4e89"/></marker></defs>
 </svg>
+
+- Phase 2 is where the comparison happens: serve reads from the new store, and for a period compare them against the old one on a sample of requests. A mismatch here is cheap; the same mismatch after phase 3 is a data loss incident
+- Phase 3 reverses the stream rather than stopping it. Reversal is what makes rollback a routing change instead of a restore from backup
 
 ### The failure
 
-- The failure is turning off the legacy write path without keeping the legacy database warm. If a catastrophic bug is discovered in the new service three hours after cutover, you must roll back
-- If you didn't run CDC in reverse, the legacy database is missing three hours of production data. You cannot safely roll back without losing those orders
+- Cutting writes over and switching the capture off. Three hours later a bug surfaces and the old store is three hours behind — it has none of the orders taken since the cutover, so going back means losing them and going forward means shipping the bug
+- Without the reverse stream there is no rollback, only a choice between two kinds of damage

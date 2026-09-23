@@ -1,44 +1,43 @@
 ## Correlation and trace IDs
 
-- When a user clicks "Checkout", the request hits the API Gateway, which calls the Order Service, which calls the Inventory Service and the Payment Service
-- If the payment fails, you have an error log in the Payment Service. But how do you find the exact Gateway log and Order log that triggered it?
-- A Correlation ID (or Trace ID) solves this. The Gateway generates a unique ID for the incoming request. It passes this ID in the HTTP headers to the Order Service, which passes it to Inventory and Payment. Every service includes this ID in every log entry
+- One id, minted once at the edge, copied onto every hop and written on every log line. It is the cheapest thing in observability and the thing that makes the other two signals usable, because it is what joins them
 
-<svg viewBox="0 0 460 140" role="img" aria-label="Correlation ID. The Gateway generates ID 8f3a and passes it to Order Service, which puts it in a Queue, which is read by Payment Service." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
-  <rect x="20" y="50" width="80" height="30" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
-  <text x="60" y="68" text-anchor="middle">Gateway</text>
-  <text x="60" y="95" text-anchor="middle" font-size="7">Generates: 8f3a</text>
-  
-  <rect x="150" y="50" width="80" height="30" rx="3" fill="#e2fcf3" stroke="#1d4e89"/>
-  <text x="190" y="68" text-anchor="middle">Order Service</text>
-  <text x="190" y="95" text-anchor="middle" font-size="7">Logs: [8f3a] Saved</text>
-  
-  <rect x="280" y="50" width="60" height="30" rx="3" fill="#fcfcfc" stroke="#1a1a1a" stroke-dasharray="2"/>
-  <text x="310" y="68" text-anchor="middle">Queue</text>
-  
-  <rect x="380" y="50" width="60" height="30" rx="3" fill="#fce4e2" stroke="#b8541a"/>
-  <text x="410" y="68" text-anchor="middle">Payment</text>
-  <text x="410" y="95" text-anchor="middle" font-size="7">Logs: [8f3a] Error</text>
-  
-  <path d="M100 65 L150 65" stroke="#1a1a1a" fill="none"/>
-  <path d="M150 65 l-5 -3 v6 z" fill="#1a1a1a"/>
-  
-  <path d="M230 65 L280 65" stroke="#1a1a1a" fill="none"/>
-  <path d="M280 65 l-5 -3 v6 z" fill="#1a1a1a"/>
-  
-  <path d="M340 65 L380 65" stroke="#1a1a1a" fill="none"/>
-  <path d="M380 65 l-5 -3 v6 z" fill="#1a1a1a"/>
+<svg viewBox="0 0 460 134" role="img" aria-label="One trace id carried across four hops. The gateway mints the id, orders copies the header, the queue carries it as a message attribute rather than in the body, and the payment worker reads it back out. Log lines from the gateway and from the payment worker both carry the same trace value, so one query returns the whole request. The W3C traceparent header is version, then a sixteen-byte trace id, then an eight-byte parent span id, then flags. An orange cross marks the worker minting a fresh id instead: two disconnected traces, and the failure never joins the click that caused it." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
+  <text x="4" y="12" font-size="7.5">one id, minted once at the edge, carried on every hop</text>
+  <text x="102" y="30" text-anchor="middle" font-size="6.5" fill="#1d4e89">traceparent</text>
+  <text x="226" y="30" text-anchor="middle" font-size="6.5" fill="#1d4e89">traceparent</text>
+  <text x="350" y="30" text-anchor="middle" font-size="6.5" fill="#1d4e89">msg attribute</text>
+  <rect x="4" y="34" width="74" height="26" rx="3" fill="#fff" stroke="#1d4e89"/><text x="41" y="46" text-anchor="middle" font-size="7.5">gateway</text><text x="41" y="56" text-anchor="middle" font-size="6.5">mints the id</text>
+  <rect x="128" y="34" width="74" height="26" rx="3" fill="#fff" stroke="#1d4e89"/><text x="165" y="46" text-anchor="middle" font-size="7.5">orders</text><text x="165" y="56" text-anchor="middle" font-size="6.5">copies it on</text>
+  <rect x="252" y="34" width="74" height="26" rx="3" fill="#e6f2ff" stroke="#1d4e89"/><text x="289" y="46" text-anchor="middle" font-size="7.5">queue</text><text x="289" y="56" text-anchor="middle" font-size="6.5">not in the body</text>
+  <rect x="376" y="34" width="74" height="26" rx="3" fill="#fff" stroke="#1d4e89"/><text x="413" y="46" text-anchor="middle" font-size="7.5">payment</text><text x="413" y="56" text-anchor="middle" font-size="6.5">reads it back</text>
+  <line x1="78" y1="47" x2="126" y2="47" stroke="#1d4e89" marker-end="url(#b)"/>
+  <line x1="202" y1="47" x2="250" y2="47" stroke="#1d4e89" marker-end="url(#b)"/>
+  <line x1="326" y1="47" x2="374" y2="47" stroke="#1d4e89" marker-end="url(#b)"/>
+  <rect x="4" y="66" width="446" height="28" rx="3" fill="#f3f3f3" stroke="#666"/>
+  <text x="10" y="78" font-size="6.5">{"svc":"gateway","trace":"4bf92f35…4736","event":"checkout_started"}</text>
+  <text x="10" y="89" font-size="6.5">{"svc":"payment","trace":"4bf92f35…4736","event":"charge_declined"}</text>
+  <text x="444" y="84" text-anchor="end" font-size="7" fill="#1d4e89">one query, the whole request</text>
+  <text x="4" y="108" font-size="6.5">traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01</text>
+  <text x="4" y="117" font-size="6.5" fill="#666">version — trace-id, 16 B — parent span-id, 8 B — flags</text>
+  <text x="4" y="127" font-size="7.5" fill="#bf4c28">✕ the worker mints a fresh id: two disconnected traces, and the failure never joins the click that caused it</text>
+  <defs><marker id="b" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#1d4e89"/></marker></defs>
 </svg>
 
-````typescript
-// W3C Trace Context format is the industry standard
-// traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01
-fetch('http://order-service', {
-  headers: { 'traceparent': currentTrace.toString() }
-});
-````
+```typescript
+import { randomBytes } from "node:crypto";
+// inbound: continue the caller's trace, or mint one if this is the edge
+const incoming = req.headers.get("traceparent");
+const traceId = incoming?.split("-")[1] ?? randomBytes(16).toString("hex");
+const traceparent = `00-${traceId}-${randomBytes(8).toString("hex")}-01`;
+
+await fetch("http://payments/charge", { headers: { traceparent } });   // sync hop
+await queue.send({ body: { orderId }, attributes: { traceparent } });  // async hop
+```
+
+- W3C Trace Context has been a Recommendation since 23 November 2021, so the format is not a house convention: any two services, in any language, agree on it without coordinating
+- The queue line is the one that gets forgotten. The id is transport metadata, so it belongs in the message attributes — putting it in the body makes it part of the domain event and every consumer's schema
 
 ### The failure
 
-- The failure is dropping the correlation ID during asynchronous work. The Order Service puts a message on an event queue, but forgets to include the `traceparent` header in the message metadata
-- When the Payment worker picks up the message, it generates a brand new ID. The trace is broken, and you can no longer connect the payment failure to the user's checkout request
+- The id regenerated after a queue. The trace ends where the request became a message and a new one begins in the worker, so the charge failure and the click that caused it are two unrelated traces with no field in common. The one hop where correlation matters most is the one where it is easiest to drop

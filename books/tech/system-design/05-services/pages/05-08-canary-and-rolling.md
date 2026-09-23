@@ -1,32 +1,32 @@
-## Canary and rolling deployments
+## Canary and rolling
 
-- Blue-green deployments require you to provision 200% of your production capacity, which is expensive. Canary and rolling deployments solve this
-- **Rolling deployment:** You update your fleet one machine at a time. Kubernetes does this by default (shutting down 25% of old pods, booting 25% of new pods, waiting for health checks, repeating)
-- **Canary deployment:** A strategy where you route a tiny fraction of real traffic (e.g., 1%) to a new version (the canary). You watch its metrics closely. If it crashes, only 1% of users are affected. If it succeeds, you widen the traffic split to 10%, then 50%, then 100%
+- A **rolling update** replaces the fleet in batches, watching health checks. It bounds the blast radius of a version that will not boot, and says nothing about one that boots and is subtly wrong
+- A **canary** answers that. Google's SRE workbook: "We define canarying as a partial and time-limited deployment of a change in a service and its evaluation." The evaluation is the part that gets dropped, and the only part separating a canary from a slow rollout
 
-<svg viewBox="0 0 460 140" role="img" aria-label="Canary deployment. Router sends 95% traffic to v1 (control) and 5% to v2 (canary). Metrics are compared." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
-  <rect x="20" y="50" width="60" height="40" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
-  <text x="50" y="74" text-anchor="middle">Traffic</text>
-  
-  <rect x="150" y="20" width="120" height="40" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
-  <text x="210" y="44" text-anchor="middle">Control (v1)</text>
-  <text x="210" y="55" text-anchor="middle" font-size="7">Error rate: 0.01%</text>
-  
-  <rect x="150" y="80" width="120" height="40" rx="3" fill="#e2fcf3" stroke="#4a8f3c" stroke-width="2"/>
-  <text x="210" y="104" text-anchor="middle" font-weight="bold">Canary (v2)</text>
-  <text x="210" y="115" text-anchor="middle" font-size="7">Error rate: 0.01%</text>
-  
-  <path d="M80 65 L150 40" stroke="#1a1a1a" fill="none" stroke-width="5"/>
-  <path d="M150 40 l-6 -3 v6 z" fill="#1a1a1a" transform="rotate(-25 150 40)"/>
-  <text x="115" y="45" text-anchor="middle" font-weight="bold">95%</text>
-  
-  <path d="M80 75 L150 100" stroke="#4a8f3c" fill="none" stroke-width="1"/>
-  <path d="M150 100 l-6 -2 v4 z" fill="#4a8f3c" transform="rotate(25 150 100)"/>
-  <text x="115" y="105" text-anchor="middle" fill="#4a8f3c" font-weight="bold">5%</text>
+<svg viewBox="0 0 460 114" role="img" aria-label="A canary evaluated against a same-sized control. Traffic is split three ways: to a canary of one instance running version two, to a control of one instance running version one, and to the rest of the fleet, 998 instances running version one. The canary is compared against the control, not against the fleet: same size, same traffic, same hardware, with exactly one thing different. An orange cross marks comparing the canary against the whole fleet, which hides one bad instance among 999. Kubernetes rolling update defaults, maxUnavailable 25 per cent and maxSurge 25 per cent, replace the fleet: that is a rollout, not a comparison." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
+  <rect x="6" y="30" width="52" height="28" rx="3" fill="#fff" stroke="#1d4e89"/><text x="32" y="48" text-anchor="middle" font-size="7.5">traffic</text>
+  <rect x="110" y="12" width="130" height="22" rx="3" fill="#e6f2ff" stroke="#1d4e89"/><text x="175" y="26" text-anchor="middle" font-size="7.5">canary — 1 instance, v2</text>
+  <rect x="110" y="42" width="130" height="22" rx="3" fill="#fff" stroke="#1d4e89"/><text x="175" y="56" text-anchor="middle" font-size="7.5">control — 1 instance, v1</text>
+  <rect x="110" y="72" width="130" height="22" rx="3" fill="#f3f3f3" stroke="#666"/><text x="175" y="86" text-anchor="middle" font-size="7.5">fleet — 998 instances, v1</text>
+  <line x1="58" y1="40" x2="108" y2="23" stroke="#1d4e89" marker-end="url(#b)"/>
+  <line x1="58" y1="44" x2="108" y2="53" stroke="#1d4e89" marker-end="url(#b)"/>
+  <line x1="58" y1="52" x2="108" y2="83" stroke="#1d4e89" marker-end="url(#b)"/>
+  <path d="M244,23 L258,23 L258,53 L244,53" fill="none" stroke="#1d4e89"/>
+  <text x="266" y="32" font-size="7" fill="#1d4e89">compare these two</text>
+  <text x="266" y="42" font-size="7">same size, same traffic,</text>
+  <text x="266" y="52" font-size="7">same hardware, one thing differs</text>
+  <text x="266" y="82" font-size="7" fill="#bf4c28">✕ canary against the whole fleet:</text>
+  <text x="266" y="92" font-size="7" fill="#bf4c28">one bad instance in 999 moves nothing</text>
+  <text x="6" y="108" font-size="7">Kubernetes rolling defaults maxUnavailable 25 % and maxSurge 25 % replace the fleet — a rollout, not a comparison</text>
+  <defs><marker id="b" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#1d4e89"/></marker></defs>
 </svg>
+
+- Pick few metrics on purpose: "Stack-rank the metrics … based on how well they indicate actual user-perceivable problems", tied to existing indicators (Module 6, page 7). Then size the canary from the rate of the fault being looked for — one that fires once in a thousand requests needs enough requests to fire
+
+:::interview
+"How do you roll out a change safely?" — Deploy it dark behind a flag (page 9), so release is a separate switch from deploy. Then put a small slice of real traffic on the new version and an identical, same-sized slice on the old one, and compare those two on a few user-facing metrics. Widen only if the comparison holds, and keep rollback to one action: flip the flag or shift the traffic back. The schema is the part that does not roll back, so every migration ships as its own backward-compatible release first.
+:::
 
 ### The failure
 
-- A common failure is comparing the canary's metrics against the entire fleet. If your service has 1,000 instances and your canary is 1 instance, a memory leak in the canary will barely move the fleet-wide graphs
-- You must compare the canary specifically against a "control" instance of the exact same size that received the exact same amount of traffic
-- Another failure is making the canary too small. If you send 0.1% of traffic to the canary, and the bug only triggers once every 1,000 requests, it might take hours to see the error. The rollout proceeds, and production crashes
+- Canarying against the fleet average. One instance in a thousand failing half its requests moves fleet error rate by 0.05 percentage points — inside the daily noise, so the dashboard stays green and the rollout widens on a signal never capable of showing the fault

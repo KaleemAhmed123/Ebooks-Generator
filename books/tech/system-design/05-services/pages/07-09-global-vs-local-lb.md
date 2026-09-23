@@ -1,41 +1,30 @@
-## Global vs local load balancing
+## Global and local balancing
 
-- Up to this point, we have discussed Local Load Balancing. A local balancer lives inside a single data center (or region) and routes traffic to instances inside that same building
-- What if your users are worldwide, and you have instances in New York, London, and Tokyo? A local load balancer in New York cannot help a user in Tokyo get to the Tokyo servers
-- You need Global Load Balancing. This operates at the edge of the internet to direct the user to the closest healthy region
+- Two layers with different jobs. The global layer picks a region before a connection exists; the regional balancer picks an instance once it does. They use different mechanisms and fail independently
 
-<svg viewBox="0 0 460 140" role="img" aria-label="Global vs Local LB. DNS points user to regional LB, which points to local instances." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
-  <rect x="20" y="55" width="40" height="30" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
-  <text x="40" y="73" text-anchor="middle">User</text>
-  
-  <rect x="120" y="15" width="80" height="30" rx="3" fill="#e2fcf3" stroke="#1d4e89" stroke-width="2"/>
-  <text x="160" y="33" text-anchor="middle">Global LB (DNS)</text>
-  
-  <rect x="250" y="55" width="80" height="30" rx="3" fill="#fce4e2" stroke="#b8541a"/>
-  <text x="290" y="73" text-anchor="middle">Local LB (NY)</text>
-  
-  <rect x="360" y="35" width="80" height="20" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
-  <text x="400" y="49" text-anchor="middle">Instance 1</text>
-  
-  <rect x="360" y="85" width="80" height="20" rx="3" fill="#fcfcfc" stroke="#1a1a1a"/>
-  <text x="400" y="99" text-anchor="middle">Instance 2</text>
-  
-  <path d="M40 55 L120 30" stroke="#1a1a1a" fill="none" stroke-dasharray="2"/>
-  <path d="M115 33 l5 -3 l2 5 z" fill="#1a1a1a"/>
-  <text x="70" y="35" text-anchor="middle" font-size="7">1. Resolve IP</text>
-  
-  <path d="M60 70 L250 70" stroke="#1a1a1a" fill="none" stroke-width="2"/>
-  <path d="M245 67 l5 3 l-5 3 z" fill="#1a1a1a"/>
-  <text x="155" y="65" text-anchor="middle" font-size="7">2. HTTP Request</text>
-  
-  <path d="M330 70 L360 45" stroke="#1a1a1a" fill="none"/>
-  <path d="M330 70 L360 95" stroke="#1a1a1a" fill="none"/>
+<svg viewBox="0 0 460 112" role="img" aria-label="Two layers of balancing. A user reaches a global layer, DNS or anycast, which picks a region. Each region — New York, London and Tokyo — has its own local balancer in front of its own instances, and that local balancer picks the instance. The two layers are two failure domains: the global layer chooses where, the regional balancer chooses which. An orange cross marks relying on DNS alone for regional failover, because a 300-second time to live means five minutes of resolvers still handing out the dead region's address." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="8.5">
+  <rect x="4" y="42" width="44" height="20" rx="3" fill="#fff" stroke="#1d4e89"/><text x="26" y="56" text-anchor="middle" font-size="7.5">user</text>
+  <rect x="76" y="36" width="90" height="32" rx="3" fill="#e6f2ff" stroke="#1d4e89"/><text x="121" y="49" text-anchor="middle" font-size="7.5">DNS or anycast</text><text x="121" y="60" text-anchor="middle" font-size="6.5">picks the region</text>
+  <line x1="48" y1="52" x2="74" y2="52" stroke="#1d4e89" marker-end="url(#b)"/>
+  <rect x="210" y="12" width="106" height="20" rx="3" fill="#fff" stroke="#1d4e89"/><text x="263" y="25" text-anchor="middle" font-size="7">New York · local LB</text>
+  <rect x="210" y="42" width="106" height="20" rx="3" fill="#fff" stroke="#1d4e89"/><text x="263" y="55" text-anchor="middle" font-size="7">London · local LB</text>
+  <rect x="210" y="72" width="106" height="20" rx="3" fill="#fff" stroke="#1d4e89"/><text x="263" y="85" text-anchor="middle" font-size="7">Tokyo · local LB</text>
+  <line x1="166" y1="46" x2="208" y2="24" stroke="#1d4e89" marker-end="url(#b)"/>
+  <line x1="166" y1="52" x2="208" y2="52" stroke="#1d4e89" marker-end="url(#b)"/>
+  <line x1="166" y1="58" x2="208" y2="82" stroke="#1d4e89" marker-end="url(#b)"/>
+  <rect x="348" y="12" width="96" height="20" rx="3" fill="#f3f3f3" stroke="#666"/><text x="396" y="25" text-anchor="middle" font-size="7">instances</text>
+  <rect x="348" y="42" width="96" height="20" rx="3" fill="#f3f3f3" stroke="#666"/><text x="396" y="55" text-anchor="middle" font-size="7">instances</text>
+  <rect x="348" y="72" width="96" height="20" rx="3" fill="#f3f3f3" stroke="#666"/><text x="396" y="85" text-anchor="middle" font-size="7">instances</text>
+  <line x1="316" y1="22" x2="346" y2="22" stroke="#1d4e89" marker-end="url(#b)"/>
+  <line x1="316" y1="52" x2="346" y2="52" stroke="#1d4e89" marker-end="url(#b)"/>
+  <line x1="316" y1="82" x2="346" y2="82" stroke="#1d4e89" marker-end="url(#b)"/>
+  <text x="4" y="104" font-size="7.5" fill="#bf4c28">✕ failover by DNS alone: a 300 s TTL is five minutes of resolvers still handing out the dead region's address</text>
+  <defs><marker id="b" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#1d4e89"/></marker></defs>
 </svg>
 
-- **DNS Load Balancing:** The simplest global balancer. The DNS server checks the health of your regions. When a user in Tokyo looks up `api.example.com`, the DNS server returns the IP address of the Tokyo Local Load Balancer
-- **Anycast:** A more advanced global routing method. All your local balancers advertise the exact same IP address to the global internet backbone (BGP). The internet's routers automatically calculate the shortest physical path from the user to the nearest location announcing that IP
+- **DNS** answers the name with the address of a healthy region. It is simple and works everywhere, and its weakness is that the answer is cached by resolvers the operator does not control, so withdrawing a region takes as long as the longest cache honours the record
+- **Anycast** announces one address from many locations and lets internet routing pick. Failover is a routing change rather than a cache expiry, so it is fast. RFC 4786 names the cost: routing "ought to be stable for substantially longer than the expected transaction time", and long-lived flows have failure modes short ones do not — a path change mid-connection lands packets at a different site with no knowledge of that TCP session. That is why DNS over UDP is its model use, and why long TLS sessions on anycast need the sites to be equivalent
 
 ### The failure
 
-- The failure is relying solely on DNS to fail over during a regional outage. DNS records have a Time To Live (TTL). If you set the TTL to 5 minutes (300s), and the New York region loses power, you can update DNS to point New York users to London
-- However, the users' internet providers will cache the old New York IP address for the full 5 minutes. Your users will experience 5 minutes of total downtime while the DNS caches slowly expire
+- Treating a short TTL as a failover plan. Resolvers honour the record for its lifetime and some ignore short values entirely, so a dead region keeps receiving traffic for minutes after the change. DNS moves traffic on a schedule; it does not move it on an event, and regional failover is an event

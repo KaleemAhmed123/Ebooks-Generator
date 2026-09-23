@@ -1,15 +1,19 @@
 ## Read-through and write-through
 
-- In Cache-Aside, the application talks to both the cache and the database. In Read-Through and Write-Through, the application *only* talks to the cache. The cache itself is responsible for talking to the database
+- In cache-aside the application talks to both stores. In read-through and write-through it talks only to the cache, and the cache owns the database behind it. The pattern moves the code, and with it the failure modes
 
-| Pattern | How it works | When to use it |
-|---|---|---|
-| **Read-Through** | App asks cache. Cache misses, cache reads DB, cache returns to app. | When you want simple app code. Often provided by ORMs (like Hibernate) or specialized data layers |
-| **Write-Through** | App writes to cache. Cache pauses, writes synchronously to DB, then returns success to app. | When you have a read-heavy system and you want absolute consistency between cache and DB |
+| | Cache-aside | Read-through | Write-through |
+|---|---|---|---|
+| Who reads the database | the application | the cache | — |
+| Who writes it | the application | — | the cache, before acknowledging |
+| Cache down means | a slow request | a failed request | a failed write |
+| Fills with | data somebody read | data somebody read | data somebody wrote |
+| Needs | nothing | a cache that can load | a cache that can write |
 
-- In both patterns, the cache sits "in front" of the database as a mandatory layer
+- The "cache down means" row is the decision. Cache-aside degrades to slow; the through patterns degrade to broken, because the cache is now on the only path to the data. That is a real dependency, and it needs the treatment any dependency gets in Module 4
+- Write-through buys one thing worth having: the cache is never stale by construction, because no write reaches the database without passing through it. That removes the invalidation problem (page 6) entirely, at the cost of putting the cache in the write path
 
 ### The failure
 
-- The failure is using Write-Through for data that nobody reads. Because a Write-Through cache waits for the database to confirm the write before returning to the application, every single write pays the latency penalty of both a cache write and a database write
-- If you are writing IoT sensor data or logging user clicks, and 99% of that data is never read again, Write-Through forces you to pay latency to warm a cache that will never be used. Use Cache-Aside instead, so the cache is only populated on the first read
+- Write-through on data with a low read rate. Every write now pays a cache write plus a database write and waits for both, and for click events, sensor readings or audit rows — written constantly, read almost never — the cache fills with entries nobody will request and evicts the entries somebody would have
+- The pattern is worse than useless there: it adds write latency in order to degrade the hit rate. Write-through pays off when the write-to-read ratio is low and reads must never be stale; cache-aside is the default everywhere else

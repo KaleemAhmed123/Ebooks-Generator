@@ -1,30 +1,30 @@
 ## Fixing the stampede
 
-- There are three primary ways to fix a cache stampede:
+- Three mechanisms at three scopes. They stack rather than compete, and which are needed follows from how many processes can miss one key at once
 
-| Fix | How it works | When to use it |
+| Fix | Scope | Mechanism |
 |---|---|---|
-| **Request Coalescing** | The app tracks in-flight queries. If 10 requests for the same key arrive, the app sends 1 query and makes the other 9 wait. | Always. It is easy to implement and costs nothing. |
-| **Cache Leases** | On a miss, Redis returns a short-lived "lease" token to the first caller, and tells subsequent callers to wait or retry. | When you have dozens of app instances hitting the DB at once. |
-| **Probabilistic Refresh** | The app checks if the key is *almost* expired. It uses math (`now - Δ·β·ln(rand) ≥ expiry`) to randomly decide if it should recompute early. | When queries take a very long time and users cannot wait. |
+| Single-flight | one process | in-flight calls per key are shared; later callers await the first |
+| Leases | the whole fleet | the cache hands the first misser a token and makes the rest wait |
+| Early refresh | one key | recompute slightly before expiry, chosen at random per request |
 
-````typescript
-// Single-flight request coalescing in Node.js
-const inFlight = new Map<string, Promise<any>>();
+- Memcache's leases are the fleet-wide version: a 64-bit token issued on a miss, returned **only once every 10 seconds per key**, so every other process waits or serves stale. That cut peak database queries on stampede-prone keys from 17 000/s to 1 300/s
+- Early refresh removes the cliff rather than guarding it. XFetch recomputes when `now − Δ·β·ln(rand) ≥ expiry`, with `Δ` the last recompute's duration and `β` defaulting to 1, so expensive keys start earlier and no two requests decide together
 
-async function getWithCoalescing(key: string) {
-  if (inFlight.has(key)) return inFlight.get(key);
-  
-  const promise = fetchFromDb(key).finally(() => {
-    inFlight.delete(key);
-  });
-  
-  inFlight.set(key, promise);
-  return promise;
+```typescript
+const inFlight = new Map<string, Promise<unknown>>();
+
+function singleFlight<T>(key: string, work: () => Promise<T>): Promise<T> {
+  const running = inFlight.get(key) as Promise<T> | undefined;
+  if (running) return running;                        // join the call already in progress
+  const p = work().finally(() => inFlight.delete(key));
+  inFlight.set(key, p);                               // set before awaiting: no gap to race in
+  return p;
 }
-````
+```
+
+- Single-flight is per process, so forty instances still make forty queries — but it is the only one of the three that keeps working when the cache itself is unreachable
 
 ### The failure
 
-- The failure is implementing a distributed lock with no TTL. If the thread holding the lease crashes before writing to the cache, all other threads will wait forever for a lock that never unlocks
-- Every distributed lock or lease must have a strict timeout (e.g., 10 seconds)
+- A lease or lock with no expiry. The holder crashes between taking it and filling the key, every other caller waits on something never released, and the stampede has become a hang — worse, because it never recovers on its own. Every lease needs a timeout, and it is an upper bound on the refill rather than a guess: Memcache's ten-second rule reissues the token on a schedule whatever became of the last holder

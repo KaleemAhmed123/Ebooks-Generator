@@ -1,19 +1,19 @@
-## Watching your dependencies
+## Watching the dependencies
 
-- A microservice is only as healthy as the things it depends on. Measuring your own internal latency is not enough. You must explicitly monitor the health of every external API and database you call
-- For every dependency, you should track:
-  1. The call latency (p50, p95, p99)
-  2. The error rate (split by HTTP 4xx vs 5xx)
-  3. The number of timeouts
-  4. The state of the circuit breaker (Closed/Open)
+- A service's own success rate describes the service, not the request. Every dependency needs its own latency distribution, its own error rate split by class, its own timeout count, and its breaker state (Module 4, page 3) — all measured from the caller's side
+- Caller-side is the point. The dependency's own dashboard shows what it did for everyone; only the caller's view shows what it did for this service, over this network path, under this timeout
 
-| Metric | What it tells you |
-|---|---|
-| **High latency, low errors** | The dependency is struggling but surviving. Check your bulkheads |
-| **High timeouts, low 500s** | The dependency is deadlocked or dropping traffic at the load balancer |
-| **Circuit breaker OPEN** | The dependency is dead; you are currently saving it from a retry storm |
+| What the numbers show | What it means | Where to look |
+|---|---|---|
+| latency up, errors flat | the dependency is slow but serving; the queue is filling here | bulkheads (Module 4, page 4) |
+| timeouts up, 5xx flat | the answer never arrives — saturated, deadlocked or dropped in transit | deadlines (Module 4, page 1) |
+| 4xx up after a deploy | a contract change, not an outage — the caller is sending something new | contracts (Module 5, page 1) |
+| breaker open | the dependency is down and calls are failing fast | fallbacks (Module 4, page 8) |
+
+- Timeouts are counted separately from errors on purpose. An error is an answer; a timeout is the absence of one, and it costs a held connection, a held thread and a deadline that has already expired upstream. Folding them together hides the more expensive of the two
+- Breaker state belongs on the dashboard as a metric, not only in the logs, because it is the one signal that says the service is currently protecting itself rather than failing
 
 ### The failure
 
-- The failure mode is looking at your own service's dashboard and seeing 100% success rate, while your users are complaining that the app is broken
-- If your service gracefully degrades when the Recommendation API is down, your service's SLI might look perfect (returning 200 OK with default data). If you do not have a dedicated dashboard showing the health of the Recommendation API from *your* perspective, you are flying blind
+- A service that degrades gracefully and never says so. Recommendations are down, the fallback returns an empty list, and the service reports `200` on every request with a perfect indicator while users see a blank shelf
+- Graceful degradation removes the signal along with the failure. Anything that can be degraded needs a counter for how often it is being degraded, and that counter needs to be part of the indicator — otherwise the dashboard is measuring the fallback, and the fallback always works
