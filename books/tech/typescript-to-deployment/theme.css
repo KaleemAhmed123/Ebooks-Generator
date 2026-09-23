@@ -1,0 +1,330 @@
+/* ============================================================
+   TypeScript to Deployment — the merged volume
+   ------------------------------------------------------------
+   The nine booklets each keep their own accent and their own cover. This
+   sheet is only what changes when they are bound into one book: a contents
+   page that can hold a thousand entries, and a divider that announces a
+   booklet the way a cover used to.
+   ============================================================ */
+
+:root {
+  /* The build writes --accent onto each page section as it renders it. The
+     contents pages are generated furniture and get no section, so on them
+     `var(--accent)` resolves to nothing and the colour silently falls back to
+     inherited ink. This is the fallback, and it must match `cover.accent` in
+     this series' meta.json. Same arrangement production-terms uses. */
+  --accent: #1f6f8b;
+  --muted: #6b6b6b;
+}
+
+/* ---------- contents, in two kinds ----------
+   One index of 891 entries ran to six pages and answered the wrong question.
+   Nobody opens a 1,171-page volume looking for "Typed environment config"; they
+   look for the AWS half. So the front carries a short menu of the nine
+   booklets, and each booklet opens with its own index of its own sections.
+   You navigate by subject first, then by section, which is the order you
+   actually think in.
+
+   `.toc.main` is the front menu. `.toc[data-toc]` is a booklet's own. */
+
+.toc h2 {
+  font-size: 13pt;
+  margin: 0 0 3.5mm 0;
+  padding-bottom: 1.6mm;
+  background-image: none;
+  border-bottom: 1.2pt solid var(--accent);
+  color: var(--ink);
+  column-span: all;
+}
+.toc > ul {
+  column-count: 3;
+  column-gap: 5mm;
+  /* balance, not auto: the build measures this element to work out how many
+     printed pages the contents needs, and only a balanced multicol reports a
+     height that matches what Chrome actually prints. */
+  column-fill: balance;
+}
+.toc ul { padding-left: 0; }
+.toc ul ul { padding-left: 1.6mm; }
+.toc li {
+  font-size: 5.6pt;
+  line-height: 1.26;
+  margin-bottom: 0;
+  break-inside: avoid;
+}
+/* Two ranks share level 1 here: the ten dividers, and the 96 module openers
+   inside them. Set identically they were indistinguishable, and an index you
+   cannot navigate by booklet is no better than an alphabetical dump.
+   A module title. Bold ink, so it reads as structure without competing. */
+.toc li.lvl1 {
+  font-size: 6.6pt;
+  font-weight: 700;
+  color: var(--ink);
+  margin-top: 1.6mm;
+  margin-bottom: 0.4mm;
+  break-after: avoid;
+}
+/* A booklet. Ten in the whole index, and the only lines you scan for when you
+   want the AWS half of the book. Accent, caps, and a rule above. */
+.toc li.book {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 7.4pt;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-top: 1pt solid var(--accent);
+  padding-top: 1.2mm;
+  margin-top: 3.4mm;
+  margin-bottom: 1mm;
+  break-after: avoid;
+}
+/* The first booklet sits directly under the heading rule; a second line there
+   reads as a mistake. */
+.toc > ul > li.book:first-child { border-top: none; margin-top: 0; padding-top: 0; }
+
+/* ---------- the front menu ----------
+   Fourteen lines: nine booklets, then the back matter. One page, set large
+   enough to be read across a desk, because this is the page a reader lands on
+   and decides where to go. */
+
+.toc.main > ul { column-count: 1; }
+.toc.main h2 { font-size: 14pt; margin-bottom: 6mm; }
+/* Set in the book's own serif at normal weight. Heavy sans in the accent read
+   as a web dashboard, not a title page — on a contents page the words are the
+   design, and the only job of the styling is to space them well. The leading is
+   what fills the page, not the weight. */
+.toc.main li.book {
+  font-family: "Georgia", serif;
+  font-size: 13pt;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
+  border-top: none;
+  padding-top: 0;
+  /* Fourteen lines have to fit one sheet. At 15pt on 8.4mm leading they came to
+     fifteen and pushed the last two onto a second page, which is a worse
+     contents than a slightly tighter one. 13pt on 5.5mm lands at about 140mm of
+     the 186mm available — full, with room for a longer booklet name. */
+  margin: 0 0 5.5mm 0;
+}
+.toc.main li.book a { color: var(--ink); }
+.toc.main li.book > .p {
+  font-family: "Georgia", serif;
+  font-size: 10.5pt;
+  font-weight: 400;
+  color: var(--accent);
+}
+.toc.main li.book > .dots {
+  border-bottom: 0.6pt dotted color-mix(in srgb, var(--accent) 45%, #fff);
+  margin: 0 3mm;
+  transform: translateY(-1mm);
+}
+/* The back matter: real entries, but not booklets. Smaller and indented, so
+   the nine above them stay the point of the page.
+
+   `:not(.book)` is load-bearing. A booklet's line carries both classes, and
+   these rules sit after the `.book` block at equal specificity — without it
+   they win, and all fourteen lines come out the same size. */
+.toc.main li.lvl1:not(.book) {
+  font-family: "Georgia", serif;
+  font-size: 9.5pt;
+  font-weight: 400;
+  color: var(--ink);
+  margin: 0 0 2.4mm 6mm;
+}
+.toc.main li.lvl1:not(.book) > .p {
+  font-family: "Georgia", serif;
+  font-size: 8.5pt;
+  font-weight: 400;
+  color: var(--muted, #6a6a72);
+}
+.toc.main li.lvl1:not(.book) > .dots {
+  border-bottom: 0.5pt dotted #c8c8d0;
+  margin: 0 2mm;
+  transform: translateY(-0.8mm);
+}
+/* The back matter hangs off Reference. One rule marks where the booklets stop. */
+.toc.main li.book + li.lvl1:not(.book) { margin-top: 1mm; }
+
+/* ---------- a booklet's own contents ----------
+   Sits on the page after the divider.
+
+   Three columns of 5.6pt was inherited from the volume-wide index, where it was
+   holding 891 entries. A booklet's index holds 56 to 245, so the same setting
+   left most of them using less than half the sheet and reading like fine print.
+   Two columns at 7.4pt is 60mm of measure instead of 41mm — long section names
+   stop wrapping, and the short booklets fill their page. The AWS booklet grows
+   from two sheets to three, which is the right trade for a 377-page booklet. */
+
+.toc[data-toc] > ul { column-count: 2; column-gap: 7mm; }
+.toc[data-toc] h2 {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 13pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 5mm;
+}
+/* 1.28, not 1.34: the AI-practices booklet measured 188mm against a 186mm
+   sheet and spilled two entries onto a second, near-empty page. Four percent
+   off the leading pulls it back under and costs nothing legible. */
+.toc[data-toc] li { font-size: 7.4pt; line-height: 1.28; }
+.toc[data-toc] li.lvl1 {
+  font-size: 8.4pt;
+  font-weight: 700;
+  color: var(--ink);
+  margin-top: 2.8mm;
+  margin-bottom: 0.8mm;
+}
+.toc[data-toc] li > .p { font-size: 6.6pt; }
+.toc[data-toc] li.lvl1 > .p { font-size: 7.2pt; }
+/* At 60mm the leader dots are useful again — they were dropped only because a
+   41mm column had no room for them. */
+.toc[data-toc] li > .dots {
+  border-bottom: 0.5pt dotted #c8c8d0;
+  margin: 0 1.5mm;
+  transform: translateY(-0.7mm);
+}
+/* The leader dots are what made a one-column contents readable. At 41mm they
+   are noise, so the page number simply sits at the right edge. */
+.toc li > .dots { border-bottom: none; margin: 0 1mm; }
+.toc li > .p { font-size: 5pt; color: var(--muted, #6a6a72); }
+.toc li.lvl1 > .p { font-size: 5.6pt; font-weight: 700; color: var(--ink); }
+.toc li.book > .p { font-size: 6.2pt; font-weight: 800; color: var(--accent); }
+/* The domain styles links blue. A thousand entries set in blue is a wall of
+   blue. Entries read as text; the booklet lines keep the accent. */
+.toc a { color: var(--ink); text-decoration: none; }
+.toc li.lvl1 a { color: var(--ink); }
+.toc li.book a { color: var(--accent); }
+
+/* ---------- booklet divider, merged volume only ----------
+   Inside the volume a booklet has no cover, so this page does the cover's job:
+   say loudly which subject starts here, in one line say what it argues, and
+   list the ground it covers. Then the content starts. */
+
+.page.topic {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: color-mix(in srgb, var(--accent) 6%, #fff);
+  /* A .page is content-height by default, so `justify-content: center` has
+     nothing to centre inside and the tint stops wherever the text does. The
+     printable area is 210mm less 13mm and 11mm of margin; 185mm claims all of
+     it while staying under the build's 186mm overflow check. */
+  min-height: 185mm;
+  box-sizing: border-box;
+  padding: 0 6mm;
+}
+.page.topic h1 {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 40pt;
+  line-height: 0.94;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+  text-shadow: none;
+  border-bottom: none;
+  margin: 0 0 4mm 0;
+  padding: 0;
+}
+.page.topic .topic-no {
+  font-family: "Consolas", "SF Mono", monospace;
+  font-size: 7pt;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 3mm 0;
+}
+.page.topic .topic-sub {
+  font-family: "Georgia", serif;
+  font-size: 13pt;
+  font-style: italic;
+  color: #3a3a3a;
+  margin: -2mm 0 0 0;
+}
+/* The booklet's cover banner, reused. It is the one sentence the booklet is
+   built to prove, so it belongs on the page that opens it. */
+.page.topic .topic-line {
+  font-family: "Verdana", "Segoe UI", sans-serif;
+  font-size: 9pt;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  border-left: 2.4pt solid var(--accent);
+  padding-left: 3.5mm;
+  margin: 6mm 0 0 0;
+  max-width: 88%;
+}
+.page.topic .topic-count {
+  font-family: "Consolas", "SF Mono", monospace;
+  font-size: 8pt;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  border-top: 1.2pt solid var(--accent);
+  padding-top: 2.5mm;
+  margin: 5mm 0 0 0;
+}
+.page.topic p { font-size: 9pt; line-height: 1.5; max-width: 92%; }
+
+/* What the booklet covers, taken from the booklet's own cover panel so the
+   divider and the cover can never drift apart. */
+.page.topic .topic-terms {
+  list-style: none;
+  padding: 0;
+  margin: 7mm 0 0 0;
+  columns: 2;
+  column-gap: 8mm;
+}
+.page.topic .topic-terms li {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 8.8pt;
+  font-weight: 600;
+  color: var(--ink);
+  padding: 0 0 0 3.4mm;
+  margin: 0 0 1.8mm 0;
+  break-inside: avoid;
+  position: relative;
+}
+.page.topic .topic-terms li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.2mm;
+  width: 1.6mm;
+  height: 1.6mm;
+  background: var(--accent);
+}
+
+/* ---------- module titles ----------
+   The domain draws h1 in pink (#ef476e) with a light-yellow offset shadow — the
+   comic look sampled from the source book. Inside a volume whose dividers,
+   contents, rules and cover are all one teal, a pink module title is the only
+   thing on the page belonging to a different book, and the yellow shadow at
+   3px offset is close enough to white to read as a printing fault.
+
+   h1 takes the accent instead: the volume's teal here, and the booklet's own
+   colour when a booklet is printed on its own. */
+
+h1 {
+  color: var(--accent);
+  text-shadow: none;
+}
+
+/* ---------- inline code ----------
+   The domain sets inline code in #c8ae75, which measures 2.15:1 against white.
+   WCAG asks 4.5:1 for body text, so `package.json` in the middle of a sentence
+   was the least legible thing on the page — and inline code is exactly the text
+   a reader needs to copy exactly.
+
+   This rust measures 6.53:1, sits opposite the teal rather than competing with
+   it, and still reads as "not prose" without a background tint. Code blocks are
+   untouched: `pre code` is light-on-dark and already fine. */
+
+code { color: #9c4221; }
+pre code { color: var(--code-fg); }

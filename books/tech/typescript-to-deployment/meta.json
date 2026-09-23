@@ -1,7 +1,11 @@
 {
   "title": "TypeScript to Deployment",
   "subtitle": "The Ultimate Guide",
-  "masterVolume": true,
+  "tocTitle": "Contents",
+  "contents": "per-topic",
+  "masterVolume": {
+    "name": "typescript-to-deployment-complete"
+  },
   "order": [
     "01-typescript",
     "02-nextjs",
@@ -12,5 +16,54 @@
     "07-ai-sdks",
     "08-deployment",
     "09-ai-practices"
-  ]
+  ],
+  "cover": {
+    "accent": "#1f6f8b",
+    "title": [
+      "TypeScript",
+      "to Deployment"
+    ],
+    "banner": "KNOW WHAT YOU SHIP. OWN WHAT YOU RUN.",
+    "kicker": "TYPESCRIPT · NODE · DATA · APIS · AI · AWS",
+    "term": [
+      [
+        "$ tsc --noEmit && npm test",
+        0
+      ],
+      [
+        "✓ 0 errors",
+        1
+      ],
+      [
+        "$ docker build -t app . && deploy",
+        0
+      ],
+      [
+        "✓ live in 41s",
+        1
+      ],
+      [
+        "$ _",
+        2
+      ]
+    ],
+    "stack": [
+      "TypeScript · 82",
+      "Next.js · 53",
+      "Node.js Core · 81",
+      "The Node Ecosystem · 166",
+      "Data & Messaging · 49",
+      "API & Service Design · 62",
+      "AI SDKs · 157",
+      "Deployment on AWS · 377",
+      "AI-Assisted Engineering · 100"
+    ],
+    "label": "COMPLETE VOLUME",
+    "setLine": "ALL 9 BOOKLETS IN ONE VOLUME",
+    "face": {
+      "brow": "raised",
+      "mouth": "smile",
+      "tilt": -3
+    }
+  }
 }

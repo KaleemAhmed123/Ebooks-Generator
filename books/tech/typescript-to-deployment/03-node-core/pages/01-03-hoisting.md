@@ -28,7 +28,7 @@
   <rect class="b" x="262" y="20" width="196" height="72" rx="3"/>
   <text x="274" y="36" class="t">var total</text>
   <text x="274" y="52" class="c">console.log(total)</text>
-  <text x="342" y="52" class="t">undefined</text>
+  <text x="371" y="52" class="t">undefined</text>
   <text x="274" y="68" class="c">total = 10</text>
   <text x="274" y="86" class="c">count()</text>
 
