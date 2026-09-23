@@ -1,0 +1,24 @@
+{
+  "title": "Graphs",
+  "subtitle": "Traversal, Paths, Connectivity",
+  "cover": {
+    "accent": "#2d6a4f",
+    "title": ["Graphs", "Traversal & Paths"],
+    "banner": "HALF OF HARD PROBLEMS ARE GRAPHS IN DISGUISE.",
+    "kicker": "DFS · BFS · DIJKSTRA · MST · SCC · TOPOLOGICAL SORT",
+    "term": [
+      ["states → nodes", 0],
+      ["transformations → edges", 0],
+      ["dependencies → DAG", 0],
+      ["$ _", 2]
+    ],
+    "stack": [
+      "representation & recognition",
+      "traversal",
+      "shortest paths",
+      "MST · connectivity",
+      "topological order"
+    ],
+    "face": { "brow": "sharp", "mouth": "flat", "tilt": -3 }
+  }
+}
