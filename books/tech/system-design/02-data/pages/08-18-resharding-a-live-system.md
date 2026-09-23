@@ -26,7 +26,7 @@
   <path d="M370 85 L370 95" stroke="#1a1a1a" fill="none"/><path d="M370 95 l-3 -3 h6 z" fill="#1a1a1a"/>
 </svg>
 
-- **Dual write**: the application writes both the old store and the new; only the old one's failure fails the request
+- **Dual write** (booklet 04 owns the term): the application writes both the old store and the new; only the old one's failure fails the request
 - **Backfill**: copy the history into the new layout, in batches, without overwriting anything the dual-writer has already written
 - **Verify**: compare. Notion ran a verification job comparing the two, and made sure it was "implemented by different people" than the migration. **Dark reads**: serve from the old store, also read the new one, log every difference
 - **Cut over**: flip reads to the new store, then stop the dual write. Figma's first physical shard cutover cost "ten seconds of partial availability", after months of preparation
