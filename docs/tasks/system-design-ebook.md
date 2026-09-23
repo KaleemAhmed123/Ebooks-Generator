@@ -1445,6 +1445,69 @@ page, the preface and the final note.
 2026-09-23 decision. The final note says so in the reader's own words rather
 than leaving the gap silent.
 
+### 2026-09-23 — glossary audit, two findings resolved
+
+A 386-entry verification pass over `backmatter/` reported one WRONG and one
+OVERSTATED finding. Both were re-checked against the actual pages before any
+edit. **One was applied; one was rejected as an auditor error.**
+
+**Rejected — `content-defined chunking` (cited `6 · 10-02`).** The audit read the
+glossary line alone and reasoned conditionally: "*if* page 10-02 presents
+Dropbox's fixed 4 MB blocks as an example of content-defined chunking, that is a
+misattribution." The condition is false. Page 10-02 says "Fixed boundaries are
+what Dropbox chose" and introduces content-defined chunking as **the fix** for
+the prepend/insert failure, bolded, which is exactly where the glossary's
+"pointer = the page that explains it" rule puts it. The audit's proposed
+remedy — retitling the entry "fixed-size chunking" — would have replaced a
+correct rolling-hash definition with a wrong one. **No change made.** Recorded
+here so a future pass does not re-open it.
+
+**Applied — `dual write`.** The audit called the entry narrow. It was worse than
+that: the term was bold-defined in **two** places, which breaks the glossary's
+own "one term is defined once; a booklet that uses another's idea points rather
+than repeats" rule. `4 · 8-01` is a whole page titled "The dual-write problem"
+and owns the general meaning (two systems, no shared transaction — the classic
+motivation for the outbox pattern). `2 · 8-18` re-defined it narrowly for
+resharding, and the glossary had pointed at that narrower one, so a reader
+arriving from booklet 04's dual-write problem found a migration-only definition.
+
+Two edits:
+
+- `backmatter/01-08-glossary-d-e.md` — definition broadened to cover both senses
+  ("committing to two systems with no shared transaction — a database and a
+  broker, or an old store and its replacement — either can fail after the other
+  succeeded"); pointer moved `2 · 8-18` → `4 · 8-01`.
+- `02-data/pages/08-18-resharding-a-live-system.md` — the bullet now reads
+  **Dual write** (booklet 04 owns the term), matching the cross-booklet pointer
+  convention used 43 times elsewhere for booklet 04. The migration bullet
+  survives as a *use*, not a second definition.
+
+**Checks.** `node tools/build.mjs system-design-complete` → **cover drawn, 592
+pages, zero overflow** — identical page count to the previous build, so neither
+edit reflowed anything. The new glossary line is 191 characters against a 193
+proven maximum elsewhere in the glossary, and the D–E page still fits its 13
+rows. Verified in the built HTML rather than assumed: the new definition present
+once, `booklet 04 owns the term` present once, the old migration-only wording
+gone (0 occurrences). Term count still **386**, so how-to-read's "386 terms"
+stays true; alphabetical order intact (downsampling → dual write → durability);
+`4 · 8-01` resolves to a real file.
+
+**Correction to CLAUDE.md's build note, worth knowing.** The docs claim
+`build.mjs <book> --html` warns on overflow. It does not — the overflow check
+lives inside `toPdf()` (`tools/build.mjs:713`), so the HTML path is silent and
+proves nothing about page fit. Only a PDF build measures. Also, building the
+series target `system-design` builds the six child booklets but **not** the
+master volume; `system-design-complete` must be named explicitly, and it is the
+only target that renders `backmatter/` at all.
+
+**Observed, not changed.** The glossary is a curated subset, not every bolded
+span — the harvest pool was ~700 distinct spans against 386 selected entries. So
+bolded-but-absent terms (`blocklist` on page `6 · 10-02` is one) are a curation
+outcome, not a defect, and adding one would break the "386 terms" line. Left
+alone deliberately. The backmatter-rendering `tools/build.mjs` is **still
+uncommitted** in the working tree, so this volume remains reproducible only
+here.
+
 ## Explanation
 
 ### 1. What changed
