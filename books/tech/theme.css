@@ -47,14 +47,11 @@ html, body {
    above a full-width rule. Matches the source's module openers. */
 
 h1 {
-  font-family: "Verdana", "Trebuchet MS", sans-serif;
-  font-style: italic;
-  font-weight: 800;
+  font-family: "Georgia", "Cambria", serif;
+  font-weight: 700;
   font-size: 19pt;
   line-height: 1.1;
-  letter-spacing: -0.01em;
-  color: var(--pink);
-  text-shadow: 3px 3px 0 var(--pink-shadow);
+  color: #b8541a; /* Earthy rust/brown */
   margin: 0 0 4mm 0;
   padding-bottom: 3mm;
   border-bottom: 1.2pt solid var(--rule);
