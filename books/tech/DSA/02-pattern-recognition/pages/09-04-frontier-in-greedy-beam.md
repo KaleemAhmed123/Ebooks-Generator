@@ -52,5 +52,7 @@ while frontier is not empty:
   3. **How aggressively you prune** (never, overlapping intervals, beam width)
 
 :::interview
-"When would you use Beam Search instead of A*?" — When the state space is too large to explore exactly. Beam Search caps the frontier at a fixed width B, so memory stays constant. The tradeoff is that it might miss the optimal solution. Use it when a good-enough answer fast is better than the perfect answer never.
+"When would you use Beam Search instead of A*?"
+
+When the state space is too large to explore exactly. Beam Search caps the frontier at a fixed width B, so memory stays constant. The tradeoff is that it might miss the optimal solution. Use it when a good-enough answer fast is better than the perfect answer never.
 :::

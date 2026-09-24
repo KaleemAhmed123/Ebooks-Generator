@@ -46,5 +46,7 @@ function optimalCapacity(packages: number[], days: number): number {
 - Always take a minute to define the literal worst-case and best-case bounds for your search space
 
 :::interview
-"How did you know to binary search here? The array isn't sorted." — The array isn't sorted, but the *answer space* is. If a ship of capacity 10 works, a ship of capacity 11 must also work. That monotonicity `[F, F, T, T, T]` means I can binary search the capacity itself, reducing a complex optimization problem to a series of O(n) feasibility checks.
+"How did you know to binary search here? The array isn't sorted."
+
+The array isn't sorted, but the *answer space* is. If a ship of capacity 10 works, a ship of capacity 11 must also work. That monotonicity `[F, F, T, T, T]` means I can binary search the capacity itself, reducing a complex optimization problem to a series of O(n) feasibility checks.
 :::

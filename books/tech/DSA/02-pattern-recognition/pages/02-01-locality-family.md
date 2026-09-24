@@ -1,5 +1,3 @@
-# Chapter 2 — Locality
-
 ## The Locality Family
 
 - **What it is:** The answer to the problem depends on a small, contiguous chunk of the data

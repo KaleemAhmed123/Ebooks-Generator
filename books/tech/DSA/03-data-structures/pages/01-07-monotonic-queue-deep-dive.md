@@ -51,5 +51,7 @@ function maxSlidingWindow(nums: number[], k: number): number[] {
 - Note that in JavaScript, using `shift()` on an array makes the above code O(N×K). In an interview, explicitly state: *"I am using a JS array for the deque. `shift()` is O(K), but I am assuming a true Deque where this is O(1)."*
 
 :::interview
-"Why use a Monotonic Queue instead of a Max-Heap for the Sliding Window Maximum?" — A Max-Heap can find the maximum in O(1) and add elements in O(log K). But *removing* an expired element from the middle of a Heap takes O(K). Lazy removal (waiting until the expired element reaches the top) works, but a Monotonic Queue is strictly O(N) overall (amortised O(1) per element) and is conceptually cleaner once mastered.
+"Why use a Monotonic Queue instead of a Max-Heap for the Sliding Window Maximum?"
+
+A Max-Heap can find the maximum in O(1) and add elements in O(log K). But *removing* an expired element from the middle of a Heap takes O(K). Lazy removal (waiting until the expired element reaches the top) works, but a Monotonic Queue is strictly O(N) overall (amortised O(1) per element) and is conceptually cleaner once mastered.
 :::

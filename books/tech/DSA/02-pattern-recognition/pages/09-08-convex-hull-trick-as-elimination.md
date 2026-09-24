@@ -67,5 +67,7 @@
 - The "scary" geometry is just the domination check. The algorithmic skeleton is identical
 
 :::interview
-"How would you optimize this O(n²) DP?" — The inner loop searches for the minimum value of a linear function `mx + c`. We can optimize this by maintaining a set of lines. As we add new lines, we check if they render any previous lines strictly suboptimal (they never form the lower envelope). We pop those dominated lines. We can then binary search the remaining lines, reducing O(n²) to O(n log n).
+"How would you optimize this O(n²) DP?"
+
+The inner loop searches for the minimum value of a linear function `mx + c`. We can optimize this by maintaining a set of lines. As we add new lines, we check if they render any previous lines strictly suboptimal (they never form the lower envelope). We pop those dominated lines. We can then binary search the remaining lines, reducing O(n²) to O(n log n).
 :::

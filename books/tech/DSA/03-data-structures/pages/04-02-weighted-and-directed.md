@@ -54,5 +54,7 @@ function buildDirectedGraph(n: number, edges: number[][]) {
 - This Queue-based algorithm (Kahn's) requires the Adjacency List (to know who to decrement) AND the Indegree Array (to know who is free).
 
 :::interview
-"Can a directed graph have cycles?" — Yes. If you run Kahn's algorithm on a graph with a cycle, the nodes in the cycle will never reach an indegree of 0. When the queue empties, the number of processed nodes will be less than the total nodes $N$. This is the standard, O(V+E) way to detect cycles in a directed graph.
+"Can a directed graph have cycles?"
+
+Yes. If you run Kahn's algorithm on a graph with a cycle, the nodes in the cycle will never reach an indegree of 0. When the queue empties, the number of processed nodes will be less than the total nodes $N$. This is the standard, O(V+E) way to detect cycles in a directed graph.
 :::

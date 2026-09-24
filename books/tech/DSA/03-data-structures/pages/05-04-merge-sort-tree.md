@@ -48,5 +48,7 @@ If a problem asks: "In the subarray from index $L$ to $R$, how many elements are
 - If the array is dynamic (requires point updates), you must abandon the Merge Sort Tree and use a Fenwick Tree of Ordered Sets (a 2D Fenwick), or a Fractional Cascading technique.
 
 :::interview
-"Can we optimize the $O(\log^2 N)$ query time to $O(\log N)$?" — Yes, using a technique called **Fractional Cascading**. Instead of just storing the numbers, every number in a node's array stores two pointers: the index of where it would sit in the left child's array, and the right child's array. This means you only binary search once at the root, and then follow the pointers down in O(1) per level. However, this is extremely complex and rarely expected outside of advanced competitive programming.
+"Can we optimize the $O(\log^2 N)$ query time to $O(\log N)$?"
+
+Yes, using a technique called **Fractional Cascading**. Instead of just storing the numbers, every number in a node's array stores two pointers: the index of where it would sit in the left child's array, and the right child's array. This means you only binary search once at the root, and then follow the pointers down in O(1) per level. However, this is extremely complex and rarely expected outside of advanced competitive programming.
 :::

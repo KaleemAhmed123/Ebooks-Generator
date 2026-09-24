@@ -21,5 +21,7 @@
 - **Using a heap when order matters.** If the problem asks "find the largest element in every sliding window of size k", you *can* use a Heap. You push `(value, index)`, and if the max element's index is outside the window, you pop it. But this takes O(n log n) time. Since the sliding window enforces strict contiguous locality, you should use a **Monotonic Queue (Deque)** to solve it in O(n) time
 
 :::interview
-"Can we solve 'Sliding Window Maximum' with a Priority Queue?" — Yes, we can push `[value, index]` into a Max-Heap. When looking for the max of the current window, we check the root. If its index is outside the window bounds, we pop it and check the next one. This takes O(n log n). However, because we only care about the *local* window, a Monotonic Deque can solve this optimally in O(n) time by permanently discarding dominated elements.
+"Can we solve 'Sliding Window Maximum' with a Priority Queue?"
+
+Yes, we can push `[value, index]` into a Max-Heap. When looking for the max of the current window, we check the root. If its index is outside the window bounds, we pop it and check the next one. This takes O(n log n). However, because we only care about the *local* window, a Monotonic Deque can solve this optimally in O(n) time by permanently discarding dominated elements.
 :::

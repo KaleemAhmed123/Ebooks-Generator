@@ -51,5 +51,7 @@ function buildSparseTable(arr: number[]): number[][] {
   - `sum(5, 5) = 10` (NOT Idempotent. The overlap double-counts. You must query a Sparse Table for Sums in O(log N) time by stitching non-overlapping blocks together).
 
 :::interview
-"If a Segment Tree can answer RMQ in O(log N) and supports updates, why ever use a Sparse Table?" — If the array is static (no updates), and the number of queries is massive (e.g. $10^7$ queries), an O(log N) Segment Tree might Time Limit Exceed. The O(1) query of a Sparse Table is fundamentally faster. In competitive programming, Sparse Tables are standard for static RMQ.
+"If a Segment Tree can answer RMQ in O(log N) and supports updates, why ever use a Sparse Table?"
+
+If the array is static (no updates), and the number of queries is massive (e.g. $10^7$ queries), an O(log N) Segment Tree might Time Limit Exceed. The O(1) query of a Sparse Table is fundamentally faster. In competitive programming, Sparse Tables are standard for static RMQ.
 :::

@@ -57,5 +57,7 @@ function removeDuplicates(arr: number[]): number {
 - Use the term "sliding window" when the elements *between* the pointers matter (e.g. summing them). Use "two pointers" when only the elements *at* the pointers matter
 
 :::interview
-"If the array is sorted, do we use same-direction or opposite-direction pointers?" — Almost always opposite-direction. A sorted array gives you a magnitude gradient. If the sum of the left and right pointers is too big, the ONLY way to make it smaller is to move the right pointer leftwards. That logic is what allows us to eliminate candidates in O(1).
+"If the array is sorted, do we use same-direction or opposite-direction pointers?"
+
+Almost always opposite-direction. A sorted array gives you a magnitude gradient. If the sum of the left and right pointers is too big, the ONLY way to make it smaller is to move the right pointer leftwards. That logic is what allows us to eliminate candidates in O(1).
 :::

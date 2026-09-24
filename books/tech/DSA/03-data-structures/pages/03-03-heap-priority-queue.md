@@ -35,5 +35,7 @@
   2. Use a different structure, like an Ordered Set (TreeSet in Java), which supports O(log N) search and removal.
 
 :::interview
-"Why use a Heap for Top-K instead of sorting the array?" — Sorting the array takes O(N log N). If N is 10 million, that's slow. If K is 5, a Heap approach takes O(N log K), which is roughly O(N). Furthermore, if the data is a continuous infinite stream, sorting is impossible. A size-K Heap processes streams perfectly.
+"Why use a Heap for Top-K instead of sorting the array?"
+
+Sorting the array takes O(N log N). If N is 10 million, that's slow. If K is 5, a Heap approach takes O(N log K), which is roughly O(N). Furthermore, if the data is a continuous infinite stream, sorting is impossible. A size-K Heap processes streams perfectly.
 :::

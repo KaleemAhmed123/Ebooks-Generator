@@ -27,5 +27,7 @@
 - **Preprocessing when the data changes.** Prefix sums are brilliant for static arrays. If the problem asks you to *update* elements between queries, updating the prefix array takes O(n), ruining the benefit. (That is the exact constraint fingerprint that tells you to use a Fenwick or Segment Tree)
 
 :::interview
-"You have an array and 100,000 range-sum queries. How do you handle this efficiently?" — I would preprocess the array into a prefix sum array in O(n). Then each query becomes a single subtraction: sum(L, R) = prefix[R] − prefix[L−1]. Total time drops from O(n × Q) to O(n + Q).
+"You have an array and 100,000 range-sum queries. How do you handle this efficiently?"
+
+I would preprocess the array into a prefix sum array in O(n). Then each query becomes a single subtraction: sum(L, R) = prefix[R] − prefix[L−1]. Total time drops from O(n × Q) to O(n + Q).
 :::

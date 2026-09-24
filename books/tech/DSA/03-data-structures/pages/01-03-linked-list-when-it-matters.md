@@ -44,5 +44,7 @@ function spliceAfter(current: ListNode, val: number) {
 ```
 
 :::interview
-"If I need to frequently insert elements into the middle of a list, should I use a Linked List?" — Usually no. A Linked List can *insert* in O(1), but you have to *find* the insertion point first, which takes O(N) traversal. A Dynamic Array also takes O(N) to insert (due to shifting). Because array shifting has perfect spatial locality, the Array is almost always faster in practice unless the list is massive and you already hold a pointer to the insertion site.
+"If I need to frequently insert elements into the middle of a list, should I use a Linked List?"
+
+Usually no. A Linked List can *insert* in O(1), but you have to *find* the insertion point first, which takes O(N) traversal. A Dynamic Array also takes O(N) to insert (due to shifting). Because array shifting has perfect spatial locality, the Array is almost always faster in practice unless the list is massive and you already hold a pointer to the insertion site.
 :::

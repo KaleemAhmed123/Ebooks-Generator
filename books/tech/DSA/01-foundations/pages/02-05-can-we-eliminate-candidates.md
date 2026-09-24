@@ -34,5 +34,7 @@ while (lo <= hi) {
 - **The transformation:** Stop generating this branch. Prune it. You eliminate all subsets that start with this partial prefix
 
 :::interview
-"Why does Two Pointers work for the Two Sum problem on a sorted array?" — Because the sorted order guarantees monotonic behavior. If the sum is too large, the current right pointer cannot form a valid pair with *any* element to its right. We can permanently eliminate it and step left.
+"Why does Two Pointers work for the Two Sum problem on a sorted array?"
+
+Because the sorted order guarantees monotonic behavior. If the sum is too large, the current right pointer cannot form a valid pair with *any* element to its right. We can permanently eliminate it and step left.
 :::

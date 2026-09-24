@@ -51,5 +51,7 @@ function solvePuzzle(startState: string, targetState: string): number {
 - **The fix:** Ensure your state representation is as minimal as possible. If the state can fit into a 32-bit integer (e.g., bitmasking), use an integer. It is exponentially faster than string slicing.
 
 :::interview
-"Could we use DFS to solve the Sliding Puzzle?" — No. DFS dives deep. It might find a path that takes 50,000 moves, and it will eventually explore the shortest path, but keeping track of the absolute shortest path while avoiding cycles in a massive state-space is incredibly inefficient with DFS. If you need the *minimum* operations on an unweighted graph, it must be BFS.
+"Could we use DFS to solve the Sliding Puzzle?"
+
+No. DFS dives deep. It might find a path that takes 50,000 moves, and it will eventually explore the shortest path, but keeping track of the absolute shortest path while avoiding cycles in a massive state-space is incredibly inefficient with DFS. If you need the *minimum* operations on an unweighted graph, it must be BFS.
 :::

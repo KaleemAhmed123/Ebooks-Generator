@@ -62,5 +62,7 @@ Binary Lifting is the gold standard for answering multiple LCA queries on a stat
 3. Once you've checked down to $2^0$, they will be exactly one step below their LCA. The answer is `up[u][0]`.
 
 :::interview
-"Can we find LCA without Binary Lifting?" — Yes, for a single query, you can do a standard DFS which takes O(N). But if an interviewer asks you to answer $10^5$ LCA queries on a tree with $10^5$ nodes, O(N) per query will Time Limit Exceed. Binary Lifting reduces the query time to O(log N), completing all queries effortlessly.
+"Can we find LCA without Binary Lifting?"
+
+Yes, for a single query, you can do a standard DFS which takes O(N). But if an interviewer asks you to answer $10^5$ LCA queries on a tree with $10^5$ nodes, O(N) per query will Time Limit Exceed. Binary Lifting reduces the query time to O(log N), completing all queries effortlessly.
 :::

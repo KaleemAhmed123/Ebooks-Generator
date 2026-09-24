@@ -1,5 +1,3 @@
-# Module 2 — Pattern Recognition
-
 ## Why patterns are not techniques
 
 - A "technique" is a specific mechanical operation: *Two Pointers*, *Sliding Window*, *Binary Search*
@@ -26,5 +24,7 @@
 - You ask: "Does the answer depend on a local contiguous range? Yes? Then this is a **Locality** pattern. What techniques exploit locality? Sliding Window and Monotonic Stack."
 
 :::interview
-"I've done 300 problems but I still blank in interviews when I see a new one." — You are memorising the technique (the *how*) instead of the pattern (the *why*). When the problem is disguised, the technique isn't obvious. But the structural bottleneck is always there if you look for it.
+"I've done 300 problems but I still blank in interviews when I see a new one."
+
+You are memorising the technique (the *how*) instead of the pattern (the *why*). When the problem is disguised, the technique isn't obvious. But the structural bottleneck is always there if you look for it.
 :::

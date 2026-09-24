@@ -1,5 +1,3 @@
-# Chapter 1: Linear Structures
-
 ## The Array: The Foundation
 
 - **What it is:** A contiguous block of memory where elements of the same size are stored sequentially
@@ -65,5 +63,7 @@
 - **The fix:** If you need to add/remove from both ends, you cannot use a basic array. You need a **Deque** (Double-ended queue) or two pointers traversing the array
 
 :::interview
-"Why do arrays have a fixed size in C/Java?" — Because memory is shared. If you allocate an array of size 5, the memory directly after it might be given to another variable. If you try to add a 6th element, it would overwrite that other variable. To grow an array, you must find a completely new, larger block of free memory.
+"Why do arrays have a fixed size in C/Java?"
+
+Because memory is shared. If you allocate an array of size 5, the memory directly after it might be given to another variable. If you try to add a 6th element, it would overwrite that other variable. To grow an array, you must find a completely new, larger block of free memory.
 :::

@@ -21,5 +21,7 @@ Graph problems have massive boilerplate. A small logical error in line 5 will ca
 - **The fix:** Mark a node as `visited` the absolute microsecond you `push` it into the queue.
 
 :::interview
-"If I ask you to find the shortest path in a weighted graph, but some weights are negative, why can't we just add +100 to every edge to make them all positive, and then run Dijkstra?" — This is a classic trap. If Path A has 2 edges and Path B has 5 edges, adding +100 to every edge artificially penalizes Path B by +500, but only penalizes Path A by +200. You have mathematically changed which path is the shortest! You cannot shift weights. You must use Bellman-Ford.
+"If I ask you to find the shortest path in a weighted graph, but some weights are negative, why can't we just add +100 to every edge to make them all positive, and then run Dijkstra?"
+
+This is a classic trap. If Path A has 2 edges and Path B has 5 edges, adding +100 to every edge artificially penalizes Path B by +500, but only penalizes Path A by +200. You have mathematically changed which path is the shortest! You cannot shift weights. You must use Bellman-Ford.
 :::

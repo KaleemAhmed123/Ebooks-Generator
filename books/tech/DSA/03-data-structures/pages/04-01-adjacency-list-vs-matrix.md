@@ -1,5 +1,3 @@
-# Chapter 4: Graph Structures
-
 ## Adjacency List vs Adjacency Matrix
 
 - **What it is:** The two primary ways to represent a Graph (nodes and edges) in memory
@@ -59,5 +57,7 @@ function buildStringGraph(edges: string[][]): Map<string, string[]> {
 ```
 
 :::interview
-"If I need to check if node A is connected to node B, the Adjacency List takes O(Neighbors) time. Can we improve this?" — Yes. Instead of `Map<string, string[]>`, you can use `Map<string, Set<string>>`. This increases memory overhead slightly, but allows you to check `adj.get(A).has(B)` in strict O(1) time. This is useful in Eulerian Path problems or when deleting specific edges dynamically.
+"If I need to check if node A is connected to node B, the Adjacency List takes O(Neighbors) time. Can we improve this?"
+
+Yes. Instead of `Map<string, string[]>`, you can use `Map<string, Set<string>>`. This increases memory overhead slightly, but allows you to check `adj.get(A).has(B)` in strict O(1) time. This is useful in Eulerian Path problems or when deleting specific edges dynamically.
 :::

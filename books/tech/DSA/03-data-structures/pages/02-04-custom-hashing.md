@@ -64,5 +64,7 @@ function findDuplicateSubtrees(root: TreeNode | null): TreeNode[] {
 ```
 
 :::interview
-"Isn't string concatenation slow?" — Yes. In the subtree example, the strings get progressively larger, so string copying takes O(N). The overall time complexity becomes O(N²). For most interviews, this is the expected answer. In competitive programming, you would use a Rolling Hash (Polynomial Hash) to compute the subtree signature as an integer in O(1) time, bringing the total time back to O(N).
+"Isn't string concatenation slow?"
+
+Yes. In the subtree example, the strings get progressively larger, so string copying takes O(N). The overall time complexity becomes O(N²). For most interviews, this is the expected answer. In competitive programming, you would use a Rolling Hash (Polynomial Hash) to compute the subtree signature as an integer in O(1) time, bringing the total time back to O(N).
 :::

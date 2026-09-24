@@ -56,5 +56,7 @@ class Queue {
 - You reach for a Deque primarily for the **Monotonic Queue** pattern (e.g. Sliding Window Maximum), where you need to push to the back, but pop from BOTH the back (to maintain monotonicity) and the front (to evict elements out of the window)
 
 :::interview
-"Can you implement a Queue using two Stacks?" — Yes, the classic interview question. Push everything onto `Stack1`. When a dequeue is requested, pop everything from `Stack1` and push it onto `Stack2` (this reverses the LIFO to FIFO). Then pop from `Stack2`. Subsequent dequeues just pop from `Stack2` until it's empty. It gives Amortised O(1) dequeue time.
+"Can you implement a Queue using two Stacks?"
+
+Yes, the classic interview question. Push everything onto `Stack1`. When a dequeue is requested, pop everything from `Stack1` and push it onto `Stack2` (this reverses the LIFO to FIFO). Then pop from `Stack2`. Subsequent dequeues just pop from `Stack2` until it's empty. It gives Amortised O(1) dequeue time.
 :::

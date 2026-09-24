@@ -30,5 +30,7 @@
 - **Memoization:** If you want to cache the result of `(node, visitedSet)`, caching a Set is impossible. Caching `(node, mask)` is trivial — it's just a 2D array or a single combined integer key
 
 :::interview
-"Can you use bitmasks if N = 100?" — Not natively. Bitmasks fit perfectly in 32-bit or 64-bit integers. If N = 100, you would need a BigInt or an array of integers (a BitSet). At that point, the O(1) CPU register benefits are lost, though it remains far more memory-efficient than a Hash Set of booleans.
+"Can you use bitmasks if N = 100?"
+
+Not natively. Bitmasks fit perfectly in 32-bit or 64-bit integers. If N = 100, you would need a BigInt or an array of integers (a BitSet). At that point, the O(1) CPU register benefits are lost, though it remains far more memory-efficient than a Hash Set of booleans.
 :::

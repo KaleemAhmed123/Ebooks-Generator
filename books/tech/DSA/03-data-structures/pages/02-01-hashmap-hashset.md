@@ -1,5 +1,3 @@
-# Chapter 2: Hash-based Structures
-
 ## Hash Maps & Hash Sets
 
 - **What it is:** A data structure that maps keys to values (Map) or stores unique keys (Set) using a hash function
@@ -28,5 +26,7 @@
 - This is why the contract says *Average* O(1). In competitive programming, attackers can intentionally feed your Hash Map inputs designed to collide, causing TLE. (This is why CPers sometimes use custom hash functions).
 
 :::interview
-"How does a Hash Map resize itself?" — Similar to a Dynamic Array. When the map gets too full (measured by the 'Load Factor', usually around 70% capacity), it allocates a new, larger array. It must then re-hash every single key from the old map and place them into the new array, because the array bounds (and thus the modulo arithmetic of the hash function) have changed. This is an O(N) operation.
+"How does a Hash Map resize itself?"
+
+Similar to a Dynamic Array. When the map gets too full (measured by the 'Load Factor', usually around 70% capacity), it allocates a new, larger array. It must then re-hash every single key from the old map and place them into the new array, because the array bounds (and thus the modulo arithmetic of the hash function) have changed. This is an O(N) operation.
 :::

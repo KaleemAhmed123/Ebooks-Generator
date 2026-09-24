@@ -23,5 +23,7 @@
 - Both techniques exploit the fact that a range operation can be perfectly defined by manipulating exactly two points, regardless of how wide the range is.
 
 :::interview
-"Why do we need Prefix Hash Maps instead of sliding windows for subarrays summing to K?" — Because sliding windows rely on monotonicity. If the array contains negative numbers, adding a new element might DECREASE the sum, meaning we can't safely shrink the window from the left. A Prefix Hash Map doesn't rely on monotonicity; it purely relies on the algebraic fact that `prefix[i] - prefix[j] = K`.
+"Why do we need Prefix Hash Maps instead of sliding windows for subarrays summing to K?"
+
+Because sliding windows rely on monotonicity. If the array contains negative numbers, adding a new element might DECREASE the sum, meaning we can't safely shrink the window from the left. A Prefix Hash Map doesn't rely on monotonicity; it purely relies on the algebraic fact that `prefix[i] - prefix[j] = K`.
 :::

@@ -63,5 +63,7 @@ With `split` and `merge`, insertion and deletion become incredibly simple:
 - **Delete(X):** `split` the tree into three parts: `< X`, `== X`, and `> X`. Discard the middle part. `merge` the left and right parts.
 
 :::interview
-"If a Treap relies on Math.random(), can it be hacked in competitive programming to run in O(N)?" — No, unless the attacker can predict your pseudo-random number generator (PRNG). Because the priority is assigned dynamically inside your code, the adversary feeding you inputs `[1, 2, 3, 4]` cannot force an unbalanced tree. It provides the same security against worst-case inputs as Randomized Quicksort.
+"If a Treap relies on Math.random(), can it be hacked in competitive programming to run in O(N)?"
+
+No, unless the attacker can predict your pseudo-random number generator (PRNG). Because the priority is assigned dynamically inside your code, the adversary feeding you inputs `[1, 2, 3, 4]` cannot force an unbalanced tree. It provides the same security against worst-case inputs as Randomized Quicksort.
 :::

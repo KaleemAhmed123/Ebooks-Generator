@@ -44,5 +44,7 @@ const diameter = result.maxDistance;
 - This is the same derivation path as Two Sum and Range Sum, applied to a tree. The method works on any structure
 
 :::interview
-"How do you find the diameter of a tree?" — Run BFS from any node; the farthest node found is one endpoint of the diameter. Run BFS again from that endpoint; the distance to the farthest node is the diameter. Two O(n) passes instead of n passes.
+"How do you find the diameter of a tree?"
+
+Run BFS from any node; the farthest node found is one endpoint of the diameter. Run BFS again from that endpoint; the distance to the farthest node is the diameter. Two O(n) passes instead of n passes.
 :::

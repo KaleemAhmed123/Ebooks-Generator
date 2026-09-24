@@ -43,5 +43,7 @@ for (let i = 0; i < arr.length; i++) {
 - **Hashing the wrong thing.** In the "Subarray Sum Equals K" problem, beginners try to hash the subarrays themselves. There are O(n²) subarrays. The correct approach is to hash the *prefix sums*. You must figure out the exact minimal state to remember
 
 :::interview
-"Your recursive solution is too slow. How would you speed it up?" — I would check if the function is being called with the same arguments more than once. If it is, I would add a cache — an array or hash map keyed by the arguments. Before computing, check the cache. After computing, store the result. This is memoisation, and it converts exponential-time recursion into polynomial-time DP.
+"Your recursive solution is too slow. How would you speed it up?"
+
+I would check if the function is being called with the same arguments more than once. If it is, I would add a cache — an array or hash map keyed by the arguments. Before computing, check the cache. After computing, store the result. This is memoisation, and it converts exponential-time recursion into polynomial-time DP.
 :::

@@ -167,15 +167,15 @@ pre code {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--pink);
-  text-align: center;
+  text-align: left;
   margin-bottom: 2mm;
 }
 .interview > p:first-of-type {
   font-family: "Georgia", "Cambria", serif;
   font-weight: 700;
-  font-size: 11.5pt;
-  text-align: center;
-  margin-bottom: 6mm;
+  font-size: 9.5pt;
+  text-align: left;
+  margin-bottom: 2mm;
 }
 
 /* ---------- booklet cover ---------- */

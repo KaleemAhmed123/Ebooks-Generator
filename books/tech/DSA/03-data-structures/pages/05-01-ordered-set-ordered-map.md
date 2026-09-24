@@ -1,5 +1,3 @@
-# Chapter 5: Advanced
-
 ## Ordered Set / Ordered Map
 
 - **What it is:** A Set or Map that maintains its keys in sorted order dynamically
@@ -49,5 +47,7 @@ function insertSorted(arr: number[], val: number) {
 ```
 
 :::interview
-"In a system design interview, if I need an Ordered Set, what database matches this?" — Redis `Sorted Sets` (ZSET). It uses a Skip List under the hood to provide exactly these guarantees: O(log N) insertions, deletions, and range queries based on a score.
+"In a system design interview, if I need an Ordered Set, what database matches this?"
+
+Redis `Sorted Sets` (ZSET). It uses a Skip List under the hood to provide exactly these guarantees: O(log N) insertions, deletions, and range queries based on a score.
 :::

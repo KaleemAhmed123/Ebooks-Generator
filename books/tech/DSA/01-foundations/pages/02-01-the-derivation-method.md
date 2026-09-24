@@ -1,5 +1,3 @@
-# Chapter 2 — The Derivation Method
-
 ## The derivation method
 
 - Remembering a solution guarantees you will fail when the problem is slightly changed

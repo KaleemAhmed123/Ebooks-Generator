@@ -65,5 +65,7 @@ class DSU {
 3. **Dynamic Connectivity:** Any problem asking "how many connected components are there?" as edges are being added one by one.
 
 :::interview
-"Can DSU handle removing edges?" — Generally, no. DSU merges sets efficiently, but splitting a set apart requires knowing which nodes belonged to which sub-branch, which Path Compression actively destroys. If a problem asks you to remove edges and check connectivity, the standard trick is to process the queries **in reverse**: start with the final graph, and "add" the edges back one by one.
+"Can DSU handle removing edges?"
+
+Generally, no. DSU merges sets efficiently, but splitting a set apart requires knowing which nodes belonged to which sub-branch, which Path Compression actively destroys. If a problem asks you to remove edges and check connectivity, the standard trick is to process the queries **in reverse**: start with the final graph, and "add" the edges back one by one.
 :::

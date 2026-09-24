@@ -58,5 +58,7 @@ function minimumTimeToComplete(n: number, relations: number[][], time: number[])
 ```
 
 :::interview
-"Why do we use Math.max when accumulating the time?" — Because a task cannot start until ALL of its prerequisites are finished. If task C depends on A (takes 2 hours) and B (takes 5 hours), C cannot start at hour 2. It must wait until hour 5. The completion time of C is bottlenecked by the longest path leading to it.
+"Why do we use Math.max when accumulating the time?"
+
+Because a task cannot start until ALL of its prerequisites are finished. If task C depends on A (takes 2 hours) and B (takes 5 hours), C cannot start at hour 2. It must wait until hour 5. The completion time of C is bottlenecked by the longest path leading to it.
 :::

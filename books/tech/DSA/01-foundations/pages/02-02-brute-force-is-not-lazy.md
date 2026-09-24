@@ -20,5 +20,7 @@
 - **Assuming brute force means writing bad code.** Even a naive approach should handle edge cases correctly (empty arrays, negative numbers). If your brute force is logically flawed, optimising it will just give you a faster wrong answer
 
 :::interview
-"Given an array, find two numbers that add up to a target." — The brute force is to check every pair using nested loops, which is O(n²). The inner loop is just searching for `target - current`. We can replace that inner loop search with a hash map lookup, dropping the time to O(n).
+"Given an array, find two numbers that add up to a target."
+
+The brute force is to check every pair using nested loops, which is O(n²). The inner loop is just searching for `target - current`. We can replace that inner loop search with a hash map lookup, dropping the time to O(n).
 :::

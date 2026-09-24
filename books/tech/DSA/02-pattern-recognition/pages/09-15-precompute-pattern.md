@@ -33,5 +33,7 @@ You should immediately look for a Precompute pattern when:
   2. Does the data change? (Do you need updates?)
 
 :::interview
-"Why did you choose a Prefix Sum instead of a Segment Tree?" — Both can answer range sum queries, but the data here is static. There are no updates. Segment Tree takes O(N) to build but O(log N) to query, with a high constant factor. Prefix Sum takes O(N) to build and O(1) to query. Since the data never changes, the O(1) query time of Prefix Sum makes it the strictly better choice.
+"Why did you choose a Prefix Sum instead of a Segment Tree?"
+
+Both can answer range sum queries, but the data here is static. There are no updates. Segment Tree takes O(N) to build but O(log N) to query, with a high constant factor. Prefix Sum takes O(N) to build and O(1) to query. Since the data never changes, the O(1) query time of Prefix Sum makes it the strictly better choice.
 :::

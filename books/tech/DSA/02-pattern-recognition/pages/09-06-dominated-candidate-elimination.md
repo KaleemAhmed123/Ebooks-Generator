@@ -39,5 +39,7 @@ for each new candidate:
 - This compressed structure allows O(1) or O(log n) lookups instead of O(n) scans
 
 :::interview
-"Why does the monotonic stack work in O(n)?" — Each element is pushed once and popped at most once. The popping isn't wasted work — it's proving that the popped element is permanently dominated by the incoming element. Once dominated, it can never be the answer for any future query. That's why we discard it.
+"Why does the monotonic stack work in O(n)?"
+
+Each element is pushed once and popped at most once. The popping isn't wasted work — it's proving that the popped element is permanently dominated by the incoming element. Once dominated, it can never be the answer for any future query. That's why we discard it.
 :::

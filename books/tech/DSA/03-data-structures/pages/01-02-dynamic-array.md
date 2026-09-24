@@ -59,5 +59,7 @@ class DynamicArray {
 ```
 
 :::interview
-"Why do dynamic arrays double in size instead of growing by a fixed amount?" — If an array grew by a fixed amount (e.g. +100 elements), then inserting N elements would trigger N/100 resizes. The total copy operations would be $100 + 200 + 300 + ... + N$, which is an arithmetic progression summing to O(N²). Doubling the size guarantees a geometric progression, keeping the amortised cost at O(1).
+"Why do dynamic arrays double in size instead of growing by a fixed amount?"
+
+If an array grew by a fixed amount (e.g. +100 elements), then inserting N elements would trigger N/100 resizes. The total copy operations would be $100 + 200 + 300 + ... + N$, which is an arithmetic progression summing to O(N²). Doubling the size guarantees a geometric progression, keeping the amortised cost at O(1).
 :::

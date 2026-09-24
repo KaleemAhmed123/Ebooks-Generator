@@ -66,5 +66,7 @@ function ladderLength(begin: string, end: string, dict: Set<string>): number {
 - Same skeleton. Different frontier. Different state. The unnamed pattern is the glue
 
 :::interview
-"How would you approach Word Ladder?" — This is BFS on an implicit graph. Each word is a node. Words differing by one letter are connected. Since all edges cost 1, BFS guarantees the shortest transformation sequence. The frontier is a queue of words at the current depth level.
+"How would you approach Word Ladder?"
+
+This is BFS on an implicit graph. Each word is a node. Words differing by one letter are connected. Since all edges cost 1, BFS guarantees the shortest transformation sequence. The frontier is a queue of words at the current depth level.
 :::

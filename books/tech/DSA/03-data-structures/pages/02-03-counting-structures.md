@@ -68,5 +68,7 @@ function arraysEqual(a: number[], b: number[]): boolean {
 ```
 
 :::interview
-"Why did you use an array instead of a Map for these character counts?" — Because the alphabet size is bounded to 26 lowercase letters. An array gives us direct memory addressing without the overhead of hashing algorithms or object allocation. It guarantees strict O(1) time and exactly O(26) space, avoiding Hash Map worst-case collision degradations.
+"Why did you use an array instead of a Map for these character counts?"
+
+Because the alphabet size is bounded to 26 lowercase letters. An array gives us direct memory addressing without the overhead of hashing algorithms or object allocation. It guarantees strict O(1) time and exactly O(26) space, avoiding Hash Map worst-case collision degradations.
 :::

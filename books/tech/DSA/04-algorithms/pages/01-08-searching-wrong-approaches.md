@@ -22,5 +22,7 @@ Searching seems simple, which is why the failure modes are so subtle. Candidates
 - **The fix:** If you need original indices, map the array into pairs `[value, originalIndex]` before sorting, or use an auxiliary data structure like a Hash Map.
 
 :::interview
-"I noticed you wrote `left + (right - left) / 2`. Why not just `(left + right) / 2`?" — In languages with fixed-size integers (like Java or C++), if `left` and `right` are both near the 32-bit integer limit, adding them together will overflow into negative numbers before the division occurs, throwing an OutOfBounds exception. Subtracting them prevents the overflow. (In TypeScript, all numbers are double-precision floats up to 9 times 10¹⁵, so it's less critical, but it's a defensive habit).
+"I noticed you wrote `left + (right - left) / 2`. Why not just `(left + right) / 2`?"
+
+In languages with fixed-size integers (like Java or C++), if `left` and `right` are both near the 32-bit integer limit, adding them together will overflow into negative numbers before the division occurs, throwing an OutOfBounds exception. Subtracting them prevents the overflow. (In TypeScript, all numbers are double-precision floats up to 9 times 10¹⁵, so it's less critical, but it's a defensive habit).
 :::

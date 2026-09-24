@@ -44,5 +44,7 @@ function isValid(s: string): boolean {
 - You *could* use a Linked List (inserting/removing at the head is strict O(1)), but allocating a new Node object for every push is significantly slower in practice than array appending
 
 :::interview
-"When would you use a Stack instead of an Array?" — When I want to enforce an architectural constraint. If a problem requires LIFO logic, using a raw array allows future developers (or me) to accidentally access the middle of the array, breaking the logic. Wrapping it in a Stack class guarantees only the correct operations are performed.
+"When would you use a Stack instead of an Array?"
+
+When I want to enforce an architectural constraint. If a problem requires LIFO logic, using a raw array allows future developers (or me) to accidentally access the middle of the array, breaking the logic. Wrapping it in a Stack class guarantees only the correct operations are performed.
 :::

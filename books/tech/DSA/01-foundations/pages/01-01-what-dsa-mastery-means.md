@@ -1,5 +1,3 @@
-# Module 1 — Complexity and constraints
-
 ## What DSA mastery means
 
 - Mastery is not solving 500 problems. It is recognising structure in a problem you have never seen

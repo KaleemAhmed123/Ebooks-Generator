@@ -74,5 +74,7 @@
 - **Segment Tree:** O(N) build, O(log N) query. Can handle point and range updates. Works for any associative operation
 
 :::interview
-"The array is static and we have 10^6 range minimum queries. Segment Tree?" — A Segment Tree would take O(log N) per query, which might TLE for 10^6 queries. Since the array is static and MIN is an idempotent operation, a Sparse Table is strictly superior. It takes O(N log N) to build, but answers each query in O(1) using block overlap.
+"The array is static and we have 10^6 range minimum queries. Segment Tree?"
+
+A Segment Tree would take O(log N) per query, which might TLE for 10^6 queries. Since the array is static and MIN is an idempotent operation, a Sparse Table is strictly superior. It takes O(N log N) to build, but answers each query in O(1) using block overlap.
 :::

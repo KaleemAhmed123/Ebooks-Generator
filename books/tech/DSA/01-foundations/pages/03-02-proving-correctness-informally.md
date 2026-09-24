@@ -47,5 +47,7 @@ Therefore, sorting by deadline is at least as good as any other order.
 | Contradiction | Need to show a property must hold, quickly | Two-pointer completeness, cycle detection |
 
 :::interview
-"How do you know your greedy solution is optimal?" — I use the exchange argument. Assume there is a better schedule. I show that swapping any pair of out-of-order jobs does not improve the result. Since no swap helps, the greedy order is at least as good as any other.
+"How do you know your greedy solution is optimal?"
+
+I use the exchange argument. Assume there is a better schedule. I show that swapping any pair of out-of-order jobs does not improve the result. Since no swap helps, the greedy order is at least as good as any other.
 :::

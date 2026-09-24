@@ -1,5 +1,3 @@
-# Chapter 3 — Invariants and Correctness
-
 ## Invariants
 
 - An **invariant** is a condition that is true before every iteration of a loop, during every iteration, and after the loop ends. If you can prove the invariant holds at all three points, you have proved the loop does what you claim
@@ -64,5 +62,7 @@ function binarySearch(arr: number[], target: number): number {
 - If you write `lo = mid` instead of `lo = mid + 1`, the invariant breaks: you are including `mid` in the next iteration even though you already checked it. The loop can get stuck
 
 :::interview
-"How do you know your binary search is correct?" — I maintain the invariant that the target, if it exists, is always within `arr[lo..hi]`. Each branch of the if-statement only excludes elements that provably cannot be the target. When the window becomes empty, the target does not exist.
+"How do you know your binary search is correct?"
+
+I maintain the invariant that the target, if it exists, is always within `arr[lo..hi]`. Each branch of the if-statement only excludes elements that provably cannot be the target. When the window becomes empty, the target does not exist.
 :::

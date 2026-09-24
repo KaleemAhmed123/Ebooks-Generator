@@ -47,5 +47,7 @@ function build(node: number, start: number, end: number) {
 - You simply change the post-order combination step: `tree[node] = COMBINE(tree[left], tree[right])`.
 
 :::interview
-"Why use a Segment Tree over a Fenwick Tree if both do O(log N) updates and queries?" — A Fenwick Tree is incredibly concise (10 lines of code) and uses only $O(N)$ space, making it strictly faster due to cache locality and bitwise operations. However, Fenwick Trees cannot do Range Minimum Queries (RMQ) efficiently because `min()` doesn't have an inverse operation (you can't "subtract" a minimum). A Segment Tree requires $O(4N)$ space and is much more verbose to write, but it is infinitely more flexible.
+"Why use a Segment Tree over a Fenwick Tree if both do O(log N) updates and queries?"
+
+A Fenwick Tree is incredibly concise (10 lines of code) and uses only $O(N)$ space, making it strictly faster due to cache locality and bitwise operations. However, Fenwick Trees cannot do Range Minimum Queries (RMQ) efficiently because `min()` doesn't have an inverse operation (you can't "subtract" a minimum). A Segment Tree requires $O(4N)$ space and is much more verbose to write, but it is infinitely more flexible.
 :::

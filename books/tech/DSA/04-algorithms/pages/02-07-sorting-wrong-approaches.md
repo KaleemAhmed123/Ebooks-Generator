@@ -21,5 +21,7 @@ Sorting is so ubiquitous that it’s often taken for granted. In an interview, s
 - **The fix:** In modern JavaScript, use `arr.toSorted(...)` which returns a new array, or manually clone it first via `[...arr].sort(...)`.
 
 :::interview
-"Can you explain why we wouldn't use Quick Sort here?" — If the problem involves sorting objects with multiple identical keys (like sorting a list of users by age), Quick Sort is unstable. Users with the same age will have their original relative order completely scrambled. We must use a stable sort like Merge Sort or Timsort (which is what modern JS engines use under the hood).
+"Can you explain why we wouldn't use Quick Sort here?"
+
+If the problem involves sorting objects with multiple identical keys (like sorting a list of users by age), Quick Sort is unstable. Users with the same age will have their original relative order completely scrambled. We must use a stable sort like Merge Sort or Timsort (which is what modern JS engines use under the hood).
 :::

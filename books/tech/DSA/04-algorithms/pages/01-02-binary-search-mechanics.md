@@ -70,5 +70,7 @@ function binarySearch(arr: number[], target: number): number {
 - **The fix:** Ensure the `while` condition is `left <= right`, and ensure that you are strictly moving the boundaries past the `mid` point (`left = mid + 1`, not `left = mid`). If you set `left = mid`, and `left` and `right` are adjacent, `mid` will equal `left` (due to integer truncation), and the loop will spin forever.
 
 :::interview
-"Why did you write `left <= right` instead of `left < right`?" — Because if the target is exactly at the final remaining element where `left === right`, we still need to evaluate that one element. If we use strict inequality, we skip checking the final candidate.
+"Why did you write `left <= right` instead of `left < right`?"
+
+Because if the target is exactly at the final remaining element where `left === right`, we still need to evaluate that one element. If we use strict inequality, we skip checking the final candidate.
 :::

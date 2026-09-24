@@ -60,5 +60,7 @@ The most famous application of the Persistent Segment Tree is answering queries 
 4. You can then binary search down the tree to find the K-th smallest element in O(log N) time.
 
 :::interview
-"Does Path Copying trigger Garbage Collection issues?" — Yes, in environments like Java or Node.js, allocating O(log N) new objects per update can create heavy GC pressure. In high-performance CP (C++), developers often pre-allocate a massive array of Nodes `Node pool[MAX_UPDATES * 20]` and use an integer pointer `pool_ptr++` to simulate allocation instantly without GC overhead.
+"Does Path Copying trigger Garbage Collection issues?"
+
+Yes, in environments like Java or Node.js, allocating O(log N) new objects per update can create heavy GC pressure. In high-performance CP (C++), developers often pre-allocate a massive array of Nodes `Node pool[MAX_UPDATES * 20]` and use an integer pointer `pool_ptr++` to simulate allocation instantly without GC overhead.
 :::

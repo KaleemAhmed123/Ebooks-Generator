@@ -1,5 +1,3 @@
-# Chapter 9 — Patterns Nobody Named
-
 ## Why unnamed patterns matter
 
 - Every technique in Chapters 2–7 has a LeetCode tag. Sliding Window. Binary Search. Segment Tree. You can study them by name
@@ -22,5 +20,7 @@
 - The named patterns tell you *which technique to use*. The unnamed patterns tell you *why the technique works* — and when to invent a new one
 
 :::interview
-"I can solve problems I've seen before, but I freeze on novel problems." — You are pattern-matching on technique names. Try matching on structure instead. Ask: is there a frontier expanding? Are candidates being eliminated? Is the answer a boundary in a boolean sequence? These questions work on problems nobody has tagged yet.
+"I can solve problems I've seen before, but I freeze on novel problems."
+
+You are pattern-matching on technique names. Try matching on structure instead. Ask: is there a frontier expanding? Are candidates being eliminated? Is the answer a boundary in a boolean sequence? These questions work on problems nobody has tagged yet.
 :::

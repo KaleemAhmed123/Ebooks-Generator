@@ -44,5 +44,7 @@ function countVowelsInRange(prefix: number[], L: number, R: number): number {
 ```
 
 :::interview
-"Can we use a Prefix Array for range minimum queries?" — No. Prefix arrays rely on the ability to "subtract" or invert a value to isolate a specific range. Addition and XOR are invertible. The minimum operation is not. To answer range minimum queries in O(1) on static data, we need a Sparse Table, which relies on overlap rather than subtraction.
+"Can we use a Prefix Array for range minimum queries?"
+
+No. Prefix arrays rely on the ability to "subtract" or invert a value to isolate a specific range. Addition and XOR are invertible. The minimum operation is not. To answer range minimum queries in O(1) on static data, we need a Sparse Table, which relies on overlap rather than subtraction.
 :::

@@ -40,5 +40,7 @@
 - **Always check the assumptions before writing code**
 
 :::interview
-"I think this is a sliding window problem." — Before committing, check: does shrinking the window always move the validity metric in one direction? If the array has negative numbers, the sum can go either way when you shrink. That breaks the monotonic assumption sliding window needs. Consider prefix sums instead.
+"I think this is a sliding window problem."
+
+Before committing, check: does shrinking the window always move the validity metric in one direction? If the array has negative numbers, the sum can go either way when you shrink. That breaks the monotonic assumption sliding window needs. Consider prefix sums instead.
 :::

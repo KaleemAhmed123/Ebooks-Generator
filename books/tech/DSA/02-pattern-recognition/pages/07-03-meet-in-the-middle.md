@@ -53,5 +53,7 @@ function meetInTheMiddle(arr: number[], K: number): number {
 ```
 
 :::interview
-"Why can't I just use Dynamic Programming for a Subset Sum problem with N=40?" — If the target sum K is small (e.g. K = 10,000), you absolutely should use DP, running in O(N × K). But if K is 10^9, DP requires an array of size 10^9, which will memory limit exceed. Meet in the Middle does not depend on K for its complexity; it only depends on N.
+"Why can't I just use Dynamic Programming for a Subset Sum problem with N=40?"
+
+If the target sum K is small (e.g. K = 10,000), you absolutely should use DP, running in O(N × K). But if K is 10^9, DP requires an array of size 10^9, which will memory limit exceed. Meet in the Middle does not depend on K for its complexity; it only depends on N.
 :::

@@ -1,5 +1,3 @@
-# Chapter 8 — When Patterns Overlap
-
 ## Repeated State? See Dynamic Programming
 
 - This module focuses on patterns that can be solved by manipulating data structures (stacks, queues, segment trees) or traversing boundaries (binary search, two pointers)

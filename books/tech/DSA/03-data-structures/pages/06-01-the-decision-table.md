@@ -1,5 +1,3 @@
-# Chapter 6: Choosing the Right Structure
-
 ## The Decision Table
 
 Memorising implementations is useless if you pick the wrong structure during an interview. Your goal is to map the **Core Bottleneck** of the problem to the **Contract** of a Data Structure.

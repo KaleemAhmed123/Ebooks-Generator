@@ -152,7 +152,9 @@ export function cover(meta, ctx) {
     ${stack}
   </g>
   <text x="374" y="550" font-family="Consolas, monospace" font-size="10" font-weight="700"
-        letter-spacing="1" fill="${b.accent}">+ ${ctx.more} MORE ${b.moreWord ?? "TOPICS"} INSIDE</text>
+        letter-spacing="1" fill="${b.accent}">${esc(
+          ctx.moreLine ?? `+ ${ctx.more} MORE ${b.moreWord ?? "TOPICS"} INSIDE`
+        )}</text>
 
   <!-- panel 5 : banner -->
   <rect x="26" y="574" width="540" height="94" fill="${b.accent}" stroke="#12121a" stroke-width="4"/>

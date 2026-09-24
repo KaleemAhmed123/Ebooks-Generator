@@ -1,5 +1,3 @@
-# Chapter 3: Trees
-
 ## Binary Tree Traversals
 
 - **What it is:** A hierarchical structure where each node has at most two children (`left`, `right`)
@@ -58,5 +56,7 @@ function levelOrder(root: TreeNode | null): number[][] {
 ```
 
 :::interview
-"If I give you the Pre-order array and the Post-order array, can you uniquely reconstruct the original Binary Tree?" — No. You need the In-order array combined with either Pre-order or Post-order. Without In-order, if a node has only one child, you cannot determine if that child is the left child or the right child.
+"If I give you the Pre-order array and the Post-order array, can you uniquely reconstruct the original Binary Tree?"
+
+No. You need the In-order array combined with either Pre-order or Post-order. Without In-order, if a node has only one child, you cannot determine if that child is the left child or the right child.
 :::

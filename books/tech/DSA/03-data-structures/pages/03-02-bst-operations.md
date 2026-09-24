@@ -43,5 +43,7 @@ function isValidBST(node: TreeNode | null, min = -Infinity, max = Infinity): boo
 - To find the Kth smallest element in a BST, you do an In-order traversal and return the Kth element you process.
 
 :::interview
-"Can we use a Hash Map instead of a BST?" — If you only need exact lookups, a Hash Map is faster (O(1)). But a Hash Map destroys order. If the problem asks you to find the "closest element", the "next largest element", or "count elements between X and Y", a Hash Map is useless (O(N)). A BST is required for order-aware O(log N) queries.
+"Can we use a Hash Map instead of a BST?"
+
+If you only need exact lookups, a Hash Map is faster (O(1)). But a Hash Map destroys order. If the problem asks you to find the "closest element", the "next largest element", or "count elements between X and Y", a Hash Map is useless (O(N)). A BST is required for order-aware O(log N) queries.
 :::

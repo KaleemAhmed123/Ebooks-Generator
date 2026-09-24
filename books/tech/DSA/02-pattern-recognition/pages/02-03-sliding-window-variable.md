@@ -41,5 +41,7 @@ function variableSlidingWindow(arr: number[], target: number): number {
 - By never moving `left` backwards, both pointers traverse the array exactly once. Time is strictly O(n).
 
 :::interview
-"Why is a variable sliding window O(N) if there is a while loop inside a for loop?" — The outer loop moves the right pointer N times. The inner loop moves the left pointer. Because the left pointer never moves backward, it can move at most N times across the entire execution of the algorithm. N + N = 2N, which is strictly O(N).
+"Why is a variable sliding window O(N) if there is a while loop inside a for loop?"
+
+The outer loop moves the right pointer N times. The inner loop moves the left pointer. Because the left pointer never moves backward, it can move at most N times across the entire execution of the algorithm. N + N = 2N, which is strictly O(N).
 :::

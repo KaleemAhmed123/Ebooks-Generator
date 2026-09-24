@@ -46,5 +46,7 @@ function nextGreaterElements(arr: number[]): number[] {
 - Time complexity is bounded by operations, not loop nesting. $N$ pushes + $N$ pops = $2N$ operations = $O(N)$.
 
 :::interview
-"How do you handle circular arrays with a Monotonic Stack?" — By looping twice. Instead of `for (let i = 0; i < n; i++)`, you write `for (let i = 0; i < 2*n; i++)`. When accessing the array, you use `arr[i % n]`. The stack logic remains completely identical. The second pass just simulates the array wrapping around to resolve elements left in the stack.
+"How do you handle circular arrays with a Monotonic Stack?"
+
+By looping twice. Instead of `for (let i = 0; i < n; i++)`, you write `for (let i = 0; i < 2*n; i++)`. When accessing the array, you use `arr[i % n]`. The stack logic remains completely identical. The second pass just simulates the array wrapping around to resolve elements left in the stack.
 :::

@@ -54,5 +54,7 @@
 - These are first diagnostics, not laws. An O(n²) solution with a tiny constant can beat an O(n log n) solution with a heavy one. But the table gets you to the right neighbourhood in seconds
 
 :::interview
-"What's the first thing you do when you see a problem?" — Read the constraints. n ≤ 20 means I can probably brute-force with bitmasks. n ≤ 10⁵ means I need O(n log n) or better. The constraint narrows the algorithm before I even understand the problem.
+"What's the first thing you do when you see a problem?"
+
+Read the constraints. n ≤ 20 means I can probably brute-force with bitmasks. n ≤ 10⁵ means I need O(n log n) or better. The constraint narrows the algorithm before I even understand the problem.
 :::

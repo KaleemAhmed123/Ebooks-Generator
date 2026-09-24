@@ -32,5 +32,7 @@ function nextGreater(arr: number[]): void {
 - Overall complexity: O(n)
 
 :::interview
-"Isn't this sliding window algorithm O(n²) because there's a while loop inside the for loop?" — No. The inner while loop only advances the `left` pointer. Since `left` starts at 0 and ends at `n`, it increments at most n times across the entire lifespan of the algorithm. The total work is strictly O(n).
+"Isn't this sliding window algorithm O(n²) because there's a while loop inside the for loop?"
+
+No. The inner while loop only advances the `left` pointer. Since `left` starts at 0 and ends at `n`, it increments at most n times across the entire lifespan of the algorithm. The total work is strictly O(n).
 :::

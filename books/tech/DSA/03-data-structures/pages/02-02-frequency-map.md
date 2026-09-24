@@ -52,5 +52,7 @@ function groupAnagrams(strs: string[]): string[][] {
 ```
 
 :::interview
-"Can we optimize Group Anagrams to avoid sorting?" — Yes. Instead of sorting the string to create the signature, we can build a 26-element frequency array for the string. We then join those 26 numbers with a delimiter (like `1,0,0,2...`) and use THAT string as the key. Creating this signature takes O(K) instead of O(K log K), making the whole algorithm strictly O(N × K).
+"Can we optimize Group Anagrams to avoid sorting?"
+
+Yes. Instead of sorting the string to create the signature, we can build a 26-element frequency array for the string. We then join those 26 numbers with a delimiter (like `1,0,0,2...`) and use THAT string as the key. Creating this signature takes O(K) instead of O(K log K), making the whole algorithm strictly O(N × K).
 :::

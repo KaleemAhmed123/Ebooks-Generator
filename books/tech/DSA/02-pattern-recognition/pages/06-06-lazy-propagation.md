@@ -53,5 +53,7 @@ function push(node: number, left: number, right: number) {
 - You must factor in the length of the segment when the operation dictates it
 
 :::interview
-"Why does Lazy Propagation keep updates at O(log N)?" — Because we stop traversing the tree as soon as we find a node completely contained within the update range. Instead of updating the O(N) leaves below it, we just tag that single node with a lazy marker and return. We only propagate that marker downwards later, on-demand, if a future query actually forces us to visit those children.
+"Why does Lazy Propagation keep updates at O(log N)?"
+
+Because we stop traversing the tree as soon as we find a node completely contained within the update range. Instead of updating the O(N) leaves below it, we just tag that single node with a lazy marker and return. We only propagate that marker downwards later, on-demand, if a future query actually forces us to visit those children.
 :::
