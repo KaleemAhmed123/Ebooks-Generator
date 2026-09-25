@@ -1,4 +1,4 @@
-## The taxonomy of structure
+## The taxonomy of structure 🟢
 
 - The structural patterns that solve 99% of interview problems fall into these eight families
 - When you read constraints and write the brute force, you are looking for which of these families the problem belongs to
@@ -58,7 +58,7 @@
   <!-- Unnamed Patterns Box -->
   <rect class="bx" x="310" y="10" width="150" height="190" rx="3" stroke-dasharray="4 4"/>
   <text x="320" y="24" class="lb">The Unnamed Patterns</text>
-  <text x="320" y="36" class="desc">Chapter 9 covers patterns</text>
+  <text x="320" y="36" class="desc">Chapter 18 covers patterns</text>
   <text x="320" y="46" class="desc">nobody gave a LeetCode tag</text>
   
   <text x="320" y="66" class="sm">1. Maintain the Frontier</text>
@@ -76,4 +76,4 @@
 :::
 
 - Look at how techniques cross over. "Binary Search" isn't a category — it's a technique used in both **Order** (finding an element) and **Search Space Reduction** (finding an answer threshold)
-- The rest of this module walks through each of these families, showing how to spot them and how to code the techniques that solve them
+- The rest of this module walks through each of these families, showing how to spot them and how to code the techniques that solve them. 01-03 maps each family to its chapters

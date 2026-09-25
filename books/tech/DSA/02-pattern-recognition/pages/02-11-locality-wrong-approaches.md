@@ -1,4 +1,4 @@
-### The wrong approach: Locality
+## The wrong approach: Locality 🟢
 
 - **Naive idea:** For sliding window, beginners often try to maintain the sum by calling a `sum()` function on `arr.slice(left, right + 1)` inside the loop
 - **Why it looks right:** The logic is flawlessly correct. It passes the first 5 test cases on LeetCode

@@ -1,4 +1,4 @@
-## Two Pointers Matrix Search
+## Staircase Search 🟢
 
 - **What it is:** Searching for a target in a 2D matrix where every row is sorted left-to-right, and every column is sorted top-to-bottom
 - **When to reach for it:** "Search a 2D Matrix II"
@@ -95,3 +95,17 @@ function searchMatrix(matrix: number[][], target: number): boolean {
 - Total time: O(R + C).
 - Total space: O(1).
 - A naive full matrix search takes O(R · C). The structured search space allows us to eliminate entire rows or columns with a single check.
+
+### Variations
+
+- **Row with maximum 1s (GFG), each row sorted 0s then 1s:** start top-right. On a 1, step left and remember the row; on a 0, step down. The walk never goes right again, so it is O(R + C), not O(R log C)
+- **Count Negative Numbers in a Sorted Matrix (LeetCode 1351):** start bottom-left. Every negative at `(r, c)` means the rest of row `r` is negative too: add `C − c` and step up
+- **Kth Smallest Element in a Sorted Matrix (LeetCode 378):** the staircase counts how many cells are ≤ x in O(R + C). Binary search on x around that count (page 09-04)
+
+### The failure
+
+- **Starting at the top-left.** From `(0, 0)` both moves (right and down) *increase* the value, so a comparison never tells you which way to go. Only the top-right and bottom-left corners have one smaller and one larger neighbour
+
+:::interview
+"Why is staircase search O(R + C) and not O(R · C)?" — Every comparison removes a whole row (when the corner value is too small) or a whole column (when it is too large). There are only R rows and C columns to remove, so at most R + C steps happen before the pointer leaves the matrix.
+:::

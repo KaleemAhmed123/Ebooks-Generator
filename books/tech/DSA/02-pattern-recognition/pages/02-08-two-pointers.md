@@ -1,4 +1,4 @@
-## Two Pointers
+## Two Pointers 🟢
 
 - **What it is:** Using two indices to traverse a data structure simultaneously
 - **When to reach for it:** "Find a pair that sums to X in a sorted array", "Reverse a string in place", "Remove duplicates from a sorted array"

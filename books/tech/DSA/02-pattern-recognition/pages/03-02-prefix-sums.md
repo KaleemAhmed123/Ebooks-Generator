@@ -1,4 +1,4 @@
-## Prefix Sums
+## Prefix Sums 🟢
 
 - **What it is:** An array where the value at index i is the sum of all elements from index 0 to i in the original array
 - **When to reach for it:** You need to rapidly query the sum of elements between any two indices L and R

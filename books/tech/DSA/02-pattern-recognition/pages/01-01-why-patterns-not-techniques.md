@@ -1,4 +1,6 @@
-## Why patterns are not techniques
+# Chapter 1 - Reading the Structure
+
+## Why patterns are not techniques 🟢
 
 - A "technique" is a specific mechanical operation: *Two Pointers*, *Sliding Window*, *Binary Search*
 - A "pattern" is the underlying structural reason that technique works: *Locality*, *Order*, *Search Space Reduction*

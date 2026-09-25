@@ -1,4 +1,4 @@
-## Sliding Window (Fixed Length)
+## Sliding Window (Fixed Length) 🟢
 
 - **What it is:** Maintaining the state of exactly k consecutive elements as you move through an array
 - **When to reach for it:** "Find the max sum of a subarray of size k", "Find all anagrams of a string of size k"

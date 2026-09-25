@@ -1,4 +1,4 @@
-### The wrong approach: Range Interaction
+## The wrong approach: Prefix & Range Sums 🟢
 
 - **Naive idea:** Iterating from L to R to calculate the sum, or iterating from L to R to add a value.
 - **Why it looks right:** It flawlessly achieves the goal for a single query.
