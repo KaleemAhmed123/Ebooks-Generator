@@ -1,4 +1,6 @@
-## The Repeated Extremum Family
+# Chapter 15 - Heaps & Ordered Sets
+
+## The Repeated Extremum Family 🟢
 
 - **What it is:** The problem requires you to find the maximum, minimum, or "best" element, and it asks you to do this repeatedly as the data changes
 - **The signal:** "Top K", "Merge K", "Kth largest", "Running median", "Max in sliding window", "Next greater element"
@@ -10,8 +12,12 @@
 |---|---|---|
 | **Heap (Priority Queue)** | "Top K", "Merge K sorted" | A partial sort is faster than a full sort. Maintains the absolute global extremum |
 | **Monotonic Stack** | "Next greater element" | A local extremum eliminates the need to check smaller previous elements |
-| **Segment Tree** | "Max in range `[L, R]` with updates" | Tree structure allows querying any arbitrary range in O(log n) |
-| **Sparse Table** | "Max in range `[L, R]`, static data" | Precomputes intervals of length 2^k for O(1) overlapping queries |
+| **Two Heaps** (15-04) | "Running median" | Two tops hold the middle of the data |
+| **Merge the Two Smallest** (15-05) | "Connect ropes", "Huffman" | The cheapest items belong deepest in the merge tree |
+| **Take Now, Regret Later** (15-06) | "Refuelling stops", "courses by deadline" | Undo the worst accepted choice when a constraint breaks |
+| **Ordered Set** (15-07) | "Nearest larger value seen so far" | Every element's neighbours, not just the top |
+| **Segment Tree** (Chapter 19) | "Max in range `[L, R]` with updates" | Tree structure allows querying any arbitrary range in O(log n) |
+| **Sparse Table** (Chapter 19) | "Max in range `[L, R]`, static data" | Precomputes intervals of length 2^k for O(1) overlapping queries |
 
 ### Heap vs Sorting
 

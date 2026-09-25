@@ -1,4 +1,4 @@
-## Recognition drills: Repeated Extremum
+## Recognition drills: Repeated Extremum 🟢
 
 Hide the right column. Identify the correct Extremum technique (Heap for Top-K, Heap for Merge, Monotonic Stack, Sparse Table) and justify your answer.
 
@@ -16,4 +16,4 @@ Hide the right column. Identify the correct Extremum technique (Heap for Top-K, 
 ### Score yourself
 - **7-8 correct:** You clearly understand the boundary between dynamic extremums (Heap) and structural extremums (Monotonic Stack)
 - **4-6 correct:** You might be trying to use Heaps for "next greater" problems, which works but is O(N log N) instead of O(N)
-- **0-3 correct:** Review the Extremum Family introduction (04-01) to understand the difference between global ordering (Heaps) and sequence ordering (Stacks)
+- **0-3 correct:** Review the Extremum Family introduction (15-01) to understand the difference between global ordering (Heaps) and sequence ordering (Stacks)

@@ -1,4 +1,4 @@
-## Heap for Top K
+## Heap for Top K 🟢
 
 - **What it is:** Maintaining a Priority Queue of size k to track the best k elements seen so far
 - **When to reach for it:** "Find the Kth largest element", "K closest points to origin", "Top K frequent words"
@@ -63,20 +63,20 @@
 ### The Template
 
 ```ts
-// Assuming a MinPriorityQueue class exists
+// Heap: the binary heap on 15-04 (JavaScript has none built in)
 function findKthLargest(nums: number[], k: number): number {
-  const minHeap = new MinPriorityQueue();
-  
+  const minHeap = new Heap<number>((x, y) => x < y);
+
   for (const num of nums) {
-    minHeap.enqueue(num);
-    
+    minHeap.push(num);
+
     // If heap exceeds size k, pop the smallest element
     if (minHeap.size() > k) {
-      minHeap.dequeue();
+      minHeap.pop();
     }
   }
-  
+
   // The root of the min-heap is the Kth largest overall
-  return minHeap.front().element;
+  return minHeap.peek()!;
 }
 ```
