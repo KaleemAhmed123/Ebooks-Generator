@@ -4,7 +4,7 @@
 
 - **What it is:** Performing operations (queries or updates) on contiguous subsegments of an array, repeatedly
 - **The signal:** "Sum of elements between L and R", "Add X to all elements from L to R", "Subarray sum equals K"
-- **The mechanism:** A naive range operation on a length N array takes O(N). If you have Q queries, the total time is O(N · Q). This family relies on precomputation. By spending O(N) time upfront, we can answer queries or process updates in O(1) time
+- **The mechanism:** A naive range operation on a length N array takes O(N). If you have Q queries, the total time is O(N · Q). This family relies on precomputation. By spending O(N) time upfront, we can answer queries in O(1) (static data) or process updates and queries in O(log N)
 
 ### The core techniques
 

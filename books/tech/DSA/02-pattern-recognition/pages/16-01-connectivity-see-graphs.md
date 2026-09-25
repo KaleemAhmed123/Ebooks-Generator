@@ -8,7 +8,7 @@
 ### The Graph Boundary
 
 - If the problem asks questions about **reachability, connectivity, cycles, or shortest paths through arbitrary relationships**, you have crossed the boundary into Graph Theory
-- While we discussed the *Frontier Maintenance* pattern (BFS/Dijkstra) in Chapter 18, that was an abstraction of the search mechanism. Graph theory encompasses much more:
+- Chapter 18 later abstracts BFS and Dijkstra as *Frontier Maintenance*, a view of the search mechanism. Graph theory encompasses much more:
   - Disjoint Set Union (Union-Find) for dynamic connectivity
   - Topological Sorting for dependency resolution
   - Strongly Connected Components
@@ -16,8 +16,8 @@
 
 ### Where to go next
 
-- If your problem is fundamentally about nodes and edges, jump to **Module 05: Graphs**
-- Module 05 covers how to model relationships, how to traverse them efficiently, and how to detect structural properties (like cycles or bipartite sets)
+- If your problem is about nodes and edges, jump to **Module 05: Graphs**
+- Module 05 covers how to model relationships, how to traverse them in linear time, and how to detect structural properties (like cycles or bipartite sets)
 
 ### This chapter
 

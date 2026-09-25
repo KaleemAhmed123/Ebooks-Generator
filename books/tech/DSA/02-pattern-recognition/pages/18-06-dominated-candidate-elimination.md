@@ -6,7 +6,7 @@
 ### The core idea
 
 - A candidate X is **dominated** by candidate Y if Y is at least as good as X in *every* dimension that matters. If Y exists, X can never win — not now, not in the future
-- When you can prove domination, you can safely discard X. The set of remaining candidates (the *anti-chain*) is often dramatically smaller
+- When you can prove domination, you can safely discard X. The set of remaining candidates (the *anti-chain*) is often far smaller
 
 ### The abstract mechanism
 
@@ -28,7 +28,7 @@ for each new candidate:
 | **Monotonic Stack** | Elements that found their "next greater" | A larger element to the right makes them irrelevant |
 | **Convex Hull Trick** | Linear functions that can never be minimum | A new line makes older lines permanently suboptimal |
 | **Pareto Pruning / Skyline** | Points dominated in both x and y dimensions | A point better in both dimensions makes them useless |
-| **Deque optimisation (Li Chao)** | DP candidates outside the relevant range | Monotonicity ensures they cannot re-enter the window |
+| **Monotonic deque optimisation** | DP candidates outside the relevant range | Monotonicity ensures they cannot re-enter the window |
 
 ### The key invariant
 

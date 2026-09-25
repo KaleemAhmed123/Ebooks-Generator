@@ -1,7 +1,7 @@
 ## The wrong approach: Search Space Reduction 🟢
 
 - **Naive idea:** For "Minimise the maximum capacity", trying capacities starting from 1, simulating each one, until one works
-- **Why it looks right:** It flawlessly finds the absolute minimum valid capacity
+- **Why it looks right:** It finds the minimum valid capacity
 - **Why it breaks:** If the required capacity is 10⁹, you will run the O(N) simulation 10⁹ times. It will Time Limit Exceed. By guessing linearly, you treat the structured (monotonic) answer domain as if it were a random space
 - **The fix:** Use Binary Search on the answer domain to find the transition point in O(log R) guesses
 

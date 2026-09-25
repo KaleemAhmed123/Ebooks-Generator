@@ -1,7 +1,7 @@
 ## Convex Hull Trick as Elimination 🔴
 
 - The **Convex Hull Trick (CHT)** is an advanced DP optimisation that reduces O(n²) time to O(n) or O(n log n)
-- It sounds terrifying. Textbooks describe it with geometry ("lower envelope of a set of lines"). But structurally, it is just Dominated Candidate Elimination applied to linear functions
+- Textbooks describe it with geometry ("lower envelope of a set of lines"). But structurally, it is just Dominated Candidate Elimination applied to linear functions
 
 ### The DP Bottleneck
 
@@ -64,7 +64,7 @@
 
 - Notice how this is literally the monotonic stack algorithm, just with a more complex `while` loop condition
 - You maintain a deque of active candidates. When a new candidate arrives, you `while` loop to pop dominated candidates from the back, then push the new candidate
-- The "scary" geometry is just the domination check. The algorithmic skeleton is identical
+- The geometry is just the domination check. The algorithmic skeleton is identical
 
 :::interview
 "How would you optimize this O(n²) DP?"

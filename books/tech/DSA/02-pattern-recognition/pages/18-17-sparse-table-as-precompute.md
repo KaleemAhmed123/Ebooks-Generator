@@ -66,7 +66,7 @@
 
 - To query any range `[L, R]`, find the largest power of 2 that fits inside the range: `k = floor(log2(R - L + 1))`
 - The answer is simply `min(table[L][k], table[R - 2^k + 1][k])`
-- Because minimum is idempotent, the fact that these two blocks might overlap perfectly covers the entire range without double-counting penalties
+- Because minimum is idempotent, the fact that these two blocks might overlap still covers the entire range with no double-counting penalty
 
 ### Structural parallel to Segment Trees
 

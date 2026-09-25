@@ -1,7 +1,7 @@
 ## The wrong approach: Locality 🟢
 
 - **Naive idea:** For sliding window, beginners often try to maintain the sum by calling a `sum()` function on `arr.slice(left, right + 1)` inside the loop
-- **Why it looks right:** The logic is flawlessly correct. It passes the first 5 test cases on LeetCode
+- **Why it looks right:** The logic is correct. It passes the first 5 test cases on LeetCode
 - **Why it breaks:** The `slice` and `sum` operations take O(k) time. If you do this n times, your total time is O(n × k). If k = n/2, you have written an O(n²) algorithm disguised as a sliding window. It will TLE
 - **The trap:** Abstraction hides complexity. Writing `sum(window)` feels like an O(1) thought, but it is an O(k) machine execution
 - **The fix:** You must maintain a running variable (`currentSum`) and mathematically update it with `+ arr[right] - arr[left-1]`. The state must transition, not rebuild

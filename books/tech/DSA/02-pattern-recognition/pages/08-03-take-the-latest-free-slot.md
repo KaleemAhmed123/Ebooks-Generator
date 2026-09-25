@@ -27,7 +27,7 @@
 :::
 
 ```ts
-// Job Sequencing Problem (GFG): returns [jobs done, total profit]
+// Job Sequencing (GFG): count of jobs done and total profit
 function jobSequencing(
   deadline: number[], profit: number[],
 ): number[] {

@@ -13,7 +13,7 @@ You should immediately think of Feasibility Search if a problem asks:
 ### The structural transformation
 
 - **The original problem:** "What is the minimum ship capacity to deliver all packages in D days?" This is hard because the capacity could be anything, and the greedy packing strategy depends on the capacity
-- **The transformed problem:** "If the ship capacity is exactly C, can we deliver all packages in D days?" This is trivially easy. You just iterate through the packages, packing the ship until it's full, sending it, and counting how many days it took
+- **The transformed problem:** "If the ship capacity is exactly C, can we deliver all packages in D days?" This is a linear check. Iterate through the packages, packing the ship until it's full, sending it, and counting how many days it took
 - **The boundary:** If capacity C takes ≤ D days, then C+1, C+2 will also take ≤ D days. It's monotonic: `[F, F, F, T, T, T]`. We just binary search for the first C that returns True
 
 ### The `isPossible(x)` contract

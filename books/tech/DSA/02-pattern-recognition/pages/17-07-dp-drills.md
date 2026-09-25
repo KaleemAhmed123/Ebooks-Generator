@@ -15,12 +15,12 @@ Hide the right column. Say the signature first (17-02), then the transition. Mod
 | 9. Nth Catalan Number (GFG) | **`C(n) = Σ C(i) · C(n−1−i)`**: pick the root, split the rest |
 | 10. Binomial Coefficient (GFG) | **Pascal:** `C(n, r) = C(n−1, r−1) + C(n−1, r)` |
 | 11. Count Balanced Binary Trees of Height h (GFG) | **`f(h) = f(h−1)² + 2 · f(h−1) · f(h−2)`** |
-| 12. Count All Valid Pickup and Delivery Options (LeetCode 1359) | **`f(n) = f(n−1) · n · (2n − 1)`**: slot the new pair into 2n − 1 gaps |
+| 12. Count All Valid Pickup and Delivery Options (LeetCode 1359) | **`f(n) = f(n−1) · n · (2n − 1)`**: choose 2 of the 2n positions for the new pair |
 | 13. Mobile Numeric Keypad (GFG) | **`f(len, digit)`** = sum over the digit's neighbours and itself |
 | 14. 0/1 Knapsack (GFG) / Subset Sum (GFG) / Partition (LeetCode 416) | **`f(i, cap)`**, move on after a pick (Module 06, 03-03, 03-05) |
 | 15. Coin Change (GFG / LeetCode 322, 518) / ways to reach a score (GFG) | **`f(i, amount)`**, stay at i after a pick; items in the outer loop count combinations (Module 06, 03-04) |
 | 16. Perfect Squares (LeetCode 279) | **Unbounded:** `f(n) = 1 + min f(n − s²)` |
-| 17. Maximize the Cut Segments (GFG) | **Unbounded:** `f(n) = 1 + max f(n − x, y, z)`; impossible = −∞, not 0 |
+| 17. Maximize the Cut Segments (GFG) | **Unbounded:** `f(n) = 1 + max(f(n−x), f(n−y), f(n−z))`; impossible = −∞, not 0 |
 | 18. Minimum cost to fill a given weight in a bag (GFG) | **Unbounded knapsack;** a cost of −1 means the packet does not exist |
 | 19. Number of Dice Rolls With Target Sum (LeetCode 1155) | **`f(dice, target)`,** loop faces 1 … k |
 | 20. Greatest Sum Divisible by Three (LeetCode 1262) | **`f(i, sum mod 3)`**: three numbers per index |
@@ -34,7 +34,7 @@ Hide the right column. Say the signature first (17-02), then the transition. Mod
 | 28. Largest zero-sum / equal 0-and-1 rectangle (GFG) | **Fix a pair of rows,** then equal prefixes on column sums (03-03) |
 | 29. Longest Increasing Subsequence (LeetCode 300) | **`f(i)` or patience sorting** (Module 06, 02-04) |
 | 30. Maximum Sum Increasing Subsequence (GFG) | **LIS adding values** instead of 1 |
-| 31. Longest alternating subsequence (GFG / LeetCode 376) | **Two states:** last move up, last move down |
+| 31. Longest alternating subsequence (GFG) / Wiggle Subsequence (LeetCode 376) | **Two states:** last move up, last move down |
 | 32. Maximum Alternating Subsequence Sum (LeetCode 1911) | **Two states:** next element is added, or subtracted |
 | 33. Longest subsequence with adjacent difference one (GFG) | **`best[v] = 1 + max(best[v−1], best[v+1])`** |
 | 34. Longest Arithmetic Subsequence of Given Difference (LeetCode 1218) | **`best[v] = best[v − d] + 1`** |

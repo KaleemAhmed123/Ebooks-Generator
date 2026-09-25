@@ -2,7 +2,7 @@
 
 - **What it is:** Module 05 teaches the translation "states are nodes, moves are edges". Three more edge types hide in interview statements: two items share **something in common** (an email, a letter, a value), one item **reaches** another within a range (a blast radius, a jump length), or one item is **related by a ratio** to another. Name the edge, and the problem becomes a standard connectivity or traversal question
 - **Signal:** "accounts that share an email belong to the same person", "a bomb detonates every bomb within its radius", "a / b = 2.0, b / c = 3.0, what is a / c", "items numbered 0 to n − 1 with pairs", "minimum cables to connect all computers"
-- **Why it works:** Connectivity is transitive: if A shares an email with B and B with C, then A and C are one person even though they share nothing directly. A union–find structure (Module 03) merges such groups in near-constant time per edge, and each group's members can then be collected in one pass
+- **Why it works:** Connectivity is transitive: if A shares an email with B and B with C, then A and C are one person even though they share nothing directly. A union–find structure (Module 03) merges such groups in amortized O(log n) per edge with path compression alone, near-constant with union by size too, and each group's members can then be collected in one pass
 
 :::mint
 <svg viewBox="0 0 470 118" role="img" aria-label="Accounts merge. Account 1 has emails a and b, account 2 has b and c, account 3 has d. Account 1 and 2 share email b, so they are unioned; the group holds a, b and c. Account 3 is its own group. Emails are the hidden edges between accounts." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -72,5 +72,5 @@ function accountsMerge(accounts: string[][]): string[][] {
 - **Comparing every pair to find shared attributes.** Checking each pair of accounts for a common email is O(n² · L). Index by the attribute (`email → first owner`) so each shared value creates one union
 
 :::interview
-"How do you merge accounts that share emails?" — Each email is a hidden edge between accounts. I map every email to the first account that used it; when another account uses it, I union the two accounts. Afterwards each root collects its emails. With path compression the whole thing is close to linear in the number of emails, plus the sort each group needs for output.
+"How do you merge accounts that share emails?" — Each email is a hidden edge between accounts. I map every email to the first account that used it; when another account uses it, I union the two accounts. Afterwards each root collects its emails. With path compression (and union by size) the whole thing is close to linear in the number of emails, plus the sort each group needs for output.
 :::

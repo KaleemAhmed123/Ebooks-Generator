@@ -57,7 +57,7 @@ function copyRandomList(head: RNode | null): RNode | null {
 ### Variations
 
 - **Hash-map version:** pass 1 builds `Map<old, new>`, pass 2 sets `copy.next = map.get(x.next)` and `copy.random = map.get(x.random)`. O(n) space, simpler to get right under pressure
-- **Clone Graph (LeetCode 133):** the map version on a graph; DFS or BFS, creating each clone the first time it is seen (Chapter 16)
+- **Clone Graph (LeetCode 133):** the map version on a graph; DFS or BFS, creating each clone the first time it is seen (drill in 16-09)
 - **Flattening a Linked List (GFG):** each node has a sorted `bottom` list; merge the lists pairwise from the right with the merge from page 12-01
 - **Flatten a Multilevel Doubly Linked List (LeetCode 430):** when a node has a child, splice the child list between it and its `next`, fixing `prev` pointers both ways
 

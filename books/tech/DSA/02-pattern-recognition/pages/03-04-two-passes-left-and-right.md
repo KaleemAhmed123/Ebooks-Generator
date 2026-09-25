@@ -55,7 +55,7 @@ function trap(h: number[]): number {
 - **Product of Array Except Self (LeetCode 238):** left pass writes the product of everything before `i`; right pass multiplies in everything after `i`. No division, so zeros need no special case
 - **Candy (LeetCode 135):** left pass: `c[i] = c[i−1] + 1` if rating rises. Right pass: `c[i] = max(c[i], c[i+1] + 1)` if rating falls. The `max` keeps the left rule satisfied while fixing the right one
 - **Maximum Length Bitonic Subarray (GFG):** `inc[i]` = rising run ending at `i` (left pass), `dec[i]` = falling run starting at `i` (right pass). Answer = `max(inc[i] + dec[i] − 1)`
-- **Equilibrium Point (GFG):** left pass is a running sum; the right side is `total − left − a[i]`. One array pass, no second array
+- **Equilibrium Point (GFG):** left pass is a running sum; the right side is `total − left − a[i]`. Two passes, no second array
 - **O(1) space for water:** move two pointers inward from both ends; the side with the smaller running max is already decided, because the other side is guaranteed to be at least as tall
 
 ### The failure

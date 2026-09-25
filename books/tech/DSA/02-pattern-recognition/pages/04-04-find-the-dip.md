@@ -61,7 +61,7 @@ function nextPermutation(a: number[]): void {
 
 - **Next Greater Element III (LeetCode 556):** the same steps on the digits of an integer. Return −1 when there is no dip or when the result exceeds 2³¹ − 1
 - **Last permutation wraps around:** with no dip (`[3, 2, 1]`), `i` ends at −1, step 2 is skipped, and the full reversal returns the smallest arrangement `[1, 2, 3]`, which is what LeetCode 31 asks for
-- **Previous Permutation With One Swap (LeetCode 1053):** mirror image: find the first *rise* from the right, swap with the largest smaller value to its right, and do *not* reverse, because only one swap is allowed. On equal candidates take the leftmost
+- **Previous Permutation With One Swap (LeetCode 1053):** mirror image: find the first `a[i] > a[i+1]` scanning from the right, swap with the largest smaller value to its right, and do *not* reverse, because only one swap is allowed. On equal candidates take the leftmost
 - **Permutation Sequence (LeetCode 60):** calling next permutation k times is O(n · k). Jump straight there by writing k − 1 in the factorial number system
 
 ### The failure

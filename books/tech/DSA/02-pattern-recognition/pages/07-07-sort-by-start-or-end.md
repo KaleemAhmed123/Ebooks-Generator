@@ -49,7 +49,7 @@ function merge(intervals: number[][]): number[][] {
 - **Non-overlapping Intervals (LeetCode 435):** removals = `n − (maximum kept)`, and maximum kept is activity selection: sort by end, keep an interval when `start ≥ lastEnd`
 - **Minimum Number of Arrows to Burst Balloons (LeetCode 452):** sort by end; shoot at the first end, skip every balloon whose start ≤ that point, shoot again at the next unburst end. Touching balloons share an arrow, so the test is `start > arrow`
 - **Interval List Intersections (LeetCode 986):** both lists are sorted; two pointers. The overlap is `[max(starts), min(ends)]`; advance the pointer whose interval ends first
-- **Meeting Rooms II / Minimum Platforms (GFG):** a *count of simultaneous* intervals, not a merge; use the sweep line on page 07-06
+- **Meeting Rooms II (LeetCode 253) / Minimum Platforms (GFG):** a *count of simultaneous* intervals, not a merge; use the sweep line on page 07-06
 
 ### The failure
 

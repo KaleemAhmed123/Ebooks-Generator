@@ -67,7 +67,7 @@ function reorderList(head: ListNode | null): void {
 - **Palindrome Linked List (LeetCode 234):** split, reverse the back half, compare node by node until the shorter half ends. Reverse it again if the caller needs the list intact
 - **Maximum Twin Sum of a Linked List (LeetCode 2130):** split and reverse; the twin of the i-th front node is the i-th node of the reversed back. Take the max of the sums
 - **Sort List (LeetCode 148):** merge sort: split at the middle, sort each half recursively, merge with a dummy head (page 12-01). O(n log n), no array copy
-- **Delete the Middle Node of a Linked List (LeetCode 2095):** slow/fast with a head start of one for `fast`, so `slow` stops *before* the middle and can unlink it
+- **Delete the Middle Node of a Linked List (LeetCode 2095):** start `slow = head`, `fast = head.next.next` and loop `while (fast && fast.next)`, so `slow` stops *before* the middle and can unlink it
 - **Middle of the Linked List (LeetCode 876):** `while (fast && fast.next)` returns the *second* middle on even lengths; `while (fast.next && fast.next.next)` returns the first. Pick by what the next step needs
 
 ### The failure

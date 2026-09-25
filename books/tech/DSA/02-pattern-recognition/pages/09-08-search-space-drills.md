@@ -1,4 +1,4 @@
-## Recognition drills: Search Space 🟢
+## Recognition drills: Search Space, named problems 🟢
 
 Hide the right column. For every binary search, name *what* is being searched (an index, a value, a partition point) and the monotone predicate that makes halving legal.
 
@@ -19,7 +19,7 @@ Hide the right column. For every binary search, name *what* is being searched (a
 | 13. EKO (SPOJ EKO) | **Answer saw height;** wood collected ≥ M, last true |
 | 14. ROTI-PRATA (SPOJ PRATA) | **Answer time;** cooks can make ≥ P prata, each cook's count found by a small inner loop |
 | 15. Minimize the Maximum Difference of Pairs (LeetCode 2616) | **Answer d;** after sorting, greedily pair neighbours with difference ≤ d; can we get p pairs? |
-| 16. Smallest number with at least n trailing zeros in factorial (GFG) | **Answer x;** `⌊x/5⌋ + ⌊x/25⌋ + … ≥ n` |
+| 16. Smallest factorial number: at least n trailing zeros (GFG) | **Answer x;** `⌊x/5⌋ + ⌊x/25⌋ + … ≥ n` |
 | 17. Kth Smallest Element in a Sorted Matrix (LeetCode 378) | **Value;** count `≤ x` by staircase |
 | 18. Find K-th Smallest Pair Distance (LeetCode 719) | **Value;** count pairs `≤ d` with two pointers |
 | 19. Bishu and Soldiers (HackerEarth) | **Sort + prefix sums;** upper bound per query gives count and sum |

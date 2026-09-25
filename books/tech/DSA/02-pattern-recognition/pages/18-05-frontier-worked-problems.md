@@ -56,7 +56,7 @@ function ladderLength(begin: string, end: string, dict: Set<string>): number {
 - **Problem:** Find the cheapest flight from source to destination with at most K stops
 - **Why it is a frontier problem with a twist:** Standard Dijkstra won't work because we need to track stops as part of the state. The frontier becomes `(cost, node, stopsUsed)`
 - **The insight:** The state is not just `node` — it is `(node, stopsUsed)`. A node can be visited multiple times if it was reached with a different number of stops
-- **Alternative:** BFS-style relaxation for K rounds (Bellman-Ford limited to K iterations)
+- **Alternative:** BFS-style relaxation for K + 1 rounds (Bellman-Ford limited to K + 1 iterations)
 
 ### The pattern across all three
 

@@ -2,7 +2,7 @@
 
 ## Repeated State? See Dynamic Programming 🟢
 
-- The chapters before this one focus on patterns that can be solved by manipulating data structures (stacks, queues, segment trees) or traversing boundaries (binary search, two pointers)
+- The chapters before this one focus on patterns that can be solved by manipulating data structures (stacks, queues, heaps) or traversing boundaries (binary search, two pointers)
 - But what happens when the problem requires you to make a choice, and that choice leads to a state you have already evaluated?
 
 ### The DP Boundary
@@ -17,10 +17,10 @@
 ### Where to go next
 
 - If your problem involves **repeated overlapping subproblems** or finding the optimal substructure, jump to **Module 06: Dynamic Programming**
-- Module 06 breaks DP down not by "Knapsack" vs "LCS", but by the shape of the state transitions (Linear, Interval, Bitmask, Tree)
+- Module 06 works the common families in full: linear, knapsack, two-string, grid, tree, bitmask and digit DP
 
 ### This chapter
 
 - **17-02 Name the DP shape:** your recursion's arguments name the problem family
-- **17-03 to 17-06:** the four shapes Module 06 leaves out: pick then jump, track what you hold, try every split, assume the opponent is perfect
+- **17-03 to 17-06:** four shapes Module 06 does not work in full: pick then jump, track what you hold, try every split, assume the opponent is perfect
 - **17-07 Drills:** 59 named problems, each reduced to a signature and a transition

@@ -2,7 +2,7 @@
 
 - **What it is:** A binary tree where each node represents an interval of the array, and stores the extremum (or sum) of that interval
 - **When to reach for it:** "Find the max in range `[L, R]`... and also update `arr[i] = x`"
-- **Why it works:** Precomputing the max for every possible range takes O(n²) space and time. A segment tree precomputes only O(n) specific ranges (power-of-two chunks). Any arbitrary range `[L, R]` can be constructed by combining at most O(log n) of these precomputed chunks
+- **Why it works:** Precomputing the max for every possible range takes O(n²) space and time. A segment tree precomputes only O(n) specific ranges (halves of halves). Any arbitrary range `[L, R]` can be constructed by combining at most O(log n) of these precomputed chunks
 
 ### The visual mechanism
 
@@ -62,8 +62,8 @@
 - **The catch:** The queries are a mix of "find the max in range `[L, R]`" and "update `arr[i] = X`".
 - If there were no updates, you could use a Sparse Table (O(1) query, O(n log n) build).
 - If it were sums instead of max, you could use a Fenwick tree or Prefix sum (if no updates).
-- The presence of *updates* combined with *range max/min* is the absolute, irrefutable fingerprint of a Segment Tree. It does both in O(log n) time.
+- The presence of *updates* combined with *range max/min* is the fingerprint of a Segment Tree. It does both in O(log n) time.
 
 ### The trap
 
-- **Implementing it for static data.** Segment trees are heavy to code and have a large constant factor. If the array never changes (no updates), a Sparse Table is fundamentally better for min/max queries because it answers them in O(1) time. A segment tree on static data is over-engineering
+- **Implementing it for static data.** Segment trees are heavy to code and have a large constant factor. If the array never changes (no updates), a Sparse Table is better for min/max queries because it answers them in O(1) time. A segment tree on static data is over-engineering

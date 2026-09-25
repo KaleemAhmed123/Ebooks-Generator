@@ -14,7 +14,7 @@
 
 ### The structural approach
 
-- Every problem has a bottleneck (as seen in Module 1)
+- Every problem has a bottleneck (as seen in Module 01)
 - The bottleneck demands a specific structural property to fix it
 - For example: if the bottleneck is "I need to find the optimal pair, and checking all pairs is O(n²)", you need a structural property that lets you **eliminate candidates without checking them**
 - **Order** (sorting) provides that property. Once sorted, Two Pointers is just the technique used to exploit the Order pattern

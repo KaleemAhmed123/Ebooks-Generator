@@ -45,7 +45,7 @@ function asteroidCollision(asteroids: number[]): number[] {
 - **Remove All Adjacent Duplicates in String II (LeetCode 1209) / Restrictive Candy Crush (GFG):** push `(char, runLength)`; when a run reaches k, pop it. Removing k equal characters is one pop, however long the cascade
 - **Backspace String Compare (LeetCode 844):** `#` pops. For O(1) space, walk both strings from the end and skip characters owed to pending backspaces
 - **Make The String Great (LeetCode 1544):** a letter cancels the top when they are the same letter in opposite case
-- **Recursively remove all adjacent duplicates (GFG) — the trap:** here removal happens in *rounds*: every run of length ≥ 2 disappears at once, then the result is scanned again. That is not the stack's cascade. On `"babbaa"` rounds give `"ba"` (both runs vanish together), while a stack that deletes each run and lets its neighbours merge at once gives `"b"`. Read the statement for "at the same time" before reaching for a stack; rounds need a linear pass per round
+- **Recursively remove all adjacent duplicates (GFG) — the trap:** here removal happens in *rounds*: every run of length ≥ 2 disappears at once, then the result is scanned again. That is not the stack's cascade. On `"babbaa"` rounds give `"ba"` (both runs vanish together), while a stack that deletes each run and lets its neighbours merge at once gives `"b"`. Check which rule your statement uses before reaching for a stack; rounds need a linear pass per round
 
 ### The failure
 

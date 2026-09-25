@@ -51,7 +51,7 @@ function minOperations(nums: number[], x: number): number {
 
 - **Maximum Points You Can Obtain from Cards (LeetCode 1423):** take exactly k cards from the ends. What stays is a fixed window of `n − k`. Answer = `total − min(sum of any n − k window)`, a fixed-size window from page 02-02
 - **Maximum Sum Circular Subarray (LeetCode 918):** a circular subarray that wraps is the whole array minus a normal middle. Answer = `max(bestKadane, total − worstKadane)`. One guard: if every number is negative, `total − worst` is the empty array's 0, so return `bestKadane` instead
-- **Minimum Swaps to Group All 1's Together:** flip to "which window of length `ones` already holds the most 1s". Swaps = `ones − best`
+- **Minimum Swaps to Group All 1's Together (LeetCode 1151):** flip to "which window of length `ones` already holds the most 1s". Swaps = `ones − best`
 
 ### The failure
 

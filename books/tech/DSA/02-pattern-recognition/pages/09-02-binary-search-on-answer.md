@@ -2,7 +2,7 @@
 
 - **What it is:** Guessing the answer, using a checker function to see if the guess is feasible, and using Binary Search to find the optimal guess
 - **When to reach for it:** The problem asks to "Minimise the maximum X" or "Maximise the minimum X". (e.g. Koko Eating Bananas, Allocate Pages, Minimum Capacity to Ship Packages)
-- **Why it works:** Calculating the exact minimum capacity of a ship to transport packages within D days is mathematically complex. But if I ask you, "Can a ship with capacity C transport them in D days?", you can simulate it easily with a simple O(N) loop. Since the answer domain is monotonic (if capacity 10 works, capacity 11 definitely works), we can binary search the capacity C
+- **Why it works:** Calculating the exact minimum capacity of a ship to transport packages within D days has no simple formula. But if I ask you, "Can a ship with capacity C transport them in D days?", you can simulate it easily with a simple O(N) loop. Since the answer domain is monotonic (if capacity 10 works, capacity 11 definitely works), we can binary search the capacity C
 
 ### The visual mechanism
 
@@ -67,7 +67,7 @@ function solve(arr: number[], limit: number): number {
     
     if (isValid(arr, mid, limit)) {
       best = mid;      // This works, record it
-      right = mid - 1; // Try to find a smaller one!
+      right = mid - 1; // try to find a smaller one
     } else {
       left = mid + 1;  // Too small, must increase
     }
@@ -86,4 +86,4 @@ function isValid(arr: number[], guess: number, limit: number): boolean {
 
 - The range of possible answers is R. Binary searching it takes O(log R).
 - For every guess, we run `isValid()`, which usually takes O(N).
-- Total time: O(N log R). Since log₂(10⁹) ≈ 30, this is effectively 30 · O(N), which is phenomenally fast.
+- Total time: O(N log R). Since log₂(10⁹) ≈ 30, this is effectively 30 · O(N), a few million steps.

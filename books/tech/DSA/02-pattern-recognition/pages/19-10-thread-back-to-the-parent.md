@@ -1,7 +1,7 @@
 ## Thread Back to the Parent 🔴
 
 - **What it is:** **Morris traversal.** An in-order walk with O(1) extra space. Before descending left from `cur`, point the null right pointer of `cur`'s in-order predecessor back at `cur`. That temporary **thread** replaces the stack frame that would have remembered the way back
-- **Signal:** "O(1) extra space" on a binary tree walk: Median of BST (GFG), follow-ups to Kth Smallest (LeetCode 230) and Recover BST (LeetCode 99)
+- **Signal:** "O(1) extra space" on a binary tree walk: Median of BST (GFG), the follow-up to Recover BST (LeetCode 99); Kth Smallest (LeetCode 230) when asked for O(1) space
 - **Why it works:** The predecessor is the rightmost node of the left subtree, and its right pointer is always null, so the slot is free. Reaching `cur` a second time through the thread proves the left subtree is finished; the walk removes the thread and moves right. Each edge is walked a constant number of times, so O(n) total
 
 :::mint
@@ -59,7 +59,7 @@ function inorder(root: TreeNode | null): number[] {
 
 ### The failure
 
-- **Returning mid-walk.** Stopping at the k-th node leaves every thread above it in place. The tree now has cycles: a later recursive walk never terminates. Keep walking to the end, or cut the threads before returning
+- **Returning mid-walk.** Stopping at the k-th node leaves every thread above it in place. The tree now has cycles: a later recursive walk overflows the stack, an iterative one loops forever. Keep walking to the end, or cut the threads before returning
 - **Using it where the tree is shared.** The tree is modified during the walk. Another reader, or a tree with frozen nodes, sees broken structure. O(1) space is bought with temporary writes
 
 :::interview

@@ -27,7 +27,7 @@
 </svg>
 :::
 
-| Your sheet's tag | Signature | Read |
+| Common tag | Signature | Read |
 |---|---|---|
 | Max sum, non-adjacent | `f(i)`: take i and jump to i + 2, or skip | Module 06, 02-02 |
 | Grid DP | `f(r, c)`: only right/down moves | Module 06, 04-03 to 04-05 |

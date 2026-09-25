@@ -57,7 +57,7 @@ function longestPalindrome(s: string): string {
 - **Valid Palindrome II (LeetCode 680):** two pointers from the ends; at the first mismatch, try skipping the left or the right character once and check the rest directly
 - **Break a Palindrome (LeetCode 1328):** change the first non-`'a'` in the first half to `'a'`; if the first half is all `'a'`, change the last character to `'b'`. A length-1 string cannot be broken
 - **Minimum characters to add at the front to make a palindrome (GFG):** the answer is `n − (longest palindromic prefix)`. Centres give O(n²); the O(n) way runs KMP's failure function on `s + '#' + reverse(s)` (KMP, Module 08)
-- **Longest Palindromic Subsequence:** *not* this pattern. Subsequences may skip characters, so centres do not apply; it is an interval DP (Module 06)
+- **Longest Palindromic Subsequence:** *not* this pattern. Subsequences may skip characters, so centres do not apply; it is a range DP (the `f(i, j)` shape of 17-02), or LCS of the string and its reverse (Module 06, 03-01)
 
 ### The failure
 

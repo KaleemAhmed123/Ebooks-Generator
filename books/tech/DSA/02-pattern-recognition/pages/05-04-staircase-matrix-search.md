@@ -1,8 +1,8 @@
 ## Staircase Search 🟢
 
 - **What it is:** Searching for a target in a 2D matrix where every row is sorted left-to-right, and every column is sorted top-to-bottom
-- **When to reach for it:** "Search a 2D Matrix II"
-- **Why it works:** If you start at the top-right corner, you have two choices. Moving left decreases the value. Moving down increases the value. The matrix geometry perfectly mimics a Binary Search Tree
+- **Signal:** "Search a 2D Matrix II" (LeetCode 240): rows and columns each sorted
+- **Why it works:** If you start at the top-right corner, you have two choices. Moving left decreases the value. Moving down increases the value. From that corner the matrix behaves like a Binary Search Tree
 
 ### The visual mechanism
 
@@ -91,7 +91,7 @@ function searchMatrix(matrix: number[][], target: number): boolean {
 ### The Complexity
 
 - In the worst case, you travel from the top-right to the bottom-left.
-- You move exactly R times down and C times left.
+- At most R − 1 moves down and C − 1 moves left happen inside the matrix before the last step exits: at most R + C − 1 comparisons.
 - Total time: O(R + C).
 - Total space: O(1).
 - A naive full matrix search takes O(R · C). The structured search space allows us to eliminate entire rows or columns with a single check.

@@ -19,4 +19,4 @@
 
 - Binary search on answer is the most abstract pattern in the linear half of this booklet.
 - The previous patterns operated on *the input array*. "Binary Search on Answer" operates on *the mathematical domain of all possible answers*.
-- It fundamentally changes how you write algorithms: instead of writing a function that directly calculates the answer, you write a "checker" function that says "Yes" or "No", and you guess the answer millions of times in a fraction of a millisecond
+- It changes how you write algorithms: instead of writing a function that directly calculates the answer, you write a "checker" function that says "Yes" or "No", and you binary search over guesses, each checked in one pass

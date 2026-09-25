@@ -32,7 +32,7 @@
 function numSubarrayProductLessThanK(
   nums: number[], k: number,
 ): number {
-  // no product of positives is < 1
+  // no product of integers ≥ 1 is < 1
   if (k <= 1) return 0;
   let prod = 1, left = 0, count = 0;
   for (let right = 0; right < nums.length; right++) {
@@ -50,7 +50,7 @@ function numSubarrayProductLessThanK(
 
 ### The failure
 
-- Counting only maximal windows. `[5, 2, 6]` is one window but three answers. Summing lengths of maximal windows double-counts overlaps, and counting windows undercounts. Count at the right end and both errors vanish
+- Counting only maximal windows. `[5, 2, 6]` is one window, but it adds three answers at its right end. Summing lengths of maximal windows double-counts overlaps, and counting windows undercounts. Count at the right end and both errors vanish
 - Forgetting the `k ≤ 1` guard. With `k = 0` the `while` loop pops past `right`, `left` exceeds `right`, and the count goes negative
 
 :::interview

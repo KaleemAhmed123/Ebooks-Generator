@@ -61,7 +61,7 @@ function findPaths(m: number[][]): string[] {
 ### The failure
 
 - **Checking validity before each call instead of at the top.** Four copies of the bounds-and-blocked test, one per direction, is where a `>=` becomes `>`. One check at the top of the function is written once
-- **Forgetting to unmark.** Without `m[r][c] = 1` on the way out, the first path found blocks every other path that shares a cell with it, and "all paths" returns only one
+- **Forgetting to unmark.** Without `m[r][c] = 1` on the way out, every cell an earlier branch touched stays blocked, so "all paths" silently returns only some of them
 
 :::interview
 "How do you find all paths in a maze?" — Depth-first search over moves, with backtracking: at each cell I return early if it is outside, blocked or already on the current path; otherwise I mark it, recurse into every allowed move, and unmark it on the way out. If the question asks for the *shortest* path, I switch to BFS, because enumerating paths is exponential.

@@ -2,7 +2,7 @@
 
 - **What it is:** Using two indices to traverse a data structure simultaneously
 - **When to reach for it:** "Find a pair that sums to X in a sorted array", "Reverse a string in place", "Remove duplicates from a sorted array"
-- **Why it works:** In sorted arrays, the pointers act as boundaries that permanently eliminate candidates. In unsorted arrays, one pointer acts as a "reader" and the other as a "writer"
+- **Why it works:** In sorted arrays, the pointers act as boundaries that permanently eliminate candidates. In read/write problems (sorted or not), one pointer acts as a "reader" and the other as a "writer"
 
 ### Opposite Direction (Collision)
 

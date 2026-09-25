@@ -56,7 +56,7 @@ function maxActivities(start: number[], end: number[]): number {
   let lastEndTime = -1;
   
   for (const act of activities) {
-    if (act.s >= lastEndTime) { // Valid choice!
+    if (act.s >= lastEndTime) { // valid choice
       count++;
       lastEndTime = act.e;
     }

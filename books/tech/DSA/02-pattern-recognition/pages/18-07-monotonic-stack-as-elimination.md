@@ -1,6 +1,6 @@
 ## Monotonic Stack as Elimination 🟡
 
-- The monotonic stack is the most common instantiation of dominated candidate elimination. This page shows why the stack operations are *proofs of domination*, not just mechanical steps
+- The monotonic stack is the most common instantiation of dominated candidate elimination. Each stack pop is a *proof of domination*, not just a mechanical step
 
 ### The "Next Greater Element" through elimination lens
 

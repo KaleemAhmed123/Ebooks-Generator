@@ -52,5 +52,5 @@ function singleNumber(nums: number[]): number[] {
 - **Negative numbers and `>>`.** JS bitwise operators work on 32-bit signed integers: `−8 >> 1` is −4, and `−1 >>> 0` is 4294967295. XOR-cancellation is safe for negatives, but code that shifts to inspect bits must use `>>>` or mask with `& 1`
 
 :::interview
-"Why does `x & -x` give the lowest set bit?" — In two's complement, `−x = ~x + 1`. Inverting flips every bit, and adding 1 carries through the trailing 1s of `~x`, which were the trailing 0s of `x`, and stops at x's lowest 1. So `x` and `−x` agree only on that bit, and the AND keeps exactly it.
+"Why does `x & -x` give the lowest set bit?" — In two's complement, `−x = ~x + 1`. Inverting flips every bit, and adding 1 carries through the trailing 1s of `~x`, which were the trailing 0s of `x`, and stops at x's lowest 1. So `x` and `−x` share only that one 1 bit, and the AND keeps exactly it.
 :::

@@ -12,7 +12,7 @@
   - Index 12 (`1100` in binary). LSB is 4 (`0100`). So `tree[12]` stores the sum of the last 4 elements: `arr[9] + arr[10] + arr[11] + arr[12]`
   - Index 10 (`1010` in binary). LSB is 2 (`0010`). So `tree[10]` stores the sum of the last 2 elements: `arr[9] + arr[10]`
 
-### The bitwise magic
+### The bitwise step
 
 - To extract the LSB of `i`: `i & (-i)`
 - **To Query `prefix(i)`:** You sum `tree[i]`, then chop off the LSB from `i`, and repeat until `i` is 0. This jumps backwards over the precomputed blocks

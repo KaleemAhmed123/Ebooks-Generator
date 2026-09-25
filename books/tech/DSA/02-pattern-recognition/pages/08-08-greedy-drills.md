@@ -15,7 +15,7 @@ Hide the right column. Name the move, and in one phrase say why it is safe. If y
 | 9. Maximum Tip Calculator (GFG) | **Sort by regret:** `|a − b|` descending, respect capacities |
 | 10. Gas Station (LeetCode 134) / Circular tour (GFG) | **Restart when broke,** plus the total check |
 | 11. Bulb Switcher (LeetCode 319) | **Invariant:** only perfect squares have an odd number of divisors |
-| 12. Faulty wiring and bulbs (GFG) | **Invariant:** carry the parity of presses |
+| 12. Bulbs where a switch flips every bulb to its right (GFG) | **Invariant:** carry the parity of presses |
 | 13. Maximize Sum Of Array After K Negations (LeetCode 1005) | **Invariant:** negatives first, leftover parity hits the smallest `|x|` |
 | 14. Minimum Replacements to Sort the Array (LeetCode 2366) | **Right to left,** split into `⌈x/m⌉` equal parts |
 | 15. Fractional Knapsack (GFG) | **Sort by value / weight;** splitting items makes greedy exact |
@@ -26,7 +26,7 @@ Hide the right column. Name the move, and in one phrase say why it is safe. If y
 | 20. Minimum Cost to cut a board into squares (GFG) | **Most expensive cut first;** its cost multiplies by the pieces in the other direction |
 | 21. Maximize `Σ a[i] · i` (GFG) | **Sort ascending** (rearrangement inequality) |
 | 22. Smallest subset with sum greater than the rest (GFG) | **Sort descending,** take until the taken sum exceeds the rest |
-| 23. Task Scheduler (LeetCode 621) | **Invariant:** `max(n_tasks, (maxFreq − 1) · (gap + 1) + countOfMax)` |
+| 23. Task Scheduler (LeetCode 621) | **Counting bound:** `max(n_tasks, (maxFreq − 1) · (gap + 1) + countOfMax)` |
 | 24. Minimum Cost of Ropes (GFG) | **Merge the two smallest** (15-05) |
 | 25. Minimum Number of Refueling Stops (LeetCode 871) | **Take now, regret later** (15-06) |
 

@@ -73,7 +73,7 @@ function spiralOrder(m: number[][]): number[] {
 
 ### The failure
 
-- **Double-counting a single row or column.** Drop the two `if` guards and a 3×1 matrix returns `[1, 2, 3, 2]`: after the right column is walked, the "bottom row" walk reads the same cells back. The guards re-check the rectangle after each side, not once per loop
+- **Double-counting a single row or column.** Drop the two `if` guards and a 3×1 matrix returns `[1, 2, 3, 2]`: the left-column walk reads the middle cell back (on a 1×3 matrix the bottom-row walk does the same, giving `[1, 2, 3, 2, 1]`). The guards re-check the rectangle after each side, not once per loop
 - **Rotating by writing into the same matrix cell by cell.** `a[c][n−1−r] = a[r][c]` overwrites values that have not been read yet. Either use four-way swaps per ring or the transpose-and-reverse pair
 
 :::interview

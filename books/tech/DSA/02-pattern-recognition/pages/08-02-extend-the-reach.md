@@ -1,7 +1,7 @@
 ## Extend the Reach 🟡
 
 - **What it is:** For "minimum steps to cover a line", do not decide *where* to land. Track two numbers: the end of the range reachable with the jumps used so far (`end`), and the farthest point reachable with one more jump (`far`). When `i` reaches `end`, a jump is forced, and it goes to `far`
-- **Signal:** "minimum number of jumps to reach the end", "minimum taps to water the whole garden", "minimum clips to cover [0, T]", "can you reach the last index"
+- **Signal:** "minimum number of jumps to reach the end", "minimum taps to water the whole garden", "minimum clips to cover [0, time]", "can you reach the last index"
 - **Why it works:** It is BFS by levels on a line. All indices reachable in k jumps form one contiguous range, and the next level is `(end, far]`. Greedy never picks a landing square; it only extends the range, so no choice can be wrong. Module 04's wrong approach, "jump to the farthest square", fails precisely because it picks a square
 
 :::mint
@@ -50,7 +50,7 @@ function jump(nums: number[]): number {
 
 - **Jump Game (LeetCode 55):** only `far` is needed. If `i > far` at any point, index `i` is unreachable; return false
 - **Minimum Number of Taps to Open to Water a Garden (LeetCode 1326):** tap `i` covers `[i − r, i + r]`. Convert to `reach[left] = max(reach[left], right)` for each tap, then run the level loop over `reach`; if `far` stops growing before `n`, return −1
-- **Video Stitching (LeetCode 1024):** clips are intervals over `[0, T]`; the same reach conversion, the same loop
+- **Video Stitching (LeetCode 1024):** clips are intervals over `[0, time]`; the same reach conversion, the same loop
 - **Minimum number of jumps (GFG):** Jump Game II without the reachability promise. Return −1 when `i === end` and `far === end` (no progress possible)
 
 ### The failure

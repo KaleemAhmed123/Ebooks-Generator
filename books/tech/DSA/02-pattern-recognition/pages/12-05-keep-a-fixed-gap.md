@@ -2,7 +2,7 @@
 
 - **What it is:** Two pointers that move at the *same* speed but start a fixed distance apart. When the leader reaches the end, the follower is exactly that distance from the end. A variant equalises two different lengths by letting each pointer, at its end, jump to the other list's head
 - **Signal:** "remove the n-th node from the end", "n-th node from the end", "sum of the last N nodes", "intersection point of two Y-shaped lists", one pass, no length counting
-- **Why it works:** The gap between the pointers never changes, so it is still n when the leader falls off the list. For two lists of lengths `x + c` and `y + c` sharing a tail `c`, each pointer walks `x + c + y` nodes before reaching the junction the second time around, so they arrive together
+- **Why it works:** The gap between the pointers never changes, so it is still n when the leader falls off the list. For two lists of lengths `x + c` and `y + c` sharing a tail `c`, both pointers reach the junction after `x + y + c` steps, so they arrive together
 
 :::mint
 <svg viewBox="0 0 470 110" role="img" aria-label="Remove the 2nd node from the end of 1, 2, 3, 4, 5. Start both pointers at a dummy node, move fast 3 steps ahead (n plus 1). Move both until fast is null. Slow stops at 3, the node before the one to delete, so slow.next becomes 5." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">

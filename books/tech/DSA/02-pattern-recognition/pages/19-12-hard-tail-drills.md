@@ -12,7 +12,7 @@ Hide the right column. These rarely appear outside hard rounds and contests; the
 | 6. Maximum subarray XOR (GFG) | **Prefix XORs in a bit trie** (19-11) |
 | 7. Maximum XOR With an Element From Array (LeetCode 1707) | **Offline:** sort queries by limit, insert as the limit grows |
 | 8. Count Pairs With XOR in a Range (LeetCode 1803) | **Counts on trie nodes,** `count(< high + 1) − count(< low)` |
-| 9. Binary Tree Inorder Traversal, O(1) space (LeetCode 94) | **Thread back to the parent** (19-10) |
+| 9. Binary Tree Inorder Traversal (LeetCode 94) when asked for O(1) space | **Thread back to the parent** (19-10) |
 | 10. Recover Binary Search Tree (LeetCode 99) | **Morris in-order,** track the two out-of-order nodes |
 | 11. Median of BST in O(1) space (GFG) | **Morris twice:** count, then walk to the middle |
 | 12. Closest Subsequence Sum (LeetCode 1755) | **Meet in the middle:** n ≤ 40, sort one half's sums, binary search from the other (19-09) |

@@ -49,7 +49,7 @@ function wordPattern(pattern: string, s: string): boolean {
 
 - **Isomorphic Strings (LeetCode 205):** the same loop with characters on both sides. Equivalent one-map trick: compare the *shape* signatures `0,1,1` of both strings (page 06-01)
 - **Find and Replace Pattern (LeetCode 890) / Match specific pattern (GFG):** run the two-way check of each word against the pattern, or compare shape signatures, which lets you precompute the pattern's once
-- **Word Pattern II (LeetCode 291):** no spaces, so the split is unknown. The two maps stay; the split becomes a backtracking choice (Chapter 13), with the maps undone on the way back
+- **Word Pattern II (LeetCode 291):** no spaces, so the split is unknown. The two maps stay; the split becomes a backtracking choice (try every cut, 13-09), with the maps undone on the way back
 
 ### The failure
 

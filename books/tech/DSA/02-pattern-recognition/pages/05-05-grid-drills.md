@@ -21,7 +21,7 @@ Hide the right column. First decide whether the grid is a *table* (index math, r
 | 15. Median in a row-wise sorted matrix (GFG) | **Guess a value, count below it:** binary search per row for the count |
 | 16. Maximal Rectangle (LeetCode 85) | **Stack the rows** (Chapter 10): each row becomes a histogram |
 | 17. Largest subsquare surrounded by X (GFG) | **Two passes, in 2-D:** consecutive X counts to the left and upward per cell, then check each square's corners |
-| 18. Longest Increasing Path in a Matrix (LeetCode 329) | **Grid as a DAG:** DFS with memo (Chapter 13 → Chapter 17); increasing edges cannot cycle |
+| 18. Longest Increasing Path in a Matrix (LeetCode 329) | **Grid as a DAG:** DFS with memo (Module 06 caching, on Module 05's DAG view); increasing edges cannot cycle |
 | 19. The K Weakest Rows in a Matrix (LeetCode 1337) | **Binary search each row's 1-count,** then a size-k heap (Chapter 15) |
 | 20. Sum of Matrix After Queries (LeetCode 2718) | **Process in reverse:** a later write to a row wins, so walk queries backwards and count only rows and columns not yet claimed |
 

@@ -51,7 +51,7 @@ function subarraysDivByK(nums: number[], k: number): number {
 ### Other codes, same loop
 
 - **Continuous Subarray Sum (LeetCode 523):** "length ≥ 2, sum a multiple of k". Same remainder code, but store the **first index** and accept only `i − first ≥ 2`. Never overwrite a first index: a later one only shortens the subarray
-- **Longest subarray with equal odd and even elements (GFG):** code = running `(+1 for odd, −1 for even)`. The 0/1 version of this appears as Contiguous Array in Module 07; any two-class count works the same way
+- **Longest subarray with equal odd and even elements (GFG):** code = running `(+1 for odd, −1 for even)`. The 0/1 version is Contiguous Array (LeetCode 525); any two-class count works the same way
 - **Find the Longest Substring Containing Vowels in Even Counts (LeetCode 1371):** code = a 5-bit mask, bit v flipped by each vowel v. Equal masks mean every vowel's count changed by an even number in between
 - **Number of Wonderful Substrings (LeetCode 1915) 🟡:** at most one letter odd. For each prefix mask `m`, count earlier masks equal to `m` *and* to `m ^ (1 << b)` for each of the 10 letters
 
