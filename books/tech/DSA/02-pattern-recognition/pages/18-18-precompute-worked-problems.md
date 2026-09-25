@@ -1,4 +1,4 @@
-## Precompute worked problems
+## Precompute worked problems 🟡
 
 ### Problem 1: Subarray Sum Equals K
 
@@ -37,13 +37,13 @@ function subarraySum(nums: number[], k: number): number {
 
 ### Problem 2: Range Minimum Query (Static)
 
-- **Problem:** Given a static array, answer $Q$ queries of the form "What is the minimum element between index L and R?"
-- **Why it is a precompute problem:** Large $Q$, static data. Minimum is idempotent. We need a Sparse Table
+- **Problem:** Given a static array, answer Q queries of the form "What is the minimum element between index L and R?"
+- **Why it is a precompute problem:** Large Q, static data. Minimum is idempotent. We need a Sparse Table
 
 **Derivation:**
-1. **Precompute:** Build a table where `st[i][j]` is the minimum of a block starting at `i` of length $2^j$
-2. **Base case:** `st[i][0] = arr[i]` (length $2^0 = 1$)
-3. **Transition:** `st[i][j] = min(st[i][j-1], st[i + 2^(j-1)][j-1])`. Two blocks of length $2^{j-1}$ combine to form a block of length $2^j$
+1. **Precompute:** Build a table where `st[i][j]` is the minimum of a block starting at `i` of length 2ʲ
+2. **Base case:** `st[i][0] = arr[i]` (length 2⁰ = 1)
+3. **Transition:** `st[i][j] = min(st[i][j-1], st[i + 2^(j-1)][j-1])`. Two blocks of length 2ʲ⁻¹ combine to form a block of length 2ʲ
 
 ```ts
 function buildSparseTable(arr: number[]): number[][] {

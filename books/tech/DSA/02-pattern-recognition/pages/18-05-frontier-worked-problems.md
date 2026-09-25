@@ -1,4 +1,4 @@
-## Frontier worked problems
+## Frontier worked problems 🟡
 
 ### Problem 1: Word Ladder (BFS frontier)
 

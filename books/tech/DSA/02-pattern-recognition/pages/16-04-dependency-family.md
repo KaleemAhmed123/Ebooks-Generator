@@ -1,4 +1,4 @@
-## The Dependency Family
+## The Dependency Family 🟢
 
 - **What it is:** Problems where actions must be performed in a specific order because one action unlocks another
 - **The signal:** "Prerequisites", "Course schedule", "Build system", "Shortest path in a DAG", "Longest path"

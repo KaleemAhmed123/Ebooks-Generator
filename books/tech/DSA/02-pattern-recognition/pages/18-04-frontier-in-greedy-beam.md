@@ -1,4 +1,4 @@
-## The Frontier in Greedy and Beam Search
+## The Frontier in Greedy and Beam Search 🟡
 
 - The frontier pattern extends beyond graph traversal. Greedy algorithms and beam search are also frontier-based — they just have different selection and pruning rules
 
@@ -45,7 +45,7 @@ while frontier is not empty:
 
 ### The unifying insight
 
-- Every algorithm in this section follows the same loop: maintain a set of candidates, select the best, expand, repeat
+- Every algorithm here follows the same loop: maintain a set of candidates, select the best, expand, repeat
 - The variation is in three choices:
   1. **What data structure holds the frontier** (queue, heap, bounded heap, sorted list)
   2. **How you select the next candidate** (FIFO, min-cost, heuristic, earliest deadline)

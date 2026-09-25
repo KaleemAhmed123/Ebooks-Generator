@@ -1,4 +1,6 @@
-## The Range Interaction Family
+# Chapter 19 - Hard Range Structures & CP Tricks
+
+## The Range Interaction Family 🔴
 
 - **What it is:** Performing operations (queries or updates) on contiguous subsegments of an array, repeatedly
 - **The signal:** "Sum of elements between L and R", "Add X to all elements from L to R", "Subarray sum equals K"
@@ -27,3 +29,11 @@
 
 Because sliding windows rely on monotonicity. If the array contains negative numbers, adding a new element might DECREASE the sum, meaning we can't safely shrink the window from the left. A Prefix Hash Map doesn't rely on monotonicity; it purely relies on the algebraic fact that `prefix[i] - prefix[j] = K`.
 :::
+
+### This chapter
+
+- **19-02 to 19-07 Range structures:** Fenwick tree, segment tree, lazy propagation, sparse table, and their drills
+- **19-08 and 19-09 CP tricks:** convex hull trick, meet in the middle
+- **19-10 Thread back to the parent:** Morris traversal, O(1)-space tree walks
+- **19-11 Choose the opposite bit:** the binary trie for XOR queries
+- **19-12 Drills:** the hard tail, reduced to one structure each

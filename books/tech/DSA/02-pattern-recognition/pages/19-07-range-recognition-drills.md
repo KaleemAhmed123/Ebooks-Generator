@@ -1,4 +1,4 @@
-## Recognition drills: Range Interaction
+## Recognition drills: Range Interaction 🔴
 
 Hide the right column. Identify the correct Range Interaction pattern (Prefix Sum, Difference Array, Fenwick Tree, Segment Tree + Lazy Propagation, etc.) and justify your answer.
 
@@ -16,4 +16,4 @@ Hide the right column. Identify the correct Range Interaction pattern (Prefix Su
 ### Score yourself
 - **7-8 correct:** You clearly understand the boundaries between these structures based on invertibility, idempotence, static vs dynamic, and point vs range updates
 - **4-6 correct:** You might be overusing Segment Trees for things that Prefix Sums or Difference Arrays can do faster
-- **0-3 correct:** Review the Precompute chapter (09-15) to understand how the operation type determines the data structure
+- **0-3 correct:** Review the Precompute chapter (18-15) to understand how the operation type determines the data structure

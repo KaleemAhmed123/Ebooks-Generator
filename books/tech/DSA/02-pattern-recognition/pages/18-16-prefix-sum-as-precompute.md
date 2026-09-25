@@ -1,4 +1,4 @@
-## Prefix Sums as Precompute
+## Prefix Sums as Precompute 🟡
 
 - Prefix Sums are the simplest form of the Precompute pattern. They rely on the mathematical property of **invertibility**
 
@@ -20,7 +20,7 @@
 
 ### Prefix counts and states
 
-- The pattern is not limited to summing numbers. It is incredibly powerful for tracking states
+- The pattern is not limited to summing numbers. It also tracks states
 - **Example:** "How many vowels are in the substring `s[L..R]`?"
 - Map vowels to 1 and consonants to 0. Build a prefix sum. Now `prefix[R+1] - prefix[L]` answers the query in O(1)
 

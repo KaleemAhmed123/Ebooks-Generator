@@ -1,4 +1,4 @@
-## Segment Tree Basics
+## Segment Tree Basics 🔴
 
 - When you need to query ranges AND update points on dynamic data, and the operation is **not invertible** (like minimum or maximum), Fenwick Tree fails. You need a Segment Tree
 - A Segment Tree provides **O(log N) point updates** and **O(log N) range queries** for *any* associative operation

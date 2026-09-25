@@ -1,4 +1,4 @@
-## The Frontier in BFS and Dijkstra
+## The Frontier in BFS and Dijkstra 🟡
 
 - BFS and Dijkstra look different in textbooks but share identical structure. The only difference is how they select the next candidate from the frontier
 
@@ -35,19 +35,20 @@ function bfs(graph: number[][], start: number): number[] {
 ```ts
 function dijkstra(graph: [number, number][][], start: number): number[] {
   const dist = new Array(graph.length).fill(Infinity);
-  // Min-heap: [distance, node]
-  const frontier: [number, number][] = [[0, start]];
+  // Min-heap of [distance, node]; Heap is on 15-04
+  const frontier = new Heap<[number, number]>((x, y) => x[0] < y[0]);
+  frontier.push([0, start]);
   dist[start] = 0;
 
-  while (frontier.length > 0) {
-    const [d, node] = heapPop(frontier);  // smallest distance first
+  while (frontier.size() > 0) {
+    const [d, node] = frontier.pop()!;  // smallest distance first
     if (d > dist[node]) continue;         // stale entry — skip
 
     for (const [next, weight] of graph[node]) {
       const newDist = dist[node] + weight;
       if (newDist < dist[next]) {
         dist[next] = newDist;
-        heapPush(frontier, [newDist, next]);
+        frontier.push([newDist, next]);
       }
     }
   }
@@ -57,13 +58,10 @@ function dijkstra(graph: [number, number][][], start: number): number[] {
 
 ### The structural parallel
 
-| BFS | Dijkstra |
-|---|---|
-| `frontier` is a queue | `frontier` is a min-heap |
-| Pop from front | Pop the minimum |
-| `dist[next] = dist[node] + 1` | `dist[next] = dist[node] + weight` |
-| Skip if already visited | Skip if `d > dist[node]` (stale) |
-| O(V + E) | O((V + E) log V) |
+- **Frontier:** a queue vs a min-heap; pop the front vs pop the minimum
+- **Relaxation:** `dist[node] + 1` vs `dist[node] + weight`
+- **Skip rule:** already visited vs a stale entry, `d > dist[node]`
+- **Cost:** O(V + E) vs O((V + E) log V)
 
 - **Same skeleton, different frontier.** The unnamed pattern is the skeleton. BFS and Dijkstra are two instantiations of it
 

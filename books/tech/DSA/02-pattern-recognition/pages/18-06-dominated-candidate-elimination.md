@@ -1,4 +1,4 @@
-## Dominated Candidate Elimination
+## Dominated Candidate Elimination 🟡
 
 - **What it is:** Proving that a candidate can *never* become optimal, and permanently discarding it. The remaining candidates form a compressed set that is faster to search
 - **Why nobody named it:** Monotonic stacks "maintain order." Convex hull trick "optimises DP transitions." Skyline problems "track buildings." Nobody noticed they all do the same thing: throw away candidates that are dominated by a better one

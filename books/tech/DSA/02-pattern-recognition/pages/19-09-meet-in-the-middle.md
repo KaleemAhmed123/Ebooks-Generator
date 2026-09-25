@@ -1,33 +1,33 @@
-## Meet in the Middle
+## Meet in the Middle 🔴
 
-- Backtracking (DFS) explores every possible combination. If there are $N$ items, generating all subsets takes $O(2^N)$ time
-- $O(2^N)$ is perfectly fine if $N \le 20$. A modern CPU can easily do $2^{20} \approx 10^6$ operations
-- But what if $N = 40$? $2^{40} \approx 10^{12}$, which will Time Limit Exceed (TLE). You cannot use standard DP because the state space is too sparse or the values are too large. You cannot use standard Backtracking because $O(2^{40})$ is too slow
-- When you see $N \approx 40$ and you need to try combinations, you are looking at the **Meet in the Middle** fingerprint
+- Backtracking (DFS) explores every possible combination. If there are N items, generating all subsets takes O(2ⁿ) time
+- O(2ⁿ) is perfectly fine if N ≤ 20. A modern CPU can easily do 2²⁰ ≈ 10⁶ operations
+- But what if N = 40? 2⁴⁰ ≈ 10¹², which will Time Limit Exceed (TLE). You cannot use standard DP because the state space is too sparse or the values are too large. You cannot use standard Backtracking because O(2⁴⁰) is too slow
+- When you see N ≈ 40 and you need to try combinations, you are looking at the **Meet in the Middle** fingerprint
 
 ### The Mechanism: Split and Merge
 
-- Instead of searching $N$ items, you split the items into two halves of size $N/2$
-- You generate all $2^{N/2}$ combinations for the left half and store them in an array (or hash map)
-- You generate all $2^{N/2}$ combinations for the right half
+- Instead of searching N items, you split the items into two halves of size N/2
+- You generate all 2^(N/2) combinations for the left half and store them in an array (or hash map)
+- You generate all 2^(N/2) combinations for the right half
 - You then **merge** the two halves to find the answer
 
 ### The Math
 
-- Time to generate left half: $O(2^{N/2})$
-- Time to generate right half: $O(2^{N/2})$
-- Total time before merging: $O(2^{N/2})$
-- For $N=40$, $O(2^{20}) + O(2^{20}) \approx 2 \times 10^6$. This is easily within the time limit. You just turned a 1-year computation into a 5-millisecond computation
+- Time to generate left half: O(2^(N/2))
+- Time to generate right half: O(2^(N/2))
+- Total time before merging: O(2^(N/2))
+- For N=40, O(2²⁰) + O(2²⁰) ≈ 2 × 10⁶. This is easily within the time limit. You just turned a 1-year computation into a 5-millisecond computation
 
 ### The Merger
 
 - Generating the halves is easy. The real algorithmic challenge of Meet in the Middle is the merge step
 - **If you need exact matches:** (e.g. "Find a subset that sums to exactly K")
   - Generate left half sums, put them in a Hash Set
-  - Generate right half sums. For each sum `S`, check if `K - S` exists in the left Hash Set. Merge time: $O(2^{N/2})$
+  - Generate right half sums. For each sum `S`, check if `K - S` exists in the left Hash Set. Merge time: O(2^(N/2))
 - **If you need closest matches:** (e.g. "Find a subset sum as close to K as possible without exceeding it")
   - Generate left half sums, sort them
-  - Generate right half sums. For each sum `S`, Binary Search the left array for the largest value $\le K - S$. Merge time: $O(2^{N/2} \log 2^{N/2}) = O(N \cdot 2^{N/2})$
+  - Generate right half sums. For each sum `S`, Binary Search the left array for the largest value ≤ K - S. Merge time: O(2^(N/2) log 2^(N/2)) = O(N · 2^(N/2))
 
 ```ts
 // Skeleton for "Closest Subset Sum <= K" with N=40

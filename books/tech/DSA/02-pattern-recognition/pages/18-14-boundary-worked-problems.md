@@ -1,4 +1,4 @@
-## Boundary worked problems
+## Boundary worked problems 🟡
 
 ### Problem 1: Koko Eating Bananas (Minimise the Maximum)
 
@@ -7,7 +7,7 @@
 
 **Derivation:**
 1. **Search Space:** `low = 1` (minimum possible eating speed), `high = max(piles)` (eating the largest pile in 1 hour)
-2. **Condition:** `isPossible(K)` — for each pile, the hours taken is `Math.ceil(pile / K)`. Sum these up. If sum $\le$ H, return True
+2. **Condition:** `isPossible(K)` — for each pile, the hours taken is `Math.ceil(pile / K)`. Sum these up. If sum ≤ H, return True
 3. **Boundary template:** First True
 
 ```ts
@@ -42,7 +42,7 @@ function minEatingSpeed(piles: number[], h: number): number {
 
 **Derivation:**
 1. **Search Space:** `low = 1`, `high = stalls[N-1] - stalls[0]` (max possible distance)
-2. **Condition:** `isPossible(dist)` — place the first cow in the first stall. Then iterate. Only place the next cow if the current stall is $\ge$ previous cow's stall + dist. If we place all C cows, return True
+2. **Condition:** `isPossible(dist)` — place the first cow in the first stall. Then iterate. Only place the next cow if the current stall is ≥ previous cow's stall + dist. If we place all C cows, return True
 3. **Boundary template:** Last True (requires biasing mid UP)
 
 ```ts

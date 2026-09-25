@@ -1,4 +1,4 @@
-## Sparse Table
+## Sparse Table 🔴
 
 - **What it is:** A 2D array that precomputes the minimum or maximum of every interval whose length is a power of 2
 - **When to reach for it:** "Find the max in range `[L, R]` on an array that NEVER changes" (Range Minimum Query - RMQ)

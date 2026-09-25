@@ -1,8 +1,8 @@
-## Lazy Propagation
+## Lazy Propagation 🔴
 
 - A standard Segment Tree can update a single point in O(log N) time
 - What if you need to update an entire range `[L, R]`? For example, "add 5 to all elements from index 10 to 20"
-- If you update each point individually, it takes O((R-L) × log N) time, which degrades to O(N log N) in the worst case. This is slower than just updating the array!
+- If you update each point individually, it takes O((R-L) × log N) time, which degrades to O(N log N) in the worst case. This is slower than just updating the array.
 - To achieve **O(log N) range updates**, we must use **Lazy Propagation**
 
 ### The Insight: Procrastination

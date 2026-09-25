@@ -1,4 +1,4 @@
-## Segment Tree for Range Queries
+## Segment Tree for Range Queries 🔴
 
 - **What it is:** A binary tree where each node represents an interval of the array, and stores the extremum (or sum) of that interval
 - **When to reach for it:** "Find the max in range `[L, R]`... and also update `arr[i] = x`"

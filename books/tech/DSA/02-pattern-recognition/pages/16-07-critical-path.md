@@ -1,4 +1,4 @@
-## Critical Path Analysis
+## Critical Path Analysis 🟡
 
 - In dependency graphs (like job scheduling or build systems), you often need to find the **minimum time required to complete all tasks**
 - Because tasks can run in parallel, the total time is not the sum of all task durations. The total time is dictated entirely by the **Critical Path** — the longest sequence of dependent tasks
@@ -15,10 +15,10 @@
 1. Compute the in-degree of all nodes (how many prerequisites they have)
 2. Put all nodes with 0 in-degree into a queue. Set their `completionTime = duration`
 3. Process the queue (Kahn's Algorithm):
-   - Pop a node $U$
-   - For each dependent node $V$:
+   - Pop a node U
+   - For each dependent node V:
      - Update its completion time: `completionTime[V] = max(completionTime[V], completionTime[U] + duration[V])`
-     - Decrement the in-degree of $V$. If it reaches 0, push it to the queue
+     - Decrement the in-degree of V. If it reaches 0, push it to the queue
 4. The answer is the `max(completionTime)` across all nodes
 
 ```ts
