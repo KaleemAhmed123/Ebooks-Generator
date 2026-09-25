@@ -1,4 +1,4 @@
-## Monotonic Stack
+## Monotonic Stack 🟢
 
 - **What it is:** A stack that maintains its elements in a strictly increasing or decreasing order. Every push that would break the order causes elements to be popped first
 - **When to reach for it:** "Next greater element", "Next smaller element", "Daily temperatures", "Largest rectangle in histogram"

@@ -1,12 +1,12 @@
-## Binary Search (on sorted input)
+## Binary Search (on sorted input) 🟢
 
 - **What it is:** Finding an element, or the insertion point for an element, in a sorted array in O(log n) time
 - **Why it works:** The sorted order guarantees that if `arr[mid] < target`, the target *cannot* exist anywhere to the left of `mid`. You eliminate half the array in one operation
 - **The structural constraint:** The data must be monotonic (strictly increasing or decreasing). If the array is unsorted, you must sort it first (O(n log n)) or use a Hash Map (O(n) time and space)
 
-### The robust template
+### The one template
 
-- There are a dozen ways to write Binary Search. Memorise exactly one robust template that prevents infinite loops
+- There are a dozen ways to write Binary Search. Memorise exactly one template that cannot loop forever
 
 ```ts
 function binarySearch(arr: number[], target: number): number {
@@ -58,4 +58,4 @@ function lowerBound(arr: number[], target: number): number {
 
 ### The trap
 
-- **Assuming Binary Search only works on arrays.** It works on *any* monotonic search space. (Covered extensively in Chapter 7: Search Space Reduction)
+- **Assuming Binary Search only works on arrays.** It works on *any* monotonic search space. (Covered extensively in Chapter 9: Search Space)

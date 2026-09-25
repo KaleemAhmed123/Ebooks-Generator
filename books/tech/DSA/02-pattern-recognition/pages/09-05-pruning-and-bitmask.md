@@ -1,4 +1,4 @@
-## State Space Pruning and Bitmasks
+## State Space Pruning and Bitmasks 🟡
 
 - When a search space is massive, you cannot visit every state. You must prune branches that are guaranteed to fail
 - This page covers the two most important techniques for navigating complex state spaces: identifying dead ends early (Pruning) and representing state efficiently (Bitmasks)
@@ -13,7 +13,7 @@
 ### Bitmasks: Micro-State
 
 - If your state requires tracking a set of items (e.g. "which cities have I visited?"), you could use an array of booleans or a Hash Set. But in DFS or BFS, passing sets around is incredibly slow (memory allocation, hashing overhead)
-- If the number of items is $\le 32$ (or 64), use an integer as a **Bitmask**. Each bit represents a boolean
+- If the number of items is ≤ 32 (or 64), use an integer as a **Bitmask**. Each bit represents a boolean
 
 | Operation | Array / Set | Bitmask Equivalent |
 |---|---|---|
@@ -32,5 +32,5 @@
 :::interview
 "Can you use bitmasks if N = 100?"
 
-Not natively. Bitmasks fit perfectly in 32-bit or 64-bit integers. If N = 100, you would need a BigInt or an array of integers (a BitSet). At that point, the O(1) CPU register benefits are lost, though it remains far more memory-efficient than a Hash Set of booleans.
+Not natively. Bitmasks fit perfectly in 32-bit or 64-bit integers. If N = 100, you would need a BigInt or an array of integers (a BitSet). At that point, the O(1) CPU register benefits are lost, though it remains uses far less memory than a Hash Set of booleans.
 :::

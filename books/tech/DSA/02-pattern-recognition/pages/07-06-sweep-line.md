@@ -1,4 +1,4 @@
-## Sweep Line
+## Sweep Line 🟢
 
 - **What it is:** Processing spatial or temporal events in chronological order
 - **When to reach for it:** "Merge overlapping intervals", "Maximum CPU load at any time", "Skyline problem", "Find intersections of rectangles"

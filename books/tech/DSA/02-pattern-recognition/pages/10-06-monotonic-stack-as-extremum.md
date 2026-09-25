@@ -1,6 +1,6 @@
-## Monotonic Stack as Extremum
+## Monotonic Stack as Extremum 🟢
 
-- We covered the Monotonic Stack under the **Locality** family, because it processes local contiguous regions
+- Page 10-05 treats the Monotonic Stack as a **Locality** tool, because it processes local contiguous regions
 - It is *also* a member of the **Repeated Extremum** family, because it tracks a running extremum (the next greater or next smaller element)
 - This dual-identity is common. The technique exploits locality to find an extremum
 

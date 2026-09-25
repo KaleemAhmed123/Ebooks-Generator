@@ -1,4 +1,4 @@
-### The wrong approach: Order
+## The wrong approach: Order 🟢
 
 - **Naive idea:** Modifying an array while using two pointers on it
 - **Why it looks right:** You find an element that needs to be deleted or inserted, so you use `arr.splice()` to fix it in place, then move your pointers

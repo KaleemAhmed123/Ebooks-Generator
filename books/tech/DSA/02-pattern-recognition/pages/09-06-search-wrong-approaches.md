@@ -1,4 +1,4 @@
-### The wrong approach: Search Space Reduction
+## The wrong approach: Search Space Reduction 🟢
 
 - **Naive idea:** For "Minimise the maximum capacity", trying capacities starting from 1, simulating each one, until one works
 - **Why it looks right:** It flawlessly finds the absolute minimum valid capacity
@@ -18,7 +18,7 @@ You have 20 seconds per problem. Identify which Search Space pattern applies.
 
 :::note
 **Answers:** 
-1. **Heap for Merge (Module 4).** You can binary search the answer, but a Min-Heap merging K lists is the standard approach here.
+1. **Heap for Merge (Chapter 15).** You can binary search the answer, but a Min-Heap merging K lists is the standard approach here.
 2. **Binary Search on Answer.** The domain of "time" is monotonic. If T works, T+1 works.
 3. **Binary Search.** The array is partially monotonic. You can still eliminate half the space by comparing `mid` to `right`.
 4. **Binary Search on Answer ("Maximise the minimum").** Binary search the distance D. `isValid(D)` is a greedy O(N) check: place a cow in the first stall, then place the next cow in the first stall that is ≥ D away. If you place all M cows, D is valid.

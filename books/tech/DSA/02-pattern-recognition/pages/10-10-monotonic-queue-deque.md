@@ -1,4 +1,4 @@
-## Monotonic Queue (Deque)
+## Monotonic Queue (Deque) 🟡
 
 - **What it is:** A double-ended queue (deque) that maintains its elements in monotonic order. It allows O(1) access to the maximum or minimum element in a sliding window
 - **When to reach for it:** "Sliding window maximum", "Find the max in every contiguous subarray of size k"

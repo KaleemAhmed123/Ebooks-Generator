@@ -1,4 +1,4 @@
-## Sort then Scan
+## Sort then Scan 🟢
 
 - **What it is:** Sorting the array, then iterating over it once
 - **Why it works:** In an unsorted array, elements that are mathematically "close" to each other can be on opposite ends of the array. Finding them requires an O(n²) nested loop. Sorting forces mathematically close elements to become physically adjacent

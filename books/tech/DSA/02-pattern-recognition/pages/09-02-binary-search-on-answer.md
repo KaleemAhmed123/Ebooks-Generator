@@ -1,4 +1,4 @@
-## Binary Search on Answer
+## Binary Search on Answer 🟢
 
 - **What it is:** Guessing the answer, using a checker function to see if the guess is feasible, and using Binary Search to find the optimal guess
 - **When to reach for it:** The problem asks to "Minimise the maximum X" or "Maximise the minimum X". (e.g. Koko Eating Bananas, Allocate Pages, Minimum Capacity to Ship Packages)
@@ -9,7 +9,7 @@
 - Problem: Koko can eat K bananas per hour. Find the minimum K to eat all piles within H hours.
 - Possible values for K: `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`
 - Feasibility `canEat(K)`: `[F, F, F, F, T, T, T, T, T, T]`
-- Our goal is to find the *first* `True`. This is exactly the `lowerBound` algorithm we learned in Chapter 3.
+- Our goal is to find the *first* `True`. This is exactly the `lowerBound` algorithm we learned in Chapter 7.
 
 :::mint
 <svg viewBox="0 0 470 120" role="img" aria-label="Binary Search on Answer. The domain of possible answers maps to a boolean array of False followed by True. Binary search finds the boundary." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
