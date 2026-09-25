@@ -14,12 +14,10 @@ Hide the right column. First decide whether the grid is a *table* (index math, r
 | 8. Valid Sudoku (LeetCode 36) | **Coordinate keys:** row, column and box `⌊r/3⌋·3 + ⌊c/3⌋` sets |
 | 9. Game of Life (LeetCode 289) | **State in the cell:** old in bit 0, new in bit 1 |
 | 10. Set Matrix Zeroes (LeetCode 73) | **State in the cell:** row 0 and column 0 as markers, cleared last |
-| 11. Kth Smallest Element in a Sorted Matrix (LeetCode 378) | **Guess a value, count below it** (09-04) with a staircase count |
-| 12. Maximal Rectangle (LeetCode 85) | **Stack the rows** (Chapter 10): each row becomes a histogram |
-| 13. Longest Increasing Path in a Matrix (LeetCode 329) | **Grid as a DAG:** DFS with memo (Module 06 caching, on Module 05's DAG view); increasing edges cannot cycle |
+| 11. Longest Increasing Path in a Matrix (LeetCode 329) | **Grid as a DAG:** DFS with memo (Module 06 caching, on Module 05's DAG view); increasing edges cannot cycle |
 
 ### Score yourself
 
-- **11–13:** you separate grid-as-table from grid-as-graph at a glance
-- **7–10:** reread 05-01; most misses are a missing coordinate key
-- **0–6:** start again at 05-02 and redo drills 1–8 by hand on paper
+- **9–11:** you separate grid-as-table from grid-as-graph at a glance
+- **6–8:** reread 05-01; most misses are a missing coordinate key
+- **0–5:** start again at 05-02 and redo drills 1–8 by hand on paper

@@ -14,12 +14,7 @@ Hide the right column. Name the move, and in one phrase say why it is safe. If y
 | 8. Fractional Knapsack (GFG) | **Sort by value / weight;** splitting items makes greedy exact |
 | 9. 0/1 Knapsack (GFG) | **Trap: not greedy.** Items cannot be split; ratio order fails. DP (Chapter 17) |
 | 10. Task Scheduler (LeetCode 621) | **Counting bound:** `max(n_tasks, (maxFreq − 1) · (gap + 1) + countOfMax)` |
-| 11. Minimum Cost of Ropes (GFG) | **Merge the two smallest** (15-05) |
-| 12. Minimum Number of Refueling Stops (LeetCode 871) | **Take now, regret later** (15-06) |
 
-### The wrong approach: Greedy
+### The wrong approach
 
-- **Naive idea:** pick the locally best-looking item by the obvious measure: biggest coin, earliest start, cheapest city
-- **Why it looks right:** it matches every sample input, which are usually small and friendly
-- **Why it breaks:** the obvious measure ignores interaction between choices; drills 8 and 9 are the classic cases
-- **The fix:** try to break the move on 3–4 hand-made elements first. If you cannot, find the exchange or stays-ahead argument (Module 04). If you can, the problem wants DP or search
+- Greedy on the obvious measure breaks when choices interact; drills 8 and 9 show it, and Module 04 (03-01, 03-07) gives the litmus test

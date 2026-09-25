@@ -10,13 +10,11 @@
 
 | Technique | When to use | What it exploits |
 |---|---|---|
-| **Binary Search on Answer** | "Minimise the maximum", "Maximise the minimum" | A boolean function `canAchieve(X)` that flips from `true` to `false` at exactly one threshold |
+| **Binary Search on Answer** (09-02) | "Minimise the maximum", "Maximise the minimum" | A boolean function `canAchieve(X)` that flips from `true` to `false` at exactly one threshold |
 | **Staircase Search** (05-04) | "Search in a row/col sorted 2D matrix" | Moving Left decreases the value, moving Down increases the value |
 | **Find the Sorted Half** (09-03) | "Rotated sorted array", "peak element" | One side of any midpoint is sorted or uphill |
 | **Guess a Value, Count Below It** (09-04) | "k-th smallest in a sorted matrix" | `count(≤ x)` is monotone in x |
 
 ### The meta-pattern
 
-- Binary search on answer is the most abstract pattern in the linear half of this booklet.
-- The previous patterns operated on *the input array*. "Binary Search on Answer" operates on *the mathematical domain of all possible answers*.
-- It changes how you write algorithms: instead of writing a function that directly calculates the answer, you write a "checker" function that says "Yes" or "No", and you binary search over guesses, each checked in one pass
+- Turning "find the optimum" into "is this value feasible?" is Module 07 (01-04). The boundary need not be found by binary search: when both the input and the condition move one way, two pointers find it in O(n)

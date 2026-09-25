@@ -6,11 +6,9 @@
 - A "pattern" is the underlying structural reason that technique works: *Locality*, *Order*, *Search Space Reduction*
 - Memorising techniques allows you to solve problems you have seen before. Understanding patterns allows you to solve problems you haven't
 
-### The failure of the "LeetCode tags" approach
+### Why tags fail
 
-- Most candidates study by tag: "Today I will do 10 Sliding Window problems."
-- The problem: In an interview, the problem does not come with a tag
-- If you only know *how* to write a sliding window, you will sit in an interview trying to force a sliding window onto a problem that actually needs a Hash Map, because you cannot see the underlying structure
+- An interview problem arrives without its tag, so knowing *how* to write a sliding window does not tell you *when* one applies
 
 ### The structural approach
 

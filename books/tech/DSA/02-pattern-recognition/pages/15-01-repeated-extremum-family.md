@@ -10,18 +10,15 @@
 
 | Technique | When to use | What it exploits |
 |---|---|---|
-| **Heap (Priority Queue)** | "Top K", "Merge K sorted" | A partial sort is faster than a full sort. Maintains the absolute global extremum |
-| **Monotonic Stack** | "Next greater element" | A local extremum eliminates the need to check smaller previous elements |
+| **Heap (Priority Queue)** (15-03, 15-11) | "Top K", "Merge K sorted" | A partial sort is faster than a full sort. Maintains the absolute global extremum |
+| **Monotonic Stack** (10-05) | "Next greater element" | A local extremum eliminates the need to check smaller previous elements |
 | **Two Heaps** (15-04) | "Running median" | Two tops hold the middle of the data |
 | **Merge the Two Smallest** (15-05) | "Connect ropes", "Huffman" | The cheapest items belong deepest in the merge tree |
 | **Take Now, Regret Later** (15-06) | "Refuelling stops", "courses by deadline" | Undo the worst accepted choice when a constraint breaks |
 | **Ordered Set** (Module 03, 05-01) | "Nearest larger value seen so far" | Every element's neighbours, not just the top |
-| **Segment Tree** (Chapter 19) | "Max in range `[L, R]` with updates" | Tree structure allows querying any arbitrary range in O(log n) |
-| **Sparse Table** (Chapter 19) | "Max in range `[L, R]`, static data" | Precomputes intervals of length 2^k for O(1) overlapping queries |
+| **Segment Tree** (19-01) | "Max in range `[L, R]` with updates" | Tree structure allows querying any arbitrary range in O(log n) |
+| **Sparse Table** (19-01) | "Max in range `[L, R]`, static data" | Precomputes intervals of length 2^k for O(1) overlapping queries |
 
-### Heap vs Sorting
+### Heap vs sorting
 
-- If a problem asks for the *largest* element, scanning takes O(n)
-- If a problem asks for the *Kth largest*, you can sort the array and return `arr[n - k]`. This takes O(n log n)
-- If you use a Heap (Priority Queue) of size k, you process each element in O(log k). Total time: O(n log k)
-- **The mathematical difference:** If n = 1,000,000 and k = 10, n log n ≈ 20,000,000 operations. n log k ≈ 3,000,000 operations. A heap is nearly an order of magnitude faster for small k
+- Top-k with a size-k min-heap costs O(n log k) against O(n log n) for a full sort; the heap for top-k is worked in Module 07 (01-10) and Module 03 (03-03)
