@@ -1,4 +1,4 @@
-## Guess a Value, Count Below It 🟡 - continued
+## Guess a Value, Count Below It <span class="lv lv2"></span> - continued
 
 ```ts
 // Kth Smallest Element in a Sorted Matrix (LeetCode 378)

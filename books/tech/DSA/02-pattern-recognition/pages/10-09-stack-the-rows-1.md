@@ -1,4 +1,4 @@
-## Stack the Rows 🟡
+## Stack the Rows <span class="lv lv2"></span>
 
 - **What it is:** A 2-D "largest rectangle of 1s" problem is a 1-D histogram problem asked once per row. Let `h[c]` be the number of consecutive 1s ending at the current row in column `c`; the best rectangle whose bottom edge is this row is the largest rectangle in the histogram `h`
 - **Signal:** "maximal rectangle containing only 1s", "largest rectangle in a histogram", "max area rectangle in a binary matrix"

@@ -1,4 +1,4 @@
-## Loop and Skip Equal Siblings 🟡 - continued
+## Loop and Skip Equal Siblings <span class="lv lv2"></span> - continued
 
 ```ts
 // Combination Sum II (LeetCode 40)

@@ -1,4 +1,4 @@
-## Peel the Layers 🟢 - continued
+## Peel the Layers <span class="lv lv1"></span> - continued
 
 :::mint
 <svg viewBox="0 0 470 128" role="img" aria-label="Spiral order on a 3 by 4 matrix with values 1 to 12. Walk the top row 1 2 3 4 then top increases, walk the right column 8 12 then right decreases, walk the bottom row 11 10 9 then bottom decreases, walk the left column 5 then left increases, and finally 6 7. Beside it, rotating 90 degrees clockwise equals transpose then reverse each row." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">

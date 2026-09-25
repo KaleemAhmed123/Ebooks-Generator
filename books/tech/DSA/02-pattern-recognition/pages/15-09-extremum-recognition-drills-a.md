@@ -1,4 +1,4 @@
-## Recognition drills: Repeated Extremum 🟢
+## Recognition drills: Repeated Extremum <span class="lv lv1"></span>
 
 Hide the right column. Identify the correct Extremum technique (Heap for Top-K, Heap for Merge, Monotonic Stack, Sparse Table) and justify your answer.
 

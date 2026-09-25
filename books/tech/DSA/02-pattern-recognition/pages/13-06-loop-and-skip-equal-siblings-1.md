@@ -1,4 +1,4 @@
-## Loop and Skip Equal Siblings 🟡
+## Loop and Skip Equal Siblings <span class="lv lv2"></span>
 
 - **What it is:** When the input has duplicates and the output must not, switch from pick-or-skip to the *loop template*: at each level, loop over the candidates for the **next** slot, starting from `start`, and skip a candidate equal to the one before it **at the same level**. Sort first so equal values sit together
 - **Signal:** "combinations may not repeat", "the input contains duplicates", "Subsets II", "Combination Sum II", "each number may be used once"

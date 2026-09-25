@@ -1,4 +1,4 @@
-## Recognition drills: Prefix & Running State 🟢 - continued
+## Recognition drills: Prefix & Running State <span class="lv lv1"></span> - continued
 
 | Problem | Pattern & the summary |
 |---|---|
@@ -13,7 +13,7 @@
 | 20. Range Sum Query 2D – Immutable (LeetCode 304) | **Prefix sums** in two dimensions, inclusion–exclusion |
 | 21. Corporate Flight Bookings (LeetCode 1109) | **Difference array:** +seats at `first`, −seats after `last` |
 | 22. Car Pooling (LeetCode 1094) | **Difference array** over stops; any running sum over capacity fails |
-| 23. Beautiful Towers II (LeetCode 2866) 🟡 | **Two passes,** each side built with a monotonic stack (Chapter 10): best mountain sum ending at `i` and starting at `i` |
+| 23. Beautiful Towers II (LeetCode 2866) <span class="lv lv2"></span> | **Two passes,** each side built with a monotonic stack (Chapter 10): best mountain sum ending at `i` and starting at `i` |
 
 ### Score yourself
 

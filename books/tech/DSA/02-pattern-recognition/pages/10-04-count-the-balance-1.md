@@ -1,4 +1,4 @@
-## Count the Balance 🟢
+## Count the Balance <span class="lv lv1"></span>
 
 - **What it is:** With a single bracket type, the stack only ever holds `(`, so its *size* is all the information it has. Replace it with a counter: `+1` on open, `−1` on close. A close that would take the counter below zero is unmatched
 - **Signal:** "minimum additions to make it valid", "minimum reversals", "minimum swaps to balance", "longest valid parentheses", "is this string of ( and ) valid"

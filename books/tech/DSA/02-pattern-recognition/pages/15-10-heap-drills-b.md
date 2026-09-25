@@ -1,4 +1,4 @@
-## Recognition drills: Heaps & Ordered Sets 🟢 - continued
+## Recognition drills: Heaps & Ordered Sets <span class="lv lv1"></span> - continued
 
 | Problem | What the top means |
 |---|---|

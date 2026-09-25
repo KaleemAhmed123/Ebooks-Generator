@@ -1,4 +1,4 @@
-## Recognition drills: Bits 🟢
+## Recognition drills: Bits <span class="lv lv1"></span>
 
 Hide the right column. Name the identity or the per-column count that does the work.
 

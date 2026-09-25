@@ -1,4 +1,4 @@
-## The Linked List Family: Start with a Dummy Head 🟢 - continued
+## The Linked List Family: Start with a Dummy Head <span class="lv lv1"></span> - continued
 
 :::mint
 <svg viewBox="0 0 470 104" role="img" aria-label="Merging 1, 3 and 2, 4 with a dummy node. A tail pointer starts at the dummy and always attaches the smaller head: 1, then 2, then 3, then 4. The merged list is dummy.next, and no code path treats the first node specially." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">

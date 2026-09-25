@@ -1,4 +1,4 @@
-## Give Every Node a Coordinate 🟡
+## Give Every Node a Coordinate <span class="lv lv2"></span>
 
 - **What it is:** Assign each node a position: the root is `(row 0, col 0)`, a left child is `(row + 1, col − 1)`, a right child `(row + 1, col + 1)`. "Views" and "vertical orders" become grouping and sorting by those numbers, the same move as coordinate keys on a grid (page 05-01)
 - **Signal:** "vertical order traversal", "top view", "bottom view", "diagonal traversal", "nodes that share a column", "what is visible from above"

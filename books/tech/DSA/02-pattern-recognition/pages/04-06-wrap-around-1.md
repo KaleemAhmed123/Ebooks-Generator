@@ -1,4 +1,4 @@
-## Wrap Around 🟢
+## Wrap Around <span class="lv lv1"></span>
 
 - **What it is:** A circular array is a linear array read twice. Walk indices `0 .. 2n − 1` and read `a[i % n]`: every window, pair or "next" that wraps past the end appears once as a plain linear one, with no copied array
 - **Signal:** "the array is circular", "the last element is adjacent to the first", "houses arranged in a circle", "next greater element, searching circularly"

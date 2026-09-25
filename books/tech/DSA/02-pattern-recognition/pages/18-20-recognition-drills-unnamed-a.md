@@ -1,4 +1,4 @@
-## Recognition drills: Unnamed Patterns 🟡
+## Recognition drills: Unnamed Patterns <span class="lv lv2"></span>
 
 Hide the right column. For each problem, do not write code. Identify which of the four Unnamed Patterns it uses and briefly justify your answer.
 

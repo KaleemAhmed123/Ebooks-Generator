@@ -1,4 +1,4 @@
-## Count by the Right End 🟢
+## Count by the Right End <span class="lv lv1"></span>
 
 - **What it is:** Counting *every* valid subarray, not the longest one. Each time the right edge settles, add the number of valid subarrays that **end** there: `right − left + 1`
 - **Signal:** "count the subarrays / substrings such that…", with a condition that stays true when the window shrinks (product < K, at most K distinct, sum ≤ S on non-negatives)

@@ -1,4 +1,4 @@
-## Find the Sorted Half 🟡
+## Find the Sorted Half <span class="lv lv2"></span>
 
 - **What it is:** Binary search still works on data that is *mostly* sorted: a rotated array, a mountain, an array with one peak. At every `mid`, at least one side is provably sorted or provably uphill. Decide using that side and discard the other half
 - **Signal:** "sorted array rotated at an unknown pivot", "find the minimum of a rotated array", "peak element", "mountain array", "bitonic", O(log n) required

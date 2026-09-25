@@ -1,4 +1,4 @@
-## Weave the Copies 🟡
+## Weave the Copies <span class="lv lv2"></span>
 
 - **What it is:** To deep-copy a structure whose nodes point at arbitrary other nodes, you need "old node → its copy" for every node. A hash map gives that in O(n) space; weaving each copy right after its original gives it in O(1) extra space: the copy of `x` is simply `x.next`
 - **Signal:** "copy list with random pointer", "clone a linked list with next and arbitrary pointer", "clone graph", any deep copy where pointers may point backwards or to nodes not yet copied

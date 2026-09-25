@@ -1,6 +1,6 @@
 # Chapter 3 - Prefix & Running State
 
-## The Running State Family 🟢
+## The Running State Family <span class="lv lv1"></span>
 
 - **What it is:** One left-to-right pass that carries a small summary of everything seen so far. Each new element is answered from that summary in O(1), then folded into it
 - **The signal:** "subarray sum", "divisible by k", "equal number of…", "best pair i < j", "product of all others", "water trapped above each bar"

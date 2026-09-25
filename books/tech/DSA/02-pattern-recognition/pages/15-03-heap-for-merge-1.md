@@ -1,4 +1,4 @@
-## Heap for Merge 🟢
+## Heap for Merge <span class="lv lv1"></span>
 
 - **What it is:** Using a priority queue to multi-way merge K different sorted structures
 - **When to reach for it:** "Merge K sorted lists", "Kth smallest element in a sorted matrix"

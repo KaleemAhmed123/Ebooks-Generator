@@ -1,4 +1,4 @@
-## Keep a Fixed Gap 🟢
+## Keep a Fixed Gap <span class="lv lv1"></span>
 
 - **What it is:** Two pointers that move at the *same* speed but start a fixed distance apart. When the leader reaches the end, the follower is exactly that distance from the end. A variant equalises two different lengths by letting each pointer, at its end, jump to the other list's head
 - **Signal:** "remove the n-th node from the end", "n-th node from the end", "sum of the last N nodes", "intersection point of two Y-shaped lists", one pass, no length counting

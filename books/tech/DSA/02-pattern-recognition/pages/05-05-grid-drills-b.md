@@ -1,4 +1,4 @@
-## Recognition drills: Grids & Matrices 🟢 - continued
+## Recognition drills: Grids & Matrices <span class="lv lv1"></span> - continued
 
 | Problem | Pattern & the deciding fact |
 |---|---|

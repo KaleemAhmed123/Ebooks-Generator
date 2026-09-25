@@ -1,4 +1,4 @@
-## Recognition drills: Heaps & Ordered Sets 🟢
+## Recognition drills: Heaps & Ordered Sets <span class="lv lv1"></span>
 
 Hide the right column. Say what sits at the top of the heap (or what neighbour query the set answers) and when elements leave.
 

@@ -1,4 +1,4 @@
-## Balance Two Heaps 🟡 - continued
+## Balance Two Heaps <span class="lv lv2"></span> - continued
 
 :::mint
 <svg viewBox="0 0 470 110" role="img" aria-label="Two heaps after inserting 5, 15, 1, 3, 8. The lower half 1, 3, 5 is a max-heap with top 5. The upper half 8, 15 is a min-heap with top 8. Sizes 3 and 2, so the median is the lower top, 5. After adding 7, sizes are 3 and 3 and the median is 5 plus 7 over 2, which is 6." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">

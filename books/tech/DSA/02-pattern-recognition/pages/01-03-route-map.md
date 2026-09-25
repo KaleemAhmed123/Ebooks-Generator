@@ -1,4 +1,4 @@
-## Route map 🟢
+## Route map <span class="lv lv1"></span>
 
 - The chapters run from linear data to non-linear, and from common to rare. Read Parts A and B in order; C is a lens over everything before it; D is for hard rounds and contests
 - Pattern pages follow one shape: what it is → signal → why it works → diagram → template → variations → the failure → interview answer. Every chapter ends in a drills page of named problems
@@ -51,6 +51,8 @@
 - **Connectivity and dependency:** Ch 16, with Ch 12 and 14 for the pointer structures underneath
 - **Repeated state:** Ch 13 finds it by brute force, Ch 17 caches it
 
-### Difficulty markers
+### Difficulty badges on every page title
 
-- 🟢 asked in most interview loops · 🟡 needs one extra idea on top of a 🟢 page · 🔴 hard rounds and contests; skip on a first pass
+- <span class="lv lv1"></span> asked in most interview loops; learn these first
+- <span class="lv lv2"></span> one extra idea on top of a core page
+- <span class="lv lv3"></span> hard rounds and contests; skip on a first pass

@@ -1,4 +1,4 @@
-## Critical Path Analysis 🟡
+## Critical Path Analysis <span class="lv lv2"></span>
 
 - In dependency graphs (like job scheduling or build systems), you often need to find the **minimum time required to complete all tasks**
 - Because tasks can run in parallel, the total time is not the sum of all task durations. The total time is dictated entirely by the **Critical Path** — the longest sequence of dependent tasks

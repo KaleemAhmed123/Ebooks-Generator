@@ -1,4 +1,4 @@
-## Lazy Propagation 🔴
+## Lazy Propagation <span class="lv lv3"></span>
 
 - A standard Segment Tree can update a single point in O(log N) time
 - What if you need to update an entire range `[L, R]`? For example, "add 5 to all elements from index 10 to 20"

@@ -1,4 +1,4 @@
-## Name the DP Shape 🟢 - continued
+## Name the DP Shape <span class="lv lv1"></span> - continued
 
 :::mint
 <svg viewBox="0 0 470 150" role="img" aria-label="Six DP signatures as cards. f of i: one choice per element, such as house robber, LIS, word break. f of i and cap: element plus remaining budget, knapsack and coin change. f of i and j over two strings: LCS and edit distance. f of i and j over one range: try every split, matrix chain and burst balloons, plus games. f of i and holding: a state machine, stocks. f of mask: bitmask over a small set, TSP and assignment." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">

@@ -1,4 +1,4 @@
-## Staircase Search 🟢
+## Staircase Search <span class="lv lv1"></span>
 
 - **What it is:** Searching for a target in a 2D matrix where every row is sorted left-to-right, and every column is sorted top-to-bottom
 - **Signal:** "Search a 2D Matrix II" (LeetCode 240): rows and columns each sorted

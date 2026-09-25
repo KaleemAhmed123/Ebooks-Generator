@@ -1,4 +1,4 @@
-## Recognition drills: Trees 🟢 - continued
+## Recognition drills: Trees <span class="lv lv1"></span> - continued
 
 | Problem | Direction & move |
 |---|---|
@@ -13,6 +13,6 @@
 | 20. Find Duplicate Subtrees (LeetCode 652) | **Up:** serialise each subtree, count in a map |
 | 21. Distribute Coins / candies (LeetCode 979 / GFG) | **Return excess, record moves** |
 | 22. House Robber III (LeetCode 337) | **Up:** return `(robbed, skipped)` pair (Module 06) |
-| 23. Binary Tree Cameras (LeetCode 968) 🔴 | **Up:** three-state return, greedy post-order |
+| 23. Binary Tree Cameras (LeetCode 968) <span class="lv lv3"></span> | **Up:** three-state return, greedy post-order |
 | 24. Minimum Time to Collect All Apples in a Tree (LeetCode 1443) | **Up:** a subtree costs `2 + child cost` only if it holds an apple |
 | 25. Longest Path With Different Adjacent Characters (LeetCode 2246) | **Return the best chain, record the two best** |

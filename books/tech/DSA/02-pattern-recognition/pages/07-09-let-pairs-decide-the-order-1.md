@@ -1,4 +1,4 @@
-## Let Pairs Decide the Order 🟡
+## Let Pairs Decide the Order <span class="lv lv2"></span>
 
 - **What it is:** When no single key sorts the items correctly, define the order by asking about *two* items at a time: "should `a` come before `b`?". If that pairwise rule is consistent, one comparator sort produces the optimal arrangement
 - **Signal:** "arrange the numbers to form the largest number", "sort by number of set bits, ties by value", "reconstruct the queue from (height, count in front)", "order so that the total cost is minimal"

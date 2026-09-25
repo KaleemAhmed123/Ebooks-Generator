@@ -1,4 +1,4 @@
-## Recognition drills: Range Interaction 🔴
+## Recognition drills: Range Interaction <span class="lv lv3"></span>
 
 Hide the right column. Identify the correct Range Interaction pattern (Prefix Sum, Difference Array, Fenwick Tree, Segment Tree + Lazy Propagation, etc.) and justify your answer.
 

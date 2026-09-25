@@ -1,4 +1,4 @@
-## Vote and Cancel 🟡
+## Vote and Cancel <span class="lv lv2"></span>
 
 - **What it is:** The Boyer–Moore majority vote. Keep one candidate and a counter; a matching value adds a vote, a different value cancels one. A value that fills more than half the array survives every cancellation
 - **Signal:** "element that appears more than ⌊n/2⌋ times", "more than ⌊n/3⌋ times", "O(1) extra space", "single pass over a stream"

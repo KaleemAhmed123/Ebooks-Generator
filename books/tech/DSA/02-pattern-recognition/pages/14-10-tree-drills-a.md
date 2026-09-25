@@ -1,4 +1,4 @@
-## Recognition drills: Trees 🟢
+## Recognition drills: Trees <span class="lv lv1"></span>
 
 Hide the right column. First name the direction information flows (down, up, across, anywhere, in order), then the page's move.
 

@@ -1,4 +1,4 @@
-## Recognition drills: Strings 🟢 - continued
+## Recognition drills: Strings <span class="lv lv1"></span> - continued
 
 | Problem | Pattern & the twist |
 |---|---|

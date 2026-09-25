@@ -1,4 +1,4 @@
-## The wrong approach: Dependency 🟢
+## The wrong approach: Dependency <span class="lv lv1"></span>
 
 - **Naive idea:** Using a standard recursive DFS with a "visited" set to check if you can finish all courses
 - **Why it looks right:** You traverse the graph. If you hit a node you've already visited, you declare there's a cycle

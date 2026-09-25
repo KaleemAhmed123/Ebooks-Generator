@@ -1,6 +1,6 @@
 # Chapter 8 - Greedy Moves
 
-## The Greedy Moves Family 🟡
+## The Greedy Moves Family <span class="lv lv2"></span>
 
 - **What it is:** A greedy algorithm commits to the best-looking choice now and never revisits it. The hard part is not the loop; it is knowing *which* choice is safe. This chapter collects the moves that recur, each with the reason it is safe
 - **The signal:** "minimum number of jumps / taps / boats / arrows", "maximum profit with deadlines", "which station to start from", "minimum cost", and constraints of n ≤ 10⁵ that rule out a DP over pairs

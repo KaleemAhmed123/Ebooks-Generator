@@ -1,4 +1,4 @@
-## Prefix Sums as Precompute 🟡
+## Prefix Sums as Precompute <span class="lv lv2"></span>
 
 - Prefix Sums are the simplest form of the Precompute pattern. They rely on the mathematical property of **invertibility**
 

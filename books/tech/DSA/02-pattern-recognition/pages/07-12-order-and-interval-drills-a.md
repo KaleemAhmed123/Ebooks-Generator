@@ -1,4 +1,4 @@
-## Recognition drills: Order & Intervals, named problems 🟢
+## Recognition drills: Order & Intervals, named problems <span class="lv lv1"></span>
 
 Hide the right column. Say what you sort by — value, start, end, a derived key, or a pairwise rule — and what the scan after the sort does.
 

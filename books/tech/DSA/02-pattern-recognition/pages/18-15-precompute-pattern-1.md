@@ -1,4 +1,4 @@
-## Precompute for Cheap Queries 🟡
+## Precompute for Cheap Queries <span class="lv lv2"></span>
 
 - **What it is:** Doing expensive work upfront to generate a queryable data structure, so that later, repeated questions can be answered in O(1) or O(log N) time
 - **Why nobody named it:** Textbooks separate Prefix Sums (arrays), Sparse Tables (RMQ), and Segment Trees (trees) into different chapters based on their data structures. But conceptually, they are identical: they are all Precompute patterns

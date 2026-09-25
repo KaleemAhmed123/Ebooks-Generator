@@ -1,4 +1,4 @@
-## State Space Pruning and Bitmasks 🟡
+## State Space Pruning and Bitmasks <span class="lv lv2"></span>
 
 - When a search space is massive, you cannot visit every state. You must prune branches that are guaranteed to fail
 - Two techniques tame large state spaces: identifying dead ends early (Pruning) and representing state compactly (Bitmasks)

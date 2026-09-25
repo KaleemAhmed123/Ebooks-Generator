@@ -1,4 +1,4 @@
-## Cancel Against the Top 🟢
+## Cancel Against the Top <span class="lv lv1"></span>
 
 - **What it is:** Each new item may destroy the item just before it, and the destruction can cascade. Keep survivors on a stack; a newcomer fights the top in a `while` loop until it dies, the top wins, or nothing it can fight is left
 - **Signal:** "asteroids collide", "remove adjacent duplicates", "remove k equal adjacent characters", "backspace", "adjacent pair that cancels", results that must be stable ("repeat until no more removals")

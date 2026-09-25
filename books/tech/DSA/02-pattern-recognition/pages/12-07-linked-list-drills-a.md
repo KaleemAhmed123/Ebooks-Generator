@@ -1,4 +1,4 @@
-## Recognition drills: Linked Lists 🟢
+## Recognition drills: Linked Lists <span class="lv lv1"></span>
 
 Hide the right column. Name the move (dummy, reverse, split-reverse-weave, meet in the loop, fixed gap, weave copies) and the one pointer you must not lose.
 

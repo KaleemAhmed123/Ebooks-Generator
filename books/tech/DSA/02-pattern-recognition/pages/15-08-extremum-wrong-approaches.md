@@ -1,4 +1,4 @@
-## The wrong approach: Repeated Extremum 🟢
+## The wrong approach: Repeated Extremum <span class="lv lv1"></span>
 
 - **Naive idea:** For "Top K elements", beginners sort the entire array and return the last K elements
 - **Why it looks right:** It solves the problem flawlessly and handles duplicates correctly (if using a stable sort)

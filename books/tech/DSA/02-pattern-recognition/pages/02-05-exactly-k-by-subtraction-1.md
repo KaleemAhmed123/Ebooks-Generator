@@ -1,4 +1,4 @@
-## Exactly K by Subtraction 🟡
+## Exactly K by Subtraction <span class="lv lv2"></span>
 
 - **What it is:** Count subarrays with *exactly* K of something as `atMost(K) − atMost(K − 1)`. Two monotone windows replace one broken one
 - **Signal:** "exactly K distinct", "exactly K odd numbers", "sum equals goal" on a 0/1 array, and a counting question rather than a longest one

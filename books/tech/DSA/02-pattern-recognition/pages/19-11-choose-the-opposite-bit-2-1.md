@@ -1,4 +1,4 @@
-## Choose the Opposite Bit 🔴 - continued
+## Choose the Opposite Bit <span class="lv lv3"></span> - continued
 
 :::mint
 <svg viewBox="0 0 470 140" role="img" aria-label="Binary trie holding 2 as 010, 5 as 101 and 7 as 111. Query x equals 2, bits 0 1 0. At the top bit x has 0, so the walk wants 1 and takes it. At the middle bit x has 1, so it wants 0 and takes it. At the last bit x has 0, wants 1 and takes it. The walk reaches 5, and 2 XOR 5 equals 7." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">

@@ -1,4 +1,4 @@
-## Recognition drills: In-Place & Index Tricks 🟢 - continued
+## Recognition drills: In-Place & Index Tricks <span class="lv lv1"></span> - continued
 
 | Problem | Trick & the enabling fact |
 |---|---|

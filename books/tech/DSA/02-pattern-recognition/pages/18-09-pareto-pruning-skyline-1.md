@@ -1,4 +1,4 @@
-## Pareto Pruning and Skylines 🟡
+## Pareto Pruning and Skylines <span class="lv lv2"></span>
 
 - When candidates have multiple dimensions, domination becomes a 2D or 3D problem. This is where Pareto pruning comes in
 

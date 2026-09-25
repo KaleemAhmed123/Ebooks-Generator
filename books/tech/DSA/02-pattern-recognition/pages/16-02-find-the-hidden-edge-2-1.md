@@ -1,4 +1,4 @@
-## Find the Hidden Edge 🟡 - continued
+## Find the Hidden Edge <span class="lv lv2"></span> - continued
 
 :::mint
 <svg viewBox="0 0 470 118" role="img" aria-label="Accounts merge. Account 1 has emails a and b, account 2 has b and c, account 3 has d. Account 1 and 2 share email b, so they are unioned; the group holds a, b and c. Account 3 is its own group. Emails are the hidden edges between accounts." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">

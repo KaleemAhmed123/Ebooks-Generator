@@ -1,4 +1,4 @@
-## Coordinate Keys 🟢 - continued
+## Coordinate Keys <span class="lv lv1"></span> - continued
 
 :::mint
 <svg viewBox="0 0 470 132" role="img" aria-label="A 4 by 4 grid labelled with r minus c. Each top-left to bottom-right diagonal shares one value: 0 on the main diagonal, positive below it, negative above it. Beside it the four standard keys: r times cols plus c for flattening, r minus c for diagonals, r plus c for anti-diagonals, and floor r over 3 times 3 plus floor c over 3 for sudoku boxes." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">

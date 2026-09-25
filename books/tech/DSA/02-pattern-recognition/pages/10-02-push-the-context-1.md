@@ -1,4 +1,4 @@
-## Push the Context 🟡
+## Push the Context <span class="lv lv2"></span>
 
 - **What it is:** For nested input, every opening symbol starts a new, smaller problem inside the current one. Push *everything you were in the middle of* (the partial result, the pending number, the sign) and start fresh; on the matching close, pop it and combine
 - **Signal:** `k[encoded]`, parentheses in an expression, `(a(b)c)`-style nesting, "simplify the path", "evaluate", "score of parentheses"

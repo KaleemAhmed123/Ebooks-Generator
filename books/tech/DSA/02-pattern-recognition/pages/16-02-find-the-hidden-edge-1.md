@@ -1,4 +1,4 @@
-## Find the Hidden Edge 🟡
+## Find the Hidden Edge <span class="lv lv2"></span>
 
 - **What it is:** Module 05 teaches the translation "states are nodes, moves are edges". Three more edge types hide in interview statements: two items share **something in common** (an email, a letter, a value), one item **reaches** another within a range (a blast radius, a jump length), or one item is **related by a ratio** to another. Name the edge, and the problem becomes a standard connectivity or traversal question
 - **Signal:** "accounts that share an email belong to the same person", "a bomb detonates every bomb within its radius", "a / b = 2.0, b / c = 3.0, what is a / c", "items numbered 0 to n − 1 with pairs", "minimum cables to connect all computers"

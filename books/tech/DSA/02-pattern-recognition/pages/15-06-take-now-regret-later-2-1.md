@@ -1,4 +1,4 @@
-## Take Now, Regret Later 🟡 - continued
+## Take Now, Regret Later <span class="lv lv2"></span> - continued
 
 ```ts
 // Minimum Number of Refueling Stops (LeetCode 871); Heap: 15-04
@@ -28,4 +28,4 @@ function minRefuelStops(
 - **Furthest Building You Can Reach (LeetCode 1642):** use a ladder on every climb and push the climb onto a min-heap; when climbs exceed the ladders, pay the *smallest* one with bricks instead. Out of bricks → stop
 - **Maximum Performance of a Team (LeetCode 1383):** sort engineers by efficiency descending; keep the k largest speeds in a min-heap, evicting the slowest when over k; the current efficiency is the team minimum
 - **Job Sequencing (GFG) as regret:** sort by deadline, keep profits in a min-heap, drop the smallest whenever the heap is larger than the deadline (page 08-03)
-- **Maximum Elegance of a K-Length Subsequence (LeetCode 2813) 🔴:** take the k most profitable, then trade a duplicate-category item for a new category while that raises `profit + distinct²`
+- **Maximum Elegance of a K-Length Subsequence (LeetCode 2813) <span class="lv lv3"></span>:** take the k most profitable, then trade a duplicate-category item for a new category while that raises `profit + distinct²`

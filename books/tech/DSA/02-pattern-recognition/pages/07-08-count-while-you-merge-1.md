@@ -1,4 +1,4 @@
-## Count While You Merge 🟡
+## Count While You Merge <span class="lv lv2"></span>
 
 - **What it is:** Merge sort, with a counter bolted onto the merge step. Every pair `i < j` is split exactly once, into a left half and a right half; at that moment both halves are sorted, so all cross pairs with a property can be counted in one linear sweep
 - **Signal:** "count inversions", "count pairs `i < j` with `a[i] > a[j]`", "reverse pairs `a[i] > 2·a[j]`", "count of smaller numbers after self", n up to 10⁵ so O(n²) pairs is out

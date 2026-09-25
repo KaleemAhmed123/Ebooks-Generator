@@ -1,4 +1,4 @@
-## Recur on the Index 🟡
+## Recur on the Index <span class="lv lv2"></span>
 
 - **What it is:** Some recursions never build anything; they only translate an *index* in a big problem into an index in a smaller one. Find how position `i` of size `n` maps to a position of size `n − 1` (or `n / 2`), and the answer is a short recurrence, often O(n) or O(log n) with O(1) memory
 - **Signal:** "n people in a circle, every k-th is eliminated", "the k-th symbol of row n", "how many ways to reach stair n with jumps of 1..k", a simulation that would be O(n²) or exponential in size

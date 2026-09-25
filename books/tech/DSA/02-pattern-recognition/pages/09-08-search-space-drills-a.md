@@ -1,4 +1,4 @@
-## Recognition drills: Search Space, named problems 🟢
+## Recognition drills: Search Space, named problems <span class="lv lv1"></span>
 
 Hide the right column. For every binary search, name *what* is being searched (an index, a value, a partition point) and the monotone predicate that makes halving legal.
 

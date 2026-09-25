@@ -1,4 +1,4 @@
-## Difference Array 🟢
+## Difference Array <span class="lv lv1"></span>
 
 - **What it is:** The inverse of a prefix sum. An array where the value at index i stores `arr[i] - arr[i-1]`
 - **When to reach for it:** You need to apply many updates of the form "Add X to all elements from L to R", and you only need to read the final array values *after* all updates are done

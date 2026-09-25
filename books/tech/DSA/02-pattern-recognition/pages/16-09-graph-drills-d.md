@@ -1,4 +1,4 @@
-## Recognition drills: Graphs & Dependency 🟡 - continued
+## Recognition drills: Graphs & Dependency <span class="lv lv2"></span> - continued
 
 | Problem | Node · edge · move |
 |---|---|

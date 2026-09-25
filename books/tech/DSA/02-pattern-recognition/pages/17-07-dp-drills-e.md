@@ -1,4 +1,4 @@
-## Recognition drills: DP & Games 🟡 - continued
+## Recognition drills: DP & Games <span class="lv lv2"></span> - continued
 
 | Problem | Signature · transition |
 |---|---|

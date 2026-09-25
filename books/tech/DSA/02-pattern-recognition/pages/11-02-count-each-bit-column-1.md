@@ -1,4 +1,4 @@
-## Count Each Bit Column 🟡
+## Count Each Bit Column <span class="lv lv2"></span>
 
 - **What it is:** Treat 32-bit numbers as 32 independent columns of 0s and 1s. Many "all pairs" or "all numbers" questions become a count per column, and the columns never interact
 - **Signal:** "every element appears three times except one", "sum of Hamming distances over all pairs", "total set bits from 1 to n", "minimum flips so that a OR b equals c"

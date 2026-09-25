@@ -1,4 +1,4 @@
-## Best Partner So Far 🟢
+## Best Partner So Far <span class="lv lv1"></span>
 
 - **What it is:** For "best pair `i < j`" problems, split the score into a part that depends only on `i` and a part that depends only on `j`. Walk `j` left to right and keep the best `i`-part seen so far. Each `j` meets its best partner in O(1)
 - **Signal:** "buy on one day, sell on a later day", "maximise `a[i] + a[j] + i − j`", "maximum `a[j] − a[i]` with `i < j`", "find two numbers that sum to target"

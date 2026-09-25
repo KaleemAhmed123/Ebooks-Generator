@@ -1,4 +1,4 @@
-## Recognition drills: Search Space 🟢
+## Recognition drills: Search Space <span class="lv lv1"></span>
 
 Hide the right column. Identify the correct Search Space technique (Binary Search on Answer, Backtracking, Meet in the Middle, Branch & Bound, Staircase Search) and justify your answer.
 

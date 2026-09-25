@@ -1,4 +1,4 @@
-## Elimination worked problems 🟡
+## Elimination worked problems <span class="lv lv2"></span>
 
 ### Problem 1: Daily Temperatures (1D elimination)
 

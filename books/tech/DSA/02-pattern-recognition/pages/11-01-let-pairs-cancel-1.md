@@ -1,6 +1,6 @@
 # Chapter 11 - Bits
 
-## Let Pairs Cancel 🟢
+## Let Pairs Cancel <span class="lv lv1"></span>
 
 - **What it is:** XOR every value together. Anything that appears an even number of times cancels to 0 (`x ^ x = 0`, `x ^ 0 = x`, order does not matter), so what remains is built only from the values that appear an odd number of times
 - **Signal:** "every element appears twice except one", "find the missing number from 0..n", "find the extra character", "two numbers appear once, all others twice", "O(1) extra space"

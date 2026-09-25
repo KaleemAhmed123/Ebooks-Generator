@@ -1,4 +1,4 @@
-## Extend the Reach 🟡
+## Extend the Reach <span class="lv lv2"></span>
 
 - **What it is:** For "minimum steps to cover a line", do not decide *where* to land. Track two numbers: the end of the range reachable with the jumps used so far (`end`), and the farthest point reachable with one more jump (`far`). When `i` reaches `end`, a jump is forced, and it goes to `far`
 - **Signal:** "minimum number of jumps to reach the end", "minimum taps to water the whole garden", "minimum clips to cover [0, time]", "can you reach the last index"

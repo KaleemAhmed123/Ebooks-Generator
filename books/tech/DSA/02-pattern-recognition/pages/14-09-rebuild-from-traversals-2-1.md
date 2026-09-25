@@ -1,4 +1,4 @@
-## Rebuild from Traversals 🟡 - continued
+## Rebuild from Traversals <span class="lv lv2"></span> - continued
 
 :::mint
 <svg viewBox="0 0 470 118" role="img" aria-label="Preorder 3 9 20 15 7 and inorder 9 3 15 20 7. The first preorder value 3 is the root. In the inorder list 3 is at index 1, so 9 is the whole left subtree and 15 20 7 is the right subtree. Recursing gives root 20 with children 15 and 7." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">

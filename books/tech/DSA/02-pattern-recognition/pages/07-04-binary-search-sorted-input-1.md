@@ -1,4 +1,4 @@
-## Binary Search (on sorted input) 🟢
+## Binary Search (on sorted input) <span class="lv lv1"></span>
 
 - **What it is:** Finding an element, or the insertion point for an element, in a sorted array in O(log n) time
 - **Why it works:** The sorted order guarantees that if `arr[mid] < target`, the target *cannot* exist anywhere to the left of `mid`. You eliminate half the array in one operation

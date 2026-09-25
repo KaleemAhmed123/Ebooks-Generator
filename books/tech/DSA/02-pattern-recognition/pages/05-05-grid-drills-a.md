@@ -1,4 +1,4 @@
-## Recognition drills: Grids & Matrices 🟢
+## Recognition drills: Grids & Matrices <span class="lv lv1"></span>
 
 Hide the right column. First decide whether the grid is a *table* (index math, rings, in-place state) or a *graph* (Chapter 16) or a *DP table* (Chapter 17). Then name the trick.
 

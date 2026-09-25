@@ -1,4 +1,4 @@
-## Sort by Start to Merge, by End to Keep 🟢
+## Sort by Start to Merge, by End to Keep <span class="lv lv1"></span>
 
 - **What it is:** Interval problems split into two families, and the family decides the sort key. **Merge / cover / union** questions sort by *start*. **Keep the most / remove the fewest / fewest points to stab** questions sort by *end*
 - **Signal:** "merge overlapping intervals", "insert an interval", "minimum intervals to remove so the rest don't overlap", "minimum arrows to burst all balloons", "intersection of two interval lists"

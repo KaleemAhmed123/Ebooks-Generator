@@ -1,6 +1,6 @@
 # Chapter 16 - Graphs & Dependency
 
-## Connectivity? See Graphs 🟢
+## Connectivity? See Graphs <span class="lv lv1"></span>
 
 - Many problems describe relationships between entities rather than sequences of data. "A is friends with B", "Course C requires Course D", "City E is connected to City F"
 - These are not array problems. These are graph problems

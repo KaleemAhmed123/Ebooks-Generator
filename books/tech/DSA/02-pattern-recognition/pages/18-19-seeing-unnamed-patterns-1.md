@@ -1,4 +1,4 @@
-## Seeing Unnamed Patterns 🟡
+## Seeing Unnamed Patterns <span class="lv lv2"></span>
 
 - By now you have seen the four unnamed patterns: Frontier Maintenance, Dominated Candidate Elimination, Boundary Finding, and Precompute
 - These patterns do not replace the techniques (BFS, Monotonic Stack, Binary Search). They change **how you search your brain** when you are stuck

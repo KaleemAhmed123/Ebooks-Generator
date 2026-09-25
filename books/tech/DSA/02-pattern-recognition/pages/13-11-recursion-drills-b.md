@@ -1,4 +1,4 @@
-## Recognition drills: Recursion & Backtracking 🟢 - continued
+## Recognition drills: Recursion & Backtracking <span class="lv lv1"></span> - continued
 
 | Problem | Template & next call |
 |---|---|
@@ -15,4 +15,4 @@
 | 22. Palindrome Partitioning (LeetCode 131) | **Try every cut** |
 | 23. Restore IP Addresses (LeetCode 93) | **Try every cut,** 4 pieces, prune by remaining length |
 | 24. Different Ways to Add Parentheses (LeetCode 241) | **Cut at every operator,** combine both sides |
-| 25. Remove Invalid Parentheses (LeetCode 301) 🟡 | **Count the excess `(` and `)` first,** then remove exactly that many, skipping equal neighbours |
+| 25. Remove Invalid Parentheses (LeetCode 301) <span class="lv lv2"></span> | **Count the excess `(` and `)` first,** then remove exactly that many, skipping equal neighbours |

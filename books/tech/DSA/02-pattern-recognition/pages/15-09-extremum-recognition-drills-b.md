@@ -1,4 +1,4 @@
-## Recognition drills: Repeated Extremum 🟢 - continued
+## Recognition drills: Repeated Extremum <span class="lv lv1"></span> - continued
 
 | Problem | Extremum Pattern & Justification |
 |---|---|

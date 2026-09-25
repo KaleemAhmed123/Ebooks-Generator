@@ -1,4 +1,4 @@
-## The taxonomy of structure 🟢
+## The taxonomy of structure <span class="lv lv1"></span>
 
 - The structural patterns that solve 99% of interview problems fall into these eight families
 - When you read constraints and write the brute force, you are looking for which of these families the problem belongs to

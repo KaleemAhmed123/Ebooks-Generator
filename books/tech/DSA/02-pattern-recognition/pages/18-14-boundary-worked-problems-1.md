@@ -1,4 +1,4 @@
-## Boundary worked problems 🟡
+## Boundary worked problems <span class="lv lv2"></span>
 
 ### Problem 1: Koko Eating Bananas (Minimise the Maximum)
 

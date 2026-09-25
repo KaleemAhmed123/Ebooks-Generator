@@ -1,4 +1,4 @@
-## State in the Cell 🟡
+## State in the Cell <span class="lv lv2"></span>
 
 - **What it is:** When every cell's new value depends on its neighbours' *old* values, and a copy of the grid is not allowed, store both values in the cell: the old one in bit 0, the new one in bit 1. Read with `& 1`, finish with `>> 1`
 - **Signal:** "update the board simultaneously", "in place", "O(1) extra space", "if an element is 0, set its entire row and column to 0"

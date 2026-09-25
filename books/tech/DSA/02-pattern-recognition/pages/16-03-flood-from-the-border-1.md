@@ -1,4 +1,4 @@
-## Flood From the Border 🟡
+## Flood From the Border <span class="lv lv2"></span>
 
 - **What it is:** Invert the question. Instead of asking every region "are you enclosed?", flood inward from the border and mark everything it reaches as **safe**. Whatever the flood never touched is enclosed by definition
 - **Signal:** "surrounded", "enclosed", "cannot walk off the grid", "closed island", "cells that can reach the edge / the ocean"

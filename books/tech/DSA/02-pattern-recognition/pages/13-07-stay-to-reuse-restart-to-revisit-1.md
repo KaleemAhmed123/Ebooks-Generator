@@ -1,4 +1,4 @@
-## Stay to Reuse, Restart to Revisit 🟡
+## Stay to Reuse, Restart to Revisit <span class="lv lv2"></span>
 
 - **What it is:** The start index passed to the next call encodes the rules. `go(i + 1)`: each item once, order ignored. `go(i)`: an item may be reused, order still ignored. `go(0)`: restart the loop from the beginning, so earlier items can come *after* later ones and different orders count as different answers
 - **Signal:** "each number may be chosen an unlimited number of times" (stay), "different sequences are counted as different combinations" (restart), "you may visit a city more than once" (restart), coin change *combinations* vs *permutations*

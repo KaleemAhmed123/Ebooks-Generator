@@ -1,4 +1,4 @@
-## Walk the Shared Prefix 🟡
+## Walk the Shared Prefix <span class="lv lv2"></span>
 
 - **What it is:** Put all the words in a trie (a tree where each edge is one character and each path from the root spells a prefix) and store a small fact on every node: how many words pass through it, or whether a word ends there. Then each question is one walk down from the root
 - **Signal:** "shortest unique prefix for every word", "suggest words as the user types", "replace each word with its shortest root", "many words, many prefix queries"

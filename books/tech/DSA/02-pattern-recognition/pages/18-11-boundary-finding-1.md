@@ -1,4 +1,4 @@
-## Boundary Finding 🟡
+## Boundary Finding <span class="lv lv2"></span>
 
 - **What it is:** Transforming a problem that asks "find a value" into a problem that asks "find the point where a boolean condition flips from False to True" (or True to False)
 - **Why nobody named it:** Textbooks call it "Binary Search." But Binary Search is just an array traversal technique. The real intellectual leap is the *transformation* of the problem into a boolean boundary

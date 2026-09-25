@@ -1,6 +1,6 @@
 # Chapter 6 - Strings
 
-## Signature Key 🟢
+## Signature Key <span class="lv lv1"></span>
 
 - **What it is:** Reduce each string to a *signature* that is equal exactly when two strings are "the same" under the problem's rule. Then grouping, matching and counting are one hash-map pass over signatures
 - **Signal:** "group anagrams", "same letters in any order", "follows the same pattern", "is a rotation of", "print all anagrams together"

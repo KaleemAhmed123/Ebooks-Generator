@@ -1,4 +1,4 @@
-## Peel the Lowest Bit 🟡
+## Peel the Lowest Bit <span class="lv lv2"></span>
 
 - **What it is:** Two one-line identities do most bit work. `n & (n − 1)` deletes the lowest set bit of `n`. `n & −n` keeps only the lowest set bit. Loops that peel bits one at a time run once per *set* bit, not once per bit position
 - **Signal:** "count the 1 bits", "is n a power of two", "counting bits for every number from 0 to n", "position of the only set bit", "enumerate all subsets of a mask"

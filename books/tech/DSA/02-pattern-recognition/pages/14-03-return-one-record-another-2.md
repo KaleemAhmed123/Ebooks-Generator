@@ -4,7 +4,7 @@
 - **Binary Tree Tilt (LeetCode 563):** return the subtree sum, record `|left sum − right sum|`
 - **Distribute Coins in Binary Tree (LeetCode 979) / Distribute candies in a binary tree (GFG):** return the subtree's excess `coins − nodes`; every excess unit must cross the edge to the parent, so record `|left excess| + |right excess|` moves
 - **Maximum Product of Splitted Binary Tree (LeetCode 1339):** pass 1 gets the total; pass 2 returns subtree sums and records `sub · (total − sub)` for every edge
-- **Binary Tree Cameras (LeetCode 968) 🔴:** return one of three states (needs cover / has camera / covered) and record a camera whenever a child needs cover. A post-order greedy with a three-valued return
+- **Binary Tree Cameras (LeetCode 968) <span class="lv lv3"></span>:** return one of three states (needs cover / has camera / covered) and record a camera whenever a child needs cover. A post-order greedy with a three-valued return
 - **Binary Tree Maximum Path Sum (LeetCode 124):** the same split with values and negatives; Module 06 works it through
 
 ### The failure

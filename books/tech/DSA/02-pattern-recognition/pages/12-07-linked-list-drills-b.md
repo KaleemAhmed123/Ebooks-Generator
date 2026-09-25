@@ -1,4 +1,4 @@
-## Recognition drills: Linked Lists 🟢 - continued
+## Recognition drills: Linked Lists <span class="lv lv1"></span> - continued
 
 | Problem | Move & the pointer to protect |
 |---|---|

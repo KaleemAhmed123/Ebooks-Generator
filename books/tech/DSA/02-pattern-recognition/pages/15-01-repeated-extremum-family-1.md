@@ -1,6 +1,6 @@
 # Chapter 15 - Heaps & Ordered Sets
 
-## The Repeated Extremum Family 🟢
+## The Repeated Extremum Family <span class="lv lv1"></span>
 
 - **What it is:** The problem requires you to find the maximum, minimum, or "best" element, and it asks you to do this repeatedly as the data changes
 - **The signal:** "Top K", "Merge K", "Kth largest", "Running median", "Max in sliding window", "Next greater element"

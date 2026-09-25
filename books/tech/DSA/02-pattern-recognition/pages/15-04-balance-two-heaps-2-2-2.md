@@ -1,4 +1,4 @@
-## Balance Two Heaps 🟡 - continued
+## Balance Two Heaps <span class="lv lv2"></span> - continued
 
 - **Sliding Window Median (LeetCode 480):** the same two heaps plus *lazy deletion*: mark outgoing values in a map and discard them only when they reach a top, while keeping a count of valid elements per side for balancing
 - **IPO (LeetCode 502):** two heaps with different keys: projects sorted by required capital feed a max-heap of profits as capital grows; take the best affordable project k times

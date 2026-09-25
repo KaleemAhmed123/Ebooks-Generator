@@ -3,7 +3,7 @@
 - **K-th Symbol in Grammar (LeetCode 779):** row n is built from row n − 1 by `0 → 01`, `1 → 10`. Symbol `k` comes from parent `⌈k/2⌉` in the row above, and equals the parent if `k` is odd, its flip if `k` is even. O(n) steps, no row is ever built
 - **Get stair paths / Climbing Stairs (LeetCode 70):** ways(n) = ways(n − 1) + ways(n − 2). "Ladders with at most K steps" is `Σ ways(n − i)` for `i = 1..k`. The recurrence is the easy part; memoising it turns exponential calls into O(n · k) (Chapter 17)
 - **Josephus with a queue or array:** simulating the circle is O(n · k) with a queue or O(n²) with array splicing. Fine for n ≤ 500 (LeetCode 1823), hopeless for 10⁶
-- **Elimination Game (LeetCode 390) 🔴:** remove every other number alternately from the left and the right. Track only the head, the step and the remaining count; each round halves the count, so O(log n)
+- **Elimination Game (LeetCode 390) <span class="lv lv3"></span>:** remove every other number alternately from the left and the right. Track only the head, the step and the remaining count; each round halves the count, so O(log n)
 
 ### The failure
 

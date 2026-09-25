@@ -1,4 +1,4 @@
-## Walk the Shared Prefix 🟡 - continued
+## Walk the Shared Prefix <span class="lv lv2"></span> - continued
 
 :::mint
 <svg viewBox="0 0 470 132" role="img" aria-label="A trie of zebra, dog, duck, dove. Each node stores how many words pass through it. The root's d child has count 3. Under d, o has count 2 and u has count 1. The shortest unique prefix of each word ends at the first node with count 1: z, dog, du, dov." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">

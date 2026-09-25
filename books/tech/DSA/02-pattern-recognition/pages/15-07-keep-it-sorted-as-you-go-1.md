@@ -1,4 +1,4 @@
-## Keep It Sorted as You Go 🟡
+## Keep It Sorted as You Go <span class="lv lv2"></span>
 
 - **What it is:** When each new element must be compared with the *closest* earlier values (the next larger, the next smaller, the nearest), keep the earlier values in a sorted structure and binary search it: an **ordered set**. A heap only knows its top; an ordered set knows every element's neighbours
 - **Signal:** "minimum absolute difference between elements at least x apart", "least greater element on the right", "nearby almost duplicate" (index gap ≤ k, value gap ≤ t), "can this booking be added without overlap", "k-th smallest so far"

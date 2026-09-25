@@ -1,4 +1,4 @@
-## The wrong approach: Search Space Reduction 🟢
+## The wrong approach: Search Space Reduction <span class="lv lv1"></span>
 
 - **Naive idea:** For "Minimise the maximum capacity", trying capacities starting from 1, simulating each one, until one works
 - **Why it looks right:** It finds the minimum valid capacity

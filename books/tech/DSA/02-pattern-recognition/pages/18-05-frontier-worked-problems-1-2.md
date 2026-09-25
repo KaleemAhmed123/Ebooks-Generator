@@ -1,4 +1,4 @@
-## Frontier worked problems 🟡 - continued
+## Frontier worked problems <span class="lv lv2"></span> - continued
 
 ```ts
 while (frontier.length > 0) {

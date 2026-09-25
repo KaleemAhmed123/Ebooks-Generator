@@ -1,4 +1,4 @@
-## Take the Latest Free Slot 🟡
+## Take the Latest Free Slot <span class="lv lv2"></span>
 
 - **What it is:** Unit-time jobs, each with a deadline and a profit. Take jobs from most to least profitable; put each one in the *latest* free time slot that still meets its deadline. If no such slot is free, skip it
 - **Signal:** "job sequencing with deadlines", "each job takes one unit of time", "maximise total profit", "only one job at a time"

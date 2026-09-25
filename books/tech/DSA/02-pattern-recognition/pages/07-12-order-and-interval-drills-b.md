@@ -1,4 +1,4 @@
-## Recognition drills: Order & Intervals, named problems 🟢 - continued
+## Recognition drills: Order & Intervals, named problems <span class="lv lv1"></span> - continued
 
 | Problem | Sort key & scan |
 |---|---|
@@ -12,7 +12,7 @@
 | 19. Least Number of Unique Integers after K Removals (LeetCode 1481) | **Frequency ascending:** remove the rarest values first |
 | 20. Sort Array by Increasing Frequency (LeetCode 1636) | **Derived key:** frequency asc, then value desc |
 | 21. Find K Closest Elements (LeetCode 658) | **Binary search the window start** in `[0, n − k]`, compare `x − a[m]` with `a[m + k] − x` |
-| 22. Merge two sorted arrays without extra space (GFG) 🟡 | **Gap method (shell-sort step)** `gap = ⌈gap/2⌉`, compare across both arrays; or swap the tails and sort each |
+| 22. Merge two sorted arrays without extra space (GFG) <span class="lv lv2"></span> | **Gap method (shell-sort step)** `gap = ⌈gap/2⌉`, compare across both arrays; or swap the tails and sort each |
 
 ### Score yourself
 

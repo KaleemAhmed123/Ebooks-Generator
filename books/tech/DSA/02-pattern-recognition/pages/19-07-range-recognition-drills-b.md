@@ -1,4 +1,4 @@
-## Recognition drills: Range Interaction 🔴 - continued
+## Recognition drills: Range Interaction <span class="lv lv3"></span> - continued
 
 | Problem | Range Pattern & Justification |
 |---|---|

@@ -1,4 +1,4 @@
-## Recognition drills: DP & Games 🟡
+## Recognition drills: DP & Games <span class="lv lv2"></span>
 
 Hide the right column. Say the signature first (17-02), then the transition. Module references point at Module 06.
 

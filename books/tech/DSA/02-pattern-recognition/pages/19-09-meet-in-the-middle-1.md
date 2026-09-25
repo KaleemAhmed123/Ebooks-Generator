@@ -1,4 +1,4 @@
-## Meet in the Middle 🔴
+## Meet in the Middle <span class="lv lv3"></span>
 
 - Backtracking (DFS) explores every possible combination. If there are N items, generating all subsets takes O(2ⁿ) time
 - O(2ⁿ) is perfectly fine if N ≤ 20. A modern CPU can easily do 2²⁰ ≈ 10⁶ operations

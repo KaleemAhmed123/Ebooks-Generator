@@ -1,4 +1,4 @@
-## Balance Two Heaps 🟡 - continued
+## Balance Two Heaps <span class="lv lv2"></span> - continued
 
 ```ts
 // Binary heap; before(a, b) is true when a comes out first

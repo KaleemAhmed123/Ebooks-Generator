@@ -1,6 +1,6 @@
 # Chapter 4 - In-Place & Index Tricks
 
-## The In-Place Family 🟢
+## The In-Place Family <span class="lv lv1"></span>
 
 - **What it is:** Problems where the array itself is the only memory you get. The tricks turn *positions* into storage: an index can be a hash slot, a reversal can be a rotation, a sign can be a flag
 - **The signal:** "O(1) extra space", "modify the array in place", "values are in the range 1..n", "return the next arrangement", "rotate by k"

@@ -1,4 +1,4 @@
-## Reverse in Place 🟡 - continued
+## Reverse in Place <span class="lv lv2"></span> - continued
 
 :::mint
 <svg viewBox="0 0 470 110" role="img" aria-label="Reverse nodes in k group with k equal to 2 on 1, 2, 3, 4, 5. The node before the group is the dummy. Reverse 1 and 2 to get 2, 1. Stitch dummy to 2 and 1 to 3. Move the group-before pointer to 1. Reverse 3 and 4. The last group 5 has fewer than k nodes and stays. Result 2, 1, 4, 3, 5." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">

@@ -1,4 +1,4 @@
-## Binary Search on Answer 🟢
+## Binary Search on Answer <span class="lv lv1"></span>
 
 - **What it is:** Guessing the answer, using a checker function to see if the guess is feasible, and using Binary Search to find the optimal guess
 - **When to reach for it:** The problem asks to "Minimise the maximum X" or "Maximise the minimum X". (e.g. Koko Eating Bananas, Allocate Pages, Minimum Capacity to Ship Packages)

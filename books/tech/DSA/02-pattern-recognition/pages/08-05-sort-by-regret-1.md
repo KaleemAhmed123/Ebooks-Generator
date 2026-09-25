@@ -1,4 +1,4 @@
-## Sort by Regret 🟡
+## Sort by Regret <span class="lv lv2"></span>
 
 - **What it is:** When every item must go to one of two sides and each side has a quota, sort items by how much they *lose* if sent to their worse side. Items with the largest regret get their preference first
 - **Signal:** "send exactly n people to city A and n to city B", "waiters A and B can take at most X and Y orders", "each task can be done by one of two machines with capacity limits"

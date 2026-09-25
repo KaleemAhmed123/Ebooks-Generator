@@ -1,4 +1,4 @@
-## Take Now, Regret Later 🟡
+## Take Now, Regret Later <span class="lv lv2"></span>
 
 - **What it is:** A greedy that is allowed to change its mind. Tentatively accept every option you pass and push it onto a heap. When a constraint breaks (fuel runs out, a deadline is missed, bricks run out), undo the *worst* accepted choice, which is the heap's top. Each item enters and leaves the heap at most once
 - **Signal:** "minimum number of refuelling stops", "maximum number of courses before their deadlines", "furthest building reachable with bricks and ladders", "maximum performance of a team of at most k", decisions whose value is only clear later

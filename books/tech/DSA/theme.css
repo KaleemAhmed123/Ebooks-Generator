@@ -1,0 +1,23 @@
+/* Difficulty badge. Written in markdown as an empty span, e.g.
+   `## Title <span class="lv lv1"></span>`, so the contents page (which lists
+   plain heading text) never shows it; the label comes from CSS. */
+.lv {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 1.6mm;
+  padding: 0.25mm 1.3mm;
+  border-radius: 1.2mm;
+  border: 0.5pt solid currentColor;
+  font: 700 5.4pt/1.35 "Helvetica", "Arial", sans-serif;
+  letter-spacing: 0.35pt;
+  text-transform: uppercase;
+  text-decoration: none;
+  position: relative;
+  top: -0.4mm;
+}
+.lv1 { color: #2d6a4f; background: #e2fcf3; }
+.lv2 { color: #8a5a00; background: #fff4d6; }
+.lv3 { color: #c0294d; background: #ffedf1; }
+.lv1::after { content: "core"; }
+.lv2::after { content: "stretch"; }
+.lv3::after { content: "hard"; }

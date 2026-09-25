@@ -1,4 +1,4 @@
-## Drop the Baggage 🟡
+## Drop the Baggage <span class="lv lv2"></span>
 
 - **What it is:** Carry "the best subarray that ends *here*" in one or two variables. At each element decide: extend the past, or drop it and restart. Kadane's algorithm (Module 06, Maximum Subarray) is the sum case; this page is the family around it
 - **Signal:** "maximum product subarray", "flip the sign of one subarray", "max subarray sum if you may delete one element", "largest variance of any substring"

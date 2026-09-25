@@ -1,4 +1,4 @@
-## Frontier worked problems 🟡 - continued
+## Frontier worked problems <span class="lv lv2"></span> - continued
 
 - **Problem:** Given a directed weighted graph, find the time it takes for a signal to reach all nodes from a source node
 - **Why it is a frontier problem:** Weighted edges → FIFO won't work → need min-heap frontier (Dijkstra)

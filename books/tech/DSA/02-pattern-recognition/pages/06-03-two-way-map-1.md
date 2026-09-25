@@ -1,4 +1,4 @@
-## Two-Way Map 🟢
+## Two-Way Map <span class="lv lv1"></span>
 
 - **What it is:** "Follows the same pattern" means a *bijection*: each symbol on the left maps to exactly one on the right, and no two left symbols share a right one. Keep two maps, left→right and right→left, and fail on the first conflict in either
 - **Signal:** "isomorphic strings", "word pattern", "match specific pattern", "each letter maps to a unique word"

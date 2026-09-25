@@ -1,6 +1,6 @@
 # Chapter 17 - DP & Games
 
-## Repeated State? See Dynamic Programming 🟢
+## Repeated State? See Dynamic Programming <span class="lv lv1"></span>
 
 - The chapters before this one focus on patterns that can be solved by manipulating data structures (stacks, queues, heaps) or traversing boundaries (binary search, two pointers)
 - But what happens when the problem requires you to make a choice, and that choice leads to a state you have already evaluated?

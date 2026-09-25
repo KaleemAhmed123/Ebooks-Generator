@@ -1,4 +1,4 @@
-## Exactly K by Subtraction 🟡 - continued
+## Exactly K by Subtraction <span class="lv lv2"></span> - continued
 
 ```ts
 function atMost(nums: number[], k: number): number {

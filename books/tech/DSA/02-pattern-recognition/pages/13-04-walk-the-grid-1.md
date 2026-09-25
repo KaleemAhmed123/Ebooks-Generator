@@ -1,4 +1,4 @@
-## Walk the Grid 🟡
+## Walk the Grid <span class="lv lv2"></span>
 
 - **What it is:** Maze and path problems on a grid share one skeleton: from `(r, c)`, check whether the cell is usable, mark it, try each allowed move, unmark it. The only things that change between problems are the move set, what "usable" means, and whether you count, collect or optimise paths
 - **Signal:** "rat in a maze", "print all paths from top-left to bottom-right", "maze with obstacles", "maze with jumps", "word search in a grid", "longest route avoiding hurdles"

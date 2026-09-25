@@ -1,4 +1,4 @@
-## Guess a Value, Count Below It 🟡
+## Guess a Value, Count Below It <span class="lv lv2"></span>
 
 - **What it is:** To find the k-th smallest item of a set you cannot list cheaply, binary search on the *value*. For a guess `x`, count the items `≤ x`. The answer is the smallest `x` whose count reaches k
 - **Signal:** "k-th smallest in a sorted matrix", "median of a row-wise sorted matrix", "k-th smallest pair distance", "k-th number in the multiplication table", sets of size n² or n·m that are too big to build

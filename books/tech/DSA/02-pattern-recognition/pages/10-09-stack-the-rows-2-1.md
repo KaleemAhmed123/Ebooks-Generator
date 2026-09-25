@@ -1,4 +1,4 @@
-## Stack the Rows 🟡 - continued
+## Stack the Rows <span class="lv lv2"></span> - continued
 
 ```ts
 // Maximal Rectangle (LeetCode 85); rows of "0"/"1"

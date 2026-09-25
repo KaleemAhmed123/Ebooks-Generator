@@ -1,4 +1,4 @@
-## Topological Sort (Kahn's Algorithm) 🟢
+## Topological Sort (Kahn's Algorithm) <span class="lv lv1"></span>
 
 - **What it is:** Ordering the vertices of a DAG such that for every directed edge U to V, vertex U comes before V in the ordering
 - **Why it works (Kahn's approach):** It relies on **In-Degree** (the number of incoming edges). A node with an in-degree of 0 has no prerequisites. We can safely process it. Processing a node means removing its outgoing edges, which reduces the in-degree of its neighbors. This unlocks new nodes

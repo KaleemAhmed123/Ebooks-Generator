@@ -3,7 +3,7 @@
 - **Remove Duplicate Letters (LeetCode 316) / Smallest Subsequence of Distinct Characters (LeetCode 1081):** each letter must appear exactly once. Skip a letter already in the stack; pop the top while it is larger *and it appears again later* (that is the budget: a later copy can replace it)
 - **Find the Most Competitive Subsequence (LeetCode 1673):** keep exactly k items. Pop while the top is larger and `stack.length − 1 + (items left, including this one) ≥ k`
 - **Largest number after removing k digits:** flip the comparison: pop while the top is *smaller*
-- **Create Maximum Number (LeetCode 321) 🔴:** best subsequence of each length from two arrays, then merge; this page's routine is the inner step
+- **Create Maximum Number (LeetCode 321) <span class="lv lv3"></span>:** best subsequence of each length from two arrays, then merge; this page's routine is the inner step
 
 ### The failure
 

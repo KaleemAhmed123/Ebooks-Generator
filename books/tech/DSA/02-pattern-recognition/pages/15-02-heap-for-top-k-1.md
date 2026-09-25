@@ -1,4 +1,4 @@
-## Heap for Top K 🟢
+## Heap for Top K <span class="lv lv1"></span>
 
 - **What it is:** Maintaining a Priority Queue of size k to track the best k elements seen so far
 - **When to reach for it:** "Find the Kth largest element", "K closest points to origin", "Top K frequent words"

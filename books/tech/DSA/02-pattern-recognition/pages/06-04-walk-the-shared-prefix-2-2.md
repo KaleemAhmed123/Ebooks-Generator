@@ -4,7 +4,7 @@
 - **Replace Words (LeetCode 648):** mark nodes where a root ends; for each sentence word, walk until the first marked node and replace with that prefix
 - **Longest Common Prefix (LeetCode 14):** one query, so no trie: compare column by column across all strings and stop at the first mismatch. A trie pays only when prefix questions repeat
 - **Word Search II (LeetCode 212):** a trie of the search words steers a grid DFS (Chapter 13); a branch dies as soon as the path leaves the trie
-- **Maximum XOR of Two Numbers (LeetCode 421) 🔴:** a trie over *bits* instead of letters (Chapter 19)
+- **Maximum XOR of Two Numbers (LeetCode 421) <span class="lv lv3"></span>:** a trie over *bits* instead of letters (Chapter 19)
 
 ### The failure
 

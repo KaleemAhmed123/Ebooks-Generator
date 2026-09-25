@@ -1,4 +1,4 @@
-## Recognition drills: Windows & Pointers 🟢 - continued
+## Recognition drills: Windows & Pointers <span class="lv lv1"></span> - continued
 
 | Problem | Pattern & the deciding fact |
 |---|---|
@@ -12,7 +12,7 @@
 | 19. Count Triplets with Sum Smaller than X (GFG) | **Fix one, collide two;** a hit adds `right − left` at once |
 | 20. Sort Colors (LeetCode 75) | **Three pointers** (Dutch flag, 02-09). One pass, `mid` stays put after a swap with `high` |
 | 21. Remove Duplicates from Sorted Array (LeetCode 26) | **Read/write pointers.** Copying beats swapping here |
-| 22. Substring with Largest Variance (LeetCode 2272) 🟡 | **Trap: not a window.** Variance is not monotone in length. Run Kadane (03-06) for every ordered pair of letters |
+| 22. Substring with Largest Variance (LeetCode 2272) <span class="lv lv2"></span> | **Trap: not a window.** Variance is not monotone in length. Run Kadane (03-06) for every ordered pair of letters |
 
 ### Score yourself
 

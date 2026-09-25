@@ -1,4 +1,4 @@
-## Pick, Then Jump 🟡
+## Pick, Then Jump <span class="lv lv2"></span>
 
 - **What it is:** Pick/skip over items sorted by start time, where picking an item makes the next few items illegal. Skip moves to `k + 1`. Pick **jumps** past every item that clashes, to the first one that starts after this one ends, found by binary search
 - **Signal:** weighted intervals, "non-overlapping", "maximum profit / value", "choose jobs, events, rides", and n up to 10⁴–10⁵, so the O(n²) "try every earlier job" is too slow

@@ -1,4 +1,4 @@
-## Sparse Table as Precompute 🟡
+## Sparse Table as Precompute <span class="lv lv2"></span>
 
 - When an operation is NOT invertible (like minimum or maximum), you cannot use a prefix array. You need a different precompute strategy
 - The **Sparse Table** is a precompute structure designed specifically for **idempotent** operations

@@ -1,4 +1,4 @@
-## Sliding Window (Variable Length) 🟢
+## Sliding Window (Variable Length) <span class="lv lv1"></span>
 
 - **What it is:** A window that expands and shrinks dynamically to find the longest or shortest contiguous sequence that satisfies a condition
 - **When to reach for it:** "Longest substring without repeating characters", "Smallest subarray with sum ≥ S"

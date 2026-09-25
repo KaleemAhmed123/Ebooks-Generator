@@ -1,4 +1,4 @@
-## Place, Check, Undo 🟡 - continued
+## Place, Check, Undo <span class="lv lv2"></span> - continued
 
 ```ts
 // N-Queens (LeetCode 51)

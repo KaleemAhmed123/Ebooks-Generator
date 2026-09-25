@@ -1,6 +1,6 @@
 # Chapter 9 - Search Space
 
-## The Search Space Reduction Family 🟢
+## The Search Space Reduction Family <span class="lv lv1"></span>
 
 - **What it is:** Problems where the potential answers form a massive, structured domain, and you can systematically eliminate large portions of that domain without checking them
 - **The signal:** "Find the minimum capacity", "Find the maximum distance", "Search in a 2D matrix"

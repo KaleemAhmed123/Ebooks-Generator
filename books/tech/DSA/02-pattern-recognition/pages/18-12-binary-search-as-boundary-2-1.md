@@ -1,4 +1,4 @@
-## Binary Search as Boundary Finding 🟡 - continued
+## Binary Search as Boundary Finding <span class="lv lv2"></span> - continued
 
 #### Shape 2: Find the last True in `[T, T, T, F, F, F]`
 - **Condition:** `isPossible(x)` flips from True to False

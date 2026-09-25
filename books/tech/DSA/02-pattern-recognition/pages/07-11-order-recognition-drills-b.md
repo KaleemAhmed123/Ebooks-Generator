@@ -1,4 +1,4 @@
-## Recognition drills: Order and Ranking 🟢 - continued
+## Recognition drills: Order and Ranking <span class="lv lv1"></span> - continued
 
 | Problem | Order Pattern & Justification |
 |---|---|

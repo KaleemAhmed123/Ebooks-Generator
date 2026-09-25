@@ -1,4 +1,4 @@
-## Equal Prefixes 🟡
+## Equal Prefixes <span class="lv lv2"></span>
 
 - **What it is:** Encode each element so that "subarray `(j, i]` has property P" becomes "`code(prefix j) === code(prefix i)`". Then a map of codes seen so far answers every index in O(1)
 - **Signal:** "divisible by k", "equal number of 0s and 1s / odd and even", "every vowel appears an even number of times", "at most one letter with odd count"

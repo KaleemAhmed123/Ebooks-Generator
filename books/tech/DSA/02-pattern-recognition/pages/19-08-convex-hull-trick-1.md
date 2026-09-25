@@ -1,4 +1,4 @@
-## Convex Hull Trick as Elimination 🔴
+## Convex Hull Trick as Elimination <span class="lv lv3"></span>
 
 - The **Convex Hull Trick (CHT)** is an advanced DP optimisation that reduces O(n²) time to O(n) or O(n log n)
 - Textbooks describe it with geometry ("lower envelope of a set of lines"). But structurally, it is just Dominated Candidate Elimination applied to linear functions

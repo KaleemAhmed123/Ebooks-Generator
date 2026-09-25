@@ -1,4 +1,4 @@
-## Maintain the Frontier 🟡
+## Maintain the Frontier <span class="lv lv2"></span>
 
 - **What it is:** A set of candidates (the *frontier*) separates what has been fully processed from what has not. At every step, you pick the best candidate from the frontier, process it, and add its neighbours to the frontier
 - **Why nobody named it:** Each algorithm that uses it has its own name — BFS, Dijkstra, A*, best-first search, beam search. Nobody noticed they share the same skeleton

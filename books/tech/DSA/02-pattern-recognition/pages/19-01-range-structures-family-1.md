@@ -1,6 +1,6 @@
 # Chapter 19 - Hard Range Structures & CP Tricks
 
-## The Range Interaction Family 🔴
+## The Range Interaction Family <span class="lv lv3"></span>
 
 - **What it is:** Performing operations (queries or updates) on contiguous subsegments of an array, repeatedly
 - **The signal:** "Sum of elements between L and R", "Add X to all elements from L to R", "Subarray sum equals K"

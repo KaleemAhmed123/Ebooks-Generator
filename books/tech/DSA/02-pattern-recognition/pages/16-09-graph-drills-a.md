@@ -1,4 +1,4 @@
-## Recognition drills: Graphs & Dependency 🟡
+## Recognition drills: Graphs & Dependency <span class="lv lv2"></span>
 
 Hide the right column. Name the node, the edge, and the traversal before you name the algorithm. Cues that a statement is a graph: items **numbered 0 to n − 1**, "X comes after Y", "X depends on Y", "X is related to Y", "minimum steps", "share something in common", "within range".
 

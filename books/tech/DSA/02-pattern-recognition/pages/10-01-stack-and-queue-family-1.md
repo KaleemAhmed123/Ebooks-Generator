@@ -1,6 +1,6 @@
 # Chapter 10 - Stacks & Queues
 
-## The Stack & Queue Family 🟢
+## The Stack & Queue Family <span class="lv lv1"></span>
 
 - **What it is:** A stack remembers *unfinished business* in last-opened, first-closed order. A queue remembers it in arrival order. Almost every stack problem is one of three things: nesting (something opened must be closed), cancellation (a new item destroys old ones), or waiting (old items wait for a future item that settles them)
 - **The signal:** brackets, nested encodings (`3[a2[c]]`), paths with `..`, "remove adjacent", "collide", "next greater / smaller", "previous smaller", "span", "sum over all subarrays of the minimum", "implement X using Y"

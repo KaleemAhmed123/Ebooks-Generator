@@ -1,4 +1,4 @@
-## State in the Cell 🟡 - continued
+## State in the Cell <span class="lv lv2"></span> - continued
 
 ```ts
 // Game of Life (LeetCode 289), in place

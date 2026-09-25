@@ -1,9 +1,9 @@
-## Recognition drills: Strings 🟢 - continued
+## Recognition drills: Strings <span class="lv lv1"></span> - continued
 
 | Problem | Pattern & the twist |
 |---|---|
-| 23. Orderly Queue (LeetCode 899) 🟡 | **Observation:** k = 1 → best rotation; k ≥ 2 → any order is reachable, so sort |
-| 24. Text Justification (LeetCode 68) 🟡 | **Greedy line packing + simulation:** fill a line while words fit, spread the extra spaces left-first |
+| 23. Orderly Queue (LeetCode 899) <span class="lv lv2"></span> | **Observation:** k = 1 → best rotation; k ≥ 2 → any order is reachable, so sort |
+| 24. Text Justification (LeetCode 68) <span class="lv lv2"></span> | **Greedy line packing + simulation:** fill a line while words fit, spread the extra spaces left-first |
 | 25. Edit Distance / LCS / Wildcard Matching | **String DP** (Chapter 17 → Module 06): two indices, one per string |
 
 ### Score yourself

@@ -1,4 +1,4 @@
-## Place, Check, Undo 🟡
+## Place, Check, Undo <span class="lv lv2"></span>
 
 - **What it is:** Constraint puzzles fill one decision point at a time (a row, a cell, a vertex, a bucket). At each point, try every option, **check** it against O(1) bookkeeping, **place** it by updating the bookkeeping, recurse, then **undo** exactly what you placed
 - **Signal:** "N-Queens", "solve the Sudoku", "colour the graph with at most m colours", "partition into k subsets with equal sum", "use all matchsticks to form a square", "knight's tour"

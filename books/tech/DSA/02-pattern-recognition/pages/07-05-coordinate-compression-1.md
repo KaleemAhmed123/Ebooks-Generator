@@ -1,4 +1,4 @@
-## Coordinate Compression 🟢
+## Coordinate Compression <span class="lv lv1"></span>
 
 - **What it is:** Mapping a sparse set of large values to a dense set of small integers while preserving their relative order
 - **When to reach for it:** You need to use values as array indices (e.g., for a Fenwick tree or frequency array), but the values go up to 10⁹ while there are only 10⁵ of them

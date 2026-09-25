@@ -1,4 +1,4 @@
-## Pick or Skip 🟢
+## Pick or Skip <span class="lv lv1"></span>
 
 - **What it is:** For "all subsets / subsequences", walk the items by index and make one binary decision per item: take it or leave it. Two calls per level, n levels, 2ⁿ leaves, and every leaf is a different subset
 - **Signal:** "all subsets", "all subsequences", "power set", "count subsets with sum K", "longest concatenation with unique characters", n ≤ 20

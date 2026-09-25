@@ -1,6 +1,6 @@
 # Chapter 13 - Recursion & Backtracking
 
-## Trust the Smaller Call 🟢
+## Trust the Smaller Call <span class="lv lv1"></span>
 
 - **What it is:** Write a recursive function in three statements, and never trace it. **Hypothesis:** state exactly what `f(n)` does. **Base case:** the smallest input, answered directly. **Induction:** assume `f(n − 1)` (or any smaller call) already works as promised, and use it to finish `f(n)`
 - **Signal:** "using recursion", "tower of Hanoi", "reverse / sort a stack without another data structure", "compute xⁿ", a problem that looks like a smaller copy of itself once one element is removed

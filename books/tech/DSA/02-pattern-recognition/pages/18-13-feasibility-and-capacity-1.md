@@ -1,4 +1,4 @@
-## Feasibility and Capacity 🟡
+## Feasibility and Capacity <span class="lv lv2"></span>
 
 - The most common application of Boundary Finding is converting a "Find the optimal value" problem into a "Can we do it with this value?" problem
 - This is known as **Binary Search on Answer** or **Feasibility Search**

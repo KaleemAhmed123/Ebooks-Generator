@@ -1,6 +1,6 @@
 # Chapter 5 - Grids & Matrices
 
-## Coordinate Keys 🟢
+## Coordinate Keys <span class="lv lv1"></span>
 
 - **What it is:** Most grid tricks are one formula that turns `(r, c)` into a key. Cells that share a key belong together: a row, a diagonal, a 3×3 box, or one slot of an imaginary flat array
 - **Signal:** "sort each diagonal", "traverse the diagonals", "each 3×3 box must be valid", "the matrix is sorted as if it were one list", "reshape an m×n matrix"

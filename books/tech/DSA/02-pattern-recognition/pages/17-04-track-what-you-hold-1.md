@@ -1,4 +1,4 @@
-## Track What You Hold 🟡
+## Track What You Hold <span class="lv lv2"></span>
 
 - **What it is:** A **state machine DP**: the state is not "which index" but "what you are carrying" — a share or nothing, and how many trades are used. Each day, every state either stays or moves along one edge (buy, sell). Module 06 (01-03) shows how to invent the status variable; this page is the machine it produces
 - **Signal:** buy/sell, "at most k transactions", "cooldown", "transaction fee", "you cannot hold more than one"

@@ -1,4 +1,4 @@
-## Try Every Split 🔴
+## Try Every Split <span class="lv lv3"></span>
 
 - **What it is:** **Partition DP.** The state is a range `(i, j)`. Pick the operation inside it that splits the range into two parts that no longer affect each other, try every position k for it, and pay a cost that depends only on `i`, `k` and `j`
 - **Signal:** "minimum cost to cut / merge / multiply / burst", "place brackets", "partition into pieces", n ≤ 100–500 so O(n³) fits

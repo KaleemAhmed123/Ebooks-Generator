@@ -1,11 +1,11 @@
-## Recognition drills: Stacks & Queues 🟢 - continued
+## Recognition drills: Stacks & Queues <span class="lv lv1"></span> - continued
 
 | Problem | Pattern & what the top means |
 |---|---|
 | 12. Next Greater Element (GFG) | **Waiting:** top = nearest element still without an answer |
 | 13. Online Stock Span (LeetCode 901) | **Previous greater:** pop smaller-or-equal prices, span = distance to the new top |
 | 14. Help Classmates / next smaller element (GFG) | **Waiting,** comparison flipped |
-| 15. 132 Pattern (LeetCode 456) 🟡 | **Right to left:** each element acts as the "3"; values it pops become the best "2" so far |
+| 15. 132 Pattern (LeetCode 456) <span class="lv lv2"></span> | **Right to left:** each element acts as the "3"; values it pops become the best "2" so far |
 | 16. Remove K Digits (LeetCode 402) | **Pop while it pays,** k is the budget |
 | 17. Largest Rectangle in Histogram (LeetCode 84) | **Reach:** a popped bar's width runs from the new top to the bar that popped it |
 | 18. Maximal Rectangle (LeetCode 85) | **Stack the rows** |

@@ -1,4 +1,4 @@
-## Two Pointers Variations 🟢
+## Two Pointers Variations <span class="lv lv1"></span>
 
 - The standard two pointer techniques (Collision and Read/Write) are the foundation. Interviewers often twist them by applying them to different data structures or adding a second dimension
 

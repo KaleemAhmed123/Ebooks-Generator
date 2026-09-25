@@ -1,6 +1,6 @@
 # Chapter 2 - Windows & Pointers
 
-## The Locality Family 🟢
+## The Locality Family <span class="lv lv1"></span>
 
 - **What it is:** The answer to the problem depends on a small, contiguous chunk of the data
 - **The signal:** "Subarray", "Substring", "Consecutive", "Next greater element", "Window"

@@ -1,4 +1,4 @@
-## Recognition drills: Stacks & Queues 🟢 - continued
+## Recognition drills: Stacks & Queues <span class="lv lv1"></span> - continued
 
 | Problem | Pattern & what the top means |
 |---|---|
@@ -6,7 +6,7 @@
 | 27. Sliding Window Maximum (LeetCode 239) | **Monotonic deque;** the front expires by index |
 | 28. First negative integer in every window of size k (GFG) | **Queue of negative indices;** drop expired ones from the front |
 | 29. Rotting Oranges / Distance of nearest cell having 1 | **Queue as BFS frontier,** all sources at time 0 (Module 05, 02-04) |
-| 30. Implement N stacks in an array (GFG) 🔴 | **Free list:** `next[]` links each slot to the one below it or to the next free slot |
+| 30. Implement N stacks in an array (GFG) <span class="lv lv3"></span> | **Free list:** `next[]` links each slot to the one below it or to the next free slot |
 
 ### Score yourself
 

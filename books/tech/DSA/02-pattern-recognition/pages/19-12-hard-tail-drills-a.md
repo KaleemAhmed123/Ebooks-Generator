@@ -1,4 +1,4 @@
-## Recognition drills: The Hard Tail 🔴
+## Recognition drills: The Hard Tail <span class="lv lv3"></span>
 
 Hide the right column. These rarely appear outside hard rounds and contests; the cue is usually a constraint (n ≤ 40, O(1) space, values up to 2³¹) rather than the story. Range structures have their own drills in 19-07.
 

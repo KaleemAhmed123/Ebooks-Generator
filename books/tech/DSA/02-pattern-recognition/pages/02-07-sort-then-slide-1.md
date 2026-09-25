@@ -1,4 +1,4 @@
-## Sort, then Slide 🟡
+## Sort, then Slide <span class="lv lv2"></span>
 
 - **What it is:** When the question picks a *subset* (order does not matter) and scores it by its spread or by how close its values are, sort first. The best subset is then a contiguous run of the sorted array, and a window finds it
 - **Signal:** "choose m packets so the max − min is smallest", "you may increment any element at most k times in total, maximise the frequency", "pick k scores with the smallest range", any subset question where only the values matter, not the positions

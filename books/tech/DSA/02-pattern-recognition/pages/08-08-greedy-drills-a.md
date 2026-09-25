@@ -1,4 +1,4 @@
-## Recognition drills: Greedy Moves 🟢
+## Recognition drills: Greedy Moves <span class="lv lv1"></span>
 
 Hide the right column. Name the move, and in one phrase say why it is safe. If you cannot say why, assume it is not.
 

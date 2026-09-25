@@ -2,7 +2,7 @@
 
 - **Largest Rectangle in Histogram (LeetCode 84) / Maximum Rectangular Area in a Histogram (GFG):** the helper alone. When a bar is popped, the bar that popped it is the first shorter one to the right, and the new top is the first shorter one to the left
 - **Max rectangle (GFG):** the same problem as LeetCode 85 with a 0/1 integer matrix
-- **Count Submatrices With All Ones (LeetCode 1504) 🔴:** same heights, but *count* rectangles ending at each cell instead of the largest: a stack that keeps running sums of counts
+- **Count Submatrices With All Ones (LeetCode 1504) <span class="lv lv3"></span>:** same heights, but *count* rectangles ending at each cell instead of the largest: a stack that keeps running sums of counts
 - **Maximal Square (LeetCode 221):** looks similar, is simpler: `dp[r][c] = 1 + min(up, left, diagonal)` (Chapter 17). A square needs no histogram
 
 ### The failure

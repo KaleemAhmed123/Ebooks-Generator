@@ -1,4 +1,4 @@
-## Work Before or After the Call 🟢
+## Work Before or After the Call <span class="lv lv1"></span>
 
 - **What it is:** Every line in a recursive function runs either on the way *down* (before the recursive call) or on the way *up* (after it returns). Code before the call sees inputs in forward order; code after it sees them in reverse, with the smaller call's result already available
 - **Signal:** "print n down to 1 and then 1 up to n", "zig-zag", "process from the end of a linked list without reversing it", "carry a value back up", pre-order / in-order / post-order anything

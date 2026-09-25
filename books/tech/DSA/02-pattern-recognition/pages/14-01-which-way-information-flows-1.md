@@ -1,6 +1,6 @@
 # Chapter 14 - Trees
 
-## Which Way Does Information Flow? 🟢
+## Which Way Does Information Flow? <span class="lv lv1"></span>
 
 - **What it is:** Almost every binary-tree problem is decided by one question: does the answer at a node need information from **above** it (its ancestors), from **below** it (its subtrees), from **beside** it (its level), or from **anywhere** (distance to other nodes)? The answer picks the traversal and the function's signature
 - **The signal:** "root-to-leaf path", "valid range", "good nodes" (above); "height", "diameter", "balanced", "subtree sum" (below); "left view", "zig-zag", "width" (beside); "nodes at distance k", "burn the tree", "distance between two nodes" (anywhere)

@@ -1,4 +1,4 @@
-## Count Each Element's Reach 🟡 - continued
+## Count Each Element's Reach <span class="lv lv2"></span> - continued
 
 ```ts
 // Sum of Subarray Minimums (LeetCode 907), answer mod 1e9+7

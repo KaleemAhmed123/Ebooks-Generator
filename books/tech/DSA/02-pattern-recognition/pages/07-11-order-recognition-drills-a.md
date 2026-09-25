@@ -1,4 +1,4 @@
-## Recognition drills: Order and Ranking 🟢
+## Recognition drills: Order and Ranking <span class="lv lv1"></span>
 
 Hide the right column. Identify the correct Order/Ranking technique (Sort then Scan, Greedy via Sorting, Binary Search on Sorted Input, Coordinate Compression, Sweep Line) and justify your answer.
 

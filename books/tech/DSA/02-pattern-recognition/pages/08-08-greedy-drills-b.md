@@ -1,4 +1,4 @@
-## Recognition drills: Greedy Moves 🟢 - continued
+## Recognition drills: Greedy Moves <span class="lv lv1"></span> - continued
 
 | Problem | Move & why it is safe |
 |---|---|

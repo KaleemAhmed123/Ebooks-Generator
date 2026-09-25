@@ -1,4 +1,4 @@
-## Find the Invariant 🟡
+## Find the Invariant <span class="lv lv2"></span>
 
 - **What it is:** Some "minimum operations" problems are not search problems at all. Before simulating, ask what every operation *preserves* or changes by a fixed amount: a difference, a parity, a sum, a divisor count. The answer then falls out of arithmetic
 - **Signal:** "each move increments n − 1 elements", "toggle every k-th bulb", "negate an element exactly k times", "each operation replaces x with two numbers that sum to x", huge n or huge values that make simulation hopeless

@@ -1,4 +1,4 @@
-## The Frontier in Greedy and Beam Search 🟡
+## The Frontier in Greedy and Beam Search <span class="lv lv2"></span>
 
 - The frontier pattern extends beyond graph traversal. Greedy algorithms and beam search are also frontier-based — they just have different selection and pruning rules
 

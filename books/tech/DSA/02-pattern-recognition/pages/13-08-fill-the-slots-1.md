@@ -1,4 +1,4 @@
-## Fill the Slots 🟡
+## Fill the Slots <span class="lv lv2"></span>
 
 - **What it is:** Permutation-style problems fill positions one at a time: for slot `k`, try every item that is still available, recurse into slot `k + 1`, then give the item back. A `used[]` array (or swapping into place) tracks availability. With duplicate items, skip an item equal to its left neighbour *if that neighbour is not currently used*
 - **Signal:** "all permutations", "all unique permutations", "letter combinations of a phone number", "generate valid parentheses", "all arrangements"

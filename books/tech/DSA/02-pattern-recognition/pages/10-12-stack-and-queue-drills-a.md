@@ -1,4 +1,4 @@
-## Recognition drills: Stacks & Queues 🟢
+## Recognition drills: Stacks & Queues <span class="lv lv1"></span>
 
 Hide the right column. Say what the top of the stack (or the front of the queue) *means*, and what event removes it.
 

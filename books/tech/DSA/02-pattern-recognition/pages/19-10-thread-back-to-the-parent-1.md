@@ -1,4 +1,4 @@
-## Thread Back to the Parent 🔴
+## Thread Back to the Parent <span class="lv lv3"></span>
 
 - **What it is:** **Morris traversal.** An in-order walk with O(1) extra space. Before descending left from `cur`, point the null right pointer of `cur`'s in-order predecessor back at `cur`. That temporary **thread** replaces the stack frame that would have remembered the way back
 - **Signal:** "O(1) extra space" on a binary tree walk: Median of BST (GFG), the follow-up to Recover BST (LeetCode 99); Kth Smallest (LeetCode 230) when asked for O(1) space

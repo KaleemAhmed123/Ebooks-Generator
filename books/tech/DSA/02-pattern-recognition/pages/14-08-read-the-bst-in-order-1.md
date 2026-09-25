@@ -1,4 +1,4 @@
-## Read the BST in Order 🟢
+## Read the BST in Order <span class="lv lv1"></span>
 
 - **What it is:** An in-order walk of a binary search tree yields its values in sorted order. Turn that walk into an *iterator* with an explicit stack (push the left spine, pop, then push the left spine of the right child) and every "sorted array" trick works on the tree, pausing whenever you like
 - **Signal:** "k-th smallest in a BST", "BST iterator with next() and hasNext()", "two-sum in a BST", "count pairs from two BSTs with sum x", "recover a BST where two nodes were swapped", "minimum difference between any two nodes"

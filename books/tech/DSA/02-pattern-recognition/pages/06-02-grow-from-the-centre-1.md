@@ -1,4 +1,4 @@
-## Grow from the Centre 🟢
+## Grow from the Centre <span class="lv lv1"></span>
 
 - **What it is:** Every palindrome has a centre: a character (odd length) or a gap between two characters (even length). Try all 2n − 1 centres and expand outward while the two ends match
 - **Signal:** "longest palindromic substring", "count palindromic substrings", "is it a palindrome after removing one character", anything about *contiguous* palindromes

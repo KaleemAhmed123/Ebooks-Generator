@@ -1,6 +1,6 @@
 # Chapter 18 - Patterns Nobody Named
 
-## Why unnamed patterns matter 🟡
+## Why unnamed patterns matter <span class="lv lv2"></span>
 
 - Every technique in Chapters 2–17 has a LeetCode tag. Sliding Window. Binary Search. Heap. You can study them by name
 - But there are structural patterns that appear across multiple techniques and have never been given a consistent name. They connect algorithms that look completely different on the surface

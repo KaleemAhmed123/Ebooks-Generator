@@ -1,4 +1,4 @@
-## Flood From the Border 🟡 - continued
+## Flood From the Border <span class="lv lv2"></span> - continued
 
 :::mint
 <svg viewBox="0 0 470 132" role="img" aria-label="Surrounded Regions. Left: a 4 by 4 board with O cells at row 1 columns 1 and 2, row 2 column 2, and row 3 column 1 on the bottom edge. The flood starts from border O cells only, so it marks the bottom-edge O as safe. Right: the result, where the three interior O cells became X and the bottom-edge O remains." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">

@@ -1,4 +1,4 @@
-## Reverse to Rotate 🟢
+## Reverse to Rotate <span class="lv lv1"></span>
 
 - **What it is:** A rotation is three reversals. Reverse the whole array, then reverse each of the two parts. No buffer, each element moves twice
 - **Signal:** "rotate the array right by k in place", "reverse the order of words", "rotate the string", "cyclically shift"

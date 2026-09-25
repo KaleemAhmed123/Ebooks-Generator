@@ -1,4 +1,4 @@
-## Two Passes, Left and Right 🟢
+## Two Passes, Left and Right <span class="lv lv1"></span>
 
 - **What it is:** When the answer at `i` depends on something to its left *and* something to its right, compute each side in its own pass and combine them per index. Two O(n) passes replace an O(n) scan per index
 - **Signal:** "water trapped above each bar", "product of all other elements", "each child must beat both neighbours", "longest increasing-then-decreasing run", "index where left sum equals right sum"

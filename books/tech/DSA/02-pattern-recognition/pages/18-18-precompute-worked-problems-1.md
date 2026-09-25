@@ -1,4 +1,4 @@
-## Precompute worked problems 🟡
+## Precompute worked problems <span class="lv lv2"></span>
 
 ### Problem 1: Subarray Sum Equals K
 

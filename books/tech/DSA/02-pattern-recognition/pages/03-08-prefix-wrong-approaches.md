@@ -1,4 +1,4 @@
-## The wrong approach: Prefix & Range Sums 🟢
+## The wrong approach: Prefix & Range Sums <span class="lv lv1"></span>
 
 - **Naive idea:** Iterating from L to R to calculate the sum, or iterating from L to R to add a value.
 - **Why it looks right:** It answers a single query correctly.

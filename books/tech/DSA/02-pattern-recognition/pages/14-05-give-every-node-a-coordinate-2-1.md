@@ -1,4 +1,4 @@
-## Give Every Node a Coordinate 🟡 - continued
+## Give Every Node a Coordinate <span class="lv lv2"></span> - continued
 
 ```ts
 // Vertical Order Traversal of a Binary Tree (LeetCode 987)

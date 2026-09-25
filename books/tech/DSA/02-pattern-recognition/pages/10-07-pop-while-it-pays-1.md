@@ -1,4 +1,4 @@
-## Pop While It Pays 🟡
+## Pop While It Pays <span class="lv lv2"></span>
 
 - **What it is:** A monotonic stack with a *budget*. To build the smallest (or largest) sequence you can, pop the top whenever the newcomer is better *and* you can still afford to lose the top. Stop popping when the budget runs out or the top is already better
 - **Signal:** "remove k digits to make the smallest number", "smallest subsequence containing each letter once", "most competitive subsequence of length k", lexicographically smallest/largest with deletions

@@ -1,4 +1,4 @@
-## Peel the Layers 🟢
+## Peel the Layers <span class="lv lv1"></span>
 
 - **What it is:** Treat a matrix as nested rings. Keep four boundaries (`top`, `bottom`, `left`, `right`), walk one side, then pull that boundary inward. Rotations use the same ring view, or its shortcut: two reflections
 - **Signal:** "return the elements in spiral order", "fill an n×n matrix in spiral order", "rotate the image 90° in place", "print the boundary", "rotate each ring by k"

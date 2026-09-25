@@ -3,7 +3,7 @@
 - **Maximum Subarray Sum with One Deletion (LeetCode 1186):** two states per index: `keep` (no deletion yet) and `del` (one element deleted). `del = max(del + x, keep_prev)`, `keep = max(x, keep_prev + x)`. The extra flag is the whole trick
 - **Maximize sum by flipping the sign of one subarray (GFG):** flipping `[l, r]` changes the total by `−2 · sum(l..r)`. Run plain Kadane on `−2 · a[i]` to find the best gain; answer = `total + max(0, gain)`
 - **Maximum Sum Circular Subarray (LeetCode 918):** carry the worst subarray too, and flip the target (page 02-06)
-- **Substring with Largest Variance (LeetCode 2272) 🟡:** for each ordered pair of letters (`hi`, `lo`), map `hi → +1`, `lo → −1`, others → 0, and run Kadane. The catch: a window must contain at least one `lo`, so carry a "seen `lo`" flag and allow a restart only when a later `lo` can still arrive. 26 × 25 pairs × n steps
+- **Substring with Largest Variance (LeetCode 2272) <span class="lv lv2"></span>:** for each ordered pair of letters (`hi`, `lo`), map `hi → +1`, `lo → −1`, others → 0, and run Kadane. The catch: a window must contain at least one `lo`, so carry a "seen `lo`" flag and allow a restart only when a later `lo` can still arrive. 26 × 25 pairs × n steps
 
 ### The failure
 

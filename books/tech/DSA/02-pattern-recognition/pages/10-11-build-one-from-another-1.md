@@ -1,4 +1,4 @@
-## Build One from Another 🟢
+## Build One from Another <span class="lv lv1"></span>
 
 - **What it is:** Design questions that ask for a structure with a new guarantee, built only from simpler ones: a queue from two stacks, a stack that knows its minimum, a cache that evicts the least recently used key in O(1). The trick is always to pair each structure with the one invariant it cannot keep by itself
 - **Signal:** "implement a queue using stacks", "min stack", "LRU cache", "insert, delete and getRandom in O(1)", "two stacks in one array", "circular queue"

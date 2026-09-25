@@ -1,4 +1,4 @@
-## Recognition drills: Strings 🟢
+## Recognition drills: Strings <span class="lv lv1"></span>
 
 Most string problems are another chapter's pattern wearing text. Hide the right column and route each one: which chapter owns it, and what the string-specific twist is.
 

@@ -1,4 +1,4 @@
-## Pair the Extremes 🟢
+## Pair the Extremes <span class="lv lv1"></span>
 
 - **What it is:** Sort, then decide pairings from the two ends: the largest item with the smallest, or the first X with the last Y. The ends are where the extreme cases live, and extreme cases decide the answer
 - **Signal:** "each boat carries at most two people", "minimise the maximum pair sum", "maximum product of three numbers", "buy one, get the k most expensive free", "assign each mouse a hole"

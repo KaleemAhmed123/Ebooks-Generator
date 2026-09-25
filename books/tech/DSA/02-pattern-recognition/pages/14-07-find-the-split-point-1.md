@@ -1,4 +1,4 @@
-## Find the Split Point 🟡
+## Find the Split Point <span class="lv lv2"></span>
 
 - **What it is:** The lowest common ancestor (LCA) of `p` and `q` is the deepest node that has both below it (a node counts as below itself): the point where their root paths split. Recursively, each call reports "did I find p or q down here?"; the first node that hears *yes* from both sides, or is one of them itself with the other below, is the split point
 - **Signal:** "lowest common ancestor", "distance between two nodes", "shortest path between two nodes in a tree", "directions from one node to another", "LCA of the deepest leaves"

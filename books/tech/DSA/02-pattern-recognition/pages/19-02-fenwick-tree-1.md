@@ -1,4 +1,4 @@
-## Fenwick Tree (Binary Indexed Tree) 🔴
+## Fenwick Tree (Binary Indexed Tree) <span class="lv lv3"></span>
 
 - Prefix Sums are O(1) to query but O(N) to update. If you need to update values in a dynamic array and query prefix sums, you need a Fenwick Tree
 - It provides **O(log N) point updates** and **O(log N) prefix queries**

@@ -1,4 +1,4 @@
-## Assume the Opponent Is Perfect 🟡
+## Assume the Opponent Is Perfect <span class="lv lv2"></span>
 
 - **What it is:** **Minimax DP** for two-player, zero-sum, perfect-information games. Store one number per position: the **score lead of the player about to move**. Your move is worth what you gain minus the opponent's best lead from the position you leave them
 - **Signal:** "two players take turns", "both play optimally", "predict whether player 1 wins", "maximum amount the first player can collect"

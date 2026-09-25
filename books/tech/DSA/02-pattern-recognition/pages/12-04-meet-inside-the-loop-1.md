@@ -1,4 +1,4 @@
-## Meet Inside the Loop 🟡
+## Meet Inside the Loop <span class="lv lv2"></span>
 
 - **What it is:** Floyd's cycle method has a second phase. After slow (1 step) and fast (2 steps) meet inside the cycle, restart one pointer from the head and move both one step at a time. They meet again exactly at the node where the cycle begins
 - **Signal:** "return the node where the cycle begins", "length of the loop", "remove the loop", "find the duplicate in `[1..n]` without modifying the array and in O(1) space", "happy number"

@@ -1,4 +1,4 @@
-## Keep It Sorted as You Go 🟡 - continued
+## Keep It Sorted as You Go <span class="lv lv2"></span> - continued
 
 ```ts
 // Min Abs Difference Between Elements With Constraint (LC 2817)

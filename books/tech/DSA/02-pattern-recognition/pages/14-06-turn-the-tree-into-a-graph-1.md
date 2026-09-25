@@ -1,4 +1,4 @@
-## Turn the Tree into a Graph 🟡
+## Turn the Tree into a Graph <span class="lv lv2"></span>
 
 - **What it is:** When the question starts at an arbitrary node and spreads in *every* direction (down to children and up to the parent), a tree's one-way `left`/`right` pointers are not enough. Record every node's parent in one pass, then run a plain BFS over three neighbours: left, right, parent
 - **Signal:** "all nodes at distance k from a target node", "minimum time to burn the tree from a given node", "amount of time for the infection to spread", "k-th ancestor", "left, right and up"

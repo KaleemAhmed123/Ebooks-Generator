@@ -1,4 +1,4 @@
-## Recognition drills: Unnamed Patterns 🟡 - continued
+## Recognition drills: Unnamed Patterns <span class="lv lv2"></span> - continued
 
 | Problem | Unnamed Pattern & Justification |
 |---|---|

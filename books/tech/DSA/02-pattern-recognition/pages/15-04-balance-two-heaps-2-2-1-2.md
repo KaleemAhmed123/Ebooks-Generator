@@ -1,4 +1,4 @@
-## Balance Two Heaps 🟡 - continued
+## Balance Two Heaps <span class="lv lv2"></span> - continued
 
 ```ts
 // Find Median from Data Stream (LeetCode 295)

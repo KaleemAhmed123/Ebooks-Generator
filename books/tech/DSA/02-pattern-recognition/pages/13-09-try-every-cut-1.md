@@ -1,4 +1,4 @@
-## Try Every Cut 🟡
+## Try Every Cut <span class="lv lv2"></span>
 
 - **What it is:** For "split the string into valid pieces", decide the *first* piece: try every end position `j` for a piece starting at `start`, keep it if it is valid, and recurse on the rest from `j + 1`. A variant cuts an *expression* at every operator and combines the results of both sides
 - **Signal:** "partition s so every substring is a palindrome", "restore IP addresses", "insert spaces to form dictionary words", "all ways to add parentheses", "split into a Fibonacci-like sequence"

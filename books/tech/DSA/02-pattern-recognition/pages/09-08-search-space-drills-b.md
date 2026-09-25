@@ -1,4 +1,4 @@
-## Recognition drills: Search Space, named problems 🟢 - continued
+## Recognition drills: Search Space, named problems <span class="lv lv1"></span> - continued
 
 | Problem | What is searched & the predicate |
 |---|---|
@@ -11,8 +11,8 @@
 | 18. Find K-th Smallest Pair Distance (LeetCode 719) | **Value;** count pairs `≤ d` with two pointers |
 | 19. Bishu and Soldiers (HackerEarth) | **Sort + prefix sums;** upper bound per query gives count and sum |
 | 20. Search in a sorted array of unknown size | **Exponential search** for `hi`, then ordinary binary search |
-| 21. K-th element of two sorted arrays (GFG) 🟡 | **Partition point** `i` in A (with `k − i` from B): valid when both cross-pairs are ordered |
-| 22. Median of Two Sorted Arrays (LeetCode 4) 🔴 | **Partition point** of the shorter array; O(log min(n, m)) |
+| 21. K-th element of two sorted arrays (GFG) <span class="lv lv2"></span> | **Partition point** `i` in A (with `k − i` from B): valid when both cross-pairs are ordered |
+| 22. Median of Two Sorted Arrays (LeetCode 4) <span class="lv lv3"></span> | **Partition point** of the shorter array; O(log min(n, m)) |
 | 23. Minimum Absolute Difference Between Elements With Constraint (LeetCode 2817) | **Not halving an array:** keep the allowed elements sorted as you go and bisect (15-07) |
 
 ### Score yourself

@@ -1,4 +1,4 @@
-## Count Each Element's Reach 🟡
+## Count Each Element's Reach <span class="lv lv2"></span>
 
 - **What it is:** The contribution technique. Instead of visiting every subarray, ask of each element: *in how many subarrays am I the minimum?* If it can extend `L` steps left and `R` steps right before a smaller value blocks it, it is the minimum of exactly `L · R` subarrays and contributes `a[i] · L · R`
 - **Signal:** "sum of the minimum (or maximum) of every subarray", "sum of subarray ranges", "maximum of the minimum for every window size", n up to 3 · 10⁴ or more so O(n²) subarrays is too slow

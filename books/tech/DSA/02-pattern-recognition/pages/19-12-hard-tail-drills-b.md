@@ -1,4 +1,4 @@
-## Recognition drills: The Hard Tail 🔴 - continued
+## Recognition drills: The Hard Tail <span class="lv lv3"></span> - continued
 
 | Problem | Structure · reason |
 |---|---|

@@ -1,4 +1,4 @@
-## Recognition drills: Search Space 🟢 - continued
+## Recognition drills: Search Space <span class="lv lv1"></span> - continued
 
 | Problem | Search Pattern & Justification |
 |---|---|

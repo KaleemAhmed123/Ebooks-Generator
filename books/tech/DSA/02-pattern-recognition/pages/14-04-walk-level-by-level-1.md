@@ -1,4 +1,4 @@
-## Walk Level by Level 🟢
+## Walk Level by Level <span class="lv lv1"></span>
 
 - **What it is:** Breadth-first search with a snapshot: before processing a level, read `size = queue.length`, then pop exactly `size` nodes. Everything asked "per level" (the rightmost node, the average, the order, the width) is computed inside that inner loop
 - **Signal:** "right side view", "left view", "zig-zag level order", "maximum width of a level", "average of each level", "is the tree complete", "are all levels anagrams of each other"

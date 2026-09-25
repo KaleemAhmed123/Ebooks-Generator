@@ -1,4 +1,4 @@
-## The Frontier in BFS and Dijkstra 🟡
+## The Frontier in BFS and Dijkstra <span class="lv lv2"></span>
 
 - BFS and Dijkstra look different in textbooks but share identical structure. The only difference is how they select the next candidate from the frontier
 

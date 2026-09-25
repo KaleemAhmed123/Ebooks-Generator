@@ -1,4 +1,4 @@
-## Monotonic Stack as Elimination 🟡
+## Monotonic Stack as Elimination <span class="lv lv2"></span>
 
 - The monotonic stack is the most common instantiation of dominated candidate elimination. Each stack pop is a *proof of domination*, not just a mechanical step
 

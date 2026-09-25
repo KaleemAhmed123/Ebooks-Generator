@@ -1,4 +1,4 @@
-## Greedy via Sorting 🟢
+## Greedy via Sorting <span class="lv lv1"></span>
 
 - **What it is:** Sorting the input data so that the locally optimal choice is always at the front of the array
 - **When to reach for it:** "Minimum number of platforms required", "Maximum number of activities you can attend", "Assign cookies to children to satisfy the maximum number"

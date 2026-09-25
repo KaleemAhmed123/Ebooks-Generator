@@ -1,4 +1,4 @@
-## Recognition drills: Trees 🟢 - continued
+## Recognition drills: Trees <span class="lv lv1"></span> - continued
 
 | Problem | Direction & move |
 |---|---|

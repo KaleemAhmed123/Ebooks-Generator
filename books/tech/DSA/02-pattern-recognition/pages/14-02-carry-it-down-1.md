@@ -1,4 +1,4 @@
-## Carry It Down 🟢
+## Carry It Down <span class="lv lv1"></span>
 
 - **What it is:** When a node's answer depends on its ancestors, handle the node with what the parent passed in, then call the children with an updated copy. The path from the root is summarised in a few parameters: the maximum so far, the running sum, the allowed range
 - **Signal:** "good nodes" (no ancestor is larger), "root-to-leaf path with sum", "numbers formed by root-to-leaf paths", "maximum difference between a node and an ancestor", "valid BST range", "count paths with sum k that go downward"

@@ -1,4 +1,4 @@
-## Restart When You Go Broke 🟡
+## Restart When You Go Broke <span class="lv lv2"></span>
 
 - **What it is:** For a circular route with gains and costs, drive once. Whenever the running tank goes negative at station `i`, no start at or before `i` can work, so restart at `i + 1` with an empty tank. If the total gain covers the total cost, the last restart point is the answer
 - **Signal:** "gas station", "circular tour that visits all petrol pumps", "find the starting index", "each step adds `gas[i] − cost[i]`"

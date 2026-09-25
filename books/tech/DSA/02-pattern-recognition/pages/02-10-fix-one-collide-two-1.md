@@ -1,4 +1,4 @@
-## Fix One, Collide Two 🟢
+## Fix One, Collide Two <span class="lv lv1"></span>
 
 - **What it is:** For triplets (or k-tuples) on sorted data, fix the first element with a loop and run collision two pointers (page 02-08) on the rest. k-Sum (k ≥ 3) costs O(n^(k−1)), one power below brute force
 - **Signal:** "find all unique triplets summing to 0", "closest sum to target", "count triplets with sum < X", "how many triangles can be formed"

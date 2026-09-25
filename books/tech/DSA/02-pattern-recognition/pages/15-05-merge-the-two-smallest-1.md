@@ -1,4 +1,4 @@
-## Merge the Two Smallest 🟡
+## Merge the Two Smallest <span class="lv lv2"></span>
 
 - **What it is:** When items are combined two at a time and each combination costs the sum of what is combined, always combine the two *cheapest* items available, then put the result back. A min-heap keeps "the two cheapest" ready after every merge
 - **Signal:** "connect n ropes with minimum cost", "Huffman coding", "minimum cost to connect sticks", "repeatedly take the largest (or smallest) and put something back", "smash the two heaviest stones"

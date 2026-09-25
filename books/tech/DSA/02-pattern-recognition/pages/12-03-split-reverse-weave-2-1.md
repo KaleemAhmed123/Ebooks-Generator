@@ -1,4 +1,4 @@
-## Split, Reverse, Weave 🟡 - continued
+## Split, Reverse, Weave <span class="lv lv2"></span> - continued
 
 :::mint
 <svg viewBox="0 0 470 118" role="img" aria-label="Reorder list 1, 2, 3, 4, 5. Slow and fast find the middle 3. Cut after 3: first half 1, 2, 3 and second half 4, 5. Reverse the second half to 5, 4. Weave: 1, 5, 2, 4, 3." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">

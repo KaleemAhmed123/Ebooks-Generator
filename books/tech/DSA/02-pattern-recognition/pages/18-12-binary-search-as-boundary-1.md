@@ -1,4 +1,4 @@
-## Binary Search as Boundary Finding 🟡
+## Binary Search as Boundary Finding <span class="lv lv2"></span>
 
 - Binary Search is often taught as "look in the middle, if it's too big, look left, else look right." This is mechanically true but conceptually weak
 - The stronger mental model is: **Binary Search finds the boundary between two states in a monotonic sequence**
