@@ -13,7 +13,7 @@ Phrases from real statements, each mapped to the pattern that owns it. Read the 
 | "best pair i < j", "buy then sell" | **Best partner so far** | 03-05 |
 | "maximum subarray", "maximum product" | **Drop the baggage** | 03-06 |
 | "values 1..n", "missing / duplicate", O(1) space | **Send each value home** | 04-02 |
-| "next permutation", "next greater number" | **Find the dip** | 04-04 |
+| "next permutation", "next greater number with the same digits" | **Find the dip** | 04-04 |
 | "more than n / 2 times" | **Vote and cancel** | 04-05 |
 | "circular array" | **Wrap around** | 04-06 |
 | "group anagrams", "same pattern" | **Signature key** | 06-01 · 06-03 |

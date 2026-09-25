@@ -35,7 +35,7 @@
   <text x="135" y="135" class="p">→ 10-05 · 10-08</text>
   <rect x="300" y="110" width="164" height="30" rx="4" fill="#ffffff" stroke="#2d6a4f" stroke-width="0.9"/>
   <text x="307" y="122" class="s">top k · median · merge k</text>
-  <text x="307" y="135" class="p">→ 15-03 · 15-04</text>
+  <text x="307" y="135" class="p">→ 15-01 · 15-03 · 15-04</text>
   <rect x="128" y="145" width="164" height="30" rx="4" fill="#ffffff" stroke="#2d6a4f" stroke-width="0.9"/>
   <text x="135" y="157" class="s">min of max · max of min</text>
   <text x="135" y="170" class="p">→ 09-02</text>
@@ -47,7 +47,7 @@
   <line x1="110" y1="200" x2="124" y2="200" stroke="#1d4e89" stroke-width="1" marker-end="url(#m0104)"/>
   <rect x="128" y="185" width="164" height="30" rx="4" fill="#ffffff" stroke="#1d4e89" stroke-width="0.9"/>
   <text x="135" y="197" class="s">rotate · spiral · diagonals</text>
-  <text x="135" y="210" class="p">→ 05-01 → 05-04</text>
+  <text x="135" y="210" class="p">→ 05-01 · 05-02</text>
   <rect x="300" y="185" width="164" height="30" rx="4" fill="#ffffff" stroke="#1d4e89" stroke-width="0.9"/>
   <text x="307" y="197" class="s">regions · fewest steps</text>
   <text x="307" y="210" class="p">→ 16-03 · Module 05</text>
@@ -74,7 +74,7 @@
   <line x1="110" y1="320" x2="124" y2="320" stroke="#1d4e89" stroke-width="1" marker-end="url(#m0104)"/>
   <rect x="128" y="305" width="164" height="30" rx="4" fill="#ffffff" stroke="#1d4e89" stroke-width="0.9"/>
   <text x="135" y="317" class="s">connected · groups · steps</text>
-  <text x="135" y="330" class="p">→ 16-02 · 16-03</text>
+  <text x="135" y="330" class="p">→ 16-02 · 16-03 · Module 05</text>
   <rect x="300" y="305" width="164" height="30" rx="4" fill="#ffffff" stroke="#1d4e89" stroke-width="0.9"/>
   <text x="307" y="317" class="s">X must come before Y</text>
   <text x="307" y="330" class="p">→ 16-04</text>

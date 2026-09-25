@@ -12,3 +12,4 @@
 - **Dummy Head:** A throwaway node placed before a list's first node so the first node also has a predecessor.
 - **Dutch National Flag:** A one-pass, three-region partition using low, mid and high pointers.
 - **Dynamic Programming (DP):** An optimization over plain recursion that caches the results of overlapping subproblems to prevent redundant calculations.
+- **Dominated Candidate:** A candidate that another candidate beats or ties on every dimension that can ever matter, so it can be discarded for good.
