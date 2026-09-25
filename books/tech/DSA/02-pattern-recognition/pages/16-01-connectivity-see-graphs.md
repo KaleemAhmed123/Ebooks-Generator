@@ -23,5 +23,5 @@
 
 - **16-02 Find the hidden edge:** the statement never says "edge"; a shared attribute, a range or a ratio does
 - **16-03 Flood from the border:** enclosed regions, answered by flooding what is *not* enclosed
-- **16-04 to 16-08 Dependency:** "X before Y" becomes a DAG; order it, then run DP along the order
+- **16-04 Dependency:** "X before Y" becomes a DAG; order it, then run DP along the order (worked in Module 05)
 - **16-09 Drills:** 41 named problems, each reduced to node, edge and move

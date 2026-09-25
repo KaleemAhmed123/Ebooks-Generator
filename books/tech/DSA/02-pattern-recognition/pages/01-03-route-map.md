@@ -4,7 +4,7 @@
 - Pattern pages follow one shape: what it is → signal → why it works → diagram → template → variations → the failure → interview answer. Every chapter ends in a drills page of named problems
 
 :::mint
-<svg viewBox="0 0 470 252" role="img" aria-label="Route map of the booklet. Part A, linear, chapters 2 to 11: Windows and Pointers, Prefix and Running State, In-place and Index Tricks, Grids and Matrices, Strings, Order and Intervals, Greedy Moves, Search Space, Stacks and Queues, Bits. Part B, non-linear, chapters 12 to 17: Linked Lists, Recursion and Backtracking, Trees, Heaps and Ordered Sets, Graphs and Dependency, DP and Games. Part C, chapter 18, Patterns Nobody Named. Part D, chapter 19, Hard Range Structures and CP Tricks." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
+<svg viewBox="0 0 470 252" role="img" aria-label="Route map of the booklet. Part A, linear, chapters 2 to 11: Windows and Pointers, Prefix and Running State, In-place and Index Tricks, Grids and Matrices, Strings, Order and Intervals, Greedy Moves, Search Space, Stacks and Queues, Bits. Part B, non-linear, chapters 12 to 17: Linked Lists, Recursion and Backtracking, Trees, Heaps and Ordered Sets, Graphs and Dependency, DP and Games. Part C, chapter 18, Patterns Nobody Named. Part D, chapter 19, Hard Range Structures and Rare Tricks." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
   <style>
     .hd { font: bold 9px Georgia, serif; fill: #1d4e89; }
     .lb { font: 8px Georgia, serif; fill: #1a1a1a; }
@@ -37,7 +37,7 @@
   <line x1="235" y1="186" x2="235" y2="200" stroke="#6b6b6b" marker-end="url(#m0103)"/>
   <text x="6" y="212" class="hd">C · Lens (Ch 18)</text><text x="240" y="212" class="hd">D · Hard, rarely asked (Ch 19)</text>
   <rect class="c" x="6" y="218" width="226" height="30" rx="3"/><text x="11" y="229" class="n">18</text><text x="11" y="241" class="lb">Patterns Nobody Named</text>
-  <rect class="d" x="240" y="218" width="224" height="30" rx="3"/><text x="245" y="229" class="n">19</text><text x="245" y="241" class="lb">Range Structures &amp; CP Tricks</text>
+  <rect class="d" x="240" y="218" width="224" height="30" rx="3"/><text x="245" y="229" class="n">19</text><text x="245" y="241" class="lb">Range Structures &amp; Rare Tricks</text>
 </svg>
 :::
 

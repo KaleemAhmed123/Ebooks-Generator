@@ -1,19 +1,26 @@
 ## The Dependency Family <span class="lv lv1"></span>
 
-- **What it is:** Problems where actions must be performed in a specific order because one action unlocks another
-- **The signal:** "Prerequisites", "Course schedule", "Build system", "Shortest path in a DAG", "Longest path"
-- **The mechanism:** Representing the problem as a Directed Acyclic Graph (DAG) and processing nodes in an order that respects the directed edges. We can only process a node when all its prerequisites (incoming edges) have been resolved
+- **What it is:** One action unlocks another, so the work forms a **DAG** (directed graph with no cycle). The answer is an order that respects every edge, or a value computed along that order
+- **Signal:** "prerequisites", "course schedule", "build order", "X must finish before Y", "minimum time if independent tasks run in parallel", "alien dictionary"
+- **Why it works:** A node with no unfinished prerequisite (in-degree 0) is always safe to process next. Processing it can only lower its neighbours' in-degrees, so the frontier never gets stuck unless a cycle exists
 
-### The core techniques
+### Where each question is worked
 
-| Technique | When to use | What it exploits |
+| Question | Move | Read |
 |---|---|---|
-| **Topological Sort (Kahn's)** | "Can you finish all courses?", "Valid build order" | Peeling away nodes with zero in-degree iteratively |
-| **DAG Dynamic Programming** | "Longest path in a DAG", "Number of ways to reach X" | State transitions flow perfectly along the topological order |
-| **Critical Path Method** | "Minimum time to finish all parallel tasks" | The longest path through dependencies determines the minimum time |
+| Valid order? Any cycle? | Kahn's queue; fewer than n nodes output means a cycle | Module 05, 06-01 |
+| Order by recursion | Post-order DFS, reversed | Module 05, 06-02 |
+| Longest / counted paths | DP in topological order | Module 05, 06-03 |
+| Minimum time with parallel tasks | Critical path, below | this page |
 
-### The structural requirement: Acyclicity
+### Critical path in one line
 
-- For a dependency chain to be resolvable, the graph **must not contain a cycle**. If Course A requires Course B, and Course B requires Course A, neither can ever be taken
-- A Directed Acyclic Graph (DAG) is the mathematical structure that underpins all dependency logic. The absence of cycles guarantees that there is at least one valid linear ordering of the nodes (a Topological Sort)
-- Many dependency problems secretly ask you to detect cycles. "Is this course schedule valid?" translates directly to: "Does this directed graph contain a cycle?"
+- **Parallel Courses III (LeetCode 2050):** in Kahn order, `finish[v] = time[v] + max(finish[u])` over prerequisites u; the answer is the largest `finish`. With unit times (Parallel Courses, LeetCode 1136) it is the number of Kahn levels. The longest chain of dependencies, not the number of tasks, sets the finish time
+
+### The failure
+
+- **A two-state `visited` set for cycle detection in a directed graph.** `A → B → D` and `A → C → D` reach D twice without any cycle. A cycle exists only when DFS meets a node that is still *on the current path*: use three states (unvisited, on path, done), or Kahn's count
+
+:::interview
+"How do you find the minimum time to finish tasks with prerequisites, running in parallel?" — The tasks form a DAG. I process them in Kahn order and set each task's finish time to its duration plus the latest finish among its prerequisites. The answer is the maximum finish: the critical path. O(V + E).
+:::
