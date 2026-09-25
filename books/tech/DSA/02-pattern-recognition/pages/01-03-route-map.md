@@ -1,7 +1,8 @@
 ## Route map <span class="lv lv1"></span>
 
-- The chapters run from linear data to non-linear, and from common to rare. Read Parts A and B in order; C is a lens over everything before it; D is for hard rounds and contests
+- Chapters run from linear to non-linear data and from common to rare: read A and B in order; C is a lens over both; D is for hard rounds
 - Pattern pages follow one shape: what it is → signal → why it works → diagram → template → variations → the failure → interview answer. Every chapter ends in a drills page of named problems
+- **New problem?** Start with the chart (01-04) and the keyword index (01-05)
 
 :::mint
 <svg viewBox="0 0 470 252" role="img" aria-label="Route map of the booklet. Part A, linear, chapters 2 to 11: Windows and Pointers, Prefix and Running State, In-place and Index Tricks, Grids and Matrices, Strings, Order and Intervals, Greedy Moves, Search Space, Stacks and Queues, Bits. Part B, non-linear, chapters 12 to 17: Linked Lists, Recursion and Backtracking, Trees, Heaps and Ordered Sets, Graphs and Dependency, DP and Games. Part C, chapter 18, Patterns Nobody Named. Part D, chapter 19, Hard Range Structures and Rare Tricks." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">

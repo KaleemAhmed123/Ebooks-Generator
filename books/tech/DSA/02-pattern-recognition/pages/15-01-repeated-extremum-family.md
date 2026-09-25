@@ -3,8 +3,8 @@
 ## The Repeated Extremum Family <span class="lv lv1"></span>
 
 - **What it is:** The problem requires you to find the maximum, minimum, or "best" element, and it asks you to do this repeatedly as the data changes
-- **The signal:** "Top K", "Merge K", "Kth largest", "Running median", "Max in sliding window", "Next greater element"
-- **The mechanism:** Scanning an array for the max takes O(n). Doing it k times takes O(k · n). You must trade space for a data structure that maintains the extremum internally, allowing O(1) or O(log n) retrieval
+- **Signal:** "Top K", "Merge K", "Kth largest", "Running median", "Max in sliding window", "Next greater element"
+- **Why it works:** Scanning an array for the max takes O(n). Doing it k times takes O(k · n). You must trade space for a data structure that maintains the extremum internally, allowing O(1) or O(log n) retrieval
 
 ### The core techniques
 

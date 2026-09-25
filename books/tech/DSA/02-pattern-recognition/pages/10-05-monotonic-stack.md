@@ -1,0 +1,75 @@
+## Monotonic Stack <span class="lv lv1"></span>
+
+- **What it is:** A stack that maintains its elements in a strictly increasing or decreasing order. Every push that would break the order causes elements to be popped first
+- **Signal:** "Next greater element", "Next smaller element", "Daily temperatures", "Largest rectangle in histogram"
+- **Why it works:** It acts as a memory of elements waiting for a specific event. A larger element arriving renders all previous smaller elements useless, allowing us to permanently eliminate them
+
+### The visual mechanism
+
+- We want to find the next greater element for `[2, 1, 5, 3]`
+
+:::mint
+<svg viewBox="0 0 470 140" role="img" aria-label="Monotonic stack processing [2, 1, 5, 3]. 2 goes in. 1 goes in (smaller). 5 arrives, pops 1 (5 is next greater), pops 2 (5 is next greater), then 5 goes in. 3 goes in." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
+  <style>
+    .lb { font: 9.5px Consolas, monospace; fill: #1a1a1a; }
+    .sm { font: 8px Georgia, serif; fill: #6b6b6b; }
+    .bx { fill: #ffffff; stroke: #1a1a1a; stroke-width: 1.1; }
+    .a { stroke: #1a1a1a; stroke-width: 1.1; fill: none; }
+    .hot { stroke: #ef476e; stroke-width: 1.1; fill: none; stroke-dasharray: 2 2;}
+  </style>
+  
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1a1a1a"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#ef476e"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="20" class="lb">Push 2</text>
+  <rect class="bx" x="20" y="80" width="30" height="20" rx="2" />
+  <text x="35" y="94" class="lb" text-anchor="middle">2</text>
+  
+  <text x="90" y="20" class="lb">Push 1</text>
+  <rect class="bx" x="90" y="80" width="30" height="20" rx="2" />
+  <rect class="bx" x="90" y="55" width="30" height="20" rx="2" />
+  <text x="105" y="94" class="lb" text-anchor="middle">2</text>
+  <text x="105" y="69" class="lb" text-anchor="middle">1</text>
+  
+  <text x="180" y="20" class="lb">Process 5</text>
+  <rect class="bx" x="180" y="80" width="30" height="20" rx="2" stroke-dasharray="2 2" />
+  <rect class="bx" x="180" y="55" width="30" height="20" rx="2" stroke-dasharray="2 2" />
+  <text x="195" y="94" class="lb" text-anchor="middle" fill="#6b6b6b">2</text>
+  <text x="195" y="69" class="lb" text-anchor="middle" fill="#6b6b6b">1</text>
+  <text x="240" y="69" class="lb" fill="#ef476e">5 is > 1. Pop 1.</text>
+  <text x="240" y="94" class="lb" fill="#ef476e">5 is > 2. Pop 2.</text>
+  <path class="hot" d="M 210 65 L 235 65" marker-end="url(#arrowRed)" />
+  <path class="hot" d="M 210 90 L 235 90" marker-end="url(#arrowRed)" />
+
+  <text x="350" y="20" class="lb">Push 5, Push 3</text>
+  <rect class="bx" x="350" y="80" width="30" height="20" rx="2" />
+  <rect class="bx" x="350" y="55" width="30" height="20" rx="2" />
+  <text x="365" y="94" class="lb" text-anchor="middle">5</text>
+  <text x="365" y="69" class="lb" text-anchor="middle">3</text>
+</svg>
+:::
+
+### Template and cost
+
+- Indices on the stack, each pushed once and popped at most once: Module 03 (01-06)
+
+### Variations
+
+- **Daily Temperatures (LeetCode 739):** the answer is the distance `i − popped`, which is why the stack holds indices
+- **Next Greater Element II (LeetCode 503):** circular; walk `i` from 0 to `2n − 1` and read `a[i % n]`
+- **Online Stock Span (LeetCode 901):** *previous* greater: after popping, the element left on top is the answer; store spans with the values
+- **Largest Rectangle in Histogram (LeetCode 84):** previous and next *smaller* on each side of every bar (10-09)
+
+### The failure
+
+- **Popping on `>=` when the question says "greater".** Equal values pop each other: on `[2, 2]` the first 2 gets 2 as its "next greater" instead of −1. Match the comparison to the word in the statement
+
+:::interview
+"How do you choose the stack's order?" — For next greater, keep the stack decreasing so an arrival pops everything smaller. For next smaller, keep it increasing. For *previous* greater or smaller, read the top after popping instead of at the pop.
+:::

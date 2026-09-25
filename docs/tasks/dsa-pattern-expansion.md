@@ -155,3 +155,13 @@ Kept here so you can find your own words; the book uses only the right column.
 - 2026-09-25 — moved 53 original pages to the new chapter numbers with `git mv`; removed the 16 stub pages.
 - 2026-09-25 — wrote chapters 2–17 new pages and chapter 19 additions; every TS template extracted and stress-tested against a brute force under Node 22 strip-types.
 - 2026-09-25 — second pass on length: cut pages that repeat Module 01/03/04/05/06/07 or other chapters (Ch 18 to 5 pages; Ch 16 dependency to one pointer page; Ch 19 to a routing chapter; 07-02..07-05, 09-05, 15-02, wrong-approach pages, duplicate drill pages) and rarely asked pages (ordered set, Josephus, invariant, unique prefix, CHT, lazy propagation, meet in the middle, XOR trie). Drill pages trimmed to the most-asked problems, each problem kept in one chapter only. Heap class moved to 15-11. Repeat audit run by four agents against all sibling booklets; findings applied.
+
+## Standing decisions (keep for future sessions)
+
+- Every pattern page uses one format: What it is → Signal → Why it works → diagram → template → Variations → The failure → interview block. Family (chapter-opening) pages use What it is / Signal / Why it works + a routing table + "This chapter".
+- Difficulty is a CSS badge (`<span class="lv lv1|lv2|lv3"></span>`, CORE / STRETCH / HARD), never an emoji; the contents page shows no marker.
+- No repetition: a concept, template or worked problem lives in exactly one place in the series. This booklet points to Modules 01/03/04/05/06/07/08 for mechanics; each drill problem appears in one chapter's drills only.
+- Keep only interview-relevant material; contest-only topics are cut or reduced to a pointer.
+- Front of the book: 01-04 "Read the problem, pick the page" flowchart and 01-05 keyword index — meant to be the most-used pages.
+- Drill tables longer than ~11 rows are split by hand into `-a`/`-b` files (the auto-splitter cannot cut a table); everything else is packed with `node tools/build.mjs 02-pattern-recognition --split`.
+- Pending once network access allows leetcode.com / geeksforgeeks.org / spoj.com: verify every GFG/SPOJ title live and add problem links to the drill rows.

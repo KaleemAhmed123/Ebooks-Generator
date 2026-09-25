@@ -3,8 +3,8 @@
 ## The Search Space Reduction Family <span class="lv lv1"></span>
 
 - **What it is:** Problems where the potential answers form a massive, structured domain, and you can systematically eliminate large portions of that domain without checking them
-- **The signal:** "Find the minimum capacity", "Find the maximum distance", "Search in a 2D matrix"
-- **The mechanism:** In a random space, finding an answer takes O(N) time (you must check everything). In a structured space (like a sorted array, a binary search tree, or a monotonic boolean function), you can check one point and logically conclude that an entire half of the space is invalid. This drops the search time from O(N) to O(log N)
+- **Signal:** "Find the minimum capacity", "Find the maximum distance", "Search in a 2D matrix"
+- **Why it works:** In a random space, finding an answer takes O(N) time (you must check everything). In a structured space (like a sorted array, a binary search tree, or a monotonic boolean function), you can check one point and logically conclude that an entire half of the space is invalid. This drops the search time from O(N) to O(log N)
 
 ### The core techniques
 
