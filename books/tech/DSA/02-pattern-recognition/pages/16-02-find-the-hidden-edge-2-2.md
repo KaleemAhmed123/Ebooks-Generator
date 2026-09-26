@@ -1,7 +1,6 @@
 ### Variations
 
 - **Number of Operations to Make Network Connected (LeetCode 1319):** with at least n − 1 cables, the answer is `components − 1`; fewer cables than n − 1 is impossible
-- **Journey to the Moon (HackerRank):** astronauts from the same country are one component; pairs from different countries = total pairs minus pairs inside each component
 - **Satisfiability of Equality Equations (LeetCode 990):** union every `a==b` first, then any `a!=b` inside one group is a contradiction
 - **Detonate the Maximum Bombs (LeetCode 2101):** the edge is *directed*: A reaches B if B is within A's radius, not necessarily the reverse. Union–find is wrong here; BFS from every bomb, O(n³) for n ≤ 100
 - **Evaluate Division (LeetCode 399):** a weighted edge `a → b` with weight `a / b` and its reverse with `b / a`; a query multiplies weights along any path found by DFS

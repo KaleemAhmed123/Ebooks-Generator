@@ -14,4 +14,4 @@ Hide the right column. Name the node, the edge, and the traversal before you nam
 | 8. Snakes and Ladders (LeetCode 909) | **BFS over squares 1 … n²;** map a square to (row, col) with alternating direction per row |
 | 9. Word Ladder (LeetCode 127) | **BFS;** generate one-letter mutations, never compare word pairs (Module 05, 01-03) |
 | 10. Clone Graph (LeetCode 133) | **DFS with an old → new map;** the map doubles as the visited set |
-| 11. Journey to the Moon (HackerRank) / Number of Operations to Make Network Connected (LeetCode 1319) | **Hidden edge + components** (16-02) |
+| 11. Number of Operations to Make Network Connected (LeetCode 1319) | **Hidden edge + components** (16-02) |

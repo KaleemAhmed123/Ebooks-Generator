@@ -11,7 +11,7 @@
 | 18. Matrix Chain / Boolean Parenthesization / Optimal BST / Palindrome Partitioning II / Minimum Cost to Cut a Stick | **Try every split** (17-05) |
 | 19. Egg Dropping (GFG / LeetCode 887) | **`f(eggs, floors)`** tries every floor; flip it to "floors checkable in m moves" for large n |
 | 20. Buy and sell at most twice / k times (GFG / LeetCode 188) | **Track what you hold** (17-04) |
-| 21. Optimal Strategy for a Game (GFG) / Predict the Winner (LeetCode 486) / Coin game with three choices (GFG) | **Assume the opponent is perfect** (17-06) |
+| 21. Optimal Strategy for a Game (GFG) / Predict the Winner (LeetCode 486) | **Assume the opponent is perfect** (17-06) |
 
 ### Score yourself
 
