@@ -12,13 +12,10 @@ Hide the right column. Name the identity or the per-column count that does the w
 | 6. [Missing Number](https://leetcode.com/problems/missing-number/) (LeetCode 268) | **Cancel:** XOR indices and values |
 | 7. [Single Number III](https://leetcode.com/problems/single-number-iii/) (LeetCode 260) | **Cancel, then split** on `x & −x` |
 | 8. [Single Number II](https://leetcode.com/problems/single-number-ii/) (LeetCode 137) | **Columns:** count mod 3 |
-| 9. [Minimum Flips to Make a OR b Equal to c](https://leetcode.com/problems/minimum-flips-to-make-a-or-b-equal-to-c/) (LeetCode 1318) | **Columns:** per bit, 1 flip if c needs a 1 and both a and b have 0; `a_bit + b_bit` flips if c needs 0 |
-| 10. [Count Set Bits in 1 to n](https://www.geeksforgeeks.org/problems/count-total-set-bits-1587115620/1) (GFG) | **Columns:** full blocks of `2^(b+1)` plus the partial block |
-| 11. [Total Hamming Distance](https://leetcode.com/problems/total-hamming-distance/) (LeetCode 477) | **Columns:** `ones · zeros` per bit |
-| 12. [All Subsequences of String](https://www.geeksforgeeks.org/problems/power-set4302/1) (GFG) | **Masks** `0 .. 2ⁿ − 1` (Module 06, 05-01) |
+| 9. [Total Hamming Distance](https://leetcode.com/problems/total-hamming-distance/) (LeetCode 477) | **Columns:** `ones · zeros` per bit |
 
 ### Score yourself
 
-- **11–12:** you reach for an identity instead of a loop over 32 positions
-- **7–10:** reread 11-02; most misses are per-column counts
-- **0–6:** redo 11-01 and 11-03 by hand in binary
+- **8–9:** you reach for an identity instead of a loop over 32 positions
+- **5–7:** reread 11-02; most misses are per-column counts
+- **0–4:** redo 11-01 and 11-03 by hand in binary

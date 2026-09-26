@@ -207,7 +207,7 @@ Kept here so you can find your own words; the book uses only the right column.
 - [x] 1. Move drafts out of `books/`
 - [x] 2. Hand-split the six drills into `-a`/`-b`; drop the duplicate LC 315 row; re-balance 16-09
 - [x] 3. Cut the four rare rows
-- [ ] 3b. You pick from the too-specific candidates (asked 2026-09-27)
+- [x] 3b. You picked from the too-specific candidates; cut from drills
 - [x] 4. Verify every title live; rename mismatches
 - [x] 5. Add links to every named problem
 - [x] 6. Rebuild, check, commit in small groups
@@ -245,3 +245,13 @@ Kept here so you can find your own words; the book uses only the right column.
   17-07; Power Set (11-04) is the same problem as Subsets LC 78 (13-11).
 - Not in scope, not done: "(GFG)" titles inside non-drill pages (Variations lists)
   are not yet checked against the live site.
+- 2026-09-27 — your picks from the too-specific list, cut from the drills (pattern
+  pages untouched): 0/1 Knapsack from 08-08 (kept in 17-07); Power Set from 11-04
+  (Subsets LC 78 stays in 13-11); Optimal BST, Boolean Parenthesization, Regular
+  Expression Matching, Egg Dropping (17-07); Roman ↔ Integer, Add Binary (06-05);
+  LC 1329, 498 (05-05); LC 1318, set bits in 1..n (11-04); LC 406 (07-12); LC 1005
+  (08-08); lazy-segment "flip bits" row (19-07). Rows renumbered, score ranges reset.
+  Build: 266 pages, 0 overflow; 239 linked rows, no problem linked twice.
+- Still on pattern pages, as examples, awaiting your call: LC 1329 (05-01 template
+  code), LC 498 (05-01), LC 406 (07-09), LC 1318 (11-02), Power Set (11-03),
+  Boolean Parenthesization (17-05).
