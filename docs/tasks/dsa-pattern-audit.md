@@ -222,3 +222,43 @@ revision. Tier 2 items 6–8 close exactly that gap, in print.
 
 - 2026-09-27 — audit run (5 agents), report merged; four regressions from the earlier
   drill work fixed and committed (`bb8e064`, `eca57c2`, `1a291f9`).
+
+---
+
+## Your answers (2026-09-27)
+
+| # | Question | Answer |
+|---|---|---|
+| 1 | Aim | 9–10 / 10, mostly on content quality |
+| 2 | Too many patterns? | Group, do not remove. 40–50 groups, never mix two concerns; a flat "20 patterns" loses the USP |
+| 3 | Grouping doubts | Flip the Target and Sort-then-Slide inside Sliding Window; Collide and Reader/Writer stay separate; all five monotonic pages one group; Morris joins traversal-order; no extra merges → 54 |
+| 4 | Print page IDs via `build.mjs`? | Yes, behind a per-book switch |
+| 5 | Order | Tier 1, then Tier 2, then Tier 3, then re-audit |
+
+## Plan
+
+Grouping rule: a group shares one mechanism (same state, invariant, template shape) and
+differs only in the question asked. A different mechanism is a different group.
+
+| Phase | What | Who | Status |
+|---|---|---|---|
+| 1 | Page IDs printed, in the contents, and linked (`pageIds` in meta.json) | me | done `ed44ed4` |
+| 2 | 54 pattern groups in meta.json `patterns`; label under every title; Morris → 14-10, tree drills → 14-11 | me | done `7677dd0` |
+| 3 | Per-chapter content pass: every audit fix, voice pass, "Not this page if" line on every pattern page, Signals as statement features, mechanism diagrams, chapter routers (Ch 5, 6, 11, 12, 13), drills rebuilt (disguised statements, answers overleaf, half unseen, two rows from earlier chapters), coverage adds | 4 agents: A Ch 2–4, B Ch 5–9, C Ch 10–13, D Ch 14–19 | running |
+| 4 | Front of book: 01-02 becomes the 54-pattern map (one schema); 01-04 routes every pattern; 01-05 index gaps; 01-01 voice | me | |
+| 5 | "Which page?" checkpoints after Ch 4, 8, 11, 14, 17; "Looks like X, is Y" contrast pages | me, after phase 3 | |
+| 6 | Series hygiene: backmatter 05-02 points to 01-04; glossary for new terms; cover text | me | |
+| 7 | Verify: PDF build 0 overflow, checker, links re-verified live, fact + consistency passes, then re-run the five-lens audit | me + agents | |
+
+Rejected: cutting to 20 patterns (loses the USP); a new "core path" page (the 54-pattern
+map on 01-02 does that job); agents running `--split` (it re-cuts every page).
+
+## Tasks
+
+- [x] 1. Page IDs
+- [x] 2. Pattern groups and labels
+- [ ] 3. Chapter passes A–D
+- [ ] 4. Front of book
+- [ ] 5. Checkpoints and contrast pages
+- [ ] 6. Series hygiene
+- [ ] 7. Verify and re-audit
