@@ -206,6 +206,7 @@ async function renderPage(file, headings, pageIdx, blocks, term, accent, recolor
   const [guarded, svgs] = protectSvg(containers(raw, blocks));
   let html = marked.parse(guarded, { mangle: false, headerIds: false });
   const pid = ids && /^\d\d-\d\d-/.test(name) ? name.slice(0, 5) : null;
+  const pat = pid && ids.labels?.[pid];
   if (ids) html = linkIds(html, ids);
   // A diagram's accent is written into the SVG as a literal colour, where no
   // stylesheet can reach it. When a book is reprinted under a different accent
@@ -236,7 +237,8 @@ async function renderPage(file, headings, pageIdx, blocks, term, accent, recolor
       isTerm && Number(lvl) === 2
         ? `<p class="termno">Term ${++term.n}/${term.total}</p>\n`
         : "";
-    return `${badge}<h${lvl} id="${id}">${text}</h${lvl}>`;
+    const patAttr = pat && lvl === "2" ? ` data-pat="${pat}"` : "";
+    return `${badge}<h${lvl} id="${id}"${patAttr}>${text}</h${lvl}>`;
   });
 
   const cls =
@@ -244,7 +246,11 @@ async function renderPage(file, headings, pageIdx, blocks, term, accent, recolor
   // Every topic owns a colour. Setting it on the section rather than on :root
   // is what lets the merged volume change accent as the topic changes.
   const style = accent ? ` style="--accent:${accent}"` : "";
-  const pidAttr = pid ? ` data-pid="${pid}"` + (ids.get(pid) === name ? ` id="p-${pid}"` : "") : "";
+  // A book may also group its pages ("Pattern 25 · Monotonic Stack · move 4/5");
+  // the label lives in meta.json `patterns`, keyed by page ID.
+  const pidAttr = pid
+    ? ` data-pid="${pid}"` + (ids.get(pid) === name ? ` id="p-${pid}"` : "")
+    : "";
   return `<section class="${cls}" data-src="${name}"${pidAttr}${style}>\n${anchored}\n</section>`;
 }
 
@@ -464,7 +470,7 @@ async function buildBook(book) {
   const accent = book.config.cover?.accent ?? null;
 
   const coverHtml = cover ? await renderPage(path.join(src, cover), [], 0, blocks, null, accent) : "";
-  const ids = book.config.pageIds ? new Map() : null;
+  const ids = book.config.pageIds ? Object.assign(new Map(), { labels: book.config.patterns }) : null;
   for (const f of ids ? rest : []) {
     const id = f.slice(0, 5);
     if (/^\d\d-\d\d-/.test(f) && !ids.has(id)) ids.set(id, path.basename(f, ".md"));

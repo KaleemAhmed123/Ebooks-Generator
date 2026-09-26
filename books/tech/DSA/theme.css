@@ -36,3 +36,19 @@ section[data-pid]::before {
   color: #8a8a8a;
 }
 a.pref { color: inherit; text-decoration: none; border-bottom: 0.5pt dotted currentColor; }
+/* Pattern label (meta.json `patterns`), a small line under the page title. It
+   sits inside the title's own bottom margin, so it adds no height. */
+h2[data-pat] { position: relative; }
+h2[data-pat]::after {
+  content: attr(data-pat);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  margin-top: 1.1mm;
+  font: 700 5.6pt/1 "Helvetica", "Arial", sans-serif;
+  letter-spacing: 0.4pt;
+  text-transform: uppercase;
+  text-align: center;
+  color: #8a8a8a;
+}

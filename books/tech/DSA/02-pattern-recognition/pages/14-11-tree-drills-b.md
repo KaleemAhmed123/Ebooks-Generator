@@ -10,9 +10,10 @@
 | 17. [Recover Binary Search Tree](https://leetcode.com/problems/recover-binary-search-tree/) (LeetCode 99) | **In order,** find the drops |
 | 18. [Construct Binary Tree from Preorder and Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) (LeetCode 105) | **Rebuild:** index map, split by the root |
 | 19. [Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/) (LeetCode 297) | **Pre-order with null markers** |
+| 20. [Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/) (LeetCode 94) in O(1) space | **Thread back to the parent** (14-10) |
 
 ### Score yourself
 
-- **16–19:** you pick the signature (parameters, return value, queue, parent map) before writing the body
+- **16–20:** you pick the signature (parameters, return value, queue, parent map) before writing the body
 - **10–15:** reread 14-01's direction table; misses are usually "up" solved "down"
 - **0–9:** redo 14-02 and 14-03 on paper, they cover half of this table

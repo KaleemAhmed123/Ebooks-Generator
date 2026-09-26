@@ -9,4 +9,3 @@
 ### This chapter
 
 - **19-07 Drills:** range questions and the rare tricks, reduced to one structure each
-- **19-10 Thread back to the parent:** Morris traversal, the O(1)-space tree walk interviewers ask as a follow-up
