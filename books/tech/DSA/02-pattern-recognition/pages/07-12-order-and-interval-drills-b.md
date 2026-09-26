@@ -2,10 +2,10 @@
 
 | Problem | Sort key & scan |
 |---|---|
-| 12. Count of Smaller Numbers After Self (LeetCode 315) | **Count while you merge** on indices |
-| 13. Largest Number (LeetCode 179) | **Pairwise rule:** `b + a` vs `a + b` |
-| 14. Queue Reconstruction by Height (LeetCode 406) | **Height desc, k asc,** insert at k |
-| 15. Find K Closest Elements (LeetCode 658) | **Binary search the window start** in `[0, n − k]`, compare `x − a[m]` with `a[m + k] − x` |
+| 12. [Count of Smaller Numbers After Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self/) (LeetCode 315) | **Count while you merge** on indices |
+| 13. [Largest Number](https://leetcode.com/problems/largest-number/) (LeetCode 179) | **Pairwise rule:** `b + a` vs `a + b` |
+| 14. [Queue Reconstruction by Height](https://leetcode.com/problems/queue-reconstruction-by-height/) (LeetCode 406) | **Height desc, k asc,** insert at k |
+| 15. [Find K Closest Elements](https://leetcode.com/problems/find-k-closest-elements/) (LeetCode 658) | **Binary search the window start** in `[0, n − k]`, compare `x − a[m]` with `a[m + k] − x` |
 
 ### Score yourself
 

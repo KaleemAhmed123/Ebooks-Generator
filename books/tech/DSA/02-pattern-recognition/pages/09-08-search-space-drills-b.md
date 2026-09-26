@@ -2,8 +2,8 @@
 
 | Problem | What is searched & the predicate |
 |---|---|
-| 12. K-th element of two sorted arrays (GFG) <span class="lv lv2"></span> | **Partition point** `i` in A (with `k − i` from B): valid when both cross-pairs are ordered |
-| 13. Median of Two Sorted Arrays (LeetCode 4) <span class="lv lv3"></span> | **Partition point** of the shorter array; O(log min(n, m)) |
+| 12. [K-th of Two Sorted Arrays](https://www.geeksforgeeks.org/problems/k-th-element-of-two-sorted-array1317/1) (GFG) <span class="lv lv2"></span> | **Partition point** `i` in A (with `k − i` from B): valid when both cross-pairs are ordered |
+| 13. [Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/) (LeetCode 4) <span class="lv lv3"></span> | **Partition point** of the shorter array; O(log min(n, m)) |
 
 ### Score yourself
 

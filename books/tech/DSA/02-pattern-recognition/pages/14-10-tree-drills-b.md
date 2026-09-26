@@ -2,14 +2,14 @@
 
 | Problem | Direction & move |
 |---|---|
-| 12. All Nodes Distance K (LeetCode 863) | **Anywhere:** parent map + BFS |
-| 13. Burn a Binary Tree / Time to Infect (GFG / LeetCode 2385) | **Anywhere:** BFS until empty |
-| 14. Lowest Common Ancestor (LeetCode 236) | **Split point** in post-order |
-| 15. House Robber III (LeetCode 337) | **Up:** return `(robbed, skipped)` pair (Module 06) |
-| 16. Kth Smallest / Largest in BST (LeetCode 230 / GFG) | **In order** (reverse in order for largest) with a stack |
-| 17. Recover Binary Search Tree (LeetCode 99) | **In order,** find the drops |
-| 18. Construct from Preorder and Inorder (LeetCode 105) | **Rebuild:** index map, split by the root |
-| 19. Serialize and Deserialize Binary Tree (LeetCode 297) | **Pre-order with null markers** |
+| 12. [All Nodes Distance K in Binary Tree](https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/) (LeetCode 863) | **Anywhere:** parent map + BFS |
+| 13. [Amount of Time for Binary Tree to Be Infected](https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/) (LeetCode 2385) / [Burning Tree](https://www.geeksforgeeks.org/problems/burning-tree/1) (GFG) | **Anywhere:** BFS until empty |
+| 14. [Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/) (LeetCode 236) | **Split point** in post-order |
+| 15. [House Robber III](https://leetcode.com/problems/house-robber-iii/) (LeetCode 337) | **Up:** return `(robbed, skipped)` pair (Module 06) |
+| 16. [Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/) (LeetCode 230) / [Kth Largest in BST](https://www.geeksforgeeks.org/problems/kth-largest-element-in-bst/1) (GFG) | **In order** (reverse in order for largest) with a stack |
+| 17. [Recover Binary Search Tree](https://leetcode.com/problems/recover-binary-search-tree/) (LeetCode 99) | **In order,** find the drops |
+| 18. [Construct Binary Tree from Preorder and Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) (LeetCode 105) | **Rebuild:** index map, split by the root |
+| 19. [Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/) (LeetCode 297) | **Pre-order with null markers** |
 
 ### Score yourself
 

@@ -2,11 +2,11 @@
 
 | Problem | Template & next call |
 |---|---|
-| 12. Generate Parentheses (LeetCode 22) | **Fill the slots:** `(` while `open < n`, `)` while `close < open` |
-| 13. Palindrome Partitioning (LeetCode 131) | **Try every cut** |
-| 14. Restore IP Addresses (LeetCode 93) | **Try every cut,** 4 pieces, prune by remaining length |
-| 15. N-Queens (LeetCode 51) | **Place, check, undo** with column and diagonal sets |
-| 16. Sudoku Solver (LeetCode 37) | **Place, check, undo** with row/column/box sets |
+| 12. [Generate Parentheses](https://leetcode.com/problems/generate-parentheses/) (LeetCode 22) | **Fill the slots:** `(` while `open < n`, `)` while `close < open` |
+| 13. [Palindrome Partitioning](https://leetcode.com/problems/palindrome-partitioning/) (LeetCode 131) | **Try every cut** |
+| 14. [Restore IP Addresses](https://leetcode.com/problems/restore-ip-addresses/) (LeetCode 93) | **Try every cut,** 4 pieces, prune by remaining length |
+| 15. [N-Queens](https://leetcode.com/problems/n-queens/) (LeetCode 51) | **Place, check, undo** with column and diagonal sets |
+| 16. [Sudoku Solver](https://leetcode.com/problems/sudoku-solver/) (LeetCode 37) | **Place, check, undo** with row/column/box sets |
 
 ### Score yourself
 

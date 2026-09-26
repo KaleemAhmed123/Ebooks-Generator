@@ -4,18 +4,18 @@ Hide the right column. Name the identity or the per-column count that does the w
 
 | Problem | Trick |
 |---|---|
-| 1. Number of 1 Bits (LeetCode 191) / Count set bits (GFG) | **Peel:** `n &= n − 1` until 0 |
-| 2. Counting Bits (LeetCode 338) | **Peel as recurrence:** `bits[i] = bits[i & (i − 1)] + 1` |
-| 3. Power of Two (LeetCode 231) | `n > 0 && (n & (n − 1)) === 0` |
-| 4. Find position of the only set bit (GFG) | Power-of-two check, then `32 − Math.clz32(n)` (1-based) |
-| 5. Single Number (LeetCode 136) | **Cancel:** XOR everything |
-| 6. Missing Number (LeetCode 268) | **Cancel:** XOR indices and values |
-| 7. Find the two non-repeating elements (GFG) / Single Number III (LeetCode 260) | **Cancel, then split** on `x & −x` |
-| 8. Single Number II (LeetCode 137) | **Columns:** count mod 3 |
-| 9. Minimum Flips to Make a OR b Equal to c (LeetCode 1318) | **Columns:** per bit, 1 flip if c needs a 1 and both a and b have 0; `a_bit + b_bit` flips if c needs 0 |
-| 10. Count total set bits in 1..n (GFG) | **Columns:** full blocks of `2^(b+1)` plus the partial block |
-| 11. Total Hamming Distance (LeetCode 477) | **Columns:** `ones · zeros` per bit |
-| 12. Power Set (GFG) | **Masks** `0 .. 2ⁿ − 1` (Module 06, 05-01) |
+| 1. [Number of 1 Bits](https://leetcode.com/problems/number-of-1-bits/) (LeetCode 191) / [Count Set Bits](https://www.geeksforgeeks.org/problems/set-bits0143/1) (GFG) | **Peel:** `n &= n − 1` until 0 |
+| 2. [Counting Bits](https://leetcode.com/problems/counting-bits/) (LeetCode 338) | **Peel as recurrence:** `bits[i] = bits[i & (i − 1)] + 1` |
+| 3. [Power of Two](https://leetcode.com/problems/power-of-two/) (LeetCode 231) | `n > 0 && (n & (n − 1)) === 0` |
+| 4. [Position of Only Set Bit](https://www.geeksforgeeks.org/problems/find-position-of-set-bit3706/1) (GFG) | Power-of-two check, then `32 − Math.clz32(n)` (1-based) |
+| 5. [Single Number](https://leetcode.com/problems/single-number/) (LeetCode 136) | **Cancel:** XOR everything |
+| 6. [Missing Number](https://leetcode.com/problems/missing-number/) (LeetCode 268) | **Cancel:** XOR indices and values |
+| 7. [Single Number III](https://leetcode.com/problems/single-number-iii/) (LeetCode 260) | **Cancel, then split** on `x & −x` |
+| 8. [Single Number II](https://leetcode.com/problems/single-number-ii/) (LeetCode 137) | **Columns:** count mod 3 |
+| 9. [Minimum Flips to Make a OR b Equal to c](https://leetcode.com/problems/minimum-flips-to-make-a-or-b-equal-to-c/) (LeetCode 1318) | **Columns:** per bit, 1 flip if c needs a 1 and both a and b have 0; `a_bit + b_bit` flips if c needs 0 |
+| 10. [Count Set Bits in 1 to n](https://www.geeksforgeeks.org/problems/count-total-set-bits-1587115620/1) (GFG) | **Columns:** full blocks of `2^(b+1)` plus the partial block |
+| 11. [Total Hamming Distance](https://leetcode.com/problems/total-hamming-distance/) (LeetCode 477) | **Columns:** `ones · zeros` per bit |
+| 12. [All Subsequences of String](https://www.geeksforgeeks.org/problems/power-set4302/1) (GFG) | **Masks** `0 .. 2ⁿ − 1` (Module 06, 05-01) |
 
 ### Score yourself
 
