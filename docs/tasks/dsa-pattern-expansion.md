@@ -8,7 +8,7 @@
 
 ## What you asked for
 
-> Expand the pattern recognition booklet with the patterns in `MyDSA sheet.xlsx`.
+> Expand the pattern recognition booklet with the patterns in `MyDSA sheet.xlsx` (now `docs/tasks/reference/dsa/`).
 > Add, don't repeat. Order it linear → non-linear, easy → hard; segment tree,
 > Fenwick and friends go last. Action-oriented names, not academic ones.
 > Every pattern: what it is → signal → why it works → SVG → TS template →
@@ -165,3 +165,48 @@ Kept here so you can find your own words; the book uses only the right column.
 - Front of the book: 01-04 "Read the problem, pick the page" flowchart and 01-05 keyword index — meant to be the most-used pages.
 - Drill tables longer than ~11 rows are split by hand into `-a`/`-b` files (the auto-splitter cannot cut a table); everything else is packed with `node tools/build.mjs 02-pattern-recognition --split`.
 - Pending once network access allows leetcode.com / geeksforgeeks.org / spoj.com: verify every GFG/SPOJ title live and add problem links to the drill rows.
+
+---
+
+## Review before merge + problem links (2026-09-27)
+
+### Review findings
+
+1. Six drill tables (02-12, 04-07, 07-12, 09-08, 11-04, 13-11) were cut by the
+   auto-splitter, not by hand: three printed pages held only a heading and one
+   sentence, six held only "Score yourself". Each drill used 3 sheets, not 2.
+2. Count of Smaller Numbers After Self (LeetCode 315) sat in two drill tables
+   (07-12 and 19-07) besides its worked example on 07-08.
+3. 16-09-b had 12 rows, over the ~11-row limit.
+4. Rows with no real platform title cannot take a link (17-07 row 18, 19-07 row 8).
+5. Rare rows: Journey to the Moon (HackerRank), LC 1680, Coin game with three
+   choices, Minimum time taken by each job.
+6. Working drafts sat inside `books/tech/DSA/`.
+7. `tools/check-pages.mjs` reports ~236 false positives on this book: it expects
+   `# Module N` headings and one `##` per file, which chapter layout and split
+   continuation pages do not have. Left unchanged.
+
+### Decisions (your answers)
+
+| # | Question | Answer |
+|---|---|---|
+| 18 | Which drill rows get links? | Every named problem, LeetCode included |
+| 19 | Fix review findings before links? | Yes, fix first |
+| 20 | Rare rows to cut | All four in finding 5; also list other too-specific problems as options before cutting |
+| 21 | Loose drafts | Moved to `docs/tasks/reference/dsa/` |
+
+### How titles are verified
+
+- GFG: plain HTTP fetch of the problem page, read `<title>`.
+- LeetCode: public GraphQL endpoint (`question(titleSlug)` → id + title).
+- SPOJ: Cloudflare blocks plain HTTP; a real browser (Playwright) passes it.
+- A title that differs from the live one is renamed to the live title.
+
+### Tasks
+
+- [x] 1. Move drafts out of `books/`
+- [ ] 2. Hand-split the six drills into `-a`/`-b`; drop the duplicate LC 315 row; re-balance 16-09
+- [ ] 3. Cut the four rare rows; list further too-specific candidates for you
+- [ ] 4. Verify every title live; rename mismatches
+- [ ] 5. Add links to every named problem
+- [ ] 6. Rebuild with `--split`, check, commit in small groups

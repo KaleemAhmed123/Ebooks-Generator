@@ -227,7 +227,7 @@ From CLAUDE.md — do not skip:
 books/tech/DSA/
 ├── meta.json                    ← series-level metadata + master volume config
 ├── PLAN.md                      ← this file
-├── raw.txt                      ← original conversation (keep for reference)
+│   (raw.txt, drafts and MyDSA sheet.xlsx live in docs/tasks/reference/dsa/)
 │
 ├── frontmatter/
 │   └── 01-preface.md            ← author's preface (personal voice, like TS-to-Deployment)
