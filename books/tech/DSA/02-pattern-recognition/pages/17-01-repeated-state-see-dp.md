@@ -13,4 +13,4 @@
 
 - **17-02 Name the DP shape:** your recursion's arguments name the problem family
 - **17-03 to 17-06:** four shapes Module 06 does not work in full: pick then jump, track what you hold, try every split, assume the opponent is perfect
-- **17-07 Drills:** 59 named problems, each reduced to a signature and a transition
+- **17-07 Drills:** 19 named problems, each reduced to a signature and a transition
