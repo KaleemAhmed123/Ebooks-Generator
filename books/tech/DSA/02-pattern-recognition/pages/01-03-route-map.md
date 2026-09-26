@@ -1,7 +1,7 @@
 ## Route map <span class="lv lv1"></span>
 
 - Chapters run from linear to non-linear data and from common to rare: read A and B in order; C is a lens over both; D is for hard rounds
-- Pattern pages follow one shape: what it is → signal → why it works → diagram → template → variations → the failure → interview answer. Every chapter ends in a drills page of named problems
+- Pattern pages follow one shape: what it is → signal → not this page if → why it works → diagram → template → variations → the failure → interview answer. Every chapter ends in drills: disguised statements on one page, answers and links overleaf
 - **New problem?** Start with the chart (01-04) and the keyword index (01-05)
 
 :::mint
@@ -42,15 +42,11 @@
 </svg>
 :::
 
-### Families to chapters
+### Patterns and moves
 
-- **Locality:** Ch 2 (windows), Ch 10 (monotonic stack and deque)
-- **Order:** Ch 7, and the sorted-greedy moves of Ch 8
-- **Search space reduction:** Ch 9; the boundary lens of Ch 18
-- **Range interaction:** Ch 3 for static data, Ch 19 for updates
-- **Repeated extremum:** Ch 15
-- **Connectivity and dependency:** Ch 16, with Ch 12 and 14 for the pointer structures underneath
-- **Repeated state:** Ch 13 finds it by brute force, Ch 17 caches it
+- 54 patterns, numbered in reading order; 01-02 lists them with their pages
+- A pattern with several moves is one mechanism asked several ways: learn the first move, then each later move is one change to it
+- Chapter 18 is the lens for a problem that fits no pattern; Chapter 19 is for rounds that go past interviews
 
 ### Difficulty badges on every page title
 

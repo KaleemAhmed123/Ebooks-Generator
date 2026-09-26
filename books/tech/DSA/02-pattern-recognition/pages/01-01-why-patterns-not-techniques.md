@@ -1,30 +1,24 @@
 # Chapter 1 - Reading the Structure
 
-## Why patterns are not techniques <span class="lv lv1"></span>
+## Why patterns, not techniques <span class="lv lv1"></span>
 
-- A "technique" is a specific mechanical operation: *Two Pointers*, *Sliding Window*, *Binary Search*
-- A "pattern" is the underlying structural reason that technique works: *Locality*, *Order*, *Search Space Reduction*
-- Memorising techniques allows you to solve problems you have seen before. Understanding patterns allows you to solve problems you haven't
+- **A technique** is a routine: two indices, a window, a halving loop. **A pattern** is the structure in the input that makes one routine correct. Sorted order lets a pair be discarded unchecked; a condition that survives shrinking lets a window slide
+- An interview problem arrives without its tag. Knowing *how* to write a window does not say *when* one applies. The structure does
+- Module 01 turns a brute force into a fast algorithm with four questions: can we remember it, eliminate candidates, preprocess, exploit monotonicity (Module 01, 02-04 to 02-07). This book catalogues the 54 answers those questions keep producing (01-02)
 
-### Why tags fail
+### How a page is read
 
-- An interview problem arrives without its tag, so knowing *how* to write a sliding window does not tell you *when* one applies
+- **Signal:** words in the statement that point here
+- **Not this page if:** the look-alike that fails, and the page that handles it
+- **Why it works:** the invariant. If you cannot say it, you cannot defend the code
+- **The failure:** the bug a strong candidate still writes, with an input small enough to check by hand
 
-### The structural approach
+### From statement to page
 
-- Every problem has a bottleneck (as seen in Module 01)
-- The bottleneck demands a specific structural property to fix it
-- For example: if the bottleneck is "I need to find the optimal pair, and checking all pairs is O(n²)", you need a structural property that lets you **eliminate candidates without checking them**
-- **Order** (sorting) provides that property. Once sorted, Two Pointers is just the technique used to exploit the Order pattern
-
-### The taxonomy of this book
-
-- This module groups algorithms not by their mechanical names, but by the structural property they exploit
-- When you read a problem, you don't ask "Is this a Two Pointer problem?"
-- You ask: "Does the answer depend on a local contiguous range? Yes? Then this is a **Locality** pattern. What techniques exploit locality? Sliding Window and Monotonic Stack."
+- Name the input's shape and the question, and the chart gives a chapter (01-04)
+- Match a phrase from the statement in the keyword index (01-05)
+- Confirm on the page: its Signal must fit and its "Not this page if" must not
 
 :::interview
-"I've done 300 problems but I still blank in interviews when I see a new one."
-
-You are memorising the technique (the *how*) instead of the pattern (the *why*). When the problem is disguised, the technique isn't obvious. But the structural bottleneck is always there if you look for it.
+"You have solved 300 problems and still stall on a new one. Why?" — Because the 300 were filed by technique. A new problem hides the technique, not the structure: sorted input, a condition monotone in a window, values bounded by n. I read the constraints and write the brute force first, name the structure that removes its waste, and only then pick the routine that exploits it.
 :::
