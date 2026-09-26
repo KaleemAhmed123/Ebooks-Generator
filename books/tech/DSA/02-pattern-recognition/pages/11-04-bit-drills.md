@@ -16,4 +16,9 @@ Hide the right column. Name the identity or the per-column count that does the w
 | 10. Count total set bits in 1..n (GFG) | **Columns:** full blocks of `2^(b+1)` plus the partial block |
 | 11. Total Hamming Distance (LeetCode 477) | **Columns:** `ones · zeros` per bit |
 | 12. Power Set (GFG) | **Masks** `0 .. 2ⁿ − 1` (Module 06, 05-01) |
-| 13. Concatenation of Consecutive Binary Numbers (LeetCode 1680) | **Shift in each number:** `res = ((res << len(i)) + i) mod M`; `len` grows by 1 at every power of two. Use BigInt or split the shift in JS to avoid precision loss |
+
+### Score yourself
+
+- **11–12:** you reach for an identity instead of a loop over 32 positions
+- **7–10:** reread 11-02; most misses are per-column counts
+- **0–6:** redo 11-01 and 11-03 by hand in binary

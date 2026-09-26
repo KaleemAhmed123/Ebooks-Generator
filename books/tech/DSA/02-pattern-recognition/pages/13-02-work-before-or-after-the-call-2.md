@@ -1,3 +1,5 @@
+## Work Before or After the Call <span class="lv lv1"></span> - continued
+
 ### Variations
 
 - **Tree traversals (Chapter 14):** pre-order, in-order and post-order are exactly "pre", "in" and "post" with two children. Post-order is where a node sees its children's answers

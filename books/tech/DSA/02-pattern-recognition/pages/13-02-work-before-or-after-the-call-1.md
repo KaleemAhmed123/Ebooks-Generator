@@ -5,7 +5,7 @@
 - **Why it works:** The call stack holds each frame's local variables until the deeper call returns. So a value saved before the call is still there afterwards, in last-in-first-out order. Choosing *where* a line goes chooses the order it runs in, with no extra data structure
 
 :::mint
-<svg viewBox="0 0 470 118" role="img" aria-label="Zig-zag recursion for n equal to 2. Each call prints n before its first child call, between the two child calls, and after the second. The output is 2 1 1 1 2 1 1 1 2: pre, in and post positions interleave with the children's output." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
+<svg viewBox="0 0 470 112" role="img" aria-label="Zig-zag recursion for n equal to 2. Each call prints n before its first child call, between the two child calls, and after the second. The output is 2 1 1 1 2 1 1 1 2: pre, in and post positions interleave with the children's output." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
   <style>
     .lb { font: 10px Consolas, monospace; fill: #1a1a1a; }
     .sm { font: 8px Georgia, serif; fill: #6b6b6b; }

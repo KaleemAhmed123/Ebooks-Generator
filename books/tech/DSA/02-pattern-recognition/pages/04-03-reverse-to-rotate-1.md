@@ -41,10 +41,3 @@ function reverse(a: number[], i: number, j: number): void {
   while (i < j) { [a[i], a[j]] = [a[j], a[i]]; i++; j--; }
 }
 ```
-
-### Variations
-
-- **Reverse Words in a String (LeetCode 151):** the same identity on words. Reverse the whole string, then reverse each word; in a mutable char array this runs in O(1) extra space
-- **Rotate left by k:** reverse the first k, reverse the rest, reverse all. Or rotate right by `n − k`
-- **Cyclically rotate an array by one (GFG):** save the last element, shift, write it at index 0. The reversal trick is overkill for k = 1 but gives the same result
-- **Rotate Image (LeetCode 48):** a 2-D rotation is also two reflections: transpose, then reverse each row. Page 05-02 draws it

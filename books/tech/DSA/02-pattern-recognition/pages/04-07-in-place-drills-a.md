@@ -1,3 +1,6 @@
+## Recognition drills: In-Place & Index Tricks <span class="lv lv1"></span>
+
+Hide the right column. For each problem name the trick, and say which fact about the input makes it legal: the value range, the order, or permission to mutate.
 ## Recognition drills: In-Place & Index Tricks <span class="lv lv1"></span> - continued
 
 | Problem | Trick & the enabling fact |
@@ -13,7 +16,3 @@
 | 9. Next Permutation (LeetCode 31) | **Find the dip,** swap with the rightmost larger value, reverse the suffix |
 | 10. Majority Element (LeetCode 169) | **Vote and cancel;** a majority is promised, so no second pass |
 | 11. Majority Element II (LeetCode 229) | **Vote and cancel** with two candidates, then verify |
-| 12. Sort Colors (LeetCode 75) | **Dutch flag** (02-09): three regions, one pass |
-| 13. Three way partitioning (GFG) | **Dutch flag** around a range `[a, b]` instead of the values 0, 1, 2 |
-| 14. Minimum Swaps to Group All 1's Together II (LeetCode 2134) | **Wrap around** + fixed window of length `ones` |
-| 15. Next Greater Element II (LeetCode 503) | **Wrap around** + monotonic stack over `2n` steps |

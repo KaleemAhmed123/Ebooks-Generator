@@ -15,7 +15,3 @@ Hide the right column. Say what you sort by — value, start, end, a derived key
 | 9. Interval List Intersections (LeetCode 986) | **Two sorted lists:** overlap `[max start, min end]`, advance the earlier end |
 | 10. Count Inversions (GFG) | **Count while you merge:** `mid − i` per right-side win |
 | 11. Reverse Pairs (LeetCode 493) | **Count while you merge,** separate `2·a[j]` pass |
-| 12. Count of Smaller Numbers After Self (LeetCode 315) | **Count while you merge** on indices |
-| 13. Largest Number (LeetCode 179) | **Pairwise rule:** `b + a` vs `a + b` |
-| 14. Queue Reconstruction by Height (LeetCode 406) | **Height desc, k asc,** insert at k |
-| 15. Find K Closest Elements (LeetCode 658) | **Binary search the window start** in `[0, n − k]`, compare `x − a[m]` with `a[m + k] − x` |
