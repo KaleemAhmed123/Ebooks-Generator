@@ -205,8 +205,43 @@ Kept here so you can find your own words; the book uses only the right column.
 ### Tasks
 
 - [x] 1. Move drafts out of `books/`
-- [ ] 2. Hand-split the six drills into `-a`/`-b`; drop the duplicate LC 315 row; re-balance 16-09
-- [ ] 3. Cut the four rare rows; list further too-specific candidates for you
-- [ ] 4. Verify every title live; rename mismatches
-- [ ] 5. Add links to every named problem
-- [ ] 6. Rebuild with `--split`, check, commit in small groups
+- [x] 2. Hand-split the six drills into `-a`/`-b`; drop the duplicate LC 315 row; re-balance 16-09
+- [x] 3. Cut the four rare rows
+- [ ] 3b. You pick from the too-specific candidates (asked 2026-09-27)
+- [x] 4. Verify every title live; rename mismatches
+- [x] 5. Add links to every named problem
+- [x] 6. Rebuild, check, commit in small groups
+
+### Log
+
+- 2026-09-27 — drafts moved to `docs/tasks/reference/dsa/`; `PLAN.md` tree line updated.
+- 2026-09-27 — cut Journey to the Moon (drill + 16-02 variation), LC 1680, Coin game
+  with three choices, Minimum time taken by each job; LC 315 removed from 19-07 (kept
+  in 07-12, worked on 07-08). 19-07 and 11-04 score ranges updated.
+- 2026-09-27 — the six auto-split drills rebuilt as hand-split `-a`/`-b` (11 rows on
+  `-a`); 11-04 now fits one page. Found three more pages that overflowed on the branch
+  (04-03, 13-02, 18-01): `--split` fixed 04-03 and 18-01; 13-02's diagram viewBox
+  trimmed 118 → 112 (empty strip only). **Note:** the overflow check runs only in the
+  PDF build, not `--html`; the `--html` preview stays silent on overflow.
+- 2026-09-27 — `--split` merges and re-cuts every split page; the only real diffs were
+  the pages above (the ~200 other "changes" were CRLF only, which git drops).
+- 2026-09-27 — titles verified and links added: 252 rows, 295 links (226 LeetCode,
+  66 GFG, 2 SPOJ, all unique except 0/1 Knapsack, see below).
+  - LeetCode: official problem list (`/api/problems/all/`, 4,064 problems). 202 titles
+    matched; 21 shortened or GFG-style titles renamed to the live title. None paid-only.
+  - GFG: full practice index from `practiceapi.geeksforgeeks.org` (2,988 problems);
+    every slug + title checked against it, and every link fetched (66 × HTTP 200).
+    Titles renamed to GFG's current names (e.g. Circular tour → Gas Station,
+    Evaluation of Postfix Expression → Postfix Evaluation).
+  - SPOJ: AGGRCOW "Aggressive cows", RMQSQ "Range Minimum Query", read in a browser.
+  - No GFG problem exists for: equal odd/even subarray (03-09, 03-03), range max with
+    point updates (19-07), the two non-repeating elements (11-04), ways to reach a
+    score (17-07). Their "(GFG)" label was removed; 19-07 row 2 became LC 1310.
+  - 18-20 left unlinked on purpose: its statements are disguised; a title gives the
+    answer away. 19-07 row 7 has no source.
+  - 16-09: one row moved from `-b` to `-a`; `-b` overflowed once links lengthened it.
+  - Build: 266 pages, 0 overflow.
+- Found while linking, awaiting your call: 0/1 Knapsack (GFG) is in both 08-08 and
+  17-07; Power Set (11-04) is the same problem as Subsets LC 78 (13-11).
+- Not in scope, not done: "(GFG)" titles inside non-drill pages (Variations lists)
+  are not yet checked against the live site.
