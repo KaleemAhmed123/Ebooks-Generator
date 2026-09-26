@@ -15,4 +15,4 @@ Hide the right column. Name the move, and in one phrase say why it is safe. If y
 
 ### The wrong approach
 
-- Greedy on the obvious measure breaks when choices interact; drills 8 and 9 show it, and Module 04 (03-01, 03-07) gives the litmus test
+- Greedy on the obvious measure breaks when choices interact; drill 7 is greedy only because items can be split; the 0/1 version is DP (17-07). Module 04 (03-01, 03-07) gives the litmus test
