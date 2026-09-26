@@ -160,7 +160,32 @@ function protectSvg(md) {
 
 /* ------------------------------- one markdown file -> one printed page --- */
 
-async function renderPage(file, headings, pageIdx, blocks, term, accent, recolor) {
+/* Page IDs. A book that sets `pageIds` routes its reader by the filename
+   prefix ("→ 09-02"), so the build prints that prefix on the page, puts it in
+   the contents, and turns every in-book mention into a PDF link. `ids` maps
+   each prefix to the first file that carries it: the link target. A mention
+   that follows "Module N" names a page in a sibling booklet and is left alone. */
+function linkIds(html, ids) {
+  const parts = html.split(/(<[^>]+>)/);
+  let skip = 0;
+  for (let i = 0; i < parts.length; i++) {
+    const t = parts[i];
+    if (t.startsWith("<")) {
+      if (/^<(code|pre|a)[\s>]/.test(t)) skip++;
+      else if (/^<\/(code|pre|a)>/.test(t)) skip--;
+      continue;
+    }
+    if (skip || !t) continue;
+    const external = [...t.matchAll(/Module\s+\d+(?:\s*,?\s*(?:pages?\s+)?\d\d-\d\d(?:\s*(?:,|and|to|–|-|→|\.\.)\s*\d\d-\d\d)*)?/g)]
+      .map((m) => [m.index, m.index + m[0].length]);
+    parts[i] = t.replace(/\b(\d\d-\d\d)\b/g, (m, id, at) =>
+      ids.has(id) && !external.some(([a, b]) => at >= a && at < b) ? `<a class="pref" href="#p-${id}">${id}</a>` : m,
+    );
+  }
+  return parts.join("");
+}
+
+async function renderPage(file, headings, pageIdx, blocks, term, accent, recolor, ids) {
   // Normalise line endings before anything looks at the text. Every pattern
   // below is anchored to `\n` — the `:::block` opener most of all — so a file
   // saved with Windows line endings loses its blocks silently: they render as
@@ -180,6 +205,8 @@ async function renderPage(file, headings, pageIdx, blocks, term, accent, recolor
 
   const [guarded, svgs] = protectSvg(containers(raw, blocks));
   let html = marked.parse(guarded, { mangle: false, headerIds: false });
+  const pid = ids && /^\d\d-\d\d-/.test(name) ? name.slice(0, 5) : null;
+  if (ids) html = linkIds(html, ids);
   // A diagram's accent is written into the SVG as a literal colour, where no
   // stylesheet can reach it. When a book is reprinted under a different accent
   // — a booklet inside the merged volume — its diagrams are remapped here, so
@@ -202,7 +229,7 @@ async function renderPage(file, headings, pageIdx, blocks, term, accent, recolor
     // The contents page lists parts and page titles only. Sub-sections and a
     // "- continued" page add length without helping anyone find anything.
     const inToc = !isCover && Number(lvl) <= 2 && !/-\s*continued$/i.test(plain);
-    if (inToc) headings.push({ lvl: Number(lvl), text: plain, id, page: pageIdx });
+    if (inToc) headings.push({ lvl: Number(lvl), text: pid && lvl === "2" ? `${pid}  ${plain}` : plain, id, page: pageIdx });
     // "TERM 35/57" — where this entry sits in its own topic. Counted here, so
     // it can never disagree with what is actually on the page.
     const badge =
@@ -217,7 +244,8 @@ async function renderPage(file, headings, pageIdx, blocks, term, accent, recolor
   // Every topic owns a colour. Setting it on the section rather than on :root
   // is what lets the merged volume change accent as the topic changes.
   const style = accent ? ` style="--accent:${accent}"` : "";
-  return `<section class="${cls}" data-src="${name}"${style}>\n${anchored}\n</section>`;
+  const pidAttr = pid ? ` data-pid="${pid}"` + (ids.get(pid) === name ? ` id="p-${pid}"` : "") : "";
+  return `<section class="${cls}" data-src="${name}"${pidAttr}${style}>\n${anchored}\n</section>`;
 }
 
 /* A contents page. `at` maps a page's index in the book to the number that will
@@ -436,8 +464,13 @@ async function buildBook(book) {
   const accent = book.config.cover?.accent ?? null;
 
   const coverHtml = cover ? await renderPage(path.join(src, cover), [], 0, blocks, null, accent) : "";
+  const ids = book.config.pageIds ? new Map() : null;
+  for (const f of ids ? rest : []) {
+    const id = f.slice(0, 5);
+    if (/^\d\d-\d\d-/.test(f) && !ids.has(id)) ids.set(id, path.basename(f, ".md"));
+  }
   for (let i = 0; i < rest.length; i++) {
-    pages.push(await renderPage(path.join(src, rest[i]), headings, i, blocks, term, accent));
+    pages.push(await renderPage(path.join(src, rest[i]), headings, i, blocks, term, accent, undefined, ids));
   }
   return { coverHtml, pages, headings };
 }

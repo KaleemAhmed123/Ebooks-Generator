@@ -1,6 +1,7 @@
 {
   "title": "Pattern Recognition",
   "subtitle": "Named Families & the Patterns Nobody Named",
+  "pageIds": true,
   "cover": {
     "accent": "#2d6a4f",
     "title": ["Pattern", "Recognition"],
