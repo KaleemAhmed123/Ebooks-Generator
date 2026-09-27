@@ -1,9 +1,8 @@
 ## Count Each Bit Column <span class="lv lv2"></span>
 
-- **What it is:** Treat 32-bit numbers as 32 independent columns of 0s and 1s. Many "all pairs" or "all numbers" questions become a count per column, and the columns never interact
-- **Signal:** "every element appears three times except one", "sum of Hamming distances over all pairs", "total set bits from 1 to n", "minimum flips so that a OR b equals c"
-- **Not this page if:** every other value appears an *even* number of times → 11-01; one XOR pass, no columns
-- **Why it works:** Bitwise operations act on each column separately. If every value but one repeats k times, each column's count of 1s is a multiple of k plus the single value's bit: `count % k` recovers it. For pairs, a column contributes `ones · zeros` differing pairs, whatever the other columns do
+- **What:** treat 32-bit numbers as 32 independent columns of 0s and 1s. "All pairs" and "all numbers" questions become one count per column
+- **Spot it:** "every element appears three times except one", "sum of Hamming distances over all pairs", "minimum flips so that a OR b equals c". Others appear an even number of times → 11-01
+- **Why:** if every value but one repeats k times, each column's count is a multiple of k plus the single bit: `count % k` recovers it. For pairs, a column adds `ones · zeros`
 
 :::mint
 <svg viewBox="0 0 470 118" role="img" aria-label="Single Number II on 2, 2, 3, 2. Column 0: values 0, 0, 1, 0, count 1, mod 3 is 1. Column 1: values 1, 1, 1, 1, count 4, mod 3 is 1. The single number has bits 11, which is 3." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -36,7 +35,9 @@ function singleNumberII(nums: number[]): number {
     for (const x of nums) count += (x >>> b) & 1;   // column b
     if (count % 3) result |= 1 << b;
   }
-  // back to signed 32-bit
-  return result | 0;
+  return result | 0;                      // back to signed 32-bit
 }
 ```
+
+- **Watch out:** the sign. Build the answer with `|=`, which stays signed 32-bit. Adding `2 ** b` instead turns a single value of −4 into 4294967292
+- **Also solves:** [Total Hamming Distance](https://leetcode.com/problems/total-hamming-distance/) (LeetCode 477) (`ones · (n − ones)` per column) · [Minimum Flips to Make a OR b Equal to c](https://leetcode.com/problems/minimum-flips-to-make-a-or-b-equal-to-c/) (LeetCode 1318) (per column: flips needed to reach c's bit)

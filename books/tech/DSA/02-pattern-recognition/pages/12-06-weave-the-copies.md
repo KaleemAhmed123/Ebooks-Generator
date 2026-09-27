@@ -1,9 +1,8 @@
 ## Weave the Copies <span class="lv lv2"></span>
 
-- **What it is:** A deep copy of a structure whose nodes point at arbitrary other nodes needs "old node → its copy" for every node. A hash map gives that in O(n) space; weaving each copy right after its original gives it in O(1) extra space: the copy of `x` is simply `x.next`
-- **Signal:** a deep copy of a list whose nodes carry a second pointer to any node or null; pointers that may point backwards or to nodes not yet copied; "O(1) extra space besides the copy"
-- **Not this page if:** each node has a list of neighbours and cycles run through them (a graph) → 16-01, the map version inside a BFS or DFS
-- **Why it works:** A pointer to a node that has not been copied yet cannot be set during a single pass. Splitting the job into three passes removes the dependency: create every copy first, then fix every `random` using `x.random.next`, then unweave the two lists
+- **What:** a deep copy needs "old node → its copy". A map gives it in O(n) space; weaving each copy right after its original gives it in O(1): the copy of `x` is `x.next`
+- **Spot it:** a deep copy of a list whose nodes carry a second pointer to any node or null. Nodes with neighbour lists (a graph) → the map version, 16-01
+- **Why:** a pointer to an uncopied node cannot be set in one pass. Three passes remove the dependency: copy all, set each `random` to `x.random.next`, unweave
 
 :::mint
 <svg viewBox="0 0 470 120" role="img" aria-label="Copying a list A, B, C with random pointers. Pass 1 weaves copies: A, A prime, B, B prime, C, C prime. Pass 2 sets each copy's random: A prime's random is A.random.next. Pass 3 separates the lists: originals A, B, C and copies A prime, B prime, C prime." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -29,3 +28,27 @@
   <text x="300" y="38" class="sm">the list itself is the map</text>
 </svg>
 :::
+
+```ts
+// Copy List with Random Pointer (LeetCode 138), O(1) extra space
+type RNode = {
+  val: number; next: RNode | null; random: RNode | null;
+};
+function copyRandomList(head: RNode | null): RNode | null {
+  for (let x = head; x; x = x.next!.next)    // 1. weave copies in
+    x.next = { val: x.val, next: x.next, random: null };
+  for (let x = head; x; x = x.next!.next)    // 2. copies' randoms
+    x.next!.random = x.random ? x.random.next : null;
+  const dummy: RNode = { val: 0, next: null, random: null };
+  let tail = dummy;
+  for (let x = head; x; x = x.next) {              // 3. unweave
+    const copy = x.next!;
+    x.next = copy.next;                        // restore original
+    tail.next = copy; tail = copy;
+  }
+  return dummy.next;
+}
+```
+
+- **Watch out:** restore the original. Skip `x.next = copy.next` and the caller's list stays woven with copies
+- **Map version:** `Map<old, new>` in pass 1, then `copy.next = map.get(x.next)`, `copy.random = map.get(x.random)`: simpler under pressure

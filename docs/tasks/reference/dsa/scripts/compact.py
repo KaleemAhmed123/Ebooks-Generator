@@ -43,6 +43,15 @@ for pid, fname, title, top, bottom, svg_from, code_from in spec['PAGES']:
 for pid in spec['DELETE']:
     for f in glob.glob(os.path.join(pages_dir, pid + '-*.md')):
         os.remove(f)
+# SPLIT = { id: marker }: that page becomes <stem>-1.md / <stem>-2.md, cut before the marker;
+# page 2 repeats the ## title with " - continued"
+for pid, marker in spec.get('SPLIT', {}).items():
+    fname = next(f for f in out if f.startswith(pid + '-'))
+    text = out.pop(fname); cut = text.index(marker)
+    title = re.search(r'^## .*$', text, re.M).group(0)
+    stem = fname[:-3]
+    out[stem + '-1.md'] = text[:cut].rstrip() + '\n'
+    out[stem + '-2.md'] = title + ' - continued\n\n' + text[cut:]
 for fname, text in out.items():
     open(os.path.join(pages_dir, fname), 'w', encoding='utf8').write(text)
 print('wrote', len(out), 'files; removed ids', ' '.join(spec['DELETE']))

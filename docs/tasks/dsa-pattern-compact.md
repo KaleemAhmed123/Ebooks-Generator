@@ -100,3 +100,10 @@ Budget: front ~4 · pattern pages ~115 · openers ~12 · drills ~18 → about 15
   two-line comment. New helper `inline-comments.py` moves a lone comment onto the code
   line below it (formatting only). Drills 11 and 11; 410, 1552, 20 and 394 are left to
   the later chapters that already list them.
+- 2026-09-27 — Chapters 11 and 12: 11 → 5 pages and 21 → 9 pages. Intros "Bit
+  Manipulation" (11-00; the skeleton is the four identities) and "Linked List Pointers"
+  (12-01, which absorbs the dummy-head move, so its skeleton is Merge Two Sorted Lists).
+  Two pages each for 12-01 (intro + the dummy-head move) and 12-02 (Reverse Nodes in
+  k-Group, a hard problem whose four-frame diagram shows the stitching). `compact.py`
+  gained a `SPLIT` option for this. The 11-05 checkpoint is deleted. 12-03's code lost
+  three lines to formatting and was re-run: 10 lengths, 0 failures. Drills 11 and 11.

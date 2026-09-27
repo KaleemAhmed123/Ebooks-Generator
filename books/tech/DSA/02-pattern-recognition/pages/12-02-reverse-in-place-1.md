@@ -1,9 +1,8 @@
 ## Reverse in Place <span class="lv lv1"></span>
 
-- **What it is:** Reversal with three pointers: `prev`, `cur`, `next`. Save `cur.next`, point `cur` backwards, step both forward. The same four lines reverse a whole list, a sublist, or every group of k
-- **Signal:** "reverse the list", "reverse nodes m to n", "reverse in groups of k", "swap every two adjacent nodes", "add 1 to a number stored most-significant digit first", "palindrome linked list"
-- **Not this page if:** the front must be paired with the back ("L0 → Ln → L1 → Ln−1 …") → 12-03, which reverses only the back half
-- **Why it works:** A singly linked node knows only its successor. Reversing one link loses the rest of the list unless `next` is saved first; with it saved, each step flips exactly one link and never revisits a node. For a segment, keep a pointer to the node *before* it and the segment's first node, which becomes its tail, to stitch both ends back
+- **What:** three pointers, `prev`, `cur`, `next`. Save `cur.next`, point `cur` back, step both forward. The same lines reverse a list, a sublist, or every group of k
+- **Spot it:** "reverse the list", "reverse nodes m to n", "in groups of k", "swap every two nodes". The front paired with the back → 12-03
+- **Why:** a node knows only its successor, so saving `next` first is what keeps the rest reachable. For a segment, hold the node *before* it; its first node becomes its tail
 
 :::mint
 <svg viewBox="0 0 470 192" role="img" aria-label="Reverse nodes in k group, k equal to 2, on dummy, 1, 2, 3, 4, in four frames. Frame 1, setup: groupPrev is the dummy, cur is 1, kth is 2, and prev starts at groupNext, node 3. Frame 2: next is 2, the link from 1 is flipped to point at 3, prev becomes 1 and cur becomes 2. Frame 3: next is 3, the link from 2 is flipped to point back at 1; cur has reached groupNext, so the loop stops. Frame 4, stitch: the dummy now points at kth, node 2, giving dummy, 2, 1, 3, 4, and groupPrev moves to node 1, the old first node. Flipped links are red and dashed." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">

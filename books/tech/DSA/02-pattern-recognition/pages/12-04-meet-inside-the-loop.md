@@ -1,9 +1,8 @@
 ## Meet Inside the Loop <span class="lv lv2"></span>
 
-- **What it is:** Floyd's cycle method has a second phase. After slow (1 step) and fast (2 steps) meet inside the cycle, restart one pointer from the head and move both one step at a time. They meet again exactly at the node where the cycle begins
-- **Signal:** "return the node where the cycle begins", "length of the loop", "remove the loop", "find the duplicate in `[1..n]` without modifying the array and in O(1) space", "happy number"
-- **Not this page if:** the array may be modified, or every duplicate and missing value is wanted → 04-02 sends each value to its own index
-- **Why it works:** Let the tail before the cycle have length `a`, and let the first meeting happen `b` steps into the cycle of length `c`. Fast walked twice as far as slow: `2(a + b) = a + b + k·c`, so `a = k·c − b`. Walking `a` more steps from the meeting point therefore lands on the cycle entrance, and so does walking `a` steps from the head
+- **What:** Floyd's cycle method, phase 2. After slow (1 step) and fast (2 steps) meet, restart one pointer at the head and step both by 1: they meet at the cycle's entrance
+- **Spot it:** "where the cycle begins", "find the duplicate in 1..n without modifying the array, O(1) space", "happy number". The array may be modified → 04-02
+- **Why:** with a tail of `a` and a meeting `b` into a cycle of `c`, `2(a + b) = a + b + k·c`, so `a = k·c − b`: `a` steps from the meeting point land on the entrance, as do `a` from the head
 
 :::mint
 <svg viewBox="0 0 470 124" role="img" aria-label="A list with a tail of length a leading into a cycle of length c. Slow and fast first meet b steps into the cycle. Because a equals k times c minus b, a pointer from the head and a pointer from the meeting point, both moving one step at a time, arrive at the cycle entrance together." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -35,8 +34,7 @@ function detectCycle(head: ListNode | null): ListNode | null {
   let slow = head, fast = head;
   while (fast && fast.next) {
     slow = slow!.next; fast = fast.next.next;
-    // phase 1: inside the cycle
-    if (slow === fast) {
+    if (slow === fast) {              // phase 1: inside the cycle
       let p = head;
       while (p !== slow) { p = p!.next; slow = slow!.next; }
       return p;                            // phase 2: the entrance
@@ -45,3 +43,6 @@ function detectCycle(head: ListNode | null): ListNode | null {
   return null;
 }
 ```
+
+- **Watch out:** restart *one* pointer. Restart both at the head and they are equal before the first step: phase 2 returns the head, whatever the entrance
+- **Also solves:** [Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/) (LeetCode 287) (`i → nums[i]` is a list; start at index 0) · [Happy Number](https://leetcode.com/problems/happy-number/) (LeetCode 202) (slow/fast on the digit-square sequence)

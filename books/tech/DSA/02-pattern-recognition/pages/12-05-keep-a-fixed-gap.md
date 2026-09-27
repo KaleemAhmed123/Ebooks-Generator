@@ -1,9 +1,8 @@
 ## Keep a Fixed Gap <span class="lv lv1"></span>
 
-- **What it is:** Two pointers that move at the *same* speed but start a fixed distance apart. When the leader reaches the end, the follower is exactly that distance from the end. A variant equalises two different lengths by letting each pointer, at its end, jump to the other list's head
-- **Signal:** "remove the n-th node from the end", "n-th node from the end", "sum of the last N nodes", "intersection point of two Y-shaped lists", one pass, no length counting
-- **Not this page if:** the target is the *middle*, a distance that grows with the list → 12-03, slow/fast at two speeds
-- **Why it works:** The gap between the pointers never changes, so it is still n when the leader falls off the list. For two lists of lengths `x + c` and `y + c` sharing a tail `c`, both pointers reach the junction after `x + y + c` steps, so they arrive together
+- **What:** two pointers at the *same* speed, a fixed distance apart. When the leader falls off, the follower is that distance from the end
+- **Spot it:** "remove the n-th node from the end", "where two lists intersect", one pass. The *middle* (a distance that grows) → 12-03
+- **Why:** the gap never changes. For lists `x + c` and `y + c` sharing a tail, a pointer that switches to the other head at its end meets the other after `x + y + c` steps
 
 :::mint
 <svg viewBox="0 0 470 110" role="img" aria-label="Remove the 2nd node from the end of 1, 2, 3, 4, 5. Start both pointers at a dummy node, move fast 3 steps ahead (n plus 1). Move both until fast is null. Slow stops at 3, the node before the one to delete, so slow.next becomes 5." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -37,8 +36,10 @@ function removeNthFromEnd(
   let fast: ListNode | null = dummy, slow: ListNode = dummy;
   for (let i = 0; i <= n; i++) fast = fast!.next;   // gap of n + 1
   while (fast) { fast = fast.next; slow = slow.next!; }
-  // slow is just before it
-  slow.next = slow.next!.next;
+  slow.next = slow.next!.next;           // slow is just before it
   return dummy.next;
 }
 ```
+
+- **Watch out:** a gap of n lands *on* the node to delete, and it cannot unlink itself. Start both at a dummy with gap `n + 1`
+- **Also solves:** [Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/) (LeetCode 160) (`a = a ? a.next : headB` until `a === b`) · [Rotate List](https://leetcode.com/problems/rotate-list/) (LeetCode 61) (cut `k % len` from the end) · [Swapping Nodes in a Linked List](https://leetcode.com/problems/swapping-nodes-in-a-linked-list/) (LeetCode 1721)

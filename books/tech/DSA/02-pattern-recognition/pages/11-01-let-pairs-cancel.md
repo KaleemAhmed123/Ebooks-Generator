@@ -1,9 +1,8 @@
 ## Let Pairs Cancel <span class="lv lv1"></span>
 
-- **What it is:** XOR every value together. Anything that appears an even number of times cancels to 0 (`x ^ x = 0`, `x ^ 0 = x`, order does not matter), so what remains is built only from the values that appear an odd number of times
-- **Signal:** "every element appears twice except one", "find the missing number from 0..n", "find the extra character", "two numbers appear once, all others twice", "O(1) extra space"
-- **Not this page if:** the other values appear three times, or any odd number of times → 11-02
-- **Why it works:** XOR is addition without carry, bit by bit. A bit position ends up 1 exactly when an odd number of inputs have a 1 there. Pairs contribute an even count to every position, so they vanish; the unpaired value's bits are left standing
+- **What:** XOR every value together. Anything that appears an even number of times cancels (`x ^ x = 0`, `x ^ 0 = x`), so only the odd-count values remain
+- **Spot it:** "every element appears twice except one", "the missing number from 0..n", "the extra character", "two numbers appear once", "O(1) extra space". Others appear three times → 11-02
+- **Why:** XOR is addition without carry, per bit. A bit ends up 1 exactly when an odd number of inputs have a 1 there, so pairs vanish
 
 :::mint
 <svg viewBox="0 0 470 118" role="img" aria-label="Single Number III on 1, 2, 1, 3, 2, 5. XOR of everything is 3 xor 5 equals 6, binary 110. Its lowest set bit is 010. Split the numbers by that bit: 2, 3, 2 have it, 1, 1, 5 do not. XOR each group separately: 3 and 5, the two singles." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -27,12 +26,13 @@
 // two values appear once, every other value twice
 function singleNumber(nums: number[]): number[] {
   let both = 0;
-  // = a ^ b, nonzero since a ≠ b
-  for (const x of nums) both ^= x;
-  // lowest bit where a and b differ
-  const bit = both & -both;
+  for (const x of nums) both ^= x; // = a ^ b, nonzero since a ≠ b
+  const bit = both & -both;     // lowest bit where a and b differ
   let a = 0;
   for (const x of nums) if (x & bit) a ^= x;
   return [a, both ^ a];
 }
 ```
+
+- **Watch out:** XOR when the others appear three times. `[2, 2, 3, 2]` XORs to 1, not the single value 3
+- **Also solves:** [Single Number](https://leetcode.com/problems/single-number/) (LeetCode 136) · [Missing Number](https://leetcode.com/problems/missing-number/) (LeetCode 268) (XOR every index and every value) · [Find the Difference](https://leetcode.com/problems/find-the-difference/) (LeetCode 389) (XOR the character codes)

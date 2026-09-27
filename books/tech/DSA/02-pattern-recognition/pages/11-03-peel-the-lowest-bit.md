@@ -1,9 +1,8 @@
 ## Peel the Lowest Bit <span class="lv lv1"></span>
 
-- **What it is:** Two one-line identities do most bit work. `n & (n − 1)` deletes the lowest set bit of `n`. `n & −n` keeps only the lowest set bit. Loops that peel bits one at a time run once per *set* bit, not once per bit position
-- **Signal:** "count the 1 bits", "is n a power of two", "counting bits for every number from 0 to n", "position of the only set bit", "enumerate all subsets of a mask", "reverse the bits", "add two integers without using + or −"
-- **Not this page if:** the count is per bit *position* across many numbers ("sum of Hamming distances over all pairs") → 11-02
-- **Why it works:** Subtracting 1 turns the lowest 1 into 0 and every 0 below it into 1; AND with the original wipes that whole tail. So `n & (n − 1)` is `n` minus its lowest bit, and a number is a power of two exactly when that leaves 0. The same peel turns "number of 1s in i" into a recurrence on a smaller number
+- **What:** `n & (n − 1)` deletes the lowest set bit; `n & −n` keeps only it. Loops that peel bits run once per *set* bit, not once per position
+- **Spot it:** "count the 1 bits", "is n a power of two", "counting bits for every number up to n", "reverse the bits", "add without + or −". Counts per *position* across many numbers → 11-02
+- **Why:** subtracting 1 turns the lowest 1 into 0 and the 0s below it into 1s; AND with the original wipes that tail. A power of two is left with 0
 
 :::mint
 <svg viewBox="0 0 470 104" role="img" aria-label="n equals 12, binary 1100. n minus 1 is 1011. n and n minus 1 is 1000: the lowest set bit is gone. n and minus n is 0100: only the lowest set bit is kept. For counting bits, bits of 12 equal bits of 8 plus 1." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -36,3 +35,6 @@ function popcount(n: number): number {
   return c;
 }
 ```
+
+- **Watch out:** `n & (n − 1) === 0` without brackets parses as `n & ((n − 1) === 0)`. And check `n > 0`: 0 passes the test
+- **Also solves:** [Number of 1 Bits](https://leetcode.com/problems/number-of-1-bits/) (LeetCode 191) · [Power of Two](https://leetcode.com/problems/power-of-two/) (LeetCode 231) · [Reverse Bits](https://leetcode.com/problems/reverse-bits/) (LeetCode 190) (`r = (r << 1) | (n & 1)`, read `r >>> 0`) · [Sum of Two Integers](https://leetcode.com/problems/sum-of-two-integers/) (LeetCode 371) (`a ^ b` is the sum, `(a & b) << 1` the carry)

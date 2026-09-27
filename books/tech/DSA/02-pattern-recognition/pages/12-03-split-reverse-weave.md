@@ -1,9 +1,8 @@
 ## Split, Reverse, Weave <span class="lv lv2"></span>
 
-- **What it is:** A three-step recipe for problems that pair the front of a list with its back. Find the middle with slow/fast pointers, reverse the second half in place (page 12-02), then walk both halves together: compare them, weave them, or add them
-- **Signal:** "reorder L0 → Ln → L1 → Ln−1 …", "is the linked list a palindrome", "maximum twin sum", the i-th node from the front meets the i-th from the back, O(1) extra space
-- **Not this page if:** only one node counted from the end is needed ("remove the n-th from the end") → 12-05, no reversal
-- **Why it works:** A singly linked list can only be walked forward, so "the i-th node from the end" is out of reach. Reversing the back half turns it into a forward walk that starts at the end. The middle comes from slow/fast pointers
+- **What:** find the middle (slow/fast), reverse the back half (12-02), walk both halves together
+- **Spot it:** "reorder L0 → Ln → L1 …", "palindrome list". One node from the end → 12-05
+- **Why:** a list only walks forward; reversing the back half makes "i-th from the end" a forward walk
 
 :::mint
 <svg viewBox="0 0 470 118" role="img" aria-label="Reorder list 1, 2, 3, 4, 5. Slow and fast find the middle 3. Cut after 3: first half 1, 2, 3 and second half 4, 5. Reverse the second half to 5, 4. Weave: 1, 5, 2, 4, 3." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -34,3 +33,28 @@
   <text x="290" y="106" class="sm">alternate one from each half</text>
 </svg>
 :::
+
+```ts
+// Reorder List (LeetCode 143), in place
+function reorderList(head: ListNode | null): void {
+  if (!head?.next) return;
+  let slow = head, fast: ListNode | null = head;
+  while (fast?.next?.next) { slow = slow.next!; fast = fast.next.next; }
+  let back: ListNode | null = slow.next;
+  slow.next = null;                // 1. cut: first half ends here
+  let prev: ListNode | null = null;
+  while (back) {                       // 2. reverse the back half
+    const next: ListNode | null = back.next;
+    back.next = prev; prev = back; back = next;
+  }
+  let a: ListNode | null = head, b = prev;
+  while (a && b) {                         // 3. weave
+    const an = a.next, bn = b.next;
+    a.next = b; b.next = an;
+    a = an; b = bn;
+  }
+}
+```
+
+- **Watch out:** skip `slow.next = null` and the first half runs into the reversed one: a cycle
+- **Also solves:** [Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/) (LeetCode 234) · [Maximum Twin Sum of a Linked List](https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list/) (LeetCode 2130)
