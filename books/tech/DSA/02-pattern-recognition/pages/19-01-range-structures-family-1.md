@@ -1,4 +1,4 @@
-# Chapter 19 - Range Structures & Rare Tricks
+# Chapter 19 - Range Structures
 
 ## Choose the Range Structure <span class="lv lv2"></span>
 

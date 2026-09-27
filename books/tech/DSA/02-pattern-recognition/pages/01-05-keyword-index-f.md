@@ -3,7 +3,7 @@
 | The statement says… | Think | Page |
 |---|---|---|
 | "running median" | **43 · Balance Two Heaps** | 15-04 |
-| "connect ropes", "merge cost" | **44 · Merge the Two Cheapest** | 15-05 |
+| "connect ropes", "merge cost" | **44 · Merge the Two Smallest** | 15-05 |
 | "share an email / a letter / a value" | **46 · Find the Hidden Edge** | 16-02 |
 | "surrounded", "enclosed", "closed island" | **47 · Flood from the Border** | 16-03 |
 | "count the ways", "minimum cost", "a recursion that repeats calls" | **Name the DP Shape** | 17-02 |

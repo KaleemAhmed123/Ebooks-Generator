@@ -1,9 +1,9 @@
 ## Read the Problem, Pick the Page <span class="lv lv1"></span>
 
-- Read the statement three times: for the *shape of the input*, for *what is asked*, and for *n*. Pick the box, then the first chip that matches; confirm on the page against its "Not this page if" line. Arrays are on this page, every other input overleaf
+- Read the statement three times: for the *shape of the input*, for *what is asked*, and for *n*. Pick the box, then the first chip that matches; confirm on the page against its "Not this page if" line. Arrays and strings are on this page, every other input overleaf
 
 :::mint
-<svg viewBox="0 0 470 452" role="img" aria-label="Decision chart, arrays. Pick the box that matches the input, then the first chip that matches the statement, and go to its pages. Array: a subarray or window: contiguous, values ≥ 0, longest / shortest → 02-02, 02-03; count subarrays · exactly K → 02-04, 02-05; remove from both ends, keep the middle → 02-06; choose k items, score by their spread → 02-07; sum or mod of a subarray, negatives in → 03-03; best subarray · max product → 03-06; max of every window of size k → 10-10. Array: pairs and positions: pair or triplet to a target, sortable → 02-08, 02-10; compact or partition in place · 0/1/2 → 02-09; best pair i < j · buy low, sell high → 03-05; answer at i needs its left and its right → 03-04; next greater / smaller · sum of minimums → 10-05, 10-08; smallest number after k removals → 10-07; pairs out of order · smaller after self → 07-08. Array: values and order: values in 1..n, O(1) extra space → 04-02; rotate by k · next arrangement → 04-03, 04-04; more than n/2 (or n/3) of one value → 04-05; circular array · wraps past the end → 04-06; many range sums or range adds → 03-02, 03-07, 19-01; order decided pair by pair → 07-09; intervals · meetings · rooms → 07-06, 07-07. Array: optimise a choice: reach the end · tour a circle of stations → 08-02, 08-06; unit jobs with deadline and profit → 08-03; pair items, or split them between two sides → 08-04, 08-05; min of max · smallest X that works → 09-02; k-th smallest of a set you cannot list → 09-04; sorted, but rotated / a mountain / a peak → 09-03; top k · running median · merge k lists → 15-03, 15-04; merge the cheapest two · undo a bad pick → 15-05, 15-06" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
+<svg viewBox="0 0 470 524" role="img" aria-label="Decision chart, arrays and strings. Pick the box that matches the input, then the first chip that matches the statement, and go to its pages. Array: a subarray or window: contiguous, values ≥ 0, longest / shortest → 02-02, 02-03; count subarrays · exactly K → 02-04, 02-05; remove from both ends, keep the middle → 02-06; choose k items, score by their spread → 02-07; sum or mod of a subarray, negatives in → 03-03; best subarray · max product → 03-06; max of every window of size k → 10-10; unsure: window, count or prefix map? → 02-11. Array: pairs and positions: pair or triplet to a target, sortable → 02-08, 02-10; compact or partition in place · 0/1/2 → 02-09; best pair i < j · buy low, sell high → 03-05; answer at i needs its left and its right → 03-04; next greater / smaller · sum of minimums → 10-05, 10-08; smallest number after k removals → 10-07; pairs out of order · smaller after self → 07-08. Array: values and order: values in 1..n, O(1) extra space → 04-02; rotate by k · next arrangement → 04-03, 04-04; more than n/2 (or n/3) of one value → 04-05; circular array · wraps past the end → 04-06; many range sums or range adds → 03-02, 03-07, 19-01; order decided pair by pair → 07-09; intervals · meetings · rooms → 07-06, 07-07. Array: optimise a choice: reach the end · tour a circle of stations → 08-02, 08-06; unit jobs with deadline and profit → 08-03; pair items, or split them between two sides → 08-04, 08-05; min of max · smallest X that works → 09-02; k-th smallest of a set you cannot list → 09-04; sorted, but rotated / a mountain / a peak → 09-03; top k · running median · merge k lists → 15-03, 15-04; merge the cheapest two · undo a bad pick → 15-05, 15-06. String: same under a rule: anagram, pattern → 06-01, 06-03; palindromic substring → 06-02; nested brackets · decode · depth → 10-02, 10-04; adjacent items cancel or collide → 10-03; another chapter wearing text → 06-00" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
   <style>
     .t { font: bold 11px Georgia, serif; fill: #1d4e89; }
     .g { font: bold 8.8px Georgia, serif; fill: #1a1a1a; }
@@ -42,6 +42,10 @@
   <rect x="106.0" y="96" width="117.3" height="30" rx="4" fill="#ffffff" stroke="#2d6a4f" stroke-width="0.9"/>
   <text x="110.0" y="105" class="s">max of every window of size k</text>
   <text x="110.0" y="123" class="p">→ 10-10</text>
+  <rect x="227.3" y="96" width="117.3" height="30" rx="4" fill="#ffffff" stroke="#2d6a4f" stroke-width="0.9"/>
+  <text x="231.3" y="105" class="s">unsure: window, count or</text>
+  <text x="231.3" y="113.4" class="s">prefix map?</text>
+  <text x="231.3" y="123" class="p">→ 02-11</text>
   <rect x="4" y="134" width="92" height="98" rx="6" fill="#dbe7f5" stroke="#1d4e89" stroke-width="1.2"/>
   <text x="50" y="180.5" class="g" text-anchor="middle">Array: pairs</text>
   <text x="50" y="191.5" class="g" text-anchor="middle">and positions</text>
@@ -137,5 +141,25 @@
   <text x="231.3" y="423" class="s">merge the cheapest two · undo</text>
   <text x="231.3" y="431.4" class="s">a bad pick</text>
   <text x="231.3" y="441" class="p">→ 15-05 · 15-06</text>
+  <rect x="4" y="452" width="92" height="64" rx="6" fill="#e2fcf3" stroke="#2d6a4f" stroke-width="1.2"/>
+  <text x="50" y="487" class="g" text-anchor="middle">String</text>
+  <rect x="106.0" y="452" width="117.3" height="30" rx="4" fill="#ffffff" stroke="#2d6a4f" stroke-width="0.9"/>
+  <text x="110.0" y="461" class="s">same under a rule: anagram,</text>
+  <text x="110.0" y="469.4" class="s">pattern</text>
+  <text x="110.0" y="479" class="p">→ 06-01 · 06-03</text>
+  <rect x="227.3" y="452" width="117.3" height="30" rx="4" fill="#ffffff" stroke="#2d6a4f" stroke-width="0.9"/>
+  <text x="231.3" y="461" class="s">palindromic substring</text>
+  <text x="231.3" y="479" class="p">→ 06-02</text>
+  <rect x="348.7" y="452" width="117.3" height="30" rx="4" fill="#ffffff" stroke="#2d6a4f" stroke-width="0.9"/>
+  <text x="352.7" y="461" class="s">nested brackets · decode ·</text>
+  <text x="352.7" y="469.4" class="s">depth</text>
+  <text x="352.7" y="479" class="p">→ 10-02 · 10-04</text>
+  <rect x="106.0" y="486" width="117.3" height="30" rx="4" fill="#ffffff" stroke="#2d6a4f" stroke-width="0.9"/>
+  <text x="110.0" y="495" class="s">adjacent items cancel or</text>
+  <text x="110.0" y="503.4" class="s">collide</text>
+  <text x="110.0" y="513" class="p">→ 10-03</text>
+  <rect x="227.3" y="486" width="117.3" height="30" rx="4" fill="#ffffff" stroke="#2d6a4f" stroke-width="0.9"/>
+  <text x="231.3" y="495" class="s">another chapter wearing text</text>
+  <text x="231.3" y="513" class="p">→ 06-00</text>
 </svg>
 :::

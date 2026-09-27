@@ -171,7 +171,7 @@
   <text x="260" y="321.6" class="nm">Balance Two Heaps</text>
   <text x="466" y="321.6" class="pg" text-anchor="end">15-04</text>
   <text x="254" y="335.20000000000005" class="num" text-anchor="end">44</text>
-  <text x="260" y="335.20000000000005" class="nm">Merge the Two Cheapest</text>
+  <text x="260" y="335.20000000000005" class="nm">Merge the Two Smallest</text>
   <text x="466" y="335.20000000000005" class="pg" text-anchor="end">15-05</text>
   <text x="254" y="348.80000000000007" class="num" text-anchor="end">45</text>
   <text x="260" y="348.80000000000007" class="nm">Take Now, Regret Later</text>
