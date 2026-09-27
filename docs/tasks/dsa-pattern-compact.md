@@ -62,3 +62,13 @@ Budget: front ~4 · pattern pages ~115 · openers ~12 · drills ~18 → about 15
   `dist/tech/DSA/02-pattern-recognition-ch02-pilot.pdf`. Helpers and lookup tables
   are copied to `docs/tasks/reference/dsa/scripts/`. Continuation prompt:
   `dsa-pattern-compact-HANDOFF.md`.
+- 2026-09-27 — Chapter 3 in the compact style: 16 files → 8 pages. New Prefix Sum intro
+  (03-01, label "Pattern 4 · Prefix and Suffix · overview"): What / Signal / Mechanism,
+  the moves table, a prefix-map skeleton, the trap. The old family diagram was dropped
+  (the skeleton shows the same read-then-write loop) to fit one page. Six move pages
+  (03-02 … 03-07; IDs unchanged, so no references moved), interview blocks cut to
+  one-line follow-ups on 03-03, 03-04, 03-06. Drills: 11 linked problems, none repeated
+  elsewhere (disguised statements gone). Templates reused unchanged; only 03-03's two
+  comments moved inline. The new skeleton was run against a brute force: 3,000 cases,
+  0 failures. Book 266 files; chapters 2–3 have 0 overflow (01-02 still 2mm over, fixed
+  in the front-matter step). Spec: `reference/dsa/scripts/spec-ch03.py`.

@@ -1,9 +1,8 @@
 ## Best Partner So Far <span class="lv lv1"></span>
 
-- **What it is:** For "best pair `i < j`" problems, split the score into a part that depends only on `i` and a part that depends only on `j`. Walk `j` left to right and keep the best `i`-part seen so far. Each `j` meets its best partner in O(1)
-- **Signal:** "buy on one day, sell on a later day", "maximise `a[i] + a[j] + i − j`", "maximum `a[j] − a[i]` with `i < j`", "find two numbers that sum to target"
-- **Not this page if:** "as many transactions as you like" or "with a cooldown": the state is what you hold, not one best partner → 17-04
-- **Why it works:** If `score(i, j) = f(i) + g(j)`, then for a fixed `j` the best partner is simply the index `i < j` with the largest `f(i)`. That maximum only grows as `j` moves right, so one variable holds it. The O(n²) pair search becomes one pass
+- **What:** for "best pair `i < j`", split the score into `f(i) + g(j)`. Walk `j` left to right and carry the best `f(i)` seen so far
+- **Spot it:** "buy on one day, sell on a later day", "maximise `a[i] + a[j] + i − j`", "two numbers that sum to target". Unlimited trades or a cooldown → 17-04
+- **Why:** for a fixed `j` the best partner is the largest `f(i)` with `i < j`, and that maximum only grows as `j` moves. One variable replaces the O(n²) pair search
 
 :::mint
 <svg viewBox="0 0 470 100" role="img" aria-label="Best Sightseeing Pair with values 8, 1, 5, 2, 6. The score values i plus i plus values j minus j splits into f of i equals values i plus i and g of j equals values j minus j. Walking j from left to right, keep the best f seen so far. At j equal to 2, best f is 8 and g is 3, giving 11, the answer." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -48,3 +47,7 @@ function maxScoreSightseeingPair(values: number[]): number {
   return best;
 }
 ```
+
+- **Watch out:** offer before reading and `j` pairs with itself. On `[1, 3]` the swapped lines return 6, the 3 counted twice; the answer is 3. LeetCode 121 hides this bug: a same-day sale earns 0, a legal answer
+- **Also solves:** [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/) (LeetCode 121) (carry the cheapest price) · [Two Sum](https://leetcode.com/problems/two-sum/) (LeetCode 1) (an exact partner: map value → index) · [Maximum Value of an Ordered Triplet II](https://leetcode.com/problems/maximum-value-of-an-ordered-triplet-ii/) (LeetCode 2874) (carry the best `a[i]`, then the best `a[i] − a[j]`)
+- **Not separable:** `max j − i` with `a[i] ≤ a[j]` couples `i` and `j`. Build prefix minimums and suffix maximums instead → 03-04

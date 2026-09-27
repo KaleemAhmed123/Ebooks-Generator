@@ -1,9 +1,8 @@
 ## Drop the Baggage <span class="lv lv1"></span>
 
-- **What it is:** Carry "the best subarray that ends *here*" in one or two variables. At each element decide: extend the past, or drop it and restart. Kadane's algorithm (Module 06, Maximum Subarray) is the sum case; this page is the family around it
-- **Signal:** "largest product of a contiguous run", "flip the sign of one subarray", "you may delete one element from the subarray", "largest gap between the counts of two letters in a substring"
-- **Not this page if:** the chosen elements need not be contiguous ("no two adjacent"): a subsequence, not a subarray → Module 06, 02-02
-- **Why it works:** Any subarray ending at `i` is either `[i]` alone or a subarray ending at `i − 1` plus `a[i]`. So the best one ending at `i` needs only the best one ending at `i − 1`, *if* that single number is enough to decide. When it is not, carry the extra state that makes it enough: the worst value, a "deleted yet?" flag, a "seen the rare letter?" flag
+- **What:** carry the best subarray that ends *here*. At each element, extend the past or drop it and restart. Kadane's algorithm is the sum case
+- **Spot it:** "largest product of a contiguous run", "you may delete one element", "largest absolute sum". Elements need not be contiguous ("no two adjacent") → Module 06
+- **Why:** a subarray ending at `i` is `[i]` alone or one ending at `i − 1` plus `a[i]`. When one number cannot decide, carry the state that can: the worst value, a "deleted yet?" flag
 
 :::mint
 <svg viewBox="0 0 470 108" role="img" aria-label="Maximum product subarray on 2, 3, minus 2, 4, minus 1. Track both the largest and smallest product ending at each index. A negative number swaps them: the smallest, minus 48, times minus 1 becomes the largest, 48." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -47,3 +46,7 @@ function maxProduct(nums: number[]): number {
   return best;
 }
 ```
+
+- **Watch out:** copying sum-Kadane's "reset below 0" to products. It throws away `−2`, which later pairs with `−1` to win. Carry the minimum instead
+- **Also solves:** [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/) (LeetCode 53) · [Maximum Subarray Sum with One Deletion](https://leetcode.com/problems/maximum-subarray-sum-with-one-deletion/) (LeetCode 1186) (a second state: one element deleted) · [Maximum Absolute Sum of Any Subarray](https://leetcode.com/problems/maximum-absolute-sum-of-any-subarray/) (LeetCode 1749) (carry the best and the worst)
+- **Follow-up (LeetCode 2272):** per letter pair, map `hi → +1`, `lo → −1` and run Kadane. A window must hold at least one `lo`, so carry a "seen `lo`" flag

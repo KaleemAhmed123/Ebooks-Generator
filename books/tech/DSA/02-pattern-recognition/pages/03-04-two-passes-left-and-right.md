@@ -1,9 +1,8 @@
 ## Two Passes, Left and Right <span class="lv lv1"></span>
 
-- **What it is:** When the answer at `i` depends on something to its left *and* something to its right, compute each side in its own pass and combine them per index. Two O(n) passes replace an O(n) scan per index
-- **Signal:** "water trapped above each bar", "product of all other elements", "each child must beat both neighbours", "longest increasing-then-decreasing run", "index where left sum equals right sum"
-- **Not this page if:** each `j` needs only the best value on its left, never its right: one variable in one pass → 03-05
-- **Why it works:** The left side of `i` is the left side of `i − 1` plus one element, so a forward pass builds all left answers incrementally. The same holds backwards for the right side. Neither pass needs the other until the final combine
+- **What:** when the answer at `i` depends on both sides, build the left side in a forward pass and the right side in a backward pass, then combine per index
+- **Spot it:** "water trapped above each bar", "product of all the other elements", "beat both neighbours", "increasing, then decreasing". Only the best value on the left is needed → 03-05
+- **Why:** the left side of `i` is the left side of `i − 1` plus one item, so each pass is incremental: O(n) in total, not O(n) per index
 
 :::mint
 <svg viewBox="0 0 470 124" role="img" aria-label="Trapping rain water on heights 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1. A blue step line, leftMax, rises from left to right: 0, 1, 1, 2, 2, 2, 2, then 3 to the end. A red step line, rightMax, falls from left to right: 3 up to the tallest bar, then 2, 2, 2, 1. Over each bar the water fills up to the lower of the two lines, minus the bar. Left of the tallest bar the blue line is lower, right of it the red line is lower. Total water is 6." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -70,3 +69,7 @@ function trap(h: number[]): number {
   return water;
 }
 ```
+
+- **Watch out:** one pass for a two-sided rule. Candy on ratings `[1, 3, 2, 1]` needs `1, 3, 2, 1`; a left pass alone gives `1, 2, 1, 1`
+- **Also solves:** [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/) (LeetCode 238) · [Candy](https://leetcode.com/problems/candy/) (LeetCode 135) (the right pass takes `max(c[i], c[i + 1] + 1)`) · [Find Good Days to Rob the Bank](https://leetcode.com/problems/find-good-days-to-rob-the-bank/) (LeetCode 2100) (run lengths from each side)
+- **Follow-up (O(1) space):** two pointers. Advance the side whose running max is smaller; its water is `itsMax − h`, because the other side already has a bar at least as tall

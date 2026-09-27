@@ -1,9 +1,8 @@
 ## Equal Prefixes <span class="lv lv1"></span>
 
-- **What it is:** Encode each element so that "subarray `(j, i]` has property P" becomes "`code(prefix j) === code(prefix i)`". Then a map of codes seen so far answers every index in O(1)
-- **Signal:** "sum equals k" with negative values allowed, "divisible by k", "equal number of 0s and 1s / odd and even", "every vowel appears an even number of times", "at most one letter with odd count"
-- **Not this page if:** the property is a maximum or minimum ("max − min ≤ limit"): it does not survive subtracting two prefixes → 10-10
-- **Why it works:** Differences of prefixes are subarrays. If the property survives subtraction (sums, remainders mod k, parities under XOR), two equal codes bracket a valid subarray. Store the **count** of each code to count subarrays, or the **first index** to find the longest
+- **What:** encode each prefix so that "subarray `(j, i]` has property P" becomes "`code(j) === code(i)`". A map of the codes seen so far answers each index in O(1)
+- **Spot it:** "sum equals k" with negatives, "divisible by k", "equal number of 0s and 1s", "every vowel an even number of times". A max or min ("max − min ≤ limit") does not survive subtraction → 10-10
+- **Why:** differences of prefixes are subarrays. If P survives subtraction (sums, remainders, XOR parities), equal codes bracket a valid subarray. Store the **count** of each code to count, the **first index** to find the longest
 
 :::mint
 <svg viewBox="0 0 470 104" role="img" aria-label="Array 4, 5, 0, minus 2, minus 3, 1 with k equal to 5. Prefix remainders are 0, 4, 4, 4, 2, 4, 0. Equal remainders bracket subarrays divisible by 5. The remainder 4 appears four times, giving 6 pairs; the remainder 0 appears twice, giving 1 pair; total 7." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -35,16 +34,18 @@
 ```ts
 // Subarray Sums Divisible by K (LeetCode 974)
 function subarraysDivByK(nums: number[], k: number): number {
-  // the empty prefix
-  const seen = new Map<number, number>([[0, 1]]);
+  const seen = new Map<number, number>([[0, 1]]);  // the empty prefix
   let sum = 0, count = 0;
   for (const x of nums) {
     sum += x;
-    // JS % keeps the sign
-    const code = ((sum % k) + k) % k;
+    const code = ((sum % k) + k) % k;              // JS % keeps the sign
     count += seen.get(code) ?? 0;                  // read …
     seen.set(code, (seen.get(code) ?? 0) + 1);     // … then write
   }
   return count;
 }
 ```
+
+- **Watch out:** negative remainders. In JS, `−2 % 5` is `−2`. On `[−2, 5]` with k = 5 the prefixes −2 and 3 bracket `[5]`, but land under different keys: 0, not 1. Normalise with `((s % k) + k) % k`
+- **Also solves:** [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) (LeetCode 560) (code = the sum; look up `sum − k`) · [Continuous Subarray Sum](https://leetcode.com/problems/continuous-subarray-sum/) (LeetCode 523) (first index; accept `i − first ≥ 2`) · [Contiguous Array](https://leetcode.com/problems/contiguous-array/) (LeetCode 525) (0 counts as −1) · [Find the Longest Substring Containing Vowels in Even Counts](https://leetcode.com/problems/find-the-longest-substring-containing-vowels-in-even-counts/) (LeetCode 1371) (a 5-bit vowel parity mask)
+- **Follow-up (LeetCode 1915):** at most one letter odd: also look up `m ^ (1 << b)` for each of the 10 letters

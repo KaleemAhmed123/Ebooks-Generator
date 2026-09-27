@@ -1,9 +1,8 @@
 ## Difference Array <span class="lv lv1"></span>
 
-- **What it is:** The inverse of a prefix sum. To add x to every element in `[L, R]`, write only two numbers: `d[L] += x` and `d[R + 1] −= x`. After all updates, one running sum over `d` rebuilds the final array
-- **Signal:** "add x to every element from L to R", many range updates followed by reading the result once, "bookings", "passengers picked up and dropped off", "how many intervals cover each point"
-- **Not this page if:** values are read between updates: nothing is correct until the final running sum → 19-01
-- **Why it works:** A running sum carries a change forward until something cancels it. `+x` at L switches the update on; `−x` just after R switches it off. So q range updates cost O(q), and reading the whole array costs one O(n) pass
+- **What:** the inverse of a prefix sum. To add x to `[L, R]`, write `d[L] += x` and `d[R + 1] −= x`. One running sum at the end rebuilds the array
+- **Spot it:** "add x to every element from L to R", many updates then one read, "bookings", "pick up and drop off". Reads between updates → 19-01; coordinates up to 10⁹ → 07-06
+- **Why:** a running sum carries a change forward until something cancels it. q updates cost O(q) whatever their width; the final read costs O(n)
 
 :::mint
 <svg viewBox="0 0 470 138" role="img" aria-label="Adding 10 to indices 1 through 3 in an array of length 5. The difference array gets plus 10 at index 1 and minus 10 at index 4. The running sum of the difference array is 0, 10, 10, 10, 0: a plateau exactly over the range." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -46,3 +45,6 @@ function corpFlightBookings(bookings: number[][], n: number) {
   return out;
 }
 ```
+
+- **Watch out:** switching off at R, not R + 1. Adding 10 to `[1, 3]` of five zeros gives `[0, 10, 10, 0, 0]`: R never gets it. That is why `d` has a spare slot
+- **Also solves:** [Car Pooling](https://leetcode.com/problems/car-pooling/) (LeetCode 1094) (fail once the running sum exceeds capacity) · [Shifting Letters II](https://leetcode.com/problems/shifting-letters-ii/) (LeetCode 2381) (shift mod 26) · [Increment Submatrices by One](https://leetcode.com/problems/increment-submatrices-by-one/) (LeetCode 2536) (four corners, then row and column sums)

@@ -1,9 +1,8 @@
 ## Prefix Sums <span class="lv lv1"></span>
 
-- **What it is:** Store running totals `P[i] = a[0] + … + a[i − 1]`, with `P[0] = 0`. Any range sum is then the difference of two stored totals: `sum(L..R) = P[R + 1] − P[L]`
-- **Signal:** "sum of elements between i and j", many range queries on data that never changes, "running sum", "pivot / equilibrium index", a 2-D grid with rectangle-sum queries
-- **Not this page if:** values change between queries: every update would rebuild the prefix array → 19-01
-- **Why it works:** Addition can be undone. The total up to R contains the total before L, so subtracting it leaves exactly the range. One O(n) pass buys O(1) per query, for any number of queries
+- **What:** store `P[i] = a[0] + … + a[i − 1]`, with `P[0] = 0`. Any range sum is `P[R + 1] − P[L]`
+- **Spot it:** "sum of the elements between i and j", many queries on data that never changes, "pivot index", rectangle sums on a grid. Values change between queries → 19-01
+- **Why:** addition can be undone. The total up to R contains the total before L, so the difference is exactly the range: O(n) once, then O(1) per query
 
 :::mint
 <svg viewBox="0 0 470 132" role="img" aria-label="Array 3, 1, 4, 1, 5 and its prefix array 0, 3, 4, 8, 9, 14. The query L equals 1, R equals 3 covers 1, 4, 1. The long bar P of 4 equals 9 covers everything up to index 3; the short bar P of 1 equals 3 covers everything before index 1. Their difference, 6, is exactly the range." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -44,3 +43,6 @@ class NumArray {
   }
 }
 ```
+
+- **Watch out:** `prefix[R] − prefix[L − 1]` on an n-sized array. At L = 0 it reads `prefix[−1]`, which is `undefined` in JS, and returns `NaN`. Size the array n + 1
+- **Also solves:** [Range Sum Query 2D - Immutable](https://leetcode.com/problems/range-sum-query-2d-immutable/) (LeetCode 304) (add two corners, subtract two) · [Find Pivot Index](https://leetcode.com/problems/find-pivot-index/) (LeetCode 724) (right sum = `total − left − a[i]`) · [XOR Queries of a Subarray](https://leetcode.com/problems/xor-queries-of-a-subarray/) (LeetCode 1310) (XOR undoes itself too)
