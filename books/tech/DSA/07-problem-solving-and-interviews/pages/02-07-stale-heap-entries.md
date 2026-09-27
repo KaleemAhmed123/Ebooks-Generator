@@ -8,7 +8,7 @@ Standard textbooks say: "If you find a shorter path to a node that is already in
 
 ### The Reality
 
-Almost no standard library in any language (Java `PriorityQueue`, C++ `priority_queue`, Python `heapq`) supports an efficient `decrease-key` operation. Finding an arbitrary element in a heap takes O(N) time.
+Almost no standard library in any language (Java `PriorityQueue`, C++ `priority_queue`, Python `heapq`) supports a fast `decrease-key` operation. Finding an arbitrary element in a heap takes O(N) time.
 Instead of updating the existing entry, we simply **push a duplicate, better entry** into the heap.
 
 ```ts

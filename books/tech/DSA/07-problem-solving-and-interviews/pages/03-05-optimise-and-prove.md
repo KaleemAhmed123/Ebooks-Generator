@@ -21,6 +21,6 @@ Once you pitch the solution, ask for explicit permission to code.
 
 If the interviewer says, "Can we do better on space?", **do not get defensive.** They are handing you a hint.
 
-*"Okay, you're looking for an O(1) space solution. That means I can't use the Hash Map. Let's look at the constraints again... oh, the array is sorted! Because it's sorted, I don't need a map to find duplicates, I can just use two pointers."*
+*"Okay, you're looking for an O(1) space solution. That means I can't use the Hash Map. I should look at the constraints again... oh, the array is sorted! Because it's sorted, I don't need a map to find duplicates, I can just use two pointers."*
 
 Accept the hint, adjust the constraints, and derive the new approach.

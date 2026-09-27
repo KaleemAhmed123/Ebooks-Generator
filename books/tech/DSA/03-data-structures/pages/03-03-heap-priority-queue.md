@@ -11,7 +11,7 @@
   - Parent: `Math.floor((i - 1) / 2)`
   - Left Child: `2i + 1`
   - Right Child: `2i + 2`
-- This makes Heaps highly cache-efficient compared to pointer-based trees.
+- This makes Heaps highly cache-friendly compared to pointer-based trees.
 
 ### Heapify: The O(N) Magic
 
@@ -23,7 +23,7 @@
 ### When to use a Heap
 
 1. **Top-K Problems:** "Find the Kth largest element". Maintain a Min-Heap of size K. If a new element is larger than the root, pop the root and push the new element. Time: O(N log K). Space: O(K).
-2. **Merging Sorted Data:** "Merge K sorted linked lists". A Heap efficiently manages the K "current smallest" candidates. Time: O(N log K).
+2. **Merging Sorted Data:** "Merge K sorted linked lists". A Heap tracks the K "current smallest" candidates with O(log K) per operation. Time: O(N log K).
 3. **Dynamic Median:** Maintain a Max-Heap for the bottom half of numbers, and a Min-Heap for the top half. The median is always at the root of one (or both) heaps.
 
 ### The Removal Trap

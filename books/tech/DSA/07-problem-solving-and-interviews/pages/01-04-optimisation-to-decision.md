@@ -1,6 +1,6 @@
 ## Transformation: Optimisation to Decision
 
-This is the mathematical core of **Binary Search on Answer**. It is one of the most powerful transformations in algorithmic problem solving.
+This is the mathematical core of **Binary Search on Answer**. It is one of the most frequently used transformations in algorithmic problem solving.
 
 ### The Signal
 

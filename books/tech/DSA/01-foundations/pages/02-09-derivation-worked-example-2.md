@@ -1,6 +1,6 @@
 ## Derivation worked example: Range Sum
 
-- Let's walk the derivation path for a query problem
+- The derivation path applied to a query problem
 - **Problem:** Given an array of n numbers, answer Q queries. Each query provides `L` and `R` and asks for the sum of `arr[L...R]`
 
 ### Step 1: Brute Force

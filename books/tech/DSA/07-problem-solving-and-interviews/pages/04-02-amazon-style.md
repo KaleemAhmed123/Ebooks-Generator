@@ -13,5 +13,5 @@ Amazon tests **Practical Scalability**. While Google asks "Can you do it in O(N)
 ### How to Succeed
 
 - **The LP is half the grade.** You can write flawless O(N) code, but if you fail the behavioral questions regarding "Customer Obsession" or "Deliver Results," you will be rejected.
-- **Check for edge cases early.** Amazon values engineers who write robust code that won't crash production. Ask about null inputs, negative numbers, and massive constraints before you write a single line.
+- **Check for edge cases early.** Amazon values engineers who write defensive code that won't crash production. Ask about null inputs, negative numbers, and massive constraints before you write a single line.
 - **Prepare for the scale follow-up.** Always be ready to explain how your algorithm would change if the data didn't fit in memory (External Sorting, MapReduce, Database Sharding).

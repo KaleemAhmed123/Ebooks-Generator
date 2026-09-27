@@ -1,6 +1,6 @@
 ## The Z-Algorithm 🔴
 
-KMP is powerful, but its LPS array is sometimes unintuitive to bend for custom problems. 
+KMP works, but its LPS array is sometimes unintuitive to bend for custom problems. 
 The Z-Algorithm solves the exact same string matching problem in O(|T| + |P|) time, but produces an array that is often much easier to reason about.
 
 ### The Z-Array

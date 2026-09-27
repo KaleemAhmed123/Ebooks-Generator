@@ -11,7 +11,7 @@ Consider the Edit Distance or Longest Common Subsequence problems.
 
 ### The Rolling Array Optimization
 
-Let's look at the Transition formula for LCS:
+Look at the Transition formula for LCS:
 `dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1])`
 
 Notice what `i` values we are accessing. To calculate the values for row `i`, we *only* ever look at row `i` (the current row) and row `i-1` (the row immediately above it). 

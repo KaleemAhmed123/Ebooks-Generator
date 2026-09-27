@@ -1,6 +1,6 @@
 ## Derivation worked example: Two Sum
 
-- Let's walk through the exact derivation method for the classic Two Sum problem
+- The derivation method applied to the classic Two Sum problem
 - **Problem:** Given an array of integers and a `target`, return the indices of the two numbers that add up to `target`.
 
 ### Step 1: Brute Force

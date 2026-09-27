@@ -1,6 +1,6 @@
 ## Binary Search on Answer
 
-- This is one of the most powerful and frequently tested patterns in top-tier interviews.
+- This is one of the most frequently tested patterns in top-tier interviews.
 - **The Signal:** The problem asks for the "minimum maximum", the "maximum minimum", or the "smallest capacity" required to achieve something.
 - **The Insight:** Instead of trying to construct the optimal answer, you guess an answer, and check if it is feasible. If it is feasible, try a smaller guess. If not, try a larger guess.
 

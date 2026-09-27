@@ -44,4 +44,4 @@ function longestPathDAG(n: number, edges: number[][]): number {
 ### The trap
 
 - **Forgetting the topological sort:** You cannot just loop `for (let i = 0; i < n; i++)` on a graph. If you evaluate node `5` before node `2`, but node `2` points to node `5`, the calculation for node `5` will be based on incomplete data. 
-- **The fix:** You must always process nodes in topological order. Alternatively, you can use **Memoized DFS**. In Memoized DFS, you just write a recursive function `dfs(u)` and cache the result in `memo[u]`. The recursive call stack organically forces the program to evaluate the topological order correctly!
+- **The fix:** You must always process nodes in topological order. Alternatively, you can use **Memoized DFS**. In Memoized DFS, you just write a recursive function `dfs(u)` and cache the result in `memo[u]`. The recursive call stack organically forces the program to evaluate the topological order correctly.

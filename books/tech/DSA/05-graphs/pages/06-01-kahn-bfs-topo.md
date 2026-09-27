@@ -2,7 +2,7 @@
 
 - **The Problem:** You have a list of tasks and a list of dependencies ("Task A must be completed before Task B"). Find a valid order to complete all tasks.
 - This is a **Topological Sort**. It only works on a **DAG (Directed Acyclic Graph)**. If there is a cycle (A depends on B, B depends on A), it is impossible to resolve, and no valid topological order exists.
-- **Kahn's Algorithm** is the BFS approach to Topological Sort. It is the most intuitive and robust way to solve dependency problems.
+- **Kahn's Algorithm** is the BFS approach to Topological Sort. It is the most intuitive way to solve dependency problems and naturally detects cycles.
 
 ### The In-Degree Concept
 

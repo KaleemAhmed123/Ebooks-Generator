@@ -5,12 +5,12 @@
 
 ### Example: The Coin Change
 
-Let's look at the US currency system: `[1, 5, 10, 25]`. We want to make change using the minimum number of coins.
+Take the US currency system: `[1, 5, 10, 25]`. We want to make change using the minimum number of coins.
 - **Greedy Strategy:** Always pick the largest coin that doesn't exceed the remaining amount.
 
 ### The Proof
 
-Let's prove Greedy "stays ahead" when making change for 87 cents.
+Prove Greedy "stays ahead" when making change for 87 cents.
 1. **Step 1 (First Coin):**
    - Greedy picks 25. Total: 25.
    - Can an Optimal solution pick something else? Maybe 10. Total: 10.
@@ -18,15 +18,15 @@ Let's prove Greedy "stays ahead" when making change for 87 cents.
 2. **The Structural Constraint (Why it works):**
    - For Greedy to truly stay ahead, we must prove Optimal cannot somehow "catch up" later with extreme efficiency.
    - In the US currency system, you need *more than two* 10-cent coins to equal a 25-cent coin (you need three: `10+10+5`). But if you ever use three smaller coins, you used 3 coins to achieve what Greedy did in 1 coin (25).
-   - Therefore, any sequence of smaller coins is strictly less efficient (uses more coins) than using the larger coin.
+   - Therefore, any sequence of smaller coins strictly uses more coins than using the larger coin.
 3. **Conclusion:**
-   - Because Greedy takes the largest chunk out of the total at every step, and no combination of smaller chunks can match that efficiency, Greedy stays strictly ahead in minimizing the coin count.
+   - Because Greedy takes the largest chunk out of the total at every step, and no combination of smaller chunks can match that rate, Greedy stays strictly ahead in minimizing the coin count.
 
 ### Why it fails on non-standard coins
 
 If our coins are `[1, 3, 4]`, and we want 6 cents.
 - Step 1: Greedy takes 4. Optimal takes 3. Greedy is "ahead".
-- Step 2: Greedy is forced to take 1. Total = 5. Optimal takes 3. Total = 6. Optimal just overtook Greedy!
+- Step 2: Greedy is forced to take 1. Total = 5. Optimal takes 3. Total = 6. Optimal just overtook Greedy.
 - Because `3+3=6` uses two coins, but the Greedy equivalent requires `4+1+1` (three coins), the structural constraint is broken. Greedy falls behind.
 
 ### Interview Application

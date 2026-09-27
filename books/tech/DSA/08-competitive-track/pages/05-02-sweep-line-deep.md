@@ -29,7 +29,7 @@ We use a **Segment Tree with Coordinate Compression**.
 
 **The Solution:**
 1. Sort points by x.
-2. Maintain a "Best Distance so far", let's call it D.
+2. Maintain a "Best Distance so far", call it D.
 3. Sweep a line from left to right.
 4. Maintain a `std::set` (Binary Search Tree) of "Active Points" sorted by y.
 5. When processing a new point P, any active point whose x-coordinate is further back than P.x - D is completely useless. Remove them from the set.

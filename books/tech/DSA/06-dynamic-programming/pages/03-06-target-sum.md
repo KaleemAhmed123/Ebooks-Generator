@@ -11,7 +11,7 @@ You could use memoization: `dfs(index, currentSum)`. But `currentSum` can be neg
 
 ### The Algebraic Math Trick
 
-Let's divide the numbers into two subsets:
+Divide the numbers into two subsets:
 - P: The numbers we put a `+` in front of.
 - N: The numbers we put a `-` in front of.
 
@@ -19,7 +19,7 @@ We know two mathematical truths:
 1. Sum(P) - Sum(N) = S (The problem requirement)
 2. Sum(P) + Sum(N) = Sum(Total) (The sum of all numbers in the array)
 
-Let's add those two equations together:
+Add those two equations together:
 2 times Sum(P) = S + Sum(Total)
 Sum(P) = S + Sum(Total)/2
 

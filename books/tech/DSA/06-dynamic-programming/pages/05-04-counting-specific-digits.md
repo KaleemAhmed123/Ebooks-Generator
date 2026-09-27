@@ -1,6 +1,6 @@
 ## Digit DP: Counting Specific Digits 🔴
 
-Let's apply the Digit DP template to a concrete problem.
+Apply the Digit DP template to a concrete problem.
 
 - **The Problem:** Given an integer n, count the total number of times the digit `1` appears in all non-negative integers less than or equal to n.
 - **Example:** n = 13. The numbers containing `1` are 1, 10, 11, 12, 13.

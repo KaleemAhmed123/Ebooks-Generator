@@ -1,6 +1,6 @@
 ## Chinese Remainder Theorem (CRT) 🔴
 
-The Chinese Remainder Theorem is a powerful tool used when a problem gives you a series of remainders and asks you to find the original number.
+The Chinese Remainder Theorem is used when a problem gives you a series of remainders and asks you to find the original number.
 
 ### The Core Problem
 
