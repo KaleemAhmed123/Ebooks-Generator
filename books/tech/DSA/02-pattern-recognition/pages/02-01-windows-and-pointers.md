@@ -1,6 +1,14 @@
-## Window, count, or prefix map? <span class="lv lv1"></span>
+# Chapter 2 - Windows & Pointers
 
-Four questions, asked in this order, settle every "subarray with property P" statement.
+## Windows and Pointers <span class="lv lv1"></span>
+
+- **What:** two indices over one array or string, each moving one way only: a window (both move right), a collision (they close in from the ends), or a reader and a writer
+- **Why:** an index never comes back, so the pair makes at most 2n moves. The proof is always the same: no position an index has passed can still hold the answer
+- **Patterns:** **1 · Sliding Window** 02-02 → 02-07 · **2 · Collide** 02-08, 02-10 · **3 · Reader and Writer** 02-09
+
+### Window, count, or prefix map?
+
+Four questions, in this order, settle any "subarray with property P" statement.
 
 :::mint
 <svg viewBox="0 0 470 218" role="img" aria-label="Decision chart. First: is the answer contiguous, a subarray or substring? If no, it is not a window: a subset scored by its values goes to 02-07, a subsequence to Module 06. If yes: is the property a remainder, a parity or a balance count? If yes, 03-03. If no: can values be negative? If yes, sum equals K goes to 03-03 and sum at least K to 10-10. If no: what is asked? Longest or shortest goes to 02-03; a count whose condition survives shrinking goes to 02-04; a count of exactly K goes to 02-05." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -37,11 +45,4 @@ Four questions, asked in this order, settle every "subarray with property P" sta
 </svg>
 :::
 
-### One word flips the pattern
-
-| Looks like | Is | The word that decides |
-|---|---|---|
-| [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/) (LeetCode 209): window, 02-03 | [Shortest Subarray with Sum at Least K](https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/) (LeetCode 862): deque of prefix sums, 10-10 | "−10⁵ ≤ nums[i]": a negative value can lower the sum, so shrinking is no longer safe |
-| [Subarrays with K Different Integers](https://leetcode.com/problems/subarrays-with-k-different-integers/) (LeetCode 992): two windows, 02-05 | [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) (LeetCode 560): prefix map, 03-03 | "sum", with negatives allowed: a sum subtracts across prefixes, a distinct count does not |
-| [Minimum Operations to Reduce X to Zero](https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/) (LeetCode 1658): window on the middle, 02-06 | [Maximum Sum Circular Subarray](https://leetcode.com/problems/maximum-sum-circular-subarray/) (LeetCode 918): Kadane on the middle, 03-06 | "exactly x" on values ≥ 1 vs "maximum" on signed values: the kept middle is the worst subarray, not a target sum |
-| [Subarray Product Less Than K](https://leetcode.com/problems/subarray-product-less-than-k/) (LeetCode 713): add `right − left + 1`, 02-04 | [Number of Substrings Containing All Three Characters](https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/) (LeetCode 1358): add `left`, 02-04 | "less than" survives shrinking; "containing" survives growing |
+- **Watch out:** "subset" is not "subarray". A subsequence summing to K is knapsack DP (Module 06), not a window; a subset scored only by its values is a window after sorting (02-07)

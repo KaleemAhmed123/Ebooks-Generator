@@ -1,9 +1,8 @@
 ## Sliding Window (Fixed Length) <span class="lv lv1"></span>
 
-- **What it is:** Keep one running summary of exactly k consecutive elements. Each step, one element leaves on the left and one enters on the right; update the summary with those two and nothing else
-- **Signal:** "every subarray / substring of length k", "window of size k", "k consecutive days", "does s contain a permutation of p"
-- **Not this page if:** the window's summary is a maximum or minimum, which cannot be undone when an element leaves → 10-10
-- **Why it works:** Neighbouring windows share k − 1 elements. If the summary can *undo* an element (a sum, a count, a letter map), the shared part never needs re-reading, so n − k + 1 windows cost O(n) instead of O(n · k)
+- **What:** one running summary of k consecutive items. Each step one item leaves on the left and one enters on the right
+- **Spot it:** "every window of size k", "k consecutive days", "a permutation of p inside s". A max or min per window cannot be undone → 10-10
+- **Why:** neighbouring windows share k − 1 items. A summary that can subtract (a sum, a count, a letter map) never re-reads them: O(n), not O(n · k)
 
 :::mint
 <svg viewBox="0 0 470 138" role="img" aria-label="Array 2, 1, 5, 3, 4 with k equal to 3. Window 1 covers 2, 1, 5 with sum 8. Sliding right, 2 leaves and 3 enters, so the sum becomes 8 minus 2 plus 3 equals 9. Sliding again, 1 leaves and 4 enters: 9 minus 1 plus 4 equals 12. The shared middle is never re-read." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -47,3 +46,6 @@ function findMaxAverage(nums: number[], k: number): number {
   return best / k;
 }
 ```
+
+- **Watch out:** start `best` from the first window, not 0. On `[−1, −2]` with k = 1, `best = 0` returns 0; the answer is −1
+- **Also solves:** [Maximum Number of Vowels in a Substring of Given Length](https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/) (LeetCode 1456) · [Find All Anagrams in a String](https://leetcode.com/problems/find-all-anagrams-in-a-string/) (LeetCode 438) · [K Radius Subarray Averages](https://leetcode.com/problems/k-radius-subarray-averages/) (LeetCode 2090)

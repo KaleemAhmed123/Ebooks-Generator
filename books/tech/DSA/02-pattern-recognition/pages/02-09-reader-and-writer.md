@@ -1,9 +1,8 @@
 ## Two Pointers: Reader and Writer <span class="lv lv1"></span>
 
-- **What it is:** Both pointers move left to right. The **reader** visits every element once; the **writer** marks where the next kept element goes. With three regions to build (smaller, equal, larger), a third pointer works from the back: the **Dutch National Flag** partition
-- **Signal:** "in place", "O(1) extra space", "remove / move / keep elements and return the new length", "sort an array of 0s, 1s and 2s"
-- **Not this page if:** "values in 1..n, find the repeat" with the array read-only: no writer is allowed → 12-04
-- **Why it works:** Everything left of the writer is final, and the writer never passes the reader, so no unread value is overwritten. In the three-way version, every index is in one of four zones: settled low, settled middle, unknown, settled high. Each step shrinks the unknown zone by one
+- **What:** the reader visits every item; the writer marks where the next kept item goes. Three regions (0, 1, 2) add a pointer from the back: the Dutch national flag
+- **Spot it:** "in place", "O(1) extra space", "return the new length", "sort 0s, 1s and 2s". Read-only array, find the repeat → 12-04
+- **Why:** everything behind the writer is final, and the writer never passes the reader, so nothing unread is overwritten
 
 :::mint
 <svg viewBox="0 0 470 130" role="img" aria-label="Dutch national flag partition. An array split into four zones: zeros before low, ones from low to mid, unknown from mid to high, twos after high. Seeing 0 at mid: swap with low, advance both. Seeing 1: advance mid. Seeing 2: swap with high, move high back, and do not advance mid because the swapped-in value is still unknown." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -47,3 +46,6 @@ function sortColors(nums: number[]): void {
   }
 }
 ```
+
+- **Watch out:** after swapping with `high`, do not advance `mid`: the value pulled in is unread. `[2, 1, 2]` stays unsorted
+- **Also solves:** [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) (LeetCode 26) (compare with `nums[w − 1]`) · [Remove Duplicates from Sorted Array II](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/) (LeetCode 80) (with `nums[w − 2]`) · [Move Zeroes](https://leetcode.com/problems/move-zeroes/) (LeetCode 283)

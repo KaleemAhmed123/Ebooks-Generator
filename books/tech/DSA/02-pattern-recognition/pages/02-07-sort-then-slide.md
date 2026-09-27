@@ -1,9 +1,8 @@
 ## Sort, then Slide <span class="lv lv2"></span>
 
-- **What it is:** When the question picks a *subset* (order does not matter) and scores it by its spread or by how close its values are, sort first. The best subset is then a contiguous run of the sorted array, and a window finds it
-- **Signal:** "choose m packets so the max − min is smallest", "you may increment any element at most k times in total, maximise the frequency", "pick k scores with the smallest range", any subset question where only the values matter, not the positions
-- **Not this page if:** the statement fixes positions ("subarray", "consecutive days", "in the given order"): sorting destroys the answer → 02-03
-- **Why it works:** Take any chosen subset and look at its min and max in sorted order. Every value between them can be swapped in without widening the range. So some optimal subset is contiguous in sorted order, and the n-choose-m search collapses to n − m + 1 windows
+- **What:** when only the chosen *values* matter, sort first. The best subset is then a contiguous run
+- **Spot it:** "choose m values with the smallest max − min", "at most k increments in total, maximise the frequency". Fixed positions ("subarray", "in order") → 02-03
+- **Why:** any value between a subset's min and max joins it without widening the range, so some best subset is contiguous once sorted
 
 :::mint
 <svg viewBox="0 0 470 104" role="img" aria-label="Frequency of the most frequent element. Sorted array 1, 2, 4 with k equal to 5. Raising every element of the window to the rightmost value 4 costs 4 times 3 minus the window sum 7, which is 5, within budget, so frequency 3 is reachable." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -47,3 +46,6 @@ function maxFrequency(nums: number[], k: number): number {
   return best;
 }
 ```
+
+- **Watch out:** the cost `nums[right] · len − sum` assumes `nums[right]` is the window max. Unsorted, `[4, 1, 2]` "raises" the 4 *down* to 2
+- **Also solves:** [Chocolate Distribution Problem](https://www.geeksforgeeks.org/problems/chocolate-distribution-problem3825/1) (GFG) · [Minimum Difference Between Highest and Lowest of K Scores](https://leetcode.com/problems/minimum-difference-between-highest-and-lowest-of-k-scores/) (LeetCode 1984) · [Maximum Beauty of an Array After Applying Operation](https://leetcode.com/problems/maximum-beauty-of-an-array-after-applying-operation/) (LeetCode 2779)

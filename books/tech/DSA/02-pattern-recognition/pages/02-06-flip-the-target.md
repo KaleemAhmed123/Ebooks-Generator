@@ -1,9 +1,8 @@
 ## Flip the Target <span class="lv lv2"></span>
 
-- **What it is:** When the question is about what you *remove* from both ends, solve for what *stays*. Removing a prefix and a suffix always leaves one contiguous middle, and a contiguous middle is a sliding window
-- **Signal:** "take from the left or the right end", "remove elements from either end", "circular array, best subarray", "pick exactly k cards from the ends"
-- **Not this page if:** two players take turns removing from the ends: the order of picks matters, not just what stays → 17-06
-- **Why it works:** A choice at each end is a branching decision, which smells like DP or backtracking. But every valid choice leaves the same *shape*: `nums[l..r]`. Fix the shape instead of the choices. "Minimise what I take" becomes "maximise what I leave"; "sum taken = x" becomes "sum left = total − x"
+- **What:** when items leave from both ends, solve for the contiguous middle that stays
+- **Spot it:** "remove from either end", "take k cards from the ends". Two players taking turns → 17-06
+- **Why:** every removal sequence leaves one middle. "Sum taken = x" becomes "sum kept = total − x", and a middle is a window
 
 :::mint
 <svg viewBox="0 0 470 96" role="img" aria-label="Array 3, 2, 20, 1, 1, 3 with x equal to 10. Taking 3 and 2 from the left and 1, 1, 3 from the right leaves the middle 20. Instead of choosing ends, find the longest middle whose sum is total minus x, 30 minus 10 equals 20." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -47,3 +46,6 @@ function minOperations(nums: number[], x: number): number {
   return longest === -1 ? -1 : nums.length - longest;
 }
 ```
+
+- **Watch out:** greedy on the ends. On `[3, 5, 1, 4]` with x = 9, "take the larger end" takes 4, 3, 1 and is stuck; the answer takes 3, 5, 1
+- **Also solves:** [Maximum Points You Can Obtain from Cards](https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/) (LeetCode 1423) (keep a fixed window of n − k) · [Maximum Sum Circular Subarray](https://leetcode.com/problems/maximum-sum-circular-subarray/) (LeetCode 918) (total − worst Kadane; if every value is negative, return the best)

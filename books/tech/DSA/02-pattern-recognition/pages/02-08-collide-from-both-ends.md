@@ -1,9 +1,8 @@
 ## Two Pointers: Collide from Both Ends <span class="lv lv1"></span>
 
-- **What it is:** On sorted data, start one index at each end and move them toward each other. Each comparison moves exactly one pointer, and the pair it leaves behind is never needed again
-- **Signal:** "sorted array", "pair / two values that sum to X", "in place, O(1) space", "palindrome", "most water between two lines"
-- **Not this page if:** the array is unsorted and the answer is the original indices: sorting loses them → 03-05
-- **Why it works:** Picture every pair `(i, j)` as a cell in a grid. If `a[i] + a[j]` is too small, `a[i]` is too small for *every* remaining `j` (they are all ≤ `a[j]`), so the whole row goes. Too big, and the whole column goes. At most n − 1 moves clear all n(n − 1)/2 pairs
+- **What:** on sorted data, one index at each end; every comparison moves one of them inward
+- **Spot it:** "sorted", "pair summing to X", "palindrome", "most water". Unsorted, original indices wanted → 03-05
+- **Why:** a sum too small means `a[i]` fails with every partner left, so its whole row goes; too big, the column goes. n − 1 moves clear n(n − 1)/2 pairs
 
 :::mint
 <svg viewBox="0 0 470 176" role="img" aria-label="Pair grid for sorted array 1, 2, 4, 6, 8, 9 and target 12. Rows are the left value, columns the right value; only cells above the diagonal are pairs. 1 plus 9 is 10, too small, so row 1 is eliminated. 2 plus 9 is 11, too small, row 2 eliminated. 4 plus 9 is 13, too big, column 9 eliminated. 4 plus 8 is 12, found. Four moves instead of fifteen pairs." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -49,3 +48,6 @@ function twoSum(numbers: number[], target: number): number[] {
   return [];
 }
 ```
+
+- **Watch out:** `left < right`, not `<=`. On `[3, 5]` with target 6, `<=` returns the 3 twice
+- **Also solves:** [Container With Most Water](https://leetcode.com/problems/container-with-most-water/) (LeetCode 11) (move the shorter wall: it caps every pair it could still form) · [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/) (LeetCode 125) · [Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/) (LeetCode 977)

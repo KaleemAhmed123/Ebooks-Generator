@@ -1,9 +1,8 @@
 ## Count by the Right End <span class="lv lv1"></span>
 
-- **What it is:** Counting *every* valid subarray, not the longest one. Each time the right edge settles, add the number of valid subarrays that **end** there: `right − left + 1`
-- **Signal:** "count the subarrays / substrings such that…", with a condition that stays true when the window shrinks (product < K, at most K distinct, sum ≤ S on non-negatives)
-- **Not this page if:** "count the subarrays whose sum equals K" on values that may be negative: no window stays valid under shrinking → 03-03
-- **Why it works:** If `[left, right]` is valid and shrinking keeps it valid, then every start in `[left, right]` is valid too. Those starts are exactly `right − left + 1` subarrays, and no subarray is counted twice because each is counted at its own right end
+- **What:** count *every* valid subarray. When `right` settles, add the `right − left + 1` subarrays that end there
+- **Spot it:** "count the subarrays such that…" with a condition that survives shrinking: product < K, at most K distinct. Sum = K with negatives → 03-03
+- **Why:** if `[left, right]` is valid and shrinking keeps it valid, every start inside it is valid. Each subarray is counted once, at its own right end
 
 :::mint
 <svg viewBox="0 0 470 92" role="img" aria-label="Array 10, 5, 2, 6 with k equal to 100. At right index 3 the window is 5, 2, 6. The three subarrays ending at index 3 are 6, then 2 6, then 5 2 6, so the count adds 3, which is right minus left plus one." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -46,5 +45,5 @@ function numSubarrayProductLessThanK(
 }
 ```
 
-- **Variation — Number of Substrings Containing All Three Characters (LeetCode 1358):** here validity survives *growing*, not shrinking. Shrink while `a`, `b`, `c` are all present, then add `left`: every start before `left` still contains all three
-- Pick the formula by asking which direction keeps the window valid. Shrink-safe → `right − left + 1`. Grow-safe → `left` (or `n − right`)
+- **Watch out:** the `k ≤ 1` guard. With k = 0 the loop pops past `right` and the count goes negative
+- **Grow-safe instead:** in [Number of Substrings Containing All Three Characters](https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/) (LeetCode 1358) validity survives *growing*. Shrink while all three letters are present, then add `left`

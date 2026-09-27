@@ -1,9 +1,8 @@
 ## Sliding Window (Variable Length) <span class="lv lv1"></span>
 
-- **What it is:** Two indices that only move right. `right` grows the window to take in the next element; `left` shrinks it until the window satisfies the condition again. The best window seen along the way is the answer
-- **Signal:** "longest / shortest subarray or substring such that…", "at most k distinct", "sum at least S", "no repeating characters", all values non-negative
-- **Not this page if:** the values can be negative, so growing the window can lower its sum → 03-03 (sum equals K) or 10-10 (sum at least K)
-- **Why it works:** The condition is **monotone in the window**: if `[L, R]` is too big (sum over the limit, a repeat inside), every window that contains it is too; for the shortest form, a window that meets the target still meets it when it grows. So once `left` passes an index it never needs to come back, and each index enters and leaves once: O(n)
+- **What:** `right` takes in the next item; `left` shrinks the window until the condition holds again. The best window seen is the answer
+- **Spot it:** "longest / shortest subarray such that…", "at most k distinct", "no repeating characters", values ≥ 0. Negatives can lower a sum → 03-03 (sum = K) or 10-10 (sum ≥ K)
+- **Why:** the condition is monotone in the window, so `left` never moves back. Each index enters once and leaves once: O(n)
 
 :::mint
 <svg viewBox="0 0 470 146" role="img" aria-label="Two loops side by side. Longest: take a right element; while the window is invalid, move left; then record the window length as a candidate maximum, and take the next element. Shortest: take a right element; while the window is valid, record its length as a candidate minimum, then move left; once it is invalid, take the next element. The record step sits after the shrink loop for longest and inside it for shortest." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -55,3 +54,7 @@ function minSubArrayLen(target: number, nums: number[]): number {
   return best === Infinity ? 0 : best;
 }
 ```
+
+- **Watch out:** where the record goes. *Longest:* shrink while invalid, then record. *Shortest:* record inside the loop, while still valid, before `left++`
+- **Also solves:** [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/) (LeetCode 3) · [Fruit Into Baskets](https://leetcode.com/problems/fruit-into-baskets/) (LeetCode 904) · [Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/) (LeetCode 424) · [Max Consecutive Ones III](https://leetcode.com/problems/max-consecutive-ones-iii/) (LeetCode 1004) · [Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/) (LeetCode 76)
+- **Follow-up (LeetCode 76):** test validity in O(1) with one counter, `missing`, of letters of t still needed; the window is valid when it hits 0
