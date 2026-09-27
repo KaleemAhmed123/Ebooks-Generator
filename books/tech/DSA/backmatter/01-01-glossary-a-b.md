@@ -1,5 +1,6 @@
 ## Glossary (A–B)
 
+- **0-1 BFS:** A modified BFS using a deque instead of a queue, finding shortest paths in O(V + E) on graphs where every edge costs 0 or 1.
 - **Adjacency List:** An array of arrays (or Hash Map) where the index represents a node and the value lists its neighbors, optimal for sparse graphs.
 - **Adjacency Matrix:** A 2D array where `matrix[i][j]` indicates an edge between `i` and `j`, requiring O(V²) space.
 - **Amortised Analysis:** Calculating the average time per operation over a sequence, showing that occasional expensive operations (like array resizing) average out to O(1).

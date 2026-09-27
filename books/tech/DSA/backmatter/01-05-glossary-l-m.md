@@ -7,6 +7,7 @@
 - **Look-alike:** A problem whose statement resembles one pattern but is solved by another; one fact in the statement decides which.
 - **Lower Bound / Upper Bound:** The first index with value ≥ x / > x in a sorted array.
 - **Lowest Common Ancestor (LCA):** The deepest node that has both given nodes in its subtree.
+- **Manacher's Algorithm:** Finds every maximal palindromic substring in O(n) by expanding around centres and reusing symmetry to skip redundant comparisons.
 - **Meet in the Middle:** Splitting the input in half, enumerating each half, and combining the two lists by sorting or hashing.
 - **Memoization:** The Top-Down DP approach of caching the results of recursive function calls in a Hash Map or array.
 - **Merge Sort:** A stable, Divide and Conquer O(N log N) sorting algorithm that requires O(N) extra space to merge halves.

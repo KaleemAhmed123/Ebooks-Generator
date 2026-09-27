@@ -1,8 +1,10 @@
 ## Glossary (C–D)
 
+- **Canonical Key (Signature):** A normalized form of a state used as a hash key so that equivalent states map to the same bucket (e.g., sorting a string's characters to group anagrams).
 - **Contribution Technique:** Summing, over elements, value × number of subarrays it decides, instead of summing over subarrays.
 - **Convex Hull Trick:** Keeping only the lines that can still be the minimum, to speed up DP of the form min(m·x + c).
 - **Coordinate Compression:** Replacing values by their rank among the distinct values, keeping their order.
+- **Cyclic Placement:** Mapping element `i` to position `i % n` or `i` to its "home" slot; misplacements are resolved by rotating items into place one by one.
 - **Critical Path:** The longest chain of dependent tasks; it sets the minimum finish time.
 - **DAG:** Directed acyclic graph: a directed graph with no cycle.
 - **Depth-First Search (DFS):** Exploring a graph by plunging as deep as possible down one branch before backtracking, utilizing a Stack.
