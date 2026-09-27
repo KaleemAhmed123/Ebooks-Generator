@@ -1,8 +1,8 @@
 ## Route map <span class="lv lv1"></span>
 
 - Chapters run from linear to non-linear data and from common to rare: read A and B in order; C is a lens over both; D is for hard rounds
-- Pattern pages follow one shape: what it is → signal → not this page if → why it works → diagram → template → variations → the failure → interview answer. Every chapter ends in drills: disguised statements on one page, answers and links overleaf
-- **New problem?** Start with the chart (01-04) and the keyword index (01-05); before you commit, check the look-alikes (01-06)
+- Each chapter opens with an overview of its pattern: what it is, the moves, a skeleton, the trap. A move page gives what, spot it, why, a diagram, a short template, the one trap, and more problems. Every chapter ends in drills: its most-asked problems, linked
+- **New problem?** Start with the chart (01-04), or the list of 54 (01-02)
 
 :::mint
 <svg viewBox="0 0 470 252" role="img" aria-label="Route map of the booklet. Part A, linear, chapters 2 to 11: Windows and Pointers, Prefix and Running State, In-place and Index Tricks, Grids and Matrices, Strings, Order and Intervals, Greedy Moves, Search Space, Stacks and Queues, Bits. Part B, non-linear, chapters 12 to 17: Linked Lists, Recursion and Backtracking, Trees, Heaps and Ordered Sets, Graphs and Dependency, DP and Games. Part C, chapter 18, Patterns Nobody Named. Part D, chapter 19, Range Structures, hard and rarely asked." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">

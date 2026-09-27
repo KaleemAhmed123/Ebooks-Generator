@@ -78,3 +78,14 @@ Follow `~/.claude/CLAUDE.md`:
 
 ## Next step
 Start with **Chapter 3 (Prefix & Running State)** in the Chapter 2 style: a Prefix Sum intro page plus the compact move pages. Show me the page count and a PDF of that chapter's pages, then continue chapter by chapter.
+
+## Update (2026-09-27, later): compact pass finished
+- All chapters 2–19 and the front matter are done. The book is **137 pages**, 0 overflow.
+  Details and the Explanation: `docs/tasks/dsa-pattern-compact.md`.
+- Front matter: 01-02 is the clickable contents with printed page numbers; the generated
+  contents is off (`"contents": false`); 01-05 and 01-06 are deleted.
+- **After any change that moves pages**, regenerate the numbers:
+  `node tools/build.mjs 02-pattern-recognition` → `python docs/tasks/reference/dsa/scripts/page-numbers.py dist/tech/DSA/02-pattern-recognition.pdf > …/page-numbers.json`
+  → `map-svg.mjs` and `chart-svg.mjs` → `put-map.py` into 01-02 and 01-04-a/b → build again.
+- Fast overflow check without a PDF pass: `--html` build, then `node docs/tasks/reference/dsa/scripts/measure.mjs <id-prefix>`.
+- **Next step:** your review of the full PDF; then merge to main when you say so.

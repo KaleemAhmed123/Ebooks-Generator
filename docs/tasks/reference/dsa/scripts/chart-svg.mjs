@@ -1,10 +1,13 @@
 // Generate the two-page "Read the problem, pick the page" chart (01-04-a/b).
-//   node chart-svg.mjs <pagesDir> <outDir>
+//   node chart-svg.mjs <pagesDir> <outDir> <page-numbers.json>
+// A chip links to its first page (#p-ID) and prints printed page numbers, not IDs.
 // Every chip is [statement cue, page ids]. The script fails if a page id does
 // not exist or if a pattern page (from meta.json) is reachable from no chip.
 import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
-const [dir, out] = process.argv.slice(2);
+const [dir, out, numsFile] = process.argv.slice(2);
+const nums = JSON.parse(readFileSync(numsFile, "utf8")).ids;
+const pg = (id) => nums[id] ?? "?";
 const have = new Set([...readdirSync(dir).map((f) => f.slice(0, 5)), ...(process.env.PLANNED ?? "").split(" ")]);
 const meta = JSON.parse(readFileSync(path.join(dir, "..", "meta.json"), "utf8"));
 
@@ -92,7 +95,7 @@ const pages = {
     ]],
     ["A choice at every step", PINK, [
       ["define f by a smaller f · print on return", "13-01 13-02"],
-      ["every subset, combination, permutation", "13-03 13-05 13-06 13-07 13-08"],
+      ["every subset, combination, permutation", "13-05 13-06 13-07 13-08"],
       ["split a string into valid pieces", "13-09"],
       ["place under constraints: queens, sudoku", "13-10"],
       ["count ways · best value · calls repeat", "17-02"],
@@ -132,14 +135,15 @@ function render(groups, top, extra) {
     lines.forEach((l, i) => el.push(`<text x="${4 + boxW / 2}" y="${y + h / 2 + 3 + (i - (lines.length - 1) / 2) * 11}" class="g" text-anchor="middle">${l.replace(/&/g, "&amp;")}</text>`));
     chips.forEach(([cue, ids], i) => {
       const x = 4 + boxW + 10 + (i % 3) * (chipW + gap), cy = y + Math.floor(i / 3) * (chipH + rowGap);
-      el.push(`<rect x="${x.toFixed(1)}" y="${cy}" width="${chipW.toFixed(1)}" height="${chipH}" rx="4" fill="#ffffff" stroke="${stroke}" stroke-width="0.9"/>`);
+      el.push(`<a href="#p-${ids.split(" ")[0]}"><rect x="${x.toFixed(1)}" y="${cy}" width="${chipW.toFixed(1)}" height="${chipH}" rx="4" fill="#ffffff" stroke="${stroke}" stroke-width="0.9"/>`);
       // wrap the cue onto at most two lines of ~27 chars
       const ws = cue.split(" "), ls = [""];
       for (const w of ws) { if ((ls.at(-1) + " " + w).trim().length > 29) ls.push(w); else ls[ls.length - 1] = (ls.at(-1) + " " + w).trim(); }
       if (ls.length > 2) throw new Error("cue too long: " + cue);
-      const idsTxt = ids.split(" ").length > 3 ? `${ids.split(" ")[0]} → ${ids.split(" ").at(-1)}` : ids.split(" ").join(" · ");
+      const list = ids.split(" "), ps = list.map(pg);
+      const idsTxt = "p. " + (list.length > 3 ? `${ps[0]}–${ps.at(-1)}` : ps.join(" · "));
       ls.forEach((l, k) => el.push(`<text x="${(x + 4).toFixed(1)}" y="${cy + 9 + k * 8.4}" class="s">${l.replace(/&/g, "&amp;").replace(/</g, "&lt;")}</text>`));
-      el.push(`<text x="${(x + 4).toFixed(1)}" y="${cy + 27}" class="p">→ ${idsTxt}</text>`);
+      el.push(`<text x="${(x + 4).toFixed(1)}" y="${cy + 27}" class="p">→ ${idsTxt}</text></a>`);
     });
     y += h + 8;
   }
@@ -154,7 +158,7 @@ const style = `<style>
     .n { font: bold 9px Georgia, serif; fill: #ffffff; }
   </style>`;
 const head = `<circle cx="14" cy="11" r="8" fill="#1d4e89"/><text x="14" y="15" class="n" text-anchor="middle">1</text><text x="27" y="15" class="t">The input</text><circle cx="${4 + boxW + 18}" cy="11" r="8" fill="#1d4e89"/><text x="${4 + boxW + 18}" y="15" class="n" text-anchor="middle">2</text><text x="${4 + boxW + 31}" y="15" class="t">What the statement asks</text>`;
-const aria = (groups) => groups.map(([t, , chips]) => `${t}: ` + chips.map(([c, ids]) => `${c} → ${ids.split(" ").join(", ")}`).join("; ")).join(". ");
+const aria = (groups) => groups.map(([t, , chips]) => `${t}: ` + chips.map(([c, ids]) => `${c} → page ${ids.split(" ").map(pg).join(", ")}`).join("; ")).join(". ");
 for (const [key, groups] of Object.entries(pages)) {
   let [el, y] = render(groups, 28);
   if (key === "b") {

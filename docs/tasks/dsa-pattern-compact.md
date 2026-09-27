@@ -1,6 +1,6 @@
 # DSA 02 — Pattern Recognition: compact pass
 
-**Status:** in progress — Chapter 2 pilot
+**Status:** done — waiting for your review before merge
 **Started:** 2026-09-27 · **Last updated:** 2026-09-27
 **Branch:** `claude/bold-thompson-eb0v86`
 
@@ -39,11 +39,11 @@ Budget: front ~4 · pattern pages ~115 · openers ~12 · drills ~18 → about 15
 ## Tasks
 
 - [x] 1. Pilot: Chapter 2 in the compact style; PDF of its pages for review
-- [ ] 2. You approve or adjust the style
-- [ ] 3. Chapters 3–19 in the approved style
-- [ ] 4. Front: drop the index and look-alikes; turn off the contents (per-book switch); make the 54-pattern map clickable
-- [ ] 5. Drop the checkpoints; rebuild the drills as linked titles, 8–10 rows
-- [ ] 6. Build 0 overflow, checker, duplicate check, re-run the front generators
+- [x] 2. You approve or adjust the style
+- [x] 3. Chapters 3–19 in the approved style
+- [x] 4. Front: drop the index and look-alikes; turn off the contents (per-book switch); make the 54-pattern map clickable
+- [x] 5. Drop the checkpoints; rebuild the drills as linked titles, 8–10 rows
+- [x] 6. Build 0 overflow, checker, duplicate check, re-run the front generators
 
 ## Updates
 
@@ -136,3 +136,58 @@ Budget: front ~4 · pattern pages ~115 · openers ~12 · drills ~18 → about 15
   Both new templates were run against brute force: 2,000 rounds, 0 failures. The 17-08
   checkpoint is deleted; all five checkpoints are now gone. Page IDs drawn inside SVGs
   (02-08-0, 13-10, 17-02) are replaced with move names. Chapters 2–19: 0 overflow.
+- 2026-09-27 — Front matter. The keyword index (01-05, six files) and the look-alikes
+  page (01-06) are deleted. `tools/build.mjs` has a per-book switch, `"contents": false`
+  in meta.json, that leaves out the generated contents page. 01-02 "The 54 patterns" is
+  now the contents: every pattern row and chapter row is a link (72 PDF link
+  annotations), and the right column prints the page number, not the ID. The 01-04 chart
+  chips link to their pages and print page numbers; the 13-03 chip is gone. Both come
+  from generators that read printed page numbers out of the built PDF
+  (`page-numbers.py`), so the front is built twice; a third build confirmed the numbers
+  stable. 01-01 and 01-03 now describe the compact page shape. Result: **137 pages**
+  (cover included), 0 overflow, no duplicate drill problems, every in-text page ID
+  resolves. This is below your 150–180 target; see the Explanation.
+
+## Explanation
+
+1. **What changed:** all 18 chapters use the Chapter 2 style: an overview page for the
+   chapter's well-known pattern, one compact page per move, one drill page. The five
+   checkpoints, the keyword index, the look-alikes page and the generated contents are
+   gone; "The 54 patterns" is the clickable contents. 278 files became 137 pages.
+2. **Why:** the book taught each idea two or three times (family page, move page,
+   variations, checkpoint, index). You asked for the same knowledge, taught compactly.
+3. **How it works:** a statement → the 01-04 chart or the 01-02 list → a link to the
+   page → its "Spot it" line confirms, its "→" sends the look-alike elsewhere → the
+   template and the one trap. Each chapter's drills test the choice with linked problems.
+4. **Files:**
+   - `pages/*`: every chapter rewritten; IDs kept wherever a page survived, so old
+     references still resolve.
+   - `meta.json`: overview labels per chapter, `"contents": false`.
+   - `tools/build.mjs`: the contents switch; an `NN-MM-0` intro no longer takes the
+     anchor of the move sharing its ID (links to 02-08 and 13-01 now land on the move).
+   - `docs/tasks/reference/dsa/scripts/`: `spec-ch03.py` … `spec-ch19.py` (one per
+     chapter), `compact.py` (+ `SPLIT`, skips intro files when reusing code),
+     `measure.mjs` (page heights without a PDF pass), `inline-comments.py`,
+     `page-numbers.py`, `put-map.py`, and the updated `map-svg.mjs` / `chart-svg.mjs`.
+5. **Decisions:**
+   - Overview pages for the chapter's well-known pattern; Running Best, the dummy head
+     and the range-structure family fold into their chapter's overview or move page.
+   - Two pages only where the content needs it: the 10 / 13 / 14 overviews (nine moves
+     each), 12-01 (overview + dummy head) and 12-02 (k-group's four-frame diagram).
+   - Four move pages had no template (07-06, 10-05, 10-10, 16-04) and 19-01 had none;
+     each got one, tested. 18-01 has no skeleton: it would repeat 18-02's template.
+   - Page numbers, not IDs, in the contents and the chart, because IDs are hidden in print.
+   - Drill problems already listed by a later chapter were left there, so no problem
+     appears in two drill pages.
+6. **Verification:** full PDF build: 137 pages, 0 overflow. Every new or reformatted
+   template was run: brute-force comparisons (sweep, windows, stacks, binary search,
+   backtracking, heap, BFS, Kahn, knapsack, Fenwick; 2,000–12,000 cases each) or
+   LeetCode's own examples; 0 failures. Duplicate-drill grep: empty. Every in-text page
+   ID resolves. `check-pages.mjs`: only its known structural false positives.
+7. **Limits:**
+   - 137 pages is under the 150–180 target. Nothing was cut from the 54 patterns; the
+     gap is repetition removed. Adding back interview blocks would add pages if wanted.
+   - The fact and consistency passes CLAUDE.md asks for (fresh subagents) were not run,
+     to save tokens as you asked. Content comes from the already-verified old pages.
+   - Page numbers in 01-02 / 01-04 must be regenerated after any change that moves pages:
+     build, `page-numbers.py`, both generators, `put-map.py`, build again.

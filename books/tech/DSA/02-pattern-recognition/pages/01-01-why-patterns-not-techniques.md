@@ -8,16 +8,17 @@
 
 ### How a page is read
 
-- **Signal:** words in the statement that point here
-- **Not this page if:** the look-alike that fails, and the page that handles it
-- **Why it works:** the invariant. If you cannot say it, you cannot defend the code
-- **The failure:** the bug a strong candidate still writes, with an input small enough to check by hand
+- **What:** the mechanism, in one line
+- **Spot it:** words in the statement that point here, and "→" to the page for the look-alike that fails
+- **Why:** the invariant. If you cannot say it, you cannot defend the code
+- **Watch out:** the bug a strong candidate still writes, with an input small enough to check by hand
+- **Also solves:** more problems the same mechanism answers, linked
 
 ### From statement to page
 
-- Name the input's shape and the question, and the chart gives a chapter (01-04)
-- Match a phrase from the statement in the keyword index (01-05)
-- Confirm on the page: its Signal must fit and its "Not this page if" must not
+- Name the input's shape and the question, and the chart gives the page (01-04)
+- Or find the pattern in the list of 54, grouped by chapter (01-02)
+- Confirm on the page: its "Spot it" line must fit, and its "→" look-alike must not
 
 :::interview
 "You have solved 300 problems and still stall on a new one. Why?" — Because the 300 were filed by technique. A new problem hides the technique, not the structure: sorted input, a condition monotone in a window, values bounded by n. I read the constraints and write the brute force first, name the structure that removes its waste, and only then pick the routine that exploits it.

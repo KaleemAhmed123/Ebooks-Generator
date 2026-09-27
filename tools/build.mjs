@@ -516,7 +516,8 @@ function assemble({ coverHtml, pages, headings }, tocPages, spans = {}, tocTitle
   const body = pages.map((p) =>
     p?.btoc ? tocSection(p.btoc.headings, at, p.btoc.title, p.btoc.key) : p
   );
-  return [coverHtml, tocSection(headings, at, tocTitle, null), ...body]
+  // tocPages 0 means the book switched its generated contents off (meta `contents: false`)
+  return [coverHtml, tocPages ? tocSection(headings, at, tocTitle, null) : null, ...body]
     .filter(Boolean)
     .join("\n");
 }
@@ -896,9 +897,10 @@ for (const book of books) {
   // Every contents page's own length shifts the numbers printed after it, so
   // measure, re-assemble with the numbers that result, and repeat until nothing
   // moves. It settles in two or three passes; five is the safety net.
-  let tocPages = 1;
+  const noContents = book.config.contents === false;
+  let tocPages = noContents ? 0 : 1;
   let spans = {};
-  if (!htmlOnly) {
+  if (!htmlOnly && !noContents) {
     for (let pass = 0; pass < 5; pass++) {
       const m = await measureTocs(document(assemble(parts, tocPages, spans, book.config.tocTitle), book), book.config);
       const same =
