@@ -1,9 +1,8 @@
 ## Throw Out the Dominated <span class="lv lv2"></span>
 
-- **What it is:** A candidate is **dominated** when another candidate is at least as good in every way that can ever matter. It can never become the answer, so delete it the moment you can prove it. What survives is short and ordered, and the answer is read off the survivors
-- **Signal:** "catches up and then moves at the slower speed", "blocks the view of everything behind it", "another item is strictly larger in both scores", "fits inside", a pair of scores where one item can beat another on both
-- **Not this page if:** a pair is scored by a sum such as `a[i] + a[j] + i − j` → 03-05: split the score and keep the best partner; nothing is deleted
-- **Why it works:** Deletion is permanent, so every candidate is inserted once and removed at most once: O(n) after sorting. Monotonic stacks (10-05), monotonic deques (10-10) and Pareto frontiers are all this one move with different proofs of domination
+- **What:** a candidate is **dominated** when another is at least as good in every way that can ever matter. It can never win, so delete it the moment you can prove it; read the answer off the survivors
+- **Spot it:** "catches up, then moves at the slower speed", "blocks the view behind it", "another item is larger in both scores", "fits inside". A score split as `f(i) + g(j)` → 03-05
+- **Why:** deletion is permanent, so each candidate is inserted once and removed at most once: O(n) after sorting. Monotonic stacks and deques are this move with different proofs
 
 :::mint
 <svg viewBox="0 0 470 138" role="img" aria-label="Car Fleet with target 12. Cars at positions 10, 8, 5, 3 and 0 need 1, 1, 7, 3 and 12 hours to arrive. Scanning from the car closest to the target: the car at 10 leads a fleet arriving at hour 1; the car at 8 would arrive at 1 as well, so it is absorbed; the car at 5 needs 7, a new fleet; the car at 3 needs 3, less than 7, absorbed; the car at 0 needs 12, a new fleet. Three fleets." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -34,14 +33,14 @@
 // Car Fleet (LeetCode 853)
 function carFleet(target: number, pos: number[], speed: number[]) {
   const cars = pos.map((p, i) => [p, (target - p) / speed[i]]);
-  // closest to target first
-  cars.sort((a, b) => b[0] - a[0]);
-  // arrival of fleet ahead
-  let fleets = 0, slowest = 0;
+  cars.sort((a, b) => b[0] - a[0]);     // closest to target first
+  let fleets = 0, slowest = 0;           // arrival of fleet ahead
   for (const [, time] of cars) {
     if (time > slowest) { fleets++; slowest = time; }  // new leader
-    // otherwise it catches the fleet ahead: dominated, absorbed
-  }
+  }   // otherwise it catches the fleet ahead: dominated, absorbed
   return fleets;
 }
 ```
+
+- **Watch out:** equal arrival joins the fleet. Target 10, positions `[0, 5]`, speeds `[2, 1]`: both arrive at hour 5, so 1 fleet. Testing `time > slowest` gets it right; `>=` reports 2
+- **Also solves:** [The Number of Weak Characters in the Game](https://leetcode.com/problems/the-number-of-weak-characters-in-the-game/) (LeetCode 1996) (attack descending, defense ascending on ties) · [Russian Doll Envelopes](https://leetcode.com/problems/russian-doll-envelopes/) (LeetCode 354) (width up, height down on ties, then LIS) · [Maximum Width Ramp](https://leetcode.com/problems/maximum-width-ramp/) (LeetCode 962)

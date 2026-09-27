@@ -23,7 +23,7 @@
   <text x="150" y="60" class="lb">           ∧ r + c ∉ anti</text>
   <text x="150" y="84" class="sm">place: add to all three sets → recurse on r + 1</text>
   <text x="150" y="98" class="sm">undo: delete from all three sets</text>
-  <text x="150" y="116" class="sm">keys from page 05-01: a diagonal is r − c, an anti-diagonal r + c</text>
+  <text x="150" y="116" class="sm">keys from Coordinate Keys: a diagonal is r − c, an anti-diagonal r + c</text>
 </svg>
 :::
 

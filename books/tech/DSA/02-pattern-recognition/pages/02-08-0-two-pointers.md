@@ -19,17 +19,17 @@
   <rect class="bx" x="90" y="12" width="22" height="18"/><rect class="win" x="112" y="12" width="22" height="18"/><rect class="win" x="134" y="12" width="22" height="18"/><rect class="win" x="156" y="12" width="22" height="18"/><rect class="bx" x="178" y="12" width="22" height="18"/><rect class="bx" x="200" y="12" width="22" height="18"/><rect class="bx" x="222" y="12" width="22" height="18"/>
   <path d="M112 36 L134 36" stroke="#1a1a1a" stroke-width="1" marker-end="url(#m0201)"/><path d="M167 36 L189 36" stroke="#1a1a1a" stroke-width="1" marker-end="url(#m0201)"/>
   <text x="252" y="20" class="sm">left → and right → : both only move right</text>
-  <text x="252" y="32" class="sm">answers about contiguous runs (02-02 … 02-07)</text>
+  <text x="252" y="32" class="sm">answers about contiguous runs (the window moves)</text>
   <text x="10" y="64" class="lb">collide</text>
   <rect class="win" x="90" y="52" width="22" height="18"/><rect class="bx" x="112" y="52" width="22" height="18"/><rect class="bx" x="134" y="52" width="22" height="18"/><rect class="bx" x="156" y="52" width="22" height="18"/><rect class="bx" x="178" y="52" width="22" height="18"/><rect class="bx" x="200" y="52" width="22" height="18"/><rect class="win" x="222" y="52" width="22" height="18"/>
   <path d="M101 76 L123 76" stroke="#1a1a1a" stroke-width="1" marker-end="url(#m0201)"/><path d="M233 76 L211 76" stroke="#1a1a1a" stroke-width="1" marker-end="url(#m0201)"/>
   <text x="252" y="60" class="sm">left → and ← right: they meet in the middle</text>
-  <text x="252" y="72" class="sm">answers about pairs in sorted data (02-08, 02-10)</text>
+  <text x="252" y="72" class="sm">answers about pairs in sorted data (collide, fix one)</text>
   <text x="10" y="104" class="lb">read/write</text>
   <rect class="fin" x="90" y="92" width="22" height="18"/><rect class="fin" x="112" y="92" width="22" height="18"/><rect class="bx" x="134" y="92" width="22" height="18"/><rect class="bx" x="156" y="92" width="22" height="18"/><rect class="win" x="178" y="92" width="22" height="18"/><rect class="bx" x="200" y="92" width="22" height="18"/><rect class="bx" x="222" y="92" width="22" height="18"/>
   <text x="145" y="89" class="p" text-anchor="middle">w</text><text x="189" y="89" class="p" text-anchor="middle">r</text>
   <text x="252" y="100" class="sm">writer w trails reader r; left of w is final</text>
-  <text x="252" y="112" class="sm">answers "rewrite in place" (02-09)</text>
+  <text x="252" y="112" class="sm">answers "rewrite in place" (reader and writer)</text>
 </svg>
 :::
 

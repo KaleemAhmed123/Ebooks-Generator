@@ -1,9 +1,8 @@
 ## Assume the Opponent Is Perfect <span class="lv lv2"></span>
 
-- **What it is:** **Minimax DP** for two-player, zero-sum, perfect-information games. Store one number per position: the **score lead of the player about to move**. Your move is worth what you gain minus the opponent's best lead from the position you leave them
-- **Signal:** "two players take turns", "both play optimally", "predict whether player 1 wins", "maximum amount the first player can collect"
-- **Not this page if:** the other player follows a fixed rule ("always takes the larger end") → simulate it; a one-player DP (17-02)
-- **Why it works:** In a zero-sum game the opponent's best play is your worst case, so one function serves both sides. `lead = gain − lead(next)` flips perspective every turn without tracking whose turn it is
+- **What:** minimax DP for two-player, zero-sum games. Store one number per position: the **lead of the player to move**. A move is worth its gain minus the opponent's best lead from what is left
+- **Spot it:** "two players take turns", "both play optimally", "can player 1 win". The other player follows a fixed rule → simulate it
+- **Why:** in a zero-sum game the opponent's best play is your worst case, so one function serves both sides: `lead = gain − lead(next)`
 
 :::mint
 <svg viewBox="0 0 470 132" role="img" aria-label="Game tree for Predict the Winner on 1, 5, 2. Taking 1 leaves 5, 2 where the opponent's lead is 5 minus 2 equals 3, so this move is worth 1 minus 3 equals minus 2. Taking 2 leaves 1, 5 where the opponent's lead is 5 minus 1 equals 4, so this move is worth 2 minus 4 equals minus 2. The best lead is minus 2, so player 1 loses." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -36,3 +35,6 @@ function predictTheWinner(nums: number[]): boolean {
   return lead[n - 1] >= 0;
 }
 ```
+
+- **Watch out:** modelling the opponent as greedy. On `[1, 5, 233, 7]` "take the larger end" gives player 1 only 12; taking 1 first forces the opponent to open 233, and player 1 wins
+- **Also solves:** [Stone Game](https://leetcode.com/problems/stone-game/) (LeetCode 877) (always true) · [Stone Game II](https://leetcode.com/problems/stone-game-ii/) (LeetCode 1140) (add M to the state) · [Can I Win](https://leetcode.com/problems/can-i-win/) (LeetCode 464) (a bitmask of used numbers) · [Nim Game](https://leetcode.com/problems/nim-game/) (LeetCode 292) (`n % 4 !== 0`)

@@ -1,9 +1,8 @@
 ## Track What You Hold <span class="lv lv2"></span>
 
-- **What it is:** A **state machine DP**: the state is not "which index" but "what you are carrying" — a share or nothing, and how many trades are used. Each day, every state either stays or moves along one edge (buy, sell). Module 06 (01-03) shows how to invent the status variable; this page is the machine it produces
-- **Signal:** buy/sell, "at most k transactions", "cooldown", "transaction fee", "you cannot hold more than one"
-- **Not this page if:** exactly one buy and one later sell → 03-05: keep the lowest price so far; no state machine
-- **Why it works:** The past matters only through the current status. Two numbers per trade count (best cash while holding, best cash while free) summarise every history, so one pass over the prices is enough
+- **What:** a state-machine DP. The state is what you carry (a share or nothing, and trades used); each day every state stays or moves along one edge: buy, sell
+- **Spot it:** buy and sell, "at most k transactions", "cooldown", "transaction fee". Exactly one buy and one later sell → 03-05
+- **Why:** the past matters only through the current status, so two numbers per trade count (best cash holding, best cash free) summarise every history
 
 :::mint
 <svg viewBox="0 0 470 112" role="img" aria-label="Stock state machine. Two states per transaction count: FREE j minus 1 and HOLD j and FREE j. Buying moves from FREE j minus 1 to HOLD j and pays the price. Selling moves from HOLD j to FREE j and earns the price. Each state also loops to itself on a day with no trade." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -32,8 +31,7 @@
 // Buy and Sell Stock IV (LeetCode 188): at most k trades
 function maxProfit(k: number, prices: number[]): number {
   const hold = new Array(k + 1).fill(-Infinity);  // cash, holding
-  // cash, j sells done
-  const free = new Array(k + 1).fill(0);
+  const free = new Array(k + 1).fill(0);     // cash, j sells done
   for (const p of prices)
     for (let j = 1; j <= k; j++) {
       hold[j] = Math.max(hold[j], free[j - 1] - p);
@@ -42,3 +40,6 @@ function maxProfit(k: number, prices: number[]): number {
   return free[k];
 }
 ```
+
+- **Watch out:** summing every rise when k is limited. `[1, 2, 1, 2, 1, 2]` sums to 3; with k = 2 the answer is 2
+- **Also solves:** [Best Time to Buy and Sell Stock II](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/) (LeetCode 122) (unlimited: sum every rise) · [Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/) (LeetCode 123) (k = 2) · [Best Time to Buy and Sell Stock with Cooldown](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/) (LeetCode 309) (a third state, "just sold") · [Best Time to Buy and Sell Stock with Transaction Fee](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/) (LeetCode 714) (the fee on the sell edge)

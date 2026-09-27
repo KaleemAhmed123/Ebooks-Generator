@@ -1,9 +1,8 @@
 ## Try Every Split <span class="lv lv3"></span>
 
-- **What it is:** **Partition DP.** The state is a range `(i, j)`. Pick the operation inside it that splits the range into two parts that no longer affect each other, try every position k for it, and pay a cost that depends only on `i`, `k` and `j`
-- **Signal:** "minimum cost to cut / merge / multiply / burst", "place brackets", "partition into pieces", n ≤ 100–500 so O(n³) fits
-- **Not this page if:** *any* two piles may merge, not only neighbours → 15-05: a heap merges the two smallest; no ranges
-- **Why it works:** Once the split is fixed, the left and right ranges are independent subproblems of the same shape. The question to ask is *which operation makes the sides independent*: for cuts it is the **first** cut, for Burst Balloons it is the **last** balloon to burst
+- **What:** partition DP. The state is a range `(i, j)`. Choose the operation that splits it into two independent parts, try every position k, and pay a cost of `i`, `k` and `j` only
+- **Spot it:** "minimum cost to cut / merge / multiply / burst", "place brackets", n ≤ 100–500 so O(n³) fits. *Any* two piles may merge → a heap, 15-05
+- **Why:** with the split fixed, the two sides are independent subproblems. Ask which operation makes them independent: the **first** cut, or the **last** balloon to burst
 
 :::mint
 <svg viewBox="0 0 470 118" role="img" aria-label="Minimum cost to cut a stick. The stick runs from 0 to n with cut marks. The first cut at position c k splits the stick; its cost is the full length c j minus c i. After it, the left piece from c i to c k and the right piece from c k to c j are cut independently, so dp of i j equals c j minus c i plus the minimum over k of dp i k plus dp k j." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -44,3 +43,6 @@ function minCost(n: number, cuts: number[]): number {
   return dp[0][m - 1];
 }
 ```
+
+- **Watch out:** loop order. Filling `dp[i][j]` with `i` ascending reads `dp[k][j]` before it exists: LeetCode 1547's first example returns 7 instead of 16. Loop by range length
+- **Also solves:** [Burst Balloons](https://leetcode.com/problems/burst-balloons/) (LeetCode 312) (k is the last balloon: its neighbours are `i` and `j`) · [Minimum Score Triangulation of Polygon](https://leetcode.com/problems/minimum-score-triangulation-of-polygon/) (LeetCode 1039) · [Matrix Chain Multiplication](https://www.geeksforgeeks.org/problems/matrix-chain-multiplication0303/1) (GFG)

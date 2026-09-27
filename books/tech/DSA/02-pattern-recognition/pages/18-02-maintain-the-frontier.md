@@ -1,4 +1,8 @@
-## Maintain the Frontier <span class="lv lv2"></span> - continued
+## Maintain the Frontier <span class="lv lv2"></span>
+
+- **What:** keep the discovered-but-unsettled candidates, the **frontier**; settle the best, add its neighbours. BFS, Dijkstra and best-first are one loop
+- **Spot it:** "minimum cost / effort to reach", "the path whose worst step is smallest". Negative costs → Module 05
+- **Why:** keys only grow along a path, so the smallest key in the frontier cannot improve: popping settles it
 
 :::mint
 <svg viewBox="0 0 470 150" role="img" aria-label="A 4 by 4 elevation grid for Swim in Rising Water. Settled cells near the start are green, the frontier ring around them is blue, unknown cells are white. The frontier is a min-heap keyed by the highest elevation on the path so far. On the right, one loop with four selection rules: a queue gives BFS, a heap by summed cost gives Dijkstra, a heap by the maximum gives this page, a stack gives DFS." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -39,23 +43,21 @@
 // Swim in Rising Water (LeetCode 778) · Heap: 15-11
 function swimInWater(grid: number[][]): number {
   const n = grid.length, seen = grid.map(r => r.map(() => false));
-  // [level,r,c]
-  const heap = new Heap<number[]>((x, y) => x[0] < y[0]);
+  const heap = new Heap<number[]>((x, y) => x[0] < y[0]); // [lvl, r, c]
   heap.push([grid[0][0], 0, 0]);
   const dirs = [[1, 0], [-1, 0], [0, 1], [0, -1]];
   while (heap.size() > 0) {
     const [level, r, c] = heap.pop()!;
-    if (seen[r][c]) continue;          // stale entry
-    // settled: its level is final
-    seen[r][c] = true;
+    if (seen[r][c]) continue; seen[r][c] = true;  // skip stale, else settle
     if (r === n - 1 && c === n - 1) return level;
     for (const [dr, dc] of dirs) {
       const x = r + dr, y = c + dc;
-      if (x < 0 || y < 0 || x >= n || y >= n) continue;
-      if (seen[x][y]) continue;
+      if (x < 0 || y < 0 || x >= n || y >= n || seen[x][y]) continue;
       heap.push([Math.max(level, grid[x][y]), x, y]);
     }
   }
   return -1;
 }
 ```
+
+- **Watch out:** settle on *pop*, not push. With summed costs, A→T 5, A→B 1, B→T 1 pushes T at 5 before B reaches it at 2

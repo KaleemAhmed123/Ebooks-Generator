@@ -123,10 +123,12 @@
     "16-01": "Patterns 46–47 · Graphs · overview",
     "16-02": "Pattern 46 · Find the Hidden Edge",
     "16-03": "Pattern 47 · Flood from the Border",
+    "17-01": "Patterns 48–51 · Dynamic Programming · overview",
     "17-03": "Pattern 48 · Pick, then Jump",
     "17-04": "Pattern 49 · Track What You Hold",
     "17-05": "Pattern 50 · Try Every Split",
     "17-06": "Pattern 51 · Assume a Perfect Opponent",
+    "18-01": "Patterns 52–53 · Unnamed Patterns · overview",
     "18-02": "Pattern 52 · Maintain the Frontier",
     "18-06": "Pattern 53 · Throw Out the Dominated",
     "19-01": "Pattern 54 · Choose the Range Structure"

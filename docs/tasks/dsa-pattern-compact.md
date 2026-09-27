@@ -128,3 +128,11 @@ Budget: front ~4 · pattern pages ~115 · openers ~12 · drills ~18 → about 15
   "Order the Dependencies", with a new Parallel Courses III (Kahn) template. The three new
   pieces of code were run against brute force (6,000 checks, 0 failures); 16-02 and 16-03
   had lines joined and were re-run on LeetCode's examples: 0 failures. Drills 11 and 11.
+- 2026-09-27 — Chapters 17–19: 16 → 7, 10 → 4 and 6 → 2 pages. Intros "Dynamic
+  Programming" (17-01; skeleton: memoised 0/1 knapsack; the trap is the greedy / regret /
+  DP story in one line) and "Four Questions" (18-01; no skeleton of its own, because the
+  frontier loop is 18-02's template and would repeat). 17-02 stays the signature router.
+  19-01 is the family page and Pattern 54 at once, now with a Fenwick tree template.
+  Both new templates were run against brute force: 2,000 rounds, 0 failures. The 17-08
+  checkpoint is deleted; all five checkpoints are now gone. Page IDs drawn inside SVGs
+  (02-08-0, 13-10, 17-02) are replaced with move names. Chapters 2–19: 0 overflow.

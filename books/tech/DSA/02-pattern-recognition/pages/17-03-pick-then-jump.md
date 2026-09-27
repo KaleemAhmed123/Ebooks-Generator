@@ -1,9 +1,8 @@
 ## Pick, Then Jump <span class="lv lv2"></span>
 
-- **What it is:** Pick or skip over items sorted by start, where a pick rules out the next few. Skip moves to `k + 1`. Pick **jumps** to the first item starting after this one ends, found by binary search
-- **Signal:** weighted intervals, "non-overlapping", "maximum profit / value", "choose jobs, events, rides", n up to 10⁵
-- **Not this page if:** every interval is worth the same → 07-07: earliest end first is optimal; no DP
-- **Why it works:** Sorted by start, the items compatible with a pick form a **suffix**, so one index is the state: `dp[k]` = best using items k … n − 1. Binary search finds where the suffix begins: O(log n) per state
+- **What:** pick or skip over items sorted by start. Skip moves to `k + 1`; pick **jumps** to the first item starting after this one ends (binary search)
+- **Spot it:** weighted intervals, "non-overlapping", "maximum profit", n up to 10⁵. All worth the same → 07-07
+- **Why:** sorted by start, the items compatible with a pick form a suffix, so one index is the state: `dp[k]` = the best using items k … n − 1
 
 :::mint
 <svg viewBox="0 0 470 110" role="img" aria-label="Five jobs sorted by start on a timeline. From job k the skip arrow goes to job k plus 1. The pick arrow goes from job k past the jobs that start before k ends, to the first job whose start is at or after k's end, found by binary search." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -39,8 +38,7 @@ function jobScheduling(st: number[], en: number[], pr: number[]) {
   const firstFrom = (t: number) => {  // first job with start >= t
     let lo = 0, hi = n;
     while (lo < hi) {
-      const m = (lo + hi) >> 1;
-      if (s[m] < t) lo = m + 1; else hi = m;
+      const m = (lo + hi) >> 1; if (s[m] < t) lo = m + 1; else hi = m;
     }
     return lo;
   };
@@ -52,3 +50,6 @@ function jobScheduling(st: number[], en: number[], pr: number[]) {
   return dp[0];
 }
 ```
+
+- **Watch out:** the boundary. In 1235 a job may start as the last ends: search start `≥ end`; `>` scores `[1,2]:50, [2,3]:50` as 50, not 100
+- **Also solves:** [Maximum Number of Events That Can Be Attended II](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended-ii/) (LeetCode 1751) · [Two Best Non-Overlapping Events](https://leetcode.com/problems/two-best-non-overlapping-events/) (LeetCode 2054) (inclusive ends: `> end`)
