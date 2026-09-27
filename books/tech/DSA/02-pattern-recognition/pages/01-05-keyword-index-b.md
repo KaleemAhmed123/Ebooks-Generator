@@ -2,22 +2,18 @@
 
 | The statement says… | Think | Page |
 |---|---|---|
-| "deadline", "profit per job" | **Latest free slot / regret heap** | 08-03 · 15-06 |
-| "rotated sorted", "peak" | **Find the sorted half** | 09-03 |
-| "k-th smallest" in sorted rows or pairs | **Guess a value, count below it** | 09-04 |
-| "minimise the maximum", "maximise the minimum" | **Boundary on the answer** | 09-02 |
-| "decode", "nested brackets" | **Push the context** | 10-02 |
-| "collide", "cancel", "remove k digits" | **Cancel against the top / pop while it pays** | 10-03 · 10-07 |
-| "sum over all subarrays of the min" | **Count each element's reach** | 10-08 |
-| "appears twice except one" | **Let pairs cancel** | 11-01 |
-| "all subsets / combinations / permutations" | **Pick or skip · fill the slots** | 13-05 · 13-08 |
-| "running median" | **Balance two heaps** | 15-04 |
-| "connect ropes", "merge cost" | **Merge the two smallest** | 15-05 |
-| "surrounded", "enclosed", "closed island" | **Flood from the border** | 16-03 |
-| "share an email / a letter / a value" | **Find the hidden edge** | 16-02 |
-| "non-overlapping jobs with profit" | **Pick, then jump** | 17-03 |
-| "at most k transactions", "cooldown" | **Track what you hold** | 17-04 |
-| "minimum cost to cut / merge / burst" | **Try every split** | 17-05 |
-| "both play optimally" | **Assume the opponent is perfect** | 17-06 |
-
-- **Not here?** Use the chart on 01-04, then the four questions on 18-01
+| "maximum subarray", "maximum product" | **5 · Running Best** | 03-06 |
+| "add v to every element in [l, r]", "bookings", "car pooling" | **4 · Prefix and Suffix** | 03-07 |
+| "values 1..n, missing or duplicate, O(1) space" | **6 · Send Each Value Home** | 04-02 |
+| "rotate the array by k" | **7 · Rearrange by Reversal** | 04-03 |
+| "next permutation", "next greater number with the same digits" | **7 · Rearrange by Reversal** | 04-04 |
+| "more than n / 2 (or n / 3) times" | **8 · Vote and Cancel** | 04-05 |
+| "circular array" | **9 · Wrap Around** | 04-06 |
+| "diagonals", "same row, column or box" | **10 · Matrix Geometry** | 05-01 |
+| "spiral order", "rotate the matrix" | **10 · Matrix Geometry** | 05-02 |
+| "in place", "next state from the neighbours", "set zeroes" | **11 · State in the Cell** | 05-03 |
+| "rows and columns both sorted" | **12 · Staircase Search** | 05-04 |
+| "group anagrams", "follows the same pattern" | **13 · Canonical Keys** | 06-01 · 06-03 |
+| "longest palindromic substring", "count palindromic substrings" | **14 · Grow from the Centre** | 06-02 |
+| "how many overlap at once", "meeting rooms" | **15 · Intervals** | 07-06 |
+| "merge overlapping", "remove the fewest intervals" | **15 · Intervals** | 07-07 |
