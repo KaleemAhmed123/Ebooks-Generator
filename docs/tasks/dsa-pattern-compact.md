@@ -122,3 +122,9 @@ Budget: front ~4 · pattern pages ~115 · openers ~12 · drills ~18 → about 15
   record skeleton). The 14-12 checkpoint is deleted. 14-05 and 14-06 had lines joined
   and a signature shortened; both re-run on LeetCode's own examples (987, 863):
   0 failures. Drills 11.
+- 2026-09-27 — Chapters 15 and 16: 16 → 7 pages and 12 → 5 pages. Intros "Heap & Top-K"
+  (15-01; skeleton: a size-k min-heap for the k largest) and "Graphs" (16-01; skeleton:
+  BFS with a head index). The heap appendix (15-11) is one page. 16-04 became a move page,
+  "Order the Dependencies", with a new Parallel Courses III (Kahn) template. The three new
+  pieces of code were run against brute force (6,000 checks, 0 failures); 16-02 and 16-03
+  had lines joined and were re-run on LeetCode's examples: 0 failures. Drills 11 and 11.

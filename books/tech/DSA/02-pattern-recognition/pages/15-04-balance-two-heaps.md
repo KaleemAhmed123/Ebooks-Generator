@@ -1,9 +1,8 @@
 ## Balance Two Heaps <span class="lv lv2"></span>
 
-- **What it is:** Keep the smaller half of the data in a **max-heap** and the larger half in a **min-heap**, with sizes equal or the max-heap one larger. The two tops are the middle of the data, so the median is one or two peeks away after every insertion
-- **Signal:** "median of a data stream", "running median", "median of every sliding window", "maximise capital with at most k projects" (two heaps with different keys), any query about the middle of changing data
-- **Not this page if:** a fixed-size window asks only for its maximum or minimum → 10-10: a monotonic deque, O(1) per step
-- **Why it works:** The median only depends on the boundary between the lower and upper halves, not on the order inside each half. A heap keeps exactly one end of a set ready, so a max-heap exposes the top of the lower half and a min-heap the bottom of the upper half. Each insertion moves at most one element between them: O(log n)
+- **What:** the smaller half in a **max-heap**, the larger half in a **min-heap**, sizes equal or the max-heap one larger. The two tops are the middle of the data
+- **Spot it:** "median of a data stream", "running median", "median of every window". A window's max or min only → 10-10
+- **Why:** the median depends only on the boundary between the halves, not on the order inside them, and each heap exposes one side of that boundary
 
 :::mint
 <svg viewBox="0 0 470 110" role="img" aria-label="Two heaps after inserting 5, 15, 1, 3, 8. The lower half 1, 3, 5 is a max-heap with top 5. The upper half 8, 15 is a min-heap with top 8. Sizes 3 and 2, so the median is the lower top, 5. After adding 7, sizes are 3 and 3 and the median is 5 plus 7 over 2, which is 6." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -37,8 +36,7 @@ class MedianFinder {
   private hi = new Heap<number>((a, b) => a < b);   // min-heap
   addNum(x: number): void {
     this.lo.push(x);
-    // largest of lower → upper
-    this.hi.push(this.lo.pop()!);
+    this.hi.push(this.lo.pop()!);      // largest of lower → upper
     if (this.hi.size() > this.lo.size())
       this.lo.push(this.hi.pop()!);
   }
@@ -49,3 +47,6 @@ class MedianFinder {
   }
 }
 ```
+
+- **Watch out:** rebalance after every insert. Routing alone keeps the halves ordered but unequal: after 1, 2, 3 the tops give 1.5, not 2
+- **Also solves:** [Sliding Window Median](https://leetcode.com/problems/sliding-window-median/) (LeetCode 480) (lazy deletion: mark outgoing values, discard at the top) · [IPO](https://leetcode.com/problems/ipo/) (LeetCode 502) (two heaps with different keys)

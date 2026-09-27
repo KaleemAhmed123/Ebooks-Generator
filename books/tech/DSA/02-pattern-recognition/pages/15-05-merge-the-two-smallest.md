@@ -1,10 +1,8 @@
 ## Merge the Two Smallest <span class="lv lv2"></span>
 
-- **What it is:** When items are combined two at a time and each combination costs the sum of what is combined, always combine the two *cheapest* items available, then put the result back. A min-heap keeps "the two cheapest" ready after every merge
-- **Signal, optimal merge:** "combine two at a time, each combination costs the sum", "minimum total cost", "shortest prefix-free code for these frequencies"
-- **Signal, simulate with a heap:** the statement fixes the rule ("smash the two heaviest", "halve the largest pile k times") and asks what is left. Nothing to prove; the heap only makes each step O(log n)
-- **Not this page if:** only *adjacent* piles may merge → 17-05: order is fixed, so it is a range DP (Minimum Cost to Merge Stones, LeetCode 1000)
-- **Why it works:** Every merge result is paid again in every later merge it takes part in, so an item's total cost is its length times the number of merges above it: its depth in the merge tree. The optimal tree puts the smallest items deepest, and merging the two smallest first does exactly that (Huffman's exchange argument). The argument covers only the optimal-merge line
+- **What:** when items combine two at a time and each combination costs their sum, always combine the two *cheapest*, then push the result back
+- **Spot it:** "combine two at a time, each costs the sum, minimise the total", "Huffman codes". A fixed rule to simulate ("smash the two heaviest") uses a heap too. Only *adjacent* piles merge → 17-05
+- **Why:** a merged result is paid again in every later merge, so each item costs its size times its depth in the merge tree. The smallest belong deepest
 
 :::mint
 <svg viewBox="0 0 470 118" role="img" aria-label="Connecting ropes 4, 3, 2, 6. Merge 2 and 3 for cost 5. Merge 4 and 5 for cost 9. Merge 6 and 9 for cost 15. Total 29. The smallest ropes end deepest in the merge tree, so their lengths are counted most often." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -40,9 +38,11 @@ function minCost(ropes: number[]): number {
   while (h.size() > 1) {
     const merged = h.pop()! + h.pop()!;   // the two cheapest
     cost += merged;
-    // the result competes again
-    h.push(merged);
+    h.push(merged);                   // the result competes again
   }
   return cost;
 }
 ```
+
+- **Watch out:** merging in sorted order once. `[2, 2, 3, 3]` left to right costs 21; the heap merges 2 + 2, 3 + 3, 4 + 6: 20
+- **Also solves:** [Huffman Encoding](https://www.geeksforgeeks.org/problems/huffman-encoding3345/1) (GFG) (build the tree; ties by insertion order) · [Last Stone Weight](https://leetcode.com/problems/last-stone-weight/) (LeetCode 1046) (a max-heap) · [Minimum Operations to Halve Array Sum](https://leetcode.com/problems/minimum-operations-to-halve-array-sum/) (LeetCode 2208)

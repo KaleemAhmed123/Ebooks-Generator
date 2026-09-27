@@ -1,3 +1,9 @@
+## Order the Dependencies <span class="lv lv1"></span>
+
+- **What:** one task unlocks another, so the work is a DAG (a directed graph with no cycle). Kahn's algorithm processes a node once its in-degree is 0, then lowers its neighbours'
+- **Spot it:** "prerequisites", "build order", "X must finish before Y", "minimum time if independent tasks run in parallel", "the letter order implied by a sorted word list"
+- **Why:** a node with no unfinished prerequisite is always safe next. Fewer than n nodes processed means a cycle. The longest chain, not the number of tasks, sets the finish time
+
 :::mint
 <svg viewBox="0 0 470 162" role="img" aria-label="Parallel Courses III, LeetCode 2050 example 2. Tasks sit in columns by Kahn round. Round 0 holds task 1 taking 1 month, task 2 taking 2 and task 3 taking 3; they finish at 1, 2 and 3. Round 1 holds task 4, taking 4 and needing task 3, finishing at 7. Round 2 holds task 5, taking 5 and needing tasks 1, 2, 3 and 4, finishing at 12. The chain 3, 4, 5 is drawn in red: it is the critical path, 3 plus 4 plus 5 equals 12." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
   <style>
@@ -31,13 +37,24 @@
 </svg>
 :::
 
-- **Why the red chain decides:** a task's finish is its time plus the latest finish among its prerequisites. Task 5 waits for 7, not for 1, 2 or 3; only the red chain sets the answer. With every time equal to 1, the answer is the number of rounds, 3
+```ts
+// Parallel Courses III (LeetCode 2050): relations[i] = [prev, next], 1-indexed
+function minimumTime(n: number, relations: number[][], time: number[]): number {
+  const adj: number[][] = Array.from({ length: n }, () => []);
+  const indeg = new Array(n).fill(0);
+  for (const [a, b] of relations) { adj[a - 1].push(b - 1); indeg[b - 1]++; }
+  const finish = time.slice(), q: number[] = [];
+  for (let v = 0; v < n; v++) if (indeg[v] === 0) q.push(v);
+  for (let h = 0; h < q.length; h++) {             // in-degree 0: safe next
+    const u = q[h];
+    for (const v of adj[u]) {
+      finish[v] = Math.max(finish[v], finish[u] + time[v]);
+      if (--indeg[v] === 0) q.push(v);
+    }
+  }
+  return Math.max(...finish);
+}
+```
 
-### The failure
-
-- **Answering the number of tasks instead of the number of rounds.** Independent tasks run at the same time, so with unit times the answer is how many Kahn *rounds* it takes, not n. Process the queue level by level. Cycle detection itself is Module 05, 05-01
-- **Summing every duration.** Adding all times (1 + 2 + 3 + 4 + 5 = 15 here) treats the tasks as sequential. Only the longest chain counts: 12
-
-:::interview
-"How do you find the minimum time to finish tasks with prerequisites, running in parallel?" — The tasks form a DAG. I process them in Kahn order and set each task's finish time to its duration plus the latest finish among its prerequisites. The answer is the maximum finish: the critical path. O(V + E).
-:::
+- **Watch out:** summing every duration treats the tasks as sequential. Independent tasks run together; only the longest chain counts
+- **Also solves:** [Course Schedule](https://leetcode.com/problems/course-schedule/) (LeetCode 207) · [Course Schedule II](https://leetcode.com/problems/course-schedule-ii/) (LeetCode 210) (the Kahn order itself) · [Alien Dictionary](https://www.geeksforgeeks.org/problems/alien-dictionary/1) (GFG) (an edge per first differing letter)

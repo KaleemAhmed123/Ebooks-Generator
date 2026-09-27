@@ -1,4 +1,8 @@
-## Find the Hidden Edge <span class="lv lv2"></span> - continued
+## Find the Hidden Edge <span class="lv lv2"></span>
+
+- **What:** three edges hide in statements: two items **share** a value, one **reaches** another within a range, or one is a **ratio** of another
+- **Spot it:** "accounts sharing an email", "bombs in range", "a / b = 2.0". Fewest steps → 16-01
+- **Why:** connectivity is transitive, so union–find merges groups in near-constant time per edge. Index by the shared value: one union per value
 
 :::mint
 <svg viewBox="0 0 470 118" role="img" aria-label="Accounts merge. Account 1 has emails a and b, account 2 has b and c, account 3 has d. Account 1 and 2 share email b, so they are unioned; the group holds a, b and c. Account 3 is its own group. Emails are the hidden edges between accounts." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -31,25 +35,22 @@
 function accountsMerge(accounts: string[][]): string[][] {
   const parent = accounts.map((_, i) => i);
   const find = (x: number): number =>
-    // path compression
-    parent[x] === x ? x : (parent[x] = find(parent[x]));
-  // email → first account
-  const owner = new Map<string, number>();
+    parent[x] === x ? x : (parent[x] = find(parent[x])); // path compression
+  const owner = new Map<string, number>();             // email → first account
   accounts.forEach((acc, i) => {
-    for (const email of acc.slice(1)) {
-      // edge
-      if (owner.has(email))
-        parent[find(i)] = find(owner.get(email)!);
+    for (const email of acc.slice(1))
+      if (owner.has(email)) parent[find(i)] = find(owner.get(email)!);
       else owner.set(email, i);
-    }
   });
   const groups = new Map<number, string[]>();
   for (const [email, i] of owner) {
-    const r = find(i);
-    if (!groups.has(r)) groups.set(r, []);
-    groups.get(r)!.push(email);
+    const r = find(i), g = groups.get(r) ?? [];
+    g.push(email); groups.set(r, g);
   }
   return [...groups].map(([r, emails]) =>
     [accounts[r][0], ...emails.sort()]);
 }
 ```
+
+- **Watch out:** union–find on a *directed* relation: bomb A reaching B does not mean B reaches A. BFS from each bomb instead
+- **Also solves:** [Number of Operations to Make Network Connected](https://leetcode.com/problems/number-of-operations-to-make-network-connected/) (LeetCode 1319) · [Satisfiability of Equality Equations](https://leetcode.com/problems/satisfiability-of-equality-equations/) (LeetCode 990) · [Evaluate Division](https://leetcode.com/problems/evaluate-division/) (LeetCode 399)

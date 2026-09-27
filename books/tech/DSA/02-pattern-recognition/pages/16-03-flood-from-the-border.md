@@ -1,4 +1,8 @@
-## Flood From the Border <span class="lv lv2"></span> - continued
+## Flood from the Border <span class="lv lv2"></span>
+
+- **What:** invert the question. Flood inward from the border and mark everything reached as **safe**; whatever the flood never touched is enclosed
+- **Spot it:** "surrounded", "enclosed", "closed island", "can reach the ocean". Regions only counted → one flood each, Module 05
+- **Why:** "touches the border" belongs to a whole region, so one flood from the border settles every region at once: O(m · n)
 
 :::mint
 <svg viewBox="0 0 470 132" role="img" aria-label="Surrounded Regions. Left: a 4 by 4 board with O cells at row 1 columns 1 and 2, row 2 column 2, and row 3 column 1 on the bottom edge. The flood starts from border O cells only, so it marks the bottom-edge O as safe. Right: the result, where the three interior O cells became X and the bottom-edge O remains." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -38,13 +42,11 @@
 ```ts
 // Surrounded Regions (LeetCode 130): capture every enclosed 'O'
 function solve(board: string[][]): void {
-  const m = board.length, n = board[0].length;
-  const stack: number[][] = [];
+  const m = board.length, n = board[0].length, stack: number[][] = [];
   const seed = (r: number, c: number) => {
     if (r < 0 || c < 0 || r >= m || c >= n) return;
     if (board[r][c] !== "O") return;
-    // safe; marked on push, never twice
-    board[r][c] = "S";
+    board[r][c] = "S";        // safe; marked on push, never twice
     stack.push([r, c]);
   };
   for (let r = 0; r < m; r++) { seed(r, 0); seed(r, n - 1); }
@@ -53,8 +55,10 @@ function solve(board: string[][]): void {
     const [r, c] = stack.pop()!;
     seed(r + 1, c); seed(r - 1, c); seed(r, c + 1); seed(r, c - 1);
   }
-  for (let r = 0; r < m; r++)
-    for (let c = 0; c < n; c++)
-      board[r][c] = board[r][c] === "S" ? "O" : "X";
+  for (let r = 0; r < m; r++) for (let c = 0; c < n; c++)
+    board[r][c] = board[r][c] === "S" ? "O" : "X";
 }
 ```
+
+- **Watch out:** asking each region with `dfs(down) && dfs(up) && …`: it stops at the first border hit and leaves the region half-visited
+- **Also solves:** [Number of Enclaves](https://leetcode.com/problems/number-of-enclaves/) (LeetCode 1020) · [Number of Closed Islands](https://leetcode.com/problems/number-of-closed-islands/) (LeetCode 1254) (sink border islands first) · [Pacific Atlantic Water Flow](https://leetcode.com/problems/pacific-atlantic-water-flow/) (LeetCode 417)

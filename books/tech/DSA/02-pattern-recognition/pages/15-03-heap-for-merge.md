@@ -1,9 +1,8 @@
 ## Merge from Every Head <span class="lv lv1"></span>
 
-- **What it is:** K sorted sources, one merged order. Put the *head* of each source in a min-heap; pop the smallest, output it, and push the next element from the source it came from
-- **Signal:** "merge k sorted lists / arrays", "k-th smallest across k sorted lists", "smallest range covering one element from each list", "k pairs with smallest sums"
-- **Not this page if:** the sources are rows of one sorted matrix and memory is tight → 09-04: guess a value and count below it, O(1) extra space
-- **Why it works:** The next output must be the smallest head: everything behind a head is at least as large. So the heap only ever needs one candidate per source, K items at most, and each of the N outputs costs O(log K)
+- **What:** k sorted sources, one merged order. Put each source's *head* in a min-heap; pop the smallest, output it, push the next element from its source
+- **Spot it:** "merge k sorted lists", "k-th smallest across k sorted lists", "smallest range covering one from each list", "k pairs with smallest sums". One sorted matrix, little memory → 09-04
+- **Why:** the next output is the smallest head, because everything behind a head is at least as large. One candidate per source: O(N log k)
 
 :::mint
 <svg viewBox="0 0 470 134" role="img" aria-label="Three sorted lists A 1, 5, 9; B 2, 4, 8; C 3, 6, 7. Their heads 1, 2 and 3 sit in a min-heap of size three. Pop 1 from A and push A's next value 5. The heap now holds 2, 3, 5. Output so far: 1. The heap never holds more than one value per list." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -49,10 +48,12 @@ function mergeKLists(lists: (ListNode | null)[]): ListNode | null {
   let tail = dummy;
   while (heap.size() > 0) {
     const node = heap.pop()!;
-    // output the smallest head
-    tail = tail.next = node;
+    tail = tail.next = node;           // output the smallest head
     if (node.next) heap.push(node.next);   // its successor joins
   }
   return dummy.next;
 }
 ```
+
+- **Watch out:** pushing every element up front is just sorting: O(N log N) time, O(N) memory. Hold one head per source
+- **Also solves:** [Find K Pairs with Smallest Sums](https://leetcode.com/problems/find-k-pairs-with-smallest-sums/) (LeetCode 373) (row i is a source of pairs) · [Smallest Range Covering Elements from K Lists](https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/) (LeetCode 632) (keep the max beside the heap; the range is `[top, max]`)
