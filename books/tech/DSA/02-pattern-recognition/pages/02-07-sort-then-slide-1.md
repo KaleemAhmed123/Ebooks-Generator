@@ -2,6 +2,7 @@
 
 - **What it is:** When the question picks a *subset* (order does not matter) and scores it by its spread or by how close its values are, sort first. The best subset is then a contiguous run of the sorted array, and a window finds it
 - **Signal:** "choose m packets so the max − min is smallest", "you may increment any element at most k times in total, maximise the frequency", "pick k scores with the smallest range", any subset question where only the values matter, not the positions
+- **Not this page if:** the statement fixes positions ("subarray", "consecutive days", "in the given order"): sorting destroys the answer → 02-03
 - **Why it works:** Take any chosen subset and look at its min and max in sorted order. Every value between them can be swapped in without widening the range. So some optimal subset is contiguous in sorted order, and the n-choose-m search collapses to n − m + 1 windows
 
 :::mint

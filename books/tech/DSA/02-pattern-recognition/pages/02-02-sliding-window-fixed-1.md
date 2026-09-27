@@ -1,7 +1,8 @@
 ## Sliding Window (Fixed Length) <span class="lv lv1"></span>
 
 - **What it is:** Keep one running summary of exactly k consecutive elements. Each step, one element leaves on the left and one enters on the right; update the summary with those two and nothing else
-- **Signal:** "every subarray / substring of length k", "window of size k", "k consecutive days", "all anagrams of p in s"
+- **Signal:** "every subarray / substring of length k", "window of size k", "k consecutive days", "does s contain a permutation of p"
+- **Not this page if:** the window's summary is a maximum or minimum, which cannot be undone when an element leaves → 10-10
 - **Why it works:** Neighbouring windows share k − 1 elements. If the summary can *undo* an element (a sum, a count, a letter map), the shared part never needs re-reading, so n − k + 1 windows cost O(n) instead of O(n · k)
 
 :::mint

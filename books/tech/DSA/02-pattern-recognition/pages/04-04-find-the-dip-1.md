@@ -1,7 +1,8 @@
 ## Find the Dip <span class="lv lv2"></span>
 
 - **What it is:** To get the next larger arrangement, change the array as far to the *right* as possible. Scan from the right for the first dip `a[i] < a[i+1]`, swap `a[i]` with the smallest larger value to its right, then reverse the suffix
-- **Signal:** "next permutation", "next greater number with the same digits", "smallest arrangement larger than this one", "lexicographically next"
+- **Signal:** "rearrange into the next larger ordering", "next greater number with the same digits", "smallest arrangement larger than this one", "lexicographically next"
+- **Not this page if:** "next greater element" for *each position* (the first larger value to its right): a different question → 10-05
 - **Why it works:** A suffix that only falls (read left to right) is already its own largest arrangement; nothing can be gained by reordering it. So the change must happen at the dip just before it. Bumping `a[i]` by the smallest possible amount, then making the suffix as small as possible (ascending), gives the very next arrangement. The suffix is descending, so "sort ascending" is just "reverse"
 
 :::mint

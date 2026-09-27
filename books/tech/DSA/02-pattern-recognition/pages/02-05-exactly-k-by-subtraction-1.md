@@ -2,6 +2,7 @@
 
 - **What it is:** Count subarrays with *exactly* K of something as `atMost(K) − atMost(K − 1)`. Two monotone windows replace one broken one
 - **Signal:** "exactly K distinct", "exactly K odd numbers", "sum equals goal" on a 0/1 array, and a counting question rather than a longest one
+- **Not this page if:** "sum equals K" on values that may be negative: neither `atMost` window is monotone → 03-03
 - **Why it works:** "Exactly K" is not shrink-safe: drop one element from a window with K distinct values and it may hold K − 1, so the left pointer has no single correct position. "At most K" *is* shrink-safe, so it counts cleanly with `right − left + 1` (page 02-04). Every subarray with at most K is either exactly K or at most K − 1, so the difference is exactly K
 
 :::mint

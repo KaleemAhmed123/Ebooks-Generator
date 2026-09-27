@@ -1,7 +1,8 @@
-## Equal Prefixes <span class="lv lv2"></span>
+## Equal Prefixes <span class="lv lv1"></span>
 
 - **What it is:** Encode each element so that "subarray `(j, i]` has property P" becomes "`code(prefix j) === code(prefix i)`". Then a map of codes seen so far answers every index in O(1)
-- **Signal:** "divisible by k", "equal number of 0s and 1s / odd and even", "every vowel appears an even number of times", "at most one letter with odd count"
+- **Signal:** "sum equals k" with negative values allowed, "divisible by k", "equal number of 0s and 1s / odd and even", "every vowel appears an even number of times", "at most one letter with odd count"
+- **Not this page if:** the property is a maximum or minimum ("max − min ≤ limit"): it does not survive subtracting two prefixes → 10-10
 - **Why it works:** Differences of prefixes are subarrays. If the property survives subtraction (sums, remainders mod k, parities under XOR), two equal codes bracket a valid subarray. Store the **count** of each code to count subarrays, or the **first index** to find the longest
 
 :::mint

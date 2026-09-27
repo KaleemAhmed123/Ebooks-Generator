@@ -1,5 +1,6 @@
 ### Other codes, same loop
 
+- **Subarray Sum Equals K (LeetCode 560):** code = the plain running sum; add the count of `sum − k` seen so far. Negatives are allowed, which is why no window works. Worked in Module 07, 01-09
 - **Continuous Subarray Sum (LeetCode 523):** "length ≥ 2, sum a multiple of k". Same remainder code, but store the **first index** and accept only `i − first ≥ 2`. Never overwrite a first index: a later one only shortens the subarray
 - **Longest subarray with equal odd and even elements:** code = running `(+1 for odd, −1 for even)`. The 0/1 version is Contiguous Array (LeetCode 525); any two-class count works the same way
 - **Find the Longest Substring Containing Vowels in Even Counts (LeetCode 1371):** code = a 5-bit mask, bit v flipped by each vowel v. Equal masks mean every vowel's count changed by an even number in between
@@ -11,5 +12,5 @@
 - **Forgetting the empty prefix.** Seed the map with `{0: 1}` (for counting) or `{0: −1}` (for first index). Without it, every valid subarray that starts at index 0 is missed
 
 :::interview
-"How do you spot that a prefix map applies?" — I ask whether the property is preserved by *subtracting* two prefixes. Sums are, remainders mod k are, parities are under XOR. If yes, a valid subarray is a pair of equal codes, and one hash map turns the O(n²) pair search into O(n). If the property is a max or a min, subtraction does not work, and I look at windows or stacks instead.
+"How do you spot that a prefix map applies?" — I ask whether the property is preserved by *subtracting* two prefixes. Sums are, remainders mod k are, parities are under XOR. If yes, a valid subarray is a pair of equal codes, and one hash map turns the O(n²) pair search into O(n).
 :::

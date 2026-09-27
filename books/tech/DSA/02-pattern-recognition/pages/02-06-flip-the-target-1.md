@@ -2,6 +2,7 @@
 
 - **What it is:** When the question is about what you *remove* from both ends, solve for what *stays*. Removing a prefix and a suffix always leaves one contiguous middle, and a contiguous middle is a sliding window
 - **Signal:** "take from the left or the right end", "remove elements from either end", "circular array, best subarray", "pick exactly k cards from the ends"
+- **Not this page if:** two players take turns removing from the ends: the order of picks matters, not just what stays → 17-06
 - **Why it works:** A choice at each end is a branching decision, which smells like DP or backtracking. But every valid choice leaves the same *shape*: `nums[l..r]`. Fix the shape instead of the choices. "Minimise what I take" becomes "maximise what I leave"; "sum taken = x" becomes "sum left = total − x"
 
 :::mint

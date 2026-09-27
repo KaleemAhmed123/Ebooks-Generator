@@ -1,7 +1,8 @@
-## Vote and Cancel <span class="lv lv2"></span>
+## Vote and Cancel <span class="lv lv1"></span>
 
 - **What it is:** The Boyer–Moore majority vote. Keep one candidate and a counter; a matching value adds a vote, a different value cancels one. A value that fills more than half the array survives every cancellation
 - **Signal:** "element that appears more than ⌊n/2⌋ times", "more than ⌊n/3⌋ times", "O(1) extra space", "single pass over a stream"
+- **Not this page if:** "most frequent value" with no more-than-half promise: the survivor means nothing, count with a map → Module 03, 02-02
 - **Why it works:** Each cancellation removes one majority vote and one other vote, or two non-majority votes. Either way the majority stays more than half of what is left. So it can never be cancelled out completely, and it is the candidate standing at the end
 
 :::mint

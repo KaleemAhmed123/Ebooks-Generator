@@ -2,6 +2,7 @@
 
 - **What it is:** A rotation is three reversals. Reverse the whole array, then reverse each of the two parts. No buffer, each element moves twice
 - **Signal:** "rotate the array right by k in place", "reverse the order of words", "rotate the string", "cyclically shift"
+- **Not this page if:** the array is already rotated and the task is to *search* it ("rotated sorted array", O(log n)) → 09-03
 - **Why it works:** Write the array as `A B`, where `B` is the last k elements. Rotating right by k gives `B A`. Reversing the whole array gives `Bᴿ Aᴿ` (reversal flips the order of the blocks *and* the inside of each). Reversing each block again undoes the inside flip: `B A`
 
 :::mint

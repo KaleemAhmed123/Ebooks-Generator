@@ -8,7 +8,7 @@
 
 ### The failure
 
-- **Offering before reading.** Swap the two lines in the loop and `j` pairs with itself. In Maximum Difference Between Increasing Elements, `[5, 4, 3]` then returns 0 (buy and sell the same day) instead of −1. LeetCode 121 happens to survive the bug, because 0 is a legal answer there, which is why it goes unnoticed
+- **Offering before reading.** Swap the two lines in the loop and `j` pairs with itself. On `[1, 3]` the template then returns `(3 + 1) + (3 − 1) = 6`, the 3 counted twice; the only pair scores `1 + 3 − 1 = 3`. Best Time to Buy and Sell Stock (LeetCode 121) survives the same bug, because selling on the buying day earns 0 and 0 is a legal answer there, which is why the bug goes unnoticed
 - **Trying it on a coupled score.** `max (j − i)` with `a[i] ≤ a[j]` looks like a pair problem, but the best `i` for one `j` is not the best for another. A single best-so-far variable gives wrong answers; recognise the coupling and switch to two passes
 
 :::interview

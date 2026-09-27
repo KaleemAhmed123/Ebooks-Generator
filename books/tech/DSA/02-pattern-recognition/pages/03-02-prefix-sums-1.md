@@ -2,6 +2,7 @@
 
 - **What it is:** Store running totals `P[i] = a[0] + … + a[i − 1]`, with `P[0] = 0`. Any range sum is then the difference of two stored totals: `sum(L..R) = P[R + 1] − P[L]`
 - **Signal:** "sum of elements between i and j", many range queries on data that never changes, "running sum", "pivot / equilibrium index", a 2-D grid with rectangle-sum queries
+- **Not this page if:** values change between queries: every update would rebuild the prefix array → 19-01
 - **Why it works:** Addition can be undone. The total up to R contains the total before L, so subtracting it leaves exactly the range. One O(n) pass buys O(1) per query, for any number of queries
 
 :::mint

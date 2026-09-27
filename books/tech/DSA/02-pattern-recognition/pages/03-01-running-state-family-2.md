@@ -1,13 +1,13 @@
-### The techniques in this chapter
+### Two patterns, six pages
 
-| Page | Summary carried | Answers |
-|---|---|---|
-| **03-02 Prefix Sums** | `prefix[i]` | Any range sum in O(1) |
-| **03-03 Equal Prefixes** | map: encoded prefix → first index / count | "a subarray with property P" becomes "two equal prefixes" |
-| **03-04 Two Passes** | best-from-left and best-from-right arrays | anything that depends on both sides of `i` |
-| **03-05 Best Partner So Far** | one best earlier value | the best pair `i < j` in one pass |
-| **03-06 Drop the Baggage** | best sum (and worst) ending here | best subarray; restart when the past only hurts |
-| **03-07 Difference Array** | pending boundary changes | many range updates, read once at the end |
+| Pattern | Page | Summary carried | Answers |
+|---|---|---|---|
+| **4 · Prefix and Suffix** | 03-02 Prefix sums | `prefix[i]` | any range sum in O(1) |
+| | 03-03 Equal prefixes | map: encoded prefix → first index / count | "a subarray with property P" becomes "two equal prefixes" |
+| | 03-04 Two passes | best-from-left and best-from-right arrays | anything that depends on both sides of `i` |
+| | 03-07 Difference array | pending boundary changes | many range updates, read once at the end |
+| **5 · Running Best** | 03-05 Best partner so far | one best earlier value | the best pair `i < j` in one pass |
+| | 03-06 Drop the baggage | best sum (and worst) ending here | best subarray; restart when the past only hurts |
 
 ### The trap
 

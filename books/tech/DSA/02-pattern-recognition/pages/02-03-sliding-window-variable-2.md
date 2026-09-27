@@ -11,5 +11,5 @@
 - **Negative numbers.** Monotonicity is gone: adding an element can *lower* the sum. On `[−3, 4]` with target 4 the window never reaches 4 and returns 0; the answer is 1 (`[4]`). With negatives, count by equal prefixes (03-03) or use a deque of prefix sums (10-10)
 
 :::interview
-"Longest or shortest window: where do you record the answer?" — For the longest, shrink while the window is invalid, then record: it is valid again. For the shortest, shrink while the window is valid and record inside that loop, before each shrink. Swapping the two records invalid windows or misses the minimum. The O(n) bound itself is Module 01 (01-07).
+"In Minimum Window Substring, how do you test validity in O(1)?" — I keep `need[c]`, the copies of each letter of t still missing, and one counter `missing = t.length`. A letter entering on the right lowers `missing` only while its `need` is positive; a letter leaving on the left raises it only when its `need` turns positive again. The window is valid exactly when `missing === 0`, so no map comparison is needed. The O(n) bound itself is Module 01 (01-07).
 :::

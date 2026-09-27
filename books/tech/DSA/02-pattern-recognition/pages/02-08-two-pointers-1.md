@@ -2,6 +2,7 @@
 
 - **What it is:** On sorted data, start one index at each end and move them toward each other. Each comparison moves exactly one pointer, and the pair it leaves behind is never needed again
 - **Signal:** "sorted array", "pair / two values that sum to X", "in place, O(1) space", "palindrome", "most water between two lines"
+- **Not this page if:** the array is unsorted and the answer is the original indices: sorting loses them → 03-05
 - **Why it works:** Picture every pair `(i, j)` as a cell in a grid. If `a[i] + a[j]` is too small, `a[i]` is too small for *every* remaining `j` (they are all ≤ `a[j]`), so the whole row goes. Too big, and the whole column goes. At most n − 1 moves clear all n(n − 1)/2 pairs
 
 :::mint

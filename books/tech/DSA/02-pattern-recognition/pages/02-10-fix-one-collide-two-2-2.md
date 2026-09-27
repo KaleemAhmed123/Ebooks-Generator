@@ -5,5 +5,5 @@
 - **Skipping against the wrong neighbour.** `if (nums[i] === nums[i + 1]) continue` looks symmetric but drops `[−1, −1, 2]` from `[3, −1, 3, 0, −1, 2]`: the first −1 is skipped and the second has no −1 left to its right. Compare the fixed value with its *previous* neighbour
 
 :::interview
-"Can 3Sum be done faster than O(n²)?" — Not meaningfully. The 3SUM conjecture says no algorithm runs in O(n^(2−ε)) for any ε > 0; the known improvements shave only logarithmic factors. The engineering choices are O(1) extra space, no hashing, and in-place duplicate skipping, which is why the sort-plus-collide version is preferred over the hash-set version.
+"Can 3Sum be done faster than O(n²)?" — Not by a polynomial factor, as far as anyone knows. Grønlund and Pettie (2014) beat n² only by logarithmic factors, and the modern 3SUM conjecture holds that n^(2−o(1)) time is needed. The engineering choices are O(1) extra space, no hashing, and in-place duplicate skipping, which is why the sort-plus-collide version is preferred over the hash-set version.
 :::

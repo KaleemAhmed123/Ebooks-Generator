@@ -1,12 +1,12 @@
-### The techniques in this chapter
+### Four patterns, five pages
 
-| Page | Trick | Canonical problem |
-|---|---|---|
-| **04-02 Send Each Value Home** | index = value − 1; swap until settled | First Missing Positive (LeetCode 41) |
-| **04-03 Reverse to Rotate** | three reversals = one rotation | Rotate Array (LeetCode 189) |
-| **04-04 Find the Dip** | scan right-to-left for the first descent | Next Permutation (LeetCode 31) |
-| **04-05 Vote and Cancel** | pairs of different values cancel | Majority Element (LeetCode 169) |
-| **04-06 Wrap Around** | index `i % n` over `2n` steps | Minimum Swaps to Group All 1's Together II (LeetCode 2134) |
+| Pattern | Page | Trick | Canonical problem |
+|---|---|---|---|
+| **6 · Send Each Value Home** | 04-02 | index = value − 1; swap until settled | First Missing Positive (LeetCode 41) |
+| **7 · Rearrange by Reversal** | 04-03 Reverse to rotate | three reversals = one rotation | Rotate Array (LeetCode 189) |
+| | 04-04 Find the dip | first descent from the right, swap, reverse | Next Permutation (LeetCode 31) |
+| **8 · Vote and Cancel** | 04-05 | pairs of different values cancel | Majority Element (LeetCode 169) |
+| **9 · Wrap Around** | 04-06 | index `i % n` over the doubled view | Minimum Swaps to Group All 1's Together II (LeetCode 2134) |
 
 Earlier pages already cover two in-place classics: read/write pointers and the three-way Dutch flag partition (02-09).
 

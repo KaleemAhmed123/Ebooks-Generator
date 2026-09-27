@@ -3,7 +3,6 @@
 - **Find Missing and Repeating (GFG):** place values home; the one index `i` with `a[i] ≠ i + 1` holds the repeated value, and `i + 1` is the missing one
 - **Find All Numbers Disappeared in an Array (LeetCode 448):** the sign-flag version. For each `v`, make `a[|v| − 1]` negative. Indices still positive at the end are the missing values
 - **Minimum Swaps to Sort (GFG), distinct values:** map each value to its sorted position, then follow cycles. A cycle of length L needs L − 1 swaps, so the answer is `n − (number of cycles)`
-- **Find the Duplicate Number (LeetCode 287):** the array must *not* be modified. Swapping is banned; follow `i → a[i]` as a linked list instead and find the cycle entry (Chapter 12)
 
 ### The failure
 

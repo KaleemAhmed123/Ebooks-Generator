@@ -2,6 +2,7 @@
 
 - **What it is:** For triplets (or k-tuples) on sorted data, fix the first element with a loop and run collision two pointers (page 02-08) on the rest. k-Sum (k ≥ 3) costs O(n^(k−1)), one power below brute force
 - **Signal:** "find all unique triplets summing to 0", "closest sum to target", "count triplets with sum < X", "how many triangles can be formed"
+- **Not this page if:** the three indices must keep their order `i < j < k` ("increasing triplet", "ordered triplet"): sorting would destroy it → 03-04 or 03-05
 - **Why it works:** With `a[i]` fixed, the question is a two-sum on the sorted suffix, which collision pointers settle in O(n): if the sum is too small only `left++` can raise it, if too big only `right--` can lower it. Sorting also puts duplicates side by side, so skipping them is a single comparison
 
 :::mint

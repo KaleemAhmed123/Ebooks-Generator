@@ -7,7 +7,7 @@
 
 ### The failure
 
-- **Colliding on unsorted input.** Two Sum (LeetCode 1) is unsorted and asks for the *original* indices. Sorting destroys them, and without sorting the row/column argument is false. Use a map from value to index there (03-05)
+- **`left <= right` as the loop guard.** When the pointers meet, one element pairs with itself. On `[3, 5]` with target 6 the template then returns `[1, 1]`: the 3 used twice. Two *distinct* indices need `left < right`
 
 :::interview
 "Why is it safe to move the shorter wall in Container With Most Water?" — The area is `min(h[l], h[r]) · (r − l)`. Every other pair using the shorter wall has a smaller width and the same or lower cap, so none can beat the current area. That wall is finished; drop it. O(n).

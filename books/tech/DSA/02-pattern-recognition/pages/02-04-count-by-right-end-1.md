@@ -2,6 +2,7 @@
 
 - **What it is:** Counting *every* valid subarray, not the longest one. Each time the right edge settles, add the number of valid subarrays that **end** there: `right − left + 1`
 - **Signal:** "count the subarrays / substrings such that…", with a condition that stays true when the window shrinks (product < K, at most K distinct, sum ≤ S on non-negatives)
+- **Not this page if:** "count the subarrays whose sum equals K" on values that may be negative: no window stays valid under shrinking → 03-03
 - **Why it works:** If `[left, right]` is valid and shrinking keeps it valid, then every start in `[left, right]` is valid too. Those starts are exactly `right − left + 1` subarrays, and no subarray is counted twice because each is counted at its own right end
 
 :::mint

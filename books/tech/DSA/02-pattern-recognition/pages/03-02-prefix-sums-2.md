@@ -4,7 +4,6 @@
 - **Find Pivot Index (LeetCode 724):** left sum is `P[i]`, right sum is `total − P[i] − a[i]`; no array needed, one running variable
 - **XOR Queries of a Subarray (LeetCode 1310):** XOR also undoes itself, so `P[R + 1] ^ P[L]`
 - **Counting subarrays with a given sum:** store the prefixes in a map instead of an array (03-03)
-- **Queries between updates:** a prefix array must be rebuilt after every change; switch structure (19-01)
 
 ### The failure
 

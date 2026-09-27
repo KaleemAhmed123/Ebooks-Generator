@@ -2,6 +2,7 @@
 
 - **What it is:** For "best pair `i < j`" problems, split the score into a part that depends only on `i` and a part that depends only on `j`. Walk `j` left to right and keep the best `i`-part seen so far. Each `j` meets its best partner in O(1)
 - **Signal:** "buy on one day, sell on a later day", "maximise `a[i] + a[j] + i − j`", "maximum `a[j] − a[i]` with `i < j`", "find two numbers that sum to target"
+- **Not this page if:** "as many transactions as you like" or "with a cooldown": the state is what you hold, not one best partner → 17-04
 - **Why it works:** If `score(i, j) = f(i) + g(j)`, then for a fixed `j` the best partner is simply the index `i < j` with the largest `f(i)`. That maximum only grows as `j` moves right, so one variable holds it. The O(n²) pair search becomes one pass
 
 :::mint

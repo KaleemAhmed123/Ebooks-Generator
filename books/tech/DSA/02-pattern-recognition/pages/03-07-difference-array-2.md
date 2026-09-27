@@ -7,7 +7,7 @@
 
 ### The failure
 
-- **Reading before the updates finish.** The array is only correct after the final running sum. If queries arrive *between* updates, rebuilding each time is O(n) per query; switch to a Fenwick or lazy segment tree (19-01)
+- **Switching off at R instead of R + 1.** `d[R] −= x` ends the update one cell early, so index R never receives it. Adding 10 to `[1, 3]` of five zeros then gives `[0, 10, 10, 0, 0]`. The off-switch sits just past the range, which is why `d` has one spare slot
 
 :::interview
 "Why is the difference array O(n + q) instead of O(n · q)?" — Each range update touches two cells, whatever its width, so q updates cost O(q). The single running sum at the end applies all of them at once in O(n). The price is that nothing can be read until that last pass.

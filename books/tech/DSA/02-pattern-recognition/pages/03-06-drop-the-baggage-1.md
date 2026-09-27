@@ -1,7 +1,8 @@
-## Drop the Baggage <span class="lv lv2"></span>
+## Drop the Baggage <span class="lv lv1"></span>
 
 - **What it is:** Carry "the best subarray that ends *here*" in one or two variables. At each element decide: extend the past, or drop it and restart. Kadane's algorithm (Module 06, Maximum Subarray) is the sum case; this page is the family around it
-- **Signal:** "maximum product subarray", "flip the sign of one subarray", "max subarray sum if you may delete one element", "largest variance of any substring"
+- **Signal:** "largest product of a contiguous run", "flip the sign of one subarray", "you may delete one element from the subarray", "largest gap between the counts of two letters in a substring"
+- **Not this page if:** the chosen elements need not be contiguous ("no two adjacent"): a subsequence, not a subarray → Module 06, 02-02
 - **Why it works:** Any subarray ending at `i` is either `[i]` alone or a subarray ending at `i − 1` plus `a[i]`. So the best one ending at `i` needs only the best one ending at `i − 1`, *if* that single number is enough to decide. When it is not, carry the extra state that makes it enough: the worst value, a "deleted yet?" flag, a "seen the rare letter?" flag
 
 :::mint

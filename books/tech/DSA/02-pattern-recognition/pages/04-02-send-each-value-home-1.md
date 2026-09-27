@@ -1,7 +1,8 @@
 ## Send Each Value Home <span class="lv lv2"></span>
 
 - **What it is:** Cyclic placement. When values belong to `1..n`, value `v` has a home at index `v − 1`. Swap each value into its home until every slot holds its owner or a value with no home. One scan then reads off what is missing or doubled
-- **Signal:** "values in the range 1..n (or 0..n)", "find the missing / duplicate / first missing positive", "O(n) time and O(1) extra space"
+- **Signal:** "values in the range 1..n (or 0..n)", "find the missing / duplicated value", "smallest positive integer not in the array", "O(n) time and O(1) extra space"
+- **Not this page if:** "find the repeated value" but the array must stay unchanged: no swaps allowed, follow `i → a[i]` as a list → 12-04
 - **Why it works:** Every swap puts at least one value into its final slot, and a settled value never moves again. So there are at most n swaps in total, even though the loop looks nested. After placement, the first index `i` with `a[i] ≠ i + 1` names the first missing value
 
 :::mint

@@ -1,7 +1,6 @@
 ### Variations
 
 - **Next Greater Element II (LeetCode 503):** run the monotonic stack (Chapter 10) over `i = 0 .. 2n − 1` and push only during the first lap. The second lap only resolves elements still waiting
-- **House Robber II (LeetCode 213):** wrapping is a constraint, not a view: house 0 and house n − 1 cannot both be taken (Module 06, 02-02)
 - **Defuse the Bomb (LeetCode 1652):** a fixed window of k on a circle; the sum for `i` is a window starting at `i + 1` (or ending at `i − 1` when k < 0) read with `% n`
 - **Gas Station / circular tour:** the wrap is handled by a single pass plus a reset rule (page 08-06), not by doubling
 

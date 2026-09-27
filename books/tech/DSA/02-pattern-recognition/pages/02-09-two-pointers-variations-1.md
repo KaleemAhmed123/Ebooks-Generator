@@ -2,6 +2,7 @@
 
 - **What it is:** Both pointers move left to right. The **reader** visits every element once; the **writer** marks where the next kept element goes. With three regions to build (smaller, equal, larger), a third pointer works from the back: the **Dutch National Flag** partition
 - **Signal:** "in place", "O(1) extra space", "remove / move / keep elements and return the new length", "sort an array of 0s, 1s and 2s"
+- **Not this page if:** "values in 1..n, find the repeat" with the array read-only: no writer is allowed → 12-04
 - **Why it works:** Everything left of the writer is final, and the writer never passes the reader, so no unread value is overwritten. In the three-way version, every index is in one of four zones: settled low, settled middle, unknown, settled high. Each step shrinks the unknown zone by one
 
 :::mint

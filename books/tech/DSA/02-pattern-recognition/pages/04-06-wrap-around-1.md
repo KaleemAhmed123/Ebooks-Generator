@@ -1,7 +1,8 @@
-## Wrap Around <span class="lv lv1"></span>
+## Wrap Around <span class="lv lv2"></span>
 
 - **What it is:** A circular array is a linear array read twice. Walk indices `0 .. 2n − 1` and read `a[i % n]`: every window, pair or "next" that wraps past the end appears once as a plain linear one, with no copied array
-- **Signal:** "the array is circular", "the last element is adjacent to the first", "houses arranged in a circle", "next greater element, searching circularly"
+- **Signal:** "the array is circular", "the last element is adjacent to the first", "next greater element, searching circularly", "a window may run past the end and continue at the start"
+- **Not this page if:** "houses in a circle, adjacent ones cannot both be taken": the wrap is a constraint to split on, not a view to read → Module 06, 02-02
 - **Why it works:** Any contiguous run in a circle of length n starts somewhere in `0..n−1` and has length ≤ n, so it ends before index `2n − 1` in the doubled view. The doubled view contains every circular run; the modulo reads it without allocating it
 
 :::mint
@@ -26,7 +27,7 @@
   <rect class="gh" x="264" y="12" width="26" height="22"/><text x="277" y="27" class="lb" text-anchor="middle">1</text>
   <rect class="gh" x="290" y="12" width="26" height="22"/><text x="303" y="27" class="lb" text-anchor="middle">1</text>
   <rect class="win" x="186" y="10" width="104" height="26"/>
-  <text x="199" y="50" class="sm" text-anchor="middle">6</text><text x="225" y="50" class="sm" text-anchor="middle">7%7=0</text><text x="264" y="50" class="sm" text-anchor="middle">1</text><text x="290" y="50" class="sm" text-anchor="middle">2</text>
+  <text x="199" y="50" class="sm" text-anchor="middle">6</text><text x="225" y="50" class="sm" text-anchor="middle">7%7=0</text><text x="251" y="50" class="sm" text-anchor="middle">1</text><text x="277" y="50" class="sm" text-anchor="middle">2</text>
   <text x="212" y="64" class="sm">never allocated: read a[i % n]</text>
   <text x="30" y="86" class="lb">ones = 4 → window length 4 → best window holds 3 ones</text>
   <text x="30" y="102" class="lb" fill="#1d4e89">swaps = ones − best = 1</text>

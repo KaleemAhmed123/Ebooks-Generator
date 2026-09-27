@@ -2,6 +2,7 @@
 
 - **What it is:** The inverse of a prefix sum. To add x to every element in `[L, R]`, write only two numbers: `d[L] += x` and `d[R + 1] −= x`. After all updates, one running sum over `d` rebuilds the final array
 - **Signal:** "add x to every element from L to R", many range updates followed by reading the result once, "bookings", "passengers picked up and dropped off", "how many intervals cover each point"
+- **Not this page if:** values are read between updates: nothing is correct until the final running sum → 19-01
 - **Why it works:** A running sum carries a change forward until something cancels it. `+x` at L switches the update on; `−x` just after R switches it off. So q range updates cost O(q), and reading the whole array costs one O(n) pass
 
 :::mint

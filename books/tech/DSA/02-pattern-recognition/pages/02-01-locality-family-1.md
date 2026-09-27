@@ -1,21 +1,21 @@
 # Chapter 2 - Windows & Pointers
 
-## The Locality Family <span class="lv lv1"></span>
+## Windows and Pointers <span class="lv lv1"></span>
 
-- **What it is:** The answer to the problem depends on a small, contiguous chunk of the data
-- **Signal:** "Subarray", "Substring", "Consecutive", "Window"
-- **Why it works:** If the answer is local, you do not need to scan the entire array every time. You only need to look at elements that are "near" the current element
+- **What it is:** Two indices over one array or string. Both move right and bracket a contiguous window, or they start at opposite ends and close in, or one reads while the other writes
+- **Signal:** "subarray", "substring", "consecutive", "window of size k"; "sorted", "pair", "triplet"; "in place, return the new length"
+- **Why it works:** Each index moves one way only, so the pair makes at most 2n moves. The proof is always the same shape: no position an index has passed can still hold the answer. Monotonicity guarantees it for windows, sorted order for colliding pointers, "everything behind the writer is final" for reader and writer
 
-### The core techniques
+### Three patterns, nine pages
 
-| Technique | When to use | What it exploits |
+| Pattern | Page | Statement cue |
 |---|---|---|
-| **02-02 Fixed Window** | "Subarray of size k" | Neighbouring windows share k − 1 of k elements |
-| **02-03 Variable Window** | "Longest/shortest subarray with property X" | Monotonicity: growing window increases sum/count |
-| **02-04 Count by the Right End** | "Count subarrays with product < K" | A valid window vouches for every start inside it |
-| **02-05 Exactly K by Subtraction** | "Exactly K distinct / K odd" | `atMost(K) − atMost(K−1)`; "at most" is shrink-safe |
-| **02-06 Flip the Target** | "Remove from either end" | What stays is one contiguous middle |
-| **02-07 Sort, then Slide** | "Pick m values with the smallest spread" | After sorting, the best subset is contiguous |
-| **02-08 Collide from Both Ends** | "Pair in a sorted array" | Each comparison deletes a whole row or column of pairs |
-| **02-09 Reader and Writer** | "Remove duplicates in place", "sort 0s, 1s, 2s" | Everything behind the writer is final |
-| **02-10 Fix One, Collide Two** | "Unique triplets summing to 0" | A fixed first element leaves a sorted two-sum |
+| **1 · Sliding Window** | 02-02 Fixed length | "every window of size k" |
+| | 02-03 Variable length | "longest / shortest subarray such that…" |
+| | 02-04 Count by the right end | "count the subarrays…", shrink-safe |
+| | 02-05 Exactly K by subtraction | "exactly K distinct / odd" |
+| | 02-06 Flip the target | "remove from either end" |
+| | 02-07 Sort, then slide | "choose m values, smallest spread" |
+| **2 · Collide** | 02-08 Collide from both ends | "sorted", "pair summing to X" |
+| | 02-10 Fix one, collide two | "unique triplets", "count triangles" |
+| **3 · Reader and Writer** | 02-09 Reader and writer | "in place, return the new length" |
