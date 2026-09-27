@@ -1,9 +1,8 @@
 ## Peel the Layers <span class="lv lv1"></span>
 
-- **What it is:** Treat a matrix as nested rings. Keep four boundaries (`top`, `bottom`, `left`, `right`), walk one side, then pull that boundary inward.
-- **Signal:** cells visited ring by ring, outside in: spiral order, the boundary, "rotate each layer by k", a 90° turn in place
-- **Not this page if:** the order is zig-zag along diagonals, not around rings → 05-01 (group by `r + c`)
-- **Why it works:** Once the top row is walked it is never needed again, so `top++` removes it. Each walk shrinks the rectangle by one row or column, and the loop ends when it is empty
+- **What:** treat the matrix as nested rings. Keep four boundaries; walk one side, then pull that boundary in
+- **Spot it:** spiral order, the boundary, "rotate each layer", a 90° turn in place. A zig-zag along diagonals → 05-01
+- **Why:** a walked side is never needed again, so moving its boundary removes it. Each walk shrinks the rectangle, and the loop ends when it is empty
 
 :::mint
 <svg viewBox="0 0 470 116" role="img" aria-label="Left: spiral order on a 3 by 4 matrix holding 1 to 12. The path runs along the top row 1 2 3 4, down the right column to 12, back along the bottom row to 9, up to 5, then right through 6 and 7; each side is followed by top++, right−−, bottom−− or left++. Right: a 3 by 3 matrix 1 to 9 is transposed into columns 1 2 3, 4 5 6, 7 8 9, then each row is reversed, giving rows 7 4 1, 8 5 2, 9 6 3: the matrix turned 90 degrees clockwise." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -74,10 +73,8 @@ function spiralOrder(m: number[][]): number[] {
   const out: number[] = [];
   let top = 0, bottom = m.length - 1, left = 0, right = m[0].length - 1;
   while (top <= bottom && left <= right) {
-    for (let c = left; c <= right; c++) out.push(m[top][c]);
-    top++;
-    for (let r = top; r <= bottom; r++) out.push(m[r][right]);
-    right--;
+    for (let c = left; c <= right; c++) out.push(m[top][c]); top++;
+    for (let r = top; r <= bottom; r++) out.push(m[r][right]); right--;
     if (top <= bottom) {     // a row is still left
       for (let c = right; c >= left; c--) out.push(m[bottom][c]);
       bottom--;
@@ -90,3 +87,6 @@ function spiralOrder(m: number[][]): number[] {
   return out;
 }
 ```
+
+- **Watch out:** drop the two `if` guards and a 3×1 matrix returns `[1, 2, 3, 2]`: the left walk reads the middle cell back. Re-check the rectangle after each side
+- **Also solves:** [Spiral Matrix II](https://leetcode.com/problems/spiral-matrix-ii/) (LeetCode 59) (write `1, 2, 3, …` instead of reading) · [Rotate Image](https://leetcode.com/problems/rotate-image/) (LeetCode 48) (transpose, then reverse each row; swap only where `c > r`)

@@ -1,9 +1,8 @@
 ## Coordinate Keys <span class="lv lv1"></span>
 
-- **What it is:** Most grid tricks are one formula that turns `(r, c)` into a key. Cells that share a key belong together: a row, a diagonal, a 3×3 box, or one slot of an imaginary flat array
-- **Signal:** cells grouped by diagonal, anti-diagonal or 3×3 box; "each row starts above the previous row's end" (the matrix is one sorted list); "reshape" or "shift" an m×n matrix
-- **Not this page if:** rows and columns are each sorted, but a row may start below the previous row's end → 05-04
-- **Why it works:** Moving along a diagonal adds 1 to both `r` and `c`, so `r − c` never changes. Moving along an anti-diagonal keeps `r + c` fixed. Integer division groups rows and columns into blocks. Once the key is a number, a map or an array groups the cells in one pass, and no loop has to "walk" a diagonal by hand
+- **What:** one formula turns `(r, c)` into a key, and cells sharing a key belong together: a diagonal `r − c`, an anti-diagonal `r + c`, a box `⌊r/3⌋·3 + ⌊c/3⌋`, a flat index `r·C + c`
+- **Spot it:** cells grouped by diagonal or 3×3 box; "each row starts above the previous row's end"; "reshape", "shift the grid". Rows and columns sorted separately → 05-04
+- **Why:** along a diagonal both `r` and `c` grow by 1, so `r − c` is fixed. Once the key is a number, one pass with a map groups the cells; nothing walks a diagonal by hand
 
 :::mint
 <svg viewBox="0 0 470 132" role="img" aria-label="A 4 by 4 grid labelled with r minus c. Each top-left to bottom-right diagonal shares one value: 0 on the main diagonal, positive below it, negative above it. Beside it the four standard keys: r times cols plus c for flattening, r minus c for diagonals, r plus c for anti-diagonals, and floor r over 3 times 3 plus floor c over 3 for sudoku boxes." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -45,16 +44,17 @@ function diagonalSort(mat: number[][]): number[][] {
   const groups = new Map<number, number[]>();
   for (let r = 0; r < mat.length; r++)
     for (let c = 0; c < mat[0].length; c++) {
-      // same key = same diagonal
-      const key = r - c;
+      const key = r - c;                 // same key = same diagonal
       if (!groups.has(key)) groups.set(key, []);
       groups.get(key)!.push(mat[r][c]);
     }
-  // pop gives smallest
-  for (const g of groups.values()) g.sort((a, b) => b - a);
+  for (const g of groups.values()) g.sort((a, b) => b - a); // pop = smallest
   for (let r = 0; r < mat.length; r++)
     for (let c = 0; c < mat[0].length; c++)
       mat[r][c] = groups.get(r - c)!.pop()!;
   return mat;
 }
 ```
+
+- **Watch out:** `r = ⌊k / cols⌋`, never `⌊k / rows⌋`. On a square matrix both agree, so the bug passes every square test and fails the first 2×3 one
+- **Also solves:** [Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/) (LeetCode 74) (binary search `k` over `m·n`; read `mat[⌊k/n⌋][k % n]`) · [Diagonal Traverse](https://leetcode.com/problems/diagonal-traverse/) (LeetCode 498) (group by `r + c`, reverse every other group) · [Valid Sudoku](https://leetcode.com/problems/valid-sudoku/) (LeetCode 36) (a set per row, column and box) · [Shift 2D Grid](https://leetcode.com/problems/shift-2d-grid/) (LeetCode 1260)

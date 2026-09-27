@@ -1,9 +1,8 @@
 ## Signature Key <span class="lv lv1"></span>
 
-- **What it is:** Reduce each string to a *signature* that is equal exactly when two strings are "the same" under the problem's rule. Then grouping, matching and counting are one hash-map pass over signatures
-- **Signal:** many strings compared under one rule: "same letters in any order", "same shape of repeats", "rotation of", "same up to a shift"; group, match or count the equal ones
-- **Not this page if:** the anagram must be found *inside* a longer string, as a substring of fixed length → 02-02
-- **Why it works:** Comparing every pair of strings is O(n²) comparisons. A signature turns the relation into equality, and equality is what hash maps are built for. The skill is choosing a signature that is cheap to compute and loses nothing the rule cares about
+- **What:** reduce each string to a *signature* that is equal exactly when two strings are "the same" under the rule. Grouping, matching and counting become one hash-map pass
+- **Spot it:** many strings under one rule: "same letters in any order", "same shape", "rotation of", "same up to a shift". An anagram inside a longer string → 02-02
+- **Why:** comparing every pair is O(n²). A signature turns the rule into equality, which a map checks in O(1). Pick one that is cheap and loses nothing the rule cares about
 
 :::mint
 <svg viewBox="0 0 470 104" role="img" aria-label="Group anagrams. Words eat, tea, tan, ate, nat, bat map to signatures by letter counts. eat, tea and ate share one signature; tan and nat share another; bat is alone. Words with the same signature land in the same bucket." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -42,3 +41,7 @@ function groupAnagrams(strs: string[]): string[][] {
   return [...groups.values()];
 }
 ```
+
+- **Watch out:** joining counts without a separator. `[1, 11]` and `[11, 1]` both join to `"111"`, and two different words share a bucket
+- **Other keys:** shape: first-occurrence indices, `"egg" → 0,1,1` · rotation: `(s + s).includes(t)` · shift: letter differences mod 26
+- **Also solves:** [Valid Anagram](https://leetcode.com/problems/valid-anagram/) (LeetCode 242) · [Rotate String](https://leetcode.com/problems/rotate-string/) (LeetCode 796) · [Determine if Two Strings Are Close](https://leetcode.com/problems/determine-if-two-strings-are-close/) (LeetCode 1657) (same set of letters, same sorted counts)

@@ -1,9 +1,8 @@
 ## Two-Way Map <span class="lv lv1"></span>
 
-- **What it is:** "Follows the same pattern" means a *bijection*: each symbol on the left maps to exactly one on the right, and no two left symbols share a right one. Keep two maps, left→right and right→left, and fail on the first conflict in either
-- **Signal:** each symbol of one sequence must stand for exactly one symbol of another, and no two symbols may share one: "follows the same pattern", "replace characters to get the other string", "each letter maps to a unique word"
-- **Not this page if:** the rule is "same letters in any order", where positions do not matter → 06-01 (letter counts)
-- **Why it works:** One map catches "a maps to two different things". It cannot catch "two different things map to the same thing", which is the other half of a bijection. The reverse map catches exactly that. Together they check both directions in one pass
+- **What:** "follows the same pattern" is a *bijection* (a one-to-one pairing). Keep two maps, left → right and right → left, and fail on the first conflict in either
+- **Spot it:** each symbol stands for exactly one other and no two share one: "same pattern", "isomorphic", "each letter maps to a unique word". Same letters in any order → 06-01
+- **Why:** the forward map catches "a maps to two things". Only the reverse map catches "two things map to one"
 
 :::mint
 <svg viewBox="0 0 470 100" role="img" aria-label="Word pattern abba against dog dog dog dog. The forward map a to dog is fine, and b to dog is also fine on its own. The reverse map shows dog already belongs to a when b tries to claim it, so the match fails." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -45,3 +44,6 @@ function wordPattern(pattern: string, s: string): boolean {
   return true;
 }
 ```
+
+- **Watch out:** one map only. `"abba"` against `"dog dog dog dog"` passes a forward check: a → dog and b → dog each look fine
+- **Also solves:** [Isomorphic Strings](https://leetcode.com/problems/isomorphic-strings/) (LeetCode 205) · [Find and Replace Pattern](https://leetcode.com/problems/find-and-replace-pattern/) (LeetCode 890) (check each word against the pattern)

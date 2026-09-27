@@ -1,9 +1,8 @@
 ## Grow from the Centre <span class="lv lv1"></span>
 
-- **What it is:** Every palindrome has a centre: a character (odd length) or a gap between two characters (even length). Try all 2n − 1 centres and expand outward while the two ends match
-- **Signal:** a palindrome that must be *contiguous*: the longest one, how many there are, or whether one deletion makes the whole string one
-- **Not this page if:** characters may be skipped ("subsequence") → 17-02, or rearranged ("can be permuted into a palindrome") → letter counts, at most one odd
-- **Why it works:** If `s[l..r]` is a palindrome and `s[l−1] === s[r+1]`, then `s[l−1..r+1]` is one too, and if they differ no longer palindrome shares this centre. So each centre's palindromes are nested, and expanding finds the longest one in one walk. There are 2n − 1 centres and each expansion is at most n/2 steps: O(n²) time, O(1) space, with no table
+- **What:** every palindrome has a centre: a character or a gap. Try all 2n − 1 centres and expand while the two ends match
+- **Spot it:** a *contiguous* palindrome: the longest, how many, or one deletion allowed. Characters may be skipped → 17-02; rearranged → letter counts
+- **Why:** palindromes on one centre are nested, so one expansion finds the longest. 2n − 1 centres × n/2 steps: O(n²) time, O(1) space
 
 :::mint
 <svg viewBox="0 0 470 100" role="img" aria-label="Expanding around centres in cbbd and babad. Odd centre at the middle b of babad expands to aba, then b and d differ. Even centre between the two b's in cbbd expands to bb, then cbbd fails. There are 2n minus 1 centres: n characters and n minus 1 gaps." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -51,3 +50,7 @@ function longestPalindrome(s: string): string {
   return s.slice(start, start + len);
 }
 ```
+
+- **Watch out:** odd centres only. `"cbbd"` finds `"bb"` only from the gap between the two b's
+- **Also solves:** [Palindromic Substrings](https://leetcode.com/problems/palindromic-substrings/) (LeetCode 647) (count each successful step) · [Valid Palindrome II](https://leetcode.com/problems/valid-palindrome-ii/) (LeetCode 680) (at the first mismatch, skip the left or the right character once)
+- **Follow-up (O(n)):** Manacher's algorithm reuses mirrored radii inside the rightmost palindrome found so far. Name it, then write the centres version

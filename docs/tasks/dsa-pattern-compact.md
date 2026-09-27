@@ -79,3 +79,9 @@ Budget: front ~4 · pattern pages ~115 · openers ~12 · drills ~18 → about 15
   New helper `reference/dsa/scripts/measure.mjs` measures page heights from the `--html`
   build exactly as the PDF build does (126mm column), so overflow is checked without a
   full PDF pass.
+- 2026-09-27 — Chapters 5 and 6: 15 → 6 pages and 11 → 5 pages. Intros "Matrix" (05-00)
+  and "String Keys" (06-00) keep their IDs; each folds its old routing table ("table,
+  graph or DP?", "owned by another chapter") into one line. Templates unchanged except
+  comments moved inline (05-01, 05-03) and two boundary updates joined to their loop
+  line (05-02). The new grid skeleton (directions, bounds, flat index) was run: 0
+  failures. Drills: 10 each; 1351 stays with Chapter 9's drills, 1329 used instead.

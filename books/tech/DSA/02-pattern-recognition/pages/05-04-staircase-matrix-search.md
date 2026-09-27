@@ -1,9 +1,8 @@
 ## Staircase Search <span class="lv lv1"></span>
 
-- **What it is:** In a matrix whose rows are sorted left to right and whose columns are sorted top to bottom, start at the top-right corner. Too big: step left. Too small: step down. Each comparison discards a whole row or a whole column
-- **Signal:** rows sorted and columns sorted *separately*, with no promise that a row starts above the previous row's end; "count cells ≤ x", "row with the most 1s" in a 0/1 matrix with sorted rows
-- **Not this page if:** each row starts above the previous row's end, so the whole matrix is one sorted list → 05-01 (one binary search, O(log(m·n)))
-- **Why it works:** At the top-right corner, every value to the left is smaller and every value below is larger. So one comparison with the target says which of the two lines cannot hold it, and that line is dropped. The corner of what remains has the same property
+- **What:** rows sorted left to right, columns top to bottom: start at the top-right. Too big, step left; too small, step down. Each comparison drops a row or a column
+- **Spot it:** rows and columns sorted *separately*; "count the cells ≤ x"; "the row with the most 1s". Each row starts above the previous row's end: one binary search → 05-01
+- **Why:** at the top-right, everything to the left is smaller and everything below is larger, so one comparison rules out a whole line: O(m + n)
 
 :::mint
 <svg viewBox="0 0 470 112" role="img" aria-label="Staircase search for 16 in the matrix 1 4 7, 2 5 20, 3 16 22. Start at the top-right 7: 7 is less than 16, so row 0 is ruled out and the walk moves down to 20. 20 is greater than 16, so column 2 is ruled out and the walk moves left to 5. 5 is less than 16, so row 1 is ruled out and the walk moves down to 16, the target. Ruled-out cells are grey; 3 is never examined." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -38,3 +37,21 @@
   <text x="20" y="106" class="sm">grey: ruled out by a single comparison · 3 is never read</text>
 </svg>
 :::
+
+```ts
+// Search a 2D Matrix II (LeetCode 240)
+function searchMatrix(m: number[][], target: number): boolean {
+  let r = 0, c = m[0].length - 1;          // top-right corner
+  while (r < m.length && c >= 0) {
+    if (m[r][c] === target) return true;
+    // column c below r is all larger
+    if (m[r][c] > target) c--;
+    // row r left of c is all smaller
+    else r++;
+  }
+  return false;
+}
+```
+
+- **Watch out:** starting at the top-left. Both moves increase the value, so a comparison never says which way to go. Only the top-right and bottom-left corners work
+- **Also solves:** [Count Negative Numbers in a Sorted Matrix](https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/) (LeetCode 1351) (start bottom-left; add `n − c`) · [Kth Smallest Element in a Sorted Matrix](https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/) (LeetCode 378) (the staircase counts cells ≤ x; binary search on x → 09-04)

@@ -1,9 +1,8 @@
 ## State in the Cell <span class="lv lv2"></span>
 
-- **What it is:** When every cell's new value depends on its neighbours' *old* values, and a copy of the grid is not allowed, store both values in the cell: the old one in bit 0, the new one in bit 1. Read with `& 1`, finish with `>> 1`
-- **Signal:** every cell changes "simultaneously" from its neighbours' old values, or a zero wipes its row and column, with "in place" or O(1) extra space
-- **Not this page if:** a change spreads outward in rounds (rotting, infection, distance to the nearest cell): each cell reads its neighbours' *new* values → 16-01 (multi-source BFS)
-- **Why it works:** The update is a function of the old grid. Writing new values directly would let later cells read already-updated neighbours. Bit 0 keeps the old grid intact while bit 1 accumulates the new one; a final pass shifts every cell once. The same idea shows up as "use the first row and column as markers" when the extra state is one flag per row and per column
+- **What:** when each cell's new value depends on its neighbours' *old* values and no copy is allowed, keep both in the cell: old in bit 0, new in bit 1. Read with `& 1`, finish with `>> 1`
+- **Spot it:** every cell changes "at the same moment" from its neighbours; a zero wipes its row and column; "in place". A change that spreads in rounds (rotting, infection) → 16-01
+- **Why:** bit 0 keeps the old grid intact while bit 1 builds the new one; one final pass shifts every cell
 
 :::mint
 <svg viewBox="0 0 470 100" role="img" aria-label="Game of Life encoding. A cell value has two bits: bit 0 is the old state, bit 1 is the new state. 0 means dead stays dead, 1 means alive dies, 2 means dead becomes alive, 3 means alive stays alive. Neighbours are counted with value and 1, and the final pass shifts right by one." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -22,3 +21,28 @@
   <text x="20" y="90" class="lb">pass 2: every cell  v &gt;&gt;= 1          (new state wins)</text>
 </svg>
 :::
+
+```ts
+// Game of Life (LeetCode 289), in place
+function gameOfLife(b: number[][]): void {
+  const R = b.length, C = b[0].length;
+  for (let r = 0; r < R; r++)
+    for (let c = 0; c < C; c++) {
+      let live = 0;
+      for (let dr = -1; dr <= 1; dr++)
+        for (let dc = -1; dc <= 1; dc++) {
+          if (dr === 0 && dc === 0) continue;
+          const nr = r + dr, nc = c + dc;
+          if (nr >= 0 && nr < R && nc >= 0 && nc < C)
+            live += b[nr][nc] & 1;          // old bit
+        }
+      const alive = b[r][c] & 1;
+      if (live === 3 || (alive && live === 2)) b[r][c] |= 2; // new bit
+    }
+  for (let r = 0; r < R; r++)
+    for (let c = 0; c < C; c++) b[r][c] >>= 1;
+}
+```
+
+- **Watch out:** Set Matrix Zeroes keeps its flags in row 0 and column 0. Clear those *last*: zeroing row 0 first erases every column's marker and the whole matrix becomes 0
+- **Also solves:** [Set Matrix Zeroes](https://leetcode.com/problems/set-matrix-zeroes/) (LeetCode 73) (flags in row 0 and column 0, plus one boolean for column 0)
