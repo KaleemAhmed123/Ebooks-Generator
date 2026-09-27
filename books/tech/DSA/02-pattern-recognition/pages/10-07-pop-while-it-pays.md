@@ -1,9 +1,8 @@
 ## Pop While It Pays <span class="lv lv2"></span>
 
-- **What it is:** A monotonic stack with a *budget*. To build the smallest (or largest) sequence you can, pop the top whenever the newcomer is better *and* you can still afford to lose the top. Stop popping when the budget runs out or the top is already better
-- **Signal:** "remove k digits to make the smallest number", "smallest subsequence containing each letter once", "most competitive subsequence of length k", lexicographically smallest/largest with deletions
-- **Not this page if:** the pieces may be reordered, not only deleted ("arrange the numbers to form the largest number") → 07-09
-- **Why it works:** Lexicographic order is decided by the first position that differs. A larger digit sitting before a smaller one can always be improved by deleting the larger one, and doing it as early as possible fixes the most significant position first. Each digit is pushed and popped at most once: O(n)
+- **What:** a monotonic stack with a *budget*. To build the smallest sequence, pop the top while the newcomer is smaller *and* you can still afford to lose the top
+- **Spot it:** "remove k digits to make the smallest", "smallest subsequence with each letter once", "most competitive subsequence of length k". Pieces may be reordered → 07-09
+- **Why:** the first differing position decides the order. A larger digit before a smaller one is always worth deleting, and deleting early fixes the most significant position
 
 :::mint
 <svg viewBox="0 0 470 110" role="img" aria-label="Remove K digits on 1432219 with k equal to 3. Push 1, push 4. 3 arrives: 4 is larger and k allows, pop 4. Push 3. 2 arrives: pop 3. Push 2. 2 arrives: equal, push. 1 arrives: pop 2, k becomes 0, push 1. Push 9. Result 1219." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -36,9 +35,11 @@ function removeKdigits(num: string, k: number): string {
     }
     st.push(d);
   }
-  // still owe deletions: cut the tail
-  st.length -= k;
+  st.length -= k;             // still owe deletions: cut the tail
   const s = st.join("").replace(/^0+/, "");
   return s === "" ? "0" : s;
 }
 ```
+
+- **Watch out:** the leftover budget and leading zeros. `"12345"`, k = 2 pops nothing: cut the tail, `"123"`. `"10200"`, k = 1 leaves `"0200"`: strip to `"200"`, and return `"0"` for empty
+- **Also solves:** [Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/) (LeetCode 316) (pop only if the top appears again later) · [Find the Most Competitive Subsequence](https://leetcode.com/problems/find-the-most-competitive-subsequence/) (LeetCode 1673) (pop while enough items remain to reach k)

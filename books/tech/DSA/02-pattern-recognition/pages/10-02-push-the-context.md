@@ -1,9 +1,8 @@
 ## Push the Context <span class="lv lv2"></span>
 
-- **What it is:** For nested input, every opening symbol starts a new, smaller problem inside the current one. Push *everything you were in the middle of* (the partial result, the pending number, the sign) and start fresh; on the matching close, pop it and combine
-- **Signal:** `k[encoded]`, parentheses in an expression, `(a(b)c)`-style nesting, "simplify the path", "evaluate", "score of parentheses"
-- **Not this page if:** the brackets carry nothing but balance ("fewest additions to make it valid") → 10-04, a counter
-- **Why it works:** Nesting is last-opened, first-closed, which is exactly stack order. The top of the stack is always the context the current bracket will return to, so every close knows what to combine with, without re-scanning
+- **What:** each opener starts a smaller problem inside the current one. Push what you were in the middle of (partial result, pending number, sign); on the close, pop and combine
+- **Spot it:** `k[encoded]`, parentheses in an expression, "simplify the path", "evaluate", "score of parentheses". Brackets that carry only balance → 10-04
+- **Why:** nesting is last-opened, first-closed: stack order. The top is always the context the current bracket returns to
 
 :::mint
 <svg viewBox="0 0 470 124" role="img" aria-label="Decode string 3 a 2 c inside brackets. On 3 open bracket push the pair empty string and 3, start fresh. Read a. On 2 open bracket push a and 2, start fresh. Read c. On close pop a and 2 giving a plus c times 2, acc. On close pop empty and 3 giving accaccacc." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -39,10 +38,12 @@ function decodeString(s: string): string {
       cur = ""; num = 0;                  // start the inner problem
     } else if (ch === "]") {
       const [prev, k] = stack.pop()!;
-      // close: combine with context
-      cur = prev + cur.repeat(k);
+      cur = prev + cur.repeat(k);   // close: combine with context
     } else cur += ch;
   }
   return cur;
 }
 ```
+
+- **Watch out:** read numbers whole. `"10[a]"` read digit by digit pushes a repeat count of 0; accumulate `num = num · 10 + digit`
+- **Also solves:** [Basic Calculator](https://leetcode.com/problems/basic-calculator/) (LeetCode 224) · [Basic Calculator II](https://leetcode.com/problems/basic-calculator-ii/) (LeetCode 227) (push terms; `*` and `/` fold into the top) · [Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/) (LeetCode 150) · [Simplify Path](https://leetcode.com/problems/simplify-path/) (LeetCode 71)

@@ -1,9 +1,8 @@
 ## Monotonic Stack <span class="lv lv1"></span>
 
-- **What it is:** Next greater (or smaller) element for every index in one pass. The stack holds indices still waiting for an answer; an arrival that beats the top settles it. Definition and template: Module 03, 01-06
-- **Signal:** for each element, the first later (or earlier) element that is larger or smaller; "how many days until a warmer day"; "how many consecutive days up to today had a price at most today's"; n up to 10⁵, so a scan to the right from every index is too slow
-- **Not this page if:** each answer is the max of the last k elements, so old elements must *expire* → 10-10
-- **Why it works:** An element beaten by a newcomer has its answer: the newcomer. The unbeaten elements sit on the stack in decreasing order, so a newcomer settles a run from the top and stops at the first element it does not beat. Whatever is left at the end has no answer. Each index is pushed once and popped at most once: O(n)
+- **What:** the next greater (or smaller) element for every index in one pass. The stack holds indices still waiting; an arrival that beats the top settles it
+- **Spot it:** for each element, the first later or earlier one that is larger or smaller; "days until a warmer day"; "span". Old elements must *expire* (a window) → 10-10
+- **Why:** a beaten element has its answer: the newcomer. The unbeaten wait in decreasing order, so a newcomer settles a run from the top and stops at the first it does not beat
 
 :::mint
 <svg viewBox="0 0 470 150" role="img" aria-label="Next greater element on 2, 1, 5, 3, traced row by row. i 0, value 2: nothing popped, stack 2. i 1, value 1: nothing popped, stack 2, 1. i 2, value 5: pop 1, which sets ans[1] to 5, then pop 2, which sets ans[0] to 5; stack 5. i 3, value 3: nothing popped, stack 5, 3. At the end 5 and 3 are still on the stack and get minus 1. Answer 5, 5, minus 1, minus 1." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -35,9 +34,20 @@
 </svg>
 :::
 
-### Variations
+```ts
+// Daily Temperatures (LeetCode 739)
+function dailyTemperatures(t: number[]): number[] {
+  const ans = new Array(t.length).fill(0), st: number[] = []; // indices waiting
+  for (let i = 0; i < t.length; i++) {
+    while (st.length && t[st[st.length - 1]] < t[i]) {
+      const j = st.pop()!;
+      ans[j] = i - j;                                  // i settles j
+    }
+    st.push(i);
+  }
+  return ans;
+}
+```
 
-- **Daily Temperatures (LeetCode 739):** the answer is the distance `i − popped`, which is why the stack holds indices
-- **Circular array:** the wrap-around version is on 04-06
-- **Online Stock Span (LeetCode 901):** *previous* greater: after popping, the element left on top is the answer; store spans with the values
-- **Largest Rectangle in Histogram (LeetCode 84):** previous and next *smaller* on each side of every bar (10-09)
+- **Watch out:** match the comparison to the word. Popping on `>=` for "greater" lets equals settle each other: on `[2, 2]` the first 2 gets 2 instead of −1
+- **Also solves:** [Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/) (LeetCode 496) · [Online Stock Span](https://leetcode.com/problems/online-stock-span/) (LeetCode 901) (*previous* greater: read the top after popping) · [Next Greater Element II](https://leetcode.com/problems/next-greater-element-ii/) (LeetCode 503) (circular → 04-06)

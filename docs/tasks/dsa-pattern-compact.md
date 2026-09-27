@@ -91,3 +91,12 @@ Budget: front ~4 · pattern pages ~115 · openers ~12 · drills ~18 → about 15
   now has the 2406 event sweep, run against a brute force: 3,000 cases, 0 failures.
   The 08-09 checkpoint is deleted. Other templates: only comments moved inline and one
   signature joined (08-03). Drills 11 and 10; Jump Game (55) stays a graph drill.
+- 2026-09-27 — Chapters 9 and 10: 13 → 5 pages and 26 → 11 pages. Intros "Binary Search"
+  (09-01; the skeleton holds both the minimise and the maximise loop) and "Stack &
+  Monotonic Stack" (10-01, nine moves). 10-05 and 10-10 had no template (they pointed to
+  Module 03); they now have Daily Temperatures and a head-index Sliding Window Maximum.
+  Both, plus the two binary-search loops, were run against brute force: 12,000 checks,
+  0 failures. 10-09's code keeps only the histogram helper; the per-row wrapper is a
+  two-line comment. New helper `inline-comments.py` moves a lone comment onto the code
+  line below it (formatting only). Drills 11 and 11; 410, 1552, 20 and 394 are left to
+  the later chapters that already list them.

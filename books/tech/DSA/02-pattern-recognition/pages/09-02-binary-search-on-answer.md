@@ -1,9 +1,8 @@
 ## Binary Search on the Answer <span class="lv lv1"></span>
 
-- **What it is:** Search the *answer*, not the input. Guess X, run a cheap check "can it be done with X?", and halve the range of X by where the check flips
-- **Signal:** the answer is a number in a known range, and "can it be done with X?" is easy to check and monotone in X: more capacity, speed or days never hurts. "Minimise the maximum" and "maximise the minimum" are the most common sub-case
-- **Not this page if:** the pieces' costs are *added up* rather than capped by a maximum or minimum, so no single threshold X exists → 17-02 (DP)
-- **Why it works:** The least capacity that ships every package in D days has no formula, but checking one capacity is a greedy O(n) pass. If capacity C works, C + 1 works too, so the checks read `F…FT…T` and the answer is the first `T`: lower bound (Module 04, 01-04) over values instead of indices
+- **What:** search the *answer*: guess X, check "can it be done with X?", and halve the range of X by where the check flips
+- **Spot it:** "minimise the maximum", "maximise the minimum", "the least capacity / speed / days". Pieces whose costs are *added*, not capped → DP, 17-02
+- **Why:** checking one capacity is a greedy O(n) pass, and if C works so does C + 1: O(n log range)
 
 :::mint
 <svg viewBox="0 0 470 106" role="img" aria-label="Koko with piles 8 and 5 and 3 hours. Speeds 1 to 8; canEat is false for 1 to 4 and true for 5 to 8. Probes: lo 1, hi 8, mid 4 is false so lo becomes 5; mid 6 is true so hi becomes 6; mid 5 is true so hi becomes 5; lo equals hi equals 5, the answer." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -42,3 +41,27 @@
   <text x="14" y="98" class="sm">answer = the first T · mid = (lo + hi) &gt;&gt; 1 · T: hi = mid (mid may be the answer) · F: lo = mid + 1</text>
 </svg>
 :::
+
+```ts
+// Capacity To Ship Packages Within D Days (LeetCode 1011)
+function shipWithinDays(weights: number[], days: number): number {
+  const fits = (cap: number) => {   // greedy: fill each day
+    let used = 1, load = 0;
+    for (const w of weights) {
+      if (load + w > cap) { used++; load = 0; }
+      load += w;
+    }
+    return used <= days;
+  };
+  let lo = weights.reduce((m, w) => Math.max(m, w), 0);
+  let hi = weights.reduce((a, b) => a + b);
+  while (lo < hi) {                 // first capacity that fits
+    const mid = (lo + hi) >> 1;
+    if (fits(mid)) hi = mid; else lo = mid + 1;
+  }
+  return lo;
+}
+```
+
+- **Watch out:** starting `lo` at 1. The check gives an oversized package its own day, so `[5, 1]` looks shippable in 3 days at capacity 3. Start at `max(weights)`
+- **Also solves:** [Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/) (LeetCode 875) · [Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/) (LeetCode 410) · [Magnetic Force Between Two Balls](https://leetcode.com/problems/magnetic-force-between-two-balls/) (LeetCode 1552) (maximise the minimum: the last true)

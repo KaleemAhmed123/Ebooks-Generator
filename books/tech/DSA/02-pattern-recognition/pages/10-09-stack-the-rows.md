@@ -1,9 +1,8 @@
 ## Stack the Rows <span class="lv lv2"></span>
 
-- **What it is:** A 2-D "largest rectangle of 1s" problem is a 1-D histogram problem asked once per row. Let `h[c]` be the number of consecutive 1s ending at the current row in column `c`; the best rectangle whose bottom edge is this row is the largest rectangle in the histogram `h`
-- **Signal:** the largest all-1s rectangle in a binary matrix; the largest rectangle under bars of given heights; the bars or rows share a common bottom edge
-- **Not this page if:** the shape must be a *square* → 17-02, a grid DP: `1 + min(up, left, diagonal)`
-- **Why it works:** Every rectangle has a bottom row. Fixing the bottom row, a rectangle of 1s spanning columns `[l, r]` can be as tall as the shortest `h` in that span. So each row reduces to "largest `min(h[l..r]) · width`", which a monotonic stack answers in O(cols): each bar's rectangle stretches until the first shorter bar on each side (page 10-08's reach)
+- **What:** "largest rectangle of 1s" is a histogram asked once per row: `h[c]` = the run of 1s ending at this row in column `c`, and the best rectangle on this row is the largest rectangle under `h`
+- **Spot it:** the largest all-1s rectangle in a binary matrix; the largest rectangle under bars. A *square* → a grid DP, `1 + min(up, left, diagonal)`, 17-02
+- **Why:** every rectangle has a bottom row and is as tall as its shortest bar. The stack gives each bar its reach to the first shorter bar on each side: O(cols) per row
 
 :::mint
 <svg viewBox="0 0 470 118" role="img" aria-label="Binary matrix rows 1 0 1 0 0, 1 0 1 1 1, 1 1 1 1 1, 1 0 0 1 0. At the third row the column heights are 3, 1, 3, 2, 2. The largest rectangle in that histogram has height 2 and width 3 over the last three columns, area 6, which is the answer." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -28,3 +27,26 @@
   <text x="300" y="30" class="lb" fill="#2d6a4f">height 2 × width 3 = 6</text>
 </svg>
 :::
+
+```ts
+// Maximal Rectangle (LeetCode 85): for each row, h[c] = row[c] === "1" ? h[c] + 1 : 0,
+// then best = max(best, largestRectangle(h))
+function largestRectangle(h: number[]): number {
+  const st: number[] = [];          // indices, heights increasing
+  let best = 0;
+  for (let i = 0; i <= h.length; i++) {
+    // height-0 sentinel flushes
+    const cur = i === h.length ? 0 : h[i];
+    while (st.length && h[st[st.length - 1]] >= cur) {
+      const height = h[st.pop()!];
+      const left = st.length ? st[st.length - 1] : -1;
+      best = Math.max(best, height * (i - left - 1));
+    }
+    st.push(i);
+  }
+  return best;
+}
+```
+
+- **Watch out:** the sentinel. Without the final height 0, bars never popped stay on the stack: `[1, 2, 3]` reports 0 instead of 4
+- **Also solves:** [Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/) (LeetCode 84) (the helper alone)

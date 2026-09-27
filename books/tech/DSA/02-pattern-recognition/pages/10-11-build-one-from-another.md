@@ -1,9 +1,8 @@
 ## Build One from Another <span class="lv lv1"></span>
 
-- **What it is:** A structure with a new guarantee, built only from simpler ones: a queue from two stacks, a stack that knows its minimum, an O(1) least-recently-used cache. Pair each structure with the one invariant it cannot keep by itself
-- **Signal:** "implement a queue using stacks", "min stack", "LRU cache", "insert, delete and getRandom in O(1)", "two stacks in one array", "circular queue"
-- **Not this page if:** the structure must report the median of a stream as values arrive → 15-04, two heaps
-- **Why it works:** Each simple structure is fast at one thing. Two stacks reverse the order twice, so the oldest element surfaces; a hash map gives O(1) *finding* while a list gives O(1) *ordering*. Costs that look O(n) per call are paid once per element across all calls: amortised O(1)
+- **What:** a structure with a new guarantee, built from simpler ones: a queue from two stacks, a stack that knows its minimum, an O(1) LRU cache. Pair each with the invariant it lacks
+- **Spot it:** "implement a queue using stacks", "min stack", "LRU cache", "insert, delete and getRandom in O(1)". The median of a stream → two heaps, 15-04
+- **Why:** two stacks reverse the order twice, so the oldest surfaces; a map finds, a list orders. O(n) paid once per element is amortised O(1)
 
 :::mint
 <svg viewBox="0 0 470 112" role="img" aria-label="Queue from two stacks. Push always goes onto the in stack. Pop takes from the out stack; only when out is empty is in poured into out, which reverses the order so the oldest element is on top. Each element is moved at most once." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -45,10 +44,12 @@ class MyQueue {
   empty(): boolean {
     return !this.inbox.length && !this.outbox.length;
   }
-  // pour only when out is empty
-  private shift(): void {
+  private shift(): void {           // pour only when out is empty
     if (this.outbox.length) return;
     while (this.inbox.length) this.outbox.push(this.inbox.pop()!);
   }
 }
 ```
+
+- **Watch out:** pour `inbox` into `outbox` only when `outbox` is empty. Pouring back after every pop makes each pop O(n)
+- **Also solves:** [Min Stack](https://leetcode.com/problems/min-stack/) (LeetCode 155) (push `[value, min so far]`) · [LRU Cache](https://leetcode.com/problems/lru-cache/) (LeetCode 146) (map + linked list) · [Insert Delete GetRandom O(1)](https://leetcode.com/problems/insert-delete-getrandom-o1/) (LeetCode 380)

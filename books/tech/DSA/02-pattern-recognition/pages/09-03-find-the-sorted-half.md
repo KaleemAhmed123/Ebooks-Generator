@@ -1,9 +1,8 @@
 ## Find the Sorted Half <span class="lv lv1"></span>
 
-- **What it is:** Binary search still works on data that is *mostly* sorted: a rotated array, a mountain, an array with one peak. At every `mid`, at least one side is provably sorted or provably uphill. Decide using that side and discard the other half
-- **Signal:** O(log n) is demanded on an array that is sorted except for one break, or that only has to rise toward a peak: "rotated at an unknown pivot", "strictly increasing then decreasing", "any element larger than its neighbours"
-- **Not this page if:** the array is fully sorted but its length is unknown (a stream, or an interface with no size) → Module 04, 01-07 (exponential search)
-- **Why it works:** A rotated sorted array is two sorted runs. Any window `[lo, hi]` contains at most one break, so one of `[lo, mid]` and `[mid, hi]` has none. A sorted side answers "is the target inside me?" by comparing with its two ends, so each step still halves the range. For peaks, the slope at `mid` points toward a peak: uphill guarantees one
+- **What:** binary search on data that is only *mostly* sorted: rotated, a mountain, one peak. At each `mid` one side is provably sorted or uphill; decide with it, drop the other half
+- **Spot it:** O(log n) on an array sorted except for one break, or that rises toward a peak: "rotated at an unknown pivot", "increasing then decreasing", "larger than its neighbours"
+- **Why:** a window holds at most one break, so one of `[lo, mid]` and `[mid, hi]` has none, and a sorted side says "is the target in me?" from its two ends. For peaks, uphill guarantees one
 
 :::mint
 <svg viewBox="0 0 470 110" role="img" aria-label="Rotated array 4, 5, 6, 7, 0, 1, 2 searching for 0. mid is 7. The left half 4 to 7 is sorted because a lo is at most a mid, and 0 is not between 4 and 7, so search the right half. Next mid is 1; the left half 0 to 1 is sorted and contains 0." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -37,12 +36,10 @@ function search(a: number[], target: number): number {
   while (lo <= hi) {
     const mid = (lo + hi) >> 1;
     if (a[mid] === target) return mid;
-    // left half sorted
-    if (a[lo] <= a[mid]) {
+    if (a[lo] <= a[mid]) {                     // left half sorted
       if (a[lo] <= target && target < a[mid]) hi = mid - 1;
       else lo = mid + 1;
-    // right half sorted
-    } else {
+    } else {                                  // right half sorted
       if (a[mid] < target && target <= a[hi]) lo = mid + 1;
       else hi = mid - 1;
     }
@@ -50,3 +47,6 @@ function search(a: number[], target: number): number {
   return -1;
 }
 ```
+
+- **Watch out:** `a[lo] < a[mid]` instead of `<=`. With two elements left, `lo === mid`, so the code tests the wrong side: `[3, 1]` searching for 1 returns −1
+- **Also solves:** [Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/) (LeetCode 153) (compare with `a[hi]`, not `a[lo]`) · [Search in Rotated Sorted Array II](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/) (LeetCode 81) (duplicates: shrink both ends; O(n) worst case) · [Find Peak Element](https://leetcode.com/problems/find-peak-element/) (LeetCode 162) and [Peak Index in a Mountain Array](https://leetcode.com/problems/peak-index-in-a-mountain-array/) (LeetCode 852) (rising at `mid` → a peak is right)

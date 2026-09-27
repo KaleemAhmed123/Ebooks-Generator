@@ -1,9 +1,8 @@
 ## Count the Balance <span class="lv lv1"></span>
 
-- **What it is:** With a single bracket type, the stack only ever holds `(`, so its *size* is all the information it has. Replace it with a counter: `+1` on open, `−1` on close. A close that would take the counter below zero is unmatched
-- **Signal:** "minimum additions to make it valid", "minimum reversals", "minimum swaps to balance", "longest valid parentheses", "is this string of ( and ) valid"
-- **Not this page if:** more than one bracket kind, or brackets that carry data like `3[…]` → 10-02
-- **Why it works:** A prefix is fixable only if it never closes more than it opened. The running balance is exactly "opened − closed", its dips below zero count the unmatched closes, and whatever is left at the end counts the unmatched opens. Several types (`()[]{}`) need a real stack, because the *kind* of the last open matters
+- **What:** with one bracket type the stack only holds `(`, so its height is all it knows. Use a counter: `+1` on open, `−1` on close; a close that would go below zero is unmatched
+- **Spot it:** "fewest additions to make it valid", "longest valid parentheses". Several kinds, or brackets that carry data → 10-02
+- **Why:** the running balance is "opened − closed". Its dips below zero are the unmatched closes; what is left at the end are the unmatched opens
 
 :::mint
 <svg viewBox="0 0 470 104" role="img" aria-label="Balance walk on the string close, open, open, close, close, close. The balance goes minus 1 at the first close, which is an unmatched close, reset to 0 and count 1. Then 1, 2, 1, 0, then minus 1 again, another unmatched close. End balance 0. Additions needed: 2 unmatched closes plus 0 unmatched opens equals 2." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -35,7 +34,9 @@ function minAddToMakeValid(s: string): number {
     else if (open > 0) open--;          // matches an earlier "("
     else badClose++;                    // nothing to match
   }
-  // unmatched "(" + unmatched ")"
-  return open + badClose;
+  return open + badClose;         // unmatched "(" + unmatched ")"
 }
 ```
+
+- **Watch out:** a counter for several kinds. `"([)]"` keeps every counter valid and ends at zero, yet it is invalid: only a stack records which kind opened last
+- **Also solves:** [Minimum Number of Swaps to Make the String Balanced](https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-string-balanced/) (LeetCode 1963) (`⌈unmatched / 2⌉`) · [Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/) (LeetCode 32) (a forward and a backward counter pass) · [Minimum Remove to Make Valid Parentheses](https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/) (LeetCode 1249) · [Valid Parenthesis String](https://leetcode.com/problems/valid-parenthesis-string/) (LeetCode 678) (track the lowest and highest possible balance)

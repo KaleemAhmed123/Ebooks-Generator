@@ -1,9 +1,8 @@
 ## Monotonic Queue (Deque) <span class="lv lv2"></span>
 
-- **What it is:** A deque of indices whose values fall from front to back. The back drops every index the newcomer beats; the front drops the index that has left the window. The front is always the window maximum. Template: Module 03 (01-07); move the front with a head index, not `shift()` (Module 07, 02-06)
-- **Signal:** the max or min of every window of fixed length k; a DP step that needs "best of the last k values" with n up to 10⁵, so k · n is too slow; a window whose max − min must stay under a limit
-- **Not this page if:** each window needs its median, not its max → 15-04, two heaps with lazy deletion
-- **Why it works:** An index behind a larger, newer one can never be a window max: the newer one stays in every later window at least as long, and beats it. So the back pops it for good. The front leaves when front ≤ i − k. Each index enters and leaves once: O(n)
+- **What:** a deque of indices whose values fall from front to back. The back drops every index the newcomer beats; the front drops the index that has left the window. The front is the window max
+- **Spot it:** the max or min of every window of k; a DP step that needs "best of the last k"; `max − min` under a limit. Each window's median → two heaps, 15-04
+- **Why:** an index behind a larger, newer one is never a window max again, so it goes for good. Each index enters and leaves once: O(n)
 
 :::mint
 <svg viewBox="0 0 470 164" role="img" aria-label="Expiry trace of the deque over 1, 3, minus 1, minus 3, minus 5, 3, 6, 7 with k equal to 3. i 0: 1 arrives, deque 1. i 1: 3 pops 1 from the back, deque 3. i 2: minus 1 arrives, deque 3, minus 1, output 3. i 3: minus 3 arrives, deque 3, minus 1, minus 3, output 3. i 4: minus 5 arrives and the front index 1, value 3, expires because 1 is at most 4 minus 3; deque minus 1, minus 3, minus 5, output minus 1. i 5: 3 pops minus 5, minus 3, minus 1, output 3. i 6: 6 pops 3, output 6. i 7: 7 pops 6, output 7." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -31,8 +30,20 @@
 </svg>
 :::
 
-### Variations
+```ts
+// Sliding Window Maximum (LeetCode 239)
+function maxSlidingWindow(a: number[], k: number): number[] {
+  const dq: number[] = [], out: number[] = [];
+  let head = 0;                                   // dq[head..] is the deque
+  for (let i = 0; i < a.length; i++) {
+    while (dq.length > head && a[dq[dq.length - 1]] <= a[i]) dq.pop(); // beaten
+    dq.push(i);
+    if (dq[head] <= i - k) head++;                // expired
+    if (i >= k - 1) out.push(a[dq[head]]);
+  }
+  return out;
+}
+```
 
-- **Longest Continuous Subarray With Absolute Diff ≤ Limit (LeetCode 1438):** two deques, one for the window max and one for the min; shrink while `max − min > limit`
-- **Jump Game VI (LeetCode 1696):** `dp[i] = nums[i] + max(dp[i−k..i−1])`; the deque holds that window max of dp
-- **Shortest Subarray with Sum at Least K (LeetCode 862):** negatives allowed, so an increasing deque of prefix sums; pop the front while it completes a valid subarray
+- **Watch out:** store indices, not values. The front must expire when it leaves the window, and a value cannot say where it came from
+- **Also solves:** [Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit](https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/) (LeetCode 1438) (one deque for the max, one for the min) · [Jump Game VI](https://leetcode.com/problems/jump-game-vi/) (LeetCode 1696) (the deque holds the best of the last k `dp`) · [Shortest Subarray with Sum at Least K](https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/) (LeetCode 862) (increasing deque of prefix sums)

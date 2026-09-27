@@ -1,9 +1,8 @@
 ## Guess a Value, Count Below It <span class="lv lv2"></span>
 
-- **What it is:** To find the k-th smallest item of a set too big to list, binary search on the *value*. For a guess `x`, count the items `≤ x`. The answer is the smallest `x` whose count reaches k
-- **Signal:** the k-th smallest (or the median) of a set defined by a rule, such as the cells of a sorted matrix, every pairwise distance or every product `i · j`, when the set has n² or n·m members and is too big to build
-- **Not this page if:** k is small and the set is the merge of k sorted lists → 15-03 (pop k heads from a heap)
-- **Why it works:** `count(x)` never decreases as `x` grows, so "count(x) ≥ k" is a boundary `F…FT…T`, the minimise case pictured on 09-02. The first `T` is exactly the k-th smallest value: it is in the set, because the count only changes at values that are in the set. The search costs `log(range)` guesses, each paid with one structural count, usually O(n) or O(n log m)
+- **What:** guess a *value* `x` and count the items `≤ x`; the k-th smallest is the smallest `x` whose count reaches k
+- **Spot it:** the k-th smallest or median of a set too big to list: a sorted matrix, all pair distances. Small k over sorted lists → 15-03
+- **Why:** `count(x)` never falls, so it flips once; the first true is in the set
 
 :::mint
 <svg viewBox="0 0 470 118" role="img" aria-label="Sorted matrix rows 1 5 9, 10 11 13, 12 13 15, k equals 8. The count for x equals 13 walks from the bottom-left: 12 is at most 13, so its whole column of 3 counts, step right; 13 is at most 13, add 3, step right; 15 is above 13, step up; 13 is at most 13, add 2, and the walk leaves the matrix. count of 13 is 8, feasible. count of 12 is 3 plus 2 plus 1, 6, too small. The smallest feasible value, 13, is the answer." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -36,3 +35,29 @@
   <text x="190" y="100" class="sm">each step adds a whole column part (≤ x) or drops a row (&gt; x)</text>
 </svg>
 :::
+
+```ts
+// Kth Smallest Element in a Sorted Matrix (LeetCode 378)
+function kthSmallest(m: number[][], k: number): number {
+  const n = m.length;
+  // staircase from bottom-left, O(n)
+  const countAtMost = (x: number) => {
+    let r = n - 1, c = 0, cnt = 0;
+    while (r >= 0 && c < n) {
+      // whole column part fits
+      if (m[r][c] <= x) { cnt += r + 1; c++; }
+      else r--;
+    }
+    return cnt;
+  };
+  let lo = m[0][0], hi = m[n - 1][n - 1];
+  while (lo < hi) {                      // first x with count ≥ k
+    const mid = lo + Math.floor((hi - lo) / 2);
+    if (countAtMost(mid) >= k) hi = mid; else lo = mid + 1;
+  }
+  return lo;
+}
+```
+
+- **Watch out:** stopping at `count(mid) === k`: on `[[1, 3], [5, 7]]`, k = 2, `count(4) = 2`, yet 4 is absent
+- **Also solves:** [Find K-th Smallest Pair Distance](https://leetcode.com/problems/find-k-th-smallest-pair-distance/) (LeetCode 719) (count with two pointers)

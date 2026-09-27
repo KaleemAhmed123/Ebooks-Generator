@@ -1,9 +1,8 @@
 ## Cancel Against the Top <span class="lv lv1"></span>
 
-- **What it is:** Each new item may destroy the item just before it, and the destruction can cascade. Keep survivors on a stack; a newcomer fights the top in a `while` loop until it dies, the top wins, or nothing it can fight is left
-- **Signal:** items moving toward each other destroy one another on contact, "remove adjacent duplicates", "remove k equal adjacent characters", "backspace", "adjacent pair that cancels", results that must be stable ("repeat until no more removals")
-- **Not this page if:** a beaten item gets an *answer* (the newcomer that beat it) instead of just vanishing → 10-05
-- **Why it works:** Only the most recent survivor can touch the newcomer; everything below it is shielded until it disappears. So the stack holds exactly the set of items that are still "in play", and each item enters and leaves it once: O(n) instead of repeated rescans
+- **What:** a new item may destroy the one before it, and destruction cascades. Keep survivors on a stack; the newcomer fights the top in a `while` loop until it dies, wins, or has nothing to fight
+- **Spot it:** items that destroy each other on contact, "remove adjacent duplicates", "backspace", "repeat until no more removals". A beaten item gets an *answer* instead → 10-05
+- **Why:** only the latest survivor can touch the newcomer. Each item enters and leaves once: O(n)
 
 :::mint
 <svg viewBox="0 0 470 104" role="img" aria-label="Asteroid collision on 5, 10, minus 5. Push 5, push 10. Minus 5 moves left and meets 10 moving right; 10 is larger, minus 5 explodes. Result 5, 10. Second example 8, minus 8: equal sizes, both explode, result empty. Third: 10, 2, minus 5: minus 5 destroys 2, then loses to 10." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -27,8 +26,7 @@ function asteroidCollision(asteroids: number[]): number[] {
     let alive = true;
     while (alive && a < 0 && st.length && st[st.length - 1] > 0) {
       const top = st[st.length - 1];
-      // top explodes, keep fighting
-      if (top < -a) st.pop();
+      if (top < -a) st.pop();       // top explodes, keep fighting
       else {
         if (top === -a) st.pop();           // both explode
         alive = false;                      // newcomer explodes
@@ -39,3 +37,6 @@ function asteroidCollision(asteroids: number[]): number[] {
   return st;
 }
 ```
+
+- **Watch out:** the fight is a `while`, not an `if`. `[10, 2, −5]` must end as `[10]`; one pop leaves `[10, −5]`, still colliding.
+- **Also solves:** [Remove All Adjacent Duplicates In String](https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/) (LeetCode 1047) · [Remove All Adjacent Duplicates in String II](https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/) (LeetCode 1209) (push `(char, run length)`)
