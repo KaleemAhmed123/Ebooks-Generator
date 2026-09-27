@@ -1,9 +1,8 @@
 ## Reverse to Rotate <span class="lv lv1"></span>
 
-- **What it is:** A rotation is three reversals. Reverse the whole array, then reverse each of the two parts. No buffer, each element moves twice
-- **Signal:** "rotate the array right by k in place", "reverse the order of words", "rotate the string", "cyclically shift"
-- **Not this page if:** the array is already rotated and the task is to *search* it ("rotated sorted array", O(log n)) → 09-03
-- **Why it works:** Write the array as `A B`, where `B` is the last k elements. Rotating right by k gives `B A`. Reversing the whole array gives `Bᴿ Aᴿ` (reversal flips the order of the blocks *and* the inside of each). Reversing each block again undoes the inside flip: `B A`
+- **What:** a rotation is three reversals: the whole array, then each of the two parts. No buffer; each element moves twice
+- **Spot it:** "rotate right by k in place", "reverse the order of words", "cyclically shift". Searching an already-rotated sorted array → 09-03
+- **Why:** write the array as `A B`, with `B` the last k items. Reversing all gives `Bᴿ Aᴿ`; reversing each block undoes the inner flip: `B A`
 
 :::mint
 <svg viewBox="0 0 470 110" role="img" aria-label="Rotate 1 2 3 4 5 6 7 right by 3. Reverse all gives 7 6 5 4 3 2 1. Reverse the first 3 gives 5 6 7. Reverse the last 4 gives 1 2 3 4. Result 5 6 7 1 2 3 4." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -42,3 +41,6 @@ function reverse(a: number[], i: number, j: number): void {
   while (i < j) { [a[i], a[j]] = [a[j], a[i]]; i++; j--; }
 }
 ```
+
+- **Watch out:** forgetting `k %= n`. With k = 10 on 7 items, `reverse(nums, 0, 9)` writes past the end and grows the array
+- **Also solves:** [Reverse Words in a String](https://leetcode.com/problems/reverse-words-in-a-string/) (LeetCode 151) (reverse all, then each word) · [Rotate Image](https://leetcode.com/problems/rotate-image/) (LeetCode 48) (a 2-D rotation is transpose, then reverse each row → 05-02)

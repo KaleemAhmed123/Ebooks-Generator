@@ -1,9 +1,8 @@
 ## Wrap Around <span class="lv lv2"></span>
 
-- **What it is:** A circular array is a linear array read twice. Walk indices `0 .. 2n − 1` and read `a[i % n]`: every window, pair or "next" that wraps past the end appears once as a plain linear one, with no copied array
-- **Signal:** "the array is circular", "the last element is adjacent to the first", "next greater element, searching circularly", "a window may run past the end and continue at the start"
-- **Not this page if:** "houses in a circle, adjacent ones cannot both be taken": the wrap is a constraint to split on, not a view to read → Module 06, 02-02
-- **Why it works:** Any contiguous run in a circle of length n starts somewhere in `0..n−1` and has length ≤ n, so it ends before index `2n − 1` in the doubled view. The doubled view contains every circular run; the modulo reads it without allocating it
+- **What:** a circular array is a linear array read twice. Walk `0 .. 2n − 1` and read `a[i % n]`: no copy
+- **Spot it:** "circular", "the last element is next to the first", "search circularly". Houses in a circle that cannot both be robbed: split into two cases → Module 06
+- **Why:** every circular run starts in `0..n − 1` and has length ≤ n, so it appears once in the doubled view
 
 :::mint
 <svg viewBox="0 0 470 108" role="img" aria-label="Circular array 1, 0, 1, 1, 0, 0, 1 has four ones. Reading the array twice with index modulo n, the window of length 4 starting at index 6 wraps to indices 6, 0, 1, 2 and holds 1, 1, 0, 1: three ones. The best window has 3 ones, so one swap groups them." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -51,3 +50,6 @@ function minSwaps(nums: number[]): number {
   return ones - best;
 }
 ```
+
+- **Watch out:** for windows of length L, stop at `n + L − 1`. Running 2n steps counts each wrapped window twice: harmless for a max, wrong for a count
+- **Also solves:** [Next Greater Element II](https://leetcode.com/problems/next-greater-element-ii/) (LeetCode 503) (monotonic stack; push only in the first lap) · [Defuse the Bomb](https://leetcode.com/problems/defuse-the-bomb/) (LeetCode 1652) · [Check if Array Is Sorted and Rotated](https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/) (LeetCode 1752) (at most one descent, counted circularly)

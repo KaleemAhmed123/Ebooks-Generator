@@ -72,3 +72,10 @@ Budget: front ~4 · pattern pages ~115 · openers ~12 · drills ~18 → about 15
   comments moved inline. The new skeleton was run against a brute force: 3,000 cases,
   0 failures. Book 266 files; chapters 2–3 have 0 overflow (01-02 still 2mm over, fixed
   in the front-matter step). Spec: `reference/dsa/scripts/spec-ch03.py`.
+- 2026-09-27 — Chapter 3–19 approved ("looks good, go on with the entire PDF").
+  Chapter 4: 16 files → 7 pages. In-Place Tricks intro (04-01, a sign-flag skeleton run
+  against a brute force, 3,000 cases, 0 failures; the old diagram dropped to fit), five
+  compact move pages, 10 drills, the 04-08 checkpoint deleted (nothing referred to it).
+  New helper `reference/dsa/scripts/measure.mjs` measures page heights from the `--html`
+  build exactly as the PDF build does (126mm column), so overflow is checked without a
+  full PDF pass.

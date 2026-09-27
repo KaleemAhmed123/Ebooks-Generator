@@ -1,9 +1,8 @@
 ## Find the Dip <span class="lv lv2"></span>
 
-- **What it is:** To get the next larger arrangement, change the array as far to the *right* as possible. Scan from the right for the first dip `a[i] < a[i+1]`, swap `a[i]` with the smallest larger value to its right, then reverse the suffix
-- **Signal:** "rearrange into the next larger ordering", "next greater number with the same digits", "smallest arrangement larger than this one", "lexicographically next"
-- **Not this page if:** "next greater element" for *each position* (the first larger value to its right): a different question → 10-05
-- **Why it works:** A suffix that only falls (read left to right) is already its own largest arrangement; nothing can be gained by reordering it. So the change must happen at the dip just before it. Bumping `a[i]` by the smallest possible amount, then making the suffix as small as possible (ascending), gives the very next arrangement. The suffix is descending, so "sort ascending" is just "reverse"
+- **What:** for the next larger arrangement, change as far right as possible. Find the first dip `a[i] < a[i + 1]` from the right, swap `a[i]` with the smallest larger value to its right, reverse the suffix
+- **Spot it:** "next permutation", "next greater number with the same digits", "lexicographically next". The first larger value to the right of *each* position → 10-05
+- **Why:** a falling suffix is already its own largest arrangement, so the change must happen at the dip. After the swap the suffix still falls, so reversing sorts it in O(n)
 
 :::mint
 <svg viewBox="0 0 470 116" role="img" aria-label="Next permutation of 1 3 5 4 2. From the right the suffix 5 4 2 is falling. The dip is 3. The smallest value to its right that is larger than 3 is 4. Swap them to get 1 4 5 3 2, then reverse the suffix to get 1 4 2 3 5." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -57,3 +56,6 @@ function nextPermutation(a: number[]): void {
   }
 }
 ```
+
+- **Watch out:** duplicates need `>=` in step 1 and `<=` in step 2. With `<` in step 2, `[2, 3, 2]` swaps the dip with the equal 2 and returns `[2, 2, 3]`; the answer is `[3, 2, 2]`
+- **Also solves:** [Next Greater Element III](https://leetcode.com/problems/next-greater-element-iii/) (LeetCode 556) (−1 above 2³¹ − 1) · [Previous Permutation With One Swap](https://leetcode.com/problems/previous-permutation-with-one-swap/) (LeetCode 1053) (the mirror image, no reverse) · [Permutation Sequence](https://leetcode.com/problems/permutation-sequence/) (LeetCode 60) (jump there with the factorial number system)

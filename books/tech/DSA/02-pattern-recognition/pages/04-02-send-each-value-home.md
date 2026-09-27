@@ -1,9 +1,8 @@
 ## Send Each Value Home <span class="lv lv2"></span>
 
-- **What it is:** Cyclic placement. When values belong to `1..n`, value `v` has a home at index `v − 1`. Swap each value into its home until every slot holds its owner or a value with no home. One scan then reads off what is missing or doubled
-- **Signal:** "values in the range 1..n (or 0..n)", "find the missing / duplicated value", "smallest positive integer not in the array", "O(n) time and O(1) extra space"
-- **Not this page if:** "find the repeated value" but the array must stay unchanged: no swaps allowed, follow `i → a[i]` as a list → 12-04
-- **Why it works:** Every swap puts at least one value into its final slot, and a settled value never moves again. So there are at most n swaps in total, even though the loop looks nested. After placement, the first index `i` with `a[i] ≠ i + 1` names the first missing value
+- **What:** when values belong to `1..n`, value `v` lives at index `v − 1`. Swap each value home until every slot holds its owner or a stranger; one scan then reads what is missing or doubled
+- **Spot it:** "values in the range 1..n", "find the missing / repeated value", "smallest missing positive", "O(1) extra space". The array must stay unchanged → 12-04
+- **Why:** every swap settles at least one value for good, so there are at most n swaps in total, though the loop looks nested
 
 :::mint
 <svg viewBox="0 0 470 112" role="img" aria-label="First missing positive on 3, 4, minus 1, 1. Swap 3 to index 2, swap minus 1 stays, swap 4 to index 3, swap 1 to index 0. The result is 1, minus 1, 3, 4. Index 1 does not hold 2, so the answer is 2." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -47,3 +46,6 @@ function firstMissingPositive(a: number[]): number {
   return n + 1;
 }
 ```
+
+- **Watch out:** ask "does the *home* already hold this value?", not "is this slot right?". Guarded by `a[i] !== i + 1`, `[1, 1]` swaps a 1 for a 1 forever
+- **Also solves:** [Find All Numbers Disappeared in an Array](https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/) (LeetCode 448) (sign flag: negate `a[|v| − 1]`) · [Find All Duplicates in an Array](https://leetcode.com/problems/find-all-duplicates-in-an-array/) (LeetCode 442) (an already-negative slot is a repeat) · [Set Mismatch](https://leetcode.com/problems/set-mismatch/) (LeetCode 645) (the one misplaced slot holds the repeat)

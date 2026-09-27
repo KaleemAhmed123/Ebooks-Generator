@@ -1,9 +1,8 @@
 ## Vote and Cancel <span class="lv lv1"></span>
 
-- **What it is:** The Boyer–Moore majority vote. Keep one candidate and a counter; a matching value adds a vote, a different value cancels one. A value that fills more than half the array survives every cancellation
-- **Signal:** "element that appears more than ⌊n/2⌋ times", "more than ⌊n/3⌋ times", "O(1) extra space", "single pass over a stream"
-- **Not this page if:** "most frequent value" with no more-than-half promise: the survivor means nothing, count with a map → Module 03, 02-02
-- **Why it works:** Each cancellation removes one majority vote and one other vote, or two non-majority votes. Either way the majority stays more than half of what is left. So it can never be cancelled out completely, and it is the candidate standing at the end
+- **What:** the Boyer–Moore majority vote. One candidate and a counter: a match adds a vote, a different value cancels one
+- **Spot it:** "appears more than ⌊n/2⌋ times", "more than ⌊n/3⌋", "O(1) extra space", "one pass over a stream". Most frequent, with no majority promised → count with a map
+- **Why:** each cancellation removes two votes, at most one of them the majority's. A value above half can never be cancelled out
 
 :::mint
 <svg viewBox="0 0 470 100" role="img" aria-label="Majority vote on 2, 2, 1, 1, 1, 2, 2. The counter goes 1, 2, 1, 0, then 1 with candidate 1, then 0, then 1 with candidate 2. The survivor is 2, which appears 4 times out of 7." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -45,3 +44,6 @@ function majorityElement(nums: number[]): number {
   return candidate;
 }
 ```
+
+- **Watch out:** with no majority promised, verify in a second pass. On `[1, 2, 3]` the vote leaves 3, which appears once
+- **Also solves:** [Majority Element II](https://leetcode.com/problems/majority-element-ii/) (LeetCode 229) (two candidates; test both matches before a zero counter, then verify) · [Minimum Index of a Valid Split](https://leetcode.com/problems/minimum-index-of-a-valid-split/) (LeetCode 2780) (vote, then a prefix count)
