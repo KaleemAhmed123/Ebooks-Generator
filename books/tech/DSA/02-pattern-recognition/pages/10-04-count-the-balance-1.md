@@ -2,6 +2,7 @@
 
 - **What it is:** With a single bracket type, the stack only ever holds `(`, so its *size* is all the information it has. Replace it with a counter: `+1` on open, `−1` on close. A close that would take the counter below zero is unmatched
 - **Signal:** "minimum additions to make it valid", "minimum reversals", "minimum swaps to balance", "longest valid parentheses", "is this string of ( and ) valid"
+- **Not this page if:** more than one bracket kind, or brackets that carry data like `3[…]` → 10-02
 - **Why it works:** A prefix is fixable only if it never closes more than it opened. The running balance is exactly "opened − closed", its dips below zero count the unmatched closes, and whatever is left at the end counts the unmatched opens. Several types (`()[]{}`) need a real stack, because the *kind* of the last open matters
 
 :::mint

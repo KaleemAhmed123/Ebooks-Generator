@@ -1,7 +1,8 @@
 ## Cancel Against the Top <span class="lv lv1"></span>
 
 - **What it is:** Each new item may destroy the item just before it, and the destruction can cascade. Keep survivors on a stack; a newcomer fights the top in a `while` loop until it dies, the top wins, or nothing it can fight is left
-- **Signal:** "asteroids collide", "remove adjacent duplicates", "remove k equal adjacent characters", "backspace", "adjacent pair that cancels", results that must be stable ("repeat until no more removals")
+- **Signal:** items moving toward each other destroy one another on contact, "remove adjacent duplicates", "remove k equal adjacent characters", "backspace", "adjacent pair that cancels", results that must be stable ("repeat until no more removals")
+- **Not this page if:** a beaten item gets an *answer* (the newcomer that beat it) instead of just vanishing → 10-05
 - **Why it works:** Only the most recent survivor can touch the newcomer; everything below it is shielded until it disappears. So the stack holds exactly the set of items that are still "in play", and each item enters and leaves it once: O(n) instead of repeated rescans
 
 :::mint

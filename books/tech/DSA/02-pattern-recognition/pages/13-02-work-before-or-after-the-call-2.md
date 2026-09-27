@@ -2,8 +2,8 @@
 
 ### Variations
 
+- **Print n … 1 then 1 … n:** push `n` before the call and again after it; the second push sees the values in reverse, for free
 - **Tree traversals (Chapter 14):** pre-order, in-order and post-order are exactly "pre", "in" and "post" with two children. Post-order is where a node sees its children's answers
-- **Add 1 to a number represented as a linked list (GFG):** recurse to the tail; each frame, on the way *up*, adds the carry returned by its child and returns its own carry. No reversal needed
 - **Delete middle element of a stack (GFG):** pop and hold the top on the way down, count depth; at depth `⌊n/2⌋` pop without holding; push the held values back on the way up
 - **Print linked list in reverse:** recurse to the end, print on the way up
 - **Reverse a stack / insert at bottom (page 13-01):** "pop now, push back after the call" is post-work

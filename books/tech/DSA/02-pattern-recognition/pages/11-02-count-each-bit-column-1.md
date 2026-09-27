@@ -2,6 +2,7 @@
 
 - **What it is:** Treat 32-bit numbers as 32 independent columns of 0s and 1s. Many "all pairs" or "all numbers" questions become a count per column, and the columns never interact
 - **Signal:** "every element appears three times except one", "sum of Hamming distances over all pairs", "total set bits from 1 to n", "minimum flips so that a OR b equals c"
+- **Not this page if:** every other value appears an *even* number of times → 11-01; one XOR pass, no columns
 - **Why it works:** Bitwise operations act on each column separately. If every value but one repeats k times, each column's count of 1s is a multiple of k plus the single value's bit: `count % k` recovers it. For pairs, a column contributes `ones · zeros` differing pairs, whatever the other columns do
 
 :::mint

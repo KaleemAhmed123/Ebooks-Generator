@@ -1,17 +1,17 @@
-## Recognition drills: Recursion & Backtracking <span class="lv lv1"></span>
+## Recognition drills after Chapter 13 <span class="lv lv1"></span>
 
-Hide the right column. Name the template (trust, before/after, grid walk, pick-or-skip, loop + skip, stay/restart, fill the slots, cut, place-check-undo) and the start index or state of the next call.
+Name the page before you turn over. Two come from earlier chapters.
 
-| Problem | Template & next call |
-|---|---|
-| 1. [Tower Of Hanoi](https://www.geeksforgeeks.org/problems/tower-of-hanoi-1587115621/1) (GFG) | **Trust the smaller call:** n − 1, move, n − 1 |
-| 2. [Pow(x, n)](https://leetcode.com/problems/powx-n/) (LeetCode 50) | **Trust half:** `pow(x, n/2)` squared |
-| 3. [Rat in a Maze](https://www.geeksforgeeks.org/problems/rat-in-a-maze-problem/1) (GFG) | **Grid walk:** checks at the top, mark, 4 moves, unmark |
-| 4. [Word Search](https://leetcode.com/problems/word-search/) (LeetCode 79) | **Grid walk** with letter matching, restore the cell |
-| 5. [Subsets](https://leetcode.com/problems/subsets/) (LeetCode 78) | **Pick or skip,** `go(i + 1)` both ways |
-| 6. [Subsets II](https://leetcode.com/problems/subsets-ii/) (LeetCode 90) | **Loop + skip equal siblings,** record every node |
-| 7. [Combination Sum](https://leetcode.com/problems/combination-sum/) (LeetCode 39) | **Stay:** `go(i, rem − c[i])` |
-| 8. [Combination Sum II](https://leetcode.com/problems/combination-sum-ii/) (LeetCode 40) | **Loop + skip,** `go(i + 1)` |
-| 9. [Combination Sum IV](https://leetcode.com/problems/combination-sum-iv/) (LeetCode 377) | **Restart at 0** + memo: order matters |
-| 10. [Permutations](https://leetcode.com/problems/permutations/) (LeetCode 46) / [Permutations II](https://leetcode.com/problems/permutations-ii/) (LeetCode 47) | **Fill the slots;** for duplicates skip when the left twin is unused |
-| 11. [Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/) (LeetCode 17) | **Fill the slots,** each slot its own pool |
+1. List every way to choose k numbers from 1..n, order ignored.
+2. Expand strings like `3[a2[c]]`, where a number repeats the bracketed part after it.
+3. List every way to split a string into pieces that each read the same backwards.
+4. Every letter may be upper or lower case and digits stay; list every string that can result.
+5. Add up the XOR of every subset of an array.
+6. List every distinct ordering of an array that may contain equal values.
+7. Walk between adjacent non-zero cells, never revisiting one, and return the most gold a walk can collect.
+8. List every combination of candidates summing to a target; each candidate once, the input has repeats, no combination twice.
+9. Row 1 is `0`; each row replaces 0 with 01 and 1 with 10. Return symbol k of row n.
+10. List every combination of distinct candidates summing to a target; a candidate may be chosen any number of times.
+11. Count the orderings of 1..n where the value at each position i divides i or is divisible by i.
+12. Place n pieces on an n × n board so no two share a row, column or diagonal; list every board.
+13. Decide whether a word can be traced through horizontally or vertically adjacent cells, using each cell once.

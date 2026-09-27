@@ -1,51 +1,56 @@
 ## Work Before or After the Call <span class="lv lv1"></span>
 
 - **What it is:** Every line in a recursive function runs either on the way *down* (before the recursive call) or on the way *up* (after it returns). Code before the call sees inputs in forward order; code after it sees them in reverse, with the smaller call's result already available
-- **Signal:** "print n down to 1 and then 1 up to n", "zig-zag", "process from the end of a linked list without reversing it", "carry a value back up", pre-order / in-order / post-order anything
+- **Signal:** "print n down to 1 and then 1 up to n"; a number stored in a list, most significant digit first, where the carry starts at the tail; "process a linked list from its end without reversing it"; pre-order / in-order / post-order anything
+- **Not this page if:** the list may hold 10⁵ nodes → 12-02: reverse it with a loop, since one frame per node can overflow the call stack
 - **Why it works:** The call stack holds each frame's local variables until the deeper call returns. So a value saved before the call is still there afterwards, in last-in-first-out order. Choosing *where* a line goes chooses the order it runs in, with no extra data structure
 
 :::mint
-<svg viewBox="0 0 470 112" role="img" aria-label="Zig-zag recursion for n equal to 2. Each call prints n before its first child call, between the two child calls, and after the second. The output is 2 1 1 1 2 1 1 1 2: pre, in and post positions interleave with the children's output." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
+<svg viewBox="0 0 470 112" role="img" aria-label="Add 1 to the list 1, 9, 9. On the way down each call only moves to the next node. The call past the tail returns carry 1. On the way up, the last 9 becomes 0 and returns carry 1, the middle 9 becomes 0 and returns carry 1, the 1 becomes 2 and returns carry 0, so no new head is needed. Result 2, 0, 0." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
   <style>
     .lb { font: 10px Consolas, monospace; fill: #1a1a1a; }
     .sm { font: 8px Georgia, serif; fill: #6b6b6b; }
-    .nd { fill: #ffffff; stroke: #1a1a1a; stroke-width: 1.1; }
-    .e { stroke: #1a1a1a; stroke-width: 1; }
+    .n { fill: #ffffff; stroke: #1a1a1a; stroke-width: 1.1; }
+    .a { stroke: #1a1a1a; stroke-width: 1; fill: none; }
+    .up { stroke: #1d4e89; stroke-width: 1.2; fill: none; }
   </style>
-  <circle class="nd" cx="120" cy="22" r="12"/><text x="120" y="26" class="lb" text-anchor="middle">2</text>
-  <line class="e" x1="112" y1="31" x2="72" y2="54"/><line class="e" x1="128" y1="31" x2="168" y2="54"/>
-  <circle class="nd" cx="66" cy="62" r="12"/><text x="66" y="66" class="lb" text-anchor="middle">1</text>
-  <circle class="nd" cx="174" cy="62" r="12"/><text x="174" y="66" class="lb" text-anchor="middle">1</text>
-  <line class="e" x1="60" y1="72" x2="44" y2="92"/><line class="e" x1="72" y1="72" x2="88" y2="92"/>
-  <line class="e" x1="168" y1="72" x2="152" y2="92"/><line class="e" x1="180" y1="72" x2="196" y2="92"/>
-  <text x="40" y="104" class="sm" text-anchor="middle">0</text><text x="92" y="104" class="sm" text-anchor="middle">0</text><text x="148" y="104" class="sm" text-anchor="middle">0</text><text x="200" y="104" class="sm" text-anchor="middle">0</text>
-  <text x="250" y="30" class="lb">pre   print n</text>
-  <text x="250" y="44" class="lb">call  f(n − 1)</text>
-  <text x="250" y="58" class="lb">in    print n</text>
-  <text x="250" y="72" class="lb">call  f(n − 1)</text>
-  <text x="250" y="86" class="lb">post  print n</text>
-  <text x="250" y="108" class="lb" fill="#1d4e89">2 1 1 1 2 1 1 1 2</text>
+  <defs><marker id="m1302k" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1a1a1a"/></marker><marker id="m1302b" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1d4e89"/></marker></defs>
+  <text x="20" y="14" class="sm">down: each call only moves to next</text>
+  <rect class="n" x="40" y="22" width="30" height="20"/><text x="55" y="36" class="lb" text-anchor="middle">1</text>
+  <path class="a" d="M 70 32 L 106 32" marker-end="url(#m1302k)"/>
+  <rect class="n" x="110" y="22" width="30" height="20"/><text x="125" y="36" class="lb" text-anchor="middle">9</text>
+  <path class="a" d="M 140 32 L 176 32" marker-end="url(#m1302k)"/>
+  <rect class="n" x="180" y="22" width="30" height="20"/><text x="195" y="36" class="lb" text-anchor="middle">9</text>
+  <path class="a" d="M 210 32 L 234 32" marker-end="url(#m1302k)"/>
+  <text x="240" y="36" class="lb">null</text>
+  <path class="up" d="M 252 44 Q 226 66 200 46" marker-end="url(#m1302b)"/>
+  <path class="up" d="M 190 46 Q 160 66 130 46" marker-end="url(#m1302b)"/>
+  <path class="up" d="M 120 46 Q 90 66 60 46" marker-end="url(#m1302b)"/>
+  <text x="226" y="74" class="sm" text-anchor="middle">carry 1</text>
+  <text x="160" y="74" class="sm" text-anchor="middle">carry 1</text>
+  <text x="90" y="74" class="sm" text-anchor="middle">carry 1</text>
+  <text x="55" y="92" class="lb" fill="#1d4e89" text-anchor="middle">2</text>
+  <text x="125" y="92" class="lb" fill="#1d4e89" text-anchor="middle">0</text>
+  <text x="195" y="92" class="lb" fill="#1d4e89" text-anchor="middle">0</text>
+  <text x="20" y="108" class="sm">up: new values, written after the call returns; the head returns carry 0, so no new node</text>
+  <text x="290" y="30" class="sm">up(null) = 1: the +1 enters here</text>
+  <text x="290" y="46" class="sm">each frame, after the call:</text>
+  <text x="290" y="58" class="lb">sum = val + carry</text>
+  <text x="290" y="72" class="lb">val = sum % 10</text>
+  <text x="290" y="86" class="lb">return ⌊sum / 10⌋</text>
 </svg>
 :::
 
 ```ts
-// Zig-zag (Pepcoding): print n before, between and after two calls
-function zigzag(n: number, out: number[] = []): number[] {
-  if (n === 0) return out;
-  out.push(n);            // pre: on the way down
-  zigzag(n - 1, out);
-  out.push(n);            // in: between the two calls
-  zigzag(n - 1, out);
-  out.push(n);            // post: on the way back up
-  return out;
-}
-
-// Print decreasing then increasing: n … 1 1 … n
-function decInc(n: number, out: number[] = []): number[] {
-  if (n === 0) return out;
-  out.push(n);            // forward order
-  decInc(n - 1, out);
-  out.push(n);            // reverse order, for free
-  return out;
+// Add 1 to a Linked List Number (GFG): most significant digit first
+function addOne(head: ListNode): ListNode {
+  // returns the carry that leaves this node
+  const up = (node: ListNode | null): number => {
+    if (!node) return 1;                 // the +1 enters below the tail
+    const sum = node.val + up(node.next); // after the call: child's carry
+    node.val = sum % 10;
+    return Math.floor(sum / 10);
+  };
+  return up(head) ? { val: 1, next: head } : head;
 }
 ```

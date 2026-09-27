@@ -2,6 +2,7 @@
 
 - **What it is:** For nested input, every opening symbol starts a new, smaller problem inside the current one. Push *everything you were in the middle of* (the partial result, the pending number, the sign) and start fresh; on the matching close, pop it and combine
 - **Signal:** `k[encoded]`, parentheses in an expression, `(a(b)c)`-style nesting, "simplify the path", "evaluate", "score of parentheses"
+- **Not this page if:** the brackets carry nothing but balance ("fewest additions to make it valid") → 10-04, a counter
 - **Why it works:** Nesting is last-opened, first-closed, which is exactly stack order. The top of the stack is always the context the current bracket will return to, so every close knows what to combine with, without re-scanning
 
 :::mint

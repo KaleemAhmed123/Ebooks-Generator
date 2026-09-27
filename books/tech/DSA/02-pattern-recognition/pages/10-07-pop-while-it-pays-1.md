@@ -2,6 +2,7 @@
 
 - **What it is:** A monotonic stack with a *budget*. To build the smallest (or largest) sequence you can, pop the top whenever the newcomer is better *and* you can still afford to lose the top. Stop popping when the budget runs out or the top is already better
 - **Signal:** "remove k digits to make the smallest number", "smallest subsequence containing each letter once", "most competitive subsequence of length k", lexicographically smallest/largest with deletions
+- **Not this page if:** the pieces may be reordered, not only deleted ("arrange the numbers to form the largest number") → 07-09
 - **Why it works:** Lexicographic order is decided by the first position that differs. A larger digit sitting before a smaller one can always be improved by deleting the larger one, and doing it as early as possible fixes the most significant position first. Each digit is pushed and popped at most once: O(n)
 
 :::mint

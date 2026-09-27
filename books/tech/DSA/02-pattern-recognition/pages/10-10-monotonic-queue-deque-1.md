@@ -1,48 +1,35 @@
 ## Monotonic Queue (Deque) <span class="lv lv2"></span>
 
-- **What it is:** A double-ended queue (deque) that maintains its elements in monotonic order. It allows O(1) access to the maximum or minimum element in a sliding window
-- **Signal:** "Sliding window maximum", "Find the max in every contiguous subarray of size k"
-- **Why it works:** It combines the elimination property of a monotonic stack with the expiration property of a sliding window
-
-### The visual mechanism
-
-- Sliding window of size k=3 over `[1, 3, -1, -3, 5]`
+- **What it is:** A deque of indices whose values fall from front to back. The back drops every index the newcomer beats; the front drops the index that has left the window. The front is always the window maximum. Template: Module 03 (01-07); move the front with a head index, not `shift()` (Module 07, 02-06)
+- **Signal:** the max or min of every window of fixed length k; a DP step that needs "best of the last k values" with n up to 10⁵, so k · n is too slow; a window whose max − min must stay under a limit
+- **Not this page if:** each window needs its median, not its max → 15-04, two heaps with lazy deletion
+- **Why it works:** An index behind a larger, newer one can never be a window max: the newer one stays in every later window at least as long, and beats it. So the back pops it for good. The front leaves when front ≤ i − k. Each index enters and leaves once: O(n)
 
 :::mint
-<svg viewBox="0 0 470 120" role="img" aria-label="Monotonic Queue processing elements. When 3 arrives, it pops 1 from the back because 3 > 1. The front of the queue always holds the maximum for the current window." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
+<svg viewBox="0 0 470 164" role="img" aria-label="Expiry trace of the deque over 1, 3, minus 1, minus 3, minus 5, 3, 6, 7 with k equal to 3. i 0: 1 arrives, deque 1. i 1: 3 pops 1 from the back, deque 3. i 2: minus 1 arrives, deque 3, minus 1, output 3. i 3: minus 3 arrives, deque 3, minus 1, minus 3, output 3. i 4: minus 5 arrives and the front index 1, value 3, expires because 1 is at most 4 minus 3; deque minus 1, minus 3, minus 5, output minus 1. i 5: 3 pops minus 5, minus 3, minus 1, output 3. i 6: 6 pops 3, output 6. i 7: 7 pops 6, output 7." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
   <style>
     .lb { font: 9.5px Consolas, monospace; fill: #1a1a1a; }
     .sm { font: 8px Georgia, serif; fill: #6b6b6b; }
-    .bx { fill: #ffffff; stroke: #1a1a1a; stroke-width: 1.1; }
-    .a { stroke: #1a1a1a; stroke-width: 1.1; fill: none; }
-    .hot { stroke: #ef476e; stroke-width: 1.1; fill: none; stroke-dasharray: 2 2;}
+    .hot { font: 9.5px Consolas, monospace; fill: #ef476e; }
+    .ln { stroke: #d0d0d0; stroke-width: 1; }
+    .rw { fill: #ffedf1; }
   </style>
-
-  <text x="20" y="20" class="lb">Push 1</text>
-  <rect class="bx" x="20" y="60" width="30" height="20" rx="2" />
-  <text x="35" y="74" class="lb" text-anchor="middle">1</text>
-  
-  <text x="100" y="20" class="lb">Push 3 (dominates 1)</text>
-  <rect class="bx" x="100" y="60" width="30" height="20" rx="2" stroke-dasharray="2 2" />
-  <text x="115" y="74" class="lb" text-anchor="middle" fill="#6b6b6b">1</text>
-  <text x="145" y="74" class="lb" fill="#ef476e">Pop 1 from back</text>
-  
-  <rect class="bx" x="100" y="90" width="30" height="20" rx="2" />
-  <text x="115" y="104" class="lb" text-anchor="middle">3</text>
-
-  <text x="260" y="20" class="lb">Push -1</text>
-  <rect class="bx" x="260" y="60" width="30" height="20" rx="2" />
-  <rect class="bx" x="295" y="60" width="30" height="20" rx="2" />
-  <text x="275" y="74" class="lb" text-anchor="middle">3</text>
-  <text x="310" y="74" class="lb" text-anchor="middle">-1</text>
-  
-  <text x="260" y="45" class="sm">Front is max of window</text>
+  <text x="20" y="14" class="sm">a = [1, 3, −1, −3, −5, 3, 6, 7], k = 3; deque shows index:value, front first</text>
+  <text x="20" y="32" class="sm">i</text><text x="40" y="32" class="sm">arrival</text>
+  <text x="92" y="32" class="sm">popped from back</text><text x="196" y="32" class="sm">expired from front</text>
+  <text x="300" y="32" class="sm">deque</text><text x="424" y="32" class="sm">output</text>
+  <line class="ln" x1="16" y1="37" x2="456" y2="37"/>
+  <text x="20" y="50" class="lb">0</text><text x="48" y="50" class="lb">1</text><text x="300" y="50" class="lb">0:1</text><text x="428" y="50" class="sm">–</text>
+  <text x="20" y="65" class="lb">1</text><text x="48" y="65" class="lb">3</text><text x="92" y="65" class="lb">1</text><text x="300" y="65" class="lb">1:3</text><text x="428" y="65" class="sm">–</text>
+  <text x="20" y="80" class="lb">2</text><text x="44" y="80" class="lb">−1</text><text x="300" y="80" class="lb">1:3 2:−1</text><text x="428" y="80" class="lb">3</text>
+  <text x="20" y="95" class="lb">3</text><text x="44" y="95" class="lb">−3</text><text x="300" y="95" class="lb">1:3 2:−1 3:−3</text><text x="428" y="95" class="lb">3</text>
+  <rect class="rw" x="16" y="100" width="440" height="15"/>
+  <text x="20" y="111" class="hot">4</text><text x="44" y="111" class="hot">−5</text><text x="196" y="111" class="hot">1:3 (1 ≤ 4 − 3)</text><text x="300" y="111" class="hot">2:−1 3:−3 4:−5</text><text x="424" y="111" class="hot">−1</text>
+  <text x="20" y="127" class="lb">5</text><text x="48" y="127" class="lb">3</text><text x="92" y="127" class="lb">−5 −3 −1</text><text x="300" y="127" class="lb">5:3</text><text x="428" y="127" class="lb">3</text>
+  <text x="20" y="142" class="lb">6</text><text x="48" y="142" class="lb">6</text><text x="92" y="142" class="lb">3</text><text x="300" y="142" class="lb">6:6</text><text x="428" y="142" class="lb">6</text>
+  <text x="20" y="157" class="lb">7</text><text x="48" y="157" class="lb">7</text><text x="92" y="157" class="lb">6</text><text x="300" y="157" class="lb">7:7</text><text x="428" y="157" class="lb">7</text>
 </svg>
 :::
-
-### Template
-
-- The deque of indices, front expiring and back popped by larger arrivals: Module 03 (01-07). Move the front with a head index, not `shift()` (Module 07, 02-06)
 
 ### Variations
 

@@ -2,6 +2,7 @@
 
 - **What it is:** Two pointers that move at the *same* speed but start a fixed distance apart. When the leader reaches the end, the follower is exactly that distance from the end. A variant equalises two different lengths by letting each pointer, at its end, jump to the other list's head
 - **Signal:** "remove the n-th node from the end", "n-th node from the end", "sum of the last N nodes", "intersection point of two Y-shaped lists", one pass, no length counting
+- **Not this page if:** the target is the *middle*, a distance that grows with the list → 12-03, slow/fast at two speeds
 - **Why it works:** The gap between the pointers never changes, so it is still n when the leader falls off the list. For two lists of lengths `x + c` and `y + c` sharing a tail `c`, both pointers reach the junction after `x + y + c` steps, so they arrive together
 
 :::mint

@@ -5,7 +5,6 @@
 - **Maze path with jumps (Pepcoding):** the move set becomes "1..k cells right, 1..k down, 1..k diagonal": a loop inside the loop of directions
 - **Word Search (LeetCode 79):** "usable" means the cell matches the next letter. Mark by overwriting the cell with `'#'`, restore it after the four calls
 - **Longest possible route in a matrix with hurdles (GFG):** return `1 + max(child routes)` instead of collecting paths; `−∞` when the destination is unreachable
-- **Shortest path in a grid:** *not* this pattern. Backtracking explores exponentially many paths; the shortest one needs BFS (Chapter 16)
 
 ### The failure
 

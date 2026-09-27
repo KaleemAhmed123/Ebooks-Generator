@@ -12,5 +12,5 @@
 - **Rebuilding strings from the whole stack.** Joining everything on every `]` turns the decode into O(output²). Only the popped context is combined; everything below it is untouched until its own bracket closes
 
 :::interview
-"How would you do Decode String without a stack?" — Recursion: on `[` call a function that decodes until the matching `]` and returns its string plus the position it stopped at. The call stack plays the role of the explicit stack; the saved local variables are the "context". Both are linear in the output in practice; strict string copying can make nested repeats quadratic.
+"How would you do Decode String without a stack?" — Recursion: on `[` call a function that decodes until the matching `]` and returns its string plus the position it stopped at. The call stack plays the role of the explicit stack; the saved local variables are the "context". It builds the same strings, so the time is the same as the stack version; the extra space is one frame per open bracket, O(nesting depth).
 :::

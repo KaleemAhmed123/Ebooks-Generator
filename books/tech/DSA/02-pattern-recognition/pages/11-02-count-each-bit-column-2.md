@@ -9,7 +9,6 @@
 ### The failure
 
 - **Losing the sign.** A negative single value has bit 31 set. Build the answer with bitwise `|=`, which stays in signed 32-bit; accumulate with `result += 2 ** b` instead and `[−2, −2, 1, 1, −3, 1, −3, −3, −4, −2]` returns 4294967292 instead of −4
-- **Using `>>` to read a column.** `(x >> 31) & 1` happens to work, but `x >> b` on negative numbers fills with 1s from the left, which matters as soon as you compare or count shifted values themselves. `>>>` is the unambiguous choice
 
 :::interview
 "How do you find the one number that appears once when the rest appear three times, in O(1) space?" — Count the 1s in each of the 32 bit positions. Values that appear three times add a multiple of 3 to every position they touch, so `count % 3` is exactly the single number's bit. 32 passes of O(n), constant memory, and it generalises to any repeat count k.

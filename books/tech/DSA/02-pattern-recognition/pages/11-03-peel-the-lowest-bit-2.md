@@ -2,7 +2,9 @@
 
 - **Number of 1 Bits (LeetCode 191) / Count set bits (GFG):** `popcount` above; `>>> 0` makes negative inputs count their 32-bit two's-complement pattern
 - **Power of Two (LeetCode 231):** `n > 0 && (n & (n − 1)) === 0`. Power of four adds a mask check: the single bit must sit at an even position, `(n & 0x55555555) !== 0`
-- **Find position of the only set bit (GFG):** reject 0 and non-powers of two, then GFG counts from 1 at the lowest bit, so the position is `32 − Math.clz32(n)` or count shifts
+- **Find position of the only set bit (GFG):** answer −1 unless n is a power of two. Positions count from 1 at the lowest bit, so the answer is `32 − Math.clz32(n)`
+- **Reverse Bits (LeetCode 190):** 32 rounds of `r = (r << 1) | (n & 1); n >>>= 1`, then `r >>> 0` to read the result unsigned
+- **Sum of Two Integers (LeetCode 371):** `a ^ b` is the sum without carries and `(a & b) << 1` is the carry. Repeat with `b = carry` until it is 0; in 32-bit JS the carry falls off the top within 32 rounds, so negatives end too
 - **Enumerate every submask of `mask` <span class="lv lv3"></span>:** `for (let s = mask; s; s = (s − 1) & mask)` visits all non-empty submasks in decreasing order, then add the empty set. Over all masks this is O(3ⁿ), the core loop of subset DP
 - **Power Set (GFG):** masks `0 .. 2ⁿ − 1`; bit j of the mask says whether item j is in the subset (Module 06, 05-01 lists the mask operations)
 

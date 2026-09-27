@@ -1,7 +1,8 @@
 ## Weave the Copies <span class="lv lv2"></span>
 
-- **What it is:** To deep-copy a structure whose nodes point at arbitrary other nodes, you need "old node → its copy" for every node. A hash map gives that in O(n) space; weaving each copy right after its original gives it in O(1) extra space: the copy of `x` is simply `x.next`
-- **Signal:** "copy list with random pointer", "clone a linked list with next and arbitrary pointer", "clone graph", any deep copy where pointers may point backwards or to nodes not yet copied
+- **What it is:** A deep copy of a structure whose nodes point at arbitrary other nodes needs "old node → its copy" for every node. A hash map gives that in O(n) space; weaving each copy right after its original gives it in O(1) extra space: the copy of `x` is simply `x.next`
+- **Signal:** a deep copy of a list whose nodes carry a second pointer to any node or null; pointers that may point backwards or to nodes not yet copied; "O(1) extra space besides the copy"
+- **Not this page if:** each node has a list of neighbours and cycles run through them (a graph) → 16-01, the map version inside a BFS or DFS
 - **Why it works:** A pointer to a node that has not been copied yet cannot be set during a single pass. Splitting the job into three passes removes the dependency: create every copy first, then fix every `random` using `x.random.next`, then unweave the two lists
 
 :::mint

@@ -29,4 +29,5 @@ function atMost(nums: number[], k: number): number {
 
 - **Binary Subarrays With Sum (LeetCode 930):** on a 0/1 array the window sum is the count of ones. `atMost(goal) − atMost(goal − 1)`, with `atMost(−1) = 0`
 - **Count Number of Nice Subarrays (LeetCode 1248):** map each number to `n % 2`. "Exactly K odd numbers" becomes the binary problem above
+- **Number of Subarrays with Bounded Maximum (LeetCode 795):** the same subtraction on a threshold: subarrays with maximum ≤ R minus those with maximum ≤ L − 1
 - **Same answer, other route:** a prefix-count map (page 03-03) also solves both, in one pass. The subtraction trick wins when the condition is "distinct values", which a prefix sum cannot express

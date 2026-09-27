@@ -1,8 +1,9 @@
 ## Walk the Grid <span class="lv lv2"></span>
 
-- **What it is:** Maze and path problems on a grid share one skeleton: from `(r, c)`, check whether the cell is usable, mark it, try each allowed move, unmark it. The only things that change between problems are the move set, what "usable" means, and whether you count, collect or optimise paths
-- **Signal:** "rat in a maze", "print all paths from top-left to bottom-right", "maze with obstacles", "maze with jumps", "word search in a grid", "longest route avoiding hurdles"
-- **Why it works:** A path is a sequence of moves, so the search is a tree whose branches are moves. Marking the current cell forbids revisits along *this* path only; unmarking on return lets other paths use it. Putting every validity check at the top of the call ("is it out of bounds, blocked or visited?") keeps each move a one-line call
+- **What it is:** Maze and path problems on a grid share one skeleton: from `(r, c)`, check whether the cell is usable, mark it, try each allowed move, unmark it. Problems differ only in the move set, what "usable" means, and whether paths are counted, collected or optimised
+- **Signal:** every path from one cell to another through open cells; a path may not reuse a cell; trace a word through adjacent cells; the longest simple route, or the most collected along one
+- **Not this page if:** the question asks for the *shortest* path or fewest moves → 18-02, BFS; enumerating paths is exponential
+- **Why it works:** A path is a sequence of moves, so the search is a tree whose branches are moves. Marking the current cell forbids revisits along *this* path only; unmarking on return lets other paths use it.
 
 :::mint
 <svg viewBox="0 0 470 124" role="img" aria-label="Rat in a maze, 4 by 4 grid with open and blocked cells. From the top-left, moves are tried in the order D, L, R, U. Two paths reach the bottom-right: DDRDRR and DRDDRR. Blocked cells are dark; the current path is marked so it cannot revisit itself." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">

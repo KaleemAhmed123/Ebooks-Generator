@@ -1,8 +1,9 @@
 ## Fill the Slots <span class="lv lv2"></span>
 
 - **What it is:** Permutation-style problems fill positions one at a time: for slot `k`, try every item that is still available, recurse into slot `k + 1`, then give the item back. A `used[]` array (or swapping into place) tracks availability. With duplicate items, skip an item equal to its left neighbour *if that neighbour is not currently used*
-- **Signal:** "all permutations", "all unique permutations", "letter combinations of a phone number", "generate valid parentheses", "all arrangements"
-- **Why it works:** Order matters, so every slot may take any unused item, unlike pick-or-skip where each item is decided once. For duplicates, the rule "use equal values left to right" lets exactly one ordering of identical items through: an equal item may be placed only after its left twin is already in the arrangement
+- **Signal:** "all (unique) permutations", "all arrangements", slot k draws from its own pool (keypad letters), every well-formed string of n bracket pairs
+- **Not this page if:** order does not matter ("subsets", "combinations") → 13-05
+- **Why it works:** Order matters, so every slot may take any unused item. For duplicates, the rule "use equal values left to right" lets exactly one ordering of identical items through: an equal item may be placed only after its left twin is already in the arrangement
 
 :::mint
 <svg viewBox="0 0 470 110" role="img" aria-label="Unique permutations of 1, 1, 2. Slot 0 tries the first 1, skips the second 1 because its left twin is not used, and tries 2. Under the first 1, the second 1 is allowed because its twin is used. Results 1 1 2, 1 2 1, 2 1 1." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">

@@ -1,7 +1,8 @@
 ## Loop and Skip Equal Siblings <span class="lv lv2"></span>
 
 - **What it is:** When the input has duplicates and the output must not, switch from pick-or-skip to the *loop template*: at each level, loop over the candidates for the **next** slot, starting from `start`, and skip a candidate equal to the one before it **at the same level**. Sort first so equal values sit together
-- **Signal:** "combinations may not repeat", "the input contains duplicates", "Subsets II", "Combination Sum II", "each number may be used once"
+- **Signal:** the input contains equal values; "the solution set must not contain duplicate combinations"; each number may be used once
+- **Not this page if:** each number may be chosen again and again → 13-07, `go(i)`
 - **Why it works:** Two siblings with the same value start subtrees that produce the same results, so only the first may run. A *child*, however, may repeat its parent's value: that is how `[1, 1, 6]` is built. `i > start` separates "sibling" (same level, skip) from "first choice at this level" (allowed)
 
 :::mint

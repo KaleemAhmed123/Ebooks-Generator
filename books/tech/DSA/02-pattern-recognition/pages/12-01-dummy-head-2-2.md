@@ -5,6 +5,9 @@
 - **Sort a linked list of 0s, 1s and 2s (GFG):** three dummies, joined in order; no counting and rewriting values needed
 - **Remove Linked List Elements (LeetCode 203) / Remove Duplicates from Sorted List II (LeetCode 82):** walk with `prev` starting at the dummy; skip nodes by rewiring `prev.next`. The head can vanish without a special case
 - **Add Two Numbers (LeetCode 2):** build the sum list behind a dummy while carrying; append one last node if the carry is left over
+- **Sort List (LeetCode 148):** merge sort; split at the middle with slow/fast (12-03), sort each half, merge behind a dummy as above
+- **Flattening a Linked List (GFG):** each node heads a sorted `bottom` list; merge the lists pairwise from the right with the merge above
+- **Flatten a Multilevel Doubly Linked List (LeetCode 430):** when a node has a child, splice the child list between it and its `next`, fixing `prev` pointers both ways
 
 ### The failure
 

@@ -1,4 +1,4 @@
-## Reverse in Place <span class="lv lv2"></span> - continued
+## Reverse in Place <span class="lv lv1"></span> - continued
 
 ```ts
 // Reverse Nodes in k-Group (LeetCode 25)
@@ -34,5 +34,6 @@ function reverseKGroup(
 
 - **Reverse Linked List (LeetCode 206):** the inner loop alone with `prev = null`. Recursive form: reverse the rest, then `head.next.next = head; head.next = null`
 - **Reverse Linked List II (LeetCode 92):** one group, positions `left..right`: walk to the node before `left`, then run the same flip for `right − left + 1` nodes
-- **Reverse a linked list in groups of given size (GFG):** unlike LeetCode 25, the *last partial group is reversed too*. Read the statement; drop the "full group?" check
-- **Add 1 to a number represented as a linked list (GFG):** reverse, add with carry, reverse back; or recurse to the tail and carry on the way out (page 13-02)
+- **Last short group reversed too:** a variant of LeetCode 25 reverses the final group even when it has fewer than k nodes. Read the statement; drop the "full group?" check
+- **Swap Nodes in Pairs (LeetCode 24):** this template with k = 2. The last node of an odd-length list is a short group and stays
+- **Add 1 to a Linked List Number (GFG):** reverse, add with carry, reverse back; or recurse to the tail and carry on the way out (page 13-02)

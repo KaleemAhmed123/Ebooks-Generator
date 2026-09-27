@@ -2,6 +2,7 @@
 
 - **What it is:** The start index passed to the next call encodes the rules. `go(i + 1)`: each item once, order ignored. `go(i)`: an item may be reused, order still ignored. `go(0)`: restart the loop from the beginning, so earlier items can come *after* later ones and different orders count as different answers
 - **Signal:** "each number may be chosen an unlimited number of times" (stay), "different sequences are counted as different combinations" (restart), "you may visit a city more than once" (restart), coin change *combinations* vs *permutations*
+- **Not this page if:** order matters but each item is used at most once (arrangements) → 13-08
 - **Why it works:** Combinations are counted once each by forcing choices to appear in non-decreasing index order; the start index enforces that order. Removing the constraint (restarting at 0) lets every ordering through, which is what "sequences" and "routes that revisit" mean
 
 :::mint

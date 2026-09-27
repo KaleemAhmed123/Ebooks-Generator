@@ -3,7 +3,8 @@
 ## Trust the Smaller Call <span class="lv lv1"></span>
 
 - **What it is:** Write a recursive function in three statements, and never trace it. **Hypothesis:** state exactly what `f(n)` does. **Base case:** the smallest input, answered directly. **Induction:** assume `f(n − 1)` (or any smaller call) already works as promised, and use it to finish `f(n)`
-- **Signal:** "using recursion", "tower of Hanoi", "reverse / sort a stack without another data structure", "compute xⁿ", a problem that looks like a smaller copy of itself once one element is removed
+- **Signal:** "solve it recursively"; move n disks between pegs with only the top disk movable; reverse or sort a stack using only push, pop and recursion; xⁿ in O(log n); row n is built from row n − 1; the problem is a smaller copy of itself once one element is removed
+- **Not this page if:** the smaller calls repeat with the same arguments and the answer is a count or a best value → 17-01: cache them, it is DP
 - **Why it works:** It is mathematical induction. If the base case is right and every call is right *whenever its smaller calls are right*, then every call is right. Tracing 2ⁿ calls by hand is where people get lost; the hypothesis replaces the trace
 
 :::mint

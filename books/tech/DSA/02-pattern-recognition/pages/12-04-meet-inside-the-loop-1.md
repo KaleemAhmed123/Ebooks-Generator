@@ -2,6 +2,7 @@
 
 - **What it is:** Floyd's cycle method has a second phase. After slow (1 step) and fast (2 steps) meet inside the cycle, restart one pointer from the head and move both one step at a time. They meet again exactly at the node where the cycle begins
 - **Signal:** "return the node where the cycle begins", "length of the loop", "remove the loop", "find the duplicate in `[1..n]` without modifying the array and in O(1) space", "happy number"
+- **Not this page if:** the array may be modified, or every duplicate and missing value is wanted → 04-02 sends each value to its own index
 - **Why it works:** Let the tail before the cycle have length `a`, and let the first meeting happen `b` steps into the cycle of length `c`. Fast walked twice as far as slow: `2(a + b) = a + b + k·c`, so `a = k·c − b`. Walking `a` more steps from the meeting point therefore lands on the cycle entrance, and so does walking `a` steps from the head
 
 :::mint
@@ -19,8 +20,8 @@
   <circle class="ln" cx="180" cy="62" r="50"/>
   <circle class="ent" cx="130" cy="62" r="5"/><text x="96" y="100" class="sm">entrance</text>
   <circle class="meet" cx="215" cy="27" r="5"/><text x="222" y="22" class="sm">first meeting</text>
-  <text x="150" y="20" class="lb">b</text>
-  <text x="248" y="92" class="sm">cycle length c</text>
+  <text x="138" y="18" class="lb">b</text>
+  <text x="180" y="66" class="sm" text-anchor="middle">cycle length c</text>
   <text x="290" y="46" class="lb">2(a + b) = a + b + k·c</text>
   <text x="290" y="62" class="lb">a = k·c − b</text>
   <text x="290" y="86" class="sm">head → a steps → entrance</text>

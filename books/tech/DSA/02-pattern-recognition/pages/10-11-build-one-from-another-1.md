@@ -1,7 +1,8 @@
 ## Build One from Another <span class="lv lv1"></span>
 
-- **What it is:** Design questions that ask for a structure with a new guarantee, built only from simpler ones: a queue from two stacks, a stack that knows its minimum, a cache that evicts the least recently used key in O(1). The trick is always to pair each structure with the one invariant it cannot keep by itself
+- **What it is:** A structure with a new guarantee, built only from simpler ones: a queue from two stacks, a stack that knows its minimum, an O(1) least-recently-used cache. Pair each structure with the one invariant it cannot keep by itself
 - **Signal:** "implement a queue using stacks", "min stack", "LRU cache", "insert, delete and getRandom in O(1)", "two stacks in one array", "circular queue"
+- **Not this page if:** the structure must report the median of a stream as values arrive → 15-04, two heaps
 - **Why it works:** Each simple structure is fast at one thing. Two stacks reverse the order twice, so the oldest element surfaces; a hash map gives O(1) *finding* while a list gives O(1) *ordering*. Costs that look O(n) per call are paid once per element across all calls: amortised O(1)
 
 :::mint

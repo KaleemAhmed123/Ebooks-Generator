@@ -1,7 +1,8 @@
 ## Stack the Rows <span class="lv lv2"></span>
 
 - **What it is:** A 2-D "largest rectangle of 1s" problem is a 1-D histogram problem asked once per row. Let `h[c]` be the number of consecutive 1s ending at the current row in column `c`; the best rectangle whose bottom edge is this row is the largest rectangle in the histogram `h`
-- **Signal:** "maximal rectangle containing only 1s", "largest rectangle in a histogram", "max area rectangle in a binary matrix"
+- **Signal:** the largest all-1s rectangle in a binary matrix; the largest rectangle under bars of given heights; the bars or rows share a common bottom edge
+- **Not this page if:** the shape must be a *square* → 17-02, a grid DP: `1 + min(up, left, diagonal)`
 - **Why it works:** Every rectangle has a bottom row. Fixing the bottom row, a rectangle of 1s spanning columns `[l, r]` can be as tall as the shortest `h` in that span. So each row reduces to "largest `min(h[l..r]) · width`", which a monotonic stack answers in O(cols): each bar's rectangle stretches until the first shorter bar on each side (page 10-08's reach)
 
 :::mint

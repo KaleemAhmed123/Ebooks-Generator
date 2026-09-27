@@ -1,7 +1,8 @@
 ## Place, Check, Undo <span class="lv lv2"></span>
 
 - **What it is:** Constraint puzzles fill one decision point at a time (a row, a cell, a vertex, a bucket). At each point, try every option, **check** it against O(1) bookkeeping, **place** it by updating the bookkeeping, recurse, then **undo** exactly what you placed
-- **Signal:** "N-Queens", "solve the Sudoku", "colour the graph with at most m colours", "partition into k subsets with equal sum", "use all matchsticks to form a square", "knight's tour"
+- **Signal:** no two pieces may share a row, column or diagonal; fill the empty cells so every row, column and box holds each digit once; split the items into k groups of equal sum; a constraint *between* choices, not just a running total
+- **Not this page if:** the only constraint is a running total hitting a target → 13-06 or 13-07
 - **Why it works:** Each decision point narrows the rest, and a conflict found early kills a whole subtree. The speed comes from the check: keeping sets of used columns and diagonals (or row/column/box digits) makes each test O(1) instead of rescanning the board. Undo restores the bookkeeping so siblings see a clean state
 
 :::mint

@@ -2,6 +2,7 @@
 
 - **What it is:** The contribution technique. Instead of visiting every subarray, ask of each element: *in how many subarrays am I the minimum?* If it can extend `L` steps left and `R` steps right before a smaller value blocks it, it is the minimum of exactly `L · R` subarrays and contributes `a[i] · L · R`
 - **Signal:** "sum of the minimum (or maximum) of every subarray", "sum of subarray ranges", "maximum of the minimum for every window size", n up to 3 · 10⁴ or more so O(n²) subarrays is too slow
+- **Not this page if:** you *count* subarrays whose max lies in a range `[L, R]` → 02-05: at most R minus at most L − 1
 - **Why it works:** A subarray with minimum `a[i]` must start after the previous smaller element and end before the next smaller one; any start and end in those ranges works. A monotonic stack finds all previous and next smaller elements in O(n) (page 10-05). The n² subarrays are grouped by who their minimum is
 
 :::mint

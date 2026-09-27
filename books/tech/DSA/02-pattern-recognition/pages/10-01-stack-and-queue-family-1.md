@@ -25,6 +25,6 @@
   <text x="172" y="84" class="lb">→ ← asteroids, "abbaca"</text><text x="172" y="100" class="sm">page 10-03</text>
   <rect class="bx" x="314" y="38" width="140" height="70" rx="3"/>
   <text x="322" y="54" class="sm">items wait for the first</text><text x="322" y="66" class="sm">future item that beats them</text>
-  <text x="322" y="84" class="lb">next greater, spans</text><text x="322" y="100" class="sm">pages 10-05 to 10-09</text>
+  <text x="322" y="84" class="lb">next greater, spans</text><text x="322" y="100" class="sm">pages 10-05 to 10-10</text>
 </svg>
 :::

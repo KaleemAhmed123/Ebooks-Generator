@@ -1,6 +1,6 @@
 ### Variations
 
-- **Find the Duplicate Number (LeetCode 287):** values are in `1..n` across `n + 1` slots, so `i → nums[i]` is a function with a cycle, and the cycle's entrance is the duplicated value. Run the same two phases on indices; no mutation, O(1) space
+- **Find the Duplicate Number (LeetCode 287):** values are in `1..n` across `n + 1` slots, so `i → nums[i]` is a function with a cycle, and the cycle's entrance is the duplicated value. Start both phases at index 0: no value is 0, so no index points back to 0, and it sits on the tail, never inside the cycle. The entrance is the one index with two arrows into it: the duplicated value. No mutation, O(1) space
 - **Find length of loop (GFG):** after the first meeting, keep one pointer still and walk the other around until it returns; the step count is `c`
 - **Remove loop in a linked list (GFG):** find the entrance, then walk from it to the last node of the cycle (the one whose `next` is the entrance) and set its `next` to `null`
 - **Happy Number (LeetCode 202):** the sequence `n → sum of squared digits` either reaches 1 or cycles. Slow/fast on numbers detects the cycle without a visited set

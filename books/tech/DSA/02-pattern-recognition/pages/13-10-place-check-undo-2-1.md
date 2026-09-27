@@ -29,6 +29,4 @@ function solveNQueens(n: number): string[][] {
 ### Variations
 
 - **Sudoku Solver (LeetCode 37):** decision points are empty cells; the check is three sets per digit (row, column, box `⌊r/3⌋·3 + ⌊c/3⌋`). Fill the cell with the fewest legal digits first to cut the tree sharply
-- **M-Coloring Problem (GFG):** decision points are vertices; a colour is legal if no already-coloured neighbour has it
 - **Partition to K Equal Sum Subsets (LeetCode 698) / Matchsticks to Square (LeetCode 473):** decision points are items; options are the k buckets. Sort items descending (big items fail fast), and skip a bucket whose current sum equals a bucket already tried at this level (equal siblings again, page 13-06)
-- **The Knight's Tour (GFG):** decision points are moves; Warnsdorff's rule (try the square with the fewest onward moves first) finds a tour on large boards almost without backtracking

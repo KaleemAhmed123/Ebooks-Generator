@@ -5,7 +5,6 @@
 - **Insert Delete GetRandom O(1) (LeetCode 380):** an array for random access plus a map value → index. To delete, move the *last* element into the hole, update its index, then pop
 - **Implement Stack using Queues (LeetCode 225):** after each push, rotate the older elements behind the new one (`size − 1` dequeue-enqueue moves). Push is O(n), pop O(1)
 - **Two stacks in one array (GFG):** one grows from the left, one from the right; overflow when the tops meet
-- **Find the middle of a stack in O(1) (GFG):** a doubly linked list with a pointer to the middle that moves one step on every push or pop, depending on parity
 
 ### The failure
 

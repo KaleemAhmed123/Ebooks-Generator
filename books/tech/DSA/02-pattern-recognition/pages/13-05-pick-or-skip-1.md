@@ -2,6 +2,7 @@
 
 - **What it is:** For "all subsets / subsequences", walk the items by index and make one binary decision per item: take it or leave it. Two calls per level, n levels, 2ⁿ leaves, and every leaf is a different subset
 - **Signal:** "all subsets", "all subsequences", "power set", "count subsets with sum K", "longest concatenation with unique characters", n ≤ 20
+- **Not this page if:** the input has equal values and the output must not repeat a subset → 13-06; if order matters → 13-08
 - **Why it works:** A subset is fully described by one yes/no answer per item. The recursion tree enumerates every sequence of answers exactly once, so there are no duplicates to filter (as long as the items are distinct). The index argument is what guarantees each item is decided once and in order
 
 :::mint

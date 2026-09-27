@@ -1,8 +1,9 @@
 ## Try Every Cut <span class="lv lv2"></span>
 
-- **What it is:** For "split the string into valid pieces", decide the *first* piece: try every end position `j` for a piece starting at `start`, keep it if it is valid, and recurse on the rest from `j + 1`. A variant cuts an *expression* at every operator and combines the results of both sides
-- **Signal:** "partition s so every substring is a palindrome", "restore IP addresses", "insert spaces to form dictionary words", "all ways to add parentheses", "split into a Fibonacci-like sequence"
-- **Why it works:** Every partition has a first piece, and its end is one of at most n positions. Fixing the first piece leaves the same problem on a shorter suffix. The recursion tree therefore lists every partition once, and invalid prefixes cut whole subtrees off early
+- **What it is:** To split a string into valid pieces, decide the *first* piece: try every end `j` for a piece starting at `start`, keep it if valid, recurse from `j + 1`. A variant cuts an *expression* at every operator and combines both sides
+- **Signal:** "partition s so every substring is a palindrome", "restore IP addresses", "insert spaces to form dictionary words", "all ways to add parentheses"
+- **Not this page if:** only the number of ways or the fewest cuts is asked → 17-05, DP over cut positions
+- **Why it works:** Every partition has a first piece ending at one of at most n positions; fixing it leaves the same problem on a shorter suffix. So the tree lists every partition once, and an invalid prefix cuts off its whole subtree
 
 :::mint
 <svg viewBox="0 0 470 112" role="img" aria-label="Palindrome partitioning of aab. The first piece can be a, aa, or aab. aab is not a palindrome and is cut off. After a, the rest ab splits as a, b. After aa, the rest b is one piece. Results: a a b, and aa b." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">

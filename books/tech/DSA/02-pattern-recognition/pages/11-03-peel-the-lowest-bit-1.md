@@ -1,7 +1,8 @@
-## Peel the Lowest Bit <span class="lv lv2"></span>
+## Peel the Lowest Bit <span class="lv lv1"></span>
 
 - **What it is:** Two one-line identities do most bit work. `n & (n − 1)` deletes the lowest set bit of `n`. `n & −n` keeps only the lowest set bit. Loops that peel bits one at a time run once per *set* bit, not once per bit position
-- **Signal:** "count the 1 bits", "is n a power of two", "counting bits for every number from 0 to n", "position of the only set bit", "enumerate all subsets of a mask"
+- **Signal:** "count the 1 bits", "is n a power of two", "counting bits for every number from 0 to n", "position of the only set bit", "enumerate all subsets of a mask", "reverse the bits", "add two integers without using + or −"
+- **Not this page if:** the count is per bit *position* across many numbers ("sum of Hamming distances over all pairs") → 11-02
 - **Why it works:** Subtracting 1 turns the lowest 1 into 0 and every 0 below it into 1; AND with the original wipes that whole tail. So `n & (n − 1)` is `n` minus its lowest bit, and a number is a power of two exactly when that leaves 0. The same peel turns "number of 1s in i" into a recurrence on a smaller number
 
 :::mint
