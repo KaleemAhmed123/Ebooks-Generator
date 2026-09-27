@@ -1,6 +1,6 @@
 ## The Master Pattern Matrix
 
-When deriving a solution, ask yourself what the structural requirement is.
+The coarse map, by structural goal. To route a specific problem, use Pattern Recognition: its chart (01-04), keyword index (01-05) and look-alikes (01-06) lead to one of its 54 patterns.
 
 ### By Need (Structural Goal)
 
