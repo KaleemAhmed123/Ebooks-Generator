@@ -55,3 +55,10 @@ Budget: front ~4 · pattern pages ~115 · openers ~12 · drills ~18 → about 15
   Drills: 11 most-asked problems, titled and linked. Two templates tightened (02-05,
   02-10) and re-run against a brute force: 3,000 cases, 0 failures. Book 276 pages,
   0 overflow. Review PDF: `dist/tech/DSA/02-pattern-recognition-ch02-pilot.pdf`.
+- 2026-09-27 — pattern intro pages, at the level of well-known patterns (your call),
+  modelled on the main-branch family page: Sliding Window (02-01, 2 pages) and Two
+  Pointers (02-08-0). `tools/build.mjs` lets a label be keyed by file stem, so an intro
+  sharing an ID shows "overview". Chapter 2 is 13 pages; pilot PDF is
+  `dist/tech/DSA/02-pattern-recognition-ch02-pilot.pdf`. Helpers and lookup tables
+  are copied to `docs/tasks/reference/dsa/scripts/`. Continuation prompt:
+  `dsa-pattern-compact-HANDOFF.md`.
