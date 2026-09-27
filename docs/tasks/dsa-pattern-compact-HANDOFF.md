@@ -51,6 +51,9 @@ Do not merge to main until I say so.
 - **When writing, use a bare ID where the title reads naturally** ("→ 03-03"). Never write "name (ID)": that prints the name twice. In tables write `**02-02**` alone.
 - IDs drawn inside SVG diagrams are **not** converted, so write move names in diagrams. Still to do: `01-04` chart chips and the `01-02` map's page column (show names or printed page numbers instead), and any chapter diagram that shows IDs.
 
+## Known state of the build (commit 83f5b0c)
+- Chapter 2 fits. **23 old-format pages in chapters 3–19 overflow** because printed titles are longer than IDs; most are drill answer tables (`*-drills-b`), plus a few family pages, `13-03`, and `01-02` (by 2mm). Each clears when its chapter is rewritten in the compact style. Expect 0 overflow chapter by chapter, not before.
+
 ## Token budget: I care about this
 - Do the work **yourself, chapter by chapter**. No parallel subagents unless I ask; they burned a lot of tokens last time.
 - Reuse the helpers in `docs/tasks/reference/dsa/scripts/`:
