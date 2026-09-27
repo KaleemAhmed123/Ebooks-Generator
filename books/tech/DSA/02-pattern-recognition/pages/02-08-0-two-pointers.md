@@ -37,9 +37,9 @@
 
 | Move | When to use | What it exploits |
 |---|---|---|
-| **02-08 Collide from both ends** | sorted, find a pair | a too-small sum rules out a whole row of pairs |
-| **02-10 Fix one, collide two** | triplets, k-Sum | fix one value, collide on the rest |
-| **02-09 Reader and writer** | "in place, return the new length", 0 / 1 / 2 | everything behind the writer is final |
+| **02-08** | sorted, find a pair | a too-small sum rules out a whole row of pairs |
+| **02-10** | triplets, k-Sum | fix one value, collide on the rest |
+| **02-09** | "in place, return the new length", 0 / 1 / 2 | everything behind the writer is final |
 
 ```ts
 let l = 0, r = a.length - 1;          // collide: sorted, find a pair

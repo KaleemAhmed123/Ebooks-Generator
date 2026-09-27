@@ -10,12 +10,12 @@
 
 | Move | When to use | What it exploits |
 |---|---|---|
-| **02-02 Fixed length** | "every window of size k" | neighbours share k − 1 items |
-| **02-03 Variable length** | "longest / shortest such that" | validity is monotone in the window |
-| **02-04 Count by the right end** | "count the subarrays such that" | one window stands for `right − left + 1` answers |
-| **02-05 Exactly K** | "exactly K distinct / odd" | exactly = atMost(K) − atMost(K − 1) |
-| **02-06 Flip the target** | "remove from either end" | what stays is one middle window |
-| **02-07 Sort, then slide** | "choose values by their spread" | sorted, the best subset is contiguous |
+| **02-02** | "every window of size k" | neighbours share k − 1 items |
+| **02-03** | "longest / shortest such that" | validity is monotone in the window |
+| **02-04** | "count the subarrays such that" | one window stands for `right − left + 1` answers |
+| **02-05** | "exactly K distinct / odd" | exactly = atMost(K) − atMost(K − 1) |
+| **02-06** | "remove from either end" | what stays is one middle window |
+| **02-07** | "choose values by their spread" | sorted, the best subset is contiguous |
 
 ### The skeleton
 

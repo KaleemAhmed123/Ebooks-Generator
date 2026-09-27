@@ -46,6 +46,11 @@ Do not merge to main until I say so.
 6. **Keep chapters 18–19, compacted.**
 7. **Plan first:** tell me the plan and any open questions before large edits, and ask before anything irreversible. Commit in small groups with short, plain messages.
 
+## Page IDs are no longer printed (decided 2026-09-27)
+- `meta.json` has `"pageIdsInText": false`, so the build turns an in-book ID into a link showing the target page's **title** ("→ 03-03" prints "→ Equal Prefixes"). The corner ID is hidden in `theme.css`.
+- **When writing, use a bare ID where the title reads naturally** ("→ 03-03"). Never write "name (ID)": that prints the name twice. In tables write `**02-02**` alone.
+- IDs drawn inside SVG diagrams are **not** converted, so write move names in diagrams. Still to do: `01-04` chart chips and the `01-02` map's page column (show names or printed page numbers instead), and any chapter diagram that shows IDs.
+
 ## Token budget: I care about this
 - Do the work **yourself, chapter by chapter**. No parallel subagents unless I ask; they burned a lot of tokens last time.
 - Reuse the helpers in `docs/tasks/reference/dsa/scripts/`:

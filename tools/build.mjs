@@ -179,7 +179,7 @@ function linkIds(html, ids) {
     const external = [...t.matchAll(/Module\s+\d+(?:\s*,?\s*(?:pages?\s+)?\d\d-\d\d(?:\s*(?:,|and|to|–|-|→|\.\.)\s*\d\d-\d\d)*)?/g)]
       .map((m) => [m.index, m.index + m[0].length]);
     parts[i] = t.replace(/\b(\d\d-\d\d)\b/g, (m, id, at) =>
-      ids.has(id) && !external.some(([a, b]) => at >= a && at < b) ? `<a class="pref" href="#p-${id}">${id}</a>` : m,
+      ids.has(id) && !external.some(([a, b]) => at >= a && at < b) ? `<a class="pref" href="#p-${id}">${ids.titles?.get(id) ?? id}</a>` : m,
     );
   }
   return parts.join("");
@@ -232,7 +232,7 @@ async function renderPage(file, headings, pageIdx, blocks, term, accent, recolor
     // The contents page lists parts and page titles only. Sub-sections and a
     // "- continued" page add length without helping anyone find anything.
     const inToc = !isCover && Number(lvl) <= 2 && !/-\s*continued$/i.test(plain);
-    if (inToc) headings.push({ lvl: Number(lvl), text: pid && lvl === "2" ? `${pid}  ${plain}` : plain, id, page: pageIdx });
+    if (inToc) headings.push({ lvl: Number(lvl), text: pid && lvl === "2" && !ids.titles ? `${pid}  ${plain}` : plain, id, page: pageIdx });
     // "TERM 35/57" — where this entry sits in its own topic. Counted here, so
     // it can never disagree with what is actually on the page.
     const badge =
@@ -476,6 +476,14 @@ async function buildBook(book) {
   for (const f of ids ? rest : []) {
     const id = f.slice(0, 5);
     if (/^\d\d-\d\d-/.test(f) && !ids.has(id)) ids.set(id, path.basename(f, ".md"));
+  }
+  // A book that hides its IDs prints the target page's title in a link instead.
+  if (ids && book.config.pageIdsInText === false) {
+    ids.titles = new Map();
+    for (const [id, file] of ids) {
+      const h = (await readFile(path.join(src, file + ".md"), "utf8")).match(/^## (.+)$/m);
+      if (h) ids.titles.set(id, h[1].replace(/<[^>]+>/g, "").replace(/\s*-\s*continued$/, "").trim());
+    }
   }
   for (let i = 0; i < rest.length; i++) {
     pages.push(await renderPage(path.join(src, rest[i]), headings, i, blocks, term, accent, undefined, ids));

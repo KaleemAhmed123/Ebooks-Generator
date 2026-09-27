@@ -27,6 +27,7 @@
    pages included. In-book references to it are links. */
 section[data-pid] { position: relative; }
 section[data-pid]::before {
+  display: none; /* IDs are not printed; references show page titles */
   content: attr(data-pid);
   position: absolute;
   top: 0;

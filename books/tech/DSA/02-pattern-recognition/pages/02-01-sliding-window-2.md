@@ -2,7 +2,7 @@
 
 ### The trap
 
-- **Negative numbers.** Adding a value can lower a sum, so shrinking stops being safe. Sum = K → equal prefixes (03-03); sum ≥ K → a deque of prefix sums (10-10)
+- **Negative numbers.** Adding a value can lower a sum, so shrinking stops being safe. Sum = K → 03-03; sum ≥ K → a deque of prefix sums, 10-10
 - **"Subset" is not "subarray".** A subsequence summing to K is knapsack DP (Module 06); a subset scored only by its values becomes a window after sorting (02-07)
 
 ### Window, count, or prefix map?
@@ -28,17 +28,17 @@ Four questions, in this order, settle any "subarray with property P" statement.
   <path class="ar" d="M120 78 L120 98" marker-end="url(#m0211)"/><text x="126" y="92" class="sm">no</text>
   <path class="ar" d="M120 124 L120 144" marker-end="url(#m0211)"/><text x="126" y="138" class="sm">no</text>
   <path class="ar" d="M230 20 L262 20" marker-end="url(#m0211)"/><text x="238" y="15" class="sm">no</text>
-  <rect class="lf" x="264" y="8" width="198" height="24" rx="12"/><text x="274" y="24" class="lb">subset <tspan class="id">02-07</tspan> · subsequence <tspan class="id">Mod 06</tspan></text>
+  <rect class="lf" x="264" y="8" width="198" height="24" rx="12"/><text x="274" y="24" class="lb">subset <tspan class="id">sort, then slide</tspan> · subsequence <tspan class="id">DP</tspan></text>
   <path class="ar" d="M230 66 L262 66" marker-end="url(#m0211)"/><text x="238" y="61" class="sm">yes</text>
-  <rect class="lf" x="264" y="54" width="198" height="24" rx="12"/><text x="274" y="70" class="lb">equal codes, a map <tspan class="id">03-03</tspan></text>
+  <rect class="lf" x="264" y="54" width="198" height="24" rx="12"/><text x="274" y="70" class="lb">equal codes, a map <tspan class="id">equal prefixes</tspan></text>
   <path class="ar" d="M230 112 L262 112" marker-end="url(#m0211)"/><text x="238" y="107" class="sm">yes</text>
-  <rect class="lf" x="264" y="100" width="198" height="24" rx="12"/><text x="274" y="116" class="lb">sum = K <tspan class="id">03-03</tspan> · sum ≥ K <tspan class="id">10-10</tspan></text>
+  <rect class="lf" x="264" y="100" width="198" height="24" rx="12"/><text x="274" y="116" class="lb">sum = K <tspan class="id">equal prefixes</tspan> · sum ≥ K <tspan class="id">deque</tspan></text>
   <path class="ar" d="M230 158 L262 150" marker-end="url(#m0211)"/>
-  <rect class="lf" x="264" y="138" width="198" height="22" rx="11"/><text x="274" y="153" class="lb">longest / shortest <tspan class="id">02-03</tspan></text>
+  <rect class="lf" x="264" y="138" width="198" height="22" rx="11"/><text x="274" y="153" class="lb">longest / shortest <tspan class="id">variable window</tspan></text>
   <path class="ar" d="M230 162 L262 176" marker-end="url(#m0211)"/>
-  <rect class="lf" x="264" y="166" width="198" height="22" rx="11"/><text x="274" y="181" class="lb">count, shrink-safe <tspan class="id">02-04</tspan></text>
+  <rect class="lf" x="264" y="166" width="198" height="22" rx="11"/><text x="274" y="181" class="lb">count, shrink-safe <tspan class="id">count by right end</tspan></text>
   <path class="ar" d="M226 170 L262 202" marker-end="url(#m0211)"/>
-  <rect class="lf" x="264" y="192" width="198" height="22" rx="11"/><text x="274" y="207" class="lb">count, "exactly K" <tspan class="id">02-05</tspan></text>
+  <rect class="lf" x="264" y="192" width="198" height="22" rx="11"/><text x="274" y="207" class="lb">count, "exactly K" <tspan class="id">subtract two counts</tspan></text>
   <text x="10" y="192" class="sm">a window needs every value ≥ 0:</text>
   <text x="10" y="204" class="sm">then growing never lowers the sum</text>
 </svg>
