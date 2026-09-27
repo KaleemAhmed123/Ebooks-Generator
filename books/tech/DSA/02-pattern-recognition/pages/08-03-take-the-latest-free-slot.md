@@ -48,4 +48,15 @@ function jobSequencing(deadline: number[], profit: number[]): number[] {
 
 - **Watch out:** the earliest free slot. x (deadline 2, profit 100) takes slot 1 and y (deadline 1, profit 50) is lost: 100 instead of 150
 - **Faster:** a union-find over slots, `parent[t]` = the latest free slot ≤ t, makes each lookup nearly O(1)
-- **Also solves:** [Course Schedule III](https://leetcode.com/problems/course-schedule-iii/) (LeetCode 630) (lengths, not unit time: the regret heap, 15-06)
+### Where it appears
+
+| Problem | What fills the slots |
+|---|---|
+| [Job Sequencing](https://www.geeksforgeeks.org/problems/job-sequencing-problem-1587115620/1) (GFG) | unit-time jobs placed by deadline |
+| [Course Schedule III](https://leetcode.com/problems/course-schedule-iii/) (LeetCode 630) | variable-length jobs; regret heap (→ 15-06) |
+
+:::interview
+"Why place each job in the latest free slot, not the earliest?"
+
+Placing it early wastes a slot that a future job with a tighter deadline might need. The latest slot satisfying the deadline preserves the most options. This is the greedy exchange argument: swapping a late-placed job to an earlier slot never helps, but moving an early one later can save a tighter job.
+:::
