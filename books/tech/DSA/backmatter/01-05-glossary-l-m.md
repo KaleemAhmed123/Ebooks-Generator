@@ -4,6 +4,7 @@
 - **Lazy Propagation:** A range update stored at a segment-tree node and pushed to its children only when they are visited.
 - **Linear Probing:** A collision resolution technique in Hash Maps that searches for the next available adjacent bucket.
 - **Load Factor:** The ratio of items to buckets in a Hash Map; when it exceeds a threshold (e.g., 0.75), the map resizes to maintain O(1) performance.
+- **Look-alike:** A problem whose statement resembles one pattern but is solved by another; one fact in the statement decides which.
 - **Lower Bound / Upper Bound:** The first index with value ≥ x / > x in a sorted array.
 - **Lowest Common Ancestor (LCA):** The deepest node that has both given nodes in its subtree.
 - **Meet in the Middle:** Splitting the input in half, enumerating each half, and combining the two lists by sorting or hashing.
@@ -11,6 +12,8 @@
 - **Merge Sort:** A stable, Divide and Conquer O(N log N) sorting algorithm that requires O(N) extra space to merge halves.
 - **Minimax:** Scoring a game position by assuming each player picks the move that is worst for the other.
 - **Minimum Spanning Tree (MST):** A subset of edges connecting all vertices in a weighted graph with the minimum total edge weight and no cycles.
+- **Monotone Predicate:** A yes/no test that flips at most once as its input grows, so binary search can find the flip.
 - **Monotonic Queue (Deque):** A deque kept sorted; the front leaves when it falls out of the window, the back is popped by better arrivals.
 - **Monotonic Stack:** A Stack that maintains elements in sorted order, popping elements that would violate the ordering; used for "next greater element" problems.
 - **Morris Traversal:** An in-order walk that temporarily points each node's predecessor back at it, so it needs no stack.
+- **Move (Pattern Recognition):** One variant of a pattern: the same mechanism answering a different question.

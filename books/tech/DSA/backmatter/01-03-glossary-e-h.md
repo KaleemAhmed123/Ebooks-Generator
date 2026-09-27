@@ -12,3 +12,4 @@
 - **Hash Set:** A Hash Map that only stores keys (no values), providing O(1) membership checking.
 - **Heap:** A Complete Binary Tree (typically stored in an array) where the parent is always smaller/larger than its children, giving O(log N) access to the extremum.
 - **Heap Sort:** An unstable, in-place O(N log N) sorting algorithm that builds a max-heap and repeatedly extracts the root.
+- **Huffman Coding:** Building an optimal prefix code by repeatedly merging the two least frequent symbols; the same greedy gives the cheapest order to merge any weights.

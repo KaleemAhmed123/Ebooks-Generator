@@ -257,8 +257,75 @@ map on 01-02 does that job); agents running `--split` (it re-cuts every page).
 
 - [x] 1. Page IDs
 - [x] 2. Pattern groups and labels
-- [ ] 3. Chapter passes A–D
-- [ ] 4. Front of book
-- [ ] 5. Checkpoints and contrast pages
-- [ ] 6. Series hygiene
-- [ ] 7. Verify and re-audit
+- [x] 3. Chapter passes A–D
+- [x] 4. Front of book
+- [x] 5. Checkpoints and contrast pages
+- [x] 6. Series hygiene (glossary, back-matter matrix)
+- [ ] 7. Re-audit: cut to one cheap pass to save tokens; full five-lens re-audit only if you ask
+
+## Updates (continued)
+
+- 2026-09-27 — phases 1–2: page IDs printed, listed in the contents and linked
+  (272 links, 0 dangling); 54 pattern labels from meta.json; Morris → 14-10.
+- 2026-09-27 — phase 4: 01-01 rewritten; 01-02 is the 54-pattern map; 01-04 is a
+  two-page chart that routes all 87 pattern pages plus the new routers; 01-05 index
+  has 85 phrases over 6 pages; 01-06 Look-alikes (11 pairs, titles checked live).
+  The three generators live in the session scratchpad (chart, index, map).
+- 2026-09-27 — phase 3: four chapter agents hit the API session limit mid-run and
+  were resumed with their context. Each chunk verified by me (full PDF build, checker,
+  book-wide duplicate-problem grep, screenshots) and committed: `80cd4e8` (Ch 2–4),
+  `a550fdd` (Ch 10–13), `0cc73e9` (Ch 5–9, 14–19).
+  - New pages: 02-11, 05-00, 06-00, 11-00, 13-03.
+  - Every pattern page has a "Not this page if" line; Signals rewritten as statement
+    features where they were titles.
+  - About 20 diagrams rebuilt to show the mechanism.
+  - Every drill is rebuilt as disguised statements with answers on the next page.
+  - Coverage added: LC 190, 371, 24, 347, 560 pointer, 795, 729, 864, 1293.
+  - Paid-only problems removed: 253, 291, 723, 1136.
+  - Badges recalibrated.
+  - My brief was wrong on 10-10: the example input never expired a front element.
+    Agent C switched to an input that does and verified it.
+- 2026-09-27 — phase 5: five checkpoints (04-08, 08-09, 11-05, 14-12, 17-08),
+  10 disguised statements each, 50 problems, none in any drill, none repeated.
+- 2026-09-27 — phase 6: six glossary terms added (Bijection, Huffman Coding,
+  Look-alike, Monotone Predicate, Move, Pattern); back-matter matrix points here.
+- Build: 290 pages, 0 overflow.
+- Not done / known limits:
+  - The merged `dsa-complete` volume has pre-existing overflows in other booklets
+    (Foundations and others). They are out of scope and untouched.
+  - The GFG title "Reverse a linked list in groups of given size" is no longer in
+    GFG's practice list, so the title was cut and the fact kept.
+  - Huffman tie rule, Alien Dictionary and RMQSQ wording were not re-fetched live.
+
+## Explanation
+
+1. **What changed:** the booklet now routes by 54 named patterns (each with its
+   moves) instead of 90 loose pages. It prints page IDs and links them. The front
+   routes every pattern. Every pattern page names its look-alike. Every drill and
+   five checkpoints test recognition from disguised statements.
+2. **Why:** the audit scored recognition training 5.5–6.5 and navigation 5.5; the
+   mechanics (templates, failures) were already 9.
+3. **How it works:** statement → 01-04 chart or 01-05 index → page ID (printed,
+   linked) → the page's Signal and "Not this page if" confirm or redirect. The
+   01-06 look-alikes and the checkpoints train the choice. The drills add spacing
+   by mixing in earlier chapters.
+4. **Files:**
+   - `tools/build.mjs`: `linkIds()`, page-ID corner label, contents prefix,
+     pattern label under each `##`, all opt-in via `pageIds`.
+   - `books/tech/DSA/theme.css`: styles for the page ID and the pattern label.
+   - `02-pattern-recognition/meta.json`: `pageIds` and `patterns`.
+   - Pages: `01-*` front; chapter pages as listed in the commits.
+5. **Decisions:**
+   - Group, don't cut; the reasons are recorded above.
+   - Labels live in meta.json, so renaming a pattern never touches 87 pages.
+   - The pattern label sits inside the title's bottom margin, so it adds no height.
+   - The front-page generators fail loudly if a page has no route.
+6. **Verification:** full PDF build 290 pages 0 overflow; checker has no banned
+   words, no throat-clearing and no visual limits exceeded; the drill duplicate
+   grep is empty; every new or changed template was run against a brute force by
+   its agent; 66 GFG links fetched (200) earlier; LeetCode titles come from the
+   official list.
+7. **Limits:**
+   - `check-pages.mjs` still reports its structural false positives.
+   - The generators are in the scratchpad, not the repo. Re-running them after a
+     rename needs them moved into `tools/`, if you want that.

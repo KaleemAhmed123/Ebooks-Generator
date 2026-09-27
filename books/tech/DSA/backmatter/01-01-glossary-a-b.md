@@ -6,6 +6,7 @@
 - **Backtracking:** A recursive brute-force technique that builds a solution incrementally and abandons a path ("pruning") when it is guaranteed to fail.
 - **Beam Search:** A best-first search that keeps only the B best candidates at each step.
 - **Bellman-Ford Algorithm:** A shortest-path algorithm taking O(V · E) time that handles negative weights and detects negative weight cycles.
+- **Bijection:** A one-to-one pairing in both directions: every left item maps to exactly one right item, and no two left items share one.
 - **Binary Lifting:** A table of each node's 2ᵏ-th ancestor, so a k-step jump up a tree takes O(log n) moves.
 - **Binary Search:** An O(log N) algorithm that halves the search space at each step, requiring sorted data (or a monotonic boolean function).
 - **Binary Search on the Answer:** Binary search over candidate answers, using a yes/no feasibility check that flips exactly once.
