@@ -1,9 +1,8 @@
 ## Take the Latest Free Slot <span class="lv lv2"></span>
 
-- **What it is:** Unit-time jobs, each with a deadline and a profit. Take jobs from most to least profitable; put each one in the *latest* free time slot that still meets its deadline. If no such slot is free, skip it
-- **Signal:** unit-time jobs, each with a deadline and a profit, one job per slot; maximise the profit
-- **Not this page if:** jobs take different lengths of time → 15-06 (keep a heap of the jobs taken, drop the longest)
-- **Why it works:** Profit order means a job is only ever skipped for more valuable ones. Placing a job as *late* as its deadline allows keeps the early slots open, and early slots are the only ones that jobs with tight deadlines can use.
+- **What:** unit-time jobs with deadlines and profits. Take them from most to least profitable; put each in the *latest* free slot that meets its deadline, or skip it
+- **Spot it:** unit-time jobs, one per slot, a deadline and a profit each; maximise the profit. Jobs of different lengths → 15-06
+- **Why:** in profit order a job is only skipped for more valuable ones. Placing it as late as allowed keeps early slots free, and only early slots serve tight deadlines
 
 :::mint
 <svg viewBox="0 0 470 110" role="img" aria-label="Jobs a with deadline 4 profit 20, b with deadline 1 profit 10, c with deadline 1 profit 40, d with deadline 1 profit 30. By profit: c goes to slot 1, a goes to the latest free slot 4, d and b need slot 1 which is taken, so they are skipped. Profit 60." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -29,9 +28,7 @@
 
 ```ts
 // Job Sequencing (GFG): count of jobs done and total profit
-function jobSequencing(
-  deadline: number[], profit: number[],
-): number[] {
+function jobSequencing(deadline: number[], profit: number[]): number[] {
   const order = profit.map((_, i) => i)
     .sort((a, b) => profit[b] - profit[a]);
   const maxD = deadline.reduce((m, d) => Math.max(m, d), 0);
@@ -39,8 +36,7 @@ function jobSequencing(
   let count = 0, total = 0;
   for (const i of order) {
     for (let t = Math.min(deadline[i], maxD); t >= 1; t--) {
-      // latest free slot
-      if (!used[t]) {
+      if (!used[t]) {                                // latest free slot
         used[t] = true; count++; total += profit[i];
         break;
       }
@@ -49,3 +45,7 @@ function jobSequencing(
   return [count, total];
 }
 ```
+
+- **Watch out:** the earliest free slot. x (deadline 2, profit 100) takes slot 1 and y (deadline 1, profit 50) is lost: 100 instead of 150
+- **Faster:** a union-find over slots, `parent[t]` = the latest free slot ≤ t, makes each lookup nearly O(1)
+- **Also solves:** [Course Schedule III](https://leetcode.com/problems/course-schedule-iii/) (LeetCode 630) (lengths, not unit time: the regret heap, 15-06)

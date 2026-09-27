@@ -1,9 +1,8 @@
 ## Sweep Line <span class="lv lv1"></span>
 
-- **What it is:** Turn every interval into two events, `+1` at its start and `−1` at its end, sort the events by time, and walk them with a running count. The count at any moment is how many intervals are open
-- **Signal:** the question is *how many* intervals are open at one moment: "at the same time", "fewest rooms / platforms / groups so that none in a group overlap", "busiest moment", "how many are active when each query arrives"
-- **Not this page if:** it asks *which* stretches are covered (merge, insert, the union) rather than how deep the overlap is → 07-07
-- **Why it works:** Overlap only changes at an endpoint. Between two consecutive events the set of open intervals is fixed, so 2n events describe every moment, and the answer is read in one pass after an O(n log n) sort instead of comparing all O(n²) pairs
+- **What:** each interval becomes two events, `+1` at its start and `−1` at its end. Sort the events, walk them with a running count: the count is how many intervals are open
+- **Spot it:** *how many* are open at one moment: "at the same time", "fewest rooms / platforms / groups", "busiest moment". *Which* stretches are covered → 07-07
+- **Why:** overlap changes only at an endpoint, so 2n sorted events describe every moment: O(n log n) instead of comparing all pairs
 
 :::mint
 <svg viewBox="0 0 470 142" role="img" aria-label="Intervals A from 1 to 5, B from 2 to 4 and C from 6 to 8 on a timeline. Events: plus 1 at times 1, 2 and 6, minus 1 at times 4, 5 and 8. The running count goes 1, 2, 1, 0, 1, 0; its peak of 2 lies between times 2 and 4, when A and B overlap." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -41,10 +40,17 @@
 </svg>
 :::
 
-### Variations
+```ts
+// Divide Intervals Into Minimum Number of Groups (LeetCode 2406)
+function minGroups(intervals: number[][]): number {
+  const ev: number[][] = [];
+  for (const [s, e] of intervals) ev.push([s, 1], [e + 1, -1]); // closed: off after e
+  ev.sort((a, b) => a[0] - b[0] || a[1] - b[1]);                 // tie: −1 first
+  let open = 0, best = 0;
+  for (const [, d] of ev) best = Math.max(best, (open += d));
+  return best;
+}
+```
 
-- **Template and the end-before-start tie rule:** Module 04 (03-05)
-- **Minimum Platforms (GFG) / Divide Intervals Into Minimum Number of Groups (LeetCode 2406):** the peak of the running count is the answer. In 2406 `[1, 5]` and `[5, 8]` intersect, so starts go before ends at equal times
-- **Bounded positions (Car Pooling):** a difference array replaces the sort (03-07)
-- **The Skyline Problem (LeetCode 218):** the events carry heights; keep active heights in a max-heap with lazy deletion and emit a point whenever the top changes
-- **My Calendar III (LeetCode 732):** events arrive online; a sorted map of `+1/−1` counts, swept after each booking
+- **Watch out:** the tie rule. Whether `[1, 3]` and `[3, 5]` overlap depends on the statement. Closed intervals switch off at `e + 1`; half-open ones at `e`, with ends before starts at equal times. Get it wrong and the peak is one off
+- **Also solves:** [Minimum Platforms](https://www.geeksforgeeks.org/problems/minimum-platforms-1587115620/1) (GFG) · [Number of Flowers in Full Bloom](https://leetcode.com/problems/number-of-flowers-in-full-bloom/) (LeetCode 2251) (sort starts and ends apart; count with binary search) · [The Skyline Problem](https://leetcode.com/problems/the-skyline-problem/) (LeetCode 218) (events carry heights; a max-heap of the open ones)

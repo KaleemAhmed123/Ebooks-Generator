@@ -1,9 +1,8 @@
 ## Let Pairs Decide the Order <span class="lv lv2"></span>
 
-- **What it is:** When no single key sorts the items correctly, define the order by asking about *two* items at a time: "should `a` come before `b`?". If that pairwise rule is consistent, one comparator sort produces the optimal arrangement
-- **Signal:** arrange all items in one line, where whether `a` goes before `b` depends on both of them together: "form the largest number", "ties broken by …", "each person knows how many taller people stand in front", "order to minimise the total cost"
-- **Not this page if:** the statement *gives* the before/after pairs ("X must come before Y") → 16-04, a topological order, not a comparator
-- **Why it works:** An exchange argument. If swapping two neighbours `a b → b a` never makes the answer better when `a` should precede `b`, then any arrangement can be bubble-swapped into comparator order without getting worse. So the comparator order is optimal. The comparator must be a *consistent* ordering, or the sort's output is undefined
+- **What:** when no single key sorts correctly, order by asking about *two* items: "should `a` come before `b`?". A consistent pairwise rule plus one comparator sort gives the optimal line
+- **Spot it:** "form the largest number", "each person knows how many taller ones stand in front", "order to minimise the total cost". The statement *gives* the before/after pairs → 16-04
+- **Why:** an exchange argument. If swapping neighbours `a b → b a` never helps when `a` should lead, any line can be bubble-swapped into comparator order without getting worse
 
 :::mint
 <svg viewBox="0 0 470 96" role="img" aria-label="Largest number from 3, 30, 34. Comparing 3 and 30 as strings: 330 beats 303, so 3 goes first. Comparing 34 and 3: 343 beats 334, so 34 goes first. The order 34, 3, 30 gives 34330." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -31,3 +30,6 @@ function largestNumber(nums: number[]): string {
   return joined[0] === "0" ? "0" : joined;
 }
 ```
+
+- **Watch out:** a comparator must return a number. `(a, b) => a + b < b + a` returns `true`/`false`, which becomes 1/0, never negative, and the order is undefined
+- **Also solves:** [Queue Reconstruction by Height](https://leetcode.com/problems/queue-reconstruction-by-height/) (LeetCode 406) (tallest first, then insert at index `k`) · [Sort Integers by The Number of 1 Bits](https://leetcode.com/problems/sort-integers-by-the-number-of-1-bits/) (LeetCode 1356) · [Custom Sort String](https://leetcode.com/problems/custom-sort-string/) (LeetCode 791) · collapse the pair rule into one key when you can: [Two City Scheduling](https://leetcode.com/problems/two-city-scheduling/) (LeetCode 1029) → 08-05

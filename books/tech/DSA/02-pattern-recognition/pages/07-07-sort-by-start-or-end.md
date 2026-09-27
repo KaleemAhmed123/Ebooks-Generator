@@ -1,9 +1,8 @@
 ## Sort by Start to Merge, by End to Keep <span class="lv lv1"></span>
 
-- **What it is:** Interval problems split into two families, and the family decides the sort key. **Merge / cover / union** questions sort by *start*. **Keep the most / remove the fewest / fewest points to stab** questions sort by *end*
-- **Signal:** intervals plus a question about *which* stretches: merge, insert or intersect them (the union), or remove the fewest so none overlap, or find the fewest points that hit every one
-- **Not this page if:** the question is how many intervals are open at one moment → 07-06
-- **Why it works:** Sorted by start, an interval can only overlap the group that is currently open, so one running `end` decides merge-or-close. Sorted by end, the interval that finishes first leaves the most room for everything after it, which is the exchange argument behind activity selection (Module 04, 03-04)
+- **What:** the question decides the key. **Merge / cover / union** sorts by *start*. **Keep the most / remove the fewest / fewest points to stab** sorts by *end*
+- **Spot it:** intervals plus *which* stretches: merge, insert, intersect, remove the fewest so none overlap, stab all with fewest arrows. How many open at one moment → 07-06
+- **Why:** by start, an interval can only touch the group still open, so one running `end` decides merge or close. By end, the interval that finishes first leaves the most room: the exchange argument of activity selection
 
 :::mint
 <svg viewBox="0 0 470 120" role="img" aria-label="Intervals 1 to 3, 2 to 6, 8 to 10, 15 to 18 sorted by start. The first two overlap because 2 is at most the current end 3, so they merge into 1 to 6. The next interval 8 to 10 starts after 6 and opens a new group. Result 1 to 6, 8 to 10, 15 to 18." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -39,3 +38,6 @@ function merge(intervals: number[][]): number[][] {
   return out;
 }
 ```
+
+- **Watch out:** sorting by start for "remove the fewest". `[1, 100], [2, 3], [4, 5]` keeps 1 interval by start and 2 by end. And when merging, compare with the last *merged* interval, not the previous input
+- **Also solves:** [Insert Interval](https://leetcode.com/problems/insert-interval/) (LeetCode 57) (already sorted: O(n), no sort) · [Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/) (LeetCode 435) (removals = n − kept, by end) · [Minimum Number of Arrows to Burst Balloons](https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/) (LeetCode 452) (touching balloons share an arrow: test `start > arrow`) · [Interval List Intersections](https://leetcode.com/problems/interval-list-intersections/) (LeetCode 986) (two pointers: overlap is `[max starts, min ends]`)

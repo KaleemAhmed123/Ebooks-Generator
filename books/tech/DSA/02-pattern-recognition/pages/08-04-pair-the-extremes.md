@@ -1,9 +1,8 @@
 ## Pair the Extremes <span class="lv lv1"></span>
 
-- **What it is:** Sort, then decide pairings from the two ends: the largest item with the smallest, or the first X with the last Y. The ends are where the extreme cases live, and extreme cases decide the answer
-- **Signal:** everyone must be paired or grouped, and the limit or score of a pair depends on its largest and smallest members: "at most two per boat", "minimise the largest pair sum", "the k most expensive free with each purchase"
-- **Not this page if:** only one pair with a given sum is wanted, not an assignment of everyone → 02-08
-- **Why it works:** The heaviest person needs a partner light enough to fit; the lightest person is the best partner anyone can get. If the lightest cannot ride with the heaviest, nobody can, so the heaviest rides alone. If the lightest can, pairing them never hurts: any optimal answer that pairs them differently can swap partners without breaking a limit (exchange argument)
+- **What:** sort, then pair from both ends: the largest with the smallest. The ends hold the extreme cases, and those decide the answer
+- **Spot it:** everyone paired or grouped, and a pair's limit depends on its largest and smallest: "at most two per boat", "minimise the largest pair sum". One pair with a given sum → 02-08
+- **Why:** the heaviest needs a partner light enough; the lightest is the best partner anyone can get. If they do not fit, the heaviest rides alone; if they do, pairing them never hurts
 
 :::mint
 <svg viewBox="0 0 470 100" role="img" aria-label="Boats to Save People with people 1, 2, 2, 3 and limit 3 after sorting. Heaviest 3 plus lightest 1 is 4, over the limit, so 3 rides alone. Then 2 plus 1 fits: one boat. Then 2 alone. Three boats." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -40,3 +39,6 @@ function numRescueBoats(people: number[], limit: number): number {
   return boats;
 }
 ```
+
+- **Watch out:** two pointers without the sort. On `[3, 3, 1, 1]` with limit 3 the unsorted walk uses 4 boats; sorted, the two 1s share one: 3
+- **Also solves:** [Minimize Maximum Pair Sum in Array](https://leetcode.com/problems/minimize-maximum-pair-sum-in-array/) (LeetCode 1877) (pair `a[i]` with `a[n − 1 − i]`) · [Assign Cookies](https://leetcode.com/problems/assign-cookies/) (LeetCode 455) (sort both; the smallest cookie that satisfies each child) · [Maximum Product of Three Numbers](https://leetcode.com/problems/maximum-product-of-three-numbers/) (LeetCode 628) (three largest, or two smallest × the largest)

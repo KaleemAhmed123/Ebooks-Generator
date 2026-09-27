@@ -1,9 +1,8 @@
 ## Restart When You Go Broke <span class="lv lv1"></span>
 
-- **What it is:** For a circular route with gains and costs, drive once. Whenever the running tank goes negative at station `i`, no start at or before `i` can work, so restart at `i + 1` with an empty tank. If the total gain covers the total cost, the last restart point is the answer
-- **Signal:** a circular route where each stop adds some amount and the leg to the next stop costs some; find the one start that completes the lap
-- **Not this page if:** the route is a line and the driver chooses where to stop to refuel, minimising stops → 15-06
-- **Why it works:** Say a start `s` first runs dry on the way out of station `i`. Any later start `s' ∈ (s, i]` would reach `i` with *less* fuel, because it skips the stretch `[s, s')`, whose running sum was never negative. So all of `[s, i]` fail at once. Separately, if the total is ≥ 0, some start must succeed, and it can only be a restart point
+- **What:** drive a circular route once. When the running tank goes negative at station `i`, restart at `i + 1` with an empty tank. If the total gain covers the total cost, the last restart is the answer
+- **Spot it:** a circle where each stop adds fuel and each leg costs some; find the one start that completes the lap. A line where you choose refuelling stops → 15-06
+- **Why:** if start `s` runs dry leaving `i`, every later start in `(s, i]` reaches `i` with less fuel, so all of `[s, i]` fail at once. A total ≥ 0 means some start works
 
 :::mint
 <svg viewBox="0 0 470 110" role="img" aria-label="Gas minus cost per station: minus 2, minus 2, minus 2, 3, 3. The running tank from station 0 drops below zero at once, restart at 1, drops again, restart at 2, drops again, restart at 3. From 3 the tank goes 3, 6. The total is 0, not negative, so station 3 is the answer." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -46,3 +45,6 @@ function canCompleteCircuit(gas: number[], cost: number[]): number {
   return total >= 0 ? start : -1;
 }
 ```
+
+- **Watch out:** skipping the total check. Gas `[2, 3, 4]`, cost `[3, 4, 3]` returns start 2, but the total is −1 and no start completes the lap
+- **Same reset elsewhere:** Kadane (03-06) drops a prefix whose sum is negative for this reason

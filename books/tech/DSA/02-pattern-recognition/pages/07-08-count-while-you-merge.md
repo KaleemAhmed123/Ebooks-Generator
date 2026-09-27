@@ -1,9 +1,8 @@
 ## Count While You Merge <span class="lv lv2"></span>
 
-- **What it is:** Merge sort, with a counter bolted onto the merge step. Every pair `i < j` is split exactly once, into a left half and a right half; at that moment both halves are sorted, so all cross pairs with a property can be counted in one linear sweep
-- **Signal:** count pairs `i < j` whose *values* satisfy an inequality (`a[i] > a[j]`, `a[i] > 2·a[j]`, "smaller numbers after each element"), n up to 10⁵
-- **Not this page if:** the condition is symmetric, like `a[i] + a[j] ≤ target`, so `i < j` stops mattering: sort once and collide two pointers → 02-08
-- **Why it works:** Pairs inside one half are counted by the recursive calls. Pairs across halves only depend on values, not on order within each half, so sorting each half first loses nothing and turns the cross count into a two-pointer walk. Total O(n log n)
+- **What:** merge sort with a counter on the merge step. Every pair `i < j` is split once, into a left and a right half, and both halves are sorted at that moment
+- **Spot it:** count pairs `i < j` whose *values* meet an inequality: `a[i] > a[j]`, `a[i] > 2·a[j]`. Symmetric (`a[i] + a[j] ≤ t`) → 02-08
+- **Why:** split pairs depend only on values, so sorting each half loses nothing, and the cross count becomes a two-pointer walk: O(n log n)
 
 :::mint
 <svg viewBox="0 0 470 112" role="img" aria-label="Merging sorted halves 2, 4, 7 and 1, 3, 5. When the right element 1 is taken, all three remaining left elements are larger, so 3 inversions are counted at once. When 3 is taken, 4 and 7 remain, adding 2. When 5 is taken, 7 remains, adding 1. Total cross inversions 6." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -42,8 +41,7 @@ function countInversions(a: number[]): number {
     let i = lo, j = mid, k = lo;
     while (i < mid && j < hi) {
       if (a[i] <= a[j]) buf[k++] = a[i++];
-      // all of a[i..mid) > a[j]
-      else { count += mid - i; buf[k++] = a[j++]; }
+      else { count += mid - i; buf[k++] = a[j++]; } // rest of left > a[j]
     }
     while (i < mid) buf[k++] = a[i++];
     while (j < hi) buf[k++] = a[j++];
@@ -53,3 +51,6 @@ function countInversions(a: number[]): number {
   return sort(0, a.length);
 }
 ```
+
+- **Watch out:** for `a[i] > 2·a[j]`, count in a *separate* pass before merging; placing by that test breaks the sort and every count above it
+- **Also solves:** [Reverse Pairs](https://leetcode.com/problems/reverse-pairs/) (LeetCode 493) · [Count of Smaller Numbers After Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self/) (LeetCode 315) (sort indices, not values)

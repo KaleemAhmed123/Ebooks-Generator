@@ -1,9 +1,8 @@
 ## Extend the Reach <span class="lv lv1"></span>
 
-- **What it is:** For "minimum steps to cover a line", do not decide *where* to land. Track two numbers: the end of the range reachable with the jumps used so far (`end`), and the farthest point reachable with one more jump (`far`). When `i` reaches `end`, a jump is forced, and it goes to `far`
-- **Signal:** fewest steps, taps or clips to cover a line from 0 to n, where each position reaches *anywhere* in a contiguous stretch ahead of it
-- **Not this page if:** a jump lands on exactly `i + a[i]` or `i − a[i]`, not anywhere up to it → 16-01 (BFS over indices)
-- **Why it works:** It is BFS by levels on a line. All indices reachable in k jumps form one contiguous range, and the next level is `(end, far]`. Greedy never picks a landing square; it only extends the range, so no choice can be wrong. Module 04's wrong approach, "jump to the farthest square", fails precisely because it picks a square
+- **What:** for fewest steps to cover a line, track `end` (the edge reached so far) and `far` (the best reach with one more jump). When `i` hits `end`, a jump to `far` is forced
+- **Spot it:** fewest jumps, taps or clips to cover 0..n, where each position reaches *anywhere* in a stretch ahead. A jump lands on exactly `i ± a[i]` → BFS over indices, 16-01
+- **Why:** it is BFS by levels on a line: all indices reachable in k jumps form one range, and the next level is `(end, far]`. Extending a range involves no choice, so none can be wrong
 
 :::mint
 <svg viewBox="0 0 470 104" role="img" aria-label="Jump Game II on 2, 3, 1, 1, 4. Level 0 is index 0 with reach 2. Level 1 covers indices 1 and 2; from them the farthest reach is index 4. Level 2 contains index 4, the end. Two jumps." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -46,3 +45,6 @@ function jump(nums: number[]): number {
   return jumps;
 }
 ```
+
+- **Watch out:** stop before the last index, or a level ending there adds a jump from the destination. Without a reachability promise, `[1, 0, 2]` sticks at `end = far = 1`: return −1 when a forced jump makes no progress
+- **Also solves:** [Jump Game](https://leetcode.com/problems/jump-game/) (LeetCode 55) (only `far`: fail when `i > far`) · [Minimum Number of Taps to Open to Water a Garden](https://leetcode.com/problems/minimum-number-of-taps-to-open-to-water-a-garden/) (LeetCode 1326) (turn each tap into `reach[left] = right`, then the same loop) · [Partition Labels](https://leetcode.com/problems/partition-labels/) (LeetCode 763) (extend `end` to each letter's last index; cut when `i === end`)

@@ -85,3 +85,9 @@ Budget: front ~4 · pattern pages ~115 · openers ~12 · drills ~18 → about 15
   comments moved inline (05-01, 05-03) and two boundary updates joined to their loop
   line (05-02). The new grid skeleton (directions, bounds, flat index) was run: 0
   failures. Drills: 10 each; 1351 stays with Chapter 9's drills, 1329 used instead.
+- 2026-09-27 — Chapters 7 and 8: 12 → 6 pages and 16 → 7 pages. Intros "Sorting &
+  Intervals" (07-01, whose skeleton is the three sort keys) and "Greedy" (08-01, which keeps the
+  counter-input table as its trap). 07-06 had no template (it pointed to Module 04); it
+  now has the 2406 event sweep, run against a brute force: 3,000 cases, 0 failures.
+  The 08-09 checkpoint is deleted. Other templates: only comments moved inline and one
+  signature joined (08-03). Drills 11 and 10; Jump Game (55) stays a graph drill.
