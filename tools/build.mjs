@@ -206,7 +206,9 @@ async function renderPage(file, headings, pageIdx, blocks, term, accent, recolor
   const [guarded, svgs] = protectSvg(containers(raw, blocks));
   let html = marked.parse(guarded, { mangle: false, headerIds: false });
   const pid = ids && /^\d\d-\d\d-/.test(name) ? name.slice(0, 5) : null;
-  const pat = pid && ids.labels?.[pid];
+  // A label keyed by the full file name wins over one keyed by ID, so an intro page
+  // that shares its ID with the first move can say "overview" instead.
+  const pat = pid && (ids.labels?.[name] ?? ids.labels?.[pid]);
   if (ids) html = linkIds(html, ids);
   // A diagram's accent is written into the SVG as a literal colour, where no
   // stylesheet can reach it. When a book is reprinted under a different accent

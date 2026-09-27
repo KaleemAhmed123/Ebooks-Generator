@@ -25,6 +25,8 @@
     "face": { "brow": "sharp", "mouth": "flat", "tilt": -3 }
   },
   "patterns": {
+    "02-01": "Pattern 1 · Sliding Window · overview",
+    "02-08-0-two-pointers": "Patterns 2–3 · Two Pointers · overview",
     "02-02": "Pattern 1 · Sliding Window · move 1/6",
     "02-03": "Pattern 1 · Sliding Window · move 2/6",
     "02-04": "Pattern 1 · Sliding Window · move 3/6",

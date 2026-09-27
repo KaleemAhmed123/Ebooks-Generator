@@ -1,10 +1,9 @@
-# Chapter 2 - Windows & Pointers
+## Sliding Window <span class="lv lv1"></span> - continued
 
-## Windows and Pointers <span class="lv lv1"></span>
+### The trap
 
-- **What:** two indices over one array or string, each moving one way only: a window (both move right), a collision (they close in from the ends), or a reader and a writer
-- **Why:** an index never comes back, so the pair makes at most 2n moves. The proof is always the same: no position an index has passed can still hold the answer
-- **Patterns:** **1 · Sliding Window** 02-02 → 02-07 · **2 · Collide** 02-08, 02-10 · **3 · Reader and Writer** 02-09
+- **Negative numbers.** Adding a value can lower a sum, so shrinking stops being safe. Sum = K → equal prefixes (03-03); sum ≥ K → a deque of prefix sums (10-10)
+- **"Subset" is not "subarray".** A subsequence summing to K is knapsack DP (Module 06); a subset scored only by its values becomes a window after sorting (02-07)
 
 ### Window, count, or prefix map?
 
@@ -44,5 +43,3 @@ Four questions, in this order, settle any "subarray with property P" statement.
   <text x="10" y="204" class="sm">then growing never lowers the sum</text>
 </svg>
 :::
-
-- **Watch out:** "subset" is not "subarray". A subsequence summing to K is knapsack DP (Module 06), not a window; a subset scored only by its values is a window after sorting (02-07)
