@@ -1,9 +1,8 @@
 ## Return One, Record Another <span class="lv lv2"></span>
 
-- **What it is:** The value a node must *return* to its parent is often not the answer. The diameter through a node needs both subtree heights, but the parent can only extend *one* of them. So return the extendable quantity (height) and **record** the answer (height left + height right) in an outer variable as a side effect
-- **Signal:** "diameter", "longest path between any two nodes", "is it height-balanced", "tilt", "distribute coins so every node has one", "maximum product of splitting the tree", "minimum cameras"
-- **Not this page if:** every path must start at the root → 14-02: carry the running sum down; nothing needs recording
-- **Why it works:** A path that bends at node `x` is made of one downward path into each subtree, and a downward path is exactly what a child can report upward. Every path bends at exactly one highest node, so recording "bend here" at every node, in post-order, sees every path once: O(n)
+- **What:** the value a node *returns* is often not the answer. The diameter through a node needs both heights, but a parent can extend only one. Return the height; **record** `left + right` outside
+- **Spot it:** "diameter", "longest path between any two nodes", "height-balanced", "distribute coins", "max path sum". Every path starts at the root → 14-02
+- **Why:** every path bends at exactly one highest node, made of one downward path into each side. Recording "bend here" at every node, in post-order, sees each path once
 
 :::mint
 <svg viewBox="0 0 470 118" role="img" aria-label="Diameter of binary tree on 1 with children 2 and 3, and 2 with children 4 and 5. Node 2 returns height 2 to its parent and records a bend of 1 plus 1 equals 2 edges. Node 1 records 2 plus 1 equals 3 edges, the diameter, along 4, 2, 1, 3." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -33,17 +32,17 @@
 ```ts
 // Diameter of Binary Tree (LeetCode 543), in edges
 function diameterOfBinaryTree(root: TreeNode | null): number {
-  // recorded answer
-  let best = 0;
+  let best = 0;                                 // recorded answer
   const height = (node: TreeNode | null): number => {
     if (!node) return 0;
     const l = height(node.left), r = height(node.right);
-    // record: bend here
-    best = Math.max(best, l + r);
-    // return: extendable part
-    return 1 + Math.max(l, r);
+    best = Math.max(best, l + r);             // record: bend here
+    return 1 + Math.max(l, r);          // return: extendable part
   };
   height(root);
   return best;
 }
 ```
+
+- **Watch out:** return the extendable part, not the answer. Returning `1 + l + r` lets a parent extend a path that already bends, which is not a path
+- **Also solves:** [Balanced Binary Tree](https://leetcode.com/problems/balanced-binary-tree/) (LeetCode 110) (return −1 once unbalanced) · [Distribute Coins in Binary Tree](https://leetcode.com/problems/distribute-coins-in-binary-tree/) (LeetCode 979) (return `coins − nodes`; record its absolute value) · [Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/) (LeetCode 124) (drop negative sides)

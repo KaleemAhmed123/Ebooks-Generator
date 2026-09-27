@@ -117,3 +117,8 @@ Budget: front ~4 · pattern pages ~115 · openers ~12 · drills ~18 → about 15
   that shares its ID, so "→ 02-08" linked to, and printed, "Two Pointers" (the intro).
   The intro now skips the anchor; the link lands on the move page. `01-04` still shows
   13-03 in a chart chip: fixed in the front-matter step.
+- 2026-09-27 — Chapter 14: 31 → 12 pages. Intro "Tree DFS & BFS" (14-01, 2 pages: the
+  "which way does information flow" question, nine moves, a carry-down / return-up /
+  record skeleton). The 14-12 checkpoint is deleted. 14-05 and 14-06 had lines joined
+  and a signature shortened; both re-run on LeetCode's own examples (987, 863):
+  0 failures. Drills 11.

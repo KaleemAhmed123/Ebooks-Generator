@@ -1,9 +1,8 @@
 ## Thread Back to the Parent <span class="lv lv3"></span>
 
-- **What it is:** **Morris traversal.** The in-order walk of 14-08 in O(1) extra space. Before descending left from `cur`, point the null right pointer of `cur`'s in-order predecessor back at `cur`. That temporary **thread** replaces the stack
-- **Signal:** "O(1) extra space" or "without a stack" on a tree walk (the follow-up of LeetCode 99)
-- **Not this page if:** the follow-up does not count the recursion stack (LeetCode 501) → 14-08 with a `prev` variable
-- **Why it works:** The predecessor is the rightmost node of the left subtree, and its right pointer is always null, so the slot is free. Reaching `cur` again through the thread proves its left subtree is done: cut the thread, move right. Each edge is walked a constant number of times: O(n)
+- **What:** Morris traversal: in-order in O(1) extra space. Before going left from `cur`, point the null right pointer of `cur`'s in-order predecessor back at `cur`. The thread replaces the stack
+- **Spot it:** "O(1) extra space" or "without a stack" on a tree walk. The recursion stack does not count → 14-08
+- **Why:** the predecessor's right pointer is always null, so the slot is free. Returning to `cur` through the thread proves its left side is done: cut it, go right
 
 :::mint
 <svg viewBox="0 0 470 120" role="img" aria-label="Morris traversal on a BST with root 4, left child 2 with children 1 and 3, right child 6. At the first visit of 4, the walk finds its predecessor 3, the rightmost node of the left subtree, and lays a dashed thread from 3 back to 4, then goes left. After emitting 1, 2 and 3, the walk follows the thread to 4, sees the thread already exists, cuts it, emits 4 and goes right." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -37,11 +36,9 @@ function inorder(root: TreeNode | null): number[] {
   let cur = root;
   while (cur) {
     if (!cur.left) { out.push(cur.val); cur = cur.right; continue; }
-    // rightmost of the left subtree
-    let pred = cur.left;
+    let pred = cur.left;          // rightmost of the left subtree
     while (pred.right && pred.right !== cur) pred = pred.right;
-    // first visit: lay the thread
-    if (!pred.right) {
+    if (!pred.right) {              // first visit: lay the thread
       pred.right = cur; cur = cur.left;
     } else {                           // second visit: cut it
       pred.right = null; out.push(cur.val); cur = cur.right;
@@ -50,3 +47,6 @@ function inorder(root: TreeNode | null): number[] {
   return out;
 }
 ```
+
+- **Watch out:** returning mid-walk leaves threads in place, and the tree has cycles. Finish the walk, or cut the threads first
+- **Also solves:** [Binary Tree Preorder Traversal](https://leetcode.com/problems/binary-tree-preorder-traversal/) (LeetCode 144) (emit when the thread is *laid*) · [Recover Binary Search Tree](https://leetcode.com/problems/recover-binary-search-tree/) (LeetCode 99) (the drop rule of 14-08 inside this walk) · [Flatten Binary Tree to Linked List](https://leetcode.com/problems/flatten-binary-tree-to-linked-list/) (LeetCode 114)

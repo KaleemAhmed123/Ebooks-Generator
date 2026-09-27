@@ -1,4 +1,8 @@
-## Rebuild from Traversals <span class="lv lv2"></span> - continued
+## Rebuild from Traversals <span class="lv lv2"></span>
+
+- **What:** pre-order says *which* node is the root (first); in-order says *which nodes lie on each side*. Take the next pre-order value as the root, split the in-order range at it, recurse
+- **Spot it:** "construct a tree from preorder and inorder", "BST from preorder", "serialize and deserialize", "balanced BST from a sorted array"
+- **Why:** the root's offset inside its in-order range is the size of its left subtree, which tells the recursion where to split
 
 :::mint
 <svg viewBox="0 0 470 118" role="img" aria-label="Preorder 3 9 20 15 7 and inorder 9 3 15 20 7. The first preorder value 3 is the root. In the inorder list 3 is at index 1, so 9 is the whole left subtree and 15 20 7 is the right subtree. Recursing gives root 20 with children 15 and 7." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -31,22 +35,21 @@
 ```ts
 // Tree from Preorder and Inorder Traversal (LeetCode 105)
 function buildTree(pre: number[], ino: number[]): TreeNode | null {
-  // value → inorder index
-  const at = new Map<number, number>();
+  const at = new Map<number, number>();   // value → inorder index
   ino.forEach((v, i) => at.set(v, i));
-  // next root in preorder
-  let next = 0;
+  let next = 0;                           // next root in preorder
   // ino[lo..hi]
   const build = (lo: number, hi: number): TreeNode | null => {
     if (lo > hi) return null;
     const val = pre[next++];
     const mid = at.get(val)!;
-    // left subtree first,
-    const left = build(lo, mid - 1);
-    // in preorder's order
-    const right = build(mid + 1, hi);
+    const left = build(lo, mid - 1);        // left subtree first,
+    const right = build(mid + 1, hi);       // in preorder's order
     return { val, left, right };
   };
   return build(0, ino.length - 1);
 }
 ```
+
+- **Watch out:** `indexOf` inside the recursion is O(n) per node, O(n²) in total. Build the value → index map once
+- **Also solves:** [Construct Binary Tree from Inorder and Postorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/) (LeetCode 106) (read post-order from the back; build right first) · [Construct Binary Search Tree from Preorder Traversal](https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/) (LeetCode 1008) (carry an upper bound) · [Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/) (LeetCode 297) (pre-order with null markers)

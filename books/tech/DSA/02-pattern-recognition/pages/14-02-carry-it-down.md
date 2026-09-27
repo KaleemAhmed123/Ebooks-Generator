@@ -1,9 +1,8 @@
 ## Carry It Down <span class="lv lv1"></span>
 
-- **What it is:** When a node's answer depends on its ancestors, handle the node with what the parent passed in, then call the children with an updated copy. The path from the root is summarised in a few parameters: the maximum so far, the running sum, the allowed range
-- **Signal:** "good nodes" (no ancestor is larger), "root-to-leaf path with sum", "numbers formed by root-to-leaf paths", "maximum difference between a node and an ancestor", "valid BST range", "count paths with sum k that go downward"
-- **Not this page if:** the best path may bend at a node, left subtree to right subtree → 14-03: a bend is returned from below, not carried down
-- **Why it works:** A node's ancestors are exactly the nodes on the call stack above it. Passing a summary as a parameter gives each call its own version of the path, with no undo needed: when the call returns, the caller's parameters are unchanged. Every node is visited once, O(n)
+- **What:** when a node's answer depends on its ancestors, summarise the path in a few parameters (the max so far, the running sum, the allowed range) and call the children with an updated copy
+- **Spot it:** "good nodes", "root-to-leaf path with sum", "valid BST range". A path that may bend at a node → 14-03
+- **Why:** a node's ancestors are exactly the calls above it. Parameters give each call its own copy of the path, so nothing needs undoing
 
 :::mint
 <svg viewBox="0 0 470 118" role="img" aria-label="Count good nodes on a tree with root 3, children 1 and 4, grandchildren 3 under 1, and 1 and 5 under 4. Each call receives the maximum on its path. Nodes 3, 3, 4 and 5 are at least that maximum and are good; the two 1s are not. Answer 4." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -41,8 +40,7 @@ type TreeNode = {
 function goodNodes(root: TreeNode | null): number {
   const go = (node: TreeNode | null, maxAbove: number): number => {
     if (!node) return 0;
-    // handle the root
-    const good = node.val >= maxAbove ? 1 : 0;
+    const good = node.val >= maxAbove ? 1 : 0;  // handle the root
     // update what flows down
     const m = Math.max(maxAbove, node.val);
     return good + go(node.left, m) + go(node.right, m);
@@ -50,3 +48,6 @@ function goodNodes(root: TreeNode | null): number {
   return go(root, -Infinity);
 }
 ```
+
+- **Watch out:** a leaf has *no* children. Checking `remaining === 0` at a `null` child counts a path that stops half-way: root 1 with only a right child 2, target 1, must be false
+- **Also solves:** [Path Sum](https://leetcode.com/problems/path-sum/) (LeetCode 112) · [Sum Root to Leaf Numbers](https://leetcode.com/problems/sum-root-to-leaf-numbers/) (LeetCode 129) (carry `num · 10 + val`) · [Maximum Difference Between Node and Ancestor](https://leetcode.com/problems/maximum-difference-between-node-and-ancestor/) (LeetCode 1026) · [Path Sum III](https://leetcode.com/problems/path-sum-iii/) (LeetCode 437) (a prefix-sum map on the path, 03-03; undo on return)

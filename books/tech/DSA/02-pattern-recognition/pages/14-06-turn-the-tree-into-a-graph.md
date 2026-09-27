@@ -1,4 +1,8 @@
-## Turn the Tree into a Graph <span class="lv lv2"></span> - continued
+## Turn the Tree into a Graph <span class="lv lv2"></span>
+
+- **What:** for a question that spreads from any node in *every* direction, record parents in one pass, then BFS over left, right and parent
+- **Spot it:** "all nodes at distance k from a target", "time to burn the tree from a node", "infection spreads". Only the distance between two nodes → 14-07
+- **Why:** with parent links a tree is an undirected graph, and BFS from the target visits nodes by distance: level k is "distance k"
 
 :::mint
 <svg viewBox="0 0 470 124" role="img" aria-label="All nodes at distance 2 from target 5 in the tree 3 with children 5 and 1, 5 with children 6 and 2, 2 with children 7 and 4, 1 with children 0 and 8. From 5, level 1 is 6, 2 and the parent 3. Level 2 is 7, 4 and 1. The answer is 7, 4, 1; reaching 1 required going up through the parent." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -36,19 +40,15 @@
 
 ```ts
 // All Nodes Distance K in Binary Tree (LeetCode 863)
-function distanceK(
-  root: TreeNode, target: TreeNode, k: number
-): number[] {
+function distanceK(root: TreeNode, target: TreeNode, k: number) {
   const parent = new Map<TreeNode, TreeNode | null>();
   const link = (n: TreeNode | null, p: TreeNode | null) => {
     if (!n) return;
     parent.set(n, p); link(n.left, n); link(n.right, n);
   };
   link(root, null);
-  const seen = new Set<TreeNode>([target]);
-  let level: TreeNode[] = [target];
-  // BFS, one level per step
-  for (let d = 0; d < k && level.length; d++) {
+  const seen = new Set([target]); let level = [target];
+  for (let d = 0; d < k && level.length; d++) {     // one BFS level
     const next: TreeNode[] = [];
     for (const n of level)
       for (const m of [n.left, n.right, parent.get(n)!])
@@ -58,3 +58,6 @@ function distanceK(
   return level.map(n => n.val);
 }
 ```
+
+- **Watch out:** no visited set. The walk goes up to the parent and straight back down, so levels repeat and "burn it all" never ends
+- **Also solves:** [Amount of Time for Binary Tree to Be Infected](https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/) (LeetCode 2385) · [Burning Tree](https://www.geeksforgeeks.org/problems/burning-tree/1) (GFG)

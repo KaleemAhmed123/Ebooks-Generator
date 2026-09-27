@@ -1,9 +1,8 @@
 ## Walk Level by Level <span class="lv lv1"></span>
 
-- **What it is:** Breadth-first search with a snapshot: before processing a level, read `size = queue.length`, then pop exactly `size` nodes. Everything asked "per level" (the rightmost node, the average, the order, the width) is computed inside that inner loop
-- **Signal:** "right side view", "left view", "zig-zag level order", "maximum width of a level", "average of each level", "is the tree complete", "are all levels anagrams of each other"
-- **Not this page if:** "seen from above or below" or "vertical" → 14-05: those group by column, not by level
-- **Why it works:** A queue holds the next level behind the current one, in left-to-right order. The size snapshot is the boundary between them, so the inner loop sees exactly one level, and its first and last iterations are the leftmost and rightmost nodes. Module 03 builds the basic loop; the patterns are what you do inside it
+- **What:** BFS with a snapshot: read `size = queue.length`, then pop exactly `size` nodes. Anything asked per level (the rightmost, the average, the width) happens in that inner loop
+- **Spot it:** "right side view", "zig-zag level order", "maximum width", "average of each level", "is the tree complete". Seen from above or "vertical" → 14-05
+- **Why:** the queue holds the next level behind the current one, left to right. The snapshot is the boundary, so the inner loop sees exactly one level
 
 :::mint
 <svg viewBox="0 0 470 110" role="img" aria-label="Right side view of 1 with children 2 and 3, 2 with right child 5, and 3 with right child 4. Level 0 is 1, level 1 is 2 3, level 2 is 5 4. The last node of each level is 1, 3, 4. The left view takes the first node of each level: 1, 2, 5." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -37,8 +36,7 @@ function rightSideView(root: TreeNode | null): number[] {
     // last node of this level
     view.push(level[level.length - 1].val);
     const next: TreeNode[] = [];
-    // one level, left to right
-    for (const node of level) {
+    for (const node of level) {        // one level, left to right
       if (node.left) next.push(node.left);
       if (node.right) next.push(node.right);
     }
@@ -47,3 +45,6 @@ function rightSideView(root: TreeNode | null): number[] {
   return view;
 }
 ```
+
+- **Watch out:** "right view" is not "keep going right". For `[1, 2, 3, 4]` (4 under 2) the right-child walk gives `1, 3`; the view is `1, 3, 4`
+- **Also solves:** [Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/) (LeetCode 103) · [Maximum Width of Binary Tree](https://leetcode.com/problems/maximum-width-of-binary-tree/) (LeetCode 662) (heap indices; subtract the level's first before doubling) · [Check Completeness of a Binary Tree](https://leetcode.com/problems/check-completeness-of-a-binary-tree/) (LeetCode 958) (after the first `null`, no real node)

@@ -1,9 +1,8 @@
 ## Give Every Node a Coordinate <span class="lv lv2"></span>
 
-- **What it is:** Assign each node a position: the root is `(row 0, col 0)`, a left child is `(row + 1, col − 1)`, a right child `(row + 1, col + 1)`. "Views" and "vertical orders" become grouping and sorting by those numbers, the same move as coordinate keys on a grid (page 05-01)
-- **Signal:** "vertical order traversal", "top view", "bottom view", "diagonal traversal", "nodes that share a column", "what is visible from above"
-- **Not this page if:** "seen from the left or right" → 14-04: a side view is the first or last node per level; no columns needed
-- **Why it works:** Looking at a tree from above or below means projecting every node onto the horizontal axis; its column is that projection. Within one column, the row says who is in front. Once every node carries `(col, row)`, the tree shape no longer matters: a map from column to nodes, plus a tie-breaking rule, answers the question
+- **What:** root at `(row 0, col 0)`; a left child is `(row + 1, col − 1)`, a right child `(row + 1, col + 1)`. Views and vertical orders become grouping and sorting by those numbers
+- **Spot it:** "vertical order traversal", "top view", "bottom view", "diagonal traversal". Seen from the left or right → 14-04
+- **Why:** a view from above projects each node onto its column; the row says who is in front. With `(col, row)` on every node, the shape no longer matters
 
 :::mint
 <svg viewBox="0 0 470 124" role="img" aria-label="Vertical order traversal of 3 with children 9 and 20, and 20 with children 15 and 7. Columns: 9 at column minus 1; 3 and 15 at column 0; 20 at column 1; 7 at column 2. Output columns left to right: 9, then 3 15, then 20, then 7. The top view is 9, 3, 20, 7 and the bottom view is 9, 15, 20, 7." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -30,3 +29,26 @@
   <text x="250" y="106" class="sm">(largest row per column)</text>
 </svg>
 :::
+
+```ts
+// Vertical Order Traversal of a Binary Tree (LeetCode 987)
+function verticalTraversal(root: TreeNode | null): number[][] {
+  const cells: [number, number, number][] = []; // [col, row, val]
+  const go = (n: TreeNode | null, row: number, col: number) => {
+    if (!n) return; cells.push([col, row, n.val]);
+    go(n.left, row + 1, col - 1); go(n.right, row + 1, col + 1);
+  };
+  go(root, 0, 0);
+  // column, then row, then value: LeetCode 987's tie rule
+  cells.sort((a, b) => a[0] - b[0] || a[1] - b[1] || a[2] - b[2]);
+  const out: number[][] = []; let lastCol = NaN;
+  for (const [col, , val] of cells) {
+    if (col !== lastCol) { out.push([]); lastCol = col; }
+    out[out.length - 1].push(val);
+  }
+  return out;
+}
+```
+
+- **Watch out:** DFS for the top view reaches a deep left node in column 1 before the shallow right child. Use BFS, or keep the smallest row
+- **Also solves:** [Top View of Binary Tree](https://www.geeksforgeeks.org/problems/top-view-of-binary-tree/1) (GFG) (first per column) · [Bottom View of Binary Tree](https://www.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1) (GFG) (overwrite per column)

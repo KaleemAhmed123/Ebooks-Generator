@@ -1,9 +1,8 @@
 ## Find the Split Point <span class="lv lv2"></span>
 
-- **What it is:** The lowest common ancestor (LCA) of `p` and `q` is the deepest node that has both below it (a node counts as below itself): the point where their root paths split. Recursively, each call reports "did I find p or q down here?"; the first node that hears *yes* from both sides, or is one of them itself with the other below, is the split point
-- **Signal:** "lowest common ancestor", "distance between two nodes", "shortest path between two nodes in a tree", "directions from one node to another", "LCA of the deepest leaves"
-- **Not this page if:** one start node spreads to everything within k steps → 14-06: that needs upward edges, not one ancestor
-- **Why it works:** A subtree that contains neither node returns `null`. Above the LCA, only one side contains both targets, so `null` comes back from the other side and the found node is passed up unchanged. At the LCA, both sides return something for the first time. Post-order sees every node once: O(n)
+- **What:** the lowest common ancestor (LCA) is the deepest node with both targets below it. Each call reports "found p or q here?"; the first node to hear *yes* from both sides is the answer
+- **Spot it:** "lowest common ancestor", "distance between two nodes", "directions from one node to another". One node spreading to everything within k → 14-06
+- **Why:** a subtree with neither target returns `null`. Above the LCA, one side returns `null` and the found node passes up unchanged; at the LCA both sides answer for the first time
 
 :::mint
 <svg viewBox="0 0 470 118" role="img" aria-label="LCA of 7 and 4 in the tree 3 with children 5 and 1, 5 with children 6 and 2, 2 with children 7 and 4. Node 2 receives 7 from its left and 4 from its right, so 2 is the split point. Node 5 receives 2 from its right and null from its left and passes 2 up. The root returns 2." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -43,9 +42,10 @@ function lowestCommonAncestor(
   if (!root || root === p || root === q) return root;
   const left = lowestCommonAncestor(root.left, p, q);
   const right = lowestCommonAncestor(root.right, p, q);
-  // split point
-  if (left && right) return root;
-  // pass up what was found
-  return left ?? right;
+  if (left && right) return root;                   // split point
+  return left ?? right;                  // pass up what was found
 }
 ```
+
+- **Watch out:** the template assumes both nodes exist. With only `p` present it returns `p`. If one may be missing, count the targets found
+- **Also solves:** [Lowest Common Ancestor of a Binary Search Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/) (LeetCode 235) (a BST: both smaller, go left; both larger, go right) · [Step-By-Step Directions From a Binary Tree Node to Another](https://leetcode.com/problems/step-by-step-directions-from-a-binary-tree-node-to-another/) (LeetCode 2096) (root paths as `L`/`R`; drop the common prefix) · [Lowest Common Ancestor of Deepest Leaves](https://leetcode.com/problems/lowest-common-ancestor-of-deepest-leaves/) (LeetCode 1123)

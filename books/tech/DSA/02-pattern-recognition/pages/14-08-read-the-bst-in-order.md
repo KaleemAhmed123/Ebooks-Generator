@@ -1,9 +1,8 @@
 ## Read the BST in Order <span class="lv lv1"></span>
 
-- **What it is:** An in-order walk of a binary search tree yields its values in sorted order. Turn that walk into an *iterator* with an explicit stack (push the left spine, pop, then push the left spine of the right child) and every "sorted array" trick works on the tree, pausing whenever you like
-- **Signal:** "k-th smallest in a BST", "BST iterator with next() and hasNext()", "two-sum in a BST", "count pairs from two BSTs with sum x", "recover a BST where two nodes were swapped", "minimum difference between any two nodes"
-- **Not this page if:** the tree is not a BST → in-order is not sorted; "k-th smallest" needs a size-k heap (15-01)
-- **Why it works:** In a BST every left subtree is smaller and every right subtree is larger than its root, so left-root-right is ascending order. The explicit stack holds only the current left spine, O(height) memory, and each node is pushed and popped once: amortised O(1) per `next()`
+- **What:** an in-order walk of a BST yields sorted values. Make it an *iterator* with an explicit stack (push the left spine, pop, push the right child's left spine) and pause whenever you like
+- **Spot it:** "k-th smallest in a BST", "BST iterator", "two-sum in a BST", "recover a BST with two nodes swapped". Not a BST, so in-order is not sorted → a heap, 15-01
+- **Why:** left subtree < root < right subtree, so left-root-right is ascending. The stack holds one left spine, O(height); each node is pushed and popped once
 
 :::mint
 <svg viewBox="0 0 470 118" role="img" aria-label="In-order iterator on the BST 5 with children 3 and 6, 3 with children 2 and 4, 2 with left child 1. Push the left spine 5, 3, 2, 1. Pop 1, then 2, then 3; after popping 3 push the left spine of its right child, 4. The values come out 1, 2, 3, 4, 5, 6. The third value is 3, the k-th smallest for k equals 3." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -39,11 +38,12 @@ function kthSmallest(root: TreeNode | null, k: number): number {
   while (true) {
     // left spine
     while (node) { stack.push(node); node = node.left; }
-    // next in order
-    node = stack.pop()!;
+    node = stack.pop()!;                          // next in order
     if (--k === 0) return node.val;
-    // then its right
-    node = node.right;
+    node = node.right;                           // then its right
   }
 }
 ```
+
+- **Watch out:** Recover BST with swapped *neighbours* has one drop, not two: `1, 3, 2, 4`. Take the first node of the first drop and the second node of the last
+- **Also solves:** [Binary Search Tree Iterator](https://leetcode.com/problems/binary-search-tree-iterator/) (LeetCode 173) · [Two Sum IV - Input is a BST](https://leetcode.com/problems/two-sum-iv-input-is-a-bst/) (LeetCode 653) (one iterator up, one down, then collide, 02-08) · [Minimum Absolute Difference in BST](https://leetcode.com/problems/minimum-absolute-difference-in-bst/) (LeetCode 530) (neighbours in order)
