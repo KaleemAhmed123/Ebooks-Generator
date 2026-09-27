@@ -1,9 +1,8 @@
 ## Try Every Cut <span class="lv lv2"></span>
 
-- **What it is:** To split a string into valid pieces, decide the *first* piece: try every end `j` for a piece starting at `start`, keep it if valid, recurse from `j + 1`. A variant cuts an *expression* at every operator and combines both sides
-- **Signal:** "partition s so every substring is a palindrome", "restore IP addresses", "insert spaces to form dictionary words", "all ways to add parentheses"
-- **Not this page if:** only the number of ways or the fewest cuts is asked → 17-05, DP over cut positions
-- **Why it works:** Every partition has a first piece ending at one of at most n positions; fixing it leaves the same problem on a shorter suffix. So the tree lists every partition once, and an invalid prefix cuts off its whole subtree
+- **What:** decide the *first* piece: try every end `j` for a piece starting at `start`, keep it if valid, recurse from `j + 1`. A variant cuts an expression at every operator
+- **Spot it:** "palindrome partitioning", "restore IP addresses", "add parentheses every way". A count or the fewest cuts → 17-05
+- **Why:** fixing the first piece leaves the same problem on a shorter suffix; a bad prefix kills its subtree
 
 :::mint
 <svg viewBox="0 0 470 112" role="img" aria-label="Palindrome partitioning of aab. The first piece can be a, aa, or aab. aab is not a palindrome and is cut off. After a, the rest ab splits as a, b. After aa, the rest b is one piece. Results: a a b, and aa b." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -35,8 +34,7 @@ function partition(s: string): string[][] {
   };
   const cut = (start: number) => {
     if (start === s.length) { out.push([...cur]); return; }
-    // first piece s[start..j]
-    for (let j = start; j < s.length; j++) {
+    for (let j = start; j < s.length; j++) {      // piece s[start..j]
       if (!isPal(start, j)) continue;
       cur.push(s.slice(start, j + 1));
       cut(j + 1);
@@ -47,3 +45,6 @@ function partition(s: string): string[][] {
   return out;
 }
 ```
+
+- **Watch out:** re-checking palindromes from scratch at every `(start, end)`. Precompute `pal[i][j]` once in O(n²)
+- **Also solves:** [Restore IP Addresses](https://leetcode.com/problems/restore-ip-addresses/) (LeetCode 93) (4 pieces, ≤ 255, no leading zero) · [Word Break II](https://leetcode.com/problems/word-break-ii/) (LeetCode 140) · [Different Ways to Add Parentheses](https://leetcode.com/problems/different-ways-to-add-parentheses/) (LeetCode 241)

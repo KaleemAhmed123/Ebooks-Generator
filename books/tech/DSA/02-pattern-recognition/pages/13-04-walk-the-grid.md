@@ -1,9 +1,8 @@
 ## Walk the Grid <span class="lv lv2"></span>
 
-- **What it is:** Maze and path problems on a grid share one skeleton: from `(r, c)`, check whether the cell is usable, mark it, try each allowed move, unmark it. Problems differ only in the move set, what "usable" means, and whether paths are counted, collected or optimised
-- **Signal:** every path from one cell to another through open cells; a path may not reuse a cell; trace a word through adjacent cells; the longest simple route, or the most collected along one
-- **Not this page if:** the question asks for the *shortest* path or fewest moves → 18-02, BFS; enumerating paths is exponential
-- **Why it works:** A path is a sequence of moves, so the search is a tree whose branches are moves. Marking the current cell forbids revisits along *this* path only; unmarking on return lets other paths use it.
+- **What:** from `(r, c)`, check the cell is usable, mark it, try each move, unmark it. Problems differ only in the moves, in what "usable" means, and in counting, collecting or optimising
+- **Spot it:** every path through open cells, no cell reused; a word traced through adjacent cells; the longest route. The *shortest* path → BFS, 18-02
+- **Why:** a path is a sequence of moves, so the search is a tree of moves. The mark forbids revisits on *this* path only; unmarking frees the cell for other paths
 
 :::mint
 <svg viewBox="0 0 470 124" role="img" aria-label="Rat in a maze, 4 by 4 grid with open and blocked cells. From the top-left, moves are tried in the order D, L, R, U. Two paths reach the bottom-right: DDRDRR and DRDDRR. Blocked cells are dark; the current path is marked so it cannot revisit itself." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -39,13 +38,14 @@ function findPaths(m: number[][]): string[] {
   const go = (r: number, c: number, path: string) => {
     if (r < 0 || c < 0 || r >= n || c >= n || m[r][c] !== 1) return;
     if (r === n - 1 && c === n - 1) { out.push(path); return; }
-    // mark: on this path
-    m[r][c] = 2;
+    m[r][c] = 2;                             // mark: on this path
     for (const [d, dr, dc] of moves) go(r + dr, c + dc, path + d);
-    // unmark for other paths
-    m[r][c] = 1;
+    m[r][c] = 1;                         // unmark for other paths
   };
   go(0, 0, "");
   return out;
 }
 ```
+
+- **Watch out:** forgetting to unmark. Every cell an earlier branch touched stays blocked, and "all paths" silently returns only some
+- **Also solves:** [Word Search](https://leetcode.com/problems/word-search/) (LeetCode 79) (mark by writing `'#'`, restore after) · [Path with Maximum Gold](https://leetcode.com/problems/path-with-maximum-gold/) (LeetCode 1219) · [Unique Paths](https://leetcode.com/problems/unique-paths/) (LeetCode 62) (right and down only: no mark needed; memoise, 17-01)

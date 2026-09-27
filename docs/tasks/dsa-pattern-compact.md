@@ -107,3 +107,13 @@ Budget: front ~4 · pattern pages ~115 · openers ~12 · drills ~18 → about 15
   k-Group, a hard problem whose four-frame diagram shows the stitching). `compact.py`
   gained a `SPLIT` option for this. The 11-05 checkpoint is deleted. 12-03's code lost
   three lines to formatting and was re-run: 10 lengths, 0 failures. Drills 11 and 11.
+- 2026-09-27 — Chapter 13: 25 → 12 pages. New intro `13-01-0-recursion-and-backtracking`
+  (2 pages, nine moves) absorbs 13-03 "Which backtracking template?"; its skeleton (the
+  shared choose / recurse / undo loop, run as Subsets II) was run against a brute force:
+  2,000 cases, 0 failures. 13-07 keeps only the Combination Sum template (377 moves to
+  Also solves); four other templates had lines joined. All five re-run on known answers
+  (39, 40, 47, N-Queens n = 1, 4, 5, 6, 8, and 131): 0 failures.
+  **Build fix:** `tools/build.mjs` let an `NN-MM-0` intro claim the anchor of the move
+  that shares its ID, so "→ 02-08" linked to, and printed, "Two Pointers" (the intro).
+  The intro now skips the anchor; the link lands on the move page. `01-04` still shows
+  13-03 in a chart chip: fixed in the front-matter step.

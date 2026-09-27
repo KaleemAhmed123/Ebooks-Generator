@@ -1,9 +1,8 @@
 ## Pick or Skip <span class="lv lv1"></span>
 
-- **What it is:** For "all subsets / subsequences", walk the items by index and make one binary decision per item: take it or leave it. Two calls per level, n levels, 2ⁿ leaves, and every leaf is a different subset
-- **Signal:** "all subsets", "all subsequences", "power set", "count subsets with sum K", "longest concatenation with unique characters", n ≤ 20
-- **Not this page if:** the input has equal values and the output must not repeat a subset → 13-06; if order matters → 13-08
-- **Why it works:** A subset is fully described by one yes/no answer per item. The recursion tree enumerates every sequence of answers exactly once, so there are no duplicates to filter (as long as the items are distinct). The index argument is what guarantees each item is decided once and in order
+- **What:** for "all subsets", walk the items by index and make one decision per item: take it or leave it. n levels, 2ⁿ leaves, each a different subset
+- **Spot it:** "all subsets", "all subsequences", "power set", n ≤ 20. Equal values and no repeated output → 13-06; order matters → 13-08
+- **Why:** a subset is one yes/no per item, and the tree lists every sequence of answers once
 
 :::mint
 <svg viewBox="0 0 470 124" role="img" aria-label="Pick or skip tree for items 1, 2, 3. At depth 0 decide 1, at depth 1 decide 2, at depth 2 decide 3. Left branches pick, right branches skip. The eight leaves are 1 2 3, 1 2, 1 3, 1, 2 3, 2, 3 and the empty set." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -45,3 +44,6 @@ function subsets(nums: number[]): number[][] {
   return out;
 }
 ```
+
+- **Watch out:** `out.push(cur)` stores one shared array 2ⁿ times, and all end up empty. Push a copy
+- **Also solves:** [Letter Case Permutation](https://leetcode.com/problems/letter-case-permutation/) (LeetCode 784) · [Maximum Length of a Concatenated String with Unique Characters](https://leetcode.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters/) (LeetCode 1239) (keep exploring *skip* even when pick is allowed) · [Target Sum](https://leetcode.com/problems/target-sum/) (LeetCode 494) (a count: memoise `(i, remaining)`, 17-01)

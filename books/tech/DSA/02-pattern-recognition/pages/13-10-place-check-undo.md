@@ -1,9 +1,8 @@
 ## Place, Check, Undo <span class="lv lv2"></span>
 
-- **What it is:** Constraint puzzles fill one decision point at a time (a row, a cell, a vertex, a bucket). At each point, try every option, **check** it against O(1) bookkeeping, **place** it by updating the bookkeeping, recurse, then **undo** exactly what you placed
-- **Signal:** no two pieces may share a row, column or diagonal; fill the empty cells so every row, column and box holds each digit once; split the items into k groups of equal sum; a constraint *between* choices, not just a running total
-- **Not this page if:** the only constraint is a running total hitting a target → 13-06 or 13-07
-- **Why it works:** Each decision point narrows the rest, and a conflict found early kills a whole subtree. The speed comes from the check: keeping sets of used columns and diagonals (or row/column/box digits) makes each test O(1) instead of rescanning the board. Undo restores the bookkeeping so siblings see a clean state
+- **What:** per decision point, try each option: **check** in O(1), **place**, recurse, **undo**
+- **Spot it:** no two queens share a line; Sudoku; k groups of equal sum. Only a running total → 13-06
+- **Why:** a conflict found early kills a whole subtree, and sets of used columns and diagonals make each check O(1)
 
 :::mint
 <svg viewBox="0 0 470 124" role="img" aria-label="4 queens. One queen per row. A cell r, c is attacked if column c, diagonal r minus c, or anti-diagonal r plus c is already used. Sets for columns, diagonals and anti-diagonals make each check constant time. A solution: queens at columns 1, 3, 0, 2." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -27,3 +26,28 @@
   <text x="150" y="116" class="sm">keys from page 05-01: a diagonal is r − c, an anti-diagonal r + c</text>
 </svg>
 :::
+
+```ts
+// N-Queens (LeetCode 51)
+function solveNQueens(n: number): string[][] {
+  const out: string[][] = [], colOf: number[] = [];
+  const cols = new Set<number>();
+  const diag = new Set<number>(), anti = new Set<number>();
+  const row = (c: number) => ".".repeat(c) + "Q" + ".".repeat(n - c - 1);
+  const place = (r: number) => {
+    if (r === n) { out.push(colOf.map(row)); return; }
+    for (let c = 0; c < n; c++) {
+      if (cols.has(c) || diag.has(r - c) || anti.has(r + c)) continue;
+      cols.add(c); diag.add(r - c); anti.add(r + c); colOf.push(c);
+      place(r + 1);
+      cols.delete(c); diag.delete(r - c); anti.delete(r + c);  // undo
+      colOf.pop();
+    }
+  };
+  place(0);
+  return out;
+}
+```
+
+- **Watch out:** undo all four sets you updated. One forgotten `delete` leaves a phantom queen
+- **Also solves:** [Sudoku Solver](https://leetcode.com/problems/sudoku-solver/) (LeetCode 37) (fewest options first) · [Partition to K Equal Sum Subsets](https://leetcode.com/problems/partition-to-k-equal-sum-subsets/) (LeetCode 698) (sort descending)

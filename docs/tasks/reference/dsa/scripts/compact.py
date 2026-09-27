@@ -11,7 +11,7 @@ spec = {}
 exec(open(spec_path, encoding='utf8').read(), spec)
 
 def old_text(pid):
-    fs = sorted(f for f in os.listdir(pages_dir) if f.startswith(pid + '-'))
+    fs = sorted(f for f in os.listdir(pages_dir) if f.startswith(pid + '-') and not f.startswith(pid + '-0-'))  # skip NN-MM-0 intros
     return '\n'.join(open(os.path.join(pages_dir, f), encoding='utf8').read().replace('\r\n', '\n') for f in fs)
 
 def first_svg(pid):

@@ -475,7 +475,8 @@ async function buildBook(book) {
   const ids = book.config.pageIds ? Object.assign(new Map(), { labels: book.config.patterns }) : null;
   for (const f of ids ? rest : []) {
     const id = f.slice(0, 5);
-    if (/^\d\d-\d\d-/.test(f) && !ids.has(id)) ids.set(id, path.basename(f, ".md"));
+    // an NN-MM-0 intro shares its first move's ID; the move page owns the anchor
+    if (/^\d\d-\d\d-/.test(f) && !/^\d\d-\d\d-0-/.test(f) && !ids.has(id)) ids.set(id, path.basename(f, ".md"));
   }
   // A book that hides its IDs prints the target page's title in a link instead.
   if (ids && book.config.pageIdsInText === false) {

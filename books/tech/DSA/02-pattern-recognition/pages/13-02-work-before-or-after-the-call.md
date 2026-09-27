@@ -1,9 +1,8 @@
 ## Work Before or After the Call <span class="lv lv1"></span>
 
-- **What it is:** Every line in a recursive function runs either on the way *down* (before the recursive call) or on the way *up* (after it returns). Code before the call sees inputs in forward order; code after it sees them in reverse, with the smaller call's result already available
-- **Signal:** "print n down to 1 and then 1 up to n"; a number stored in a list, most significant digit first, where the carry starts at the tail; "process a linked list from its end without reversing it"; pre-order / in-order / post-order anything
-- **Not this page if:** the list may hold 10⁵ nodes → 12-02: reverse it with a loop, since one frame per node can overflow the call stack
-- **Why it works:** The call stack holds each frame's local variables until the deeper call returns. So a value saved before the call is still there afterwards, in last-in-first-out order. Choosing *where* a line goes chooses the order it runs in, with no extra data structure
+- **What:** a line before the recursive call runs on the way *down*, in forward order; a line after it runs on the way *up*, in reverse, with the smaller call's answer in hand
+- **Spot it:** a number stored most-significant digit first with the carry starting at the tail; "process a list from its end"; pre-, in- or post-order anything. 10⁵ nodes deep → a loop, 12-02
+- **Why:** the call stack keeps each frame's locals until the deeper call returns, so where a line sits decides the order it runs in, with no extra structure
 
 :::mint
 <svg viewBox="0 0 470 112" role="img" aria-label="Add 1 to the list 1, 9, 9. On the way down each call only moves to the next node. The call past the tail returns carry 1. On the way up, the last 9 becomes 0 and returns carry 1, the middle 9 becomes 0 and returns carry 1, the 1 becomes 2 and returns carry 0, so no new head is needed. Result 2, 0, 0." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -54,3 +53,6 @@ function addOne(head: ListNode): ListNode {
   return up(head) ? { val: 1, next: head } : head;
 }
 ```
+
+- **Watch out:** a local change does not survive the way up. A deeper call that must tell its caller something (a carry, a count) returns it
+- **Also solves:** [Double a Number Represented as a Linked List](https://leetcode.com/problems/double-a-number-represented-as-a-linked-list/) (LeetCode 2816) (carry from the tail) · tree traversals: post-order is where a node sees its children's answers (14-01)

@@ -1,9 +1,8 @@
 ## Fill the Slots <span class="lv lv2"></span>
 
-- **What it is:** Permutation-style problems fill positions one at a time: for slot `k`, try every item that is still available, recurse into slot `k + 1`, then give the item back. A `used[]` array (or swapping into place) tracks availability. With duplicate items, skip an item equal to its left neighbour *if that neighbour is not currently used*
-- **Signal:** "all (unique) permutations", "all arrangements", slot k draws from its own pool (keypad letters), every well-formed string of n bracket pairs
-- **Not this page if:** order does not matter ("subsets", "combinations") → 13-05
-- **Why it works:** Order matters, so every slot may take any unused item. For duplicates, the rule "use equal values left to right" lets exactly one ordering of identical items through: an equal item may be placed only after its left twin is already in the arrangement
+- **What:** fill positions one at a time: slot k tries every unused item, recurses into k + 1, then gives the item back. With duplicates, skip an item equal to its left twin *unless that twin is in use*
+- **Spot it:** "all (unique) permutations", "all arrangements", slot k draws from its own pool (keypad letters), every valid bracket string. Order does not matter → 13-05
+- **Why:** "use equal values left to right" lets exactly one ordering of identical items through
 
 :::mint
 <svg viewBox="0 0 470 110" role="img" aria-label="Unique permutations of 1, 1, 2. Slot 0 tries the first 1, skips the second 1 because its left twin is not used, and tries 2. Under the first 1, the second 1 is allowed because its twin is used. Results 1 1 2, 1 2 1, 2 1 1." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -38,8 +37,7 @@ function permuteUnique(nums: number[]): number[][] {
     if (cur.length === nums.length) { out.push([...cur]); return; }
     for (let i = 0; i < nums.length; i++) {
       if (used[i]) continue;
-      if (i > 0 && nums[i] === nums[i - 1] && !used[i - 1])
-        continue;
+      if (i > 0 && nums[i] === nums[i - 1] && !used[i - 1]) continue;
       used[i] = true; cur.push(nums[i]);
       fill();
       used[i] = false; cur.pop();
@@ -49,3 +47,6 @@ function permuteUnique(nums: number[]): number[][] {
   return out;
 }
 ```
+
+- **Watch out:** the swap method plus "skip if equal to the previous" emits 32 permutations of `"abbcc"`; only 30 are distinct. Swaps unsort the suffix
+- **Also solves:** [Permutations](https://leetcode.com/problems/permutations/) (LeetCode 46) · [Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/) (LeetCode 17) (a pool per slot, no `used[]`) · [Generate Parentheses](https://leetcode.com/problems/generate-parentheses/) (LeetCode 22) (`(` while `open < n`, `)` while `close < open`)

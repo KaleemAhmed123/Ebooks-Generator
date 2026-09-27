@@ -1,11 +1,8 @@
-# Chapter 13 - Recursion & Backtracking
-
 ## Trust the Smaller Call <span class="lv lv1"></span>
 
-- **What it is:** Write a recursive function in three statements, and never trace it. **Hypothesis:** state exactly what `f(n)` does. **Base case:** the smallest input, answered directly. **Induction:** assume `f(n − 1)` (or any smaller call) already works as promised, and use it to finish `f(n)`
-- **Signal:** "solve it recursively"; move n disks between pegs with only the top disk movable; reverse or sort a stack using only push, pop and recursion; xⁿ in O(log n); row n is built from row n − 1; the problem is a smaller copy of itself once one element is removed
-- **Not this page if:** the smaller calls repeat with the same arguments and the answer is a count or a best value → 17-01: cache them, it is DP
-- **Why it works:** It is mathematical induction. If the base case is right and every call is right *whenever its smaller calls are right*, then every call is right. Tracing 2ⁿ calls by hand is where people get lost; the hypothesis replaces the trace
+- **What:** write the hypothesis ("`f(n)` does exactly this"), answer the smallest input directly, and finish `f(n)` assuming the smaller call works. Never trace it
+- **Spot it:** "solve it recursively", Tower of Hanoi, reverse or sort a stack with only push and pop, xⁿ in O(log n). The same smaller calls repeat, and a count is asked → 17-01
+- **Why:** it is induction. A right base case plus a step that is right whenever its smaller calls are right makes every call right
 
 :::mint
 <svg viewBox="0 0 470 118" role="img" aria-label="Tower of Hanoi with n disks. Hypothesis: solve of n, from, to, via moves n disks from from to to. Induction: trust solve of n minus 1 to move the top n minus 1 disks to via, move the largest disk directly, then trust solve of n minus 1 again to move them onto to. Base case: zero disks, do nothing. Total moves 2 to the n minus 1." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -42,3 +39,6 @@ function hanoi(n: number, from = 1, to = 3, via = 2,
   return moves;
 }
 ```
+
+- **Watch out:** a base case the calls can skip. `pow(x, n)` with base `n === 1` never ends for n = 0. Every chain of calls must reach the base
+- **Also solves:** [Pow(x, n)](https://leetcode.com/problems/powx-n/) (LeetCode 50) (`h = pow(x, ⌊n/2⌋)`; return `h · h`, times x if n is odd) · [K-th Symbol in Grammar](https://leetcode.com/problems/k-th-symbol-in-grammar/) (LeetCode 779)

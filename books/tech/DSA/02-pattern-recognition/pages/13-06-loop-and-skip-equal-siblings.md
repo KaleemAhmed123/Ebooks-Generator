@@ -1,9 +1,8 @@
 ## Loop and Skip Equal Siblings <span class="lv lv2"></span>
 
-- **What it is:** When the input has duplicates and the output must not, switch from pick-or-skip to the *loop template*: at each level, loop over the candidates for the **next** slot, starting from `start`, and skip a candidate equal to the one before it **at the same level**. Sort first so equal values sit together
-- **Signal:** the input contains equal values; "the solution set must not contain duplicate combinations"; each number may be used once
-- **Not this page if:** each number may be chosen again and again → 13-07, `go(i)`
-- **Why it works:** Two siblings with the same value start subtrees that produce the same results, so only the first may run. A *child*, however, may repeat its parent's value: that is how `[1, 1, 6]` is built. `i > start` separates "sibling" (same level, skip) from "first choice at this level" (allowed)
+- **What:** duplicates in, none out. Sort, loop over the candidates for the next slot from `start`, and skip a candidate equal to the one before it *at the same level*
+- **Spot it:** the input has equal values; "the solution set must not contain duplicate combinations"; each number used once. Reuse allowed → 13-07
+- **Why:** equal siblings start identical subtrees, so only the first runs. A *child* may repeat its parent's value: that is how `[1, 1, 6]` is built. `i > start` tells the two apart
 
 :::mint
 <svg viewBox="0 0 470 118" role="img" aria-label="Combination Sum II on sorted candidates 1, 1, 2, 5, 6, 7, 10 with target 8. At the root level the first 1 is explored and the second 1 is skipped because it is an equal sibling. Under the first 1, the second 1 is allowed as a child, giving 1, 1, 6. Results: 1 1 6, 1 2 5, 1 7, 2 6." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -30,3 +29,26 @@
   <text x="300" y="90" class="sm">results: 1 1 6 · 1 2 5 · 1 7 · 2 6</text>
 </svg>
 :::
+
+```ts
+// Combination Sum II (LeetCode 40): each candidate used once
+function combinationSum2(c: number[], target: number): number[][] {
+  c.sort((a, b) => a - b);
+  const out: number[][] = [], cur: number[] = [];
+  const go = (start: number, rem: number) => {
+    if (rem === 0) { out.push([...cur]); return; }
+    for (let i = start; i < c.length; i++) {
+      if (i > start && c[i] === c[i - 1]) continue;  // equal sibling
+      if (c[i] > rem) break;               // sorted: rest too big
+      cur.push(c[i]);
+      go(i + 1, rem - c[i]);                    // i + 1: use once
+      cur.pop();
+    }
+  };
+  go(0, target);
+  return out;
+}
+```
+
+- **Watch out:** `i > 0` instead of `i > start` also skips legitimate children: `[1, 1, 2, 5, 6, 7, 10]` with target 8 loses `[1, 1, 6]`
+- **Also solves:** [Subsets II](https://leetcode.com/problems/subsets-ii/) (LeetCode 90) (record every node, not only leaves) · [Combination Sum III](https://leetcode.com/problems/combination-sum-iii/) (LeetCode 216)
