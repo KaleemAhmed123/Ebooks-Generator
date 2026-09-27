@@ -1,7 +1,8 @@
 ## Grow from the Centre <span class="lv lv1"></span>
 
 - **What it is:** Every palindrome has a centre: a character (odd length) or a gap between two characters (even length). Try all 2n − 1 centres and expand outward while the two ends match
-- **Signal:** "longest palindromic substring", "count palindromic substrings", "is it a palindrome after removing one character", anything about *contiguous* palindromes
+- **Signal:** a palindrome that must be *contiguous*: the longest one, how many there are, or whether one deletion makes the whole string one
+- **Not this page if:** characters may be skipped ("subsequence") → 17-02, or rearranged ("can be permuted into a palindrome") → letter counts, at most one odd
 - **Why it works:** If `s[l..r]` is a palindrome and `s[l−1] === s[r+1]`, then `s[l−1..r+1]` is one too, and if they differ no longer palindrome shares this centre. So each centre's palindromes are nested, and expanding finds the longest one in one walk. There are 2n − 1 centres and each expansion is at most n/2 steps: O(n²) time, O(1) space, with no table
 
 :::mint

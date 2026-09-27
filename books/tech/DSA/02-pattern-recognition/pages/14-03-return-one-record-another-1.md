@@ -2,6 +2,7 @@
 
 - **What it is:** The value a node must *return* to its parent is often not the answer. The diameter through a node needs both subtree heights, but the parent can only extend *one* of them. So return the extendable quantity (height) and **record** the answer (height left + height right) in an outer variable as a side effect
 - **Signal:** "diameter", "longest path between any two nodes", "is it height-balanced", "tilt", "distribute coins so every node has one", "maximum product of splitting the tree", "minimum cameras"
+- **Not this page if:** every path must start at the root → 14-02: carry the running sum down; nothing needs recording
 - **Why it works:** A path that bends at node `x` is made of one downward path into each subtree, and a downward path is exactly what a child can report upward. Every path bends at exactly one highest node, so recording "bend here" at every node, in post-order, sees every path once: O(n)
 
 :::mint

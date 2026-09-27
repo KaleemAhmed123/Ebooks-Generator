@@ -1,7 +1,8 @@
 ## Let Pairs Decide the Order <span class="lv lv2"></span>
 
 - **What it is:** When no single key sorts the items correctly, define the order by asking about *two* items at a time: "should `a` come before `b`?". If that pairwise rule is consistent, one comparator sort produces the optimal arrangement
-- **Signal:** "arrange the numbers to form the largest number", "sort by number of set bits, ties by value", "reconstruct the queue from (height, count in front)", "order so that the total cost is minimal"
+- **Signal:** arrange all items in one line, where whether `a` goes before `b` depends on both of them together: "form the largest number", "ties broken by …", "each person knows how many taller people stand in front", "order to minimise the total cost"
+- **Not this page if:** the statement *gives* the before/after pairs ("X must come before Y") → 16-04, a topological order, not a comparator
 - **Why it works:** An exchange argument. If swapping two neighbours `a b → b a` never makes the answer better when `a` should precede `b`, then any arrangement can be bubble-swapped into comparator order without getting worse. So the comparator order is optimal. The comparator must be a *consistent* ordering, or the sort's output is undefined
 
 :::mint

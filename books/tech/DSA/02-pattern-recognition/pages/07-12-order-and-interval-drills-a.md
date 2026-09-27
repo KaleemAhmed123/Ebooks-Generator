@@ -1,17 +1,16 @@
-## Recognition drills: Order & Intervals, named problems <span class="lv lv1"></span>
+## Recognition drills after Chapter 7 <span class="lv lv1"></span>
 
-Hide the right column. Say what you sort by — value, start, end, a derived key, or a pairwise rule — and what the scan after the sort does.
+Name the page for each statement before turning over. For intervals, say the sort key first: start, end, or events. Answers overleaf.
 
-| Problem | Sort key & scan |
-|---|---|
-| 1. [Union of 2 Sorted Arrays](https://www.geeksforgeeks.org/problems/union-of-two-sorted-arrays-1587115621/1) (GFG) | **Already sorted:** merge with two pointers, skip equals |
-| 2. [Merge Sorted Array](https://leetcode.com/problems/merge-sorted-array/) (LeetCode 88) | **Merge from the back** so nothing is overwritten before it is read |
-| 3. [Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) (LeetCode 34) | **Lower bound and upper bound − 1** (Module 04, 01-04) |
-| 4. [Merge Intervals](https://leetcode.com/problems/merge-intervals/) (LeetCode 56) | **Start;** extend the last merged end |
-| 5. [Insert Interval](https://leetcode.com/problems/insert-interval/) (LeetCode 57) | **Already sorted by start:** copy, absorb, copy |
-| 6. [Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/) (LeetCode 435) | **End;** removals = n − kept |
-| 7. [Minimum Number of Arrows to Burst Balloons](https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/) (LeetCode 452) | **End;** shoot at an end, skip what it pierces |
-| 8. [Minimum Platforms](https://www.geeksforgeeks.org/problems/minimum-platforms-1587115620/1) (GFG) | **Sweep line** (07-06): sort arrivals and departures separately |
-| 9. [Interval List Intersections](https://leetcode.com/problems/interval-list-intersections/) (LeetCode 986) | **Two sorted lists:** overlap `[max start, min end]`, advance the earlier end |
-| 10. [Count Inversions](https://www.geeksforgeeks.org/problems/inversion-of-array-1587115620/1) (GFG) | **Count while you merge:** `mid − i` per right-side win |
-| 11. [Reverse Pairs](https://leetcode.com/problems/reverse-pairs/) (LeetCode 493) | **Count while you merge,** separate `2·a[j]` pass |
+1. Flowers bloom over given inclusive day ranges. For each visitor's arrival day, how many flowers are in bloom?
+2. Remove the fewest intervals so that the rest do not overlap; intervals that only touch are fine
+3. Split an array into the most chunks such that sorting each chunk on its own and joining them gives the sorted array
+4. Each person is given as (height, number of people in front who are at least as tall). Rebuild the line
+5. Given booked time ranges, return the busy stretches as disjoint ranges
+6. Count the index pairs where the earlier value is more than double the later one
+7. Count the intervals that are not contained inside another interval of the list
+8. Trains arrive and leave at given times. How many tracks are needed so that no train waits?
+9. Count the non-empty subsequences whose minimum plus maximum is at most a target
+10. Rank teams by first-place votes; break ties by second-place votes, then third, and finally alphabetically
+11. Count the subarrays whose sum lies within `[lower, upper]`, with n up to 10⁵ and values up to 2³¹ in size
+12. Balloons span `[start, end]` on a line. Find the fewest vertical shots that pop them all

@@ -2,6 +2,7 @@
 
 - **What it is:** An in-order walk of a binary search tree yields its values in sorted order. Turn that walk into an *iterator* with an explicit stack (push the left spine, pop, then push the left spine of the right child) and every "sorted array" trick works on the tree, pausing whenever you like
 - **Signal:** "k-th smallest in a BST", "BST iterator with next() and hasNext()", "two-sum in a BST", "count pairs from two BSTs with sum x", "recover a BST where two nodes were swapped", "minimum difference between any two nodes"
+- **Not this page if:** the tree is not a BST → in-order is not sorted; "k-th smallest" needs a size-k heap (15-01)
 - **Why it works:** In a BST every left subtree is smaller and every right subtree is larger than its root, so left-root-right is ascending order. The explicit stack holds only the current left spine, O(height) memory, and each node is pushed and popped once: amortised O(1) per `next()`
 
 :::mint

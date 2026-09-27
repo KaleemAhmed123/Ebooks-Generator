@@ -2,6 +2,7 @@
 
 - **What it is:** The lowest common ancestor (LCA) of `p` and `q` is the deepest node that has both below it (a node counts as below itself): the point where their root paths split. Recursively, each call reports "did I find p or q down here?"; the first node that hears *yes* from both sides, or is one of them itself with the other below, is the split point
 - **Signal:** "lowest common ancestor", "distance between two nodes", "shortest path between two nodes in a tree", "directions from one node to another", "LCA of the deepest leaves"
+- **Not this page if:** one start node spreads to everything within k steps → 14-06: that needs upward edges, not one ancestor
 - **Why it works:** A subtree that contains neither node returns `null`. Above the LCA, only one side contains both targets, so `null` comes back from the other side and the found node is passed up unchanged. At the LCA, both sides return something for the first time. Post-order sees every node once: O(n)
 
 :::mint

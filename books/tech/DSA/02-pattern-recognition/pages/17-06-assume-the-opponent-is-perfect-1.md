@@ -2,6 +2,7 @@
 
 - **What it is:** **Minimax DP** for two-player, zero-sum, perfect-information games. Store one number per position: the **score lead of the player about to move**. Your move is worth what you gain minus the opponent's best lead from the position you leave them
 - **Signal:** "two players take turns", "both play optimally", "predict whether player 1 wins", "maximum amount the first player can collect"
+- **Not this page if:** the other player follows a fixed rule ("always takes the larger end") → simulate it; a one-player DP (17-02)
 - **Why it works:** In a zero-sum game the opponent's best play is your worst case, so one function serves both sides. `lead = gain − lead(next)` flips perspective every turn without tracking whose turn it is
 
 :::mint

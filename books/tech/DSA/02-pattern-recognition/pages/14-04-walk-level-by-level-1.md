@@ -2,6 +2,7 @@
 
 - **What it is:** Breadth-first search with a snapshot: before processing a level, read `size = queue.length`, then pop exactly `size` nodes. Everything asked "per level" (the rightmost node, the average, the order, the width) is computed inside that inner loop
 - **Signal:** "right side view", "left view", "zig-zag level order", "maximum width of a level", "average of each level", "is the tree complete", "are all levels anagrams of each other"
+- **Not this page if:** "seen from above or below" or "vertical" → 14-05: those group by column, not by level
 - **Why it works:** A queue holds the next level behind the current one, in left-to-right order. The size snapshot is the boundary between them, so the inner loop sees exactly one level, and its first and last iterations are the leftmost and rightmost nodes. Module 03 builds the basic loop; the patterns are what you do inside it
 
 :::mint

@@ -1,7 +1,7 @@
 ### Variations
 
 - **Spiral Matrix II (LeetCode 59):** the same four walks, writing `1, 2, 3, …` instead of reading
-- **Rotate Image (LeetCode 48):** transpose (swap `a[r][c]` with `a[c][r]` for `c > r`), then reverse every row. Both steps are in place; together they are the 2-D form of "reverse to rotate" (page 04-03)
+- **Rotate Image (LeetCode 48):** the strip on the previous page. Swap `a[r][c]` with `a[c][r]` only for `c > r`, or every pair swaps twice and the matrix comes back unchanged. It is the 2-D form of "reverse to rotate" (04-03)
 - **Boundary traversal of a matrix (GFG):** a single ring of the spiral: one iteration of the `while` loop
 - **Rotate each ring by k:** copy one ring into a list in spiral order, rotate that list by k (page 04-03), write it back in the same order. Every ring shrinks the problem as in the template
 

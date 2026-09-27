@@ -9,4 +9,4 @@
 ### The failure
 
 - **Joining counts without a separator.** `[1, 11]` and `[11, 1]` both join to `"111"`. Two different words then share a bucket. Always put a separator between counts
-- **Sorting to compare two strings once.** For a single "is t an anagram of s?" question, sorting both is O(L log L) and fine; the signature pays off only when many strings are compared, because each is reduced once
+- **Assuming lowercase.** `charCodeAt(0) − 97` maps `'A'` to −32, and `count[-32]++` sets a stray property instead of throwing. `join` ignores it, so `"A"` and `"B"` get the same all-zero key and land in one group. LeetCode 49 promises lowercase; for any other alphabet key on a `Map` of counts or on the sorted string

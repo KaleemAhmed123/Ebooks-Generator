@@ -2,6 +2,7 @@
 
 - **What it is:** When a node's answer depends on its ancestors, handle the node with what the parent passed in, then call the children with an updated copy. The path from the root is summarised in a few parameters: the maximum so far, the running sum, the allowed range
 - **Signal:** "good nodes" (no ancestor is larger), "root-to-leaf path with sum", "numbers formed by root-to-leaf paths", "maximum difference between a node and an ancestor", "valid BST range", "count paths with sum k that go downward"
+- **Not this page if:** the best path may bend at a node, left subtree to right subtree → 14-03: a bend is returned from below, not carried down
 - **Why it works:** A node's ancestors are exactly the nodes on the call stack above it. Passing a summary as a parameter gives each call its own version of the path, with no undo needed: when the call returns, the caller's parameters are unchanged. Every node is visited once, O(n)
 
 :::mint

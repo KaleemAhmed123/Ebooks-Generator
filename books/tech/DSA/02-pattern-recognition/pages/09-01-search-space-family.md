@@ -1,20 +1,20 @@
 # Chapter 9 - Search Space
 
-## The Search Space Reduction Family <span class="lv lv1"></span>
+## The Search Space Family <span class="lv lv1"></span>
 
-- **What it is:** Problems where the potential answers form a massive, structured domain, and you can systematically eliminate large portions of that domain without checking them
-- **Signal:** "Find the minimum capacity", "Find the maximum distance", "Search in a 2D matrix"
-- **Why it works:** In a random space, finding an answer takes O(N) time (you must check everything). In a structured space (like a sorted array, a binary search tree, or a monotonic boolean function), you can check one point and logically conclude that an entire half of the space is invalid. This drops the search time from O(N) to O(log N)
+- **What it is:** The answer lies in a range too large to try point by point, but one probe rules out half of it. The range is either the indices of an array that is only partly sorted, or the possible values of the answer itself
+- **Signal:** "O(log n)" on data that is not fully sorted; the smallest or largest value that passes a test ("minimum capacity", "maximum distance", "k-th smallest") where testing one candidate is easy and computing the optimum directly is not
+- **Why it works:** A test that flips exactly once over the range, `F…FT…T` or `T…TF…F`, turns every probe into "the flip is left of here" or "right of here". log(range) probes find the flip, whatever each probe costs
 
-### The core techniques
+| Pattern | Page | What is searched | The test at `mid` | Cost |
+|---|---|---|---|---|
+| **21 · Binary Search on the Answer** | **09-02** | a number in a known range | "can it be done with `mid`?" flips once (`F…FT…T` or `T…TF…F`) | log(range) checks, each O(n) |
+| | **09-04 Guess a Value, Count Below It** | the k-th value of a set too big to list | `count(≤ mid) ≥ k` | log(range) counts, each O(n) or O(n log m) |
+| **22 · Find the Sorted Half** | **09-03** | an index in a rotated or mountain array | which side of `mid` is sorted, or uphill | O(log n) |
 
-| Technique | When to use | What it exploits |
-|---|---|---|
-| **Binary Search on Answer** (09-02) | "Minimise the maximum", "Maximise the minimum" | A boolean function `canAchieve(X)` that flips from `true` to `false` at exactly one threshold |
-| **Staircase Search** (05-04) | "Search in a row/col sorted 2D matrix" | Moving Left decreases the value, moving Down increases the value |
-| **Find the Sorted Half** (09-03) | "Rotated sorted array", "peak element" | One side of any midpoint is sorted or uphill |
-| **Guess a Value, Count Below It** (09-04) | "k-th smallest in a sorted matrix" | `count(≤ x)` is monotone in x |
+Canonical problems: Capacity To Ship Packages Within D Days (LeetCode 1011) for 09-02, Kth Smallest Element in a Sorted Matrix (LeetCode 378) for 09-04, Search in Rotated Sorted Array (LeetCode 33) for 09-03. A matrix sorted by rows and by columns is searched by elimination, not halving (05-04).
 
-### The meta-pattern
+### The trap
 
-- Turning "find the optimum" into "is this value feasible?" is Module 07 (01-04). The boundary need not be found by binary search: when both the input and the condition move one way, two pointers find it in O(n)
+- **A test that is not monotone.** If `feasible(x)` can go true, false, true, halving returns an arbitrary boundary. Prove "x works ⇒ x + 1 works" (or the mirror for a maximum) before writing the loop
+- **Halving when one pass will do.** When the input and the condition both move one way, two pointers find the boundary in O(n) with no log factor. Turning "find the optimum" into "is this value feasible?" is Module 07 (01-04)

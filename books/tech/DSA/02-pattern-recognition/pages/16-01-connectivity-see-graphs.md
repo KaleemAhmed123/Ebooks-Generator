@@ -8,10 +8,10 @@
 
 ### This chapter
 
-- **16-02 Find the hidden edge:** the statement never says "edge"; a shared attribute, a range or a ratio does
-- **16-03 Flood from the border:** enclosed regions, answered by flooding what is *not* enclosed
-- **16-04 Dependency:** "X before Y" becomes a DAG; order it, then run DP along the order
-- **16-09 Drills:** 23 named problems, each reduced to node, edge and move
+- **Pattern 46 · Find the Hidden Edge (16-02):** the statement never says "edge"; a shared attribute, a range or a ratio does
+- **Pattern 47 · Flood from the Border (16-03):** enclosed regions, answered by flooding what is *not* enclosed
+- **Dependency (16-04):** "X before Y" becomes a DAG; order it, then compute along the order. It routes to Module 05 and adds the critical path
+- **Drills (16-09):** 12 disguised statements
 
 ### The failure
 

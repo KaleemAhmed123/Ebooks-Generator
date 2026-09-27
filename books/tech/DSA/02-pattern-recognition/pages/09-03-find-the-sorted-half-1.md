@@ -1,7 +1,8 @@
-## Find the Sorted Half <span class="lv lv2"></span>
+## Find the Sorted Half <span class="lv lv1"></span>
 
 - **What it is:** Binary search still works on data that is *mostly* sorted: a rotated array, a mountain, an array with one peak. At every `mid`, at least one side is provably sorted or provably uphill. Decide using that side and discard the other half
-- **Signal:** "sorted array rotated at an unknown pivot", "find the minimum of a rotated array", "peak element", "mountain array", "bitonic", O(log n) required
+- **Signal:** O(log n) is demanded on an array that is sorted except for one break, or that only has to rise toward a peak: "rotated at an unknown pivot", "strictly increasing then decreasing", "any element larger than its neighbours"
+- **Not this page if:** the array is fully sorted but its length is unknown (a stream, or an interface with no size) → Module 04, 01-07 (exponential search)
 - **Why it works:** A rotated sorted array is two sorted runs. Any window `[lo, hi]` contains at most one break, so one of `[lo, mid]` and `[mid, hi]` has none. A sorted side answers "is the target inside me?" by comparing with its two ends, so each step still halves the range. For peaks, the slope at `mid` points toward a peak: uphill guarantees one
 
 :::mint

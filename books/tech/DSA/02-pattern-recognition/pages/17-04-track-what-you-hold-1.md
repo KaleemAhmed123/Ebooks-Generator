@@ -2,6 +2,7 @@
 
 - **What it is:** A **state machine DP**: the state is not "which index" but "what you are carrying" — a share or nothing, and how many trades are used. Each day, every state either stays or moves along one edge (buy, sell). Module 06 (01-03) shows how to invent the status variable; this page is the machine it produces
 - **Signal:** buy/sell, "at most k transactions", "cooldown", "transaction fee", "you cannot hold more than one"
+- **Not this page if:** exactly one buy and one later sell → 03-05: keep the lowest price so far; no state machine
 - **Why it works:** The past matters only through the current status. Two numbers per trade count (best cash while holding, best cash while free) summarise every history, so one pass over the prices is enough
 
 :::mint

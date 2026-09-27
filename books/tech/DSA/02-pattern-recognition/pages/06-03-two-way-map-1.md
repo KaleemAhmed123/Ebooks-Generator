@@ -1,7 +1,8 @@
 ## Two-Way Map <span class="lv lv1"></span>
 
 - **What it is:** "Follows the same pattern" means a *bijection*: each symbol on the left maps to exactly one on the right, and no two left symbols share a right one. Keep two maps, left→right and right→left, and fail on the first conflict in either
-- **Signal:** "isomorphic strings", "word pattern", "match specific pattern", "each letter maps to a unique word"
+- **Signal:** each symbol of one sequence must stand for exactly one symbol of another, and no two symbols may share one: "follows the same pattern", "replace characters to get the other string", "each letter maps to a unique word"
+- **Not this page if:** the rule is "same letters in any order", where positions do not matter → 06-01 (letter counts)
 - **Why it works:** One map catches "a maps to two different things". It cannot catch "two different things map to the same thing", which is the other half of a bijection. The reverse map catches exactly that. Together they check both directions in one pass
 
 :::mint

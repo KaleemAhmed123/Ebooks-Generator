@@ -1,25 +1,40 @@
 ## Name the DP Shape <span class="lv lv1"></span> - continued
 
 :::mint
-<svg viewBox="0 0 470 150" role="img" aria-label="Six DP signatures as cards. f of i: one choice per element, such as house robber, LIS, word break. f of i and cap: element plus remaining budget, knapsack and coin change. f of i and j over two strings: LCS and edit distance. f of i and j over one range: try every split, matrix chain and burst balloons, plus games. f of i and holding: a state machine, stocks. f of mask: bitmask over a small set, TSP and assignment." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
+<svg viewBox="0 0 470 92" role="img" aria-label="The constraint on n picks the DP signature. n up to 20: f of mask, a subset of a small set, O of 2 to the n times n, Module 06. n up to 500: f of i and j over one range, trying each split, O of n cubed, page 17-05. n up to 5000: f of i and j with one index per string, O of n squared, Module 06, 03-01. n up to 10 to the 5: f of i plus binary search or a holding state, O of n log n or O of n, pages 17-03 and 17-04." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
   <style>
     .lb { font: bold 10px Consolas, monospace; fill: #1d4e89; }
-    .sm { font: 8.5px Georgia, serif; fill: #1a1a1a; }
-    .bx { fill: #ffffff; stroke: #1a1a1a; stroke-width: 1; }
-    .hi { fill: #e2fcf3; stroke: #2d6a4f; stroke-width: 1.2; }
+    .nn { font: 9.5px Consolas, monospace; fill: #1a1a1a; }
+    .sm { font: 8px Georgia, serif; fill: #6b6b6b; }
+    .ax { stroke: #1a1a1a; stroke-width: 1.2; }
+    .t { stroke: #1a1a1a; stroke-width: 1; }
   </style>
-  <rect class="bx" x="6" y="6" width="148" height="64" rx="5"/>
-  <text x="16" y="24" class="lb">f(i)</text><text x="16" y="40" class="sm">one choice per element</text><text x="16" y="56" class="sm">robber · LIS · word break</text>
-  <rect class="bx" x="161" y="6" width="148" height="64" rx="5"/>
-  <text x="171" y="24" class="lb">f(i, cap)</text><text x="171" y="40" class="sm">element + budget left</text><text x="171" y="56" class="sm">knapsack · coin change</text>
-  <rect class="bx" x="316" y="6" width="148" height="64" rx="5"/>
-  <text x="326" y="24" class="lb">f(i, j) two strings</text><text x="326" y="40" class="sm">a prefix of each</text><text x="326" y="56" class="sm">LCS · edit distance</text>
-  <rect class="hi" x="6" y="80" width="148" height="64" rx="5"/>
-  <text x="16" y="98" class="lb">f(i, j) one range</text><text x="16" y="114" class="sm">try every split (17-05)</text><text x="16" y="130" class="sm">or whose turn (17-06)</text>
-  <rect class="hi" x="161" y="80" width="148" height="64" rx="5"/>
-  <text x="171" y="98" class="lb">f(i, holding)</text><text x="171" y="114" class="sm">a state machine (17-04)</text><text x="171" y="130" class="sm">stocks · cooldown</text>
-  <rect class="bx" x="316" y="80" width="148" height="64" rx="5"/>
-  <text x="326" y="98" class="lb">f(mask)</text><text x="326" y="114" class="sm">subset of ≤ 20 items</text><text x="326" y="130" class="sm">TSP · assignment</text>
+  <defs><marker id="m1702" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1a1a1a"/></marker></defs>
+  <line class="ax" x1="8" y1="55" x2="462" y2="55" marker-end="url(#m1702)"/>
+  <text x="60" y="16" class="lb" text-anchor="middle">f(mask)</text>
+  <text x="60" y="28" class="sm" text-anchor="middle">a subset of a small set</text>
+  <text x="60" y="40" class="sm" text-anchor="middle">O(2ⁿ · n)</text>
+  <line class="t" x1="60" y1="50" x2="60" y2="60"/>
+  <text x="60" y="74" class="nn" text-anchor="middle">n ≤ 20</text>
+  <text x="60" y="86" class="sm" text-anchor="middle">Module 06</text>
+  <text x="170" y="16" class="lb" text-anchor="middle">f(i, j)</text>
+  <text x="170" y="28" class="sm" text-anchor="middle">one range, try each split</text>
+  <text x="170" y="40" class="sm" text-anchor="middle">O(n³)</text>
+  <line class="t" x1="170" y1="50" x2="170" y2="60"/>
+  <text x="170" y="74" class="nn" text-anchor="middle">n ≤ 500</text>
+  <text x="170" y="86" class="sm" text-anchor="middle">17-05</text>
+  <text x="285" y="16" class="lb" text-anchor="middle">f(i, j)</text>
+  <text x="285" y="28" class="sm" text-anchor="middle">one index per string</text>
+  <text x="285" y="40" class="sm" text-anchor="middle">O(n²)</text>
+  <line class="t" x1="285" y1="50" x2="285" y2="60"/>
+  <text x="285" y="74" class="nn" text-anchor="middle">n ≤ 5000</text>
+  <text x="285" y="86" class="sm" text-anchor="middle">Module 06, 03-01</text>
+  <text x="400" y="16" class="lb" text-anchor="middle">f(i)</text>
+  <text x="400" y="28" class="sm" text-anchor="middle">+ binary search or holding</text>
+  <text x="400" y="40" class="sm" text-anchor="middle">O(n log n) or O(n)</text>
+  <line class="t" x1="400" y1="50" x2="400" y2="60"/>
+  <text x="400" y="74" class="nn" text-anchor="middle">n ≤ 10⁵</text>
+  <text x="400" y="86" class="sm" text-anchor="middle">17-03, 17-04</text>
 </svg>
 :::
 

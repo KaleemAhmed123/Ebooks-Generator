@@ -1,7 +1,8 @@
 ## Pair the Extremes <span class="lv lv1"></span>
 
 - **What it is:** Sort, then decide pairings from the two ends: the largest item with the smallest, or the first X with the last Y. The ends are where the extreme cases live, and extreme cases decide the answer
-- **Signal:** "each boat carries at most two people", "minimise the maximum pair sum", "maximum product of three numbers", "buy one, get the k most expensive free", "assign each mouse a hole"
+- **Signal:** everyone must be paired or grouped, and the limit or score of a pair depends on its largest and smallest members: "at most two per boat", "minimise the largest pair sum", "the k most expensive free with each purchase"
+- **Not this page if:** only one pair with a given sum is wanted, not an assignment of everyone → 02-08
 - **Why it works:** The heaviest person needs a partner light enough to fit; the lightest person is the best partner anyone can get. If the lightest cannot ride with the heaviest, nobody can, so the heaviest rides alone. If the lightest can, pairing them never hurts: any optimal answer that pairs them differently can swap partners without breaking a limit (exchange argument)
 
 :::mint

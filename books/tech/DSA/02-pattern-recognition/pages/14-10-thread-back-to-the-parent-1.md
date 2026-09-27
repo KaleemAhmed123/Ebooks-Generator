@@ -1,11 +1,12 @@
 ## Thread Back to the Parent <span class="lv lv3"></span>
 
-- **What it is:** **Morris traversal.** An in-order walk with O(1) extra space. Before descending left from `cur`, point the null right pointer of `cur`'s in-order predecessor back at `cur`. That temporary **thread** replaces the stack frame that would have remembered the way back
-- **Signal:** "O(1) extra space" on a binary tree walk: Median of BST (GFG), the follow-up to Recover BST (LeetCode 99); Kth Smallest (LeetCode 230) when asked for O(1) space
-- **Why it works:** The predecessor is the rightmost node of the left subtree, and its right pointer is always null, so the slot is free. Reaching `cur` a second time through the thread proves the left subtree is finished; the walk removes the thread and moves right. Each edge is walked a constant number of times, so O(n) total
+- **What it is:** **Morris traversal.** The in-order walk of 14-08 in O(1) extra space. Before descending left from `cur`, point the null right pointer of `cur`'s in-order predecessor back at `cur`. That temporary **thread** replaces the stack
+- **Signal:** "O(1) extra space" or "without a stack" on a tree walk (the follow-up of LeetCode 99)
+- **Not this page if:** the follow-up does not count the recursion stack (LeetCode 501) → 14-08 with a `prev` variable
+- **Why it works:** The predecessor is the rightmost node of the left subtree, and its right pointer is always null, so the slot is free. Reaching `cur` again through the thread proves its left subtree is done: cut the thread, move right. Each edge is walked a constant number of times: O(n)
 
 :::mint
-<svg viewBox="0 0 470 132" role="img" aria-label="Morris traversal on a BST with root 4, left child 2 with children 1 and 3, right child 6. At the first visit of 4, the walk finds its predecessor 3, the rightmost node of the left subtree, and lays a dashed thread from 3 back to 4, then goes left. After emitting 1, 2 and 3, the walk follows the thread to 4, sees the thread already exists, cuts it, emits 4 and goes right." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
+<svg viewBox="0 0 470 120" role="img" aria-label="Morris traversal on a BST with root 4, left child 2 with children 1 and 3, right child 6. At the first visit of 4, the walk finds its predecessor 3, the rightmost node of the left subtree, and lays a dashed thread from 3 back to 4, then goes left. After emitting 1, 2 and 3, the walk follows the thread to 4, sees the thread already exists, cuts it, emits 4 and goes right." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
   <style>
     .lb { font: 10px Consolas, monospace; fill: #1a1a1a; }
     .sm { font: 8px Georgia, serif; fill: #6b6b6b; }

@@ -3,7 +3,7 @@
 ## The Greedy Moves Family <span class="lv lv2"></span>
 
 - **What it is:** A greedy algorithm commits to the best-looking choice now and never revisits it. The hard part is not the loop; it is knowing *which* choice is safe. This chapter collects the moves that recur, each with the reason it is safe
-- **Signal:** "minimum number of jumps / taps / boats / arrows", "maximum profit with deadlines", "which station to start from", "minimum cost", and constraints of n ≤ 10⁵ that rule out a DP over pairs
+- **Signal:** a minimum or maximum over choices made one at a time (jumps, taps, boats, slots, starts), n up to 10⁵ so a DP over pairs is too slow, and a move that looks obviously best
 - **Why it works:** Every safe greedy move comes with an argument that some optimal answer agrees with it: an *exchange* (swap the greedy choice into any optimal answer without loss) or *stays ahead* (after every step, greedy is at least as far along). Module 04 teaches both proofs; this chapter teaches the moves they justify
 
 :::mint

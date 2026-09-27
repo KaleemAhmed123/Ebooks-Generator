@@ -1,7 +1,8 @@
-## Extend the Reach <span class="lv lv2"></span>
+## Extend the Reach <span class="lv lv1"></span>
 
 - **What it is:** For "minimum steps to cover a line", do not decide *where* to land. Track two numbers: the end of the range reachable with the jumps used so far (`end`), and the farthest point reachable with one more jump (`far`). When `i` reaches `end`, a jump is forced, and it goes to `far`
-- **Signal:** "minimum number of jumps to reach the end", "minimum taps to water the whole garden", "minimum clips to cover [0, time]", "can you reach the last index"
+- **Signal:** fewest steps, taps or clips to cover a line from 0 to n, where each position reaches *anywhere* in a contiguous stretch ahead of it
+- **Not this page if:** a jump lands on exactly `i + a[i]` or `i − a[i]`, not anywhere up to it → 16-01 (BFS over indices)
 - **Why it works:** It is BFS by levels on a line. All indices reachable in k jumps form one contiguous range, and the next level is `(end, far]`. Greedy never picks a landing square; it only extends the range, so no choice can be wrong. Module 04's wrong approach, "jump to the farthest square", fails precisely because it picks a square
 
 :::mint

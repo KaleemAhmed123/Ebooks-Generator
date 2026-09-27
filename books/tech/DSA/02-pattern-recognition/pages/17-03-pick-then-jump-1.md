@@ -1,11 +1,12 @@
 ## Pick, Then Jump <span class="lv lv2"></span>
 
-- **What it is:** Pick/skip over items sorted by start time, where picking an item makes the next few items illegal. Skip moves to `k + 1`. Pick **jumps** past every item that clashes, to the first one that starts after this one ends, found by binary search
-- **Signal:** weighted intervals, "non-overlapping", "maximum profit / value", "choose jobs, events, rides", and n up to 10⁴–10⁵, so the O(n²) "try every earlier job" is too slow
-- **Why it works:** After sorting by start, the items compatible with a pick form a **suffix**. So the state is one index: `dp[k]` = best value using items k … n − 1. The suffix begins at a position binary search can find, so each state costs O(log n)
+- **What it is:** Pick or skip over items sorted by start, where a pick rules out the next few. Skip moves to `k + 1`. Pick **jumps** to the first item starting after this one ends, found by binary search
+- **Signal:** weighted intervals, "non-overlapping", "maximum profit / value", "choose jobs, events, rides", n up to 10⁵
+- **Not this page if:** every interval is worth the same → 07-07: earliest end first is optimal; no DP
+- **Why it works:** Sorted by start, the items compatible with a pick form a **suffix**, so one index is the state: `dp[k]` = best using items k … n − 1. Binary search finds where the suffix begins: O(log n) per state
 
 :::mint
-<svg viewBox="0 0 470 124" role="img" aria-label="Five jobs sorted by start on a timeline. From job k the skip arrow goes to job k plus 1. The pick arrow goes from job k past the jobs that start before k ends, to the first job whose start is at or after k's end, found by binary search." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
+<svg viewBox="0 0 470 110" role="img" aria-label="Five jobs sorted by start on a timeline. From job k the skip arrow goes to job k plus 1. The pick arrow goes from job k past the jobs that start before k ends, to the first job whose start is at or after k's end, found by binary search." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
   <style>
     .lb { font: 9.5px Consolas, monospace; fill: #1a1a1a; }
     .sm { font: 8px Georgia, serif; fill: #6b6b6b; }
@@ -14,8 +15,8 @@
     .dead { fill: #ffedf1; stroke: #ef476e; stroke-width: 1; }
   </style>
   <defs><marker id="m1703" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1a1a1a"/></marker></defs>
-  <line x1="20" y1="104" x2="450" y2="104" stroke="#6b6b6b" stroke-width="0.8"/>
-  <text x="20" y="118" class="sm">time →</text>
+  <line x1="62" y1="104" x2="450" y2="104" stroke="#6b6b6b" stroke-width="0.8"/>
+  <text x="20" y="107" class="sm">time →</text>
   <rect class="cur" x="30" y="14" width="150" height="14"/><text x="36" y="25" class="lb">k: profit p</text>
   <rect class="dead" x="80" y="34" width="90" height="14"/><text x="86" y="45" class="lb">k+1</text>
   <rect class="dead" x="120" y="54" width="140" height="14"/><text x="126" y="65" class="lb">k+2</text>

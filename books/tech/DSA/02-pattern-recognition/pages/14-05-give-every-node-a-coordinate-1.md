@@ -2,6 +2,7 @@
 
 - **What it is:** Assign each node a position: the root is `(row 0, col 0)`, a left child is `(row + 1, col − 1)`, a right child `(row + 1, col + 1)`. "Views" and "vertical orders" become grouping and sorting by those numbers, the same move as coordinate keys on a grid (page 05-01)
 - **Signal:** "vertical order traversal", "top view", "bottom view", "diagonal traversal", "nodes that share a column", "what is visible from above"
+- **Not this page if:** "seen from the left or right" → 14-04: a side view is the first or last node per level; no columns needed
 - **Why it works:** Looking at a tree from above or below means projecting every node onto the horizontal axis; its column is that projection. Within one column, the row says who is in front. Once every node carries `(col, row)`, the tree shape no longer matters: a map from column to nodes, plus a tie-breaking rule, answers the question
 
 :::mint

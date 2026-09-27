@@ -1,9 +1,8 @@
-# Chapter 6 - Strings
-
 ## Signature Key <span class="lv lv1"></span>
 
 - **What it is:** Reduce each string to a *signature* that is equal exactly when two strings are "the same" under the problem's rule. Then grouping, matching and counting are one hash-map pass over signatures
-- **Signal:** "group anagrams", "same letters in any order", "follows the same pattern", "is a rotation of", "print all anagrams together"
+- **Signal:** many strings compared under one rule: "same letters in any order", "same shape of repeats", "rotation of", "same up to a shift"; group, match or count the equal ones
+- **Not this page if:** the anagram must be found *inside* a longer string, as a substring of fixed length → 02-02
 - **Why it works:** Comparing every pair of strings is O(n²) comparisons. A signature turns the relation into equality, and equality is what hash maps are built for. The skill is choosing a signature that is cheap to compute and loses nothing the rule cares about
 
 :::mint

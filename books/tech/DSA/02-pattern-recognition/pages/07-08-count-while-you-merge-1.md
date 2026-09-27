@@ -1,7 +1,8 @@
 ## Count While You Merge <span class="lv lv2"></span>
 
 - **What it is:** Merge sort, with a counter bolted onto the merge step. Every pair `i < j` is split exactly once, into a left half and a right half; at that moment both halves are sorted, so all cross pairs with a property can be counted in one linear sweep
-- **Signal:** "count inversions", "count pairs `i < j` with `a[i] > a[j]`", "reverse pairs `a[i] > 2·a[j]`", "count of smaller numbers after self", n up to 10⁵ so O(n²) pairs is out
+- **Signal:** count pairs `i < j` whose *values* satisfy an inequality (`a[i] > a[j]`, `a[i] > 2·a[j]`, "smaller numbers after each element"), n up to 10⁵
+- **Not this page if:** the condition is symmetric, like `a[i] + a[j] ≤ target`, so `i < j` stops mattering: sort once and collide two pointers → 02-08
 - **Why it works:** Pairs inside one half are counted by the recursive calls. Pairs across halves only depend on values, not on order within each half, so sorting each half first loses nothing and turns the cross count into a two-pointer walk. Total O(n log n)
 
 :::mint

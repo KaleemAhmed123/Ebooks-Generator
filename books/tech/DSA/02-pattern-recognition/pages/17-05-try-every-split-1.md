@@ -2,6 +2,7 @@
 
 - **What it is:** **Partition DP.** The state is a range `(i, j)`. Pick the operation inside it that splits the range into two parts that no longer affect each other, try every position k for it, and pay a cost that depends only on `i`, `k` and `j`
 - **Signal:** "minimum cost to cut / merge / multiply / burst", "place brackets", "partition into pieces", n ≤ 100–500 so O(n³) fits
+- **Not this page if:** *any* two piles may merge, not only neighbours → 15-05: a heap merges the two smallest; no ranges
 - **Why it works:** Once the split is fixed, the left and right ranges are independent subproblems of the same shape. The question to ask is *which operation makes the sides independent*: for cuts it is the **first** cut, for Burst Balloons it is the **last** balloon to burst
 
 :::mint

@@ -1,3 +1,6 @@
-### The failure
+### Heap traps
 
-- **`Array.sort` after every push.** Even on nearly sorted input, re-sorting costs at least linear time per insert, so 10⁵ inserts do about 5·10⁹ element moves. The sift loops above cost O(log n) each
+- **Stale entries.** A heap cannot find or update an arbitrary element. Push the improved entry instead, and on every pop skip an entry that no longer matches the current state: `if (seen[v]) continue` in Dijkstra and 18-02, a pending-removal count in Sliding Window Median (15-04). Forgetting the skip re-expands nodes with worse keys (Module 07, 02-07)
+- **The wrong heap for "k largest".** Keep a **min**-heap and pop whenever it holds more than k. Each pop throws out the smallest survivor, so the heap ends with the k largest and its top is the k-th largest. A max-heap of all n values works too, but costs O(n) memory and O(n log n) time
+- **Ties are not stable.** A heap keyed on one field returns equal keys in no fixed order. Pushing `[1, a]`, `[1, b]`, `[1, c]`, `[0, d]` into the heap above with `(x, y) => x[0] < y[0]` pops `d, b, c, a`. When the problem fixes a tie rule (Huffman Encoding on GFG uses insertion order), add a sequence number and compare it second: `x[0] < y[0] || (x[0] === y[0] && x[1] < y[1])`
+- **`Array.sort` after every push.** Re-sorting costs at least linear time per insert, so 10⁵ inserts do about 5·10⁹ element moves. The sift loops above cost O(log n) each

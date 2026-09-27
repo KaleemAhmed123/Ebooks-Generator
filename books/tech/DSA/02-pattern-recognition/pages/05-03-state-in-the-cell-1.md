@@ -1,7 +1,8 @@
 ## State in the Cell <span class="lv lv2"></span>
 
 - **What it is:** When every cell's new value depends on its neighbours' *old* values, and a copy of the grid is not allowed, store both values in the cell: the old one in bit 0, the new one in bit 1. Read with `& 1`, finish with `>> 1`
-- **Signal:** "update the board simultaneously", "in place", "O(1) extra space", "if an element is 0, set its entire row and column to 0"
+- **Signal:** every cell changes "simultaneously" from its neighbours' old values, or a zero wipes its row and column, with "in place" or O(1) extra space
+- **Not this page if:** a change spreads outward in rounds (rotting, infection, distance to the nearest cell): each cell reads its neighbours' *new* values → 16-01 (multi-source BFS)
 - **Why it works:** The update is a function of the old grid. Writing new values directly would let later cells read already-updated neighbours. Bit 0 keeps the old grid intact while bit 1 accumulates the new one; a final pass shifts every cell once. The same idea shows up as "use the first row and column as markers" when the extra state is one flag per row and per column
 
 :::mint

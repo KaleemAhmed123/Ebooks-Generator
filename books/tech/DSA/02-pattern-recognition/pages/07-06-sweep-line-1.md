@@ -1,7 +1,8 @@
 ## Sweep Line <span class="lv lv1"></span>
 
 - **What it is:** Turn every interval into two events, `+1` at its start and `−1` at its end, sort the events by time, and walk them with a running count. The count at any moment is how many intervals are open
-- **Signal:** "how many overlap at once", "maximum CPU load", "minimum meeting rooms / platforms", "skyline", "busiest time"
+- **Signal:** the question is *how many* intervals are open at one moment: "at the same time", "fewest rooms / platforms / groups so that none in a group overlap", "busiest moment", "how many are active when each query arrives"
+- **Not this page if:** it asks *which* stretches are covered (merge, insert, the union) rather than how deep the overlap is → 07-07
 - **Why it works:** Overlap only changes at an endpoint. Between two consecutive events the set of open intervals is fixed, so 2n events describe every moment, and the answer is read in one pass after an O(n log n) sort instead of comparing all O(n²) pairs
 
 :::mint
@@ -36,14 +37,14 @@
   <rect x="128" y="104" width="88" height="24" fill="#e2fcf3" stroke="none" opacity="0.8"/>
   <text x="172" y="100" class="lb" text-anchor="middle">peak 2</text>
   <text x="40" y="138" class="sm">running count = intervals open at that moment</text>
-  <text x="40" y="100" class="sm">sort the 6 events by time, add them as you sweep</text>
+  <text x="40" y="52" class="sm">sort the 6 events by time, add them in time order</text>
 </svg>
 :::
 
 ### Variations
 
 - **Template and the end-before-start tie rule:** Module 04 (03-05)
-- **Meeting Rooms II (LeetCode 253) / Minimum Platforms (GFG):** the peak of the running count is the answer
+- **Minimum Platforms (GFG) / Divide Intervals Into Minimum Number of Groups (LeetCode 2406):** the peak of the running count is the answer. In 2406 `[1, 5]` and `[5, 8]` intersect, so starts go before ends at equal times
 - **Bounded positions (Car Pooling):** a difference array replaces the sort (03-07)
 - **The Skyline Problem (LeetCode 218):** the events carry heights; keep active heights in a max-heap with lazy deletion and emit a point whenever the top changes
 - **My Calendar III (LeetCode 732):** events arrive online; a sorted map of `+1/−1` counts, swept after each booking

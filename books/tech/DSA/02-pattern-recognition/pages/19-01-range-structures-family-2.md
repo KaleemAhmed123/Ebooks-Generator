@@ -8,4 +8,5 @@
 
 ### This chapter
 
-- **19-07 Drills:** range questions and the rare tricks, reduced to one structure each
+- **Pattern 54 · Choose the Range Structure** is this page; the structures themselves are built in Module 03
+- **19-07 Drills:** 11 disguised range questions, each reduced to one structure

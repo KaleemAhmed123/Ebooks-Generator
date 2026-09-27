@@ -1,8 +1,10 @@
 ## Merge the Two Smallest <span class="lv lv2"></span>
 
 - **What it is:** When items are combined two at a time and each combination costs the sum of what is combined, always combine the two *cheapest* items available, then put the result back. A min-heap keeps "the two cheapest" ready after every merge
-- **Signal:** "connect n ropes with minimum cost", "Huffman coding", "minimum cost to connect sticks", "repeatedly take the largest (or smallest) and put something back", "smash the two heaviest stones"
-- **Why it works:** Every merge result is paid again in every later merge it takes part in, so an item's total cost is its length times the number of merges above it: its depth in the merge tree. The optimal tree puts the smallest items deepest, and merging the two smallest first does exactly that (Huffman's exchange argument)
+- **Signal, optimal merge:** "combine two at a time, each combination costs the sum", "minimum total cost", "shortest prefix-free code for these frequencies"
+- **Signal, simulate with a heap:** the statement fixes the rule ("smash the two heaviest", "halve the largest pile k times") and asks what is left. Nothing to prove; the heap only makes each step O(log n)
+- **Not this page if:** only *adjacent* piles may merge → 17-05: order is fixed, so it is a range DP (Minimum Cost to Merge Stones, LeetCode 1000)
+- **Why it works:** Every merge result is paid again in every later merge it takes part in, so an item's total cost is its length times the number of merges above it: its depth in the merge tree. The optimal tree puts the smallest items deepest, and merging the two smallest first does exactly that (Huffman's exchange argument). The argument covers only the optimal-merge line
 
 :::mint
 <svg viewBox="0 0 470 118" role="img" aria-label="Connecting ropes 4, 3, 2, 6. Merge 2 and 3 for cost 5. Merge 4 and 5 for cost 9. Merge 6 and 9 for cost 15. Total 29. The smallest ropes end deepest in the merge tree, so their lengths are counted most often." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -30,7 +32,7 @@
 :::
 
 ```ts
-// Minimum Cost of Ropes (GFG); Heap class from page 15-11
+// Min Cost to Connect Ropes (GFG); Heap class from page 15-11
 function minCost(ropes: number[]): number {
   const h = new Heap<number>((a, b) => a < b);
   for (const r of ropes) h.push(r);

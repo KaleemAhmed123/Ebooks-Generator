@@ -2,6 +2,7 @@
 
 - **What it is:** K sorted sources, one merged order. Put the *head* of each source in a min-heap; pop the smallest, output it, and push the next element from the source it came from
 - **Signal:** "merge k sorted lists / arrays", "k-th smallest across k sorted lists", "smallest range covering one element from each list", "k pairs with smallest sums"
+- **Not this page if:** the sources are rows of one sorted matrix and memory is tight → 09-04: guess a value and count below it, O(1) extra space
 - **Why it works:** The next output must be the smallest head: everything behind a head is at least as large. So the heap only ever needs one candidate per source, K items at most, and each of the N outputs costs O(log K)
 
 :::mint

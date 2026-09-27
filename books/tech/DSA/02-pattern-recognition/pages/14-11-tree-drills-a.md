@@ -1,17 +1,16 @@
-## Recognition drills: Trees <span class="lv lv1"></span>
+## Recognition drills after Chapter 14 <span class="lv lv1"></span>
 
-Hide the right column. First name the direction information flows (down, up, across, anywhere, in order), then the page's move.
+Name the page, not the technique: first the direction information flows, then the move. Answers overleaf.
 
-| Problem | Direction & move |
-|---|---|
-| 1. [Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/) (LeetCode 104) | **Up:** `1 + max(left, right)` |
-| 2. [Balanced Binary Tree](https://leetcode.com/problems/balanced-binary-tree/) (LeetCode 110) | **Up,** return −1 once unbalanced |
-| 3. [Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/) (LeetCode 543) | **Return height, record bend** |
-| 4. [Same Tree](https://leetcode.com/problems/same-tree/) (LeetCode 100) / [Symmetric Tree](https://leetcode.com/problems/symmetric-tree/) (LeetCode 101) / [Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/) (LeetCode 226) | **Up,** compare or swap two subtrees at once |
-| 5. [Count Good Nodes in Binary Tree](https://leetcode.com/problems/count-good-nodes-in-binary-tree/) (LeetCode 1448) | **Down:** carry the path maximum |
-| 6. [Path Sum III](https://leetcode.com/problems/path-sum-iii/) (LeetCode 437) / [K Sum Paths](https://www.geeksforgeeks.org/problems/k-sum-paths/1) (GFG) | **Down:** carry a prefix-sum map, undo on return |
-| 7. [Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view/) (LeetCode 199) / [Left View of Binary Tree](https://www.geeksforgeeks.org/problems/left-view-of-binary-tree/1) (GFG) | **Across:** last / first node per level |
-| 8. [Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/) (LeetCode 103) | **Across,** reverse every other level |
-| 9. [Top View of Binary Tree](https://www.geeksforgeeks.org/problems/top-view-of-binary-tree/1) (GFG) / [Bottom View of Binary Tree](https://www.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1) (GFG) | **Coordinates,** BFS, first / last per column |
-| 10. [Vertical Order Traversal of a Binary Tree](https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/) (LeetCode 987) | **Coordinates,** sort by column, row, value |
-| 11. [Tree Boundary Traversal](https://www.geeksforgeeks.org/problems/boundary-traversal-of-binary-tree/1) (GFG) | **Three walks:** left edge, leaves, right edge reversed |
+1. Return the smallest depth whose nodes' values add up to the largest total.
+2. A comma-separated string of values and `#` claims to be a tree written root first, `#` for every missing child. Decide whether it is valid without building the tree.
+3. Two arrays list the same tree's nodes, distinct values: one visits a node before its children, the other after them. Build any tree that fits.
+4. Count unordered pairs of leaves whose connecting path has at most `d` edges, `d ≤ 10`.
+5. A value spreads each minute from one given node to every neighbouring node, parent included. How long until every node has it?
+6. Each node holds 0 or 1, and each path from the root down to a leaf spells a binary number, most significant bit first. Return the sum over all leaves.
+7. Two values in a search tree were exchanged by mistake. Put them back without changing the shape, using constant extra space.
+8. Print the shortest walk from one node to another as a string of `L`, `R` and `U` (up to the parent).
+9. Two search trees, up to 5,000 nodes each: return every value from both in ascending order.
+10. Print the nodes a viewer standing above the tree sees, from left to right.
+11. An array of 0s and 1s: find the longest contiguous stretch with as many 0s as 1s.
+12. Count the nodes whose value equals the floor of the mean of all values in the part of the tree they head.

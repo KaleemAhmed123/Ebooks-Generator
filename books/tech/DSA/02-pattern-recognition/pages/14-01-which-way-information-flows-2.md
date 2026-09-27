@@ -1,17 +1,15 @@
 ### The pages in this chapter
 
-| Page | Information flows | Canonical problem |
-|---|---|---|
-| **14-02 Carry It Down** | from ancestors, as parameters | Count Good Nodes in Binary Tree (LeetCode 1448) |
-| **14-03 Return One, Record Another** | from children, as return values | Diameter of Binary Tree (LeetCode 543) |
-| **14-04 Walk Level by Level** | across a level | Binary Tree Right Side View (LeetCode 199) |
-| **14-05 Give Every Node a Coordinate** | across columns | Vertical Order Traversal (LeetCode 987) |
-| **14-06 Turn the Tree into a Graph** | in every direction | All Nodes Distance K in Binary Tree (LeetCode 863) |
-| **14-07 Find the Split Point** | from both subtrees to one ancestor | Lowest Common Ancestor (LeetCode 236) |
-| **14-08 Read the BST in Order** | sorted order, left to right | Kth Smallest Element in a BST (LeetCode 230) |
-| **14-09 Rebuild from Traversals** | from traversal arrays back to a tree | Construct Binary Tree from Preorder and Inorder (LeetCode 105) |
+| Pattern | Pages | Information flows | Canonical problem |
+|---|---|---|---|
+| **36 · Carry It Down** | 14-02 | from ancestors, as parameters | Count Good Nodes in Binary Tree (LeetCode 1448) |
+| **37 · Return One, Record Another** | 14-03 | from children, as return values | Diameter of Binary Tree (LeetCode 543) |
+| **38 · Level and Position** | 14-04, 14-05 | across a level; across columns | Binary Tree Right Side View (LeetCode 199) |
+| **39 · Tree as a Graph** | 14-06 | in every direction | All Nodes Distance K in Binary Tree (LeetCode 863) |
+| **40 · Find the Split Point** | 14-07 | from both subtrees to one ancestor | Lowest Common Ancestor of a Binary Tree (LeetCode 236) |
+| **41 · Traversal-Order Facts** | 14-08, 14-09, 14-10 | what an in-, pre- or post-order walk guarantees | Kth Smallest Element in a BST (LeetCode 230) |
 
-The basic traversals, level-order BFS and BST validation are in Module 03; tree DP such as House Robber III and Maximum Path Sum is in Module 06.
+Pattern 41 is three moves on one fact, the order a traversal emits nodes: read a BST in sorted order (14-08), rebuild a tree from two orders (14-09), and walk in order with no stack at all (14-10). The basic traversals, level-order BFS and BST validation are in Module 03; tree DP such as House Robber III and Maximum Path Sum is in Module 06. Drills: 14-11.
 
 ### The trap
 

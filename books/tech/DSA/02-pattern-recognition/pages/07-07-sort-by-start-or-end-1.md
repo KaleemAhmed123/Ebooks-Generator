@@ -1,7 +1,8 @@
 ## Sort by Start to Merge, by End to Keep <span class="lv lv1"></span>
 
 - **What it is:** Interval problems split into two families, and the family decides the sort key. **Merge / cover / union** questions sort by *start*. **Keep the most / remove the fewest / fewest points to stab** questions sort by *end*
-- **Signal:** "merge overlapping intervals", "insert an interval", "minimum intervals to remove so the rest don't overlap", "minimum arrows to burst all balloons", "intersection of two interval lists"
+- **Signal:** intervals plus a question about *which* stretches: merge, insert or intersect them (the union), or remove the fewest so none overlap, or find the fewest points that hit every one
+- **Not this page if:** the question is how many intervals are open at one moment → 07-06
 - **Why it works:** Sorted by start, an interval can only overlap the group that is currently open, so one running `end` decides merge-or-close. Sorted by end, the interval that finishes first leaves the most room for everything after it, which is the exchange argument behind activity selection (Module 04, 03-04)
 
 :::mint
@@ -20,10 +21,6 @@
   <line class="iv" x1="148" y1="46" x2="176" y2="46"/><text x="182" y="49" class="sm">[8, 10] start 8 &gt; end 6 → new group</text>
   <line class="iv" x1="232" y1="60" x2="274" y2="60"/><text x="232" y="73" class="sm">[15, 18]</text>
   <line class="mg" x1="36" y1="84" x2="106" y2="84"/><line class="mg" x1="148" y1="84" x2="176" y2="84"/><line class="mg" x1="232" y1="84" x2="274" y2="84"/>
-  <text x="320" y="30" class="lb">merge / cover</text>
-  <text x="320" y="44" class="sm">→ sort by start</text>
-  <text x="320" y="70" class="lb">keep max / remove min</text>
-  <text x="320" y="84" class="sm">→ sort by end</text>
 </svg>
 :::
 

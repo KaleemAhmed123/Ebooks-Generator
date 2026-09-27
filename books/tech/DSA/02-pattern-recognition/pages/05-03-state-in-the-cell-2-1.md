@@ -28,4 +28,4 @@ function gameOfLife(b: number[][]): void {
 
 - **Set Matrix Zeroes (LeetCode 73):** the extra state is "row r has a zero" and "column c has a zero". Store those flags in row 0 and column 0 themselves. Row 0 and column 0 overlap at `[0][0]`, so keep one extra boolean for column 0, and clear row 0 and column 0 *last*
 - **Rotting oranges, flood fills, "mark visited" in grids:** overwrite the cell (`'#'`, 2, −1) instead of a separate `visited` array, then restore it if the caller needs the grid back. Chapter 13 uses this in word search
-- **Candy Crush (LeetCode 723):** mark every cell that belongs to a run of three by negating it, so it still matches its neighbours while the scan continues; crush and drop only after the whole board is marked. Same rule: if a cell must be read in its old form after it is written, it needs a second bit, a sign, or a second grid
+- **The general rule:** if a cell must still be read in its old form after it is written, it needs a second bit, a sign flip, or a second grid

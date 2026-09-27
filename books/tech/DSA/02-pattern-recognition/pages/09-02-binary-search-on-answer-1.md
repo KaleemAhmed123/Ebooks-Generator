@@ -1,55 +1,44 @@
-## Binary Search on Answer <span class="lv lv1"></span>
+## Binary Search on the Answer <span class="lv lv1"></span>
 
-- **What it is:** Guessing the answer, using a checker function to see if the guess is feasible, and using Binary Search to find the optimal guess
-- **Signal:** The problem asks to "Minimise the maximum X" or "Maximise the minimum X". (e.g. Koko Eating Bananas, Allocate Pages, Minimum Capacity to Ship Packages)
-- **Why it works:** Calculating the exact minimum capacity of a ship to transport packages within D days has no simple formula. But if I ask you, "Can a ship with capacity C transport them in D days?", you can simulate it easily with a simple O(N) loop. Since the answer domain is monotonic (if capacity 10 works, capacity 11 definitely works), we can binary search the capacity C
-
-### The visual mechanism
-
-- Problem: Koko can eat K bananas per hour. Find the minimum K to eat all piles within H hours.
-- Possible values for K: `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`
-- Feasibility `canEat(K)`: `[F, F, F, F, T, T, T, T, T, T]`
-- Our goal is to find the *first* `True`. This is exactly lower bound (Module 04, 01-04).
+- **What it is:** Search the *answer*, not the input. Guess X, run a cheap check "can it be done with X?", and halve the range of X by where the check flips
+- **Signal:** the answer is a number in a known range, and "can it be done with X?" is easy to check and monotone in X: more capacity, speed or days never hurts. "Minimise the maximum" and "maximise the minimum" are the most common sub-case
+- **Not this page if:** the pieces' costs are *added up* rather than capped by a maximum or minimum, so no single threshold X exists → 17-02 (DP)
+- **Why it works:** The least capacity that ships every package in D days has no formula, but checking one capacity is a greedy O(n) pass. If capacity C works, C + 1 works too, so the checks read `F…FT…T` and the answer is the first `T`: lower bound (Module 04, 01-04) over values instead of indices
 
 :::mint
-<svg viewBox="0 0 470 120" role="img" aria-label="Binary Search on Answer. The domain of possible answers maps to a boolean array of False followed by True. Binary search finds the boundary." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
+<svg viewBox="0 0 470 106" role="img" aria-label="Koko with piles 8 and 5 and 3 hours. Speeds 1 to 8; canEat is false for 1 to 4 and true for 5 to 8. Probes: lo 1, hi 8, mid 4 is false so lo becomes 5; mid 6 is true so hi becomes 6; mid 5 is true so hi becomes 5; lo equals hi equals 5, the answer." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
   <style>
     .lb { font: 9.5px Consolas, monospace; fill: #1a1a1a; }
     .sm { font: 8px Georgia, serif; fill: #6b6b6b; }
-    .hi { fill: #e2fcf3; stroke: #2d6a4f; stroke-width: 1.1; }
-    .rej { fill: #ffedf1; stroke: #ef476e; stroke-width: 1.1; }
-    .bx { fill: #ffffff; stroke: #1a1a1a; stroke-width: 1.1; }
-    .a { stroke: #1a1a1a; stroke-width: 1.1; fill: none; }
+    .f { fill: #ffedf1; stroke: #ef476e; stroke-width: 1; }
+    .t { fill: #e2fcf3; stroke: #2d6a4f; stroke-width: 1; }
+    .ans { fill: #e2fcf3; stroke: #2d6a4f; stroke-width: 2.2; }
   </style>
-
-  <text x="20" y="20" class="lb">Answer Domain (K)</text>
-  <text x="75" y="20" class="sm">1</text><text x="105" y="20" class="sm">2</text>
-  <text x="135" y="20" class="sm">3</text><text x="165" y="20" class="sm">4</text>
-  <text x="195" y="20" class="sm">5</text><text x="225" y="20" class="sm">6</text>
-  <text x="255" y="20" class="sm">7</text><text x="285" y="20" class="sm">8</text>
-
-  <text x="20" y="45" class="lb">canEat(K)?</text>
-  <rect class="rej" x="65" y="30" width="20" height="20" rx="2" />
-  <rect class="rej" x="95" y="30" width="20" height="20" rx="2" />
-  <rect class="rej" x="125" y="30" width="20" height="20" rx="2" />
-  <rect class="rej" x="155" y="30" width="20" height="20" rx="2" />
-  
-  <rect class="hi" x="185" y="30" width="20" height="20" rx="2" />
-  <rect class="hi" x="215" y="30" width="20" height="20" rx="2" />
-  <rect class="hi" x="245" y="30" width="20" height="20" rx="2" />
-  <rect class="hi" x="275" y="30" width="20" height="20" rx="2" />
-
-  <text x="75" y="44" class="lb" text-anchor="middle" fill="#ef476e">F</text>
-  <text x="105" y="44" class="lb" text-anchor="middle" fill="#ef476e">F</text>
-  <text x="135" y="44" class="lb" text-anchor="middle" fill="#ef476e">F</text>
-  <text x="165" y="44" class="lb" text-anchor="middle" fill="#ef476e">F</text>
-  
-  <text x="195" y="44" class="lb" text-anchor="middle" fill="#2d6a4f">T</text>
-  <text x="225" y="44" class="lb" text-anchor="middle" fill="#2d6a4f">T</text>
-  <text x="255" y="44" class="lb" text-anchor="middle" fill="#2d6a4f">T</text>
-  <text x="285" y="44" class="lb" text-anchor="middle" fill="#2d6a4f">T</text>
-
-  <path class="a" d="M 195 65 L 195 55" marker-end="url(#arrow)" />
-  <text x="195" y="80" class="lb" text-anchor="middle">Optimal Answer (Minimum Valid K)</text>
+  <text x="14" y="14" class="sm">piles [8, 5], h = 3: can speed K eat both piles in 3 hours?</text>
+  <text x="14" y="36" class="sm">K</text><text x="14" y="56" class="sm">canEat(K)</text>
+  <text x="85" y="36" class="lb" text-anchor="middle">1</text>
+  <rect class="f" x="73" y="42" width="24" height="20" rx="2"/><text x="85" y="56" class="lb" text-anchor="middle" fill="#ef476e">F</text>
+  <text x="115" y="36" class="lb" text-anchor="middle">2</text>
+  <rect class="f" x="103" y="42" width="24" height="20" rx="2"/><text x="115" y="56" class="lb" text-anchor="middle" fill="#ef476e">F</text>
+  <text x="145" y="36" class="lb" text-anchor="middle">3</text>
+  <rect class="f" x="133" y="42" width="24" height="20" rx="2"/><text x="145" y="56" class="lb" text-anchor="middle" fill="#ef476e">F</text>
+  <text x="175" y="36" class="lb" text-anchor="middle">4</text>
+  <rect class="f" x="163" y="42" width="24" height="20" rx="2"/><text x="175" y="56" class="lb" text-anchor="middle" fill="#ef476e">F</text>
+  <text x="205" y="36" class="lb" text-anchor="middle">5</text>
+  <rect class="ans" x="193" y="42" width="24" height="20" rx="2"/><text x="205" y="56" class="lb" text-anchor="middle" fill="#2d6a4f">T</text>
+  <text x="235" y="36" class="lb" text-anchor="middle">6</text>
+  <rect class="t" x="223" y="42" width="24" height="20" rx="2"/><text x="235" y="56" class="lb" text-anchor="middle" fill="#2d6a4f">T</text>
+  <text x="265" y="36" class="lb" text-anchor="middle">7</text>
+  <rect class="t" x="253" y="42" width="24" height="20" rx="2"/><text x="265" y="56" class="lb" text-anchor="middle" fill="#2d6a4f">T</text>
+  <text x="295" y="36" class="lb" text-anchor="middle">8</text>
+  <rect class="t" x="283" y="42" width="24" height="20" rx="2"/><text x="295" y="56" class="lb" text-anchor="middle" fill="#2d6a4f">T</text>
+  <text x="175" y="76" class="sm" text-anchor="middle">probe 1</text>
+  <text x="235" y="76" class="sm" text-anchor="middle">probe 2</text>
+  <text x="205" y="76" class="sm" text-anchor="middle">probe 3</text>
+  <text x="322" y="36" class="lb">1. [1, 8] mid 4: F → lo = 5</text>
+  <text x="322" y="52" class="lb">2. [5, 8] mid 6: T → hi = 6</text>
+  <text x="322" y="68" class="lb">3. [5, 6] mid 5: T → hi = 5</text>
+  <text x="322" y="84" class="lb">[5, 5] lo = hi: answer 5</text>
+  <text x="14" y="98" class="sm">answer = the first T · mid = (lo + hi) &gt;&gt; 1 · T: hi = mid (mid may be the answer) · F: lo = mid + 1</text>
 </svg>
 :::

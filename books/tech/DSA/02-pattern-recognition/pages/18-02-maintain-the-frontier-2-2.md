@@ -4,7 +4,7 @@
 - **Network Delay Time (LeetCode 743):** the key is the summed time: Dijkstra (Module 05, 03-01)
 - **Shortest Path in Binary Matrix (LeetCode 1091):** every step costs 1, so the heap degrades to a queue: BFS
 - **Minimum Obstacle Removal to Reach Corner (LeetCode 2290):** step costs are 0 or 1: a deque frontier, 0-1 BFS (Module 05, 02-06)
-- **Beam search:** keep only the best B entries per step; fast, but it can discard the true optimum
+- **Shortest Path to Get All Keys (LeetCode 864):** the frontier holds states, not cells: `(r, c, keys held)`, with the keys as a 6-bit mask. Every step costs 1, so BFS; a cell may be visited once per key set
 
 ### The failure
 

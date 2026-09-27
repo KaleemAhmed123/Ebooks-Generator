@@ -1,21 +1,22 @@
-## Recognition drills: Graphs & Dependency <span class="lv lv2"></span> - continued
+## Recognition drills after Chapter 16 <span class="lv lv2"></span> - continued
 
-| Problem | Node · edge · move |
-|---|---|
-| 13. [Making A Large Island](https://leetcode.com/problems/making-a-large-island/) (LeetCode 827) | **Label islands, then sum distinct neighbour ids** per 0 (16-03) |
-| 14. [Is Graph Bipartite?](https://leetcode.com/problems/is-graph-bipartite/) (LeetCode 785) | **Two-colour BFS/DFS;** check every component |
-| 15. [Course Schedule](https://leetcode.com/problems/course-schedule/) (LeetCode 207) / [Prerequisite Tasks](https://www.geeksforgeeks.org/problems/prerequisite-tasks/1) (GFG) | **Cycle check;** Kahn's queue empties early on a cycle (16-04) |
-| 16. [Course Schedule II](https://leetcode.com/problems/course-schedule-ii/) (LeetCode 210) / [Topological Sort](https://www.geeksforgeeks.org/problems/topological-sort/1) (GFG) | **Kahn's order** (16-04) |
-| 17. [Alien Dictionary](https://www.geeksforgeeks.org/problems/alien-dictionary/1) (GFG) | **Edge from the first differing letter** of each adjacent pair; a word before its own prefix is invalid |
-| 18. [Find Eventual Safe States](https://leetcode.com/problems/find-eventual-safe-states/) (LeetCode 802) | **Reverse the edges, Kahn from the sinks;** or three-colour DFS |
-| 19. [Longest Path in a Directed Acyclic Graph](https://www.geeksforgeeks.org/problems/longest-path-in-a-directed-acyclic-graph/1) (GFG) | **Critical path / DAG DP** (16-04) |
-| 20. [Path with Maximum Probability](https://leetcode.com/problems/path-with-maximum-probability/) (LeetCode 1514) / [Dijkstra Algorithm](https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1) (GFG) | **Dijkstra;** products of probabilities ≤ 1 only shrink, so a max-heap works |
-| 21. [Cheapest Flights Within K Stops](https://leetcode.com/problems/cheapest-flights-within-k-stops/) (LeetCode 787) | **Bellman–Ford for k + 1 rounds,** copying the array each round; cost-only Dijkstra drops paths with fewer stops |
-| 22. [Minimum Spanning Tree](https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1) (GFG) | **Minimum spanning tree** (Module 05, 04-01, 04-02) |
-| 23. [Critical Connections in a Network](https://leetcode.com/problems/critical-connections-in-a-network/) (LeetCode 1192) / [Bridge Edge in a Graph](https://www.geeksforgeeks.org/problems/bridge-edge-in-graph/1) (GFG) | **Low-link:** edge (u, v) is a bridge iff low[v] > tin[u] (Module 05, 05-03) |
+| # | Problem | Page | Deciding fact |
+|---|---|---|---|
+| 1 | [Most Stones Removed with Same Row or Column](https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/) (LeetCode 947) | 16-02 | "shares its row or column": answer = stones − components |
+| 2 | [Array Nesting](https://leetcode.com/problems/array-nesting/) (LeetCode 565) | 04-02 | "a permutation of 0 to n − 1": disjoint cycles; walk each once, marking in place, O(1) space |
+| 3 | [Parallel Courses III](https://leetcode.com/problems/parallel-courses-iii/) (LeetCode 2050) | 16-04 | "any number at once": critical path in Kahn order |
+| 4 | [Number of Closed Islands](https://leetcode.com/problems/number-of-closed-islands/) (LeetCode 1254) | 16-03 | "touch no edge": flood from the border, count what is left |
+| 5 | [Similar String Groups](https://leetcode.com/problems/similar-string-groups/) (LeetCode 839) | 16-02 | "swapping two letters": similarity is the hidden edge; union every similar pair |
+| 6 | [Find Eventual Safe States](https://leetcode.com/problems/find-eventual-safe-states/) (LeetCode 802) | 16-04 | "every walk ends": reverse the edges, run Kahn from the sinks |
+| 7 | [Jump Game](https://leetcode.com/problems/jump-game/) (LeetCode 55) | 08-02 | "longest jump allowed": reachable indices form one range; extend it, no graph |
+| 8 | [Redundant Connection](https://leetcode.com/problems/redundant-connection/) (LeetCode 684) | 16-01 | "one extra edge": union–find; the edge inside one set closes the cycle |
+| 9 | [Pacific Atlantic Water Flow](https://leetcode.com/problems/pacific-atlantic-water-flow/) (LeetCode 417) | 16-03 | "drain to both": one uphill flood from each ocean's border, then intersect |
+| 10 | [Alien Dictionary](https://www.geeksforgeeks.org/problems/alien-dictionary/1) (GFG) | 16-04 | "unknown alphabet": edge from the first differing letter, then topological order |
+| 11 | [Smallest String With Swaps](https://leetcode.com/problems/smallest-string-with-swaps/) (LeetCode 1202) | 16-02 | swaps are transitive; sort letters per component |
+| 12 | [Course Schedule IV](https://leetcode.com/problems/course-schedule-iv/) (LeetCode 1462) | 16-04 | "10⁴ queries": precompute reachability along the order |
 
 ### Score yourself
 
-- **19–23:** you name the edge before the algorithm
-- **12–18:** reread 16-02 and Module 05's recognition page; most misses are the wrong edge, not the wrong algorithm
-- **0–11:** redo drills 1–10; each is one BFS with a different node
+- **10–12:** you name the edge before the algorithm
+- **6–9:** reread 16-02 and 16-04; most misses are the wrong edge, not the wrong algorithm
+- **0–5:** reread 16-01 and Module 05's recognition page, then retry rows 1, 5 and 11

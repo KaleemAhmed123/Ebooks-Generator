@@ -1,7 +1,8 @@
 ## Throw Out the Dominated <span class="lv lv2"></span>
 
 - **What it is:** A candidate is **dominated** when another candidate is at least as good in every way that can ever matter. It can never become the answer, so delete it the moment you can prove it. What survives is short and ordered, and the answer is read off the survivors
-- **Signal:** "catches up / blocks / hides behind", "visible", "fleet", "weak characters", "nested envelopes", a pair of scores where one item can beat another on both
+- **Signal:** "catches up and then moves at the slower speed", "blocks the view of everything behind it", "another item is strictly larger in both scores", "fits inside", a pair of scores where one item can beat another on both
+- **Not this page if:** a pair is scored by a sum such as `a[i] + a[j] + i − j` → 03-05: split the score and keep the best partner; nothing is deleted
 - **Why it works:** Deletion is permanent, so every candidate is inserted once and removed at most once: O(n) after sorting. Monotonic stacks (10-05), monotonic deques (10-10) and Pareto frontiers are all this one move with different proofs of domination
 
 :::mint

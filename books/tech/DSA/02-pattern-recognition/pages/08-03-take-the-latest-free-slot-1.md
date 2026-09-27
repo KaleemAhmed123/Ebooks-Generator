@@ -1,8 +1,9 @@
 ## Take the Latest Free Slot <span class="lv lv2"></span>
 
 - **What it is:** Unit-time jobs, each with a deadline and a profit. Take jobs from most to least profitable; put each one in the *latest* free time slot that still meets its deadline. If no such slot is free, skip it
-- **Signal:** "job sequencing with deadlines", "each job takes one unit of time", "maximise total profit", "only one job at a time"
-- **Why it works:** Profit order means a job is only ever skipped for more valuable ones. Placing a job as *late* as its deadline allows keeps the early slots open, and early slots are the only ones that jobs with tight deadlines can use. Exchange argument: any optimal schedule can be rearranged to use these slots without losing profit
+- **Signal:** unit-time jobs, each with a deadline and a profit, one job per slot; maximise the profit
+- **Not this page if:** jobs take different lengths of time → 15-06 (keep a heap of the jobs taken, drop the longest)
+- **Why it works:** Profit order means a job is only ever skipped for more valuable ones. Placing a job as *late* as its deadline allows keeps the early slots open, and early slots are the only ones that jobs with tight deadlines can use.
 
 :::mint
 <svg viewBox="0 0 470 110" role="img" aria-label="Jobs a with deadline 4 profit 20, b with deadline 1 profit 10, c with deadline 1 profit 40, d with deadline 1 profit 30. By profit: c goes to slot 1, a goes to the latest free slot 4, d and b need slot 1 which is taken, so they are skipped. Profit 60." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -33,7 +34,7 @@ function jobSequencing(
 ): number[] {
   const order = profit.map((_, i) => i)
     .sort((a, b) => profit[b] - profit[a]);
-  const maxD = Math.max(...deadline);
+  const maxD = deadline.reduce((m, d) => Math.max(m, d), 0);
   const used = new Array(maxD + 1).fill(false);     // slots 1..maxD
   let count = 0, total = 0;
   for (const i of order) {
