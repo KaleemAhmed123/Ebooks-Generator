@@ -1,4 +1,4 @@
-## Debugging and Stress Testing
+## Debugging and Stress Testing <span class="lv lv1"></span>
 
 In an interview, you write code, it fails the sample test case, and the interviewer says, "Can you debug this?"
 Your response in the next 60 seconds determines if you get hired.

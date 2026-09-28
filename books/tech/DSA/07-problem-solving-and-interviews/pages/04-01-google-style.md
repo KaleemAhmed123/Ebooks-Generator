@@ -1,4 +1,4 @@
-## The Google Style
+## The Google Style <span class="lv lv1"></span>
 
 Google interviews are famous for being highly theoretical and heavily focused on algorithms rather than frameworks. You will rarely be asked to parse a JSON file or build a React component in a Google algorithmic round.
 

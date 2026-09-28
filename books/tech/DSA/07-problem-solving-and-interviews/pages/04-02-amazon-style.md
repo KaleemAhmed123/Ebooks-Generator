@@ -1,4 +1,4 @@
-## The Amazon Style
+## The Amazon Style <span class="lv lv1"></span>
 
 Amazon interviews blend algorithms with intense system awareness and Leadership Principles (LPs). 
 

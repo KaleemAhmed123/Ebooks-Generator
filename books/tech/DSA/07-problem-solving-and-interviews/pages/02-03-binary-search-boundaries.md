@@ -1,4 +1,4 @@
-## Binary Search Boundaries
+## Binary Search Boundaries <span class="lv lv1"></span>
 
 Binary search is famous for causing infinite loops. If you get the bounds wrong, `left` and `right` will get stuck next to each other forever.
 

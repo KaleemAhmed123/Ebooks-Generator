@@ -1,4 +1,4 @@
-## The Microsoft Style
+## The Microsoft Style <span class="lv lv1"></span>
 
 Microsoft interviews are notoriously balanced. They don't usually try to trick you with obscure math puzzles. They want to see solid fundamentals, clean code, and good communication.
 

@@ -1,4 +1,4 @@
-## Apple, Atlassian, and Startup Style
+## Apple, Atlassian, and Startup Style <span class="lv lv1"></span>
 
 Companies outside the standard FAANG mold often run "Practical" algorithmic rounds. They care less about dynamic programming and more about whether you can build a feature today.
 

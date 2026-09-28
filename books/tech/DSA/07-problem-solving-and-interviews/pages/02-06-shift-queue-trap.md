@@ -1,4 +1,4 @@
-## The Shift Queue Trap
+## The Shift Queue Trap <span class="lv lv1"></span>
 
 This is the most common reason JavaScript and TypeScript developers fail BFS interviews. 
 

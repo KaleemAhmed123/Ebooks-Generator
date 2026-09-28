@@ -1,4 +1,4 @@
-## Phase 3: Brute Force First
+## Phase 3: Brute Force First <span class="lv lv1"></span>
 
 There is a toxic myth in the interview prep community that proposing a brute-force solution makes you look junior. This is completely false. Proposing the brute-force solution is mandatory.
 

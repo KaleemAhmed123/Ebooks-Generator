@@ -1,4 +1,4 @@
-## Mutating While Iterating
+## Mutating While Iterating <span class="lv lv1"></span>
 
 This is a devastating bug that destroys array integrity and is incredibly difficult to spot during a dry-run because the human brain assumes the array length is static.
 

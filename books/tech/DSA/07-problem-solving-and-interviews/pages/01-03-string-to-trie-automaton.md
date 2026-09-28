@@ -1,4 +1,4 @@
-## Transformation: String Array to Trie
+## Transformation: String Array to Trie <span class="lv lv1"></span>
 
 When a problem asks you to repeatedly search, prefix-match, or compare a large set of strings, comparing them individually is O(N · M) where N is the number of strings and M is string length. 
 We transform the flat array into a hierarchical tree.
@@ -28,3 +28,12 @@ We transform the flat array into a hierarchical tree.
   - If the Trie pointer hits `null`, immediately prune the DFS (this path on the board cannot form any word in the dictionary).
   - If the Trie pointer hits a node where `isWord` is true, you found a word.
 - **The Result:** The complexity drops drastically because the Trie prunes invalid board paths instantly for *all words simultaneously*.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Word Search II](https://leetcode.com/problems/word-search-ii/) (LeetCode 212) | Build a Trie from the word list, DFS the board with a Trie pointer |
+| [Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/) (LeetCode 208) | Direct Trie construction with insert, search, and startsWith |
+| [Design Add and Search Words Data Structure](https://leetcode.com/problems/design-add-and-search-words-data-structure/) (LeetCode 211) | Trie with wildcard DFS branching on '.' characters |
+| [Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix/) (LeetCode 14) | Trie path shared by all strings gives the common prefix |

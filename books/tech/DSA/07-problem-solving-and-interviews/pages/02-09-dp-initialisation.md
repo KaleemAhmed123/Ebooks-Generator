@@ -1,4 +1,4 @@
-## DP Initialisation Traps
+## DP Initialisation Traps <span class="lv lv1"></span>
 
 Dynamic Programming is notoriously sensitive to how the array is initialised. If the default values are wrong, the transitions will combine garbage data into more garbage data.
 

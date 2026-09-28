@@ -1,4 +1,4 @@
-## Transformation: Optimisation to Decision
+## Transformation: Optimisation to Decision <span class="lv lv1"></span>
 
 This is the mathematical core of **Binary Search on Answer**. It is one of the most frequently used transformations in algorithmic problem solving.
 
@@ -31,3 +31,12 @@ If the problem space is **monotonic** (e.g., if a truck capacity of 50 works, th
   - If `canFinish(mid)` is true, record it and try a slower speed (`right = mid - 1`).
   - If false, she needs to eat faster (`left = mid + 1`).
 - **The Result:** We solved a complex optimisation problem with a trivial O(N log(text{Max Pile})) search.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/) (LeetCode 875) | Binary search the eating speed, feasibility check is O(N) |
+| [Capacity to Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/) (LeetCode 1011) | Binary search the ship capacity, greedy day-count check |
+| [Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/) (LeetCode 410) | Binary search the max subarray sum, greedy split check |
+| [Minimum Number of Days to Make m Bouquets](https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/) (LeetCode 1482) | Binary search the day, check if enough adjacent flowers bloomed |

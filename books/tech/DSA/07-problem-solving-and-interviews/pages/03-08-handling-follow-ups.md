@@ -1,4 +1,4 @@
-## Phase 7: Handling Follow-ups
+## Phase 7: Handling Follow-ups <span class="lv lv2"></span>
 
 You finished the code, the dry run was flawless, and you have 8 minutes left.
 The interviewer asks a follow-up. This is where they decide between a "Hire" and a "Strong Hire."

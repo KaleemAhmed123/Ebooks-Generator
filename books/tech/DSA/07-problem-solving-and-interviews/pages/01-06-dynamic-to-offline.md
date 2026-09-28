@@ -1,4 +1,4 @@
-## Transformation: Dynamic Queries to Offline Queries 🔴
+## Transformation: Dynamic Queries to Offline Queries 🔴 <span class="lv lv3"></span>
 
 This is a CP-tier transformation that occasionally appears in elite interviews.
 
@@ -30,3 +30,11 @@ If we process queries **offline**, we transform the problem:
   - While the current query's `R == i`: the answer for this query is simply `fenwickTree.query(L, R)`.
   - Save the answer using the query's `originalIndex`.
 - **The Result:** We avoid complex 2D data structures entirely, solving the problem in O((N+Q) log N) time.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Count of Smaller Numbers After Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self/) (LeetCode 315) | Process indices right-to-left with a Fenwick Tree for rank queries |
+| [Range Sum Query - Mutable](https://leetcode.com/problems/range-sum-query-mutable/) (LeetCode 307) | Online variant; offline version sorts queries by endpoint |
+| [Reverse Pairs](https://leetcode.com/problems/reverse-pairs/) (LeetCode 493) | Offline merge-sort or BIT approach on processed element order |

@@ -1,4 +1,4 @@
-## Phase 1: Understand and Clarify
+## Phase 1: Understand and Clarify <span class="lv lv1"></span>
 
 When the interviewer finishes reading the problem, do not immediately start thinking about algorithms. Your first job is to lock down the exact requirements.
 

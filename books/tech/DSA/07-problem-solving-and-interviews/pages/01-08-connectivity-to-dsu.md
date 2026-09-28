@@ -1,4 +1,4 @@
-## Transformation: Connectivity to DSU
+## Transformation: Connectivity to DSU <span class="lv lv1"></span>
 
 DFS and BFS are great for finding connected components. But they are static. If the graph is changing, running DFS repeatedly is a disaster.
 
@@ -37,3 +37,12 @@ We transform standard graph traversal into a **Disjoint Set Union (DSU / Union-F
   - Otherwise, `union(u, v)`.
 
 DSU is the ultimate tool for processing dynamic connectivity. If a problem involves merging groups, immediately transform it to DSU.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Number of Provinces](https://leetcode.com/problems/number-of-provinces/) (LeetCode 547) | Union connected cities, count remaining disjoint sets |
+| [Redundant Connection](https://leetcode.com/problems/redundant-connection/) (LeetCode 684) | Union edges sequentially; the one that creates a cycle is the answer |
+| [Accounts Merge](https://leetcode.com/problems/accounts-merge/) (LeetCode 721) | Union accounts sharing an email, merge groups at the end |
+| [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/) (LeetCode 128) | Union consecutive values, track largest component size |

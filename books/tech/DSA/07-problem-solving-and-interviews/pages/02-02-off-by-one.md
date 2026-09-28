@@ -1,4 +1,4 @@
-## The Off-By-One Error
+## The Off-By-One Error <span class="lv lv1"></span>
 
 The defining characteristic of a junior programmer is fixing an off-by-one error by randomly adding `+1` or `-1` until the tests pass. 
 The defining characteristic of a senior programmer is proving the bounds mathematically before writing the loop.

@@ -1,4 +1,4 @@
-## Transformation: Huge Range to Coordinate Compression 🟡
+## Transformation: Huge Range to Coordinate Compression 🟡 <span class="lv lv2"></span>
 
 When a problem involves points or intervals on a massive 1D or 2D grid, you often need to use a frequency array or a 2D matrix. But what if the coordinates go up to 10⁹?
 
@@ -38,3 +38,11 @@ If the input intervals are `[10, 1000]`, `[500, 1000000]`, `[10, 500]`:
   - Map points into this dense grid.
   - Map queries into this dense grid (using binary search to find the closest mapped coordinate if the query asks for an unmapped value).
   - Run standard 2D Prefix Sums.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [My Calendar II](https://leetcode.com/problems/my-calendar-ii/) (LeetCode 731) | Compress booking endpoints, sweep line on dense indices |
+| [The Skyline Problem](https://leetcode.com/problems/the-skyline-problem/) (LeetCode 218) | Compress x-coordinates of building edges before sweep |
+| [Meeting Rooms II](https://leetcode.com/problems/meeting-rooms-ii/) (LeetCode 253) | Compress start/end times, difference array on dense range |

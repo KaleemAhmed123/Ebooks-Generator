@@ -1,4 +1,4 @@
-## Phase 6: Dry Run and Edge Cases
+## Phase 6: Dry Run and Edge Cases <span class="lv lv1"></span>
 
 You finished writing the code. You say, "I think that's it."
 The interviewer says, "Okay, let's trace it."

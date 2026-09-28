@@ -1,4 +1,4 @@
-## Visited Timing (DFS vs BFS)
+## Visited Timing (DFS vs BFS) <span class="lv lv1"></span>
 
 The exact moment you mark a node as `visited` dictates whether your algorithm is lightning-fast or exponentially slow.
 

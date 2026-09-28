@@ -1,4 +1,4 @@
-## Stale Heap Entries (Dijkstra's Silent Killer)
+## Stale Heap Entries (Dijkstra's Silent Killer) <span class="lv lv1"></span>
 
 When writing Dijkstra's algorithm using a Priority Queue, there is a fundamental difference between how textbook pseudocode works and how standard library heaps work.
 

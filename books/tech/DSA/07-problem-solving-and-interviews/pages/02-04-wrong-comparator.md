@@ -1,4 +1,4 @@
-## The Wrong Comparator
+## The Wrong Comparator <span class="lv lv1"></span>
 
 When sorting complex objects, or setting up a Priority Queue (Heap), passing the wrong comparator is a silent killer. It will not throw an error; it will just subtly sort the array incorrectly.
 
