@@ -385,9 +385,8 @@ async function buildMaster(book) {
     const recolor = { from: meta.cover?.accent ?? null, to: accent };
     const own = [];
     const body = [];
-    // Slots reserved ahead of the content: the divider, and under `per-topic`
-    // the topic's own contents page as well. Suppressed by `"divider": false`.
-    const lead = noDivider ? 0 : perTopic ? 2 : 1;
+    // One slot reserved for the divider; suppressed by `"divider": false`.
+    const lead = noDivider ? 0 : 1;
     for (const f of files) {
       body.push(
         await renderPage(
@@ -400,37 +399,34 @@ async function buildMaster(book) {
     topics.push({ title: meta.title, terms: counting ? total : modules, accent });
 
     if (noDivider) {
-      // No divider, no per-topic TOC — pages go straight in.
       pages.push(...body);
     } else {
-    // The divider is generated, not a file. Nothing to keep in sync by hand,
-    // and its count is counted rather than typed.
-    //
-    // A dictionary teases an even spread across its own alphabet, so the page
-    // samples the whole subject instead of everything filed under A. A course
-    // has no alphabet to spread across — it teases the booklet's own cover
-    // stack, which is the high-level shape of what the booklet covers.
     const teaser = counting
       ? Array.from({ length: Math.min(9, total) }, (_, k) =>
           names[Math.round((k * (total - 1)) / Math.max(1, Math.min(9, total) - 1))]
         ).filter((v, k, a) => a.indexOf(v) === k)
       : meta.cover?.stack ?? [];
 
-    pages.push(
+    // Chapter headings are embedded in the divider page itself so every
+    // booklet opens with one page that doubles as its table of contents.
+    // Page numbers are filled in by assemble() once the full count is known.
+    const chapters = own.filter((h) => h.lvl === 1);
+
+    const dividerHtml =
       `<section class="page topic" data-src="topic-${child}" style="--accent:${accent}">\n` +
         `<p class="topic-no">${counting ? "Topic" : "Booklet"} ${i + 1} of ${order.length}</p>\n` +
         `<h1 id="${id}">${meta.title}</h1>\n` +
         (meta.subtitle ? `<p class="topic-sub">${meta.subtitle}</p>\n` : "") +
         (meta.cover?.banner && !counting ? `<p class="topic-line">${meta.cover.banner}</p>\n` : "") +
-        `<ul class="topic-terms">${teaser.map((t) => `<li>${t}</li>`).join("")}</ul>\n` +
+        (chapters.length > 1
+          ? `<ul class="topic-chapters"></ul>\n`
+          : `<ul class="topic-terms">${teaser.map((t) => `<li>${t}</li>`).join("")}</ul>\n`) +
         `<p class="topic-count">` +
         (counting ? `${total} terms · alphabetical` : `${modules} modules · ${files.length} pages`) +
-        `</p>\n</section>`,
-      ...(() => {
-        if (!perTopic) return [];
-        const chapters = own.filter((h) => h.lvl === 1);
-        return chapters.length > 1 ? [{ btoc: { key: `btoc-${child}`, title: meta.title, headings: chapters } }] : [];
-      })(),
+        `</p>\n</section>`;
+
+    pages.push(
+      chapters.length > 1 ? { divider: dividerHtml, chapters } : dividerHtml,
       ...body
     );
     }
@@ -523,9 +519,20 @@ function assemble({ coverHtml, pages, headings }, tocPages, spans = {}, tocTitle
     at.push(before + acc + 1);
     acc += p?.btoc ? spans[p.btoc.key] ?? 1 : 1;
   }
-  const body = pages.map((p) =>
-    p?.btoc ? tocSection(p.btoc.headings, at, p.btoc.title, p.btoc.key) : p
-  );
+  const body = pages.map((p) => {
+    if (p?.btoc) return tocSection(p.btoc.headings, at, p.btoc.title, p.btoc.key);
+    if (p?.divider) {
+      const items = p.chapters.map((h) =>
+        `<li><a href="#${h.id}">${h.text}</a>` +
+        `<span class="dots"></span><span class="p">${at[h.page]}</span></li>`
+      ).join("\n");
+      return p.divider.replace(
+        '<ul class="topic-chapters"></ul>',
+        `<ul class="topic-chapters">\n${items}\n</ul>`
+      );
+    }
+    return p;
+  });
   // tocPages 0 means the book switched its generated contents off (meta `contents: false`)
   return [coverHtml, tocPages ? tocSection(headings, at, tocTitle, null) : null, ...body]
     .filter(Boolean)
