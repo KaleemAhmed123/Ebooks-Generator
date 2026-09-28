@@ -1,4 +1,4 @@
-## The Wrong Approach (Sorting)
+## The Wrong Approach (Sorting) <span class="lv lv1"></span>
 
 Sorting is so ubiquitous that it’s often taken for granted. In an interview, sorting is rarely the *entire* solution—it's usually the preprocessing step that enables the actual solution. This leads to candidates making strategic errors rather than implementation errors.
 

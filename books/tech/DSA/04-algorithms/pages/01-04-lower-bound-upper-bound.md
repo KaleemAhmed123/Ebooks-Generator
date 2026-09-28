@@ -1,4 +1,4 @@
-## Lower Bound & Upper Bound
+## Lower Bound & Upper Bound <span class="lv lv1"></span>
 
 - In languages like C++, `lower_bound` and `upper_bound` are built-in standard library functions. In JavaScript/TypeScript, you must implement them yourself.
 - They are direct applications of the **Boundary Finding** template.
@@ -57,3 +57,11 @@ function upperBound(arr: number[], target: number): number {
   - `lowerBound(2)` returns index `1` (the first `2`).
   - `upperBound(2)` returns index `4` (the `3`).
 - **Counting occurrences:** You can find exactly how many times `2` appears by calculating `upperBound(2) - lowerBound(2)`. This takes O(log N) time, bypassing the O(N) linear scan you would otherwise need if you just binary searched and expanded outwards.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Search Insert Position](https://leetcode.com/problems/search-insert-position/) (LeetCode 35) | Exact application of lower bound |
+| [Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) (LeetCode 34) | Lower bound for first, upper bound minus one for last |
+| [Kth Missing Positive Number](https://leetcode.com/problems/kth-missing-positive-number/) (LeetCode 1539) | Binary search on how many values are missing before index i |

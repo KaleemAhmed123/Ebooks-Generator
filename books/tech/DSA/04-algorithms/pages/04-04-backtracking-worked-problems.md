@@ -1,4 +1,4 @@
-## Backtracking Worked Problems
+## Backtracking Worked Problems <span class="lv lv1"></span>
 
 ### N-Queens
 
@@ -67,6 +67,15 @@ function combinationSum(candidates: number[], target: number): number[][] {
 
 - **Generating duplicates.** If the input is `[1, 1, 2]` and you do not skip duplicates, you get `[1, 2]` twice — once using the first `1`, once using the second. Sort the array, then after processing `nums[i]`, skip while the next element equals it
 - **Forgetting to copy.** `results.push(path)` pushes a reference. When `path` mutates later, all stored results change. Always `results.push([...path])` or `path.slice()`
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [N-Queens](https://leetcode.com/problems/n-queens/) (LeetCode 51) | Exact problem solved on this page |
+| [N-Queens II](https://leetcode.com/problems/n-queens-ii/) (LeetCode 52) | Count-only variant of the same backtracking |
+| [Combination Sum](https://leetcode.com/problems/combination-sum/) (LeetCode 39) | Exact problem solved on this page |
+| [Generate Parentheses](https://leetcode.com/problems/generate-parentheses/) (LeetCode 22) | Backtracking with open/close counters |
 
 :::interview
 "Generate all valid combinations of n pairs of parentheses."

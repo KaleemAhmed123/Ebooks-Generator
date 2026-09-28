@@ -1,4 +1,4 @@
-## Merge Sort
+## Merge Sort <span class="lv lv1"></span>
 
 - Merge Sort is the quintessential Divide and Conquer algorithm. It guarantees O(N log N) performance in all cases.
 - **The Core Idea:** An array of 1 element is inherently sorted. If we recursively cut the array in half until every element is alone, and then carefully merge the halves back together, the entire array becomes sorted.
@@ -69,3 +69,12 @@ function merge(left: number[], right: number[]): number[] {
 
 - **Slicing costs:** `arr.slice()` takes O(N) time and O(N) space. Doing this recursively creates a massive constant factor overhead.
 - **The fix:** In an interview, the snippet above is often accepted for its clarity. However, a production-grade merge sort passes the original array and a single auxiliary array, mutating them in-place using `start` and `end` indices to avoid creating thousands of tiny arrays.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Sort an Array](https://leetcode.com/problems/sort-an-array/) (LeetCode 912) | Direct merge sort implementation |
+| [Count of Smaller Numbers After Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self/) (LeetCode 315) | Count inversions during the merge step |
+| [Merge Sorted Array](https://leetcode.com/problems/merge-sorted-array/) (LeetCode 88) | The merge subroutine in isolation |
+| [Sort List](https://leetcode.com/problems/sort-list/) (LeetCode 148) | Merge sort on a linked list |

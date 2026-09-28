@@ -1,3 +1,3 @@
 # The Algorithm Derivation Manual
 
-## Algorithms
+## Algorithms <span class="lv lv1"></span>

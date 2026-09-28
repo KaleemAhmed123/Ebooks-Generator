@@ -1,4 +1,4 @@
-## Ternary Search 🟡
+## Ternary Search 🟡 <span class="lv lv2"></span>
 
 - Binary search works when the function is monotonic (always increasing or always decreasing).
 - **Ternary Search** is used when the function is **unimodal**—it strictly decreases to a single minimum, and then strictly increases (a V-shape), or strictly increases to a maximum and decreases (an A-shape).

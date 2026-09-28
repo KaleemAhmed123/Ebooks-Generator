@@ -1,4 +1,4 @@
-## The Exchange Argument
+## The Exchange Argument <span class="lv lv2"></span>
 
 - This is the most formal and bulletproof way to prove that your greedy algorithm is correct. It is a mathematical proof technique.
 - **The Core Idea:** You assume there exists some hypothetical "Optimal" solution that is *different* from your "Greedy" solution. You then prove that you can swap (exchange) elements in the Optimal solution to make it look exactly like your Greedy solution, *without making the solution any worse*.

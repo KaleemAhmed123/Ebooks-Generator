@@ -1,4 +1,4 @@
-## Binary Search Mechanics
+## Binary Search Mechanics <span class="lv lv1"></span>
 
 - Binary Search drops time complexity from O(N) to O(log N) by halving the search space at every step.
 - It absolutely requires the input to be **sorted**, or at least monotonic (e.g., `FFFFFTTTTT`).
@@ -68,6 +68,15 @@ function binarySearch(arr: number[], target: number): number {
 
 - **Infinite loops:** The single most common implementation error in interviews is a Binary Search that never terminates because `left` and `right` do not cross.
 - **The fix:** Ensure the `while` condition is `left <= right`, and ensure that you are strictly moving the boundaries past the `mid` point (`left = mid + 1`, not `left = mid`). If you set `left = mid`, and `left` and `right` are adjacent, `mid` will equal `left` (due to integer truncation), and the loop will spin forever.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Binary Search](https://leetcode.com/problems/binary-search/) (LeetCode 704) | Direct application of the basic loop |
+| [Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/) (LeetCode 33) | Binary search deciding which half is sorted |
+| [Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/) (LeetCode 153) | Binary search to locate the rotation pivot |
+| [Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/) (LeetCode 74) | Treat the matrix as a flat sorted array |
 
 :::interview
 "Why did you write `left <= right` instead of `left < right`?"

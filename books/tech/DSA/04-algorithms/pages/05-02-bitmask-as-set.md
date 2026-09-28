@@ -1,4 +1,4 @@
-## Bitmask as a Set
+## Bitmask as a Set <span class="lv lv2"></span>
 
 - A **bitmask** is an integer whose binary representation encodes a set. Bit `i` is 1 if element `i` is in the set, 0 otherwise. The integer `13` = `1101` in binary represents the set {0, 2, 3}
 - This replaces `Set` or `boolean[]` as a hash key. A single integer is trivially hashable and uses O(1) space. The constraint: the universe must be small (≤ 30 elements for 32-bit integers, ≤ 52 with BigInt)
@@ -54,6 +54,15 @@ for (let sub = mask; sub > 0; sub = (sub - 1) & mask) {
 ### The trap
 
 - **Forgetting that `1 << i` is signed 32-bit in JS.** For i = 31, the result is negative. For bitmask DP with n = 20, this is fine (bits 0–19). For n > 30, use `1n << BigInt(i)` with BigInt throughout
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Subsets](https://leetcode.com/problems/subsets/) (LeetCode 78) | Iterate 0 to 2^n; each bitmask is a subset |
+| [Partition to K Equal Sum Subsets](https://leetcode.com/problems/partition-to-k-equal-sum-subsets/) (LeetCode 698) | Bitmask DP tracking which elements are used |
+| [Shortest Path Visiting All Nodes](https://leetcode.com/problems/shortest-path-visiting-all-nodes/) (LeetCode 847) | BFS with bitmask state for visited nodes |
+| [Can I Win](https://leetcode.com/problems/can-i-win/) (LeetCode 464) | Bitmask memoization for chosen numbers |
 
 :::interview
 "Given n people and n tasks with a cost matrix, assign each person exactly one task to minimize total cost."

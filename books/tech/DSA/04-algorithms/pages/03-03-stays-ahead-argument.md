@@ -1,4 +1,4 @@
-## The "Stays Ahead" Argument
+## The "Stays Ahead" Argument <span class="lv lv2"></span>
 
 - This is the second formal proof technique for Greedy algorithms.
 - **The Core Idea:** You prove that at every single step of the process, the Greedy solution is at least as well-positioned (or better) than any hypothetical Optimal solution. Because Greedy "stays ahead" at step 1, step 2, and step K, it must be ahead (or tied) at the final step.

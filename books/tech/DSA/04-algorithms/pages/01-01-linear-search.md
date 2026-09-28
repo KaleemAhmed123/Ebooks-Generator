@@ -1,4 +1,4 @@
-## Linear Search
+## Linear Search <span class="lv lv1"></span>
 
 - The absolute simplest algorithm: start at the beginning, check every element until you find the target or reach the end.
 - Time complexity is exactly O(N) because, in the worst case, you must inspect every single element.

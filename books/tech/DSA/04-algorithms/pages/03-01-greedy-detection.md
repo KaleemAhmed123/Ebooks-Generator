@@ -1,4 +1,4 @@
-## Greedy Algorithm Detection
+## Greedy Algorithm Detection <span class="lv lv1"></span>
 
 - A greedy algorithm builds up a solution piece by piece, always choosing the next piece that offers the most immediate, obvious benefit.
 - **The Core Issue:** Greedy algorithms are trivial to code, but incredibly difficult to prove correct. 90% of the time, the "obvious" greedy choice is completely wrong and fails on complex edge cases (requiring Dynamic Programming instead).

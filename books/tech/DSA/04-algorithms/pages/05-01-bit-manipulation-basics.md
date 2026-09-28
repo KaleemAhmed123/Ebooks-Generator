@@ -1,4 +1,4 @@
-## Bit Manipulation Basics
+## Bit Manipulation Basics <span class="lv lv1"></span>
 
 - Computers store integers in binary. **Bit manipulation** operates directly on those binary digits using bitwise operators, bypassing arithmetic entirely. It is fast (single CPU instruction) and constant space
 - **Two's complement** is how negative integers are stored. For a 32-bit integer, flip every bit of the positive value, then add 1. The result: `−1` is `11111111111111111111111111111111` (all ones). The top bit (bit 31) is the sign bit — 1 means negative
@@ -50,6 +50,15 @@ n & (-n)
 ### The trap
 
 - **Shifting by 31 or more in JS.** `1 << 31` is negative. `1 << 32` wraps to `1`. If you need bit 31 or beyond, use `1n << BigInt(i)` or unsigned right shift `>>>` which treats the result as unsigned
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Single Number](https://leetcode.com/problems/single-number/) (LeetCode 136) | XOR all elements; duplicates cancel |
+| [Number of 1 Bits](https://leetcode.com/problems/number-of-1-bits/) (LeetCode 191) | Count set bits using n & (n-1) trick |
+| [Power of Two](https://leetcode.com/problems/power-of-two/) (LeetCode 231) | Check n & (n-1) === 0 |
+| [Reverse Bits](https://leetcode.com/problems/reverse-bits/) (LeetCode 190) | Bit-by-bit extraction and placement |
 
 :::interview
 "Find the single number in an array where every other element appears twice."

@@ -1,4 +1,4 @@
-## The Wrong Approach (Greedy)
+## The Wrong Approach (Greedy) <span class="lv lv1"></span>
 
 The defining characteristic of a bad greedy solution is that it passes the sample test cases and fails on test case 4 out of 100 on the hidden server.
 

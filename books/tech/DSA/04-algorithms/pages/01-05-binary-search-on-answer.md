@@ -1,4 +1,4 @@
-## Binary Search on Answer
+## Binary Search on Answer <span class="lv lv2"></span>
 
 - This is one of the most frequently tested patterns in top-tier interviews.
 - **The Signal:** The problem asks for the "minimum maximum", the "maximum minimum", or the "smallest capacity" required to achieve something.
@@ -54,3 +54,12 @@ function minCapacity(arr: number[], limit: number): number {
 
 - **Overthinking the bounds:** Candidates waste 10 minutes trying to perfectly calculate the exact `right` bound. 
 - **The fix:** It's binary search. The difference between 10⁹ and 10¹⁴ is just 15 extra iterations. If you aren't sure, set `right` to an outrageously large number (like `Number.MAX_SAFE_INTEGER`). Let the O(log N) math do the heavy lifting.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/) (LeetCode 875) | Minimum eating speed: binary search on speed, feasibility check |
+| [Capacity To Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/) (LeetCode 1011) | Minimum capacity: FFFTTT on the capacity range |
+| [Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/) (LeetCode 410) | Minimize the maximum subarray sum |
+| [Magnetic Force Between Two Balls](https://leetcode.com/problems/magnetic-force-between-two-balls/) (LeetCode 1552) | Maximize minimum distance: search on the gap |

@@ -1,4 +1,4 @@
-## The Backtracking Template
+## The Backtracking Template <span class="lv lv1"></span>
 
 - **Backtracking** is recursion with a specific structure: at each level of the call tree, you make a choice, recurse into a smaller problem, then **undo** the choice before trying the next option
 - It explores a **state-space tree** — every node is a partial solution, every branch is a decision, and every leaf is a complete candidate. The algorithm walks the tree depth-first, pruning branches that cannot lead to valid answers
@@ -74,6 +74,15 @@ function backtrack(state: State, choices: Choice[]): void {
 - The problem asks for **all** valid configurations (permutations, combinations, subsets, placements)
 - The constraint space is small: n ≤ 15–20 (exponential search is feasible)
 - A greedy approach fails because choices interact — picking one element affects which others are valid
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Subsets](https://leetcode.com/problems/subsets/) (LeetCode 78) | Enumerate all subsets via include/exclude |
+| [Permutations](https://leetcode.com/problems/permutations/) (LeetCode 46) | Generate all orderings with choose-recurse-undo |
+| [Combinations](https://leetcode.com/problems/combinations/) (LeetCode 77) | Pick k items from n using backtracking |
+| [Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/) (LeetCode 17) | Branch on each digit's letter options |
 
 :::interview
 "How do you decide between backtracking and DP?"

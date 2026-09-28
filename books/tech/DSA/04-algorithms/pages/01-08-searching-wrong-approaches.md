@@ -1,4 +1,4 @@
-## The Wrong Approach (Searching)
+## The Wrong Approach (Searching) <span class="lv lv1"></span>
 
 Searching seems simple, which is why the failure modes are so subtle. Candidates rarely fail to write a binary search. They fail to handle the edge cases of binary search.
 

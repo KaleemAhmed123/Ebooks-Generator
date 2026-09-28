@@ -1,4 +1,4 @@
-## Greedy Recognition Drills
+## Greedy Recognition Drills <span class="lv lv1"></span>
 
 Read the following scenarios. Should you use Greedy or DP? (Cover the answers on the right).
 

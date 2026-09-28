@@ -1,4 +1,4 @@
-## A Footnote on Matroids
+## A Footnote on Matroids <span class="lv lv3"></span>
 
 - Why does the Greedy strategy work perfectly on Minimum Spanning Trees (Kruskal's Algorithm) but fail catastrophically on the Traveling Salesperson Problem? 
 - Why does it work perfectly for fractional Knapsack, but fail completely for 0/1 Knapsack?

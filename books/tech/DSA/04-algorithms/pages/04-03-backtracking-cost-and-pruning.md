@@ -1,4 +1,4 @@
-## Backtracking Cost and Pruning
+## Backtracking Cost and Pruning <span class="lv lv2"></span>
 
 - The state-space tree for subsets has 2ⁿ leaves. For permutations it has n! leaves. Every leaf does O(n) work to copy the result. That gives O(n·2ⁿ) or O(n·n!) total — exponential either way
 - This is not a flaw in backtracking. It is the cost of listing every valid answer. No algorithm can enumerate n! permutations faster than O(n·n!) — that many answers exist
@@ -34,6 +34,15 @@ function backtrack(index: number, currentSum: number, target: number, nums: numb
 - **The signal:** you see the same `(index, remainingCapacity)` or `(index, currentSum)` pair in multiple branches. Each visit recomputes the same subtree
 - **The fix:** add a cache keyed by the state. This converts backtracking into top-down DP (memoization). The tree collapses from exponential branches into a polynomial state space
 - **The rule:** if the number of distinct states is polynomial (e.g. n × W for knapsack), memoize. If the state includes the full path or a set of visited nodes, memoization rarely helps — the cache key space is itself exponential
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Combination Sum II](https://leetcode.com/problems/combination-sum-ii/) (LeetCode 40) | Sort-and-skip to avoid duplicate combinations |
+| [Subsets II](https://leetcode.com/problems/subsets-ii/) (LeetCode 90) | Skip duplicate elements after sorting |
+| [Palindrome Partitioning](https://leetcode.com/problems/palindrome-partitioning/) (LeetCode 131) | Prune non-palindrome prefixes early |
+| [Word Search](https://leetcode.com/problems/word-search/) (LeetCode 79) | Prune paths where the character does not match |
 
 :::interview
 "Given n items with weights and values, and capacity W — backtracking or DP?"

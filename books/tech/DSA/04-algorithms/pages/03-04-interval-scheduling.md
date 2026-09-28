@@ -1,4 +1,4 @@
-## Interval Scheduling
+## Interval Scheduling <span class="lv lv1"></span>
 
 - This is the absolute classic Greedy problem. If you understand this, you understand 80% of greedy interview questions.
 - **The Problem:** You are given N meetings, each with a `start` time and an `end` time. You can only attend one meeting at a time. What is the maximum number of meetings you can attend?
@@ -63,3 +63,11 @@ function maxMeetings(meetings: Meeting[]): number {
 ```
 
 - **Time Complexity:** O(N log N) due to the sorting step. The greedy iteration is O(N).
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/) (LeetCode 435) | Remove minimum intervals so rest are conflict-free |
+| [Minimum Number of Arrows to Burst Balloons](https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/) (LeetCode 452) | Greedy by end time: fewest arrows covering all balloons |
+| [Merge Intervals](https://leetcode.com/problems/merge-intervals/) (LeetCode 56) | Sort by start, then merge overlapping intervals |

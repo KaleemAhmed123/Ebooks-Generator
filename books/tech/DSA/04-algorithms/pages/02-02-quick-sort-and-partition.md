@@ -1,4 +1,4 @@
-## Quick Sort & Partitioning
+## Quick Sort & Partitioning <span class="lv lv1"></span>
 
 - Quick Sort is arguably the most famous sorting algorithm. It is typically the engine inside your language's `Array.prototype.sort()`.
 - **The Core Idea:** Pick a "pivot" element. Move all elements smaller than the pivot to its left. Move all elements larger to its right. The pivot is now exactly where it belongs. Recursively do this for the left and right halves.
@@ -59,3 +59,11 @@ function partition(arr: number[], low: number, high: number): number {
 
 - **The O(N²) meltdown:** If the array is already perfectly sorted, and you always pick the last element as the pivot, the partition splits the array into N-1 elements and 0 elements. It will run in O(N²) time. 
 - **The fix:** In practice, professional implementations pick a random pivot, or use the "Median of Three" (choosing the median of the first, middle, and last elements) to virtually eliminate the chance of an O(N²) degradation.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Sort Colors](https://leetcode.com/problems/sort-colors/) (LeetCode 75) | Three-way partition (Dutch National Flag) |
+| [Sort an Array](https://leetcode.com/problems/sort-an-array/) (LeetCode 912) | Quick sort with randomized pivot |
+| [Wiggle Sort II](https://leetcode.com/problems/wiggle-sort-ii/) (LeetCode 324) | Partition around median then interleave |

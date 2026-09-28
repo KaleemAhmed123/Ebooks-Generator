@@ -1,4 +1,4 @@
-## Heap Sort
+## Heap Sort <span class="lv lv1"></span>
 
 - Heap Sort is the ultimate defensive sorting algorithm. It guarantees O(N log N) worst-case performance (unlike Quick Sort) and uses O(1) auxiliary space (unlike Merge Sort).
 - **The Core Idea:** Build a Max-Heap out of the array. The largest element is now at the root (index 0). Swap the root with the last element. The largest element is now perfectly sorted at the end. Reduce the heap size by 1, "sift down" the new root to restore the heap property, and repeat.
@@ -67,3 +67,11 @@ function siftDown(arr: number[], n: number, i: number): void {
 
 - **Zero-indexed vs One-indexed Math:** The children of node `i` in a 0-indexed array are `2*i + 1` and `2*i + 2`. In a 1-indexed array, they are `2*i` and `2*i + 1`. Mixing these up during an interview guarantees an out-of-bounds error.
 - **The fix:** Always explicitly write out `const left = 2 * i + 1` instead of doing the math inline. It makes debugging trivial.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Sort an Array](https://leetcode.com/problems/sort-an-array/) (LeetCode 912) | Heap sort as one valid O(N log N) approach |
+| [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/) (LeetCode 215) | Build a heap to extract the kth element |
+| [Last Stone Weight](https://leetcode.com/problems/last-stone-weight/) (LeetCode 1046) | Max-heap to always grab the two heaviest |

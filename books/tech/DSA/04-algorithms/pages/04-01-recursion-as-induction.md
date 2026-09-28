@@ -1,4 +1,4 @@
-## Recursion as Induction
+## Recursion as Induction <span class="lv lv1"></span>
 
 - **Recursion** is a function that calls itself with a smaller input until it hits a known answer (the **base case**). It is not magic — it is mathematical induction running on a call stack
 - **Induction** proves a statement for all n: prove it for n = 0 (base case), then prove that if it holds for n − 1, it holds for n (inductive step). Recursion does exactly this — it assumes the smaller call returns the right answer, then uses that answer to build the current one
