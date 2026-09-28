@@ -1,21 +1,15 @@
 ## Final Note
 
-If you have read this far, you have covered everything from basic arrays to the Fast Fourier Transform. You have seen how brute force evolves into optimization, and how constraints dictate architecture.
+You have covered arrays through the Fast Fourier Transform, brute force through optimisation, and constraints through architecture. The derivation path — read the constraint, spot the bottleneck, apply the structure — does not expire when interview formats change.
 
-What happens next is up to you. 
+Pick the module that gave you the most trouble. Re-read it. Then solve problems on Codeforces or LeetCode without looking at the tags. Look at the constraints first. Derive the complexity target before you write a single line.
 
-Do not try to memorize the Master Pattern Matrix. Instead, pick a module that challenged you—perhaps Dynamic Programming or Graphs—and re-read it. Then, go to a platform like Codeforces or LeetCode and solve problems *without looking at the tags*. Force yourself to look at the constraints (N ≤ 10⁵) and derive the O(N log N) requirement before you write a single line of code.
+### Where this will be wrong
 
-### Where This Will Be Wrong
-
-Algorithms are eternal, but languages are not. The TypeScript and C++ implementations provided here are optimized for clarity and standard competitive programming environments in 2026. As engines evolve, some O(1) tricks might become slower, and new standard library features might replace custom data structures. Always benchmark your code in your target environment.
+Algorithms are stable. Languages are not. The TypeScript and C++ implementations here are written for clarity in 2026. Engines evolve, standard libraries gain features, and platform-specific tricks change performance profiles. Benchmark in your target environment before trusting any constant-factor claim.
 
 ### Corrections
 
-If you spot an error in a proof, a bug in a template, or a pattern that needs better explanation, please let me know. This manual is a living document.
+If you find an error in a proof, a bug in a template, or a pattern that deserves better treatment — reach out. This manual improves when readers push back on it.
 
-You can reach me and find updates at **kaleemahmed.in**.
-
-Thank you for trusting this manual with your time. Now go build something great.
-
-<p class="verified">First edition, 2026 · © Kaleem Ahmed · kaleemahmed.in</p>
+**kaleemahmed.in**
