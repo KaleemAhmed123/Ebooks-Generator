@@ -1,4 +1,4 @@
-## State-Space Graphs
+## State-Space Graphs <span class="lv lv2"></span>
 
 - A **State-Space Graph** is the final boss of implicit graphs. The nodes aren't `(r, c)` coordinates. The nodes are the *entire state* of a system.
 - **Example: The Sliding Puzzle.** You are given a 2 times 3 board with tiles 1 through 5 and one empty space (`0`). You can slide an adjacent tile into the empty space. What is the minimum number of moves to solve the puzzle?
@@ -49,6 +49,14 @@ function solvePuzzle(startState: string, targetState: string): number {
 
 - **Copy overhead:** State-space BFS is extremely prone to TLE because every edge traversal requires copying/mutating a string or array.
 - **The fix:** Ensure your state representation is as minimal as possible. If the state can fit into a 32-bit integer (e.g., bitmasking), use an integer. It is exponentially faster than string slicing.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Sliding Puzzle](https://leetcode.com/problems/sliding-puzzle/) (LeetCode 773) | BFS over board configurations as state-space nodes |
+| [Open the Lock](https://leetcode.com/problems/open-the-lock/) (LeetCode 752) | Each 4-digit combo is a node, each turn is an edge |
+| [Minimum Genetic Mutation](https://leetcode.com/problems/minimum-genetic-mutation/) (LeetCode 433) | Gene strings as states, single-char mutations as edges |
 
 :::interview
 "Could we use DFS to solve the Sliding Puzzle?"

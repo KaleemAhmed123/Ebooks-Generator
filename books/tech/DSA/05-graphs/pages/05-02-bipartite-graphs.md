@@ -1,4 +1,4 @@
-## Bipartite Graphs
+## Bipartite Graphs <span class="lv lv1"></span>
 
 - **Definition:** A graph is Bipartite if its nodes can be divided into exactly two independent sets, U and V, such that every edge connects a node in U to a node in V. There are absolutely zero edges between nodes in the same set.
 - **Visual Intuition:** Imagine coloring the graph using only Red and Blue. If you can color every node such that no two adjacent nodes have the same color, the graph is Bipartite.
@@ -71,6 +71,14 @@ function isBipartite(graph: number[][]): boolean {
   return true;
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Is Graph Bipartite?](https://leetcode.com/problems/is-graph-bipartite/) (LeetCode 785) | Direct 2-color BFS/DFS on an adjacency list |
+| [Possible Bipartition](https://leetcode.com/problems/possible-bipartition/) (LeetCode 886) | Build a dislike graph, check if it is 2-colorable |
+| [Flower Planting With No Adjacent](https://leetcode.com/problems/flower-planting-with-no-adjacent/) (LeetCode 1042) | Graph coloring variant on garden adjacency |
 
 ### Interview Application
 

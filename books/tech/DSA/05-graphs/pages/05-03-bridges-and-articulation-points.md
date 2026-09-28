@@ -1,4 +1,4 @@
-## Bridges and Articulation Points 🟡
+## Bridges and Articulation Points <span class="lv lv2"></span>
 
 - In network design (like computer networks or road systems), you care deeply about **Single Points of Failure**.
 - **Bridge (Cut-Edge):** An edge whose removal increases the number of disconnected components in the graph. (e.g., The only fiber optic cable connecting North America to Europe).
@@ -54,6 +54,14 @@ function findBridges(n: number, adj: number[][]): number[][] {
   return bridges;
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Critical Connections in a Network](https://leetcode.com/problems/critical-connections-in-a-network/) (LeetCode 1192) | Find all bridges using Tarjan's disc/low DFS |
+| [Minimize Malware Spread II](https://leetcode.com/problems/minimize-malware-spread-ii/) (LeetCode 928) | Removing a node splits components; articulation-point logic |
+| [Number of Operations to Make Network Connected](https://leetcode.com/problems/number-of-operations-to-make-network-connected/) (LeetCode 1319) | Count components and redundant edges for reconnection |
 
 ### Articulation Points
 

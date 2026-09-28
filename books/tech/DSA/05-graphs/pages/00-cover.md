@@ -1,3 +1,3 @@
 # The Algorithm Derivation Manual
 
-## Graphs
+## Graphs <span class="lv lv1"></span>

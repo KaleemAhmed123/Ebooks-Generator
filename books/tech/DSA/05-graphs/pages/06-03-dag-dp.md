@@ -1,4 +1,4 @@
-## Dynamic Programming on DAGs 🟡
+## Dynamic Programming on DAGs <span class="lv lv2"></span>
 
 - We usually think of Dynamic Programming as operating on an array (e.g., `dp[i] = max(dp[i-1], dp[i-2])`) or a grid.
 - However, you can run DP directly on a Graph, **as long as the graph is a Directed Acyclic Graph (DAG)**.
@@ -40,6 +40,14 @@ function longestPathDAG(n: number, edges: number[][]): number {
   return Math.max(...dp);
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Longest Increasing Path in a Matrix](https://leetcode.com/problems/longest-increasing-path-in-a-matrix/) (LeetCode 329) | Memoized DFS on an implicit DAG of increasing neighbors |
+| [All Ancestors of a Node in a Directed Acyclic Graph](https://leetcode.com/problems/all-ancestors-of-a-node-in-a-directed-acyclic-graph/) (LeetCode 2192) | Process nodes in topo order, propagate ancestor sets |
+| [Longest Path With Different Adjacent Characters](https://leetcode.com/problems/longest-path-with-different-adjacent-characters/) (LeetCode 2246) | Post-order DFS aggregation on a tree (special DAG) |
 
 ### The trap
 

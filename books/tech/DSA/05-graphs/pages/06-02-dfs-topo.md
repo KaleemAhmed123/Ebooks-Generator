@@ -1,4 +1,4 @@
-## Topological Sort (DFS)
+## Topological Sort (DFS) <span class="lv lv1"></span>
 
 While Kahn's Algorithm (BFS) relies on In-Degrees, you can also perform a Topological Sort using a standard DFS by exploiting **Post-Order Traversal**.
 

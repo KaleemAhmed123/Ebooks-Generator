@@ -1,4 +1,4 @@
-## Cycle Detection
+## Cycle Detection <span class="lv lv1"></span>
 
 Cycles are the enemy of standard graph traversal. If you don't detect them and handle them, your recursive DFS will stack overflow and your BFS queue will blow up.
 
@@ -47,6 +47,15 @@ function directedCycle(node: number, colors: number[], adj: number[][]): boolean
   return false;
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Course Schedule](https://leetcode.com/problems/course-schedule/) (LeetCode 207) | Directed cycle detection determines if graduation is possible |
+| [Course Schedule II](https://leetcode.com/problems/course-schedule-ii/) (LeetCode 210) | Detect cycles, then return valid ordering if acyclic |
+| [Redundant Connection](https://leetcode.com/problems/redundant-connection/) (LeetCode 684) | DSU cycle detection finds the extra edge in an undirected graph |
+| [Graph Valid Tree](https://leetcode.com/problems/graph-valid-tree/) (LeetCode 261) | A tree is a connected acyclic graph; check both properties |
 
 ### Disjoint Set Union (DSU)
 

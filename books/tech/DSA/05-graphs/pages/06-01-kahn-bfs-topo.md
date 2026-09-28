@@ -1,4 +1,4 @@
-## Topological Sort (Kahn's BFS)
+## Topological Sort (Kahn's BFS) <span class="lv lv1"></span>
 
 - **The Problem:** You have a list of tasks and a list of dependencies ("Task A must be completed before Task B"). Find a valid order to complete all tasks.
 - This is a **Topological Sort**. It only works on a **DAG (Directed Acyclic Graph)**. If there is a cycle (A depends on B, B depends on A), it is impossible to resolve, and no valid topological order exists.
@@ -60,6 +60,15 @@ function kahnsBFS(n: number, edges: number[][]): number[] {
   return order;
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Course Schedule](https://leetcode.com/problems/course-schedule/) (LeetCode 207) | Kahn's BFS detects if a valid course ordering exists |
+| [Course Schedule II](https://leetcode.com/problems/course-schedule-ii/) (LeetCode 210) | Return the actual topological order of courses |
+| [Alien Dictionary](https://leetcode.com/problems/alien-dictionary/) (LeetCode 269) | Build a digraph from word orderings, topo-sort the alphabet |
+| [Parallel Courses](https://leetcode.com/problems/parallel-courses/) (LeetCode 1136) | Kahn's BFS layer count gives minimum semesters |
 
 ### The trap
 

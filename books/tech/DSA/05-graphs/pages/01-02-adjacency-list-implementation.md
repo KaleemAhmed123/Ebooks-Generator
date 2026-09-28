@@ -1,4 +1,4 @@
-## Adjacency List Implementation
+## Adjacency List Implementation <span class="lv lv1"></span>
 
 There are three ways to represent a graph in code: an Edge List, an Adjacency Matrix, and an Adjacency List. In 99% of interviews, you should use an Adjacency List.
 

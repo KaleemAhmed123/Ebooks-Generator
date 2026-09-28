@@ -1,4 +1,4 @@
-## Floyd-Warshall 🟡
+## Floyd-Warshall <span class="lv lv2"></span>
 
 - Dijkstra and Bellman-Ford are **Single-Source Shortest Path (SSSP)** algorithms. They find the distance from one specific `start` node to all other nodes.
 - What if you need to know the shortest path from *every* node to *every other* node?
@@ -49,6 +49,14 @@ function floydWarshall(n: number, edges: number[][]): number[][] {
 - **Time:** O(V³) due to the three nested loops.
 - **Space:** O(V²) for the matrix.
 - Because of the V³ time complexity, Floyd-Warshall is only viable for extremely small graphs (usually V ≤ 400).
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Find the City With the Smallest Number of Neighbors at a Threshold Distance](https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/) (LeetCode 1334) | All-pairs shortest path then count reachable cities |
+| [Course Schedule IV](https://leetcode.com/problems/course-schedule-iv/) (LeetCode 1462) | Floyd-Warshall-style transitive closure on prerequisites |
+| [Evaluate Division](https://leetcode.com/problems/evaluate-division/) (LeetCode 399) | All-pairs path product via Floyd-Warshall on equation graph |
 
 ### The trap
 

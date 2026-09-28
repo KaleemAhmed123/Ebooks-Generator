@@ -1,4 +1,4 @@
-## Eulerian Path & Circuit 🔴
+## Eulerian Path & Circuit <span class="lv lv3"></span>
 
 - A **Hamiltonian Path** visits every *node* exactly once. (This is NP-Hard—e.g., the Traveling Salesperson Problem).
 - An **Eulerian Path** visits every *edge* exactly once. (This is O(E) and trivial to solve, famously originating from the Bridges of Königsberg puzzle).
@@ -47,6 +47,14 @@ function findEulerianPath(adj: Map<string, string[]>): string[] {
   return path.reverse();
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Reconstruct Itinerary](https://leetcode.com/problems/reconstruct-itinerary/) (LeetCode 332) | Hierholzer's on a directed flight graph for Eulerian path |
+| [Cracking the Safe](https://leetcode.com/problems/cracking-the-safe/) (LeetCode 753) | De Bruijn sequence via Eulerian circuit on overlap graph |
+| [Valid Arrangement of Pairs](https://leetcode.com/problems/valid-arrangement-of-pairs/) (LeetCode 2097) | Chain pairs end-to-start, direct Eulerian path construction |
 
 ### The trap
 

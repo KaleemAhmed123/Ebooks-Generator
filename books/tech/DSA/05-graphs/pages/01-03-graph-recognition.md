@@ -1,4 +1,4 @@
-## Graph Recognition
+## Graph Recognition <span class="lv lv1"></span>
 
 - **Thesis:** Half of hard interview problems are graph problems in disguise. The skill is not running Dijkstra—it's recognizing that the problem IS a graph.
 - If a problem explicitly hands you `nodes` and `edges`, it's an easy graph problem. If it hands you words, locks, or states, it's a hard graph problem.

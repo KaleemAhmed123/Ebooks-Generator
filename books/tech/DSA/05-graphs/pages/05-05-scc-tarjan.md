@@ -1,4 +1,4 @@
-## Strongly Connected Components (Tarjan) 🔴
+## Strongly Connected Components (Tarjan) <span class="lv lv3"></span>
 
 - Tarjan's Algorithm accomplishes exactly the same thing as Kosaraju's Algorithm (finding all SCCs in O(V + E) time).
 - **The Difference:** Tarjan does it in a **single pass** of DFS, without needing to reverse the graph.

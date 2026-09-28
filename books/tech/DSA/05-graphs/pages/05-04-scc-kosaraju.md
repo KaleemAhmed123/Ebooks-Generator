@@ -1,4 +1,4 @@
-## Strongly Connected Components (Kosaraju) 🟡
+## Strongly Connected Components (Kosaraju) <span class="lv lv2"></span>
 
 - In an undirected graph, connected components are trivial to find (just run a DFS).
 - In a **Directed Graph**, connectivity is much stricter. A **Strongly Connected Component (SCC)** is a maximal subgraph where *every* node can reach *every other* node in that subgraph. (If `A -> B`, then `B` must also have a path back to `A`).

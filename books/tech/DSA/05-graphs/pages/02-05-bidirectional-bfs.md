@@ -1,4 +1,4 @@
-## Bidirectional BFS 🟡
+## Bidirectional BFS <span class="lv lv2"></span>
 
 - **The Problem:** You are running a BFS from node `A` to node `B` in a massive implicit graph (e.g., finding the shortest path in a Rubik's Cube state space). The branching factor is large (e.g., B = 10 choices per state). 
 - If the shortest path is depth D = 6, standard BFS explores B^D = 10⁶ = 1,000,000 nodes.
@@ -37,6 +37,14 @@ Instead of using a standard array `Queue`, Bidirectional BFS is often implemente
    - If it hasn't been globally visited, add it to `nextFrontier`.
 5. Replace the smaller set with `nextFrontier`. Increment `distance`.
 6. Repeat until sets intersect or one set becomes empty (meaning no path exists).
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Word Ladder](https://leetcode.com/problems/word-ladder/) (LeetCode 127) | Classic optimization: expand smaller frontier from both ends |
+| [Open the Lock](https://leetcode.com/problems/open-the-lock/) (LeetCode 752) | Known start and target state, bidirectional cuts branching |
+| [Minimum Genetic Mutation](https://leetcode.com/problems/minimum-genetic-mutation/) (LeetCode 433) | Fixed start and end gene, bidirectional BFS prunes search |
 
 ### The trap
 

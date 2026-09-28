@@ -1,4 +1,4 @@
-## Dijkstra's Implementation
+## Dijkstra's Implementation <span class="lv lv1"></span>
 
 - Implementing Dijkstra in C++, Java, or Python is trivial because they have built-in Priority Queues (`std::priority_queue`, `PriorityQueue`, `heapq`).
 - **The JS/TS Problem:** JavaScript does not have a built-in Priority Queue. In a real interview, you have two choices:

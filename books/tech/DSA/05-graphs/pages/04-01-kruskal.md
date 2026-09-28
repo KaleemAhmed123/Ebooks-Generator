@@ -1,4 +1,4 @@
-## Kruskal's Algorithm
+## Kruskal's Algorithm <span class="lv lv1"></span>
 
 - A **Spanning Tree** is a subset of edges in a connected, undirected graph that connects all vertices together without any cycles. It is a tree that "spans" the graph.
 - A **Minimum Spanning Tree (MST)** is the spanning tree whose sum of edge weights is as small as possible.
@@ -68,5 +68,13 @@ function kruskalMST(n: number, edges: number[][]): number {
   return edgesAdded === n - 1 ? mstCost : -1;
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Min Cost to Connect All Points](https://leetcode.com/problems/min-cost-to-connect-all-points/) (LeetCode 1584) | Sort all point-pair edges by Manhattan distance, union greedily |
+| [Redundant Connection](https://leetcode.com/problems/redundant-connection/) (LeetCode 684) | Union-Find detects the edge that closes a cycle |
+| [Accounts Merge](https://leetcode.com/problems/accounts-merge/) (LeetCode 721) | Union-Find to merge overlapping email sets |
 
 - **Time Complexity:** O(E log E) heavily dominated by sorting the edges. The Union-Find operations take O(E alpha(V)) which is virtually linear.

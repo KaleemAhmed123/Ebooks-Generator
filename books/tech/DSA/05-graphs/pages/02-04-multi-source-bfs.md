@@ -1,4 +1,4 @@
-## Multi-Source BFS
+## Multi-Source BFS <span class="lv lv1"></span>
 
 - **The Problem:** You have a grid with multiple zombies and multiple humans. You want to find the time it takes for all humans to be infected, assuming zombies infect adjacent cells every minute.
 - **Naive approach:** Run a standard BFS starting from Zombie 1. Then run a completely new BFS from Zombie 2. Take the minimum distance at each human. If there are Z zombies and N cells, this takes O(Z times N) time, which will TLE.
@@ -62,6 +62,15 @@ function multiSourceBFS(grid: string[][]): number {
   return time - 1; 
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Rotting Oranges](https://leetcode.com/problems/rotting-oranges/) (LeetCode 994) | All rotten cells enqueued at t=0, BFS ripples outward |
+| [01 Matrix](https://leetcode.com/problems/01-matrix/) (LeetCode 542) | Enqueue all 0-cells, BFS assigns distance to each 1-cell |
+| [Shortest Bridge](https://leetcode.com/problems/shortest-bridge/) (LeetCode 934) | DFS to find one island, multi-source BFS to reach the other |
+| [As Far from Land as Possible](https://leetcode.com/problems/as-far-from-land-as-possible/) (LeetCode 1162) | Multi-source BFS from all land cells to find farthest water |
 
 ### The trap
 

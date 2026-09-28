@@ -1,4 +1,4 @@
-## Shortest Path Variants
+## Shortest Path Variants <span class="lv lv2"></span>
 
 Interviewers rarely ask you to just "Run Dijkstra". They add a constraint that breaks the standard template, forcing you to modify the graph state.
 
@@ -21,6 +21,14 @@ Interviewers rarely ask you to just "Run Dijkstra". They add a constraint that b
   - If you are in Layer 0 and encounter a wall, you can traverse *down* into Layer 1. Once in Layer 1, you can only traverse empty spaces.
   - The node state changes from `(r, c)` to `(r, c, wallsBroken)`.
   - Your `visited` set must track the full state: `visited.add("{r},{c},${wallsBroken}")`. You run a standard BFS on this new 3D graph.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Cheapest Flights Within K Stops](https://leetcode.com/problems/cheapest-flights-within-k-stops/) (LeetCode 787) | Shortest path with an edge-count constraint |
+| [Shortest Path in a Grid with Obstacles Elimination](https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/) (LeetCode 1293) | BFS with state expansion: (r, c, wallsBroken) |
+| [Shortest Path to Get All Keys](https://leetcode.com/problems/shortest-path-to-get-all-keys/) (LeetCode 864) | State = (r, c, bitmask of collected keys) |
 
 ### The rule of thumb
 

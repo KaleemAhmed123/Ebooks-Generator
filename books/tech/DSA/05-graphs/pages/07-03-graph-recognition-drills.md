@@ -1,4 +1,4 @@
-## Graph Recognition Drills
+## Graph Recognition Drills <span class="lv lv1"></span>
 
 Read the following scenarios. What Graph Algorithm should you use? (Cover the answers on the right).
 

@@ -1,4 +1,4 @@
-## Breadth-First Search (BFS) Mechanics
+## Breadth-First Search (BFS) Mechanics <span class="lv lv1"></span>
 
 - BFS explores the graph uniformly in all directions, radiating outward like a ripple in a pond.
 - It processes all nodes at distance `1`, then all nodes at distance `2`, etc.
@@ -41,6 +41,15 @@ function bfs(startNode: number, adjList: number[][]): number {
 Notice the `const levelSize = queue.length - head;` block. 
 - If you just pop from the queue and push neighbors indiscriminately, you lose track of which "radius" or "distance level" you are currently processing. 
 - By taking a snapshot of the queue size before the inner loop, you guarantee that the inner `for` loop processes *exactly* the nodes at the current distance, and leaves the newly pushed neighbors for the next iteration of the `while` loop.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Word Ladder](https://leetcode.com/problems/word-ladder/) (LeetCode 127) | BFS over implicit word graph for shortest transformation |
+| [Shortest Path in Binary Matrix](https://leetcode.com/problems/shortest-path-in-binary-matrix/) (LeetCode 1091) | Layer-by-layer BFS on a grid with 8-directional moves |
+| [Open the Lock](https://leetcode.com/problems/open-the-lock/) (LeetCode 752) | BFS on state-space to find minimum turns |
+| [Jump Game III](https://leetcode.com/problems/jump-game-iii/) (LeetCode 1306) | BFS to check reachability from a starting index |
 
 ### The trap
 

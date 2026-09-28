@@ -1,4 +1,4 @@
-## DFS Applications
+## DFS Applications <span class="lv lv1"></span>
 
 DFS is more than just a way to traverse a graph. Its recursive nature makes it the optimal tool for problems requiring exhaustive pathfinding, backtracking, or topological analysis.
 
@@ -32,6 +32,14 @@ function hasCycle(node: number, colors: number[], adj: number[][]): boolean {
   return false;
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Number of Provinces](https://leetcode.com/problems/number-of-provinces/) (LeetCode 547) | Count connected components via DFS launches |
+| [Course Schedule](https://leetcode.com/problems/course-schedule/) (LeetCode 207) | Directed cycle detection with 3-color DFS |
+| [All Paths From Source to Target](https://leetcode.com/problems/all-paths-from-source-to-target/) (LeetCode 797) | DFS backtracking to enumerate all paths in a DAG |
 
 ### Backtracking (Path Generation)
 

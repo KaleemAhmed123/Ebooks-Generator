@@ -1,4 +1,4 @@
-## What Makes a Graph?
+## What Makes a Graph? <span class="lv lv1"></span>
 
 - In data structures, a graph is simply a collection of **Nodes** (also called Vertices) connected by **Edges**.
 - If a Tree is a strict hierarchy, a Graph is the wild west. Any node can point to any other node, or even to itself. In fact, a Tree is just a highly restricted type of graph (a connected, undirected graph with no cycles).

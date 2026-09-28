@@ -1,4 +1,4 @@
-## Dijkstra's Algorithm
+## Dijkstra's Algorithm <span class="lv lv1"></span>
 
 - BFS finds the shortest path on an unweighted graph. But if the edges have different costs (weights), a path with 5 edges might be cheaper than a path with 2 edges.
 - Dijkstra's Algorithm is the definitive solution for finding the shortest path on a **Weighted Graph**.
@@ -45,6 +45,15 @@ The process of updating a neighbor's distance is called **Relaxation**.
 If `DistanceTo(U) + Weight(U -> V) < DistanceTo(V)`:
 - We have found a cheaper way to reach `V`.
 - We "relax" the edge by updating `DistanceTo(V)` and pushing `V` back into the Priority Queue with its new, cheaper distance.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Network Delay Time](https://leetcode.com/problems/network-delay-time/) (LeetCode 743) | Textbook single-source shortest path on a weighted digraph |
+| [Path with Minimum Effort](https://leetcode.com/problems/path-with-minimum-effort/) (LeetCode 1631) | Dijkstra where edge weight is the absolute height difference |
+| [Swim in Rising Water](https://leetcode.com/problems/swim-in-rising-water/) (LeetCode 778) | Min-heap BFS tracking the max elevation along the path |
+| [Cheapest Flights Within K Stops](https://leetcode.com/problems/cheapest-flights-within-k-stops/) (LeetCode 787) | Modified Dijkstra with a stop-count constraint |
 
 ### The trap
 

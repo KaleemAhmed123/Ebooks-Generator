@@ -1,4 +1,4 @@
-## Depth-First Search (DFS) Mechanics
+## Depth-First Search (DFS) Mechanics <span class="lv lv1"></span>
 
 - DFS explores as deep as possible along each branch before backtracking.
 - It is naturally implemented using **Recursion** (which uses the call stack implicitly). It can also be implemented iteratively using an explicit `Stack` data structure.
@@ -39,6 +39,15 @@ for (let i = 0; i < N; i++) {
 
 - **Pre-order:** You do work *before* visiting neighbors (as you travel down the tree). Good for passing information downwards.
 - **Post-order:** You do work *after* visiting all neighbors (as you bubble back up). Good for aggregating information from children (e.g., "what is the size of my subtree?").
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Number of Islands](https://leetcode.com/problems/number-of-islands/) (LeetCode 200) | DFS from each unvisited land cell to mark a component |
+| [Clone Graph](https://leetcode.com/problems/clone-graph/) (LeetCode 133) | Recursive DFS to deep-copy each node exactly once |
+| [Max Area of Island](https://leetcode.com/problems/max-area-of-island/) (LeetCode 695) | DFS aggregation returning subtree size per component |
+| [Number of Provinces](https://leetcode.com/problems/number-of-provinces/) (LeetCode 547) | Count DFS launches on an adjacency-matrix graph |
 
 ### The trap
 

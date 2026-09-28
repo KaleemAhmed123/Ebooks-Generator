@@ -1,4 +1,4 @@
-## The Wrong Approach (Graphs)
+## The Wrong Approach (Graphs) <span class="lv lv1"></span>
 
 Graph problems have massive boilerplate. A small logical error in line 5 will cause a cascading failure that takes 30 minutes to debug.
 

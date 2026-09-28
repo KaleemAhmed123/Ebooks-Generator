@@ -1,4 +1,4 @@
-## Implicit Graphs
+## Implicit Graphs <span class="lv lv1"></span>
 
 - An **Implicit Graph** is a graph that is too large or too infinite to store in memory.
 - Instead of building an `adjList`, you calculate a node's neighbors *on the fly*.
@@ -60,6 +60,16 @@ for (const [dr, dc] of directions) {
   }
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Number of Islands](https://leetcode.com/problems/number-of-islands/) (LeetCode 200) | BFS/DFS on a 2D grid treating cells as implicit graph nodes |
+| [Flood Fill](https://leetcode.com/problems/flood-fill/) (LeetCode 733) | Expand from a cell to all same-color neighbors on a grid |
+| [Max Area of Island](https://leetcode.com/problems/max-area-of-island/) (LeetCode 695) | DFS on implicit grid graph, aggregate component size |
+| [Surrounded Regions](https://leetcode.com/problems/surrounded-regions/) (LeetCode 130) | Grid traversal from borders to mark unreachable regions |
+| [Pacific Atlantic Water Flow](https://leetcode.com/problems/pacific-atlantic-water-flow/) (LeetCode 417) | Multi-source BFS/DFS from grid edges inward |
 
 ### The trap
 
