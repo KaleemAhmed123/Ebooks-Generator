@@ -377,7 +377,8 @@ async function buildMaster(book) {
     // the Markdown parser is a heading.
     const id = `topic-${slug(meta.title)}`;
     const at = pages.length;
-    headings.push({ lvl: 1, text: meta.title, id, page: at, book: true });
+    const noDivider = meta.divider === false;
+    if (!noDivider) headings.push({ lvl: 1, text: meta.title, id, page: at, book: true });
 
     // The booklet's own accent is what its diagrams were drawn in; the volume's
     // is what they are printed in here.
@@ -385,8 +386,8 @@ async function buildMaster(book) {
     const own = [];
     const body = [];
     // Slots reserved ahead of the content: the divider, and under `per-topic`
-    // the topic's own contents page as well.
-    const lead = perTopic ? 2 : 1;
+    // the topic's own contents page as well. Suppressed by `"divider": false`.
+    const lead = noDivider ? 0 : perTopic ? 2 : 1;
     for (const f of files) {
       body.push(
         await renderPage(
@@ -398,6 +399,10 @@ async function buildMaster(book) {
     const modules = h1s.filter((h) => /^Module\b/i.test(h.text)).length || h1s.length;
     topics.push({ title: meta.title, terms: counting ? total : modules, accent });
 
+    if (noDivider) {
+      // No divider, no per-topic TOC — pages go straight in.
+      pages.push(...body);
+    } else {
     // The divider is generated, not a file. Nothing to keep in sync by hand,
     // and its count is counted rather than typed.
     //
@@ -424,6 +429,7 @@ async function buildMaster(book) {
       ...(perTopic ? [{ btoc: { key: `btoc-${child}`, title: meta.title, headings: own } }] : []),
       ...body
     );
+    }
     // One front index means every heading belongs to it. Per-topic means each
     // heading belongs to its own topic's index, and the front lists topics only.
     if (!perTopic) headings.push(...own);

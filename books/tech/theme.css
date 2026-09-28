@@ -246,6 +246,82 @@ th, td {
 }
 th { background: #f6f6f6; font-weight: 700; }
 
+/* ---------- booklet divider (topic page in a merged volume) ----------
+   Full-page opener for each booklet. Vertically centred layout with
+   a large title, numbered label, optional subtitle and teaser list.
+   Uses the volume's --accent colour for the rule and number. */
+
+.page.topic {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+  text-align: left;
+  padding-top: 30mm;
+  padding-bottom: 20mm;
+}
+.page.topic .topic-no {
+  font-family: "Consolas", "Menlo", monospace;
+  font-size: 7.5pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent, #6b6b6b);
+  margin: 0 0 4mm 0;
+}
+.page.topic h1 {
+  font-family: "Georgia", "Cambria", serif;
+  font-weight: 700;
+  font-size: 32pt;
+  line-height: 1.08;
+  color: var(--ink);
+  margin: 0 0 5mm 0;
+  padding-bottom: 5mm;
+  border-bottom: 1.8pt solid var(--accent, var(--rule));
+}
+.page.topic .topic-sub {
+  font-family: "Georgia", "Cambria", serif;
+  font-size: 11pt;
+  font-style: italic;
+  color: #4a4a4a;
+  margin: 0 0 2mm 0;
+}
+.page.topic .topic-line {
+  font-family: "Consolas", "Menlo", monospace;
+  font-size: 7pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent, #6b6b6b);
+  margin: 3mm 0 0 0;
+}
+.page.topic .topic-terms {
+  list-style: none;
+  padding-left: 0;
+  margin: 8mm 0 0 0;
+  columns: 2;
+  column-gap: 6mm;
+}
+.page.topic .topic-terms li {
+  font-family: "Georgia", "Cambria", serif;
+  font-size: 8.5pt;
+  line-height: 1.45;
+  color: #3a3a3a;
+  margin: 0 0 1.2mm 0;
+  break-inside: avoid;
+}
+.page.topic .topic-terms li::before {
+  content: "—";
+  color: var(--accent, #999);
+  margin-right: 1.5mm;
+}
+.page.topic .topic-count {
+  font-family: "Consolas", "Menlo", monospace;
+  font-size: 7pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8a8a8a;
+  margin: 8mm 0 0 0;
+}
+
 /* ---------- part divider ----------
    A full page separating the major parts of a long booklet.
    Same display treatment as a cover, one step smaller. */
