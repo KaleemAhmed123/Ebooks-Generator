@@ -1,7 +1,5 @@
 ## The Fastest Operation Table
 
-When you know exactly what mathematical operation is bottlenecking your algorithm, look it up here to find the fastest data structure that supports it.
-
 | Operation Needed | Fastest Data Structure | Time Complexity | Notes |
 | :--- | :--- | :--- | :--- |
 | **Membership Check** (Does X exist?) | Hash Set | O(1) | Worst case O(N) with hash collisions. |

@@ -410,8 +410,8 @@ async function buildMaster(book) {
     // Every booklet's divider doubles as its table of contents. Chapter
     // headings (h1) when the booklet has them, page titles (h2) otherwise.
     // Page numbers are filled in by assemble() once the full count is known.
-    const chapters = h1s.length > 1 ? own.filter((h) => h.lvl === 1)
-                                    : own.filter((h) => h.lvl <= 2);
+    const chapters = h1s.length >= 10 ? own.filter((h) => h.lvl === 1)
+                                     : own.filter((h) => h.lvl <= 2);
 
     const dividerHtml =
       `<section class="page topic" data-src="topic-${child}" style="--accent:${accent}">\n` +
@@ -494,6 +494,20 @@ async function buildBook(book) {
   for (let i = 0; i < rest.length; i++) {
     pages.push(await renderPage(path.join(src, rest[i]), headings, i, blocks, term, accent, undefined, ids));
   }
+
+  // Append shared endmatter (about-the-author, copyright) from the series'
+  // backmatter so every individual booklet closes with the same two pages.
+  const bmDir = path.join(path.dirname(book.dir), "backmatter", "pages");
+  const self = path.basename(book.dir);
+  if (self !== "backmatter" && self !== "frontmatter" && existsSync(bmDir)) {
+    const bmFiles = (await readdir(bmDir))
+      .filter((f) => f.endsWith(".md") && /about.*author|copyright/i.test(f))
+      .sort();
+    for (const f of bmFiles) {
+      pages.push(await renderPage(path.join(bmDir, f), [], pages.length, blocks, null, accent));
+    }
+  }
+
   return { coverHtml, pages, headings };
 }
 
@@ -522,8 +536,7 @@ function assemble({ coverHtml, pages, headings }, tocPages, spans = {}, tocTitle
     if (p?.btoc) return tocSection(p.btoc.headings, at, p.btoc.title, p.btoc.key);
     if (p?.divider) {
       const items = p.chapters.map((h) =>
-        `<li><a href="#${h.id}">${h.text}</a>` +
-        `<span class="dots"></span><span class="p">${at[h.page]}</span></li>`
+        `<li><a href="#${h.id}">${h.text}</a></li>`
       ).join("\n");
       return p.divider.replace(
         '<ul class="topic-chapters"></ul>',

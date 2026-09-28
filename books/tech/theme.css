@@ -414,3 +414,20 @@ th { background: #f6f6f6; font-weight: 700; }
   color: #6a6a72;
 }
 .toc li.lvl1 > .p { font-size: 7.4pt; font-weight: 700; color: var(--ink); }
+
+/* ---------- endmatter pages (about-the-author, copyright) ----------
+   These pages have short content. Flexbox stretches them to match the
+   full page height and pins the closing line to the bottom. */
+
+.page[data-src*="about-the-author"],
+.page[data-src*="copyright"] {
+  display: flex;
+  flex-direction: column;
+  height: 186mm;
+  break-after: page;
+  page-break-after: always;
+}
+.page[data-src*="about-the-author"] > p:last-child,
+.page[data-src*="copyright"] > .verified {
+  margin-top: auto;
+}

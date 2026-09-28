@@ -5,30 +5,19 @@ If the DP transitions are strictly linear (addition and multiplication by consta
 
 ### The Transformation
 
-Consider the Fibonacci sequence: Fn = Fn-₁ + Fn-₂.
-We can represent this transition as a matrix multiplication:
+Consider the Fibonacci sequence: Fn = Fn-₁ + Fn-₂. We can represent this as matrix multiplication:
 
-$$
-\begin{bmatrix}
-F_n \\
-F_{n-1}
-\end{bmatrix}
-=
-\begin{bmatrix}
-1 & 1 \\
-1 & 0
-\end{bmatrix}
-\begin{bmatrix}
-F_{n-1} \\
-F_{n-2}
-\end{bmatrix}
-$$
+```
+| Fn   |   | 1  1 |   | Fn-₁ |
+|      | = |      | × |      |
+| Fn-₁ |   | 1  0 |   | Fn-₂ |
+```
 
-Let the transition matrix be T = begin{bmatrix} 1 & 1  1 & 0 end{bmatrix}.
-To find the state at step N, we don't need to multiply step-by-step.
-$ text{State}_N = TN⁻¹ times text{State}₁ $
+Let the transition matrix be T = `[[1,1],[1,0]]`. Applying it recursively:
 
-Because matrix multiplication is associative, we can compute TN⁻¹ using **Fast Exponentiation** in exactly O(log N) matrix multiplications!
+**State(N) = T^(N-1) × State(1)**
+
+Matrix multiplication is associative, so T^(N-1) can be computed with **Fast Exponentiation** in O(log N) matrix multiplications instead of O(N).
 
 ### The Base Matrix Class (C++)
 
@@ -87,23 +76,10 @@ What if the recurrence is Fn = 2 Fn-₁ + 3 Fn-₂ + 5?
 That +5 constant prevents a standard 2x2 matrix. 
 **The Trick:** Add a dummy state variable that is always 1.
 
-$$
-\begin{bmatrix}
-F_n \\
-F_{n-1} \\
-1
-\end{bmatrix}
-=
-\begin{bmatrix}
-2 & 3 & 5 \\
-1 & 0 & 0 \\
-0 & 0 & 1
-\end{bmatrix}
-\begin{bmatrix}
-F_{n-1} \\
-F_{n-2} \\
-1
-\end{bmatrix}
-$$
+```
+| Fn   |   | 2  3  5 |   | Fn-₁ |
+| Fn-₁ | = | 1  0  0 | × | Fn-₂ |
+| 1    |   | 0  0  1 |   | 1    |
+```
 
 By tracking a constant `1` in the state vector, the matrix can multiply it by `5` and add it to the next term, perfectly embedding constants into the linear transformation.

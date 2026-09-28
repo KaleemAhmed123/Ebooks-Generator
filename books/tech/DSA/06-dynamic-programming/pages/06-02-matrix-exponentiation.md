@@ -10,15 +10,15 @@ This is an advanced mathematical optimization used specifically when N is absurd
 Fibonacci is a linear recurrence: `F(N) = 1 * F(N-1) + 1 * F(N-2)`.
 This relationship can be perfectly modeled as Matrix Multiplication.
 
-$$
-\begin{bmatrix} F_n \\ F_{n-1} \end{bmatrix} = \begin{bmatrix} 1 & 1 \\ 1 & 0 \end{bmatrix} \begin{bmatrix} F_{n-1} \\ F_{n-2} \end{bmatrix}
-$$
+```
+| Fn   |   | 1  1 |   | Fn-₁ |
+|      | = |      | × |      |
+| Fn-₁ |   | 1  0 |   | Fn-₂ |
+```
 
-If we apply this recursively all the way down to the base cases F₁ and F₀:
+Apply recursively down to base cases F₁ and F₀:
 
-$$
-\begin{bmatrix} F_n \\ F_{n-1} \end{bmatrix} = \begin{bmatrix} 1 & 1 \\ 1 & 0 \end{bmatrix}^{n-1} \begin{bmatrix} F_1 \\ F_0 \end{bmatrix}
-$$
+**[Fn, Fn-₁]ᵀ = T^(n-1) × [F₁, F₀]ᵀ** where T = `[[1,1],[1,0]]`
 
 ### The O(log N) Speedup
 
