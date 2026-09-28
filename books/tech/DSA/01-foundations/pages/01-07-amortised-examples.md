@@ -1,4 +1,4 @@
-## Nested loops do not mean O(n²)
+## Nested loops do not mean O(n²) <span class="lv lv1"></span>
 
 - The most dangerous trap in complexity analysis: assuming a `while` loop inside a `for` loop automatically multiplies the complexity to O(n²)
 - If the inner loop's execution is bounded globally across the entire run of the outer loop, you must use amortised analysis to find the true complexity
@@ -30,6 +30,15 @@ function nextGreater(arr: number[]): void {
 - Two pointer algorithms (like finding a subarray sum) move a `left` pointer in an inner `while` loop, while a `right` pointer iterates in a `for` loop
 - Because `left` only ever moves forward and never resets, it travels a maximum distance of n across all iterations of the inner loop
 - Overall complexity: O(n)
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/) (LeetCode 496) | Monotonic stack pushes and pops each element once — O(n), not O(n²) |
+| [Daily Temperatures](https://leetcode.com/problems/daily-temperatures/) (LeetCode 739) | Stack inner loop is bounded by total pushes across all iterations |
+| [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/) (LeetCode 42) | Two-pointer or stack solution processes each bar exactly once |
+| [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/) (LeetCode 3) | Inner while loop moves left pointer monotonically — total moves bounded by n |
 
 :::interview
 "Isn't this sliding window algorithm O(n²) because there's a while loop inside the for loop?"

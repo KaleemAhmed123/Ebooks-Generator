@@ -1,4 +1,4 @@
-## Recognition drills — Foundations
+## Recognition drills — Foundations <span class="lv lv1"></span>
 
 You have 20 seconds per problem. **Do not solve.** Identify:
 1. The likely constraint class (what complexity ceiling does n imply?)

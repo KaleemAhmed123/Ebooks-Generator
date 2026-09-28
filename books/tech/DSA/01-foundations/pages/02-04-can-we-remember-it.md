@@ -1,4 +1,4 @@
-## Can we remember it?
+## Can we remember it? <span class="lv lv1"></span>
 
 - When the bottleneck is re-computing the same answer or re-finding the same value, the transformation is to spend space to remember it
 - This is the core mechanism behind both Dynamic Programming and Hash Maps
@@ -41,6 +41,16 @@ for (let i = 0; i < arr.length; i++) {
 ### The trap
 
 - **Hashing the wrong thing.** In the "Subarray Sum Equals K" problem, beginners try to hash the subarrays themselves. There are O(n²) subarrays. The correct approach is to hash the *prefix sums*. You must figure out the exact minimal state to remember
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Two Sum](https://leetcode.com/problems/two-sum/) (LeetCode 1) | Hash map replaces O(n) inner scan with O(1) lookup |
+| [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/) (LeetCode 128) | Hash set remembers all values for O(1) neighbor checks |
+| [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) (LeetCode 560) | Hash map stores prefix sum frequencies to find complements in O(1) |
+| [Word Break](https://leetcode.com/problems/word-break/) (LeetCode 139) | DP cache remembers which starting indices can form valid splits |
+| [Climbing Stairs](https://leetcode.com/problems/climbing-stairs/) (LeetCode 70) | Memoisation converts exponential recursion to O(n) DP |
 
 :::interview
 "Your recursive solution is too slow. How would you speed it up?"

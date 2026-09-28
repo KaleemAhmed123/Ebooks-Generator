@@ -1,4 +1,4 @@
-## Big-O: what it actually measures
+## Big-O: what it actually measures <span class="lv lv1"></span>
 
 - Big-O does not measure how many seconds your code takes to run. It measures **how the runtime grows** as the input grows
 - O(n) means if you double the input, the runtime roughly doubles. O(n²) means if you double the input, the runtime roughly quadruples

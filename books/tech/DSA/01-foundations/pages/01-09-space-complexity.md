@@ -1,4 +1,4 @@
-## Space complexity
+## Space complexity <span class="lv lv1"></span>
 
 - Space complexity measures how much **extra** memory an algorithm needs as the input grows. It is measured in Big-O, exactly like time
 - "Extra" is the key word. If a problem gives you an array of size n and you modify it in-place, your space complexity is O(1). You don't count the input itself

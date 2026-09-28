@@ -1,4 +1,4 @@
-## The derivation method
+## The derivation method <span class="lv lv1"></span>
 
 - Remembering a solution guarantees you will fail when the problem is slightly changed
 - Deriving a solution means following a mechanical, repeatable path from the naive approach to the optimal one. If you follow the path, the algorithm reveals itself

@@ -1,4 +1,4 @@
-## Amortised analysis
+## Amortised analysis <span class="lv lv1"></span>
 
 - Amortised analysis measures the **average cost of an operation over a sequence**, rather than the worst-case cost of a single operation
 - It applies when an algorithm has rare, expensive operations interspersed with many cheap ones

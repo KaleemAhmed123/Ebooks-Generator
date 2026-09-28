@@ -1,4 +1,4 @@
-## What is being repeated?
+## What is being repeated? <span class="lv lv1"></span>
 
 - Every suboptimal algorithm does unnecessary work. "Unnecessary" almost always means "repeated"
 - The transition from brute force to optimal requires identifying exactly what calculation is happening more than once

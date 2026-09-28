@@ -1,4 +1,4 @@
-## Common complexities
+## Common complexities <span class="lv lv1"></span>
 
 - You must instantly recognise what code structure produces what complexity, and vice-versa
 

@@ -1,4 +1,4 @@
-## Proving correctness informally
+## Proving correctness informally <span class="lv lv1"></span>
 
 - You do not need formal mathematical proofs in interviews. You need to explain *why* your algorithm cannot produce a wrong answer
 - Three techniques cover nearly every case: invariant reasoning, exchange argument, and contradiction

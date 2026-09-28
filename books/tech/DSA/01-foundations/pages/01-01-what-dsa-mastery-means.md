@@ -1,4 +1,4 @@
-## What DSA mastery means
+## What DSA mastery means <span class="lv lv1"></span>
 
 - Mastery is not solving 500 problems. It is recognising structure in a problem you have never seen
 - A strong candidate reads the constraints, identifies the structural family, and derives the algorithm. A weak one scrolls through remembered solutions looking for a match

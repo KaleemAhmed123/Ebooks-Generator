@@ -1,4 +1,4 @@
-## When the obvious pattern is wrong
+## When the obvious pattern is wrong <span class="lv lv1"></span>
 
 - Pattern recognition is fast. Pattern *validation* is careful. The fastest way to fail an interview is to commit to the wrong pattern in the first 30 seconds and spend 25 minutes debugging the consequences
 - This page catalogues the most common misdirections — problems where the surface looks like one pattern but the structure demands another
@@ -38,6 +38,15 @@
 - Pattern validation takes 30 more seconds to confirm the technique's assumptions actually hold
 - The 30 seconds of validation saves 25 minutes of debugging the wrong approach
 - **Always check the assumptions before writing code**
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) (LeetCode 560) | Looks like sliding window but has negatives — needs prefix sum plus hash map |
+| [Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/) (LeetCode 435) | Looks like DP but greedy by end-time is simpler and optimal |
+| [Shortest Path in Binary Matrix](https://leetcode.com/problems/shortest-path-in-binary-matrix/) (LeetCode 1091) | Uniform-cost grid — BFS works, but weighted variants need Dijkstra |
+| [Network Delay Time](https://leetcode.com/problems/network-delay-time/) (LeetCode 743) | Looks like BFS but edges have weights — needs Dijkstra |
 
 :::interview
 "I think this is a sliding window problem."

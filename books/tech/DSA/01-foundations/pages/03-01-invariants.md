@@ -1,4 +1,4 @@
-## Invariants
+## Invariants <span class="lv lv1"></span>
 
 - An **invariant** is a condition that is true before every iteration of a loop, during every iteration, and after the loop ends. If you can prove the invariant holds at all three points, you have proved the loop does what you claim
 - Most interview candidates cannot explain *why* their code is correct. They test it on examples and hope. Invariants let you prove correctness without testing every case

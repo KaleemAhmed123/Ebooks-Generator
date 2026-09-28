@@ -1,4 +1,4 @@
-## Recurrences and the Master Theorem
+## Recurrences and the Master Theorem <span class="lv lv2"></span>
 
 - A recurrence relation describes a function in terms of its own smaller inputs. Divide-and-conquer algorithms (like Merge Sort or Binary Search) produce recurrences naturally
 - The Master Theorem is a cookbook formula to instantly solve recurrences of the form T(n) = aT(n/b) + f(n)

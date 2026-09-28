@@ -1,4 +1,4 @@
-## Brute force is not lazy
+## Brute force is not lazy <span class="lv lv1"></span>
 
 - A candidate who says "let me start with brute force" is not failing the interview. They are establishing a baseline. A candidate who immediately guesses "is this a Segment Tree?" and guesses wrong is failing
 - Brute force proves you understand the problem requirements, the rules, and what a valid answer looks like

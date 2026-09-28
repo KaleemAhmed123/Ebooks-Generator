@@ -1,4 +1,4 @@
-## The constraint table
+## The constraint table <span class="lv lv1"></span>
 
 - This table maps every common constraint pattern to its candidate algorithms. Use it as a starting point — not a decision tree, but a shortlist generator
 

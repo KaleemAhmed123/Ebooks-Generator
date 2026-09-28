@@ -1,4 +1,4 @@
-## Constraints are fingerprints
+## Constraints are fingerprints <span class="lv lv1"></span>
 
 - Every competitive-programming problem and every interview question gives you the input size. That number is not decoration — it tells you which algorithms can finish in time
 - A modern judge executes roughly **10⁸ operations per second**. If the time limit is 1 second and n = 10⁵, an O(n²) solution runs 10¹⁰ operations. It will not pass. O(n log n) runs ~1.7 × 10⁶. It will

@@ -1,3 +1,3 @@
 # The Algorithm Derivation Manual
 
-## Foundations
+## Foundations <span class="lv lv1"></span>

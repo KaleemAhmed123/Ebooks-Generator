@@ -1,4 +1,4 @@
-## Time vs space tradeoffs
+## Time vs space tradeoffs <span class="lv lv1"></span>
 
 - You can almost always buy time by spending space. This is the fundamental economic trade of computer science
 - When a brute force algorithm is too slow, the derivation path usually involves creating a data structure to remember past work
