@@ -1,4 +1,4 @@
-## Heavy-Light Decomposition (HLD) 🔴
+## Heavy-Light Decomposition (HLD) <span class="lv lv3"></span>
 
 **The Problem:** Given a tree with weights on the nodes, answer Q dynamic queries of two types:
 1. Update the weight of node U.

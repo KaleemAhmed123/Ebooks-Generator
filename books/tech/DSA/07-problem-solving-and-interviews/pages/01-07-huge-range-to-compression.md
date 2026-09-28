@@ -1,4 +1,4 @@
-## Transformation: Huge Range to Coordinate Compression 🟡 <span class="lv lv2"></span>
+## Transformation: Huge Range to Coordinate Compression <span class="lv lv2"></span>
 
 When a problem involves points or intervals on a massive 1D or 2D grid, you often need to use a frequency array or a 2D matrix. But what if the coordinates go up to 10⁹?
 

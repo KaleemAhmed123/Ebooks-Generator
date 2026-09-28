@@ -1,4 +1,4 @@
-## Sieve of Eratosthenes 🔴
+## Sieve of Eratosthenes <span class="lv lv3"></span>
 
 Number theory in competitive programming almost always starts with primes. If a problem involves divisors, factorization, or coprimes for numbers up to 10⁷, you need the Sieve.
 

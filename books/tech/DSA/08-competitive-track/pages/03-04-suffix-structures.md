@@ -1,4 +1,4 @@
-## Suffix Structures 🔴
+## Suffix Structures <span class="lv lv3"></span>
 
 When a problem asks you to process *every single substring* of a massive string, you need a Suffix structure. A string of length 10⁵ has 10¹⁰ substrings. We must represent them in O(N) space.
 

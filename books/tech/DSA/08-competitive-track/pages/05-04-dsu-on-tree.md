@@ -1,4 +1,4 @@
-## DSU on Tree (Sack) 🔴
+## DSU on Tree (Sack) <span class="lv lv3"></span>
 
 **The Problem:** Given a rooted tree where each node has a color. Answer Q offline queries of the form: "How many distinct colors are in the subtree of node U?"
 

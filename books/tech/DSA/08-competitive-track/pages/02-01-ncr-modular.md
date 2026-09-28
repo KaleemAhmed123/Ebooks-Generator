@@ -1,4 +1,4 @@
-## Combinatorics under Modulo (nCr) 🔴
+## Combinatorics under Modulo (nCr) <span class="lv lv3"></span>
 
 Counting the number of ways to choose K items from N items (^N C _K) is a staple of competitive programming. Because the answer grows factorially, you will always be asked to output it modulo a large prime, usually 10⁹ + 7.
 

@@ -1,4 +1,4 @@
-## Fast Exponentiation (Binary Exponentiation) 🔴
+## Fast Exponentiation (Binary Exponentiation) <span class="lv lv3"></span>
 
 How do you calculate A^B pmod M when B = 10¹⁸?
 A standard `for` loop taking O(B) time will result in a Time Limit Exceeded (TLE). We need to calculate it in O(log B) time.

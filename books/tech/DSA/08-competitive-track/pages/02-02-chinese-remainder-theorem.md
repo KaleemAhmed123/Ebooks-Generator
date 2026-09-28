@@ -1,4 +1,4 @@
-## Chinese Remainder Theorem (CRT) 🔴
+## Chinese Remainder Theorem (CRT) <span class="lv lv3"></span>
 
 The Chinese Remainder Theorem is used when a problem gives you a series of remainders and asks you to find the original number.
 

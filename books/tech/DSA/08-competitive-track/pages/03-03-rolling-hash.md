@@ -1,4 +1,4 @@
-## Rolling Hash (Rabin-Karp) 🔴
+## Rolling Hash (Rabin-Karp) <span class="lv lv3"></span>
 
 Sometimes you need to compare two strings of length 10⁵ for equality. Doing it character-by-character takes O(N). 
 What if you need to compare 10⁵ pairs of substrings? That's O(N²).

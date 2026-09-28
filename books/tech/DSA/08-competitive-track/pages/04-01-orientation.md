@@ -1,4 +1,4 @@
-## Orientation (The Cross Product) 🔴
+## Orientation (The Cross Product) <span class="lv lv3"></span>
 
 Computational Geometry is infamous for floating-point inaccuracies. If you use `Math.atan2` to calculate angles, or `y = mx + b` with floats to check if points are collinear, your code will fail on edge cases.
 The golden rule of Geometry in CP: **Keep everything in integers.**

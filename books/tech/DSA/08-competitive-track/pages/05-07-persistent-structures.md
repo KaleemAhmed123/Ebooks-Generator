@@ -1,4 +1,4 @@
-## Persistent Data Structures 🔴
+## Persistent Data Structures <span class="lv lv3"></span>
 
 **The Problem:** You have an array. You perform Q updates. At query 100, the problem asks: "What was the sum of range [L, R] at the exact moment after query 14?"
 You need to time-travel to a previous state of the array. 

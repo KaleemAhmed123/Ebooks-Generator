@@ -1,4 +1,4 @@
-## Transformation: Dynamic Queries to Offline Queries 🔴 <span class="lv lv3"></span>
+## Transformation: Dynamic Queries to Offline Queries <span class="lv lv3"></span>
 
 This is a CP-tier transformation that occasionally appears in elite interviews.
 

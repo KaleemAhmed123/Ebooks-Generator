@@ -1,4 +1,4 @@
-## FFT and NTT (Concepts) 🔴
+## FFT and NTT (Concepts) <span class="lv lv3"></span>
 
 The Fast Fourier Transform (FFT) is the final boss of competitive programming math. If a problem reduces to polynomial multiplication, and the polynomials have degree N = 10⁵, standard multiplication takes O(N²). FFT does it in O(N log N).
 

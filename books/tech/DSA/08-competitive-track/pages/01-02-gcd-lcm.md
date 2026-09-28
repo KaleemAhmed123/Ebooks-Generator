@@ -1,4 +1,4 @@
-## GCD and LCM 🔴
+## GCD and LCM <span class="lv lv3"></span>
 
 The Greatest Common Divisor (GCD) and Least Common Multiple (LCM) are the duct tape of competitive programming math.
 

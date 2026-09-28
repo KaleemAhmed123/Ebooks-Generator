@@ -1,4 +1,4 @@
-## Modular Arithmetic 🔴
+## Modular Arithmetic <span class="lv lv3"></span>
 
 In competitive programming, the answer is often astronomically large. Problems will ask you to "return the answer modulo 10⁹ + 7". 
 

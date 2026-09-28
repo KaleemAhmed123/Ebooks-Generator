@@ -1,4 +1,4 @@
-## Sweep Line (Advanced Applications) 🔴
+## Sweep Line (Advanced Applications) <span class="lv lv3"></span>
 
 We covered basic Sweep Line (breaking intervals into +1 and -1 events) in the Interviews module. In competitive programming, Sweep Line is combined with Data Structures to solve 2D geometry and massive query problems.
 

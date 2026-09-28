@@ -1,4 +1,4 @@
-## Matrix Exponentiation 🔴
+## Matrix Exponentiation <span class="lv lv3"></span>
 
 When a DP problem asks for the N-th term of a sequence, and N is massive (like 10¹⁸), an O(N) linear loop will TLE. 
 If the DP transitions are strictly linear (addition and multiplication by constants, no `max()` or `min()`), you can reduce the time complexity to O(log N) using Matrix Exponentiation.

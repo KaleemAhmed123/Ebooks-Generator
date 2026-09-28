@@ -1,4 +1,4 @@
-## Coordinate Compression (Deep Dive) 🔴
+## Coordinate Compression (Deep Dive) <span class="lv lv3"></span>
 
 In competitive programming, you often encounter problems involving ranges or coordinates up to 10⁹. 
 If you need to build a Segment Tree, a Fenwick Tree, or simply mark visited positions on an array, an array of size 10⁹ will cause a Memory Limit Exceeded (MLE) error. 

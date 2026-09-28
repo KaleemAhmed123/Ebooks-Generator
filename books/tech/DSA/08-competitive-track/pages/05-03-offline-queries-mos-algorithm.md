@@ -1,4 +1,4 @@
-## Offline Queries & Mo's Algorithm 🔴
+## Offline Queries & Mo's Algorithm <span class="lv lv3"></span>
 
 "Offline Queries" is a foundational CP trick. If a problem gives you Q queries, and you do not need to answer query 2 before receiving query 3, you can read ALL queries first, sort them in a clever way, process them, and then output the answers in the original order.
 

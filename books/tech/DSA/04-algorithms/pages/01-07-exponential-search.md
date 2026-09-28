@@ -1,4 +1,4 @@
-## Exponential Search 🟡 <span class="lv lv2"></span>
+## Exponential Search <span class="lv lv2"></span>
 
 - Standard Binary Search requires you to know the upper bound (`right`) of your search space.
 - **Exponential Search** (also called Galloping Search) is used when the search space is theoretically unbounded, or when the target is expected to be very close to the beginning of a massive array.

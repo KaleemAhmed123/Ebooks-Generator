@@ -1,4 +1,4 @@
-## Modular Inverse 🔴
+## Modular Inverse <span class="lv lv3"></span>
 
 As established in the Modular Arithmetic section, you cannot divide under a modulo.
 To calculate A/B pmod M, you must calculate A times B⁻¹ pmod M.

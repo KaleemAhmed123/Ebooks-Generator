@@ -1,4 +1,4 @@
-## Line Segment Intersection 🔴
+## Line Segment Intersection <span class="lv lv3"></span>
 
 Given two line segments, p₁q₁ and p₂q₂, do they intersect?
 Again, we **do not** use line equations (y = mx + b). Vertical lines cause division by zero, and floats cause inaccuracies. We use the `orientation` function.

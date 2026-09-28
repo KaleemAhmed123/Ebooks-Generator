@@ -1,4 +1,4 @@
-## Convex Hull (Graham Scan / Monotone Chain) 🔴
+## Convex Hull (Graham Scan / Monotone Chain) <span class="lv lv3"></span>
 
 Given a set of N points, the Convex Hull is the smallest convex polygon that encloses all the points. Imagine snapping a rubber band around the points; the shape the rubber band forms is the Convex Hull.
 

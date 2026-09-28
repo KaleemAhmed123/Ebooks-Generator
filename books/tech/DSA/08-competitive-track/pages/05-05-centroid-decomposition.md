@@ -1,4 +1,4 @@
-## Centroid Decomposition 🔴
+## Centroid Decomposition <span class="lv lv3"></span>
 
 **The Problem:** "Find the number of paths in a tree of length exactly K."
 A standard DFS from every node takes O(N²), which TLEs for N = 10⁵. We need an O(N log N) solution.
