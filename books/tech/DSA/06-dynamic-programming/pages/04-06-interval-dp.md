@@ -1,4 +1,4 @@
-## Interval DP 🟡
+## Interval DP <span class="lv lv2"></span>
 
 - **Interval DP** solves problems where the answer for a range `[i, j]` depends on answers for smaller sub-ranges within it. The state is the interval itself: `dp[i][j]` = the optimal answer for the subproblem spanning indices `i` to `j`
 - **The signal:** the problem involves merging, splitting, or collapsing contiguous elements — stones, balloons, matrices, parenthesisations. Whenever you combine two adjacent pieces and the cost depends on what remains, think interval DP
@@ -66,6 +66,15 @@ for (let len = 1; len <= n; len++) {
 
 - **Using `for (let i = 0; i < n; i++)` as the outer loop.** This fills row by row, but `dp[i][j]` needs `dp[i+1][...]` which has not been computed yet. The outer loop must be interval length, not start index
 - **Off-by-one in the split.** The split point `k` must range from `i` to `j - 1` (not `j`). Splitting at `j` produces an empty right half
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Burst Balloons](https://leetcode.com/problems/burst-balloons/) (LeetCode 312) | Classic "which to burst last" interval DP |
+| [Minimum Cost to Merge Stones](https://leetcode.com/problems/minimum-cost-to-merge-stones/) (LeetCode 1000) | Merge adjacent piles — interval split with group constraint |
+| [Strange Printer](https://leetcode.com/problems/strange-printer/) (LeetCode 664) | Minimum turns to print a string — interval collapse |
+| [Minimum Score Triangulation of Polygon](https://leetcode.com/problems/minimum-score-triangulation-of-polygon/) (LeetCode 1039) | Split polygon into triangles at each vertex |
 
 :::interview
 "What class of problems does interval DP solve?"

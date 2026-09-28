@@ -1,4 +1,4 @@
-## Interval DP Worked Problems 🟡
+## Interval DP Worked Problems <span class="lv lv2"></span>
 
 ### Burst Balloons (LC 312)
 
@@ -44,6 +44,15 @@ function maxCoins(nums: number[]): number {
 
 - **Burst balloons: thinking forward.** "Which to burst first" creates overlapping, shifting subproblems. "Which to burst last" in each interval creates clean, independent subproblems. The reframe is the entire insight
 - **LPS: wrong loop direction.** Filling `i` top-down reads `dp[i+1]` which is not computed yet. Fill `i` from `n-1` down to `0`, or use the length-based loop
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Burst Balloons](https://leetcode.com/problems/burst-balloons/) (LeetCode 312) | "Which to burst last" reframe |
+| [Longest Palindromic Subsequence](https://leetcode.com/problems/longest-palindromic-subsequence/) (LeetCode 516) | Interval shrinks from both ends |
+| [Palindrome Partitioning II](https://leetcode.com/problems/palindrome-partitioning-ii/) (LeetCode 132) | Minimum cuts with palindrome precomputation |
+| [Minimum Cost Tree From Leaf Values](https://leetcode.com/problems/minimum-cost-tree-from-leaf-values/) (LeetCode 1130) | Interval DP choosing which leaf pair to merge |
 
 :::interview
 "How do you recognise an interval DP problem?"

@@ -1,4 +1,4 @@
-## The 0/1 Knapsack Problem
+## The 0/1 Knapsack Problem <span class="lv lv1"></span>
 
 The Knapsack problem is the undisputed king of Dynamic Programming. If you master this, you can solve roughly 30% of all medium/hard DP questions.
 
@@ -66,3 +66,12 @@ function knapsackOptimized(weights: number[], values: number[], W: number): numb
   return dp[W];
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/) (LeetCode 416) | 0/1 knapsack with target = totalSum/2 |
+| [Last Stone Weight II](https://leetcode.com/problems/last-stone-weight-ii/) (LeetCode 1049) | Minimise remainder — knapsack to half the total |
+| [Ones and Zeroes](https://leetcode.com/problems/ones-and-zeroes/) (LeetCode 474) | 0/1 knapsack with two capacity dimensions (0s and 1s) |
+| [Target Sum](https://leetcode.com/problems/target-sum/) (LeetCode 494) | Algebraic reduction to subset sum / 0/1 knapsack |

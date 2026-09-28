@@ -1,4 +1,4 @@
-## Memoisation vs Tabulation
+## Memoisation vs Tabulation <span class="lv lv1"></span>
 
 Once you have defined your State, Transition, and Base Cases, you have to write the code. There are two ways to implement a DP solution: Top-Down (Memoisation) and Bottom-Up (Tabulation).
 

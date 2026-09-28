@@ -1,4 +1,4 @@
-## Grid DP: Unique Paths
+## Grid DP: Unique Paths <span class="lv lv1"></span>
 
 Grid DP is the most visually intuitive form of Dynamic Programming. 
 
@@ -36,6 +36,15 @@ function uniquePaths(m: number, n: number): number {
   return dp[m - 1][n - 1];
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Unique Paths](https://leetcode.com/problems/unique-paths/) (LeetCode 62) | The standard grid path-counting problem |
+| [Unique Paths II](https://leetcode.com/problems/unique-paths-ii/) (LeetCode 63) | Same problem with obstacle cells |
+| [Unique Paths III](https://leetcode.com/problems/unique-paths-iii/) (LeetCode 980) | Must visit every non-obstacle cell — backtracking variant |
+| [Pascal's Triangle](https://leetcode.com/problems/pascals-triangle/) (LeetCode 118) | Same additive recurrence in triangular form |
 
 ### Unique Paths II (Obstacles)
 

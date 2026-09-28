@@ -1,4 +1,4 @@
-## Minimum Path Sum
+## Minimum Path Sum <span class="lv lv1"></span>
 
 This is a direct evolution of Unique Paths. Instead of counting *how many* paths exist, we want to find the *best* path based on grid values.
 
@@ -47,6 +47,14 @@ function minPathSum(grid: number[][]): number {
   return grid[m - 1][n - 1];
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Minimum Path Sum](https://leetcode.com/problems/minimum-path-sum/) (LeetCode 64) | The standard grid cost minimisation |
+| [Triangle](https://leetcode.com/problems/triangle/) (LeetCode 120) | Same idea on a triangular grid, top-down or bottom-up |
+| [Minimum Falling Path Sum](https://leetcode.com/problems/minimum-falling-path-sum/) (LeetCode 931) | Grid path with three directional choices per row |
 
 ### The rule of thumb
 

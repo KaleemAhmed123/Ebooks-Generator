@@ -1,4 +1,4 @@
-## Alien's Trick (WQS Binary Search) 🔴
+## Alien's Trick (WQS Binary Search) <span class="lv lv3"></span>
 
 This is an elite-level optimization. It is rarely expected in standard interviews but is a staple in competitive programming and hard LC problems.
 

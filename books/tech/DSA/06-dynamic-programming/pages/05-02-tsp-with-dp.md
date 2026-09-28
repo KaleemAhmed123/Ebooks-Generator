@@ -1,4 +1,4 @@
-## Traveling Salesperson Problem (TSP) 🔴
+## Traveling Salesperson Problem (TSP) <span class="lv lv2"></span>
 
 TSP is the classic NP-Hard problem. 
 - **The Setup:** Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the origin city?
@@ -59,6 +59,14 @@ function tsp(n: number, dist: number[][]): number {
   return dfs(1, 0);
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Shortest Path Visiting All Nodes](https://leetcode.com/problems/shortest-path-visiting-all-nodes/) (LeetCode 847) | Visit every node exactly once — TSP on a graph |
+| [Find the Shortest Superstring](https://leetcode.com/problems/find-the-shortest-superstring/) (LeetCode 943) | Optimal ordering with overlap costs — TSP variant |
+| [Minimum Cost to Visit Every Node in a Graph](https://leetcode.com/problems/shortest-path-visiting-all-nodes/) (LeetCode 847) | BFS + bitmask for all-node traversal |
 
 ### The takeaway
 

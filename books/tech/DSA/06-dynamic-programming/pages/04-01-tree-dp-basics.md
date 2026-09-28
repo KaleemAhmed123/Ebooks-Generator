@@ -1,4 +1,4 @@
-## Tree DP Basics
+## Tree DP Basics <span class="lv lv1"></span>
 
 Dynamic Programming is not limited to arrays. When a problem asks for an optimal value on a Tree (e.g., maximum independent set, longest path, minimum vertex cover), you use **Tree DP**.
 
@@ -61,3 +61,11 @@ function rob(root: TreeNode | null): number {
 ```
 
 By returning an array (or object) containing multiple state variables, we avoid needing a global Hash Map to memoize the Tree nodes, making the algorithm a blazing fast O(N) with O(H) space.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [House Robber III](https://leetcode.com/problems/house-robber-iii/) (LeetCode 337) | Non-adjacent selection on a tree |
+| [Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/) (LeetCode 543) | Return depth to parent, track diameter as side effect |
+| [Longest Univalue Path](https://leetcode.com/problems/longest-univalue-path/) (LeetCode 687) | Same split-state pattern with a value-matching constraint |

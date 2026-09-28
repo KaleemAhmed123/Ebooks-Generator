@@ -1,4 +1,4 @@
-## Matrix Exponentiation 🔴
+## Matrix Exponentiation <span class="lv lv3"></span>
 
 This is an advanced mathematical optimization used specifically when N is absurdly large (e.g., N = 10¹⁸). 
 

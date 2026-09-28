@@ -1,4 +1,4 @@
-## Subset Sum
+## Subset Sum <span class="lv lv1"></span>
 
 Knapsack problems are rarely phrased as "robbers" and "backpacks". The most common disguise is the **Subset Sum** problem.
 
@@ -34,6 +34,14 @@ function canPartition(nums: number[], targetSum: number): boolean {
   return dp[targetSum];
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/) (LeetCode 416) | Direct subset sum with target = totalSum/2 |
+| [Last Stone Weight II](https://leetcode.com/problems/last-stone-weight-ii/) (LeetCode 1049) | Minimise difference between two subsets |
+| [Matchsticks to Square](https://leetcode.com/problems/matchsticks-to-square/) (LeetCode 473) | Partition into four equal-sum subsets |
 
 ### Partition Equal Subset Sum
 

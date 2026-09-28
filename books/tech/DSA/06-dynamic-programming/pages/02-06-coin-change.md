@@ -1,4 +1,4 @@
-## Coin Change 🟡
+## Coin Change <span class="lv lv1"></span>
 
 Coin Change bridges the gap between simple 1D arrays and unbounded Knapsack problems. 
 
@@ -41,6 +41,15 @@ function coinChange(coins: number[], amount: number): number {
   return dp[amount] === amount + 1 ? -1 : dp[amount];
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Coin Change](https://leetcode.com/problems/coin-change/) (LeetCode 322) | Minimum coins to reach a target amount |
+| [Coin Change II](https://leetcode.com/problems/coin-change-ii/) (LeetCode 518) | Count distinct combinations that sum to target |
+| [Perfect Squares](https://leetcode.com/problems/perfect-squares/) (LeetCode 279) | Minimum perfect squares summing to n — same structure |
+| [Minimum Cost for Tickets](https://leetcode.com/problems/minimum-cost-for-tickets/) (LeetCode 983) | Coin change with variable-width "coins" (1, 7, 30 days) |
 
 ### Coin Change II (Combinations)
 

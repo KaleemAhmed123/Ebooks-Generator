@@ -1,4 +1,4 @@
-## Digit DP: Counting Specific Digits 🔴
+## Digit DP: Counting Specific Digits <span class="lv lv2"></span>
 
 Apply the Digit DP template to a concrete problem.
 
@@ -54,6 +54,14 @@ function countDigitOne(n: number): number {
   return dfs(0, true, 0);
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Number of Digit One](https://leetcode.com/problems/number-of-digit-one/) (LeetCode 233) | Count occurrences of digit 1 up to n |
+| [Digit Count in Range](https://leetcode.com/problems/digit-count-in-range/) (LeetCode 1067) | Generalised to any digit d in range [low, high] |
+| [Count Numbers with Unique Digits](https://leetcode.com/problems/count-numbers-with-unique-digits/) (LeetCode 357) | Digit DP with distinctness constraint |
 
 ### The Leading Zero Trap
 

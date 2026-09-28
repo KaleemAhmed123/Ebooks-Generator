@@ -1,4 +1,4 @@
-## The DP Framework
+## The DP Framework <span class="lv lv1"></span>
 
 Every Dynamic Programming problem, from the simplest Fibonacci sequence to the most horrifying 4-dimensional string matching nightmare, is built on the exact same 3-step framework. 
 

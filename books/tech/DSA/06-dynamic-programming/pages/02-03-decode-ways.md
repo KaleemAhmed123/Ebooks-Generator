@@ -1,4 +1,4 @@
-## Decode Ways
+## Decode Ways <span class="lv lv1"></span>
 
 This problem tests your ability to handle strict base cases and invalid states.
 
@@ -49,6 +49,14 @@ function numDecodings(s: string): number {
   return dp[n];
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Decode Ways](https://leetcode.com/problems/decode-ways/) (LeetCode 91) | The original conditional Fibonacci problem |
+| [Decode Ways II](https://leetcode.com/problems/decode-ways-ii/) (LeetCode 639) | Adds wildcard '*' multiplying branch counts |
+| [Number of Ways to Separate Numbers](https://leetcode.com/problems/number-of-ways-to-separate-numbers/) (LeetCode 1977) | Partitioning a digit string with ordering constraints |
 
 ### The takeaway
 

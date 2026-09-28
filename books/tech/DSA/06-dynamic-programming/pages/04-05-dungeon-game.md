@@ -1,4 +1,4 @@
-## Dungeon Game 🔴
+## Dungeon Game <span class="lv lv2"></span>
 
 This is a phenomenal interview question because it flips the fundamental mechanics of Grid DP upside down.
 
@@ -57,3 +57,11 @@ function calculateMinimumHP(dungeon: number[][]): number {
   return dp[0][0]; // Initial health required at the start
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Dungeon Game](https://leetcode.com/problems/dungeon-game/) (LeetCode 174) | The classic reverse grid DP problem |
+| [Cherry Pickup](https://leetcode.com/problems/cherry-pickup/) (LeetCode 741) | Grid DP where future affects past — two simultaneous traversals |
+| [Cherry Pickup II](https://leetcode.com/problems/cherry-pickup-ii/) (LeetCode 1463) | Two robots collecting, same reverse-dependency thinking |

@@ -1,4 +1,4 @@
-## What Dynamic Programming Actually Is
+## What Dynamic Programming Actually Is <span class="lv lv1"></span>
 
 Dynamic Programming (DP) is arguably the most feared topic in algorithm interviews. Candidates often treat it as a collection of magical, disconnected formulas they must memorize. 
 

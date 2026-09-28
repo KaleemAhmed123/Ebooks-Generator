@@ -1,4 +1,4 @@
-## Divide and Conquer DP Optimization 🔴
+## Divide and Conquer DP Optimization <span class="lv lv3"></span>
 
 This is another elite-level optimization used specifically for 2D DP problems that partition arrays into contiguous segments.
 

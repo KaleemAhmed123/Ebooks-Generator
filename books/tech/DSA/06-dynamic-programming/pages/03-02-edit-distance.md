@@ -1,4 +1,4 @@
-## Edit Distance
+## Edit Distance <span class="lv lv1"></span>
 
 This is arguably the most famous 2D String DP problem. It powers spellcheckers and DNA sequence alignment (Levenshtein Distance).
 
@@ -59,3 +59,11 @@ function minDistance(word1: string, word2: string): number {
   return dp[m][n];
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Edit Distance](https://leetcode.com/problems/edit-distance/) (LeetCode 72) | The classic three-operation string transform |
+| [One Edit Distance](https://leetcode.com/problems/one-edit-distance/) (LeetCode 161) | Simplified to checking exactly one operation |
+| [Minimum ASCII Delete Sum for Two Strings](https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/) (LeetCode 712) | Edit distance weighted by character ASCII values |

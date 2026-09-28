@@ -1,4 +1,4 @@
-## Probability and Combinatorics DP 🔴
+## Probability and Combinatorics DP <span class="lv lv2"></span>
 
 Dynamic Programming isn't just for finding the "maximum" or "minimum" path. It is incredibly effective for calculating Probabilities and Expected Values.
 
@@ -55,6 +55,15 @@ function soupServings(N: number): number {
   return dfs(n, n);
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Soup Servings](https://leetcode.com/problems/soup-servings/) (LeetCode 808) | Probability DP with four branching operations |
+| [Knight Probability in Chessboard](https://leetcode.com/problems/knight-probability-in-chessboard/) (LeetCode 688) | Probability of staying on board after k moves |
+| [New 21 Game](https://leetcode.com/problems/new-21-game/) (LeetCode 837) | Probability of reaching a score in a card game |
+| [Dice Roll Simulation](https://leetcode.com/problems/dice-roll-simulation/) (LeetCode 1223) | Count sequences with consecutive-roll constraints |
 
 ### The Mathematical Insight
 

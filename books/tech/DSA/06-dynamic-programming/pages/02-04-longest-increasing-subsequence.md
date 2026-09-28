@@ -1,4 +1,4 @@
-## Longest Increasing Subsequence (LIS) 🟡
+## Longest Increasing Subsequence (LIS) <span class="lv lv1"></span>
 
 LIS is a massive leap in complexity. In Climbing Stairs and House Robber, `dp[i]` only looked back at `dp[i-1]` and `dp[i-2]`. In LIS, `dp[i]` must look back at **every single state that came before it**.
 
@@ -45,6 +45,15 @@ function lengthOfLIS(nums: number[]): number {
 In Climbing Stairs, the answer is always in the last cell of the array. 
 In LIS, the longest sequence could be hidden in the middle of the array! (e.g., `[1, 2, 3, 4, 5, 0]`. The `dp` for `0` is `1`. If you return `dp[n-1]`, you return `1` instead of `5`).
 **Always keep a running `globalMax` variable if the DP state is "ends exactly at index i".**
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/) (LeetCode 300) | The classic LIS problem |
+| [Number of Longest Increasing Subsequence](https://leetcode.com/problems/number-of-longest-increasing-subsequence/) (LeetCode 673) | Count all LIS paths, not just the length |
+| [Russian Doll Envelopes](https://leetcode.com/problems/russian-doll-envelopes/) (LeetCode 354) | 2D LIS after sorting by one dimension |
+| [Longest String Chain](https://leetcode.com/problems/longest-string-chain/) (LeetCode 1048) | LIS where predecessor is defined by character insertion |
 
 ### The O(N log N) Optimization
 

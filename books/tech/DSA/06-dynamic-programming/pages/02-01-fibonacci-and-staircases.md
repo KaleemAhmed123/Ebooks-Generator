@@ -1,4 +1,4 @@
-## Fibonacci and Staircases
+## Fibonacci and Staircases <span class="lv lv1"></span>
 
 The absolute foundation of 1D Dynamic Programming. If you understand these, you understand the core mechanics of state transition.
 
@@ -53,6 +53,15 @@ function climbStairsOptimized(n: number): number {
   return prev1; // prev1 is always the most recent calculation (dp[n])
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Climbing Stairs](https://leetcode.com/problems/climbing-stairs/) (LeetCode 70) | Direct Fibonacci recurrence with 1 or 2 steps |
+| [Min Cost Climbing Stairs](https://leetcode.com/problems/min-cost-climbing-stairs/) (LeetCode 746) | Same recurrence with a cost array added |
+| [Fibonacci Number](https://leetcode.com/problems/fibonacci-number/) (LeetCode 509) | The literal Fibonacci definition |
+| [N-th Tribonacci Number](https://leetcode.com/problems/n-th-tribonacci-number/) (LeetCode 1137) | Extends to three previous states instead of two |
 
 ### The rule of thumb
 

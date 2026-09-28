@@ -1,4 +1,4 @@
-## Unbounded Knapsack
+## Unbounded Knapsack <span class="lv lv1"></span>
 
 - **The Setup:** The exact same problem as 0/1 Knapsack (maximize value for a given capacity `W`), but with one crucial difference: you have an **infinite supply** of each item.
 - This is the exact same structure as the Coin Change problem.
@@ -43,3 +43,12 @@ for (let w = weight; w <= W; w++) { ... }
 ```
 
 If you understand *why* the loop direction dictates whether an item can be reused, you have mastered the core of dynamic programming state management.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Coin Change](https://leetcode.com/problems/coin-change/) (LeetCode 322) | Infinite supply of each coin — unbounded knapsack |
+| [Coin Change II](https://leetcode.com/problems/coin-change-ii/) (LeetCode 518) | Count combinations with unlimited coins |
+| [Perfect Squares](https://leetcode.com/problems/perfect-squares/) (LeetCode 279) | Unlimited use of each square number |
+| [Integer Break](https://leetcode.com/problems/integer-break/) (LeetCode 343) | Maximise product by splitting n — reuse allowed |

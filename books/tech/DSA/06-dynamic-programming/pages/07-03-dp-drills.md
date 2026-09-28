@@ -1,4 +1,4 @@
-## DP Recognition Drills
+## DP Recognition Drills <span class="lv lv1"></span>
 
 Read the following scenarios. Identify the State and the specific DP Pattern. (Cover the answers on the right).
 

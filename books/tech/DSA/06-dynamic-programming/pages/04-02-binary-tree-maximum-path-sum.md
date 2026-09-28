@@ -1,4 +1,4 @@
-## Binary Tree Maximum Path Sum 🔴
+## Binary Tree Maximum Path Sum <span class="lv lv2"></span>
 
 This is one of the most notoriously tricky Tree DP problems. 
 
@@ -47,6 +47,14 @@ function maxPathSum(root: TreeNode | null): number {
   return globalMax;
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/) (LeetCode 124) | The classic split-state tree DP problem |
+| [Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/) (LeetCode 543) | Same inverted-V logic, measuring edges instead of sums |
+| [Longest ZigZag Path in a Binary Tree](https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree/) (LeetCode 1372) | Return one direction to parent, track global max |
 
 ### The takeaway
 

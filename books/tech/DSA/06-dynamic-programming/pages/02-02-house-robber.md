@@ -1,4 +1,4 @@
-## House Robber
+## House Robber <span class="lv lv1"></span>
 
 The House Robber problem introduces the concept of **Exclusive Choices**.
 
@@ -39,6 +39,15 @@ function rob(nums: number[]): number {
   return prev1;
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [House Robber](https://leetcode.com/problems/house-robber/) (LeetCode 198) | The original non-adjacent selection problem |
+| [House Robber II](https://leetcode.com/problems/house-robber-ii/) (LeetCode 213) | Circular variant, split into two linear passes |
+| [House Robber III](https://leetcode.com/problems/house-robber-iii/) (LeetCode 337) | Same constraint on a binary tree |
+| [Delete and Earn](https://leetcode.com/problems/delete-and-earn/) (LeetCode 740) | Reduces to House Robber after frequency counting |
 
 ### House Robber II (Circular Street)
 

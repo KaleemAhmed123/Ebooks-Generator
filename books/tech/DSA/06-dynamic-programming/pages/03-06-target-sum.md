@@ -1,4 +1,4 @@
-## Target Sum 🟡
+## Target Sum <span class="lv lv1"></span>
 
 This is the final boss of standard Knapsack variations. It requires algebraic manipulation before you can write the DP.
 
@@ -56,3 +56,11 @@ function findTargetSumWays(nums: number[], S: number): number {
 ```
 
 This transforms a potentially memory-limit-exceeding 2D DP matrix into a blazing fast O(N times Sum) algorithm using a 1D array.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Target Sum](https://leetcode.com/problems/target-sum/) (LeetCode 494) | The original +/- assignment problem |
+| [Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/) (LeetCode 416) | Same algebraic trick, boolean instead of count |
+| [Last Stone Weight II](https://leetcode.com/problems/last-stone-weight-ii/) (LeetCode 1049) | Minimise |Sum(P) - Sum(N)| — same subset split |

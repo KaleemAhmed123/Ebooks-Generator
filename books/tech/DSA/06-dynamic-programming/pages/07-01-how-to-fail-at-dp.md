@@ -1,4 +1,4 @@
-## How to Fail at DP
+## How to Fail at DP <span class="lv lv1"></span>
 
 Dynamic Programming is unforgiving. A single off-by-one error will break the entire matrix. Here are the most common ways candidates fail DP interviews.
 

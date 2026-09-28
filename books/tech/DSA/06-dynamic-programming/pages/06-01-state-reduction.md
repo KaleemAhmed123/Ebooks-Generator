@@ -1,4 +1,4 @@
-## State Reduction (Rolling Arrays)
+## State Reduction (Rolling Arrays) <span class="lv lv1"></span>
 
 We have already seen State Reduction in the Fibonacci and Climbing Stairs problems, where we reduced an O(N) array down to two O(1) variables. 
 This exact same principle applies to 2D DP matrices.
