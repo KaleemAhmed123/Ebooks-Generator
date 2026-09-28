@@ -13,7 +13,7 @@
   - Right Child: `2i + 2`
 - This makes Heaps highly cache-friendly compared to pointer-based trees.
 
-### Heapify: The O(N) Magic
+### Heapify: Why It Is O(N)
 
 - If you have an unsorted array of N elements and you push them into a Heap one by one, it takes **O(N log N)** time.
 - However, if you already have the full array, you can build a valid Heap in **O(N)** time using the `heapify` algorithm.

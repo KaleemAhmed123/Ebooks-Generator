@@ -1,8 +1,8 @@
 ## Quick Sort & Partitioning <span class="lv lv1"></span>
 
-- Quick Sort is arguably the most famous sorting algorithm. It is typically the engine inside your language's `Array.prototype.sort()`.
+- Quick Sort is the default sorting algorithm in most standard libraries. It is typically the engine inside your language's `Array.prototype.sort()`.
 - **The Core Idea:** Pick a "pivot" element. Move all elements smaller than the pivot to its left. Move all elements larger to its right. The pivot is now exactly where it belongs. Recursively do this for the left and right halves.
-- **The Trade-off:** Its average time complexity is a blistering O(N log N) with almost zero memory overhead (it is an **in-place** sort). However, its absolute worst-case time complexity is O(N²) if it repeatedly picks the worst possible pivot.
+- **The Trade-off:** Its average time complexity is O(N log N) with almost zero memory overhead (it is an **in-place** sort). However, its absolute worst-case time complexity is O(N²) if it repeatedly picks the worst possible pivot.
 
 :::mint
 <svg viewBox="0 0 470 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Quick sort partitioning">

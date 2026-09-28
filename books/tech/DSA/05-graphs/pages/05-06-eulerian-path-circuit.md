@@ -60,4 +60,4 @@ function findEulerianPath(adj: Map<string, string[]>): string[] {
 
 - **Stuck early:** A naive candidate will just do a standard DFS and return the path. 
 - **Why it breaks:** If there are two loops attached to the start node, a standard DFS might take Loop A, get back to start, think it's "done" because the path connects, and completely miss Loop B. 
-- **The fix:** The post-order traversal (`path.push` happens *after* the `while` loop finishes) is the magic of Hierholzer's. It ensures that if the algorithm gets stuck on Loop A, it puts Loop A at the end of the path array, and seamlessly splices Loop B into the middle as it backtracks.
+- **The fix:** The post-order traversal (`path.push` happens *after* the `while` loop finishes) is the key insight of Hierholzer's. It ensures that if the algorithm gets stuck on Loop A, it puts Loop A at the end of the path array, and seamlessly splices Loop B into the middle as it backtracks.

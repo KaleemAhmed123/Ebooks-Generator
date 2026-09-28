@@ -23,7 +23,7 @@ The Suffix Array is `[5, 3, 1, 0, 4, 2]`.
 The Longest Common Prefix (LCP) array stores the length of the matching prefix between adjacent suffixes in the sorted Suffix Array.
 `LCP[i]` = length of prefix shared by suffix `SA[i-1]` and `SA[i]`.
 
-**The Magic Power:**
+**The Key Property:**
 The number of *distinct* substrings in a string is exactly:
 $ N(N+1)/2 - sum text{LCP}[i] $
 (Total possible substrings, minus the ones that are duplicates because they share a prefix with their sorted neighbor).

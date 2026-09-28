@@ -1,12 +1,12 @@
 ## What Dynamic Programming Actually Is <span class="lv lv1"></span>
 
-Dynamic Programming (DP) is arguably the most feared topic in algorithm interviews. Candidates often treat it as a collection of magical, disconnected formulas they must memorize. 
+DP is not a collection of algorithms. **DP is an optimisation technique.**
 
-This is the wrong approach. DP is not a collection of algorithms. **DP is an optimization technique.**
+Every Dynamic Programming solution is a brute-force solution that has been optimised to not repeat work. If you can write a brute-force recursive function, you are most of the way to a DP solution.
 
-### The Brutal Truth
+### Why candidates struggle
 
-Every single Dynamic Programming solution in existence is just a Brute Force solution that has been optimized to not repeat itself. That is it. If you can write a Brute Force recursive function, you are 95% of the way to a DP solution.
+Most people memorise transitions without understanding where they come from. The result: they solve the problems they have seen and freeze on everything else. This module teaches you to *derive* the transition from the problem structure.
 
 ### Overlapping Subproblems
 
@@ -23,7 +23,7 @@ This is an **Overlapping Subproblem**. The exact same question is being asked, a
 
 ### The Core Concept of DP
 
-Dynamic Programming is simply the act of giving the computer a notepad.
+DP is the act of giving the computer a notepad.
 1. When the computer calculates `F(3)` for the very first time, it writes the answer (`2`) in the notepad.
 2. The next time it needs `F(3)`, instead of doing the math again, it just reads the answer from the notepad.
 

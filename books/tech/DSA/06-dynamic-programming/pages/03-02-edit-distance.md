@@ -1,6 +1,6 @@
 ## Edit Distance <span class="lv lv1"></span>
 
-This is arguably the most famous 2D String DP problem. It powers spellcheckers and DNA sequence alignment (Levenshtein Distance).
+Edit distance (Levenshtein distance) measures the minimum number of single-character operations to turn one string into another. It powers spellcheckers and DNA sequence alignment.
 
 - **The Setup:** Given two strings `word1` and `word2`, return the minimum number of operations required to convert `word1` to `word2`. You have 3 allowed operations: Insert a character, Delete a character, Replace a character.
 - **Example:** `horse` -> `ros`. 

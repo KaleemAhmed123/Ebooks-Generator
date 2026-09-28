@@ -8,7 +8,7 @@
 
 ### The LSB (Least Significant Bit) Engine
 
-The magic of the Fenwick Tree relies entirely on isolating the lowest set bit of an index. In two's complement binary arithmetic, this is elegantly extracted via `i & (-i)`.
+The Fenwick Tree relies entirely on isolating the lowest set bit of an index. In two's complement binary arithmetic, this is elegantly extracted via `i & (-i)`.
 
 - `12` in binary is `1100`.
 - `-12` in binary is `0100` (invert bits and add 1).

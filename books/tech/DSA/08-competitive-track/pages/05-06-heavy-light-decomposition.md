@@ -17,7 +17,7 @@ We split the edges of the tree into two types: **Heavy Edges** and **Light Edges
 If we traverse the tree using only Heavy Edges, we form **Heavy Chains**. 
 Every node belongs to exactly one Heavy Chain (a leaf might be a chain of length 1).
 
-### The Flattening (Euler Tour magic)
+### The Flattening (Euler Tour)
 
 We run a DFS to flatten the tree into an array, but we specifically visit the Heavy Child *first*.
 Because we visit the Heavy Child first, **all nodes in the same Heavy Chain are assigned contiguous indices in the flattened array!**

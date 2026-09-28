@@ -6,7 +6,7 @@
 
 ### The Mechanics
 
-- Dijkstra is essentially a BFS, but instead of using a standard Queue (FIFO), it uses a **Priority Queue (Min-Heap)**.
+- Dijkstra is BFS with a **Priority Queue (Min-Heap)** instead of a standard Queue (FIFO).
 - It always processes the node that currently has the *absolute smallest known total distance from the start*. 
 - Because it always greedily locks in the closest node, by the time it pops a node from the Priority Queue, it has mathematically proven that it is impossible to find a cheaper path to that node.
 

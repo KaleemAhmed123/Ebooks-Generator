@@ -10,7 +10,7 @@ This is another elite-level optimization used specifically for 2D DP problems th
 ### The Monotonicity Condition
 
 Let opt(i, j) be the optimal splitting point k that minimizes `dp[i][j]`.
-If the cost function satisfies the **Quadrangle Inequality** (which basically means the cost function is well-behaved and predictable), a magical mathematical property emerges:
+If the cost function satisfies the **Quadrangle Inequality** (the cost function is monotone in its split points), a strict mathematical property emerges:
 
 opt(i, j) ≤ opt(i+1, j)
 

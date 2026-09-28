@@ -56,5 +56,5 @@ function groupAnagrams(strs: string[]): string[][] {
 :::interview
 "Why not just sort each word and use the sorted form as the key?"
 
-Sorting each word is O(L log L). A letter-count key is O(L). For short words the difference is negligible, but for long strings the count approach is strictly faster. Both are correct — sorting is simpler to write under pressure, counts are more efficient.
+Sorting each word is O(L log L). A letter-count key is O(L). For short words the difference is negligible, but for long strings the count approach is strictly faster. Both are correct — sorting is simpler to write under pressure, counts avoid the log factor.
 :::

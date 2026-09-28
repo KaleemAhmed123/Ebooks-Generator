@@ -22,7 +22,7 @@ $$
 
 ### The O(log N) Speedup
 
-The magic here is that calculating A^N (where A is a matrix) does not require N multiplications. We can use **Binary Exponentiation** (Fast Power).
+Calculating A^N (where A is a matrix) does not require N multiplications. We can use **Binary Exponentiation** (Fast Power).
 To calculate A¹⁶, you don't do A times A dots 16 times.
 You calculate A². Then square it to get A⁴. Square it for A⁸. Square it for A¹⁶.
 That's 4 matrix multiplications instead of 16. This drops the time complexity to O(log N).

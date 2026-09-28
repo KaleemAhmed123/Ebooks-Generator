@@ -29,6 +29,6 @@ You can read this cover-to-cover, but I recommend treating it as a reference man
 
 Some of the code in here will inevitably have edge-case bugs. Algorithms don't change, but language updates and edge cases do. If you find a flaw, I invite you to correct it. Reach out to me at **kaleemahmed.in**.
 
-Let's start deriving.
+Start deriving.
 
 — Kaleem Ahmed

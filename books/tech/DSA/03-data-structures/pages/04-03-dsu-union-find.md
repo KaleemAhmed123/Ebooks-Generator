@@ -43,7 +43,7 @@ class DSU {
 - `find(4)` will have to traverse `4 -> 3 -> 2 -> 1`. This takes O(N) time.
 - **The Fix: Path Compression.**
 
-### Path Compression (The O(1) Magic)
+### Path Compression (Amortised O(1))
 
 - When you call `find(4)`, it traverses up to `1`. 
 - **The Insight:** Why should `4` report to `3`, if it ultimately reports to `1`? 
