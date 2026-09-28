@@ -1,4 +1,4 @@
-## Binary Tree Traversals
+## Binary Tree Traversals <span class="lv lv1"></span>
 
 - **What it is:** A hierarchical structure where each node has at most two children (`left`, `right`)
 - **The Contract:** Trees enforce a hierarchy, breaking down a problem space logarithmically. They are inherently recursive
@@ -54,6 +54,15 @@ function levelOrder(root: TreeNode | null): number[][] {
   return res;
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/) (LeetCode 94) | Canonical in-order DFS |
+| [Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/) (LeetCode 102) | BFS with queue, snapshot per level |
+| [Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/) (LeetCode 104) | Post-order: height depends on children |
+| [Balanced Binary Tree](https://leetcode.com/problems/balanced-binary-tree/) (LeetCode 110) | Post-order bottleneck: check heights bottom-up |
 
 :::interview
 "If I give you the Pre-order array and the Post-order array, can you uniquely reconstruct the original Binary Tree?"

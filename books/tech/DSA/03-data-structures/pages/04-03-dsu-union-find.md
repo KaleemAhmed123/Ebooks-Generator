@@ -1,4 +1,4 @@
-## Disjoint Set Union (DSU / Union-Find)
+## Disjoint Set Union (DSU / Union-Find) <span class="lv lv1"></span>
 
 - **What it is:** A forest of trees (represented by an array) used exclusively to group elements into disjoint sets and check if two elements belong to the same set
 - **The Contract:** O(1) amortised time (Inverse Ackermann function) to merge two sets (`union`) or find the set representative (`find`)
@@ -63,6 +63,15 @@ class DSU {
 1. **Cycle Detection (Undirected):** If you are iterating through edges and building a graph, and you call `union(u, v)` but it returns `false` (they share the same root), you have just detected a cycle.
 2. **Kruskal's Minimum Spanning Tree:** Sort all edges by weight. Iterate through them. If `union(u, v)` returns true, add that edge to the MST. If false, skip it.
 3. **Dynamic Connectivity:** Any problem asking "how many connected components are there?" as edges are being added one by one.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Number of Connected Components in an Undirected Graph](https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/) (LeetCode 323) | Union edges, count distinct roots |
+| [Redundant Connection](https://leetcode.com/problems/redundant-connection/) (LeetCode 684) | Union returns false on the cycle-forming edge |
+| [Accounts Merge](https://leetcode.com/problems/accounts-merge/) (LeetCode 721) | Union shared emails across accounts |
+| [Number of Provinces](https://leetcode.com/problems/number-of-provinces/) (LeetCode 547) | DSU groups connected cities |
 
 :::interview
 "Can DSU handle removing edges?"

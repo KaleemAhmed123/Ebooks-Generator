@@ -1,4 +1,4 @@
-## Segment Tree
+## Segment Tree <span class="lv lv2"></span>
 
 - **What it is:** A versatile Binary Tree where each node represents an interval (range) of the underlying array
 - **The Contract:** O(log N) range queries (sum, min, max, gcd) and O(log N) point or range updates
@@ -45,6 +45,14 @@ function build(node: number, start: number, end: number) {
 - Unlike a Fenwick Tree (which is practically limited to commutative operations with inverses, like Addition), a Segment Tree can handle *anything*.
 - You can build a Segment Tree for **Minimum, Maximum, Greatest Common Divisor (GCD), or Matrix Multiplication**.
 - You simply change the post-order combination step: `tree[node] = COMBINE(tree[left], tree[right])`.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Range Sum Query - Mutable](https://leetcode.com/problems/range-sum-query-mutable/) (LeetCode 307) | Segment tree alternative to Fenwick for range sums |
+| [Range Minimum Query](https://leetcode.com/problems/range-minimum-query/) (LeetCode 2569) | Min has no inverse, so Fenwick cannot help |
+| [Count of Range Sum](https://leetcode.com/problems/count-of-range-sum/) (LeetCode 327) | Segment tree on coordinate-compressed prefix sums |
 
 :::interview
 "Why use a Segment Tree over a Fenwick Tree if both do O(log N) updates and queries?"

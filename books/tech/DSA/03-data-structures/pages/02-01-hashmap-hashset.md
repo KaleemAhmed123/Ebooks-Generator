@@ -1,4 +1,4 @@
-## Hash Maps & Hash Sets
+## Hash Maps & Hash Sets <span class="lv lv1"></span>
 
 - **What it is:** A data structure that maps keys to values (Map) or stores unique keys (Set) using a hash function
 - **The Contract:** Average O(1) insertion, deletion, and lookup. Worst-case O(N)
@@ -24,6 +24,15 @@
 - Most Hash Maps resolve this using **Chaining**: the array index stores a Linked List of all key-value pairs that collided there.
 - If every single key you insert collides at index 0, you have built a Linked List. Your O(1) lookup just degraded to O(N).
 - This is why the contract says *Average* O(1). In competitive programming, attackers can intentionally feed your Hash Map inputs designed to collide, causing TLE. (This is why CPers sometimes use custom hash functions).
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Two Sum](https://leetcode.com/problems/two-sum/) (LeetCode 1) | Hash map turns O(N^2) pair search into O(N) |
+| [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/) (LeetCode 217) | Hash set for O(1) existence check |
+| [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/) (LeetCode 128) | Hash set enables O(1) neighbor lookups |
+| [Design HashMap](https://leetcode.com/problems/design-hashmap/) (LeetCode 706) | Implement chaining and hash function from scratch |
 
 :::interview
 "How does a Hash Map resize itself?"

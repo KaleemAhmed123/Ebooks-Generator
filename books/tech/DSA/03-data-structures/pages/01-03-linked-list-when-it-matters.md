@@ -1,4 +1,4 @@
-## Linked List: When it actually matters
+## Linked List: When it actually matters <span class="lv lv1"></span>
 
 - **What it is:** A sequence of nodes where each node contains a value and a pointer to the next node, scattered randomly across memory
 - **The Contract:** O(1) insertion/deletion at any known pointer, but O(N) to find any index
@@ -42,6 +42,15 @@ function spliceAfter(current: ListNode, val: number) {
   current.next = newNode;
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/) (LeetCode 206) | Pure pointer manipulation drill |
+| [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/) (LeetCode 21) | Splicing nodes without shifting |
+| [LRU Cache](https://leetcode.com/problems/lru-cache/) (LeetCode 146) | Doubly linked list for O(1) splice to front |
+| [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/) (LeetCode 141) | Floyd's cycle detection on scattered nodes |
 
 :::interview
 "If I need to frequently insert elements into the middle of a list, should I use a Linked List?"

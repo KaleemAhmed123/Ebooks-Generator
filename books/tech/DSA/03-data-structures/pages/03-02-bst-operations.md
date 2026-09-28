@@ -1,4 +1,4 @@
-## Binary Search Trees (BST)
+## Binary Search Trees (BST) <span class="lv lv1"></span>
 
 - **What it is:** A Binary Tree governed by a strict invariant: Left children are strictly smaller, Right children are strictly larger
 - **The Contract:** O(log N) insertions, deletions, and lookups, while maintaining a perfectly sorted dataset
@@ -41,6 +41,15 @@ function isValidBST(node: TreeNode | null, min = -Infinity, max = Infinity): boo
 
 - Because of the BST invariant, an **In-order traversal** (Left, Current, Right) visits the nodes in perfectly ascending sorted order.
 - To find the Kth smallest element in a BST, you do an In-order traversal and return the Kth element you process.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/) (LeetCode 98) | Pass min/max boundaries downward |
+| [Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/) (LeetCode 230) | In-order traversal yields sorted order |
+| [Lowest Common Ancestor of a BST](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/) (LeetCode 235) | BST invariant guides left/right decision |
+| [Delete Node in a BST](https://leetcode.com/problems/delete-node-in-a-bst/) (LeetCode 450) | Handles the three deletion cases |
 
 :::interview
 "Can we use a Hash Map instead of a BST?"

@@ -1,4 +1,4 @@
-## The Wrong Structure Library
+## The Wrong Structure Library <span class="lv lv1"></span>
 
 Choosing the *almost* correct data structure is the most common way to fail a technical interview. The code compiles, the logic is sound, but it Time Limit Exceeds (TLE) or Memory Limit Exceeds (MLE). 
 

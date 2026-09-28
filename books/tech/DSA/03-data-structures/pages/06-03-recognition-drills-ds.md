@@ -1,4 +1,4 @@
-## Data Structure Recognition Drills
+## Data Structure Recognition Drills <span class="lv lv1"></span>
 
 These drills are designed to test your architectural judgment. Do not write code. Just read the constraint and immediately name the required data structure.
 

@@ -1,4 +1,4 @@
-## Ordered Set / Ordered Map
+## Ordered Set / Ordered Map <span class="lv lv2"></span>
 
 - **What it is:** A Set or Map that maintains its keys in sorted order dynamically
 - **The Contract:** O(log N) for insertion, deletion, exact lookup, AND order-based queries (e.g., lower bound, upper bound)
@@ -45,6 +45,14 @@ function insertSorted(arr: number[], val: number) {
   arr.splice(low, 0, val); // The O(N) bottleneck
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Sliding Window Median](https://leetcode.com/problems/sliding-window-median/) (LeetCode 480) | Ordered set for O(log K) insert/delete in window |
+| [My Calendar I](https://leetcode.com/problems/my-calendar-i/) (LeetCode 729) | Lower-bound query to detect interval overlap |
+| [Contains Duplicate III](https://leetcode.com/problems/contains-duplicate-iii/) (LeetCode 220) | Ordered set checks value-range within a window |
 
 :::interview
 "In a system design interview, if I need an Ordered Set, what database matches this?"

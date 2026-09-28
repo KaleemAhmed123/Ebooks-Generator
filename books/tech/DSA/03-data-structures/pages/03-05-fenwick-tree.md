@@ -1,4 +1,4 @@
-## Fenwick Tree (Binary Indexed Tree)
+## Fenwick Tree (Binary Indexed Tree) <span class="lv lv2"></span>
 
 - **What it is:** A specialized array-based tree that computes prefix sums and allows point updates
 - **The Contract:** O(log N) for a point update, O(log N) for a prefix sum query
@@ -52,6 +52,14 @@ class FenwickTree {
 - To get the sum of a specific range `[L, R]`, you use the Prefix Sum difference property:
 - `RangeSum(L, R) = PrefixSum(R) - PrefixSum(L - 1)`
 - Thus, querying a range requires two O(log N) calls to the tree.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Range Sum Query - Mutable](https://leetcode.com/problems/range-sum-query-mutable/) (LeetCode 307) | Point update + prefix sum query |
+| [Count of Smaller Numbers After Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self/) (LeetCode 315) | Fenwick tree tracks frequency of values seen |
+| [Reverse Pairs](https://leetcode.com/problems/reverse-pairs/) (LeetCode 493) | Count inversions via Fenwick on compressed values |
 
 :::interview
 "If I need to update a range of elements (e.g. add 5 to indices L through R) and query a single point, can I use a Fenwick Tree?"

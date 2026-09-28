@@ -1,4 +1,4 @@
-## Sparse Table
+## Sparse Table <span class="lv lv2"></span>
 
 - **What it is:** A 2D array that precomputes answers for intervals of length $2^k$ (1, 2, 4, 8, 16...)
 - **The Contract:** O(N log N) time to build. O(1) time to answer Range Minimum/Maximum Queries (RMQ). Does **NOT** support updates
@@ -49,6 +49,14 @@ function buildSparseTable(arr: number[]): number[][] {
   - `max(5, 5) = 5` (Idempotent: O(1) overlap query works)
   - `gcd(5, 5) = 5` (Idempotent: O(1) overlap query works)
   - `sum(5, 5) = 10` (NOT Idempotent. The overlap double-counts. You must query a Sparse Table for Sums in O(log N) time by stitching non-overlapping blocks together).
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Range Minimum Query](https://leetcode.com/problems/range-minimum-query/) (LeetCode 2569) | Static RMQ in O(1) per query |
+| [Longest Common Extension](https://leetcode.com/problems/sum-of-scores-of-built-strings/) (LeetCode 2223) | Sparse table on LCP array for O(1) range min |
+| [Maximize Score After N Operations](https://leetcode.com/problems/maximize-score-after-n-operations/) (LeetCode 1799) | Precompute GCD of all pairs via sparse table |
 
 :::interview
 "If a Segment Tree can answer RMQ in O(log N) and supports updates, why ever use a Sparse Table?"

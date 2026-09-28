@@ -1,4 +1,4 @@
-## Merge Sort Tree
+## Merge Sort Tree <span class="lv lv3"></span>
 
 - **What it is:** A Segment Tree where every node stores a completely sorted array of all elements in its range
 - **The Contract:** O(N log N) space and time to build. O(log³ N) or O(log² N) time to answer "How many numbers in range [L, R] are strictly greater than X?"
@@ -46,6 +46,14 @@ If a problem asks: "In the subarray from index $L$ to $R$, how many elements are
 - If you change a single element in the original array, you have to update $\log N$ nodes in the tree.
 - However, updating a node means inserting/deleting from a sorted array. That takes $O(K)$ time where $K$ is the array size. For the root node, $K=N$. Therefore, an update takes $O(N)$ time.
 - If the array is dynamic (requires point updates), you must abandon the Merge Sort Tree and use a Fenwick Tree of Ordered Sets (a 2D Fenwick), or a Fractional Cascading technique.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Count of Smaller Numbers After Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self/) (LeetCode 315) | Merge sort tree counts elements < X in a range |
+| [Reverse Pairs](https://leetcode.com/problems/reverse-pairs/) (LeetCode 493) | Range count query for values > 2*X |
+| [Count of Range Sum](https://leetcode.com/problems/count-of-range-sum/) (LeetCode 327) | Binary search on sorted node arrays for range bounds |
 
 :::interview
 "Can we optimize the $O(\log^2 N)$ query time to $O(\log N)$?"

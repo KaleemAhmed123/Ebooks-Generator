@@ -1,4 +1,4 @@
-## Custom Hashing
+## Custom Hashing <span class="lv lv2"></span>
 
 - **What it is:** Creating a unique string or integer representation for a complex object so it can be used as a key in a Hash Map/Set
 - **When to reach for it:** "Group identical trees", "Find duplicate submatrices", "Memoize a game state with 5 variables"
@@ -62,6 +62,14 @@ function findDuplicateSubtrees(root: TreeNode | null): TreeNode[] {
   return res;
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Find Duplicate Subtrees](https://leetcode.com/problems/find-duplicate-subtrees/) (LeetCode 652) | Serialize subtrees as custom hash keys |
+| [Shortest Path in a Grid with Obstacles Elimination](https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/) (LeetCode 1293) | BFS state is (row, col, remaining) serialized as key |
+| [Sliding Puzzle](https://leetcode.com/problems/sliding-puzzle/) (LeetCode 773) | Board state serialized as string for visited set |
 
 :::interview
 "Isn't string concatenation slow?"

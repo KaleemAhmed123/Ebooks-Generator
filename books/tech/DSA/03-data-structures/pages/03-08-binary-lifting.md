@@ -1,4 +1,4 @@
-## Binary Lifting
+## Binary Lifting <span class="lv lv2"></span>
 
 - **What it is:** A technique to jump up a tree (or a directed graph) in powers of 2. It is the tree equivalent of a Sparse Table
 - **The Contract:** O(N log N) precomputation to allow finding the K-th ancestor of any node, or the Lowest Common Ancestor (LCA) of two nodes, in O(log N) time
@@ -60,6 +60,14 @@ Binary Lifting is the gold standard for answering multiple LCA queries on a stat
 1. **Level them:** If `u` is deeper than `v`, use Binary Lifting to jump `u` up until they are at the exact same depth.
 2. **Jump together:** If they aren't the same node, jump them both up simultaneously using the largest powers of 2 that *do not* cause them to meet.
 3. Once you've checked down to $2^0$, they will be exactly one step below their LCA. The answer is `up[u][0]`.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Kth Ancestor of a Tree Node](https://leetcode.com/problems/kth-ancestor-of-a-tree-node/) (LeetCode 1483) | Jump K steps via binary decomposition |
+| [Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/) (LeetCode 236) | LCA via lifting both nodes to same depth |
+| [Maximum Genetic Difference Query](https://leetcode.com/problems/maximum-genetic-difference-query/) (LeetCode 1938) | Binary lifting on a tree with XOR queries |
 
 :::interview
 "Can we find LCA without Binary Lifting?"

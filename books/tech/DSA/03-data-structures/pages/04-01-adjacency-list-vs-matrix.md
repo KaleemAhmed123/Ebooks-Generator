@@ -1,4 +1,4 @@
-## Adjacency List vs Adjacency Matrix
+## Adjacency List vs Adjacency Matrix <span class="lv lv1"></span>
 
 - **What it is:** The two primary ways to represent a Graph (nodes and edges) in memory
 - **The Contract:** 
@@ -55,6 +55,14 @@ function buildStringGraph(edges: string[][]): Map<string, string[]> {
   return adj;
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Number of Islands](https://leetcode.com/problems/number-of-islands/) (LeetCode 200) | Grid as implicit adjacency matrix |
+| [Clone Graph](https://leetcode.com/problems/clone-graph/) (LeetCode 133) | Traverse and copy an adjacency list |
+| [Find if Path Exists in Graph](https://leetcode.com/problems/find-if-path-exists-in-graph/) (LeetCode 1971) | Build adjacency list from edge pairs, then BFS |
 
 :::interview
 "If I need to check if node A is connected to node B, the Adjacency List takes O(Neighbors) time. Can we improve this?"

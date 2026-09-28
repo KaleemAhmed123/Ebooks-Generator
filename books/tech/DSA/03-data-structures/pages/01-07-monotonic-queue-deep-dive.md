@@ -1,4 +1,4 @@
-## Monotonic Queue: Deep Dive
+## Monotonic Queue: Deep Dive <span class="lv lv2"></span>
 
 - **What it is:** A Deque (Double-ended Queue) that maintains its elements in sorted order
 - **The Contract:** O(N) time to find the Maximum (or Minimum) element inside a **Sliding Window**
@@ -49,6 +49,14 @@ function maxSlidingWindow(nums: number[], k: number): number[] {
 - If the current window is `[10, 5, 2]` and we slide to add `8`, the window is now `[5, 2, 8]`. The `8` dominates both `5` and `2`. They are older (will expire sooner) AND smaller (less valuable). They serve no purpose.
 - The queue throws them away, becoming just `[8]`.
 - Note that in JavaScript, using `shift()` on an array makes the above code O(N×K). In an interview, explicitly state: *"I am using a JS array for the deque. `shift()` is O(K), but I am assuming a true Deque where this is O(1)."*
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/) (LeetCode 239) | Canonical monotonic deque for window max |
+| [Shortest Subarray with Sum at Least K](https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/) (LeetCode 862) | Monotonic deque on prefix sums with negative values |
+| [Longest Continuous Subarray With Absolute Diff <= Limit](https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/) (LeetCode 1438) | Two deques track sliding min and max simultaneously |
 
 :::interview
 "Why use a Monotonic Queue instead of a Max-Heap for the Sliding Window Maximum?"

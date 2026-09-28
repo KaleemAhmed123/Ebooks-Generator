@@ -1,4 +1,4 @@
-## Monotonic Stack: Deep Dive
+## Monotonic Stack: Deep Dive <span class="lv lv1"></span>
 
 - **What it is:** A stack that maintains its elements in a strictly increasing or decreasing order
 - **The Contract:** O(N) time to find the "Next Greater" or "Next Smaller" element for *every* item in an array
@@ -44,6 +44,15 @@ function nextGreaterElements(arr: number[]): number[] {
 - **The reality:** It is strictly O(N). 
 - **The proof (Amortised Analysis):** Look at the lifecycle of a single element in the array. It is `push`ed onto the stack exactly once. It is `pop`ped from the stack at most once. Therefore, across the entire `for` loop, the `while` loop can only execute a maximum of N times *in total*. 
 - Time complexity is bounded by operations, not loop nesting. $N$ pushes + $N$ pops = $2N$ operations = $O(N)$.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/) (LeetCode 496) | Canonical next-greater with a decreasing stack |
+| [Daily Temperatures](https://leetcode.com/problems/daily-temperatures/) (LeetCode 739) | Next warmer day is next-greater on temperatures |
+| [Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/) (LeetCode 84) | Pop resolves the rectangle width using indices |
+| [Next Greater Element II](https://leetcode.com/problems/next-greater-element-ii/) (LeetCode 503) | Circular array handled by looping twice |
 
 :::interview
 "How do you handle circular arrays with a Monotonic Stack?"

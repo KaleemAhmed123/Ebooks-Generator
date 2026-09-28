@@ -1,4 +1,4 @@
-## Stacks
+## Stacks <span class="lv lv1"></span>
 
 - **What it is:** A Last-In, First-Out (LIFO) interface built on top of an array or linked list
 - **The Contract:** O(1) to add to the top, O(1) to remove from the top. No access to the middle or bottom
@@ -42,6 +42,15 @@ function isValid(s: string): boolean {
 - In interviews, if asked to implement a Stack from scratch, use a Dynamic Array
 - Appending to the end of an array (`push`) and removing from the end (`pop`) are O(1) amortised
 - You *could* use a Linked List (inserting/removing at the head is strict O(1)), but allocating a new Node object for every push is significantly slower in practice than array appending
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/) (LeetCode 20) | LIFO dependency resolution on brackets |
+| [Min Stack](https://leetcode.com/problems/min-stack/) (LeetCode 155) | Stack with O(1) min tracking |
+| [Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/) (LeetCode 150) | Operands wait on the stack for their operator |
+| [Decode String](https://leetcode.com/problems/decode-string/) (LeetCode 394) | Nested dependencies resolved LIFO |
 
 :::interview
 "When would you use a Stack instead of an Array?"

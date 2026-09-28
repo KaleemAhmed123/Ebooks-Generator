@@ -1,4 +1,4 @@
-## Treap (Tree + Heap)
+## Treap (Tree + Heap) <span class="lv lv3"></span>
 
 - **What it is:** A randomized Binary Search Tree that guarantees probabilistic O(log N) operations
 - **The Contract:** Combines the strict ordering of a BST with the randomized priority of a Heap to avoid the O(N) unbalanced worst-case
@@ -61,6 +61,14 @@ function merge(L: TreapNode | null, R: TreapNode | null): TreapNode | null {
 With `split` and `merge`, insertion and deletion become incredibly simple:
 - **Insert(X):** `split` the tree at X. Create a new node for X. `merge` the left half with X, then `merge` the result with the right half.
 - **Delete(X):** `split` the tree into three parts: `< X`, `== X`, and `> X`. Discard the middle part. `merge` the left and right parts.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Count of Range Sum](https://leetcode.com/problems/count-of-range-sum/) (LeetCode 327) | Treap as dynamic ordered set for range counting |
+| [Sliding Window Median](https://leetcode.com/problems/sliding-window-median/) (LeetCode 480) | Implicit treap supports O(log N) insert/delete/kth |
+| [Range Module](https://leetcode.com/problems/range-module/) (LeetCode 715) | Split/merge intervals in a balanced BST |
 
 :::interview
 "If a Treap relies on Math.random(), can it be hacked in competitive programming to run in O(N)?"

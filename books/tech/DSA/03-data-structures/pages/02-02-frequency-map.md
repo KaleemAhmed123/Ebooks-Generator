@@ -1,4 +1,4 @@
-## The Frequency Map
+## The Frequency Map <span class="lv lv1"></span>
 
 - **What it is:** A Hash Map where the keys are elements from the input, and the values are the count of how many times that element appears
 - **When to reach for it:** "Anagrams", "Find the majority element", "Sort characters by frequency", "Longest palindrome that can be built"
@@ -50,6 +50,15 @@ function groupAnagrams(strs: string[]): string[][] {
   return Array.from(map.values());
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Valid Anagram](https://leetcode.com/problems/valid-anagram/) (LeetCode 242) | Compare two frequency maps for equality |
+| [Group Anagrams](https://leetcode.com/problems/group-anagrams/) (LeetCode 49) | Frequency signature as hash map key |
+| [Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/) (LeetCode 347) | Build frequency map, then extract top K |
+| [Longest Palindrome](https://leetcode.com/problems/longest-palindrome/) (LeetCode 409) | Count even/odd frequencies to build palindrome |
 
 :::interview
 "Can we optimize Group Anagrams to avoid sorting?"

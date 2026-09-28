@@ -1,4 +1,4 @@
-## Weighted and Directed Graphs
+## Weighted and Directed Graphs <span class="lv lv1"></span>
 
 - **What it is:** Adding metadata (weights/costs) and directionality (one-way streets) to edges
 - **The Contract:** Requires modifying the Adjacency List to store objects or tuples instead of just node IDs
@@ -52,6 +52,15 @@ function buildDirectedGraph(n: number, edges: number[][]) {
 - If `indegree[X] === 0`, it means node `X` has no prerequisites. You can process it immediately.
 - Once you process `X`, you virtually "remove" it from the graph by decrementing the indegree of all its neighbors. If any neighbor's indegree hits 0, they are now free to be processed.
 - This Queue-based algorithm (Kahn's) requires the Adjacency List (to know who to decrement) AND the Indegree Array (to know who is free).
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Course Schedule](https://leetcode.com/problems/course-schedule/) (LeetCode 207) | Directed graph + indegree array for topological sort |
+| [Course Schedule II](https://leetcode.com/problems/course-schedule-ii/) (LeetCode 210) | Kahn's algorithm outputs the valid ordering |
+| [Network Delay Time](https://leetcode.com/problems/network-delay-time/) (LeetCode 743) | Weighted directed graph fed into Dijkstra |
+| [Cheapest Flights Within K Stops](https://leetcode.com/problems/cheapest-flights-within-k-stops/) (LeetCode 787) | Weighted directed edges with constrained BFS |
 
 :::interview
 "Can a directed graph have cycles?"

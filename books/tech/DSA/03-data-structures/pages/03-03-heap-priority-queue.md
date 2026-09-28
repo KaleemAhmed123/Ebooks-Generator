@@ -1,4 +1,4 @@
-## Heaps & Priority Queues
+## Heaps & Priority Queues <span class="lv lv1"></span>
 
 - **What it is:** A Complete Binary Tree where every parent is smaller than its children (Min-Heap) or larger than its children (Max-Heap)
 - **The Contract:** O(1) time to find the extreme (min/max), O(log N) to insert or remove it
@@ -33,6 +33,15 @@
 - **The fix:** If you need to frequently remove non-root elements, you must either:
   1. Use a **Lazy Deletion** strategy (keep a Hash Map of deleted elements, and only `pop()` them when they eventually reach the root).
   2. Use a different structure, like an Ordered Set (TreeSet in Java), which supports O(log N) search and removal.
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/) (LeetCode 215) | Min-heap of size K tracks top K |
+| [Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/) (LeetCode 23) | Heap tracks K current-smallest candidates |
+| [Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/) (LeetCode 295) | Two heaps maintain the dynamic median |
+| [Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/) (LeetCode 347) | Heap extracts K most frequent after counting |
 
 :::interview
 "Why use a Heap for Top-K instead of sorting the array?"

@@ -1,4 +1,4 @@
-## Dynamic Arrays
+## Dynamic Arrays <span class="lv lv1"></span>
 
 - **What it is:** An array that resizes itself automatically when it runs out of space (`std::vector` in C++, `ArrayList` in Java, default `[]` in Python/JS)
 - **The Contract:** O(1) amortised append, O(1) read. Still O(N) to insert/delete in the middle
@@ -57,6 +57,14 @@ class DynamicArray {
   }
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Design Dynamic Array](https://leetcode.com/problems/design-dynamic-array-resizable-array/) (LeetCode 2357) | Implement push, pop, resize from scratch |
+| [Concatenation of Array](https://leetcode.com/problems/concatenation-of-array/) (LeetCode 1929) | Pre-allocate double-size array and copy |
+| [Design HashMap](https://leetcode.com/problems/design-hashmap/) (LeetCode 706) | Dynamic array of buckets with resizing logic |
 
 :::interview
 "Why do dynamic arrays double in size instead of growing by a fixed amount?"

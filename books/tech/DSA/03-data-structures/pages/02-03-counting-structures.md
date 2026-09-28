@@ -1,4 +1,4 @@
-## Counting Structures: Arrays vs Hash Maps
+## Counting Structures: Arrays vs Hash Maps <span class="lv lv1"></span>
 
 - **What it is:** Using an Array instead of a Hash Map to store frequencies
 - **When to reach for it:** The keys are integers within a small, known range (e.g., characters `a-z`, or numbers `1-1000`)
@@ -66,6 +66,14 @@ function arraysEqual(a: number[], b: number[]): boolean {
   return true;
 }
 ```
+
+### Where it appears
+
+| Problem | Why it belongs here |
+|---|---|
+| [Permutation in String](https://leetcode.com/problems/permutation-in-string/) (LeetCode 567) | Sliding window with two 26-element count arrays |
+| [Find All Anagrams in a String](https://leetcode.com/problems/find-all-anagrams-in-a-string/) (LeetCode 438) | Rolling count array comparison in a window |
+| [Ransom Note](https://leetcode.com/problems/ransom-note/) (LeetCode 383) | Bounded-key frequency array over letters |
 
 :::interview
 "Why did you use an array instead of a Map for these character counts?"
