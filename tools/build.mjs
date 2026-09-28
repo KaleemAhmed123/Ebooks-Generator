@@ -426,7 +426,11 @@ async function buildMaster(book) {
         `<p class="topic-count">` +
         (counting ? `${total} terms · alphabetical` : `${modules} modules · ${files.length} pages`) +
         `</p>\n</section>`,
-      ...(perTopic ? [{ btoc: { key: `btoc-${child}`, title: meta.title, headings: own } }] : []),
+      ...(() => {
+        if (!perTopic) return [];
+        const chapters = own.filter((h) => h.lvl === 1);
+        return chapters.length > 1 ? [{ btoc: { key: `btoc-${child}`, title: meta.title, headings: chapters } }] : [];
+      })(),
       ...body
     );
     }

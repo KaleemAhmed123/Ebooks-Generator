@@ -273,7 +273,7 @@ th { background: #f6f6f6; font-weight: 700; }
   font-weight: 700;
   font-size: 32pt;
   line-height: 1.08;
-  color: var(--ink);
+  color: #b8541a;
   margin: 0 0 5mm 0;
   padding-bottom: 5mm;
   border-bottom: 1.8pt solid var(--accent, var(--rule));
