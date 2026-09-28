@@ -407,10 +407,11 @@ async function buildMaster(book) {
         ).filter((v, k, a) => a.indexOf(v) === k)
       : meta.cover?.stack ?? [];
 
-    // Chapter headings are embedded in the divider page itself so every
-    // booklet opens with one page that doubles as its table of contents.
+    // Every booklet's divider doubles as its table of contents. Chapter
+    // headings (h1) when the booklet has them, page titles (h2) otherwise.
     // Page numbers are filled in by assemble() once the full count is known.
-    const chapters = own.filter((h) => h.lvl === 1);
+    const chapters = h1s.length > 1 ? own.filter((h) => h.lvl === 1)
+                                    : own.filter((h) => h.lvl <= 2);
 
     const dividerHtml =
       `<section class="page topic" data-src="topic-${child}" style="--accent:${accent}">\n` +
@@ -418,15 +419,13 @@ async function buildMaster(book) {
         `<h1 id="${id}">${meta.title}</h1>\n` +
         (meta.subtitle ? `<p class="topic-sub">${meta.subtitle}</p>\n` : "") +
         (meta.cover?.banner && !counting ? `<p class="topic-line">${meta.cover.banner}</p>\n` : "") +
-        (chapters.length > 1
-          ? `<ul class="topic-chapters"></ul>\n`
-          : `<ul class="topic-terms">${teaser.map((t) => `<li>${t}</li>`).join("")}</ul>\n`) +
+        `<ul class="topic-chapters"></ul>\n` +
         `<p class="topic-count">` +
         (counting ? `${total} terms · alphabetical` : `${modules} modules · ${files.length} pages`) +
         `</p>\n</section>`;
 
     pages.push(
-      chapters.length > 1 ? { divider: dividerHtml, chapters } : dividerHtml,
+      chapters.length ? { divider: dividerHtml, chapters } : dividerHtml,
       ...body
     );
     }
