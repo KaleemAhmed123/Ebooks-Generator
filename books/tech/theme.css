@@ -158,25 +158,26 @@ pre code {
 /* ---------- interview-question flag ----------
    The label, then the question in the sub-heading style, then normal body. */
 
-.interview { margin: 6mm 0 4mm 0; }
+.interview { margin: 2.5mm 0 1.5mm 0; font-size: 8.5pt; line-height: 1.26; }
 .interview::before {
   content: "Interview Question";
   display: block;
   font-family: "Consolas", monospace;
-  font-size: 7.5pt;
+  font-size: 7.2pt;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--pink);
   text-align: left;
-  margin-bottom: 2mm;
+  margin-bottom: 1mm;
 }
 .interview > p:first-of-type {
   font-family: "Georgia", "Cambria", serif;
   font-weight: 700;
-  font-size: 9.5pt;
+  font-size: 9pt;
   text-align: left;
-  margin-bottom: 2mm;
+  margin-bottom: 1.5mm;
 }
+.interview > p { margin-bottom: 1mm; }
 
 /* ---------- booklet cover ---------- */
 
