@@ -1,0 +1,177 @@
+# Glossary
+
+## Glossary
+
+Every term introduced in this booklet, defined once, plainly.
+
+### A – C
+
+- **Accuracy** — fraction of predictions that are correct; misleading on imbalanced data.
+- **Adam** — optimizer giving each weight its own adaptive learning rate; the default for transformers.
+- **Anomaly detection** — finding points that do not fit a learned "normal".
+- **API key** — a secret string that authenticates and bills your access to a model API.
+- **ARIMA** — a classical statistical model for forecasting time series.
+- **Arrow** — an in-memory columnar data format for zero-copy sharing between tools.
+- **Autodiff** — automatic differentiation; computing exact gradients by recording operations and applying the chain rule.
+- **Backpropagation** — reverse-mode autodiff applied to a neural network's loss.
+- **Bagging** — training many models on random data subsets and averaging them to cut variance.
+- **Base rate fallacy** — ignoring how rare an event is when reading a test result.
+- **Batch** — a small random sample of data used for one training step.
+- **Bayes' theorem** — the rule for updating a belief (prior) into a posterior using evidence.
+- **Bernoulli distribution** — the distribution of a single yes/no outcome.
+- **Bias (error)** — error from a model too simple to fit the pattern; causes underfitting.
+- **Boosting** — training models in sequence, each fixing the previous ones' mistakes; cuts bias.
+- **Branch** — a parallel line of work in git that leaves the main line untouched.
+- **Broadcasting** — automatically stretching a smaller tensor to match a larger one's shape.
+- **Categorical distribution** — the distribution over one pick from several classes.
+- **Central limit theorem** — sums of many small independent effects tend toward a Gaussian.
+- **Chain rule** — differentiating nested functions by multiplying their slopes.
+- **Clustering** — grouping unlabelled data by similarity.
+- **Columnar** — storing a table by column so reads touch only the needed columns.
+- **Commit** — a saved snapshot of your files in git.
+- **Computational graph** — a record of operations used to compute gradients backward.
+- **Conda** — an environment manager that also handles non-Python dependencies.
+- **Confidence interval** — a range that likely contains the true value.
+- **Confusion matrix** — the table of true/false positives and negatives.
+- **Container** — a running instance of a Docker image; a sealed, portable environment.
+- **Convex** — a single-bowl function where gradient descent always finds the best answer.
+- **Correlation** — how strongly two variables move together, from −1 to +1; not causation.
+- **Cosine similarity** — the dot product of two unit vectors; similarity by angle.
+- **Cost function** — see loss; a number measuring how wrong the model is.
+- **Cross-entropy** — the loss measuring distance between predicted and true distributions.
+- **Cross-validation** — rotating which data fold is held out, to get a stable score.
+- **CUDA** — NVIDIA's software layer letting frameworks use the GPU.
+- **Curse of dimensionality** — in high dimensions, all points become far apart and distance loses meaning.
+
+### D – I
+
+- **DBSCAN** — clustering that grows groups from dense regions and marks sparse points as noise.
+- **Data leakage** — letting test information reach training, inflating scores.
+- **Decision boundary** — the line where a classifier switches its predicted class.
+- **Decision tree** — a classifier that asks a sequence of yes/no questions.
+- **Dependency hell** — conflicting package versions across projects on one machine.
+- **Derivative** — the slope of a function at a point.
+- **Dimension** — the number of entries in a vector.
+- **Dimensionality reduction** — compressing data into fewer, more informative numbers.
+- **Docker** — a tool that packages code and its whole environment into portable containers.
+- **Dockerfile** — the recipe that builds a Docker image.
+- **Dot product** — entry-by-entry multiply-and-sum of two vectors; measures alignment.
+- **Early stopping** — halting training when validation error starts rising.
+- **Eigenvalue** — the factor by which a matrix stretches its eigenvector.
+- **Eigenvector** — a direction a matrix only scales, without rotating.
+- **Embedding** — a vector of numbers standing in for a piece of data (a word, image).
+- **Ensemble** — several models combined into a stronger predictor.
+- **Entropy** — a measure of surprise or uncertainty in a distribution.
+- **Epoch** — one full pass of training over the entire dataset.
+- **Exponential backoff** — retrying a failed request after growing waits (1s, 2s, 4s).
+- **F1 score** — the harmonic mean of precision and recall.
+- **Feature engineering** — turning raw data into inputs a model uses well.
+- **Feature selection** — keeping the informative features and dropping the rest.
+- **Floating point** — the computer's limited-precision representation of real numbers.
+- **Fourier transform** — rewriting a signal as a sum of waves of different frequencies.
+- **Gaussian (normal) distribution** — the bell curve, fixed by a mean and a standard deviation.
+- **Gini impurity** — a measure of how class-mixed a group is; used to pick tree splits.
+- **Git** — a system that tracks the full history of your files.
+- **Gradient** — the vector of a function's slopes across all its inputs.
+- **Gradient descent** — stepping weights opposite the gradient to reduce loss.
+- **Graph** — nodes joined by edges; the shape of networks and knowledge bases.
+- **GPU** — a processor with thousands of parallel cores, suited to matrix math.
+- **HDF5** — a format for efficient slices of large numeric arrays.
+- **Hugging Face Hub** — the standard place to find, version, and share models and datasets.
+- **Hyperparameter** — a setting you choose before training (learning rate, tree depth).
+- **Image (Docker)** — the frozen blueprint of a container's filesystem.
+- **Imbalanced data** — a dataset where the class of interest is rare.
+- **Isolation Forest** — an anomaly detector that isolates outliers with few random splits.
+
+### K – P
+
+- **k-means** — clustering into `k` groups by repeatedly moving centres to their points' middle.
+- **k-nearest neighbours** — classifying a point by the majority vote of its closest neighbours.
+- **Kernel (Jupyter)** — the process holding a notebook's shared variable state.
+- **Kernel trick** — measuring similarity as if data were lifted into a higher dimension.
+- **KL divergence** — an asymmetric measure of how different two distributions are.
+- **L1 (Lasso)** — regularization penalizing absolute weight size; drives weights to zero.
+- **L2 (Ridge)** — regularization penalizing squared weight size; shrinks weights smoothly.
+- **Layer (Docker)** — a cached step of an image build.
+- **Learning rate** — the step size in gradient descent.
+- **Likelihood** — how well a hypothesis explains observed evidence.
+- **Linear regression** — predicting a number as a weighted sum of inputs.
+- **Lockfile** — a record of exact dependency versions for reproducible installs.
+- **Logistic regression** — a classifier using the sigmoid to output a probability.
+- **LoRA** — low-rank adaptation; cheap fine-tuning by storing weight changes as thin matrices.
+- **Loss** — a single number measuring model error; training minimizes it.
+- **Machine learning** — programs that learn their rules from data instead of hand-coding.
+- **Magnitude (norm)** — the length of a vector.
+- **Margin** — the gap a support vector machine maximizes between classes.
+- **Matrix** — a grid of numbers with rows and columns.
+- **Matrix multiplication** — combining matrices via dot products of rows and columns.
+- **Mean** — the average; the centre of a distribution.
+- **MLflow** — a tool for tracking experiments and their results.
+- **MLOps** — the engineering discipline of shipping and maintaining models.
+- **Model** — the learned rules of an ML system, stored as numbers.
+- **Maximum likelihood estimation (MLE)** — choosing the parameters that make the observed data most probable; the origin of cross-entropy and squared-error losses.
+- **Momentum** — averaging recent gradients so descent builds speed in steady directions.
+- **MSE (mean squared error)** — the average squared gap between prediction and truth.
+- **Naive Bayes** — a fast classifier assuming all features are independent.
+- **nan** — "not-a-number"; a poisoned value that spreads through arithmetic.
+- **Normal equation** — solving for the exact best regression weights in one step.
+- **Normalizing** — dividing a vector by its length to make it unit length.
+- **One-hot encoding** — giving each category its own 0/1 column.
+- **Optimization** — searching for the input that makes a function smallest.
+- **Overfitting** — learning the training data's noise; great on train, poor on test.
+- **Parquet** — a compressed columnar format for large tabular data.
+- **PCA** — principal component analysis; compression via the data's top eigenvectors.
+- **Posterior** — the updated belief after seeing evidence.
+- **Precision** — of the cases flagged positive, the fraction that were right.
+- **Prior** — the belief in a hypothesis before evidence.
+- **Probability** — a number from 0 to 1 giving how likely an outcome is.
+- **Projection** — flattening a vector onto a lower-dimensional space.
+- **Pull request** — a proposed branch merge, opened for review.
+
+### R – Z
+
+- **Random forest** — many decision trees bagged together and voting.
+- **Random variable** — a quantity whose value is uncertain.
+- **Recall** — of the truly positive cases, the fraction the model caught.
+- **Regularization** — any technique that discourages model complexity to fight overfitting.
+- **Reinforcement learning** — learning by trial and error from rewards.
+- **Remote** — a shared copy of a git repository, e.g. on GitHub.
+- **Reproducibility** — getting the same result from the same code and data.
+- **Reverse mode** — autodiff that propagates slopes output-to-input; efficient for one output.
+- **RLHF** — reinforcement learning from human feedback; aligns chat models.
+- **Ruff** — a fast Python linter and formatter.
+- **Saddle point** — a spot down in some directions and up in others; not a true trap.
+- **SGD** — stochastic gradient descent; gradient steps on random batches.
+- **Sigmoid** — a function squashing any number into the range 0 to 1.
+- **Singular value** — the stretch factors in an SVD, ranked by importance.
+- **SMOTE** — synthesizing new minority-class examples to balance data.
+- **Softmax** — turning raw scores into a probability distribution over classes.
+- **Stacking** — combining different model types with a final model.
+- **Standard deviation** — the spread of a distribution; the square root of variance.
+- **Stationarity** — whether a time series' statistics stay constant over time.
+- **Support vector** — the nearest points that define an SVM's boundary.
+- **Support vector machine** — a classifier maximizing the margin between classes.
+- **SVD** — singular value decomposition; factoring any matrix into rotate–stretch–rotate.
+- **Supervised learning** — learning from labelled input–answer pairs.
+- **Tensor** — the generalization of vectors and matrices to any number of dimensions.
+- **Test set** — held-out data touched once, for the honest final score.
+- **Throughput** — how fast a processor computes.
+- **Time series** — data with a time order, where the past predicts the future.
+- **tmux** — a terminal that keeps running on a server after you disconnect.
+- **Training set** — the data a model learns its weights from.
+- **Training–serving skew** — features computed differently in training and production.
+- **t-SNE** — a method for plotting clusters; for visualization only.
+- **UMAP** — a faster alternative to t-SNE that keeps some global structure.
+- **Underfitting** — a model too simple to capture the pattern.
+- **Uniform distribution** — every value equally likely.
+- **Unit vector** — a vector of length exactly 1.
+- **Unsupervised learning** — finding structure in data with no labels.
+- **uv** — a fast Rust-based Python package, environment, and version manager.
+- **Validation set** — data used to tune choices, without training on it.
+- **Vanishing gradient** — gradients shrinking toward zero through deep layers, stalling learning.
+- **Variance (error)** — error from a model so flexible it memorizes noise; causes overfitting.
+- **Vector** — an ordered list of numbers.
+- **venv** — Python's built-in virtual environment tool.
+- **VRAM** — a GPU's own memory; it decides what fits.
+- **WSL** — Windows Subsystem for Linux; a real Linux environment inside Windows.
+- **XGBoost** — a leading gradient-boosted-trees library for tabular data.
