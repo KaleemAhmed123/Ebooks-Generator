@@ -15,3 +15,5 @@ The most-asked problems for this chapter. Cover the right column and name the pa
 | [Kth Smallest Element in a Sorted Matrix](https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/) (LeetCode 378) | 09-04 · count `≤ x` with a staircase |
 | [Find K-th Smallest Pair Distance](https://leetcode.com/problems/find-k-th-smallest-pair-distance/) (LeetCode 719) | 09-04 · count pairs `≤ d` with two pointers |
 | [Kth Smallest Number in Multiplication Table](https://leetcode.com/problems/kth-smallest-number-in-multiplication-table/) (LeetCode 668) | 09-04 · count per row: `min(⌊x / i⌋, n)` |
+| Kth Largest Element in an Array (LeetCode 215) | 09-05 · partition to index n − k |
+| K Closest Points to Origin (LeetCode 973) | 09-05 · partition by distance, keep k |

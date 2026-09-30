@@ -13,6 +13,7 @@
 | **09-02** | the answer, a number in a known range | "can it be done with `mid`?" |
 | **09-04** | the k-th value of a set too big to list | `count(≤ mid) ≥ k` |
 | **09-03** | an index in a rotated or mountain array | which side is sorted, or uphill |
+| **09-05** | the k-th element of an unsorted array | partition; recurse the side with k |
 
 ### The skeleton
 

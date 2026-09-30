@@ -15,3 +15,5 @@ The most-asked problems for this chapter. Cover the right column and name the pa
 | [Construct Binary Tree from Preorder and Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) (LeetCode 105) | 14-09 · pre-order root, in-order split |
 | [Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/) (LeetCode 297) | 14-09 · pre-order with null markers |
 | [Recover Binary Search Tree](https://leetcode.com/problems/recover-binary-search-tree/) (LeetCode 99) | 14-08 · the first and last in-order drops |
+| House Robber III (LeetCode 337) | 14-11 · return (rob, skip) per node |
+| Binary Tree Cameras (LeetCode 968) | 14-11 · node states, greedy from the leaves |

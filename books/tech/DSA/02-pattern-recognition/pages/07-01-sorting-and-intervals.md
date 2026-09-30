@@ -14,6 +14,7 @@
 | **07-07** | union, or keep the most | sort key = start or end |
 | **07-08** | count pairs `i < j` by value | split pairs see sorted halves |
 | **07-09** | arrange by a rule on two items | an exchange proves the order |
+| **07-10** | split into independent parts | disjoint halves don't interact |
 
 ### The skeleton: pick the key
 

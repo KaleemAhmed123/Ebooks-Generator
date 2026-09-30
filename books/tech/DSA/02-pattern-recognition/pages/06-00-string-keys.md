@@ -2,9 +2,9 @@
 
 ## String Keys <span class="lv lv1"></span>
 
-- **What it is:** two patterns belong to strings alone. A *canonical key* turns "these strings are the same under a rule" into plain equality; *growing from the centre* finds contiguous palindromes
-- **Signal:** "anagram", "same pattern", "rotation of", "isomorphic", "palindromic substring"
-- **Mechanism:** a key computed once per string makes grouping one hash-map pass instead of comparing every pair. A palindrome is symmetric about its centre, so 2n − 1 centres find them all
+- **What it is:** the moves that belong to strings. A *canonical key* turns "same under a rule" into equality; *growing from the centre* finds palindromes; a *trie* shares prefixes; a *stack* parses nesting; a *rolling hash* compares windows fast
+- **Signal:** "anagram", "same pattern", "rotation of", "isomorphic", "palindromic substring", "starts with", "decode / evaluate", "find the pattern in the text"
+- **Mechanism:** a key computed once per string groups in one hash-map pass; a palindrome is symmetric about its centre; a trie walks a prefix once; a stack folds nested groups; a rolling hash slides in O(1)
 
 ### The moves
 
@@ -13,6 +13,9 @@
 | **06-01** | group or match under one rule | equal keys = "the same" |
 | **06-03** | "follows the same pattern" | two maps check a bijection |
 | **06-02** | a contiguous palindrome | palindromes on a centre nest |
+| **06-04** | "starts with", autocomplete | a trie shares prefixes |
+| **06-06** | nested `k[...]`, expressions | a stack holds the outer context |
+| **06-07** | pattern search, repeated substrings | a hash that slides in O(1) |
 
 **Owned elsewhere:** at most k of something → 02-03 · an anagram of p inside s → 02-02 · brackets → 10-02 · subsequence, fewest edits → 17-02.
 

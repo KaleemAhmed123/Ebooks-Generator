@@ -4,7 +4,8 @@ The most-asked problems for this chapter. Cover the right column and name the pa
 
 | Problem | Page · the deciding fact |
 |---|---|
-| [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/) (LeetCode 21) | 12-01 · append the smaller head behind a dummy |
+| [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/) (LeetCode 21) | 12-07 · append the smaller head behind a dummy |
+| Merge k Sorted Lists (LeetCode 23) | 12-07 · pairwise merges, or a heap of heads |
 | [Add Two Numbers](https://leetcode.com/problems/add-two-numbers/) (LeetCode 2) | 12-01 · build behind a dummy, carry to the end |
 | [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/) (LeetCode 206) | 12-02 · save `next`, flip, step |
 | [Reverse Nodes in k-Group](https://leetcode.com/problems/reverse-nodes-in-k-group/) (LeetCode 25) | 12-02 · check k nodes, flip, stitch both ends |

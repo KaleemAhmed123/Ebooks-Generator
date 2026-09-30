@@ -15,3 +15,5 @@ The most-asked problems for this chapter. Cover the right column and name the pa
 | [Counting Bits](https://leetcode.com/problems/counting-bits/) (LeetCode 338) | 11-03 · `bits[i] = bits[i & (i − 1)] + 1` |
 | [Power of Two](https://leetcode.com/problems/power-of-two/) (LeetCode 231) | 11-03 · `n > 0 && (n & (n − 1)) === 0` |
 | [Sum of Two Integers](https://leetcode.com/problems/sum-of-two-integers/) (LeetCode 371) | 11-03 · XOR sums, AND carries |
+| Subsets (LeetCode 78) | 11-04 · integer i = a subset, bit j = item j |
+| Maximum Length of a Concatenated String (LeetCode 1239) | 11-04 · mask of chosen strings |

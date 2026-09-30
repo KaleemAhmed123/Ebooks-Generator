@@ -15,3 +15,5 @@ The most-asked problems for this chapter. Cover the right column and name the pa
 | [Count of Smaller Numbers After Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self/) (LeetCode 315) | 07-08 · sort indices, count as you merge |
 | [Largest Number](https://leetcode.com/problems/largest-number/) (LeetCode 179) | 07-09 · `a + b` against `b + a` |
 | [Queue Reconstruction by Height](https://leetcode.com/problems/queue-reconstruction-by-height/) (LeetCode 406) | 07-09 · tallest first, insert at `k` |
+| Different Ways to Add Parentheses (LeetCode 241) | 07-10 · cut at each operator, combine |
+| Sort an Array (LeetCode 912) | 07-10 · split in half, merge sorted halves |
