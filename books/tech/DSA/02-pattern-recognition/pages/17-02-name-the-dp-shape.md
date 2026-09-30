@@ -20,7 +20,7 @@
   <text x="60" y="40" class="sm" text-anchor="middle">O(2ⁿ · n)</text>
   <line class="t" x1="60" y1="50" x2="60" y2="60"/>
   <text x="60" y="74" class="nn" text-anchor="middle">n ≤ 20</text>
-  <text x="60" y="86" class="sm" text-anchor="middle">Module 06</text>
+  <text x="60" y="86" class="sm" text-anchor="middle">Bitmask DP</text>
   <text x="170" y="16" class="lb" text-anchor="middle">f(i, j)</text>
   <text x="170" y="28" class="sm" text-anchor="middle">one range, try each split</text>
   <text x="170" y="40" class="sm" text-anchor="middle">O(n³)</text>
@@ -32,7 +32,7 @@
   <text x="285" y="40" class="sm" text-anchor="middle">O(n²)</text>
   <line class="t" x1="285" y1="50" x2="285" y2="60"/>
   <text x="285" y="74" class="nn" text-anchor="middle">n ≤ 5000</text>
-  <text x="285" y="86" class="sm" text-anchor="middle">Module 06</text>
+  <text x="285" y="86" class="sm" text-anchor="middle">LCS · Edit</text>
   <text x="400" y="16" class="lb" text-anchor="middle">f(i)</text>
   <text x="400" y="28" class="sm" text-anchor="middle">+ binary search or holding</text>
   <text x="400" y="40" class="sm" text-anchor="middle">O(n log n) or O(n)</text>
@@ -44,14 +44,16 @@
 
 | Common tag | Signature | Read |
 |---|---|---|
-| no two adjacent | `f(i)`: take and jump to i + 2, or skip | Module 06 |
-| grid paths | `f(r, c)`: moves right or down only | Module 06 |
-| knapsack 0/1, 0/N | `f(i, cap)`: 0/1 moves on after a pick; 0/N stays | Module 06 |
+| no two adjacent | `f(i)`: take and jump to i + 2, or skip | 17-03 |
+| grid paths | `f(r, c)`: moves right or down only | 17-08 |
+| knapsack 0/1, 0/N | `f(i, cap)`: 0/1 descends the budget; 0/N ascends | 17-09 |
+| palindromic subseq | `f(i, j)` on one range | 17-10 |
+| LIS | tails + binary search, or `f(i)` ending at i | 17-11 |
+| two strings | `f(i, j)`, one index per string | 17-12 |
 | weighted intervals | `f(i)`; a pick jumps by binary search | 17-03 |
 | stocks | `f(i, holding, k)` | 17-04 |
-| two strings | `f(i, j)`, one index per string | Module 06 |
-| LIS | `f(i)` = the best chain ending at i | Module 06 |
 | cut, merge, burst | `f(i, j)`, loop the split k | 17-05 |
 | two-player games | `f(i, j)` = the lead of the player to move | 17-06 |
+| subset of a small set | `dp[mask]`, n ≤ 20 | 17-13 |
 
 - **Watch out:** choosing the table before the signature. An `n × n` table for a problem that needs only `f(i, cap)` wastes memory and hides the transition
