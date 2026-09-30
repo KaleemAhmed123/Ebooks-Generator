@@ -255,3 +255,105 @@ Kept here so you can find your own words; the book uses only the right column.
 - Still on pattern pages, as examples, awaiting your call: LC 1329 (05-01 template
   code), LC 498 (05-01), LC 406 (07-09), LC 1318 (11-02), Power Set (11-03),
   Boolean Parenthesization (17-05).
+
+---
+
+## Direction change — standalone, all-patterns rebuild (2026-09-30)
+
+**What changed.** The user re-scoped booklet 02 from a thin recognition layer
+into a **standalone, complete pattern ebook**: every interview pattern a reader
+expects lives here as its own page, self-contained enough to recognise *and*
+implement without opening another booklet.
+
+**This reverses standing decision "No repetition" (line 163).** That rule said a
+concept/template lives in exactly one place in the series and this booklet points
+to Modules 05/06 for mechanics. New rule: **some overlap with 05/06 is deliberate.**
+Each pattern page now carries a full working template inline; Module 05/06 links
+are demoted to optional "go deeper," not a dependency.
+
+**Trigger.** User matched the book against a 77-pattern interview list and found
+the non-linear half (graphs, DP especially) thin as a recognition map — graphs
+had 2 named patterns, DP had 4.
+
+### Decisions (this pass)
+
+| # | Question | Answer |
+|---|---|---|
+| 22 | How self-contained per page? | Recognition + a full **working** template; proofs/variants link out |
+| 23 | Numbering | Insert new patterns in **reading order**, renumber all; update every reference from 54 → new total; **no CSS/styling changes** |
+| 24 | Hard/contest topics | **Interview-core only.** SCC → one-line pointer (not a page). Rolling hash, bitmask DP kept but marked STRETCH |
+| 25 | Execution | All chapters one pass, **single-threaded** (no subagents) |
+| 26 | Problem links on new pages | **Defer** to one linking pass at the end (network still blocks LeetCode/GFG) |
+| 27 | Framing | **Reposition as standalone-complete**; soften Module 05/06 cross-links to optional |
+
+### New pattern pages to add (~23, interview-core, 9-part format, tested TS)
+
+- **Strings (ch6):** Trie · Parse with a stack · Rolling hash (STRETCH)
+- **Order (ch7):** Divide & conquer
+- **Search (ch9):** Quickselect
+- **Bits (ch11):** Enumerate subsets with bits (STRETCH)
+- **Linked Lists (ch12):** Merge two sorted lists
+- **Trees (ch14):** Tree DP
+- **Graphs (ch16):** Flood the component · BFS shortest path · Multi-source BFS ·
+  Detect a cycle · Bipartite · Union-Find/DSU · MST (STRETCH) · Dijkstra ·
+  BFS over states
+- **DP (ch17):** Grid DP · Knapsack/subset-sum · Subsequence DP · LIS ·
+  LCS/edit-distance · Bitmask DP (STRETCH)
+
+### Shared-file work (done by me after pages, to avoid collisions)
+
+- meta.json `patterns` registry rebuilt with the new reading-order numbering.
+- `01-02` master-list SVG rebuilt for the new row count (CSS classes untouched).
+- `01-01`, `01-03` text: drop "54", reposition as standalone-complete.
+- Per touched chapter: overview "moves" table + drills rows (unlinked for now).
+- backmatter glossary: new terms.
+
+### Standing decisions updated
+
+- **Repetition:** a self-contained template per pattern page is now allowed even
+  when Module 05/06 also covers the mechanics. Cross-links say "go deeper", not
+  "see there for the code".
+- Everything else from the earlier standing-decisions block still holds (badge
+  CSS not emoji, one printed page per idea, drill problem in one chapter only,
+  templates tested against brute force).
+
+### Log
+
+- 2026-09-30 — direction change recorded. Node 24 confirmed (runs .ts directly);
+  network still blocks leetcode.com (403), so links deferred and code verified by
+  execution. Starting with the graphs chapter (largest gap).
+- 2026-09-30 — **standalone rebuild shipped.** 23 new pattern pages written and
+  wired in; book renumbered 54 → **78**; master list rebuilt; glossary + intro
+  updated. Detail:
+  - **New pages (23):** Graphs (9): flood-the-component, bfs-shortest-path,
+    multi-source-bfs, detect-a-cycle, two-colour-bipartite, union-find-dsu,
+    weighted-shortest-path (Dijkstra), minimum-spanning-tree, bfs-over-states.
+    DP (6): grid-dp, knapsack-subset-sum, subsequence-dp,
+    longest-increasing-subsequence, edit-distance (LCS+edit), bitmask-dp.
+    Strings (3): trie, parse-with-a-stack, rolling-hash. Techniques (5):
+    divide-and-conquer (07-10), quickselect (09-05), enumerate-subsets-with-bits
+    (11-04), merge-two-sorted-lists (12-07), tree-dp (14-11). Also numbered the
+    previously-unnumbered topological-sort page (16-04). SCC left as a pointer.
+  - **Verified:** every TS template run against a brute force in the scratchpad —
+    21 graph + 19 DP + 25 string/technique checks pass (incl. a 300-run
+    quickselect stress). Problem links deferred (network blocks LeetCode/GFG).
+  - **Overviews/drills:** 8 chapter overviews got new moves-table rows; graph/DP/
+    strings drills split into a/b; ch7/9/11/12/14 drills gained new-pattern rows.
+  - **Renumber:** meta.json patterns rebuilt 1 → 78 in reading order (script:
+    global grouping so interleaved moves keep one number; overview ranges
+    recomputed). 01-02 master list rebuilt as two pages (a: ch2–11, b: ch12–19),
+    each row links to #p-<pid>. 01-01/01-03 repositioned as standalone-complete;
+    "54" → "78" everywhere. Glossary: added Bipartite, Knapsack, LIS, LCS,
+    Multi-Source BFS, Rabin–Karp/Rolling Hash, Subset Sum, Tree DP.
+  - **Pagination:** the book's `--split` tool crashes on shared backmatter
+    (source path outside the booklet), so it can't paginate the standalone
+    booklet — the committed book already ships ~100 overflowing pages. Per your
+    call, my 23 pages were **manually** split into fitting `-1/-2(/-3)` parts;
+    continuation parts fit, lead parts ≤233mm (the book's own pages are
+    210–275mm, so mine are more compliant). Build: 190 pages; master list,
+    glossary and charts all fit one page.
+  - **Left for later:** problem links on the new pages (needs network); a
+    fresh-eyes fact/consistency subagent pass (you chose single-threaded);
+    optional further trim of the densest lead parts to hit ≤186mm; a proper
+    1-line `--split` fix would paginate the whole book cleanly if you allow a
+    build edit later.
