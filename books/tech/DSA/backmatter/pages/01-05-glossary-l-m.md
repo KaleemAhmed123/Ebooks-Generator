@@ -4,6 +4,8 @@
 - **Lazy Propagation:** A range update stored at a segment-tree node and pushed to its children only when they are visited.
 - **Linear Probing:** A collision resolution technique in Hash Maps that searches for the next available adjacent bucket.
 - **Load Factor:** The ratio of items to buckets in a Hash Map; when it exceeds a threshold (e.g., 0.75), the map resizes to maintain O(1) performance.
+- **Longest Common Subsequence (LCS):** The longest sequence appearing in order (not necessarily contiguous) in two strings; a grid DP `f(i, j)` that matches or drops one side.
+- **Longest Increasing Subsequence (LIS):** The longest strictly increasing subsequence of an array; O(n log n) via a "tails" pile searched by binary search (patience sorting).
 - **Look-alike:** A problem whose statement resembles one pattern but is solved by another; one fact in the statement decides which.
 - **Lower Bound / Upper Bound:** The first index with value ≥ x / > x in a sorted array.
 - **Lowest Common Ancestor (LCA):** The deepest node that has both given nodes in its subtree.
@@ -18,3 +20,4 @@
 - **Monotonic Stack:** A Stack that maintains elements in sorted order, popping elements that would violate the ordering; used for "next greater element" problems.
 - **Morris Traversal:** An in-order walk that temporarily points each node's predecessor back at it, so it needs no stack.
 - **Move (Pattern Recognition):** One variant of a pattern: the same mechanism answering a different question.
+- **Multi-Source BFS:** One BFS seeded with every source at distance 0, so each cell settles at its nearest source in a single O(V + E) pass.

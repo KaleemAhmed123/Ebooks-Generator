@@ -8,4 +8,5 @@
 - **Inversion:** A pair i < j with a[i] > a[j].
 - **Kadane's Algorithm:** Best subarray sum ending at each index: extend the previous best or restart at the current value.
 - **Kahn's Algorithm:** A topological sort that repeatedly removes vertices whose in-degree is zero.
+- **Knapsack:** A DP over a capacity budget choosing items to optimise value; 0/1 uses each item once (descend the budget), unbounded reuses items (ascend).
 - **Kruskal's Algorithm:** A Minimum Spanning Tree algorithm that sorts all edges and greedily adds them if they don't form a cycle (using Union-Find).

@@ -12,6 +12,7 @@
 - **Binary Search:** An O(log N) algorithm that halves the search space at each step, requiring sorted data (or a monotonic boolean function).
 - **Binary Search on the Answer:** Binary search over candidate answers, using a yes/no feasibility check that flips exactly once.
 - **Binary Trie:** A trie over the bits of numbers, highest bit first; used for maximum-XOR queries.
+- **Bipartite Graph:** A graph whose vertices split into two sets with every edge crossing between them; two-colourable exactly when it has no odd-length cycle.
 - **Bitmask:** Using the binary representation of a single integer to compactly store a set of boolean flags (e.g., `1001` means items 0 and 3 are selected).
 - **Boyer–Moore Majority Vote:** One candidate and a counter; unequal values cancel in pairs, so a majority survives.
 - **Branch and Bound:** Stopping a search branch whose partial cost already exceeds the best complete answer.
