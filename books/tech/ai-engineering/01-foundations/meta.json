@@ -1,0 +1,50 @@
+{
+  "title": "Foundations",
+  "subtitle": "Math, Tooling, and Classical ML",
+  "seriesLine": "AI Engineering: From Scratch",
+  "tocTitle": "Contents",
+  "cover": {
+    "accent": "#24405e",
+    "title": [
+      "AI Engineering",
+      "Foundations"
+    ],
+    "banner": "MATH IS THE FLOOR. EVERYTHING STANDS ON IT.",
+    "kicker": "TOOLING · LINEAR ALGEBRA · CALCULUS · CLASSICAL ML",
+    "term": [
+      [
+        "$ uv run python",
+        0
+      ],
+      [
+        ">>> import numpy as np",
+        0
+      ],
+      [
+        ">>> np.array([2, 1]) @ np.array([3, 4])",
+        0
+      ],
+      [
+        "10",
+        1
+      ],
+      [
+        "$ _",
+        2
+      ]
+    ],
+    "stack": [
+      "python · uv · docker",
+      "vectors · matrices",
+      "gradients · chain rule",
+      "probability · Bayes",
+      "gradient descent · Adam",
+      "regression → ensembles"
+    ],
+    "face": {
+      "brow": "sharp",
+      "mouth": "flat",
+      "tilt": -2
+    }
+  }
+}
