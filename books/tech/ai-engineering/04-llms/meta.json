@@ -1,0 +1,17 @@
+{
+  "title": "Large Language Models",
+  "subtitle": "Training, Alignment, and Engineering",
+  "seriesLine": "AI Engineering: From Scratch",
+  "tocTitle": "Contents",
+  "cover": {
+    "accent": "#24405e",
+    "title": ["AI Engineering", "Large Language Models"],
+    "banner": "PREDICT THE NEXT TOKEN. ALIGN IT. SHIP IT.",
+    "kicker": "PRETRAIN · RLHF · RAG · FINE-TUNE · SERVE",
+    "term": [["$ uv run python train.py", 0], [">>> step 10000  loss 1.83", 1],
+             [">>> reward ↑  kl 0.02", 1], ["$ _", 2]],
+    "stack": ["tokenize → pretrain", "SFT · RLHF · DPO", "quantize · serve",
+              "prompt · few-shot", "RAG · advanced RAG", "eval · cost · guardrails"],
+    "face": {"brow": "sharp", "mouth": "flat", "tilt": -2}
+  }
+}
