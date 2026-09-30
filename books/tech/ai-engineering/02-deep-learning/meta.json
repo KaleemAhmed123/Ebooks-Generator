@@ -1,0 +1,18 @@
+{
+  "title": "Deep Learning",
+  "subtitle": "Networks, Vision, and Speech",
+  "seriesLine": "AI Engineering: From Scratch",
+  "tocTitle": "Contents",
+  "cover": {
+    "accent": "#24405e",
+    "title": ["AI Engineering", "Deep Learning"],
+    "banner": "STACK THE LAYERS. LET THE DATA SPEAK.",
+    "kicker": "NETWORKS · VISION · SPEECH",
+    "term": [["$ uv run python train.py", 0], [">>> epoch 3  loss 0.214", 1],
+             [">>> val acc 0.947", 1], ["$ _", 2]],
+    "stack": ["perceptron → backprop", "CNNs · ResNet · ViT",
+              "detection · segmentation", "diffusion · GANs",
+              "ASR · Whisper · TTS", "audio LMs"],
+    "face": {"brow": "sharp", "mouth": "flat", "tilt": -2}
+  }
+}
