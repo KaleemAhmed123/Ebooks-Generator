@@ -1,0 +1,16 @@
+{
+  "title": "AI Engineering: From Scratch",
+  "subtitle": "Booklet 1 — Foundations: Math, Tooling, and Classical ML",
+  "seriesLine": "AI Engineering: From Scratch",
+  "tocTitle": "Contents",
+  "order": ["01-foundations"],
+  "cover": {
+    "accent": "#24405e",
+    "title": ["AI Engineering", "Foundations"],
+    "banner": "MATH IS THE FLOOR. EVERYTHING ELSE IS BUILT ON TOP.",
+    "kicker": "TOOLING · MATH · CLASSICAL ML",
+    "stack": ["Setup & Tooling", "Math Foundations", "ML Fundamentals"],
+    "label": "BOOKLET 1 OF 6",
+    "face": { "brow": "sharp", "mouth": "flat", "tilt": -2 }
+  }
+}

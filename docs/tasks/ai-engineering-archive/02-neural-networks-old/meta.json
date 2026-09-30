@@ -1,0 +1,17 @@
+{
+  "title": "AI Engineering: From Scratch",
+  "subtitle": "Booklet 2 — Neural Networks: From Perceptron to PyTorch",
+  "seriesLine": "AI Engineering: From Scratch",
+  "tocTitle": "Contents",
+  "order": ["02-neural-networks"],
+  "blocks": ["mint", "warn", "note"],
+  "cover": {
+    "accent": "#1a3a2a",
+    "title": ["AI Engineering", "Neural Networks"],
+    "banner": "FROM ONE NEURON TO A MILLION PARAMETERS.",
+    "kicker": "BACKPROP · ACTIVATIONS · PYTORCH",
+    "stack": ["Perceptron & MLP", "Backpropagation", "Optimizers & Schedules", "PyTorch in Practice"],
+    "label": "BOOKLET 2 OF 6",
+    "face": { "brow": "raised", "mouth": "flat", "tilt": 2 }
+  }
+}

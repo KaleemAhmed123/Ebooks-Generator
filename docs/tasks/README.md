@@ -6,6 +6,7 @@ Do not delete them; append a dated update instead.
 
 | Task | Status | Started |
 |---|---|---|
+| [**ai-engineering-ebook**](ai-engineering-ebook.md) — "AI Engineering: From Scratch": six-booklet series covering all 20 phases, Foundations through Production | in progress — Booklets 1–5 built (77+77+66+60+339 pages, 0 cuts); Booklet 5 deep-rewrite complete (2026-09-30); Booklet 6 (Production) next; verification deferred to shared debt | 2026-09-28 |
 | [dsa-pattern-compact](dsa-pattern-compact.md) — the same pattern book taught compactly: ~286 pages down to 150–180, nothing cut | in progress — Chapter 2 pilot | 2026-09-27 |
 | [dsa-pattern-audit](dsa-pattern-audit.md) — three-lens quality audit of DSA 02 Pattern Recognition: 7/10 today, ranked roadmap to 9 | report delivered, fixes awaiting picks | 2026-09-27 |
 | [ts2d-complete-volume](ts2d-complete-volume.md) â€” the nine TypeScript-to-Deployment booklets bound as one 1,166-page volume: one drawn cover, a six-page three-column index, and all the back matter in one place | shipped â€” built and verified, 0 overflowing pages | 2026-09-08 |
