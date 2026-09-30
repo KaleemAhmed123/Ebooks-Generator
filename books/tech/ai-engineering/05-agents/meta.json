@@ -1,0 +1,17 @@
+{
+  "title": "Agents",
+  "subtitle": "Tools, Autonomy, and Multi-Agent Systems",
+  "seriesLine": "AI Engineering: From Scratch",
+  "tocTitle": "Contents",
+  "cover": {
+    "accent": "#24405e",
+    "title": ["AI Engineering", "Agents"],
+    "banner": "GIVE THE MODEL TOOLS, MEMORY, AND A LOOP. IT ACTS.",
+    "kicker": "TOOLS · MCP · MEMORY · ORCHESTRATION · AUTONOMY",
+    "term": [["$ agent.run('ship the fix')", 0], [">>> tool: read_file", 1],
+             [">>> tool: run_tests  ✓", 1], ["$ _", 2]],
+    "stack": ["multimodal · VLMs", "tools · function calling", "MCP · A2A · skills",
+              "agent loop · memory", "LangGraph · CrewAI · SDKs", "autonomy · swarms"],
+    "face": {"brow": "sharp", "mouth": "flat", "tilt": -2}
+  }
+}
