@@ -2,7 +2,8 @@
 
 - Chapters run from linear to non-linear data and from common to rare: read A and B in order; C is a lens over both; D is for hard rounds
 - Each chapter opens with an overview of its pattern: what it is, the moves, a skeleton, the trap. A move page gives what, spot it, why, a diagram, a short template, the one trap, and more problems. Every chapter ends in drills: its most-asked problems, linked
-- **New problem?** Start with the chart (01-04), or the list of 54 (01-02)
+- **New problem?** Start with the chart (01-04), or the list of 78 (01-02)
+- This booklet stands on its own: every pattern has a working template here. The "→ Module" links point to deeper mechanics, but you never need them to solve the pattern
 
 :::mint
 <svg viewBox="0 0 470 252" role="img" aria-label="Route map of the booklet. Part A, linear, chapters 2 to 11: Windows and Pointers, Prefix and Running State, In-place and Index Tricks, Grids and Matrices, Strings, Order and Intervals, Greedy Moves, Search Space, Stacks and Queues, Bits. Part B, non-linear, chapters 12 to 17: Linked Lists, Recursion and Backtracking, Trees, Heaps and Ordered Sets, Graphs and Dependency, DP and Games. Part C, chapter 18, Patterns Nobody Named. Part D, chapter 19, Range Structures, hard and rarely asked." xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
@@ -44,7 +45,7 @@
 
 ### Patterns and moves
 
-- 54 patterns, numbered in reading order; 01-02 lists them with their pages
+- 78 patterns, numbered in reading order; 01-02 lists them with their pages
 - A pattern with several moves is one mechanism asked several ways: learn the first move, then each later move is one change to it
 - Chapter 18 is the lens for a problem that fits no pattern; Chapter 19 is for rounds that go past interviews
 
