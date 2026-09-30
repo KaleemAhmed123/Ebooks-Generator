@@ -1,0 +1,17 @@
+{
+  "title": "Language",
+  "subtitle": "NLP and the Transformer",
+  "seriesLine": "AI Engineering: From Scratch",
+  "tocTitle": "Contents",
+  "cover": {
+    "accent": "#24405e",
+    "title": ["AI Engineering", "Language"],
+    "banner": "MEANING BECOMES A VECTOR. ATTENTION DOES THE REST.",
+    "kicker": "NLP · EMBEDDINGS · ATTENTION · TRANSFORMERS",
+    "term": [["$ uv run python", 0], [">>> tok.encode('hello world')", 0],
+             ["[15496, 995]", 1], ["$ _", 2]],
+    "stack": ["text → tokens", "word2vec · GloVe", "RNNs · seq2seq",
+              "attention from scratch", "BERT · GPT · T5", "MoE · KV-cache · scaling"],
+    "face": {"brow": "sharp", "mouth": "flat", "tilt": -2}
+  }
+}
