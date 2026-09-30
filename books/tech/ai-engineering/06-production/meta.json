@@ -1,0 +1,17 @@
+{
+  "title": "Production",
+  "subtitle": "Infrastructure, Safety, and Capstones",
+  "seriesLine": "AI Engineering: From Scratch",
+  "tocTitle": "Contents",
+  "cover": {
+    "accent": "#24405e",
+    "title": ["AI Engineering", "Production"],
+    "banner": "SERVE IT FAST. KEEP IT SAFE. SHIP THE WHOLE SYSTEM.",
+    "kicker": "SERVING · GOODPUT · SAFETY · SYSTEM DESIGN · CAPSTONES",
+    "term": [["$ vllm serve model --tp 8", 0], [">>> TTFT 210ms · TPOT 18ms", 1],
+             [">>> goodput 3.1k tok/s/gpu  ✓", 1], ["$ ship --canary 5%", 2]],
+    "stack": ["managed vs self-host", "vLLM · SGLang · TensorRT-LLM", "goodput · latency · cost",
+              "safety · alignment · red-team", "AI system design", "15 flagship capstones"],
+    "face": {"brow": "level", "mouth": "flat", "tilt": 1}
+  }
+}
