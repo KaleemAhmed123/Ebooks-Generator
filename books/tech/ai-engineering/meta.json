@@ -1,4 +1,41 @@
 {
   "title": "AI Engineering: From Scratch",
-  "author": "Antigravity"
+  "author": "Kaleem Ahmed",
+  "subtitle": "Math · Deep Learning · Language · LLMs · Agents · Production",
+  "seriesLine": "AI Engineering · From the first vector to a production serving stack",
+  "tocTitle": "Contents",
+  "contents": "per-topic",
+  "masterVolume": { "name": "ai-engineering-complete" },
+  "order": [
+    "01-foundations",
+    "02-deep-learning",
+    "03-language",
+    "04-llms",
+    "05-agents",
+    "06-production"
+  ],
+  "cover": {
+    "accent": "#24405e",
+    "title": ["AI Engineering", "From Scratch"],
+    "banner": "PREDICT THE NEXT TOKEN. ALIGN IT. SHIP IT.",
+    "kicker": "MATH · DEEP LEARNING · LANGUAGE · LLMS · AGENTS · PRODUCTION",
+    "term": [
+      ["$ uv run python", 0],
+      [">>> model(x)  # a tensor goes in", 0],
+      [">>> # a next token comes out", 0],
+      ["\"...from scratch.\"", 1],
+      ["$ _", 2]
+    ],
+    "stack": [
+      "Foundations",
+      "Deep Learning",
+      "Language",
+      "LLMs",
+      "Agents",
+      "Production"
+    ],
+    "label": "COMPLETE VOLUME",
+    "setLine": "ALL 6 BOOKLETS IN ONE VOLUME",
+    "face": { "brow": "sharp", "mouth": "smile", "tilt": -3 }
+  }
 }
