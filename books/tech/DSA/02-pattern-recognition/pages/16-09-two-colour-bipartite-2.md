@@ -1,5 +1,3 @@
-## Two-Colour It - continued
-
 ### Where it appears
 
 | Problem | The two sides |

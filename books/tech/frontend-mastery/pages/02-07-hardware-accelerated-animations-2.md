@@ -1,5 +1,3 @@
-## Hardware-Accelerated Animations - continued
-
 However, promoting an element to a layer takes time. If you start an animation on hover, the first few frames might drop while the browser sets up the layer.
 
 You can preemptively tell the browser to create a layer using the `will-change` property.

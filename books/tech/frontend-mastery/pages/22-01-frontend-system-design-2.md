@@ -1,5 +1,3 @@
-## Frontend System Design - continued
-
 #### 3. Data Model & State (10 mins)
 Define the exact shape of the JSON that the API will return.
 ```typescript

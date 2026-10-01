@@ -1,5 +1,3 @@
-## LCS & Edit Distance - continued
-
 ### Edit distance — same grid, one more move
 
 ```ts

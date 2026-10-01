@@ -1,5 +1,3 @@
-## Tool use - continued
-
 messages.push(
   { role: "assistant", content: first.content },
   { role: "user", content: [

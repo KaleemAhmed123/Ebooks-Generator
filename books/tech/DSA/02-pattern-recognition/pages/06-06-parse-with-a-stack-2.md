@@ -1,5 +1,3 @@
-## Parse Nested Structure - continued
-
 ### Where it appears
 
 | Problem | What the stack holds |

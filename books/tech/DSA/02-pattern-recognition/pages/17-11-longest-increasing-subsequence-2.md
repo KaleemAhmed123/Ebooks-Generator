@@ -1,5 +1,3 @@
-## Longest Increasing Subsequence - continued
-
 ### Where it appears
 
 | Problem | The increasing chain |

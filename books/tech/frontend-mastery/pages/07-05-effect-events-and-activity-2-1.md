@@ -1,5 +1,3 @@
-## Effect Events, Activity, and the Small Wins - continued
-
 The rule of thumb: what the Effect **synchronizes with** goes in the dependency array. What the Effect **does in response to something happening** goes in an Effect Event. Only call Effect Events from inside Effects, and never pass one to a child.
 
 ### `<Activity>`

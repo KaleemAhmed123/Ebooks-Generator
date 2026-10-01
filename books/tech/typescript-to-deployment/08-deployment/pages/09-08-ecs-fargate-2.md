@@ -1,5 +1,3 @@
-## ECS on Fargate - continued
-
 ```json
 {
   "family": "orders-api",

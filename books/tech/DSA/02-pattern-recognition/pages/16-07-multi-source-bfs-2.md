@@ -1,5 +1,3 @@
-## Multi-Source BFS - continued
-
 ### Where it appears
 
 | Problem | The sources seeded together |

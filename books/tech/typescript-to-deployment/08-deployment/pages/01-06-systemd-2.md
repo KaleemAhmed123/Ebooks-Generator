@@ -1,5 +1,3 @@
-## systemd - continued
-
 | Directive | Does |
 |---|---|
 | `Restart=always` | brings it back after any exit, including a crash |

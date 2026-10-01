@@ -1,5 +1,3 @@
-## Building a Design System with Tailwind - continued
-
 ```tsx
 const buttonVariants = cva(
   // Base styles applied to all variants

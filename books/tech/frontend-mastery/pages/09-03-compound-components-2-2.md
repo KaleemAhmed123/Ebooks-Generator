@@ -1,5 +1,3 @@
-## Compound Components Pattern - continued
-
 4. **Stitch it to the Namespace (Optional but clean):**
 ```jsx
 Accordion.Item = AccordionItem;

@@ -1,5 +1,3 @@
-## Union–Find - continued
-
 ### Where it appears
 
 | Problem | What a union means |

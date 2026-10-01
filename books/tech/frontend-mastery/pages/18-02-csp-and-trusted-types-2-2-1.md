@@ -1,5 +1,3 @@
-## Content Security Policy and Trusted Types - continued
-
 ```ts
 // proxy.ts
 import { NextResponse, type NextRequest } from 'next/server';

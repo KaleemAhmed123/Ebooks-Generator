@@ -1,5 +1,3 @@
-## Terraform - continued
-
 ```bash
 terraform init
 terraform fmt -recursive

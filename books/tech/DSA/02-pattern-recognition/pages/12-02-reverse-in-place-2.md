@@ -1,5 +1,3 @@
-## Reverse in Place <span class="lv lv1"></span> - continued
-
 ```ts
 // Reverse Nodes in k-Group (LeetCode 25)
 function reverseKGroup(

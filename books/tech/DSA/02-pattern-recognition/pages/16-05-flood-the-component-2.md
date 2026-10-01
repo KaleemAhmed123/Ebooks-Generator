@@ -1,5 +1,3 @@
-## Flood the Component - continued
-
 ### Where it appears
 
 | Problem | The deciding fact |

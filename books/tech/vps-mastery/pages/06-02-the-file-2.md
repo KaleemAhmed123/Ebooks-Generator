@@ -1,5 +1,3 @@
-## The file, top to bottom - continued
-
 ```yaml
 postgres:
     image: postgres:18-alpine

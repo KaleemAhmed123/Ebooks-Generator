@@ -1,5 +1,3 @@
-## gRPC in Node, end to end - continued
-
 ListOrders: async (call) => {
     for await (const order of db.order.findMany({ ... })) call.write(order)
     call.end()

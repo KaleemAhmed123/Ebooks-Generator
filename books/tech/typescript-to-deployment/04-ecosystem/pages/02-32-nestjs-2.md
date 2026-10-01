@@ -1,5 +1,3 @@
-## NestJS - continued
-
 ### What you get
 
 - **Dependency injection.** Constructor parameters are resolved from a container, which makes swapping a real repository for a fake in tests trivial

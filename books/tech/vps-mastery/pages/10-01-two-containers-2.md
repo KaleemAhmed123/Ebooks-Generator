@@ -1,5 +1,3 @@
-## The two-container starting point - continued
-
 ```yaml
 nginx:
     image: nginx:1.28-alpine

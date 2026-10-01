@@ -1,5 +1,3 @@
-## Browser Architecture: The Rendering Pipeline - continued
-
 #### 1. DOM and CSSOM Construction
 
 The browser receives a stream of bytes, converts them to characters, tokenizes them, and builds nodes. These nodes are linked into a tree structure: the **Document Object Model (DOM)**. 

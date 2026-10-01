@@ -1,5 +1,3 @@
-## Linked List Pointers <span class="lv lv1"></span> - continued
-
 ### The skeleton: a dummy head
 
 ```ts

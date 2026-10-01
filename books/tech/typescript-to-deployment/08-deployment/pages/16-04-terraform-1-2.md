@@ -1,5 +1,3 @@
-## Terraform - continued
-
 lifecycle { ignore_changes = [task_definition] }   # the pipeline owns the image
 }
 ```

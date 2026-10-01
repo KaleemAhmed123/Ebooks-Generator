@@ -1,5 +1,3 @@
-## Enumerate Subsets with Bits - continued
-
 ### Where it appears
 
 | Problem | What the mask enumerates |

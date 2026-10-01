@@ -1,5 +1,3 @@
-## Pushing a stream out of Express - continued
-
 ### The four headers, and why each one is there
 
 - **`text/event-stream`** is what makes the browser treat it as a stream rather than a download

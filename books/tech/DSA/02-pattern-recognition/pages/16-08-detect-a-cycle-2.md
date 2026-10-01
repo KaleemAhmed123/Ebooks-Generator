@@ -1,5 +1,3 @@
-## Detect a Cycle - continued
-
 ### Where it appears
 
 | Problem | What the cycle means |

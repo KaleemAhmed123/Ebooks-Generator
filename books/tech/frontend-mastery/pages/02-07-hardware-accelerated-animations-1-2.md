@@ -1,5 +1,3 @@
-## Hardware-Accelerated Animations - continued
-
 ```css
 /* BAD: Animating 'left' triggers Layout Thrashing every frame */
 .sidebar {

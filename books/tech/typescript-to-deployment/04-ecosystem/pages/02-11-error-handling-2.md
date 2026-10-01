@@ -1,5 +1,3 @@
-## Error handling end to end - continued
-
 if (status >= 500) req.log.error({ err, requestId: req.id }, "unhandled")
   else req.log.warn({ code, requestId: req.id }, "request rejected")
 

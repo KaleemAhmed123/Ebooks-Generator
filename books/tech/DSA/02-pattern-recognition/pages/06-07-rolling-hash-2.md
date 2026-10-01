@@ -1,5 +1,3 @@
-## Rolling Hash - continued
-
 ### Where it appears
 
 | Problem | What the rolling hash compares |

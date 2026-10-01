@@ -1,5 +1,3 @@
-## Tool calling - continued
-
 input = input.concat(item, {
     type: "function_call_output",
     call_id: item.call_id,

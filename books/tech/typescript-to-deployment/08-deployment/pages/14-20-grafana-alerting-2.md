@@ -1,5 +1,3 @@
-## Alerting from Grafana - continued
-
 ```yaml
 # provisioning/alerting/rules.yml, so it stays in git
 apiVersion: 1

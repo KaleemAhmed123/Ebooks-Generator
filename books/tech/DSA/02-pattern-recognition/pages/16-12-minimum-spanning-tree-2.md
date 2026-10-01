@@ -1,5 +1,3 @@
-## Minimum Spanning Tree - continued
-
 ### Where it appears
 
 | Problem | The graph to span |

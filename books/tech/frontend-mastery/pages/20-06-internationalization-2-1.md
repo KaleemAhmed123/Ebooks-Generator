@@ -1,5 +1,3 @@
-## Internationalization - continued
-
 **Right to left flips the layout.** Arabic and Hebrew mirror the whole interface, including the direction arrows point. Use CSS logical properties everywhere and the browser does it for you.
 
 ```css

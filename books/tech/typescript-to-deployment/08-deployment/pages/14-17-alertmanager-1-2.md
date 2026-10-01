@@ -1,5 +1,3 @@
-## Alertmanager - continued
-
 receivers:
   - name: slack
     slack_configs:

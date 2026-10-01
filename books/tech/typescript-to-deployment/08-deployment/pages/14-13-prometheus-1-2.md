@@ -1,5 +1,3 @@
-## Prometheus - continued
-
 ```yaml
 # monitoring/prometheus.yml
 global:

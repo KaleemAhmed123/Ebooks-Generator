@@ -1,5 +1,3 @@
-## Search and vectors - continued
-
 ```bash
 curl -X POST 'http://meilisearch:7700/dumps' -H "Authorization: Bearer $MEILI_MASTER_KEY"
 ```

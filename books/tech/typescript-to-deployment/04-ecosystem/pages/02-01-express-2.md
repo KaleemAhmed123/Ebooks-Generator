@@ -1,5 +1,3 @@
-## Express - continued
-
 app.listen(3000)
 ```
 

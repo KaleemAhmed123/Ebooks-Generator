@@ -1,5 +1,3 @@
-## Dialogs, Popovers, and View Transitions - continued
-
 In React, note that `showModal()` is imperative. Reach for a `ref` and an effect, or use a library that wraps it, rather than trying to drive `open` from state. The `open` attribute renders a non-modal dialog with none of the focus behavior.
 
 ### The Popover API

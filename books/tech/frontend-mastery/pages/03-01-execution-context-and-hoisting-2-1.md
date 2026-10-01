@@ -1,5 +1,3 @@
-## Execution Context - continued
-
 ```js
 const name = "Global";
 

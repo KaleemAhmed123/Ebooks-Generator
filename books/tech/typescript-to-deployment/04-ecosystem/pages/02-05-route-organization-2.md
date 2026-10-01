@@ -1,5 +1,3 @@
-## Chaining and grouping routes - continued
-
 ```js
 // app.js
 app.use("/api/v1/orders", ordersRouter)

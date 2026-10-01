@@ -1,5 +1,3 @@
-## AGENTS.md and MCP - continued
-
 ```markdown
 ## Where things live
 - `app/` routes, `components/ui/` design system, `lib/` shared logic

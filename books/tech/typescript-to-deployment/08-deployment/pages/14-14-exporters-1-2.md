@@ -1,5 +1,3 @@
-## Exporters - continued
-
 cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
     privileged: true

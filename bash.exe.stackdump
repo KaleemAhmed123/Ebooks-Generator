@@ -1,0 +1,7 @@
+cd "../06-production"
+git add meta.json pages/00-cover.md ; git commit -m "Production: scaffold and cover"
+git add pages/17-0*.md pages/17-1*.md pages/17-2*.md ; git commit -m "Infra: serving foundations and the engine clusters (vLLM, SGLang, TensorRT-LLM)"
+git add pages/17-3*.md pages/17-4*.md ; git commit -m "Infra: goodput, latency, and speed/cost levers"
+git add pages/17-5*.md pages/17-6*.md ; git commit -m "Infra: ops, governance, and the AI system design interview cluster"
+git add pages/18-*.md ; git commit -m "Safety: alignment core and the deceptive-alignment frontier (in progress)"
+git add pages/backmatter/glossary.md ; git commit -m "Production: glossary so far"

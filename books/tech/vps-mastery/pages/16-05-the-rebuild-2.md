@@ -1,5 +1,3 @@
-## The rebuild, step by step - continued
-
 ```bash
 # --- 5. application ---                              ~3 min
 echo "IMAGE_TAG=$(cat .last-good-tag)" > .env.tag

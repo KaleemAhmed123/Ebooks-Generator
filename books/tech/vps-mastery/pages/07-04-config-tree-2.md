@@ -1,5 +1,3 @@
-## The configuration tree - continued
-
 | Directive belongs in | Examples |
 |---|---|
 | `http` | `upstream`, `limit_req_zone`, `gzip`, `log_format`, `map` |

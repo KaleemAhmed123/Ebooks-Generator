@@ -1,5 +1,3 @@
-## The full workflow - continued - continued
-
 ```yaml
 deploy:
     needs: build

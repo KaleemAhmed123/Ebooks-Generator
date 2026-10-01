@@ -1,5 +1,3 @@
-## The whole stack, in one file - continued
-
 grafana:
     image: grafana/grafana:13
     environment:

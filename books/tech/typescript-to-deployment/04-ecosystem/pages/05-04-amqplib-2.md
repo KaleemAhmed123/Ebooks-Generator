@@ -1,5 +1,3 @@
-## RabbitMQ with amqplib - continued
-
 channel.publish(
   "orders",
   "order.paid",

@@ -1,5 +1,3 @@
-## AGENTS.md and MCP - continued
-
 ```markdown
 ## Rules
 - Server Components by default. Add "use client" only for state, effects,

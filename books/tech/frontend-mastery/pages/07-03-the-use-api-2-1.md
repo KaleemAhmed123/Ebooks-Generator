@@ -1,5 +1,3 @@
-## The `use` API - continued
-
 ### Reading context conditionally
 
 The other use of `use` is a context read that does not have to run on every render.

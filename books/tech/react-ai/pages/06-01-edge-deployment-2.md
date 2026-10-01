@@ -1,5 +1,3 @@
-## Deploying at the Edge - continued
-
 export function middleware(request: NextRequest) {
   // Runs in milliseconds, globally
   const country = request.geo?.country || 'US'

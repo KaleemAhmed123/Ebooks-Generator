@@ -1,5 +1,3 @@
-## Modern Layouts: Flexbox and Grid - continued
-
 #### CSS Subgrid
 Historically, a Grid's tracks only applied to its direct children. If you had a nested component, it couldn't align itself to the parent's grid lines. 
 `grid-template-columns: subgrid` solves this. It tells a nested element to adopt the tracks defined by its parent grid, allowing deep components to align perfectly with the page-level layout.

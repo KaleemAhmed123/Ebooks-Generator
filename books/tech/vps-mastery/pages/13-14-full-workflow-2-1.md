@@ -1,5 +1,3 @@
-## The full workflow - continued
-
 ```yaml
 build:
     needs: test

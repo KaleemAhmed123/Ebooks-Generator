@@ -1,5 +1,3 @@
-## Modern Layouts: Flexbox and Grid - continued
-
 ```css
 .header  { grid-area: header; }
 .sidebar { grid-area: sidebar; }

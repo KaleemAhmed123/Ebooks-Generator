@@ -1,5 +1,3 @@
-## Alerts worth waking up for - continued
-
 ```yaml
 - alert: CertificateExpiringSoon
         expr: probe_ssl_earliest_cert_expiry - time() < 7 * 86400

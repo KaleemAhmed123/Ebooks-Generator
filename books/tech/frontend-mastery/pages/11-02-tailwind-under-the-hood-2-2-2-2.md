@@ -1,5 +1,3 @@
-## Tailwind Under the Hood - continued
-
 | Thing | v3 | v4 |
 |---|---|---|
 | Stylesheet entry | `@tailwind base/components/utilities` | `@import "tailwindcss"` |

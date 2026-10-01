@@ -1,5 +1,3 @@
-## GraphQL - continued
-
 ```graphql
 type Order {
   id: ID!

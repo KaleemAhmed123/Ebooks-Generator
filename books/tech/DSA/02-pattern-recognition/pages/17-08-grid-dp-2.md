@@ -1,5 +1,3 @@
-## Grid DP - continued
-
 ### Where it appears
 
 | Problem | The transition |

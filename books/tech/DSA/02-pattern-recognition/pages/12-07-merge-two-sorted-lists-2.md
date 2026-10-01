@@ -1,5 +1,3 @@
-## Merge Two Sorted Lists - continued
-
 ### Where it appears
 
 | Problem | The merge |

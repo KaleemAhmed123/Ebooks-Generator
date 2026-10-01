@@ -1,5 +1,3 @@
-## The bootstrap script - continued
-
 ```bash
 # swap
 if [ ! -f /swapfile ]; then

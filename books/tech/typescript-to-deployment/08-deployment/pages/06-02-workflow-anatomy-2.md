@@ -1,5 +1,3 @@
-## The anatomy of a workflow - continued
-
 | Key | Does |
 |---|---|
 | `on` | what starts it |

@@ -1,5 +1,3 @@
-## Images and Fonts, Where LCP Is Won - continued
-
 :::mint
 <svg viewBox="0 0 470 160" xmlns="http://www.w3.org/2000/svg" role="img">
   <style>

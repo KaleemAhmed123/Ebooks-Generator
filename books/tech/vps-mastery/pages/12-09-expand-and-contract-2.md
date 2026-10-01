@@ -1,5 +1,3 @@
-## Expand and contract - continued
-
 | Change | Safe in one deploy |
 |---|---|
 | Add a nullable column | Yes |

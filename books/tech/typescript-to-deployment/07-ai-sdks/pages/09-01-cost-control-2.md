@@ -1,5 +1,3 @@
-## Controlling the spend - continued
-
 - Output tokens are weighted because they cost several times more, so a single counter tracks something close to real money
 
 ### The three habits

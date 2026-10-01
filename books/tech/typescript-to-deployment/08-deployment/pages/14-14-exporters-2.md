@@ -1,5 +1,3 @@
-## Exporters - continued
-
 blackbox-exporter:
     image: prom/blackbox-exporter:v0.28
     volumes: ['./monitoring/blackbox.yml:/config/blackbox.yml:ro']

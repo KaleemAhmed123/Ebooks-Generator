@@ -1,5 +1,3 @@
-## Anatomy of a workflow - continued
-
 | Key | Does |
 |---|---|
 | `on` | The trigger. `workflow_dispatch` adds a manual button |

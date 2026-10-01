@@ -1,5 +1,3 @@
-## Split, Solve, Combine - continued
-
 ### Where it appears
 
 | Problem | The cut and combine |

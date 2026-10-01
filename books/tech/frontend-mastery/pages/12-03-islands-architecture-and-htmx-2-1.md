@@ -1,5 +1,3 @@
-## Islands Architecture and HTMX - continued
-
 ```astro
 <!-- client:visible tells Astro to only load and execute the JS 
          for this specific React component when it scrolls into view. -->

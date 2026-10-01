@@ -1,5 +1,3 @@
-## The Rest of the Hooks - continued
-
 ### `useMemo` and `useCallback`: skip work between renders
 
 `useMemo` caches a computed value; `useCallback` caches a function identity so a

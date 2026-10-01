@@ -1,5 +1,3 @@
-## Bitmask DP - continued
-
 ### Where it appears
 
 | Problem | The subset in the mask |

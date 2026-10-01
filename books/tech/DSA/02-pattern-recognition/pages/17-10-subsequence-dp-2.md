@@ -1,5 +1,3 @@
-## Subsequence DP - continued
-
 ### Where it appears
 
 | Problem | The range decision |

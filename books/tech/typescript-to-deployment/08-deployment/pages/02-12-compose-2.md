@@ -1,5 +1,3 @@
-## Docker Compose - continued
-
 db:
     image: postgres:18-alpine
     environment:

@@ -1,5 +1,3 @@
-## Weighted Shortest Path - continued
-
 ### Where it appears
 
 | Problem | The weighted graph |

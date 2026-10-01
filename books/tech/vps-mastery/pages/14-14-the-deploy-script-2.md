@@ -1,5 +1,3 @@
-## The whole deploy script - continued
-
 ```bash
 # 5. flip
 echo "$CURRENT" > .active-color.prev

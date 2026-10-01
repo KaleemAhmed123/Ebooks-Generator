@@ -1,5 +1,3 @@
-## Tree DP - continued
-
 ### Where it appears
 
 | Problem | The per-node value(s) |

@@ -1,5 +1,3 @@
-## Prometheus - continued
-
 - job_name: docker
     static_configs: [{ targets: ['cadvisor:8080'] }]
 ```

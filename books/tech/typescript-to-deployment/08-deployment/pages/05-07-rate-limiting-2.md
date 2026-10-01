@@ -1,5 +1,3 @@
-## Rate limiting at the edge - continued
-
 | Setting | Means |
 |---|---|
 | `rate=20r/s` | the sustained rate, enforced as one request per 50ms |

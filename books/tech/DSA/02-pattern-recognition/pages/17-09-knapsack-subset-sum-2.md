@@ -1,5 +1,3 @@
-## Knapsack & Subset Sum - continued
-
 ### Where it appears
 
 | Problem | The budget dimension |

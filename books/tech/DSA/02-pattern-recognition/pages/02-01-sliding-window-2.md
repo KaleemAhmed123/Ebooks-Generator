@@ -1,5 +1,3 @@
-## Sliding Window <span class="lv lv1"></span> - continued
-
 ### The trap
 
 - **Negative numbers.** Adding a value can lower a sum, so shrinking stops being safe. Sum = K → 03-03; sum ≥ K → a deque of prefix sums, 10-10

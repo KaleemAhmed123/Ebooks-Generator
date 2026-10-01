@@ -1,5 +1,3 @@
-## Virtualization for Long Lists - continued
-
 ```jsx
 return (
     <div ref={parentRef} style={{ height: '400px', overflow: 'auto' }}>

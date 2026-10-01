@@ -1,5 +1,3 @@
-## React Compiler vs. The Signals Revolution - continued
-
 - **Signals** won the performance benchmark wars. If you are building high-frequency updating UIs (like stock tickers or complex web games), SolidJS or Svelte 5 will outperform React.
 - **The React Compiler** answered the same problem for the existing React ecosystem. Teams delete `useMemo` and `useCallback` and keep the performance, without rewriting anything or learning a new reactive primitive.
 

@@ -1,5 +1,3 @@
-## Prototypal Inheritance - continued
-
 ```js
 const animal = {
   eats: true,

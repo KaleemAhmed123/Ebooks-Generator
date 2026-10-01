@@ -1,5 +1,3 @@
-## OpenTelemetry in the Browser - continued
-
 ```ts
 registerInstrumentations({
   instrumentations: [

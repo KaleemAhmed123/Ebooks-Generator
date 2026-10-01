@@ -1,5 +1,3 @@
-## Generics - continued
-
 ```ts
 // the generic version
 function first<T>(items: T[]): T | undefined {

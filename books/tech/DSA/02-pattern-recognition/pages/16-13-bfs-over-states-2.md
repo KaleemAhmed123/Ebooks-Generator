@@ -1,5 +1,3 @@
-## BFS Over States - continued
-
 ### Where it appears
 
 | Problem | The state beyond position |

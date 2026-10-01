@@ -1,5 +1,3 @@
-## Alertmanager - continued
-
 - **Grouping.** Twenty targets going down sends one message, not twenty. `group_by` decides what counts as the same incident
 - **Inhibition.** If the whole service is down, do not also page about its error rate. **This is what stops one outage becoming forty notifications**
 

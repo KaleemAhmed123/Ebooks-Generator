@@ -1,5 +1,3 @@
-## Partition to the k-th - continued
-
 ### Where it appears
 
 | Problem | The target index |

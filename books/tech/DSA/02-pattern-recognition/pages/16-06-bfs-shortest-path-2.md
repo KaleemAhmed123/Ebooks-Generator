@@ -1,5 +1,3 @@
-## Shortest Path by Layers - continued
-
 ### Where it appears
 
 | Problem | The deciding fact |

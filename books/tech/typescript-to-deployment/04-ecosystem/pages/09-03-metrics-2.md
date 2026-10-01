@@ -1,5 +1,3 @@
-## Metrics with prom-client - continued
-
 app.get("/metrics", async (req, res) => {
   res.set("Content-Type", registry.contentType)
   res.end(await registry.metrics())

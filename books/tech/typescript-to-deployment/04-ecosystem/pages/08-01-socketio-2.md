@@ -1,5 +1,3 @@
-## Socket.IO - continued
-
 io.use(async (socket, next) => {
   const token = socket.handshake.auth.token
   const { payload } = await jwtVerify(token, key)

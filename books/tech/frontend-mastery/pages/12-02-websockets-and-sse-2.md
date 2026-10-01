@@ -1,5 +1,3 @@
-## WebSockets and Server-Sent Events (SSE) - continued
-
 ```jsx
 return <div>{messages.map(m => <p>{m.text}</p>)}</div>;
 }

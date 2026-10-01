@@ -1,5 +1,3 @@
-## Images and Fonts, Where LCP Is Won - continued
-
 1. **`woff2` only.** Every browser you support reads it. Shipping `woff`, `ttf`
    and `eot` alongside it is dead weight.
 2. **Variable fonts.** One file that covers weight 100 to 900 usually beats

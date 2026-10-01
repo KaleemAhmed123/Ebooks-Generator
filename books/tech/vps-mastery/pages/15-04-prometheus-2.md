@@ -1,5 +1,3 @@
-## Prometheus - continued
-
 - Listing both colors means a target is always down, which is correct. `up == 0` for the inactive color is expected, and the alert on page 15-09 must exclude it
 
 ### Cardinality is the failure mode

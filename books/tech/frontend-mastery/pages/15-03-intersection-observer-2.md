@@ -1,5 +1,3 @@
-## Intersection Observer - continued
-
 ```jsx
 // 2. Tell it which HTML element to watch
     if (imageRef.current) {

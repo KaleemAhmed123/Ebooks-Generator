@@ -31,7 +31,5 @@ const user: { name: string; age: number } = {
 }
 ```
 
-## Arrays, tuples and objects - continued
-
 - Writing the shape inline gets old fast
 - That is what `interface` and `type` are for, on the next page

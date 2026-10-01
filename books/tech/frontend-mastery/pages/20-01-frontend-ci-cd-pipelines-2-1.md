@@ -1,5 +1,3 @@
-## Frontend CI/CD Pipelines - continued
-
 **Visual Regression Testing** is the crown jewel of frontend CI. 
 1. Playwright takes a screenshot of your component.
 2. It compares it pixel-by-pixel against a baseline screenshot stored in your repo.

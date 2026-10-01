@@ -1,5 +1,3 @@
-## Laying out the application - continued
-
 redis:
     image: redis:8-alpine
     restart: unless-stopped

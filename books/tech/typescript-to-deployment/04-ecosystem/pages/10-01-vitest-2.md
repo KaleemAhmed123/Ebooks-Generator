@@ -1,5 +1,3 @@
-## Vitest - continued
-
 describe("wallet", () => {
   beforeEach(() => vi.clearAllMocks())
 

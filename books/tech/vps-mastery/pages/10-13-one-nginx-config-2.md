@@ -1,5 +1,3 @@
-## One Nginx config for the whole stack - continued
-
 ```nginx
 location /socket.io/ {
             proxy_pass http://chat;

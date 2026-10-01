@@ -1,5 +1,3 @@
-## Prisma - continued
-
 ```prisma
 // prisma/schema.prisma
 model Order {

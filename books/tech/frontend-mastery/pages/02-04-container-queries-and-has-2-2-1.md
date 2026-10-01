@@ -1,5 +1,3 @@
-## Container Queries and `:has()` - continued
-
 ```css
 .card-slot {
   container-type: inline-size;    /* measure this element's width */

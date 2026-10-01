@@ -1,5 +1,3 @@
-## Building fifteen services - continued
-
 | Setting | Why |
 |---|---|
 | `fail-fast: false` | One failing service should not cancel the other eleven |

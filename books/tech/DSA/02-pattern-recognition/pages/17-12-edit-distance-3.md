@@ -1,5 +1,3 @@
-## LCS & Edit Distance - continued
-
 ### Where it appears
 
 | Problem | The grid transition |

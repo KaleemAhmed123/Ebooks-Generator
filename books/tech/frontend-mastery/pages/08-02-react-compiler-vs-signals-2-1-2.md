@@ -1,5 +1,3 @@
-## React Compiler vs. The Signals Revolution - continued
-
 **What the Compiler generates (conceptually):**
 ```jsx
 export function VideoPlayer({ video, user }) {

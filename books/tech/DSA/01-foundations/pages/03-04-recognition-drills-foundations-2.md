@@ -1,5 +1,3 @@
-## Recognition drills — Foundations <span class="lv lv1"></span> - continued
-
 :::note
 **Answers:**
 

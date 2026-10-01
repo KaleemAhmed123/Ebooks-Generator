@@ -1,5 +1,3 @@
-## Recursion & Backtracking <span class="lv lv1"></span> - continued
-
 ### The skeleton
 
 ```ts
