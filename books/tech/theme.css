@@ -348,6 +348,29 @@ th { background: #f6f6f6; font-weight: 700; }
   font-size: 6.4pt;
   color: #6a6a72;
 }
+/* A module heading (h1) is a full-width band across both columns, so the
+   divider reads as grouped sections rather than one undifferentiated list. */
+.page.topic .topic-chapters li.lvl1 {
+  display: block;
+  column-span: all;
+  font-weight: 700;
+  font-size: 8pt;
+  color: var(--accent, #24405e);
+  margin: 2.6mm 0 1mm 0;
+  break-after: avoid;
+}
+.page.topic .topic-chapters li.lvl1:first-child { margin-top: 0; }
+.page.topic .topic-chapters li.lvl1 > a {
+  color: var(--accent, #24405e);
+  text-decoration: none;
+  white-space: normal;
+}
+/* A booklet with a few hundred topics (Agents, Production) packs its contents
+   into three tighter columns so the divider stays to a couple of sheets. */
+.page.topic .topic-chapters.dense { columns: 3; column-gap: 4mm; margin-top: 3mm; }
+.page.topic .topic-chapters.dense li { font-size: 6.4pt; line-height: 1.22; margin-bottom: 0.25mm; }
+.page.topic .topic-chapters.dense li.lvl1 { font-size: 7pt; margin: 1.8mm 0 0.8mm 0; }
+.page.topic .topic-chapters.dense li > .p { font-size: 5.7pt; }
 .page.topic .topic-count {
   font-family: "Consolas", "Menlo", monospace;
   font-size: 7pt;
@@ -415,6 +438,13 @@ th { background: #f6f6f6; font-weight: 700; }
   color: #6a6a72;
 }
 .toc li.lvl1 > .p { font-size: 7.4pt; font-weight: 700; color: var(--ink); }
+
+/* A book's own contents in two columns, so a long topic list stays to a couple
+   of sheets instead of a tall single column. Entries never split across a
+   column; module groups may. */
+.page.toc > ul { columns: 2; column-gap: 7mm; }
+.page.toc li { break-inside: avoid; }
+.page.toc li.lvl1 { break-before: avoid-column; }
 
 /* ---------- endmatter pages (about-the-author, copyright) ----------
    These pages have short content. Flexbox stretches them to match the
