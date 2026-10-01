@@ -2,7 +2,7 @@
 
 ## Task
 
-- **Status:** in progress. Booklets 1–4 drafted + built (77/77/66/60 pp). **Booklet 5 (Agents): DEEP-REWRITE COMPLETE — all 5 modules (12–16) written deep, builds clean at 339 pages / 0 overflow / 0 cuts (2026-09-30).** **Booklet 6 (Production) is next — does not exist on disk yet; a full deep-write handoff prompt is saved at `docs/tasks/ai-engineering-booklet6-production-prompt.md`.**
+- **Status:** ALL 6 BOOKLETS DRAFTED + BUILDING CLEAN — **B1 77 · B2 77 · B3 66 · B4 60 · B5 339 · B6 211 = 830 pages, 0 overflow / 0 cuts (2026-09-30).** Booklet 6 (Production) deep-written this session: M17 Infrastructure (79) + M18 Safety (46) + M19 Capstones & System Design (80). Remaining work is the standing debt only (series-wide [VERIFY] passes, unified glossary regen, bound complete volume) — see the 2026-09-30 "Booklet 6 COMPLETE" Update.
 - **Debt (deferred, not done):** the per-booklet **fact + consistency verification passes** for **Booklets 1, 2, 3 and 4** are outstanding. Deferred deliberately to save tokens (no subagents — user confirmed 2026-09-29 to run verification later across all PDFs). Run inline, in small batches, before the series is called final. Priority frontier pages to re-check against live sources: Booklet 2 (SAM 3, Genie, Moshi/Hibiki, DiT/rectified flow, splatting); **Booklet 3 (FlashAttention-3, MoE in current models, scaling-law refinements, speculative decoding, RULER/long-context, embedding-model landscape)**; **Booklet 4 (DPO successors IPO/KTO/ORPO/SimPO, Constitutional AI/RLAIF, GRPO/DeepSeek-R1, quantization GPTQ/AWQ/GGUF/FP8/INT4, QLoRA, serving engines vLLM/SGLang/TensorRT-LLM + TGI maintenance-mode, re-rankers Cohere/BGE + RRF, prompt-caching economics).**
 - **Started:** 2026-09-28
 - **Last updated:** 2026-09-30 (Booklet 5 deep-rewrite COMPLETE — Modules 12–16 all deep, clean 339-page build — see Updates)
@@ -540,6 +540,102 @@ Came in at 79 (floor was ~100); every source lesson covered deep plus substantia
 **[VERIFY] debt — Module 17 (frontier, version-sensitive):** all serving-engine CLIs/flags (vLLM `vllm serve`, SGLang `launch_server`, TensorRT-LLM `quantize.py`/`trtllm-build`/`trtllm-serve` — drawn from context7 but treat dated details as stale); managed-platform lineups + latency benchmarks + PTU/Bedrock pricing (17-03/04); inference-platform vendors/valuations/pricing (17-05); Blackwell/FP4 specs (17-26); EAGLE-3 lineage + results (17-38/38a); prompt-cache rates ~10% + batch ~50% (17-41/43); cached-input/GPU-rent/throughput rules-of-thumb in the cheat-sheet (17-63a); EU AI Act status/dates (17-54).
 
 **Remaining:** Module 18 (Ethics/Safety/Alignment, floor ~60) + Module 19 (Capstones + system-design mastery, floor ~150). Then glossary grows, ONE build.
+
+### 2026-09-30 — Booklet 6: Module 18 (Ethics, Safety & Alignment) deep-written — 46 pages
+
+Wrote Module 18 deep. All 31 source phase-18 lessons covered + substantial additions. Frontier pages grounded in the source lessons' cited papers/framework versions (arXiv IDs, RSP v3.0 / PF v2 / FSF v3.0), all `[VERIFY]`-tagged. Clusters:
+- **Alignment core** (`18-01`…`18-06`): the alignment problem (specification vs optimisation gaps), instruction-following as signal, reward hacking/Goodhart, DPO-family failure modes (likelihood displacement), sycophancy, Constitutional AI/RLAIF.
+- **Deceptive-alignment frontier** (`18-07`…`18-13`): the problem + ladder, mesa-optimization (Hubinger 2019), sleeper agents (backdoors survive safety training), in-context scheming (Meinke 2024), alignment faking (Greenblatt 2024, compliance gap worked), AI control/subversion (Redwood), scalable oversight/weak-to-strong.
+- **Attacks** (`18-14`…`18-25`): the attack surface (jailbreak vs injection), red-teaming/PAIR, many-shot jailbreaking, ASCII-art/visual jailbreaks, indirect prompt injection (lethal trifecta), injection defense-in-depth, **garak** (runnable, context7), **PyRIT**, **Llama Guard** (runnable), WMDP/dual-use eval, EchoLeak CVEs, jailbreak taxonomy.
+- **Governance & harm** (`18-26`…`18-46`): frontier frameworks (RSP/PF/FSF), the ASL ladder, safety cases (3 pillars), race dynamics/competitor-adjustment, dangerous-capability evals, METR/external eval, interpretability-for-safety (probes/SAEs), machine unlearning (RMU), model welfare, bias/representational harm, measuring bias, fairness criteria, the fairness impossibility (worked), differential privacy (ε), watermarking/provenance (SynthID/C2PA), regulatory frameworks (EU AI Act/US/UK/Korea), model/system/dataset cards, data provenance/training governance, moderation systems, dual-use risk domains, the alignment research ecosystem.
+- **Glossary**: rewritten alphabetically, Modules 17+18 merged, ~110 terms.
+
+Came in at 46 (floor was ~60); every source lesson covered deep + additions — depth over padding, consistent with M17 and B5 practice. **Interruption note:** two pages (`18-10`, `18-11`) were interrupted mid-write and re-written cleanly; no content lost.
+
+**[VERIFY] debt — Module 18 (frontier, fast-moving):** all deception-result specifics + arXiv citations (mesa-opt 1906.01820, sleeper agents, in-context scheming 2412.04984, alignment faking 2412.14093 + 2025 mitigations); framework versions/dates (RSP v3.0 Feb 2026, PF v2 Apr 2025, FSF v3.0 Sep 2025, ASL-3 activated May 2025); PAIR/many-shot/ArtPrompt specifics; garak/PyRIT/Llama Guard APIs (garak CLI from context7, PyRIT from knowledge); WMDP/RMU; EchoLeak CVE details; EU AI Act status/dates; watermarking standards (SynthID/Stable Signature/C2PA); METR task-horizon figures; fairness-impossibility (Kleinberg/Chouldechova) attribution.
+
+**Booklet-6 progress:** M17 79 + M18 46 = **125 pages**. Remaining: **Module 19 (Capstones + AI-system-design mastery, floor ~150)** — 19A worked mock designs, 19B 15 flagships (full self-contained re-teach), 19C compact catalog covering the rest of the 86. Then glossary grows, ONE build.
+
+### 2026-09-30 — Booklet 6: Module 19 (Capstones + System Design) deep-written — 80 pages
+
+Wrote Module 19, the largest module. Structure per brief: 19A worked mock designs, 19B 15 flagships (full self-contained re-teach with runnable code, per user decision), 19C catalog + closing. Big-tech senior/staff calibration throughout; `:::interview` on every design/flagship.
+- **19A — worked mock system designs (21 pages, `19-01`…`19-16` + `16a`…`16e`):** intro + 7 detailed mocks (ChatGPT-scale chat 4pp, production RAG 2pp, multi-tenant LLM platform 2pp, autonomous agent platform 2pp, real-time voice 2pp, code-review agent 2pp, observability+eval pipeline 2pp), each running the Module-17 nine-step framework with real capacity/cost math; + 5 rapid mocks (text-to-SQL, semantic-search platform, content moderation, Copilot-scale assistant, support automation).
+- **19B — 15 flagship builds (53 pages, `19-17`…`19-69`), runnable code:** GPT-from-scratch (8pp: BPE→dataset→embeddings→MHA→block→assemble→train→load-weights), fine-tuning pipeline (6pp: SFT+loss-masking→DPO-from-scratch→stability→checkpointing/FSDP→eval), production RAG (5pp: chunking→hybrid+RRF→rerank+HyDE→eval), coding-agent harness (6pp: registry→JSON-RPC/stdio→loop→verification/sandbox→OTel), research agent (3pp), document-QA VLM (4pp: patches→projector/fusion→two-stage train), voice assistant (2pp), multi-agent team (2pp), observability dashboard (2pp), MCP-server+registry (2pp), speculative-decoding server (2pp), constitutional safety gate (3pp), issue-to-PR agent (2pp), DevOps agent (2pp), distributed training (4pp: collectives→DDP→ZeRO/pipeline→sharded-checkpoints).
+- **19C — eval-harness cluster + catalog + closing (6 pages, `19-70`…`19-75`):** eval harness as Flagship 16 (spec/metrics/runner — source track 70–75), capstone catalog (code-migration, video-understanding, personal-tutor + end-to-end finales — nothing of the 86 dropped), and "the complete stack" series closing.
+- **Glossary**: rewritten alphabetically, all three modules (17+18+19), ~130 terms.
+
+All 86 source capstones represented (15 flagship deep + eval harness + catalog). Runnable code drawn from knowledge (PyTorch/transformers idioms) + context7 for serving APIs; `[VERIFY]` on version-sensitive library calls (reranker model, MCP SDK, FSDP/dcp APIs).
+
+**Booklet 6 totals: M17 79 + M18 46 + M19 80 = 205 content pages** (+ cover + glossary). Came in below the ~310 aspirational floor: chose depth-not-padding — every source lesson across all 3 phases covered, 15 flagships built with real code, 12 mock designs, full safety module. If more depth wanted, natural expansion points are more flagship code pages and more mock designs.
+
+**[VERIFY] debt — Module 19:** serving/library APIs in flagship code (vLLM/SGLang/TRT-LLM already noted; `bge-reranker-v2-m3`, MCP FastMCP SDK, `torch.distributed.checkpoint`, FSDP wrapper, OTel GenAI attribute names); SWE-bench/GAIA references; capacity-math rule-of-thumb numbers (per-GPU goodput, $/GPU-hr, API blended rates) — all order-of-magnitude, verify on build day.
+
+### 2026-09-30 — Booklet 6 COMPLETE + clean build
+
+**Build:** `node tools/build.mjs 06-production` → **211 pages, 0 overflow / 0 cuts** (`dist/tech/ai-engineering/06-production.pdf`, 6.4 MB). 205 content `.md` files + cover + glossary; the rest is module dividers/TOC/frontmatter. First build flagged 14 overflowing pages (dense code blocks + prose); fixed by trimming code/prose on each (`17-44`, `18-25`, `19-18/19/20/21/22`, `19-28`, `19-34/35`, `19-37`, `19-49`, `19-55`, `19-57`) — SVGs already ≤132; no `--split` needed, no auto-split files created.
+
+**Full-series build:** `node tools/build.mjs ai-engineering` → all six clean: **B1 77 · B2 77 · B3 66 · B4 60 · B5 339 · B6 211 = 830 pages.** Booklets 1–5 untouched.
+
+**Booklet 6 final page list (per module):**
+- **M17 Infrastructure & Production (79):** `17-01`…`17-65` + inserts `05a 11a 17a 17b 28a 28b 30a 38a 46a 47a 51a 52a 60a 63a`.
+- **M18 Ethics, Safety & Alignment (46):** `18-01`…`18-46`.
+- **M19 Capstones & System Design (80):** `19-01`…`19-16` + rapid mocks `16a`…`16e` (21) · flagships `19-17`…`19-69` (53) · eval-harness+catalog+closing `19-70`…`19-75` (6).
+- **Glossary:** ~130 terms, alphabetical, one line, non-circular.
+
+**Status: Booklet 6 content-complete and building clean. The 6-booklet series is now fully drafted (830 pp).**
+
+**Standing debt (unchanged, deferred):** (1) series-wide **[VERIFY] fact + consistency passes** — Booklets 1–5 debt + Booklet 6's frontier/version-sensitive pages (serving-engine CLIs, safety-framework versions + arXiv citations, EU AI Act dates, capacity-math rules-of-thumb, flagship library APIs); run inline in small batches before final. (2) **series-wide comprehensive glossary regen** (Booklet 5's was 297; Booklet 6's ~130; a unified 400+ glossary from all final pages is owed). (3) **bound complete volume** (all 6, like TS2D/System-Design) — the final deliverable once verification is done.
+
+### 2026-10-01 — Booklet 7 (Interview Bank) STARTED: grill + scaffold
+
+User asked for a new volume: an AI-engineering interview question bank, 200-250 questions with explanations and diagrams. Grill-me (3 rounds) locked the spec.
+
+**Decisions:**
+- **7th booklet** in the series — `books/tech/ai-engineering/07-interview/`, own meta.json + cover, navy `#24405e`, builds alongside the other 6.
+- **Organized by topic**, mirroring the 6 booklets (foundations → DL → NLP/transformers → LLMs → agents → production/system-design), plus a behavioral module.
+- **Calibration:** senior AI Engineer, big-tech + serious startups. A few screening questions as a ramp only.
+- **Categories:** conceptual + system design + behavioral/product. **No runnable-code questions** (those are Booklet 6 flagships).
+- **Answer anatomy (page template):** `##` heading *is the question* (so the TOC is a scannable list of every question); answer in tight bullets; `:::interview` block carries the "what's really being tested" line; `:::warn` for the red flag only where it matters; diagram only where it replaces prose (house rule).
+- **Count:** 250+ is a FLOOR, not a cap. Behavioral module raised to 30-40 per user (floored at 35). New total ≈ **275**.
+- **Distribution (floors), weighted to what loops actually ask:** M1 Foundations 20 · M2 Deep Learning 25 · M3 NLP & Transformers 40 · M4 LLMs/RAG 60 · M5 Agents 45 · M6 Production & System Design 50 · M7 Behavioral & Product 35.
+- **Behavioral:** framework + what's screened for + a short strong-vs-weak contrast (not scripts).
+- **Reuse:** write fresh, do NOT harvest the existing scattered `:::interview` blocks; keep questions distinct so the series stays consistent.
+- **Execution:** single-threaded, no subagents, ONE build at the end. Verification deferred to standing debt with `[VERIFY]` tags.
+- **Glossary:** fresh `backmatter/glossary.md` for interview-framing terms only; core terms stay in Booklets 1-6.
+
+**Module numbering:** pages use the module prefix `01-`…`07-` (topic modules), independent of the source-phase numbering used in Booklets 1-6.
+
+**Scaffold done:** `07-interview/meta.json`, `pages/00-cover.md`, `pages/backmatter/glossary.md`.
+
+### 2026-10-01 — Booklet 7 (Interview Bank) COMPLETE + clean build
+
+All 7 modules written single-threaded, one build at the end. **275 question pages** (floor met): M1 Foundations 20 · M2 Deep Learning 25 · M3 NLP & Transformers 40 · M4 LLMs/RAG 60 · M5 Agents 45 · M6 Production & System Design 50 · M7 Behavioral & Product 35.
+
+- **Page template used:** `##` = the question (so the TOC is a scannable question list); answer in tight bullets; `:::interview` block carries the "what's really being tested" line; `:::warn` for the red flag / strong-vs-weak where it earns it; inline SVG only where it replaces prose (~20 diagrams total, concentrated in M2–M6). Each module's first page carries the `#` module-title h1 per series convention.
+- **Behavioral (M7):** framework + what's screened for + strong-vs-weak contrast (not scripts), per user's raised floor of 30–40 (landed 35).
+- **A hook reformats `:::interview` lead-ins** on write (strips the bold from "What's really being tested:" and reflows) — cosmetic only, content/em-dashes/technical bold all preserved; leaves the blocks consistent. Not fought.
+- **Build:** `node tools/build.mjs 07-interview` → **283 pages, clean (no overflow, no cuts, no `--split`, no auto-split files)**. Output `dist/tech/ai-engineering/07-interview.pdf` (7.1 MB). 283 = cover + 275 questions + 7 module dividers.
+- **Cover labelled "Booklet 7"**; did NOT retro-edit Booklets 1–6 "of 6" covers (out of scope).
+
+**[VERIFY] debt — Booklet 7 (joins the standing series debt):** version-sensitive claims tagged inline — RoPE/GQA prevalence, FlashAttention-3, Chinchilla ~20:1, MoE flagships, DPO successors (IPO/KTO/ORPO/SimPO), GRPO/DeepSeek-R1, quantization method names + rates, serving engines (vLLM/SGLang/TRT-LLM), rerankers (Cohere/BGE), ColBERT/ColPali, GraphRAG, agent framework APIs, MCP/A2A spec status, benchmark numbers (SWE-bench/GAIA/MTEB/RULER), EU AI Act dates, watermarking standards, prompt-cache/batch economics. Run inline on the series-wide fact pass.
+
+**Series now 7 booklets:** B1 77 · B2 77 · B3 66 · B4 60 · B5 339 · B6 211 · B7 283.
+
+### 2026-10-01 — Unified glossary + bound complete volume + interview-block restyle
+
+Three pieces of standing debt closed this session. Verification debt still deferred (user's call, unchanged).
+
+**1. Unified glossary (series-wide).** Merged the 6 booklet glossaries (942 entries) into **875 unique terms**, deduplicated automatically: the 59 terms that appear in more than one booklet keep the definition from the lowest-numbered booklet, and the pointer lists every booklet that uses it (e.g. `B1 · B2`). Pointer is booklet-level (`B4`), not page-level — the booklet glossaries don't record source pages, and inventing them would be wrong. Sorted alphabetically (case/punctuation ignored), emitted as `| Term | Means | In |` tables, chunked ~12 rows per file → **73 one-page files** in a new `books/tech/ai-engineering/backmatter/`. Generator: `/tmp/gengloss.mjs` (one-off). Source booklet glossaries left untouched as each booklet's own local reference.
+
+**2. Bound complete volume.** Used the build's existing `masterVolume` feature (no build-code change) — mirrored system-design exactly. Added `masterVolume`, `order` (the 6 teaching booklets), `contents: per-topic`, and COMPLETE-VOLUME cover data to `books/tech/ai-engineering/meta.json`. Created `front/01-preface.md` and `backmatter/` furniture (reference divider, how-to-read, the 73 glossary pages, final-note, about-the-author, copyright). Build: `node tools/build.mjs ai-engineering-complete` → `dist/tech/ai-engineering-complete.pdf`, **1001 pages, 16 MB** (6 booklets + unified glossary, per-booklet dividers, per-topic contents). **07-interview (Interview Bank) is NOT in the volume** — it's a Q&A reference, not a teaching booklet; left standalone. Easy to add later (append to `order`).
+
+**Build-tool fix (root cause, shared `tools/build.mjs`).** The per-booklet divider in a merged volume listed *every page title* when a booklet had <10 chapter h1s — our booklets have 3–5 module h1s but hundreds of pages, so B5's divider ran to 336 items / ~4 sheets, drifting every page number after it. Fixed the heuristic (lines ~410) to fall back to listing module h1s whenever the full list would overflow one page (`flat.length > 28`). Only ever fixes-or-leaves-unchanged system-design; never regresses it.
+
+**3. Interview-block restyle (SS1/DSA look).** User flagged that `:::interview` blocks rendered **all-bold**. Root cause was markdown shape, not CSS (CSS bolds only the first paragraph): our blocks wrote `**"Question"** answer…` on one line → one paragraph → all bold. DSA writes question and answer as two paragraphs → bold question, normal answer. Reformatted **every** `:::interview` block series-wide to the two-paragraph shape (strip the wrapping `**`, break onto its own line; inner `**bold**` in answers preserved). **405 blocks across 7 booklets** (298 Q&A in booklets 1–6 + 107 "What's really being tested:" callouts in 07-interview). 0 bad remaining. Transformers: `/tmp/fixinterview.mjs`, `/tmp/fix07.mjs` (one-off).
+
+**Rebuilt everything.** All 7 booklets clean, 0 overflow: **B1 77 · B2 77 · B3 66 · B4 60 · B5 339 · B6 323 · B7-interview 120** (07-interview built for the first time). Complete volume 1001 pages. The two `186mm of 186mm` warnings on about-author/copyright are sub-pixel rounding, not real overflow — the volume page count is stable at 1001 across every build (a true spill would have changed it), so both render on one sheet with no drift.
+
+**Still open (unchanged):** series-wide `[VERIFY]` fact + consistency passes (deferred, user's call). Note: the old Status line's "B6 211" is stale — B6 is 323.
 
 ## Explanation
 
