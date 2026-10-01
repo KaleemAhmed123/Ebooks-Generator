@@ -17,5 +17,7 @@
 - **The trade:** many vectors per page means a bigger index and heavier scoring than single-vector search — you buy dramatically better retrieval on visual documents with storage and compute.
 
 :::interview
-**"How would you build RAG over a folder of scanned PDFs with charts?"** The strong 2026 answer is vision-native: embed page images with a ColPali-style model using multi-vector late interaction, skipping OCR and chunking entirely, so charts and tables are retrievable. Then feed the top pages (as images) to a document VLM to answer. It beats OCR-then-text-RAG on anything visual, at the cost of a larger multi-vector index.
+"How would you build RAG over a folder of scanned PDFs with charts?"
+
+The strong 2026 answer is vision-native: embed page images with a ColPali-style model using multi-vector late interaction, skipping OCR and chunking entirely, so charts and tables are retrievable. Then feed the top pages (as images) to a document VLM to answer. It beats OCR-then-text-RAG on anything visual, at the cost of a larger multi-vector index.
 :::

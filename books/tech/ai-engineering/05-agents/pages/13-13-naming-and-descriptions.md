@@ -25,5 +25,7 @@
 </svg>
 
 :::interview
-**"A model keeps calling the wrong one of two similar tools. Fix?"** Fix the descriptions, not the model. Make each description state explicitly when to use *this* one and when to prefer the *other* ("use search_web for public info; use search_docs for internal wiki"). Distinct names help too. Overlapping, vague descriptions are the root cause of tool confusion, and the fix is a one-line schema edit.
+"A model keeps calling the wrong one of two similar tools. Fix?"
+
+Fix the descriptions, not the model. Make each description state explicitly when to use *this* one and when to prefer the *other* ("use search_web for public info; use search_docs for internal wiki"). Distinct names help too. Overlapping, vague descriptions are the root cause of tool confusion, and the fix is a one-line schema edit.
 :::

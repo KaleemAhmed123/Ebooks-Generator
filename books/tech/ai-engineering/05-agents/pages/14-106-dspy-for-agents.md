@@ -15,5 +15,7 @@
 - **Where the optimization pays off:** high-volume, repeated tasks where a few points of accuracy matter and you have examples to optimize against — classification-heavy agents, extraction pipelines, anything you run millions of times. For a bespoke one-off agent, the optimization overhead is not worth it.
 
 :::interview
-**"How does DSPy relate to frameworks like LangGraph for agents?"** They solve different problems and compose. LangGraph orchestrates control flow (nodes, edges, state, persistence); DSPy *optimizes the prompts* inside the LLM calls. DSPy can build agents (its `ReAct` module) and, uniquely, tune their reasoning/tool-use prompts against a metric — but it isn't an orchestration or persistence layer. The strong pattern is LangGraph for the flow with DSPy-compiled modules doing the model calls. Use DSPy when measurable prompt optimization over many runs matters; use an orchestration framework for the loop and state.
+"How does DSPy relate to frameworks like LangGraph for agents?"
+
+They solve different problems and compose. LangGraph orchestrates control flow (nodes, edges, state, persistence); DSPy *optimizes the prompts* inside the LLM calls. DSPy can build agents (its `ReAct` module) and, uniquely, tune their reasoning/tool-use prompts against a metric — but it isn't an orchestration or persistence layer. The strong pattern is LangGraph for the flow with DSPy-compiled modules doing the model calls. Use DSPy when measurable prompt optimization over many runs matters; use an orchestration framework for the loop and state.
 :::

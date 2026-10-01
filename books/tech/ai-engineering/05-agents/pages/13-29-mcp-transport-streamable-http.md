@@ -15,5 +15,7 @@
 - **Now security matters.** A remote endpoint is on the network, so it needs authentication (OAuth 2.1, 13-37), origin validation, and TLS — none of which stdio required. Remote transport is where MCP's threat model (next cluster) becomes real.
 
 :::interview
-**"stdio vs Streamable HTTP — how do you choose?"** stdio for **local** servers: the host runs the server as a subprocess, no network, simplest and safest, ideal for filesystem/local-DB/CLI tools. Streamable HTTP for **remote** servers: a networked endpoint others can reach, needed for SaaS or shared team servers, streaming via SSE when required — but now you own auth, TLS, and the full network threat model. Local → stdio; remote/shared → Streamable HTTP.
+"stdio vs Streamable HTTP — how do you choose?"
+
+stdio for **local** servers: the host runs the server as a subprocess, no network, simplest and safest, ideal for filesystem/local-DB/CLI tools. Streamable HTTP for **remote** servers: a networked endpoint others can reach, needed for SaaS or shared team servers, streaming via SSE when required — but now you own auth, TLS, and the full network threat model. Local → stdio; remote/shared → Streamable HTTP.
 :::

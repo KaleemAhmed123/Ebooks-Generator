@@ -17,5 +17,7 @@
   - You want the **simplest** multi-agent setup with intuitive roles → CrewAI (next) is faster to stand up.
 
 :::interview
-**"AutoGen vs LangGraph — how do you decide?"** They optimize different things. AutoGen is conversation-first: you define agents and let them talk, which is fast to set up and great for research, dynamic multi-agent collaboration, and code-executing analysis — but it's harder to make reliable and bound. LangGraph is control-flow-first: you engineer an explicit, checkpointed graph, which is more verbose but gives persistence, human-in-the-loop, replay, and production reliability. Pick AutoGen to explore emergent collaboration; pick LangGraph when the flow must be controlled and dependable.
+"AutoGen vs LangGraph — how do you decide?"
+
+They optimize different things. AutoGen is conversation-first: you define agents and let them talk, which is fast to set up and great for research, dynamic multi-agent collaboration, and code-executing analysis — but it's harder to make reliable and bound. LangGraph is control-flow-first: you engineer an explicit, checkpointed graph, which is more verbose but gives persistence, human-in-the-loop, replay, and production reliability. Pick AutoGen to explore emergent collaboration; pick LangGraph when the flow must be controlled and dependable.
 :::

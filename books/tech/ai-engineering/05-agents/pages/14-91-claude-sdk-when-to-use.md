@@ -18,5 +18,7 @@
 - **Model-family note:** the harness is built around Claude; weigh that if you need provider flexibility. **[VERIFY]**
 
 :::interview
-**"When is the Claude Agent SDK the right tool?"** When the agent's job is to *operate a computer* over a long horizon — coding, dev automation, file-and-shell workflows. It ships the exact infrastructure that shape needs and that home-grown agents get wrong: a capable built-in toolset (files, bash, search), automatic context compaction for long transcripts, subagents for context isolation, and a permission/hook layer to make autonomous execution safe. For a simple tool agent it's heavier than the OpenAI SDK; for an intricate custom graph you'd want LangGraph; for a role-based prototype, CrewAI. Its sweet spot is autonomous, environment-operating agents.
+"When is the Claude Agent SDK the right tool?"
+
+When the agent's job is to *operate a computer* over a long horizon — coding, dev automation, file-and-shell workflows. It ships the exact infrastructure that shape needs and that home-grown agents get wrong: a capable built-in toolset (files, bash, search), automatic context compaction for long transcripts, subagents for context isolation, and a permission/hook layer to make autonomous execution safe. For a simple tool agent it's heavier than the OpenAI SDK; for an intricate custom graph you'd want LangGraph; for a role-based prototype, CrewAI. Its sweet spot is autonomous, environment-operating agents.
 :::

@@ -28,5 +28,7 @@ print(crew.kickoff(inputs={"topic": "MCP security"}))
 - **Compare the effort:** this is a complete two-agent pipeline in ~15 lines, readable by someone who has never seen the framework. That approachability is CrewAI's core value — and why it is a common first multi-agent framework.
 
 :::interview
-**"How does data flow between agents in CrewAI?"** Through task `context`. Each task produces an output shaped by its `expected_output`, and a downstream task lists upstream tasks in its `context`, receiving their outputs as input. In a sequential process this makes a clean pipeline — researcher's findings feed the writer, whose draft feeds the editor. It's CrewAI's version of a LangGraph edge or an AutoGen message: the explicit link that turns independent agents into a coordinated flow.
+"How does data flow between agents in CrewAI?"
+
+Through task `context`. Each task produces an output shaped by its `expected_output`, and a downstream task lists upstream tasks in its `context`, receiving their outputs as input. In a sequential process this makes a clean pipeline — researcher's findings feed the writer, whose draft feeds the editor. It's CrewAI's version of a LangGraph edge or an AutoGen message: the explicit link that turns independent agents into a coordinated flow.
 :::

@@ -12,5 +12,7 @@
 - **Eval-driven development** flips the workflow: build the eval set *first*, then develop the agent to pass it — like test-driven development. Your evals define what "good" means before you chase it.
 
 :::interview
-**"How do you know if a change to your agent is an improvement?"** You run it against an evaluation set and compare scores — not by eyeballing a few outputs. Agents are non-deterministic and multi-step, so any change helps some cases and hurts others; only a test suite reveals the net effect and catches regressions. Mature teams do eval-driven development: define the eval set first (it encodes what "good" means), then build to pass it, and gate releases on the score. Without evals you're guessing, and you'll "improve" the agent in circles.
+"How do you know if a change to your agent is an improvement?"
+
+You run it against an evaluation set and compare scores — not by eyeballing a few outputs. Agents are non-deterministic and multi-step, so any change helps some cases and hurts others; only a test suite reveals the net effect and catches regressions. Mature teams do eval-driven development: define the eval set first (it encodes what "good" means), then build to pass it, and gate releases on the score. Without evals you're guessing, and you'll "improve" the agent in circles.
 :::

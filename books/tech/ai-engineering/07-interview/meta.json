@@ -1,0 +1,17 @@
+{
+  "title": "Interview Bank",
+  "subtitle": "275 Questions for AI Engineering Roles",
+  "seriesLine": "AI Engineering: From Scratch",
+  "tocTitle": "Questions",
+  "cover": {
+    "accent": "#24405e",
+    "title": ["AI Engineering", "Interview Bank"],
+    "banner": "KNOW IT. EXPLAIN IT. DEFEND IT.",
+    "kicker": "275+ QUESTIONS · CONCEPTS · SYSTEM DESIGN · BEHAVIORAL",
+    "term": [["Q: why does attention cost O(n²)?", 0], [">>> every token attends to every token", 1],
+             ["Q: design RAG for 10M docs, 500 qps", 0], ["$ offer --level senior  ✓", 2]],
+    "stack": ["conceptual depth", "transformers & LLMs", "RAG & agents",
+              "serving & system design", "safety & alignment", "behavioral & product"],
+    "face": {"brow": "raised", "mouth": "smile", "tilt": 0}
+  }
+}

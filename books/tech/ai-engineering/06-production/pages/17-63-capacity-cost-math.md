@@ -32,5 +32,7 @@ Prompt ~1,500 in + 400 out tokens/message.
 - **The build-vs-buy crossover is the payoff.** The math *proves* the earlier rule of thumb: at 10M DAU the API bill dwarfs the GPU bill, so self-hosting open weights is right — and you showed it, not asserted it.
 
 :::interview
-**"Roughly how many GPUs to serve this?"** Never guess a number. Walk it: DAU × messages → QPS → peak QPS → output tokens/s → divide by per-GPU goodput → add headroom. Then cross-check the GPU-hour cost against the equivalent API bill to justify build-vs-buy. Flag your one shaky assumption (per-GPU throughput) as "I'd verify this with a load test." The *derivation* is scored, not the final integer.
+"Roughly how many GPUs to serve this?"
+
+Never guess a number. Walk it: DAU × messages → QPS → peak QPS → output tokens/s → divide by per-GPU goodput → add headroom. Then cross-check the GPU-hour cost against the equivalent API bill to justify build-vs-buy. Flag your one shaky assumption (per-GPU throughput) as "I'd verify this with a load test." The *derivation* is scored, not the final integer.
 :::

@@ -16,5 +16,7 @@
 - **The benchmark is not your task.** A high SWE-bench score does not guarantee good performance on *your* domain. Benchmarks measure general progress; your own eval set (14-116) measures what you actually ship.
 
 :::interview
-**"How much should you trust agent benchmark scores?"** As a directional signal, not a guarantee. Watch for contamination (leaked test data inflating scores), overfitting (labs optimizing for the benchmark until it stops measuring general ability), and scaffold effects (the same model scores very differently with a better harness — the number is really model-plus-scaffold). And a benchmark is never your task: a top SWE-bench score doesn't promise results on your codebase. Use benchmarks to track the field and shortlist models, then decide with *your own* eval set on *your* workload. The senior move is respecting benchmarks without worshipping them.
+"How much should you trust agent benchmark scores?"
+
+As a directional signal, not a guarantee. Watch for contamination (leaked test data inflating scores), overfitting (labs optimizing for the benchmark until it stops measuring general ability), and scaffold effects (the same model scores very differently with a better harness — the number is really model-plus-scaffold). And a benchmark is never your task: a top SWE-bench score doesn't promise results on your codebase. Use benchmarks to track the field and shortlist models, then decide with *your own* eval set on *your* workload. The senior move is respecting benchmarks without worshipping them.
 :::

@@ -16,5 +16,7 @@
 - **Structured output** closes the loop: ask for JSON (Booklet 4's constrained decoding) so the answer is machine-usable — `{"total": 36}`, not a sentence.
 
 :::interview
-**"OCR-then-LLM vs a document VLM — which and why?"** OCR-then-LLM is a two-stage pipeline: any OCR error (a misread digit, a scrambled table) propagates and the LLM never sees the layout. A document VLM reads pixels end to end, preserving spatial structure and handling stamps, handwriting, and complex tables OCR mangles. The tradeoff: OCR is cheaper per page and its text output is auditable; VLMs cost more tokens but are more robust on messy real documents.
+"OCR-then-LLM vs a document VLM — which and why?"
+
+OCR-then-LLM is a two-stage pipeline: any OCR error (a misread digit, a scrambled table) propagates and the LLM never sees the layout. A document VLM reads pixels end to end, preserving spatial structure and handling stamps, handwriting, and complex tables OCR mangles. The tradeoff: OCR is cheaper per page and its text output is auditable; VLMs cost more tokens but are more robust on messy real documents.
 :::

@@ -18,5 +18,7 @@
 - This is layered defense (previewed for prompt injection, 14-88) as a first-class SDK feature — you declare the checks and the framework enforces them around every run.
 
 :::interview
-**"How do guardrails work in the OpenAI Agents SDK?"** They're validation checks the framework runs around the agent. Input guardrails vet the request before the agent runs — rejecting off-topic, unsafe, or injection-y input early. Output guardrails vet the result before it returns — enforcing format, policy, or no-secret-leak rules. A guardrail can be a rule or a cheap classifier model, and failing one halts (or retries) the run. It's built-in layered defense: cheap tripwires around an expensive agent, so bad inputs and outputs are caught without you wiring the checks manually.
+"How do guardrails work in the OpenAI Agents SDK?"
+
+They're validation checks the framework runs around the agent. Input guardrails vet the request before the agent runs — rejecting off-topic, unsafe, or injection-y input early. Output guardrails vet the result before it returns — enforcing format, policy, or no-secret-leak rules. A guardrail can be a rule or a cheap classifier model, and failing one halts (or retries) the run. It's built-in layered defense: cheap tripwires around an expensive agent, so bad inputs and outputs are caught without you wiring the checks manually.
 :::

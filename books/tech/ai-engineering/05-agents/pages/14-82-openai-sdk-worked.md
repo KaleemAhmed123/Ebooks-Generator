@@ -31,5 +31,7 @@ print((await Runner.run(triage, "Invoice #77 is wrong.", session=session)).final
 - **Compare:** LangGraph would make this an explicit graph (more control, more code); CrewAI a crew; AutoGen a conversation. The Agents SDK is the **fewest concepts** for a tool-using, guarded, multi-agent app — its whole value in one example.
 
 :::interview
-**"Build a support triage agent — what's the minimal shape?"** A triage agent whose only job is routing, with `handoffs` to specialist agents (billing, tech), each holding its own tools. Add an input guardrail to reject off-topic requests before the model runs, and a session for memory. The Runner drives the loop and switches agents on handoff — ~15 lines in the OpenAI Agents SDK. A graph framework is more code but more controllable; match the framework's weight to the control the task needs.
+"Build a support triage agent — what's the minimal shape?"
+
+A triage agent whose only job is routing, with `handoffs` to specialist agents (billing, tech), each holding its own tools. Add an input guardrail to reject off-topic requests before the model runs, and a session for memory. The Runner drives the loop and switches agents on handoff — ~15 lines in the OpenAI Agents SDK. A graph framework is more code but more controllable; match the framework's weight to the control the task needs.
 :::

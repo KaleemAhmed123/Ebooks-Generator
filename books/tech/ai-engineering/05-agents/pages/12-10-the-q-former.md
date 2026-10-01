@@ -19,5 +19,7 @@
 - A linear layer then reshapes those 32 tokens to the LLM's embedding width, and they are prepended to the text prompt. The frozen LLM sees 32 extra "words" describing the image.
 
 :::interview
-**"Why 32 queries and not one vector, or all 257 patches?"** One vector is a single global summary — too lossy for questions about parts of the scene. All 257 patches is faithful but expensive and, in BLIP-2, would overwhelm a frozen LLM never trained on that many visual tokens. 32 is the compromise: enough slots to cover distinct regions, few enough to stay cheap. The number is a **detail-vs-cost dial**, and later VLMs turned it up.
+"Why 32 queries and not one vector, or all 257 patches?"
+
+One vector is a single global summary — too lossy for questions about parts of the scene. All 257 patches is faithful but expensive and, in BLIP-2, would overwhelm a frozen LLM never trained on that many visual tokens. 32 is the compromise: enough slots to cover distinct regions, few enough to stay cheap. The number is a **detail-vs-cost dial**, and later VLMs turned it up.
 :::

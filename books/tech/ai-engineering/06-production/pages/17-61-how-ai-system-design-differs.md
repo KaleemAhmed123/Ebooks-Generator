@@ -20,5 +20,7 @@
 - **GPU scarcity** — capacity is bounded by GPU memory (KV cache), not CPU, and GPUs are expensive and supply-constrained. Serving economics dominate the scale plan.
 
 :::interview
-**"How is designing an LLM system different from designing, say, a URL shortener?"** Five ways: output is **nondeterministic** (so eval, versioning, and rate-based alerting replace exact tests); cost is **token-linear and unbounded** (so budgets and routing are first-class); **eval has no ground-truth equality** (so LLM-judge + human review); the system **hallucinates** (so grounding and guardrails are load-bearing); and capacity is **GPU-memory-bound** (so the KV cache, not CPU, sets scale). A classic design ignores all five; naming them up front is the domain signal.
+"How is designing an LLM system different from designing, say, a URL shortener?"
+
+Five ways: output is **nondeterministic** (so eval, versioning, and rate-based alerting replace exact tests); cost is **token-linear and unbounded** (so budgets and routing are first-class); **eval has no ground-truth equality** (so LLM-judge + human review); the system **hallucinates** (so grounding and guardrails are load-bearing); and capacity is **GPU-memory-bound** (so the KV cache, not CPU, sets scale). A classic design ignores all five; naming them up front is the domain signal.
 :::

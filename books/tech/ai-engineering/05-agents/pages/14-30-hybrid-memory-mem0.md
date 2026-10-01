@@ -19,5 +19,7 @@
 - **Why use a library:** memory is fiddly — extraction, dedup, decay, retrieval tuning. mem0 and similar layers (and the memory features inside LangGraph, CrewAI, Letta) let you `add`/`search` and skip building all that. The tradeoff is less control and another dependency.
 
 :::interview
-**"How would you give a production assistant durable memory?"** A hybrid layer, not one mechanism. Extract durable facts from conversations with an LLM (don't store raw transcripts), deduplicate and resolve conflicts so memory stays current, store facts in both a vector index (similarity recall) and a graph (entities/relations for precise, multi-hop lookup), and retrieve the relevant subset into context each turn. Use a library like mem0 or a framework's built-in memory to get extraction/dedup/retrieval for free rather than hand-rolling it.
+"How would you give a production assistant durable memory?"
+
+A hybrid layer, not one mechanism. Extract durable facts from conversations with an LLM (don't store raw transcripts), deduplicate and resolve conflicts so memory stays current, store facts in both a vector index (similarity recall) and a graph (entities/relations for precise, multi-hop lookup), and retrieve the relevant subset into context each turn. Use a library like mem0 or a framework's built-in memory to get extraction/dedup/retrieval for free rather than hand-rolling it.
 :::

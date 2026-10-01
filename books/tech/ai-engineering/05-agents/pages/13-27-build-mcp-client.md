@@ -27,5 +27,7 @@ async with stdio_client(params) as (read, write):
 - **This is the bridge.** MCP standardizes *tool discovery and invocation*; your agent loop (Module 14) still drives *when* to call. The client turns any MCP server into tools your existing agent can use, no per-server code.
 
 :::interview
-**"How does an MCP server's tool actually reach the model?"** The host's client connects, runs `initialize`, then `tools/list` to fetch the server's tool definitions. The client passes those definitions to the LLM as its available tools. When the model emits a tool call, the client sends `tools/call` to the server, gets the result, and feeds it back into the conversation. MCP is the discovery-and-transport layer; the model's function-calling mechanism is unchanged.
+"How does an MCP server's tool actually reach the model?"
+
+The host's client connects, runs `initialize`, then `tools/list` to fetch the server's tool definitions. The client passes those definitions to the LLM as its available tools. When the model emits a tool call, the client sends `tools/call` to the server, gets the result, and feeds it back into the conversation. MCP is the discovery-and-transport layer; the model's function-calling mechanism is unchanged.
 :::

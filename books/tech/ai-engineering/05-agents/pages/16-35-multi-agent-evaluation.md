@@ -11,5 +11,7 @@
 - **Observability at the system level** (16-36) — trace the whole multi-agent run (every agent, every message) so you can *see* coordination failures, not just infer them from a bad outcome.
 
 :::interview
-**"How do you evaluate a multi-agent system?"** Beyond single-agent outcome evals, you assess the *system*: per-agent contribution (ablate each agent — does removing it hurt? if not, cut it), coordination quality (did agents communicate, avoid conflict, share info, and terminate cleanly — the MAST failure categories, found via trajectory analysis of the interactions), and cost/latency efficiency (quality per dollar and second). Critically, you always compare against a *strong single-agent baseline* on the same task — the check that catches the most common failure: a more complex, expensive system that's no better than one good agent. And you trace the whole run at the system level so coordination failures are visible, not just inferred from a bad result.
+"How do you evaluate a multi-agent system?"
+
+Beyond single-agent outcome evals, you assess the *system*: per-agent contribution (ablate each agent — does removing it hurt? if not, cut it), coordination quality (did agents communicate, avoid conflict, share info, and terminate cleanly — the MAST failure categories, found via trajectory analysis of the interactions), and cost/latency efficiency (quality per dollar and second). Critically, you always compare against a *strong single-agent baseline* on the same task — the check that catches the most common failure: a more complex, expensive system that's no better than one good agent. And you trace the whole run at the system level so coordination failures are visible, not just inferred from a bad result.
 :::

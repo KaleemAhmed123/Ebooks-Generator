@@ -16,5 +16,7 @@
 - Episodic memory is *particular* — concrete events with time and context. That distinguishes it from semantic memory (next), which is the *general* knowledge distilled from many episodes.
 
 :::interview
-**"What is episodic memory in an agent, and how is it stored?"** It holds specific past experiences — this task, this outcome, this lesson — as discrete, usually timestamped events, typically embedded so they're retrievable by similarity. When the agent hits a new situation it recalls similar past episodes ("how did I handle this before?") and uses them as few-shot guidance. It's the autobiography layer, distinct from semantic memory's distilled general facts; successful episodes become examples and failed ones become cautions.
+"What is episodic memory in an agent, and how is it stored?"
+
+It holds specific past experiences — this task, this outcome, this lesson — as discrete, usually timestamped events, typically embedded so they're retrievable by similarity. When the agent hits a new situation it recalls similar past episodes ("how did I handle this before?") and uses them as few-shot guidance. It's the autobiography layer, distinct from semantic memory's distilled general facts; successful episodes become examples and failed ones become cautions.
 :::

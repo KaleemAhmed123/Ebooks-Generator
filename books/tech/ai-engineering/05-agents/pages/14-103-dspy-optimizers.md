@@ -17,5 +17,7 @@
 - **Optimizer families** (names evolve): bootstrapping few-shot demonstrations, instruction-search methods, and heavier joint optimizers — you pick based on data size and budget. **[VERIFY names]**
 
 :::interview
-**"What does DSPy actually optimize, and how?"** Given your program (signatures + modules), a set of examples, and a metric, the optimizer searches the *prompts* — primarily which few-shot demonstrations to include and how instructions are worded — to maximize the metric on your data. It runs the program, scores outputs, and iterates, baking the best prompts into a compiled program. The point is that prompt engineering becomes an automated, metric-driven optimization instead of manual trial-and-error, and it re-runs when you change models — reproducible, portable prompt tuning.
+"What does DSPy actually optimize, and how?"
+
+Given your program (signatures + modules), a set of examples, and a metric, the optimizer searches the *prompts* — primarily which few-shot demonstrations to include and how instructions are worded — to maximize the metric on your data. It runs the program, scores outputs, and iterates, baking the best prompts into a compiled program. The point is that prompt engineering becomes an automated, metric-driven optimization instead of manual trial-and-error, and it re-runs when you change models — reproducible, portable prompt tuning.
 :::

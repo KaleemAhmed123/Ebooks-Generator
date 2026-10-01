@@ -29,5 +29,7 @@ critic = AssistantAgent("critic", model_client=model,
 </svg>
 
 :::interview
-**"How do you build a writer-critic loop in AutoGen?"** Create two `AssistantAgent`s with distinct system messages — one that writes, one that critiques and demands revisions — and put them in a conversation. They exchange messages (draft → critique → revise) until a termination condition fires: a keyword like "APPROVED", a max turn count, or a custom check. It's the evaluator-optimizer pattern (14-40) expressed as two conversing agents, and the key thing you must set is the *stop condition*, or they talk forever.
+"How do you build a writer-critic loop in AutoGen?"
+
+Create two `AssistantAgent`s with distinct system messages — one that writes, one that critiques and demands revisions — and put them in a conversation. They exchange messages (draft → critique → revise) until a termination condition fires: a keyword like "APPROVED", a max turn count, or a custom check. It's the evaluator-optimizer pattern (14-40) expressed as two conversing agents, and the key thing you must set is the *stop condition*, or they talk forever.
 :::

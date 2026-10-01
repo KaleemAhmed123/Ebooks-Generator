@@ -31,5 +31,7 @@ turn 4  THINK   → text: "About 4.2 million." (no tool → STOP)
 </svg>
 
 :::interview
-**"How does an agent break a task into steps?"** It doesn't plan the whole thing up front (unless it's a plan-and-execute agent). In the basic loop it decides *one step at a time*: think → call a tool → observe → decide the next step from what it learned. The decomposition emerges turn by turn, each step conditioned on the last observation. That is why agents handle tasks you didn't script — and why they cost one model call per step.
+"How does an agent break a task into steps?"
+
+It doesn't plan the whole thing up front (unless it's a plan-and-execute agent). In the basic loop it decides *one step at a time*: think → call a tool → observe → decide the next step from what it learned. The decomposition emerges turn by turn, each step conditioned on the last observation. That is why agents handle tasks you didn't script — and why they cost one model call per step.
 :::

@@ -27,5 +27,7 @@ await team.run(task="Tagline for a privacy-first email app.")
 - **Everything hangs on the termination condition.** Remove it and the critic keeps finding nits forever. The condition is not optional polish — it is the brake, exactly as in the raw loop (14-05).
 
 :::interview
-**"Show the essential parts of an AutoGen multi-agent program."** Three: the **agents** (each an `AssistantAgent` with a role-defining system message), the **team** with a speaker policy (round-robin or a model-based selector), and the **termination condition** (a keyword mention, max turns, or a custom check). You `run` the team on a task and the agents converse until termination. Forgetting the termination condition is the classic bug — the conversation never ends and costs spiral.
+"Show the essential parts of an AutoGen multi-agent program."
+
+Three: the **agents** (each an `AssistantAgent` with a role-defining system message), the **team** with a speaker policy (round-robin or a model-based selector), and the **termination condition** (a keyword mention, max turns, or a custom check). You `run` the team on a task and the agents converse until termination. Forgetting the termination condition is the classic bug — the conversation never ends and costs spiral.
 :::

@@ -30,5 +30,7 @@ result = crew.kickoff(inputs={"topic": "agent frameworks"})
 - **`expected_output` does more than it looks** — a per-task success spec that shapes output and lets the next task rely on a known shape. Vague ones are a top cause of poor results; specific ones are the fix.
 
 :::interview
-**"What are the core objects in a CrewAI program?"** Three. An **Agent** is a persona (role, goal, backstory, tools) — the *who*. A **Task** is a unit of work with a description, an assigned agent, and — importantly — an `expected_output` that defines done — the *what*. A **Crew** binds agents and ordered tasks with a process that governs execution, kicked off with inputs. The `expected_output` is the most under-used lever: a precise one steers the agent and lets downstream tasks depend on a known shape.
+"What are the core objects in a CrewAI program?"
+
+Three. An **Agent** is a persona (role, goal, backstory, tools) — the *who*. A **Task** is a unit of work with a description, an assigned agent, and — importantly — an `expected_output` that defines done — the *what*. A **Crew** binds agents and ordered tasks with a process that governs execution, kicked off with inputs. The `expected_output` is the most under-used lever: a precise one steers the agent and lets downstream tasks depend on a known shape.
 :::

@@ -15,5 +15,7 @@
 - **Quality** — did the run succeed? Capture explicit **user feedback** (thumbs up/down, corrections), task-success signals, and automated eval scores (next cluster). This is the hardest and most valuable signal — everything else is a proxy for it.
 
 :::interview
-**"What do you monitor for a production agent?"** Four things. Debug detail — full inputs/outputs of every model and tool call, so failures are reconstructable. Cost — tokens and dollars per run/step/user, to find expensive steps and catch runaway loops. Latency — per-step and end-to-end percentiles (p95, not just mean), to locate bottlenecks users actually feel. And quality — success signals and real user feedback, plus automated evals. The first three are mechanical; the fourth is the point — you instrument the mechanics to explain movements in quality.
+"What do you monitor for a production agent?"
+
+Four things. Debug detail — full inputs/outputs of every model and tool call, so failures are reconstructable. Cost — tokens and dollars per run/step/user, to find expensive steps and catch runaway loops. Latency — per-step and end-to-end percentiles (p95, not just mean), to locate bottlenecks users actually feel. And quality — success signals and real user feedback, plus automated evals. The first three are mechanical; the fourth is the point — you instrument the mechanics to explain movements in quality.
 :::

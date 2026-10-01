@@ -17,5 +17,7 @@
 - **The five mistakes that cap a level:** (1) architecting before requirements; (2) no numbers; (3) skipping eval — "how do you know it works?" has no answer; (4) ignoring cost; (5) claiming zero hallucination / perfect reliability instead of *bounding* them.
 
 :::interview
-**The 30-second frame to open with, every time:** *"Let me clarify requirements and scale, sketch the high-level design, deep-dive the hardest component, then cover eval, cost, and failure modes — stopping me anywhere you want more depth."* Saying this first shows the interviewer you have a process, sets the agenda, and buys you permission to run the framework. It is the single highest-leverage sentence in the round.
+The 30-second frame to open with, every time:
+
+*"Let me clarify requirements and scale, sketch the high-level design, deep-dive the hardest component, then cover eval, cost, and failure modes — stopping me anywhere you want more depth."* Saying this first shows the interviewer you have a process, sets the agenda, and buys you permission to run the framework. It is the single highest-leverage sentence in the round.
 :::

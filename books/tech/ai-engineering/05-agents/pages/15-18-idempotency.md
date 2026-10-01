@@ -17,5 +17,7 @@
 - **This connects to hallucinated/over-action** (14-127): the same discipline — every consequential action is tracked, verified, and not blindly repeated — protects against both a crashed resume *and* a confused agent re-doing things.
 
 :::interview
-**"An agent crashes after sending an email but before saving that it did — how do you prevent it re-sending on resume?"** Idempotency. Give each side-effecting action a unique idempotency key (e.g. `email:ticket-123`), and before executing, check whether that key already completed — if so, skip and reuse the result. Design actions to be naturally repeatable where possible ("ensure sent" semantics, provider-level idempotency keys), and for truly non-idempotent actions, record completion durably before marking the step done and gate them behind human approval. The rule: a durable resume must never re-fire a side effect that already happened.
+"An agent crashes after sending an email but before saving that it did — how do you prevent it re-sending on resume?"
+
+Idempotency. Give each side-effecting action a unique idempotency key (e.g. `email:ticket-123`), and before executing, check whether that key already completed — if so, skip and reuse the result. Design actions to be naturally repeatable where possible ("ensure sent" semantics, provider-level idempotency keys), and for truly non-idempotent actions, record completion durably before marking the step done and gate them behind human approval. The rule: a durable resume must never re-fire a side effect that already happened.
 :::

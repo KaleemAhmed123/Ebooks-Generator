@@ -21,5 +21,7 @@
 - The N−1 off-diagonal cells in each row are **negatives** — free, because they are just the other captions in the batch. That is why CLIP needs enormous batch sizes (32k+): more negatives per step, sharper the space.
 
 :::interview
-**"Why does CLIP train with such huge batches?"** Because the negatives are the other samples *in the batch*. A batch of 4 gives 3 negatives per image; a batch of 32,768 gives 32,767. The quality of a contrastive embedding scales with the number of negatives it must push away each step, so batch size is not a tuning detail here — it is the core knob on representation quality.
+"Why does CLIP train with such huge batches?"
+
+Because the negatives are the other samples *in the batch*. A batch of 4 gives 3 negatives per image; a batch of 32,768 gives 32,767. The quality of a contrastive embedding scales with the number of negatives it must push away each step, so batch size is not a tuning detail here — it is the core knob on representation quality.
 :::

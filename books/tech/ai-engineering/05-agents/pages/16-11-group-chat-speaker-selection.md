@@ -16,5 +16,7 @@
 - **Plus a termination condition, always** (14-64): a group chat with no stop rule never ends. Speaker selection decides *who*; termination decides *when to stop*.
 
 :::interview
-**"In a group-chat multi-agent system, what controls the behavior and what's the failure mode?"** Speaker selection — who talks next — is essentially the only lever over the emergent conversation. Round-robin is predictable but rigid; model-selected (a manager picks the next speaker) is adaptive but can misroute or loop and its quality gates everything; rule-based is controllable but manual. The failure mode is a bad selection policy producing agents talking past each other, endless debate, or non-termination. You pair speaker selection (who) with a firm termination condition (when to stop) — without both, group chats either stall or run forever, burning cost each turn.
+"In a group-chat multi-agent system, what controls the behavior and what's the failure mode?"
+
+Speaker selection — who talks next — is essentially the only lever over the emergent conversation. Round-robin is predictable but rigid; model-selected (a manager picks the next speaker) is adaptive but can misroute or loop and its quality gates everything; rule-based is controllable but manual. The failure mode is a bad selection policy producing agents talking past each other, endless debate, or non-termination. You pair speaker selection (who) with a firm termination condition (when to stop) — without both, group chats either stall or run forever, burning cost each turn.
 :::

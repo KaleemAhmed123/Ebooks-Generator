@@ -20,5 +20,7 @@
 - **The rule of thumb:** be **explicit about constraints and success criteria** (what must be true), and **open about method** (how to get there) — unless the method itself is the requirement.
 
 :::interview
-**"How detailed should an agent's instructions be?"** Detailed about *what* and *why* and the hard *constraints*; open about *how*, where the model's judgment is the value. Pin the goal and the success criteria (what must be true — tests pass, API unchanged, tone formal), and let the model choose the approach for anything requiring judgment. Over-specifying scripts every step and produces brittle literal compliance that breaks on the unforeseen; under-specifying ("make it good") forces the model to guess your intent and miss what you cared about. Nail the constraints and success criteria; leave the method free unless the method *is* the requirement.
+"How detailed should an agent's instructions be?"
+
+Detailed about *what* and *why* and the hard *constraints*; open about *how*, where the model's judgment is the value. Pin the goal and the success criteria (what must be true — tests pass, API unchanged, tone formal), and let the model choose the approach for anything requiring judgment. Over-specifying scripts every step and produces brittle literal compliance that breaks on the unforeseen; under-specifying ("make it good") forces the model to guess your intent and miss what you cared about. Nail the constraints and success criteria; leave the method free unless the method *is* the requirement.
 :::

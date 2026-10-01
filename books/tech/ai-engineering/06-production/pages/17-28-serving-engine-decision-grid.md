@@ -18,5 +18,7 @@
 - **The one question that routes the decision:** *how much does the workload change, and how much is the last 20% of performance worth?* Stable + valuable → compile. Changing → interpret. Prefix-heavy → share.
 
 :::interview
-**"Walk me through picking a serving stack for a new product."** Stage it. **Ship** on a managed API — no GPUs, fastest to market, learn real traffic. **Scale** to vLLM self-host once token volume clears the cost crossover on open weights. **Specialise**: route prefix-heavy paths (agents, RAG) to SGLang, and compile the highest-volume frozen model with TensorRT-LLM if profiling shows the efficiency gain beats the ops cost. Naming the *staging* — not jumping straight to "TensorRT-LLM because it's fastest" — is the senior signal.
+"Walk me through picking a serving stack for a new product."
+
+Stage it. **Ship** on a managed API — no GPUs, fastest to market, learn real traffic. **Scale** to vLLM self-host once token volume clears the cost crossover on open weights. **Specialise**: route prefix-heavy paths (agents, RAG) to SGLang, and compile the highest-volume frozen model with TensorRT-LLM if profiling shows the efficiency gain beats the ops cost. Naming the *staging* — not jumping straight to "TensorRT-LLM because it's fastest" — is the senior signal.
 :::

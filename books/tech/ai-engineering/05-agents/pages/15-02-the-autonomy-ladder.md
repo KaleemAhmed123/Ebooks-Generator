@@ -19,5 +19,7 @@
 - **The rule:** operate at the *lowest* level that delivers the value. Most production agents belong at L2–L4; L5 is rare and dangerous. Moving up a rung is a deliberate decision that *adds required safeguards*, not a default.
 
 :::interview
-**"How do you think about how much autonomy to give an agent?"** As a ladder, and I pick the lowest rung that delivers the value. Assist (suggest only) → approve-each-action → act-then-human-reviews → unattended-but-gated-on-consequential-actions → fully autonomous. Each rung up removes a human safeguard, so it must add engineered ones — the review gate, kill switches, cost governors, monitoring. Most production agents sit at "act then review" or "unattended with gates on dangerous actions." Full autonomy is reserved for low-stakes, tightly-bounded tasks, because its mistakes are unsupervised and irreversible.
+"How do you think about how much autonomy to give an agent?"
+
+As a ladder, and I pick the lowest rung that delivers the value. Assist (suggest only) → approve-each-action → act-then-human-reviews → unattended-but-gated-on-consequential-actions → fully autonomous. Each rung up removes a human safeguard, so it must add engineered ones — the review gate, kill switches, cost governors, monitoring. Most production agents sit at "act then review" or "unattended with gates on dangerous actions." Full autonomy is reserved for low-stakes, tightly-bounded tasks, because its mistakes are unsupervised and irreversible.
 :::

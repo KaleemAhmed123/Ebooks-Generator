@@ -18,5 +18,7 @@
 - **The upgrade:** flow/diffusion **action experts** (π0, next page) generate smooth continuous action *chunks* directly, instead of binning. They keep the VLM brain but replace the discretized action head with a small continuous generator — better dexterity, at more complexity.
 
 :::interview
-**"How does an LLM control a robot when its output is discrete tokens?"** Action tokenization. Discretize each continuous control dimension into bins and treat each bin as a vocabulary token, so the model predicts actions with the same next-token loss it uses for words. It works but is coarse and jerky; state-of-the-art VLAs replace the binned head with a flow-matching/diffusion action expert that outputs smooth continuous action chunks.
+"How does an LLM control a robot when its output is discrete tokens?"
+
+Action tokenization. Discretize each continuous control dimension into bins and treat each bin as a vocabulary token, so the model predicts actions with the same next-token loss it uses for words. It works but is coarse and jerky; state-of-the-art VLAs replace the binned head with a flow-matching/diffusion action expert that outputs smooth continuous action chunks.
 :::

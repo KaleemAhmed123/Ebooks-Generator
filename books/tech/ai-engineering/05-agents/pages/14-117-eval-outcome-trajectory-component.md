@@ -14,5 +14,7 @@
 - **Use all three:** outcome tells you *if* it works, trajectory tells you *how well* it works, component tells you *where* it breaks. Optimizing only outcome yields agents that are right by accident and fragile under change.
 
 :::interview
-**"How do you evaluate an agent beyond just checking the final answer?"** At three levels. Outcome — was the final result correct (the bottom line, but it hides why). Trajectory — did it take a sensible path, calling the right tools in the right order (catches agents that are right by luck or fail from a process error). Component — is each step correct in isolation: retriever, router, individual tools (localizes the failure so you fix the real cause). You need all three: outcome for *if*, trajectory for *how well*, component for *where*. Outcome-only evals reward fragile agents that happen to land the right answer.
+"How do you evaluate an agent beyond just checking the final answer?"
+
+At three levels. Outcome — was the final result correct (the bottom line, but it hides why). Trajectory — did it take a sensible path, calling the right tools in the right order (catches agents that are right by luck or fail from a process error). Component — is each step correct in isolation: retriever, router, individual tools (localizes the failure so you fix the real cause). You need all three: outcome for *if*, trajectory for *how well*, component for *where*. Outcome-only evals reward fragile agents that happen to land the right answer.
 :::

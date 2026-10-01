@@ -18,5 +18,7 @@
 - **The design lever:** you often cannot remove untrusted content (it is the agent's job to read the web/email), so **break the trifecta by removing one of the other two** for any given flow — no private data *and* external comms together in the same agent context.
 
 :::interview
-**"When is prompt injection actually dangerous, and how do you design around it?"** When the agent has all three of the lethal trifecta: access to private data, exposure to untrusted content, and the ability to send data externally. Injection needs untrusted content to carry the attack, private data to be worth stealing, and an outbound channel to exfiltrate. The defense is to break the trifecta per flow — since you usually can't stop the agent reading untrusted content, ensure an agent that touches private data can't also send externally, or vice versa. Never combine all three in one context handling attacker-controllable input.
+"When is prompt injection actually dangerous, and how do you design around it?"
+
+When the agent has all three of the lethal trifecta: access to private data, exposure to untrusted content, and the ability to send data externally. Injection needs untrusted content to carry the attack, private data to be worth stealing, and an outbound channel to exfiltrate. The defense is to break the trifecta per flow — since you usually can't stop the agent reading untrusted content, ensure an agent that touches private data can't also send externally, or vice versa. Never combine all three in one context handling attacker-controllable input.
 :::

@@ -27,5 +27,7 @@
 - **The whole history is resent.** Each step you send the *entire* growing conversation — original messages, the `tool_use`, the `tool_result` — back to the stateless model. That is why long agent runs get expensive: the transcript, tools and all, is re-billed every turn.
 
 :::interview
-**"Walk me through what's actually sent when a model calls a tool."** The assistant message contains a `tool_use` block with a unique id, the tool name, and a JSON `input`. You execute it and send back a `tool_result` block echoing that id with the output as a string. You then call the model again with the full history appended, and it produces the final text. The id links request to result; the model runs nothing itself.
+"Walk me through what's actually sent when a model calls a tool."
+
+The assistant message contains a `tool_use` block with a unique id, the tool name, and a JSON `input`. You execute it and send back a `tool_result` block echoing that id with the output as a string. You then call the model again with the full history appended, and it produces the final text. The id links request to result; the model runs nothing itself.
 :::

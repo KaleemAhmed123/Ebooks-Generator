@@ -14,5 +14,7 @@
 - **ASL and autonomy:** the higher levels are explicitly about *this module's* concerns — autonomous capability, self-replication, evading oversight. The framework is, in part, a plan for how to handle exactly the recursive-autonomy risks (15-09) if and when models approach them.
 
 :::interview
-**"What is a Responsible Scaling Policy / ASL, in one breath?"** A commitment framework that ties required safety measures to measured model capability, modeled on biosafety levels. Each AI Safety Level pairs a capability range with mandatory safeguards — security, deployment limits, evaluations. The core rule is that capability *triggers* safeguards *in advance*: before a model could cross a dangerous-capability threshold (bioweapon uplift, autonomous self-replication, evading control), the lab must already have the corresponding protections in place, or pause. It's how frontier labs plan to handle escalating risk — including the autonomous-agent risks this module is about — proactively rather than after the fact.
+"What is a Responsible Scaling Policy / ASL, in one breath?"
+
+A commitment framework that ties required safety measures to measured model capability, modeled on biosafety levels. Each AI Safety Level pairs a capability range with mandatory safeguards — security, deployment limits, evaluations. The core rule is that capability *triggers* safeguards *in advance*: before a model could cross a dangerous-capability threshold (bioweapon uplift, autonomous self-replication, evading control), the lab must already have the corresponding protections in place, or pause. It's how frontier labs plan to handle escalating risk — including the autonomous-agent risks this module is about — proactively rather than after the fact.
 :::

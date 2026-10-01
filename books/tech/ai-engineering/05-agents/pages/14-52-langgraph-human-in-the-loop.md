@@ -25,5 +25,7 @@ app.invoke(Command(resume="approve"), config)    # RESUME with the answer
 - **Beyond approval:** the same mechanism lets a human *edit* the proposed action, supply missing input, or steer a run — any point where you want a person in the loop. Flow: run → `interrupt` (save + return) → human ✓/✗ → `resume`.
 
 :::interview
-**"How do you add a human approval step to an agent?"** In LangGraph, `interrupt()`: at the node where approval is needed, call it with the proposed action; the graph saves state and returns control to your app, which shows a human the action. On their decision you resume with `Command(resume=answer)` and the graph continues from that exact point. It relies on the checkpointer to durably pause and resume. This is the standard way to gate consequential actions (sending, spending, deleting) behind a person.
+"How do you add a human approval step to an agent?"
+
+In LangGraph, `interrupt()`: at the node where approval is needed, call it with the proposed action; the graph saves state and returns control to your app, which shows a human the action. On their decision you resume with `Command(resume=answer)` and the graph continues from that exact point. It relies on the checkpointer to durably pause and resume. This is the standard way to gate consequential actions (sending, spending, deleting) behind a person.
 :::

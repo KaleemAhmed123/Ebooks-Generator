@@ -11,5 +11,7 @@
 - **Do not pick on benchmarks alone.** Published throughput numbers use a specific model, hardware, and traffic mix that rarely matches yours — most importantly the prefix-share ratio. Reproduce the comparison on *your* traffic before committing.
 
 :::interview
-**"vLLM or SGLang for a customer-support agent?"** Lead with the workload: a support agent re-sends a large fixed system prompt, tool definitions, and often the same knowledge-base passages every turn — a high prefix-share ratio. That is exactly RadixAttention's sweet spot, so **SGLang** is the stronger default here, and I would quantify the prefix share and A/B the two on real traffic before locking it in. For a general-purpose chat API with diverse prompts, I would start on **vLLM** for the ecosystem and revisit only if profiling shows heavy prefix reuse.
+"vLLM or SGLang for a customer-support agent?"
+
+Lead with the workload: a support agent re-sends a large fixed system prompt, tool definitions, and often the same knowledge-base passages every turn — a high prefix-share ratio. That is exactly RadixAttention's sweet spot, so **SGLang** is the stronger default here, and I would quantify the prefix share and A/B the two on real traffic before locking it in. For a general-purpose chat API with diverse prompts, I would start on **vLLM** for the ecosystem and revisit only if profiling shows heavy prefix reuse.
 :::

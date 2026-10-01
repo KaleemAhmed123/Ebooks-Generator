@@ -18,5 +18,7 @@ app.invoke({"messages": [("user", "What's my name?")]}, config)
 - **Its boundary:** a thread is *one conversation*. Cross-conversation, cross-user *long-term* memory (the semantic/episodic memory of the memory cluster) is a **different** mechanism — the `Store` (14-56) — because it must be shared across threads, not scoped to one.
 
 :::interview
-**"How does a LangGraph agent remember earlier turns across separate API calls?"** Threads plus a checkpointer. Each call passes a `thread_id`; the checkpointer loads that thread's saved state (all prior messages), runs with the new input appended, and saves again. The stateless model gets the full reconstructed history every time. That covers *short-term* memory within one conversation. For *long-term* memory shared across conversations you use the separate cross-thread `Store`, not threads.
+"How does a LangGraph agent remember earlier turns across separate API calls?"
+
+Threads plus a checkpointer. Each call passes a `thread_id`; the checkpointer loads that thread's saved state (all prior messages), runs with the new input appended, and saves again. The stateless model gets the full reconstructed history every time. That covers *short-term* memory within one conversation. For *long-term* memory shared across conversations you use the separate cross-thread `Store`, not threads.
 :::

@@ -20,5 +20,7 @@
 - The middle — inference platforms — exists precisely because most teams want self-host economics without running Kubernetes.
 
 :::interview
-**"When would you self-host instead of using an API?"** Name three triggers: (1) **volume** — sustained token throughput high enough that per-token API pricing exceeds amortised GPU cost at good utilisation; (2) **control** — you need a fine-tuned or open model, custom quantisation, guaranteed capacity, or data that cannot leave your VPC; (3) **latency floor** — you need tail latency a shared endpoint will not promise. If none hold, self-hosting is a cost centre you built for no reason.
+"When would you self-host instead of using an API?"
+
+Name three triggers: (1) **volume** — sustained token throughput high enough that per-token API pricing exceeds amortised GPU cost at good utilisation; (2) **control** — you need a fine-tuned or open model, custom quantisation, guaranteed capacity, or data that cannot leave your VPC; (3) **latency floor** — you need tail latency a shared endpoint will not promise. If none hold, self-hosting is a cost centre you built for no reason.
 :::

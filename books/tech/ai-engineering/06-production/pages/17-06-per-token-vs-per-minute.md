@@ -24,5 +24,7 @@ utilisation of the dedicated GPU passes ~30%.
 - This is the same shape as self-host vs managed, one level down: dedicated capacity only pays off when you keep it busy.
 
 :::interview
-**"How do you compare two inference vendors with different pricing units?"** Never compare the pricing pages. Fix a representative request (input/output token counts, QPS profile), convert every vendor to **cost per 1,000 requests at your expected utilisation**, and plot cost against utilisation. The answer is a crossover curve, not a single winner — and the crossover moves with how busy you keep the hardware.
+"How do you compare two inference vendors with different pricing units?"
+
+Never compare the pricing pages. Fix a representative request (input/output token counts, QPS profile), convert every vendor to **cost per 1,000 requests at your expected utilisation**, and plot cost against utilisation. The answer is a crossover curve, not a single winner — and the crossover moves with how busy you keep the hardware.
 :::

@@ -18,5 +18,7 @@
 - **Mitigate before root-causing.** Roll the prompt/model back to the last-good version, fail over to the second provider, or shed load *first* — restore users, then investigate. Fast rollback demands you **version and pin** every prompt and model (17-51); if you cannot roll back in one command, you cannot mitigate quickly.
 
 :::interview
-**"Users say the assistant 'got worse' overnight, but all your dashboards are green. What do you do?"** This is a **quality** incident, invisible to availability metrics — so I check the live quality signal (17-46a) and diff what *changed*: a prompt edit, a model-version update from the provider, a retrieval-index rebuild, or a data drift. Mitigate by **rolling the prompt/model back to last-known-good** while I confirm, then reproduce from logged prompts/outputs. The tell is knowing that "green dashboards + unhappy users" means quality, not uptime, and that the first move is rollback, not a code fix.
+"Users say the assistant 'got worse' overnight, but all your dashboards are green. What do you do?"
+
+This is a **quality** incident, invisible to availability metrics — so I check the live quality signal (17-46a) and diff what *changed*: a prompt edit, a model-version update from the provider, a retrieval-index rebuild, or a data drift. Mitigate by **rolling the prompt/model back to last-known-good** while I confirm, then reproduce from logged prompts/outputs. The tell is knowing that "green dashboards + unhappy users" means quality, not uptime, and that the first move is rollback, not a code fix.
 :::

@@ -19,5 +19,7 @@
 - This generalises prefix sharing from "same system prompt" to "any shared span": two agents mid-conversation that share the first 5 turns share that KV even though their latest turns differ.
 
 :::interview
-**"How is RadixAttention different from ordinary prefix caching?"** Ordinary prefix caching reuses KV for an exact prefix match (usually the system prompt). RadixAttention keeps *all* cached prefixes in a radix tree and matches the **longest shared path**, so partial and nested prefixes are reused too — multi-turn conversations, branching agent trees, and shared-document RAG all hit the cache without any exact match. Eviction is tree-LRU, so hot near-root prefixes stay resident.
+"How is RadixAttention different from ordinary prefix caching?"
+
+Ordinary prefix caching reuses KV for an exact prefix match (usually the system prompt). RadixAttention keeps *all* cached prefixes in a radix tree and matches the **longest shared path**, so partial and nested prefixes are reused too — multi-turn conversations, branching agent trees, and shared-document RAG all hit the cache without any exact match. Eviction is tree-LRU, so hot near-root prefixes stay resident.
 :::

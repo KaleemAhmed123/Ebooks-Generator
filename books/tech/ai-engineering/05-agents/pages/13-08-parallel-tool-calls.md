@@ -18,5 +18,7 @@
 - Your code must run them concurrently and return **all** `tool_result` blocks in one user message, each matched by its `tool_use_id`. Return them one at a time and you have thrown away the benefit.
 
 :::interview
-**"How do you speed up an agent that makes many API calls?"** First, let the model batch independent calls into one parallel turn and run them concurrently — turning N round trips into one. Then cache repeated calls, and only chain calls that genuinely depend on each other. The biggest agent latency win is usually collapsing sequential-but-independent tool calls into a single parallel turn.
+"How do you speed up an agent that makes many API calls?"
+
+First, let the model batch independent calls into one parallel turn and run them concurrently — turning N round trips into one. Then cache repeated calls, and only chain calls that genuinely depend on each other. The biggest agent latency win is usually collapsing sequential-but-independent tool calls into a single parallel turn.
 :::

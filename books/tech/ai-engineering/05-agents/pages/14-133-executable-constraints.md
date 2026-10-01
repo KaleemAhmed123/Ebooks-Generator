@@ -15,5 +15,7 @@
 - **Why it beats better prompting:** a prompt is probabilistic — the model *usually* follows it. For anything that *must* hold (safety, correctness, cost limits), "usually" is a bug. Encode the must-holds as code; reserve prompts for guidance where flexibility is fine.
 
 :::interview
-**"An agent keeps skipping a required step no matter how you word the instruction — what do you do?"** Stop wording it and enforce it in code. Turn the requirement into an executable constraint: a gate that blocks completion until the step's effect is verified (e.g. reject "done" until tests actually pass), or a hook that hard-blocks the forbidden action. Prompts are probabilistic guidance the model follows *usually*; for anything that must always hold — correctness, safety, cost — "usually" is a defect. Encode must-holds as code around the agent; keep prompts for the genuinely flexible parts.
+"An agent keeps skipping a required step no matter how you word the instruction — what do you do?"
+
+Stop wording it and enforce it in code. Turn the requirement into an executable constraint: a gate that blocks completion until the step's effect is verified (e.g. reject "done" until tests actually pass), or a hook that hard-blocks the forbidden action. Prompts are probabilistic guidance the model follows *usually*; for anything that must always hold — correctness, safety, cost — "usually" is a defect. Encode must-holds as code around the agent; keep prompts for the genuinely flexible parts.
 :::

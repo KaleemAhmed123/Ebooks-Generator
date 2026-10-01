@@ -17,5 +17,7 @@
 - In modern APIs, ReAct is often implicit: native tool calling already lets the model emit reasoning text alongside a tool call. "Building a ReAct agent" today usually means the basic loop (14-03) with a prompt that encourages thinking before acting.
 
 :::interview
-**"What is ReAct and why does it work?"** ReAct interleaves reasoning and acting: before each tool call the model writes a Thought explaining its plan, then takes an Action, then reads the Observation, and repeats. It works because reasoning and acting fix each other's weaknesses — chain-of-thought alone hallucinates unverifiable facts, tool calls alone lack a plan, and interleaving lets the model reason *about real observations*. It is the default agent pattern and the basis most frameworks build on.
+"What is ReAct and why does it work?"
+
+ReAct interleaves reasoning and acting: before each tool call the model writes a Thought explaining its plan, then takes an Action, then reads the Observation, and repeats. It works because reasoning and acting fix each other's weaknesses — chain-of-thought alone hallucinates unverifiable facts, tool calls alone lack a plan, and interleaving lets the model reason *about real observations*. It is the default agent pattern and the basis most frameworks build on.
 :::

@@ -17,5 +17,7 @@
 - **The rule:** add the *cheapest* memory that meets the need, and add types only when a real requirement demands them. Memory is engineering cost and a failure surface — every store is something to keep correct, current, and private.
 
 :::interview
-**"How do you decide what memory an agent needs?"** Work up from nothing. A one-shot task needs only context. A long session needs summarization plus a few memory blocks. A returning assistant needs semantic (a persistent profile) plus episodic recall. Only a complex, long-lived agent justifies the full stack — entity graphs, skill libraries, sleep-time consolidation. Each memory type is a maintenance and privacy liability, so add the least that meets the requirement rather than building the whole taxonomy by default.
+"How do you decide what memory an agent needs?"
+
+Work up from nothing. A one-shot task needs only context. A long session needs summarization plus a few memory blocks. A returning assistant needs semantic (a persistent profile) plus episodic recall. Only a complex, long-lived agent justifies the full stack — entity graphs, skill libraries, sleep-time consolidation. Each memory type is a maintenance and privacy liability, so add the least that meets the requirement rather than building the whole taxonomy by default.
 :::

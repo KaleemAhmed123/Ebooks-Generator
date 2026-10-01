@@ -18,5 +18,7 @@
 - **When to use:** the task has a **clear, fixed sequence** of subtasks. Predictable, easy to test each stage, no model-driven control flow needed.
 
 :::interview
-**"Why break a task into chained prompts instead of one prompt?"** Reliability through decomposition. Each call handles one focused subtask, which the model does far better than a single "do everything" prompt — the same reason you split a big function. You can also gate between steps to catch errors before they cascade, and test each stage in isolation. Use chaining whenever the task has a known fixed sequence; it's the simplest, most predictable workflow and often all you need.
+"Why break a task into chained prompts instead of one prompt?"
+
+Reliability through decomposition. Each call handles one focused subtask, which the model does far better than a single "do everything" prompt — the same reason you split a big function. You can also gate between steps to catch errors before they cascade, and test each stage in isolation. Use chaining whenever the task has a known fixed sequence; it's the simplest, most predictable workflow and often all you need.
 :::

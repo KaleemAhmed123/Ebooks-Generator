@@ -20,5 +20,7 @@ quality vs FP16         =           ~=          eval it!
 - **The break-even is quality, not memory.** FP8 is nearly free quality-wise, so it is a default yes. INT4's extra saving is only real if your eval shows the quality drop is acceptable for the task — a summariser may tolerate it; a code generator or a strict-JSON tool-caller may not.
 
 :::interview
-**"How would you halve our inference bill?"** Quantisation is the first lever, and I would stage it: turn on **FP8** everywhere (near-lossless on H100/Blackwell, roughly halves memory → fewer GPUs and more concurrency). Then evaluate **INT4/AWQ** per workload — it can cut unit cost ~3× but must pass the task's own eval, because 4-bit degrades code, long-context, and strict formatting first. I would quote the win as *cost-per-1M-tokens at the SLO*, not just "less memory," and gate INT4 on an eval diff, never a benchmark.
+"How would you halve our inference bill?"
+
+Quantisation is the first lever, and I would stage it: turn on **FP8** everywhere (near-lossless on H100/Blackwell, roughly halves memory → fewer GPUs and more concurrency). Then evaluate **INT4/AWQ** per workload — it can cut unit cost ~3× but must pass the task's own eval, because 4-bit degrades code, long-context, and strict formatting first. I would quote the win as *cost-per-1M-tokens at the SLO*, not just "less memory," and gate INT4 on an eval diff, never a benchmark.
 :::

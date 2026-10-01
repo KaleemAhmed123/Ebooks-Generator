@@ -15,5 +15,7 @@
 - **Outgrow it when:** you need explicit complex control flow, durable resume/replay, or elaborate multi-agent orchestration → LangGraph. Migrating is a rewrite, so pick with the *end* state in mind if you can foresee it.
 
 :::interview
-**"When is the OpenAI Agents SDK the right choice, and when do you outgrow it?"** Right for straightforward agents — tool use, simple handoff-based routing — where you want built-in tracing, guardrails, and sessions with minimal code. You outgrow it when you need what its minimalism omits: explicit complex or cyclic control flow, durable resume/time-travel, or intricate multi-agent graphs — that's LangGraph territory. The honest tradeoff: it's the fastest path to a solid simple agent, but its hidden loop and thin control surface become a wall on complex systems, and switching later is a rewrite.
+"When is the OpenAI Agents SDK the right choice, and when do you outgrow it?"
+
+Right for straightforward agents — tool use, simple handoff-based routing — where you want built-in tracing, guardrails, and sessions with minimal code. You outgrow it when you need what its minimalism omits: explicit complex or cyclic control flow, durable resume/time-travel, or intricate multi-agent graphs — that's LangGraph territory. The honest tradeoff: it's the fastest path to a solid simple agent, but its hidden loop and thin control surface become a wall on complex systems, and switching later is a rewrite.
 :::

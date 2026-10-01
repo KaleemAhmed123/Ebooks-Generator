@@ -18,5 +18,7 @@
 - **It mirrors TDD and incremental engineering** — for the same reason: verifiable increments beat big-bang integration, and doubly so for a non-deterministic worker that compounds errors.
 
 :::interview
-**"An agent fails on a large task but you can't use a smaller model — what do you change?"** Shrink the *tasks*, not the model. Decompose the work into the smallest slices that each make progress and can be independently verified, and gate each one before proceeding. Small slices mean short reasoning chains (less error compounding), immediate error detection (the check catches a bad slice before it corrupts later ones), and less goal drift (a clear next step). It's TDD-style incrementalism applied to agents: many verified small steps compose into a reliable whole, where one big unverifiable leap does not.
+"An agent fails on a large task but you can't use a smaller model — what do you change?"
+
+Shrink the *tasks*, not the model. Decompose the work into the smallest slices that each make progress and can be independently verified, and gate each one before proceeding. Small slices mean short reasoning chains (less error compounding), immediate error detection (the check catches a bad slice before it corrupts later ones), and less goal drift (a clear next step). It's TDD-style incrementalism applied to agents: many verified small steps compose into a reliable whole, where one big unverifiable leap does not.
 :::

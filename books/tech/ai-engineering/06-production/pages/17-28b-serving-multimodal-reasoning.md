@@ -18,5 +18,7 @@
 - **The serving consequences.** VLMs need prefill-heavy capacity planning and benefit from chunked prefill (17-15) to stop image prefills stalling others. Reasoning models need generous output-token budgets, higher TPOT tolerance, and a hard cap on thinking length — and their cost math must count the hidden tokens, or you under-budget by multiples.
 
 :::interview
-**"Why can't you size a reasoning model like a normal chat model?"** Because the visible answer hides a large reasoning trace — the model may generate thousands of internal tokens before the reply, all billed and all adding to latency. So the output-token count that drives GPU-seconds and cost is *far* higher than the response length suggests, and TTFT-to-first-*visible*-token can be long even when the stream is healthy. You budget on total generated tokens (thinking + answer), cap the thinking length, and set latency expectations accordingly. For VLMs the mirror-image point holds: the *image* dominates prefill, so TTFT, not decode, is the constraint.
+"Why can't you size a reasoning model like a normal chat model?"
+
+Because the visible answer hides a large reasoning trace — the model may generate thousands of internal tokens before the reply, all billed and all adding to latency. So the output-token count that drives GPU-seconds and cost is *far* higher than the response length suggests, and TTFT-to-first-*visible*-token can be long even when the stream is healthy. You budget on total generated tokens (thinking + answer), cap the thinking length, and set latency expectations accordingly. For VLMs the mirror-image point holds: the *image* dominates prefill, so TTFT, not decode, is the constraint.
 :::

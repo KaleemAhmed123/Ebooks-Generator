@@ -17,5 +17,7 @@
   - **The judge can be wrong.** It shares LLM blind spots. **Validate the judge against human ratings** on a sample — an unvalidated judge is a confident, unaccountable metric (the bad-metric trap of 14-104).
 
 :::interview
-**"How do you evaluate open-ended agent output that has no exact answer?"** LLM-as-judge: prompt a model with the input, the output, and a rubric, and have it return a score plus a rationale. Use pairwise comparison when you can (relative judgments are more reliable than absolute scores), randomize option order to fight position bias, and control for length bias. Crucially, validate the judge against human ratings on a sample before trusting it — a judge shares LLM blind spots and can be confidently wrong. Done right, it makes subjective quality a measurable, scalable metric; done carelessly, it optimizes you toward whatever the judge is biased for.
+"How do you evaluate open-ended agent output that has no exact answer?"
+
+LLM-as-judge: prompt a model with the input, the output, and a rubric, and have it return a score plus a rationale. Use pairwise comparison when you can (relative judgments are more reliable than absolute scores), randomize option order to fight position bias, and control for length bias. Crucially, validate the judge against human ratings on a sample before trusting it — a judge shares LLM blind spots and can be confidently wrong. Done right, it makes subjective quality a measurable, scalable metric; done carelessly, it optimizes you toward whatever the judge is biased for.
 :::

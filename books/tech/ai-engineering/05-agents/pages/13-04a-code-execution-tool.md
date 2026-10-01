@@ -15,5 +15,7 @@
 - **The non-negotiable: sandbox it.** Model-generated code is untrusted and can be destructive or exfiltrating (the lethal trifecta, 14-129). Run it in an isolated container/microVM with no production credentials and restricted network (13-49, 15-25). "Run arbitrary code" without a sandbox is a critical vulnerability, not a feature.
 
 :::interview
-**"What's the highest-leverage tool to give an agent, and the catch?"** A code interpreter. One "run this code" tool covers a near-infinite task space — data analysis, math the model is bad at, file transforms, any library — replacing a dozen narrow tools and sidestepping tool overload. It's also self-correcting: code runs or errors, giving a ground-truth signal the model fixes against. The catch is security: model-generated code is untrusted and can delete data or exfiltrate secrets, so it *must* run in an isolated sandbox with no production credentials and restricted network. Unsandboxed code execution is a critical vulnerability, not a capability.
+"What's the highest-leverage tool to give an agent, and the catch?"
+
+A code interpreter. One "run this code" tool covers a near-infinite task space — data analysis, math the model is bad at, file transforms, any library — replacing a dozen narrow tools and sidestepping tool overload. It's also self-correcting: code runs or errors, giving a ground-truth signal the model fixes against. The catch is security: model-generated code is untrusted and can delete data or exfiltrate secrets, so it *must* run in an isolated sandbox with no production credentials and restricted network. Unsandboxed code execution is a critical vulnerability, not a capability.
 :::

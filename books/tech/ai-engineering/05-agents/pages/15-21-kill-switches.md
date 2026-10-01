@@ -19,5 +19,7 @@
 - **Levels:** pause (resumable), stop (end this run), and emergency shutdown (halt *all* agents, revoke *all* access) — the biggest hammer, for when something is going badly wrong at scale.
 
 :::interview
-**"What makes a kill switch actually effective for an autonomous agent?"** Three things beyond 'stop the loop'. It must be *external* — outside the agent's control, so the agent can't disable or route around it. It must be *always reachable* — a separate control plane that works even when the agent is hung or looping, not a message the busy agent has to choose to read. And it must be *total* — it stops the loop *and* revokes access (API keys, tool permissions, sub-agents, in-flight actions), because halting the reasoning is useless if a queued side effect still fires. Effectively: cut the power, from outside, instantly, for everything.
+"What makes a kill switch actually effective for an autonomous agent?"
+
+Three things beyond 'stop the loop'. It must be *external* — outside the agent's control, so the agent can't disable or route around it. It must be *always reachable* — a separate control plane that works even when the agent is hung or looping, not a message the busy agent has to choose to read. And it must be *total* — it stops the loop *and* revokes access (API keys, tool permissions, sub-agents, in-flight actions), because halting the reasoning is useless if a queued side effect still fires. Effectively: cut the power, from outside, instantly, for everything.
 :::

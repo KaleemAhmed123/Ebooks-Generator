@@ -16,5 +16,7 @@
 - **Parallelism.** Independent subagents can run concurrently, so a task splittable into parts (the dispatching-parallel-agents idea) finishes faster.
 
 :::interview
-**"Why spawn a subagent instead of doing the work in the main agent?"** Context isolation and focus. A noisy sub-task — reading many files, a deep search, an exploratory dig — would flood the main agent's context with intermediate junk. Run it in a subagent with its own window; it absorbs the noise and returns only the distilled result, keeping the main context clean and the main agent on-goal. Subagents also let you specialize (a reviewer, a tester) and parallelize independent work. It's orchestrator-workers at the agent level, and a key technique for long-horizon reliability.
+"Why spawn a subagent instead of doing the work in the main agent?"
+
+Context isolation and focus. A noisy sub-task — reading many files, a deep search, an exploratory dig — would flood the main agent's context with intermediate junk. Run it in a subagent with its own window; it absorbs the noise and returns only the distilled result, keeping the main context clean and the main agent on-goal. Subagents also let you specialize (a reviewer, a tester) and parallelize independent work. It's orchestrator-workers at the agent level, and a key technique for long-horizon reliability.
 :::

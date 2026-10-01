@@ -16,5 +16,7 @@
 - **Artifacts** — the outputs a task produces: text, files, structured data. A task can stream multiple artifacts (a report, then its charts). Messages within a task carry the back-and-forth (including the peer asking for clarification — the `input-required` state).
 
 :::interview
-**"How does one agent discover and delegate to another in A2A?"** It fetches the other agent's **Agent Card** (JSON at a well-known URL) to learn its skills, endpoint, and auth. It then opens a **task** and sends it; the remote agent works asynchronously, emitting status updates and, if it needs more info, an `input-required` state, and returns results as **artifacts**. The task model — not simple request/response — is what lets delegation be long-running and interactive across organizational boundaries.
+"How does one agent discover and delegate to another in A2A?"
+
+It fetches the other agent's **Agent Card** (JSON at a well-known URL) to learn its skills, endpoint, and auth. It then opens a **task** and sends it; the remote agent works asynchronously, emitting status updates and, if it needs more info, an `input-required` state, and returns results as **artifacts**. The task model — not simple request/response — is what lets delegation be long-running and interactive across organizational boundaries.
 :::

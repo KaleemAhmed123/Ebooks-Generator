@@ -18,5 +18,7 @@
 - **The requirements:** the task must genuinely decompose into independent parts (16-02), and you need infrastructure to run many agents concurrently (16-32) and to handle partial failures (one chunk's agent fails — retry it, do not fail the whole batch).
 
 :::interview
-**"What's the safest, most effective multi-agent pattern, and why?"** Parallel map-reduce: fan a task out to many agents working on *independent* chunks concurrently, then fan their results back in via a reducer. It's the cleanest win because the chunks are genuinely independent, so there's zero inter-agent coordination — none of the emergent-failure, looping, or miscommunication risk of interacting agents — while you get near-linear speedup. It requires that the task actually decomposes into independent parts and infrastructure to run agents concurrently and retry failed chunks. When a task fits this shape (research N items, review N files), it's almost always the right multi-agent choice.
+"What's the safest, most effective multi-agent pattern, and why?"
+
+Parallel map-reduce: fan a task out to many agents working on *independent* chunks concurrently, then fan their results back in via a reducer. It's the cleanest win because the chunks are genuinely independent, so there's zero inter-agent coordination — none of the emergent-failure, looping, or miscommunication risk of interacting agents — while you get near-linear speedup. It requires that the task actually decomposes into independent parts and infrastructure to run agents concurrently and retry failed chunks. When a task fits this shape (research N items, review N files), it's almost always the right multi-agent choice.
 :::

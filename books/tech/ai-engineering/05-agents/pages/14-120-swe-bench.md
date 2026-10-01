@@ -16,5 +16,7 @@
 - **Progress has been dramatic.** Scores climbed from single digits to a large fraction of tasks within a couple of years — the clearest evidence that coding agents crossed from demo to genuinely useful. **SWE-bench Verified** (a human-validated subset) is the cleaner variant to cite. **[VERIFY]**
 
 :::interview
-**"What does SWE-bench measure and why is it respected?"** It measures whether a coding agent can resolve *real* GitHub issues by editing a real repository, graded objectively by running the project's own test suite — no fuzzy judgment, no toy tasks. That grounding is why it's the credible coding-agent benchmark: passing it means the agent actually fixed the code. It exercises the full stack — navigating an unfamiliar codebase, localizing the bug, making a correct patch, iterating against tests. Cite SWE-bench Verified (the human-checked subset) for a cleaner number, and note that rapid score gains are the main public evidence coding agents became genuinely useful.
+"What does SWE-bench measure and why is it respected?"
+
+It measures whether a coding agent can resolve *real* GitHub issues by editing a real repository, graded objectively by running the project's own test suite — no fuzzy judgment, no toy tasks. That grounding is why it's the credible coding-agent benchmark: passing it means the agent actually fixed the code. It exercises the full stack — navigating an unfamiliar codebase, localizing the bug, making a correct patch, iterating against tests. Cite SWE-bench Verified (the human-checked subset) for a cleaner number, and note that rapid score gains are the main public evidence coding agents became genuinely useful.
 :::

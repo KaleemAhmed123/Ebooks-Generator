@@ -16,5 +16,7 @@
 - **Subscriptions:** a client can subscribe to a resource and get `resources/updated` notifications when it changes — useful for live data (a log that grows, a document being edited).
 
 :::interview
-**"Tools vs resources in MCP — when is something a resource?"** If it is *data to read* with no side effect, it is a resource (a file, a record, a page), and the *app or user* chooses to load it. If it is an *action to perform* — search, write, compute, send — it is a tool, and the *model* chooses to call it. The litmus test: does invoking it change anything or just return information? Read-only, app-chosen → resource; effectful, model-chosen → tool.
+"Tools vs resources in MCP — when is something a resource?"
+
+If it is *data to read* with no side effect, it is a resource (a file, a record, a page), and the *app or user* chooses to load it. If it is an *action to perform* — search, write, compute, send — it is a tool, and the *model* chooses to call it. The litmus test: does invoking it change anything or just return information? Read-only, app-chosen → resource; effectful, model-chosen → tool.
 :::

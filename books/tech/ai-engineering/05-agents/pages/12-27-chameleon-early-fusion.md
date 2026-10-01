@@ -19,5 +19,7 @@
 - On pure understanding it trails the best projector VLMs; its point is *architecture*, showing a single from-scratch model can do genuinely mixed-modal I/O.
 
 :::interview
-**"What is the catch with early-fusion multimodal models?"** Two catches. Training instability — one shared softmax over very different token distributions diverges without tricks like QK-Norm. And perception detail — VQ tokenization rounds patches to a codebook, so fine reading (documents, small text) lags projector VLMs that pass continuous features. Early fusion buys unified generation and elegance at the cost of harder training and coarser sight.
+"What is the catch with early-fusion multimodal models?"
+
+Two catches. Training instability — one shared softmax over very different token distributions diverges without tricks like QK-Norm. And perception detail — VQ tokenization rounds patches to a codebook, so fine reading (documents, small text) lags projector VLMs that pass continuous features. Early fusion buys unified generation and elegance at the cost of harder training and coarser sight.
 :::

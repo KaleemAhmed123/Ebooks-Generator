@@ -20,5 +20,7 @@
 - Cost: two training objectives and two attention regimes make it more complex to build and serve than a pure autoregressive model.
 
 :::interview
-**"How can one transformer both understand and generate images at high fidelity?"** Transfusion's answer: give it two losses. Apply language-model loss to text tokens and a diffusion (denoising) loss to continuous image patches, in the same sequence and network. You avoid VQ's fidelity loss because images never get discretized, and you keep a single model. The price is a hybrid training/inference regime — causal for text, iterative denoising for images.
+"How can one transformer both understand and generate images at high fidelity?"
+
+Transfusion's answer: give it two losses. Apply language-model loss to text tokens and a diffusion (denoising) loss to continuous image patches, in the same sequence and network. You avoid VQ's fidelity loss because images never get discretized, and you keep a single model. The price is a hybrid training/inference regime — causal for text, iterative denoising for images.
 :::

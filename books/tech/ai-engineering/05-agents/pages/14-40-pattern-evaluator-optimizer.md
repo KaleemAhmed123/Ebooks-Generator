@@ -17,5 +17,7 @@
 - **When to use:** the task has **clear evaluation criteria** and iteration measurably improves output — translation, code, structured writing. The evaluator must be trustworthy; a bad evaluator drives the generator toward worse answers.
 
 :::interview
-**"When does an evaluator-optimizer loop help, and what's the catch?"** It helps when you have clear success criteria and iteration improves the output — code (tests as the evaluator), translation, structured writing. A generator produces, an evaluator judges against criteria and gives feedback, and it loops until it passes. The catch is the evaluator's quality: a self-evaluator shares the generator's blind spots, so prefer a *grounded* evaluator (tests, a validator, a rubric, or a different model). A weak or wrong evaluator actively drives the output worse.
+"When does an evaluator-optimizer loop help, and what's the catch?"
+
+It helps when you have clear success criteria and iteration improves the output — code (tests as the evaluator), translation, structured writing. A generator produces, an evaluator judges against criteria and gives feedback, and it loops until it passes. The catch is the evaluator's quality: a self-evaluator shares the generator's blind spots, so prefer a *grounded* evaluator (tests, a validator, a rubric, or a different model). A weak or wrong evaluator actively drives the output worse.
 :::

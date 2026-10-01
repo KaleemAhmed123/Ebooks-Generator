@@ -19,5 +19,7 @@
   - **Beware lock-in and churn.** These frameworks change fast (hence the `[VERIFY]` tags). Keep your *business logic* separable from the framework so you can swap it.
 
 :::interview
-**"How do you choose an agent framework?"** By the problem's hard part, and only after checking a plain loop won't do. If it's control/reliability → LangGraph; dynamic multi-agent → AutoGen or CrewAI (CrewAI for speed, AutoGen for flexible conversation/code exec); retrieval-heavy → LlamaIndex; operating a computer → the Claude Agent SDK; a simple tool agent → the OpenAI Agents SDK; prompt optimization at scale → DSPy. And they compose — don't force one to do everything. The senior signal is starting minimal and choosing by center of gravity, not by hype.
+"How do you choose an agent framework?"
+
+By the problem's hard part, and only after checking a plain loop won't do. If it's control/reliability → LangGraph; dynamic multi-agent → AutoGen or CrewAI (CrewAI for speed, AutoGen for flexible conversation/code exec); retrieval-heavy → LlamaIndex; operating a computer → the Claude Agent SDK; a simple tool agent → the OpenAI Agents SDK; prompt optimization at scale → DSPy. And they compose — don't force one to do everything. The senior signal is starting minimal and choosing by center of gravity, not by hype.
 :::

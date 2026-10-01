@@ -18,5 +18,7 @@
 - **When to use:** the input falls into **distinct categories** that benefit from different handling. Add it when a monolithic handler is getting unwieldy or uneven in quality.
 
 :::interview
-**"How would you structure a support bot handling very different request types?"** Routing. A first classification call labels the request (refund / technical / billing / …), then dispatches to a handler specialized for that category — its own prompt, tools, and even model size. It beats one monolithic prompt because each path is focused, testable, and independently tunable, and you can route cheap categories to cheap models. Keep the classifier simple and add an "unsure/escalate" path for inputs it can't confidently label.
+"How would you structure a support bot handling very different request types?"
+
+Routing. A first classification call labels the request (refund / technical / billing / …), then dispatches to a handler specialized for that category — its own prompt, tools, and even model size. It beats one monolithic prompt because each path is focused, testable, and independently tunable, and you can route cheap categories to cheap models. Keep the classifier simple and add an "unsure/escalate" path for inputs it can't confidently label.
 :::

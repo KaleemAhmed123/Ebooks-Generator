@@ -13,5 +13,7 @@
 - **On-call gets harder.** You debug a *distribution* of behaviours, not a stack trace. The runbook needs prompt/output logs (17-45), the ability to pin or roll back a model/prompt version fast, and a kill switch (Booklet 5) for a misbehaving agent path.
 
 :::interview
-**"How is SRE different for an LLM service?"** Keep SLOs and error budgets, but add three things classic SRE lacks: a **quality SLO** measured on sampled live outputs (up ≠ correct), a **safety/refusal error class** separate from HTTP errors, and alerting on **rates over windows** because a nondeterministic model passes and fails the same input. The reliability question shifts from "is it responding?" to "is it responding *correctly, safely, and within cost* at P99?"
+"How is SRE different for an LLM service?"
+
+Keep SLOs and error budgets, but add three things classic SRE lacks: a **quality SLO** measured on sampled live outputs (up ≠ correct), a **safety/refusal error class** separate from HTTP errors, and alerting on **rates over windows** because a nondeterministic model passes and fails the same input. The reliability question shifts from "is it responding?" to "is it responding *correctly, safely, and within cost* at P99?"
 :::

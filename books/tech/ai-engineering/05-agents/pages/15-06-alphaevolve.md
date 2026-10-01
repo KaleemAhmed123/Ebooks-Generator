@@ -16,5 +16,7 @@
 - **The key lesson:** LLM creativity + rigorous automated evaluation + evolutionary search = genuine discovery, *in domains where quality is measurable*. The LLM alone would hallucinate; the evaluator alone cannot create; together they search the space of programs far beyond what either does alone.
 
 :::interview
-**"How did AlphaEvolve discover new algorithms — isn't that just an LLM guessing?"** No — it's evolutionary search with an LLM as the mutation operator and an *executable* evaluator as the selection pressure. The LLM proposes program variants; an automated evaluator runs each and measures its quality; the best survive and get mutated further, over many generations. The objective evaluator is what makes it real rather than hallucination — every kept improvement is a measured one. It works precisely because algorithm quality is machine-checkable, which is the recurring precondition for self-improvement: a trustworthy verifier.
+"How did AlphaEvolve discover new algorithms — isn't that just an LLM guessing?"
+
+No — it's evolutionary search with an LLM as the mutation operator and an *executable* evaluator as the selection pressure. The LLM proposes program variants; an automated evaluator runs each and measures its quality; the best survive and get mutated further, over many generations. The objective evaluator is what makes it real rather than hallucination — every kept improvement is a measured one. It works precisely because algorithm quality is machine-checkable, which is the recurring precondition for self-improvement: a trustworthy verifier.
 :::

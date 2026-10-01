@@ -25,5 +25,7 @@ Contrast contiguous max_seq_len=8192: would reserve 8192 slots for 65.
 - **Preemption uses the same table.** Under memory pressure the scheduler can evict a request's blocks (swap to CPU or recompute later) and restore them by rewriting the block table — no data moves that does not have to.
 
 :::interview
-**"How does PagedAttention save memory, concretely?"** Two ways. **Fragmentation:** blocks are allocated to actual sequence length, so waste is bounded by one partial block instead of a full `max_seq_len` reservation — recovering the 60–80% that contiguous allocation threw away. **Sharing:** identical prefixes (system prompts, few-shot examples, a shared document) map to the same physical blocks across requests, so a 500-token system prompt served to 100 users costs one copy, not one hundred. Both come from the same block-table indirection.
+"How does PagedAttention save memory, concretely?"
+
+Two ways. **Fragmentation:** blocks are allocated to actual sequence length, so waste is bounded by one partial block instead of a full `max_seq_len` reservation — recovering the 60–80% that contiguous allocation threw away. **Sharing:** identical prefixes (system prompts, few-shot examples, a shared document) map to the same physical blocks across requests, so a 500-token system prompt served to 100 users costs one copy, not one hundred. Both come from the same block-table indirection.
 :::

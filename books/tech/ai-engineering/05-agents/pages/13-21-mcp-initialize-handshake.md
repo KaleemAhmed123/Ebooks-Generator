@@ -19,5 +19,7 @@
 - **Capabilities are the contract.** Neither side assumes a feature exists; each *declares* it. A server that offers no `prompts` capability will never be asked for prompts. This is how MCP evolves without breaking — new features are opt-in capabilities, and an old client and new server simply use the intersection of what they both support.
 
 :::interview
-**"Why does MCP negotiate capabilities instead of assuming a fixed feature set?"** Forward and backward compatibility. The spec revises often (new primitives like elicitation, new transports). By declaring capabilities in the handshake, a client and server use only the features *both* support, so a new server still works with an old client and vice versa. It also lets each side skip advertising features it lacks, avoiding calls that would just error.
+"Why does MCP negotiate capabilities instead of assuming a fixed feature set?"
+
+Forward and backward compatibility. The spec revises often (new primitives like elicitation, new transports). By declaring capabilities in the handshake, a client and server use only the features *both* support, so a new server still works with an old client and vice versa. It also lets each side skip advertising features it lacks, avoiding calls that would just error.
 :::

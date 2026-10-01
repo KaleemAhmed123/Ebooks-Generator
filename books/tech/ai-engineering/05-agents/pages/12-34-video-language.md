@@ -22,5 +22,7 @@
 - **Temporal position.** Tag each frame with its time (M-RoPE's time axis) so the model can answer "what happened *after* X?" and not just "what is in the video?"
 
 :::interview
-**"Why can't a VLM just watch a full video frame by frame?"** Token budget. Every frame is hundreds of visual tokens; even a short clip becomes millions of tokens — far past any context window and impossibly slow. Video VLMs subsample frames and pool tokens hard, keeping temporal position so order and timing survive. The engineering question is never "how do I show it everything?" but "what can I safely drop?"
+"Why can't a VLM just watch a full video frame by frame?"
+
+Token budget. Every frame is hundreds of visual tokens; even a short clip becomes millions of tokens — far past any context window and impossibly slow. Video VLMs subsample frames and pool tokens hard, keeping temporal position so order and timing survive. The engineering question is never "how do I show it everything?" but "what can I safely drop?"
 :::

@@ -17,5 +17,7 @@
 - This is why coding agents converged on the **pull request** as their interface (15-11): a PR *is* propose-then-commit — the agent proposes a diff, a human (or CI) commits the merge.
 
 :::interview
-**"What's the safest useful autonomy pattern for consequential agent work?"** Propose-then-commit. The agent does the whole task unattended but produces a *staged* artifact with no effect until authorized — a git diff, a draft, a proposed plan, an uncommitted transaction — and a separate gate (human, automated check, or both) reviews and commits or rejects it. You keep autonomy's leverage (unattended work, reviewed by result not by step) while ensuring nothing consequential happens without authorization. It's why coding agents use pull requests: a PR is exactly propose-then-commit, and you can auto-commit low-risk changes while gating risky ones.
+"What's the safest useful autonomy pattern for consequential agent work?"
+
+Propose-then-commit. The agent does the whole task unattended but produces a *staged* artifact with no effect until authorized — a git diff, a draft, a proposed plan, an uncommitted transaction — and a separate gate (human, automated check, or both) reviews and commits or rejects it. You keep autonomy's leverage (unattended work, reviewed by result not by step) while ensuring nothing consequential happens without authorization. It's why coding agents use pull requests: a PR is exactly propose-then-commit, and you can auto-commit low-risk changes while gating risky ones.
 :::

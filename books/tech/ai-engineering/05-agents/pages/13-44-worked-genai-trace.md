@@ -24,5 +24,7 @@ TRACE  agent.run                                    2.41s   ⤵
 - Multiply this across thousands of production runs and you can query "which tool is slowest," "which prompt version costs most," "where do failures cluster" — the questions Module 14's observability tools answer.
 
 :::interview
-**"An agent gives a wrong final answer in production. How do you find why?"** Pull its trace. Walk the spans in order: was the tool called with the right arguments? Did the tool return correct data (inspect its output span)? Did the model misread a correct result (compare the tool output to the next model call's output)? The trace localizes the failure to a specific span — bad arguments, bad tool result, or bad model reasoning — which a flat log cannot. No tracing, no debuggable agents.
+"An agent gives a wrong final answer in production. How do you find why?"
+
+Pull its trace. Walk the spans in order: was the tool called with the right arguments? Did the tool return correct data (inspect its output span)? Did the model misread a correct result (compare the tool output to the next model call's output)? The trace localizes the failure to a specific span — bad arguments, bad tool result, or bad model reasoning — which a flat log cannot. No tracing, no debuggable agents.
 :::

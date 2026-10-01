@@ -18,5 +18,7 @@
 - **Why some coding agents flail:** almost always a weak organ — poor navigation (edits blind), no execution (cannot verify), or bad context management (loses the thread). The model is rarely the bottleneck; the *harness* is.
 
 :::interview
-**"Two coding agents use the same model but one is far more reliable — why?"** The harness, not the model. Reliability comes from the scaffolding: strong code navigation (finding the right place to edit in a big repo), targeted diff-based editing (surgical, reviewable changes), and above all execution — running the tests/build and feeding results back so the agent verifies its work and self-corrects. Add good context management for long sessions and a review gate. A weak agent usually has a weak organ — it edits blind, can't run its code, or loses the thread — and no model quality compensates for a missing verifier.
+"Two coding agents use the same model but one is far more reliable — why?"
+
+The harness, not the model. Reliability comes from the scaffolding: strong code navigation (finding the right place to edit in a big repo), targeted diff-based editing (surgical, reviewable changes), and above all execution — running the tests/build and feeding results back so the agent verifies its work and self-corrects. Add good context management for long sessions and a review gate. A weak agent usually has a weak organ — it edits blind, can't run its code, or loses the thread — and no model quality compensates for a missing verifier.
 :::

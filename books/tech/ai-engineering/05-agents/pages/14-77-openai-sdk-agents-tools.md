@@ -25,5 +25,7 @@ assistant = Agent(
 - **Structured output** is a first-class option — set an `output_type` (e.g. a Pydantic model) and the agent returns validated typed data instead of free text (13-11), which the SDK enforces.
 
 :::interview
-**"How do you define a tool in the OpenAI Agents SDK?"** Decorate a Python function with `@function_tool`. The SDK derives the tool's schema from the function's type hints (parameter names and types) and its description from the docstring, so you just write a normal, documented function. You then list it in the agent's `tools`. It's the same "types and docstring become the schema" ergonomics as FastMCP — minimal boilerplate, and it keeps schema design (naming, descriptions, types) as the thing that actually matters.
+"How do you define a tool in the OpenAI Agents SDK?"
+
+Decorate a Python function with `@function_tool`. The SDK derives the tool's schema from the function's type hints (parameter names and types) and its description from the docstring, so you just write a normal, documented function. You then list it in the agent's `tools`. It's the same "types and docstring become the schema" ergonomics as FastMCP — minimal boilerplate, and it keeps schema design (naming, descriptions, types) as the thing that actually matters.
 :::

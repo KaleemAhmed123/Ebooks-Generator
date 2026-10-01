@@ -15,5 +15,7 @@
 - **The catch — concurrency.** When several agents write the shared state at once, you get races and conflicts (two agents editing the same field). You need concurrency control — reducers that merge safely (14-45), locks, or a turn-based controller — or the board corrupts.
 
 :::interview
-**"What is the blackboard pattern and when does it fit?"** Agents coordinate through a *shared workspace* rather than direct messages: the blackboard holds the evolving problem state (facts, partial results, the plan), agents watch it and each contributes the piece it can, and the solution accumulates on the board. It fits problems solved by incremental contributions from diverse specialists, and it decouples agents (add/remove one without rewiring, no direct addressing) so it scales. The main risk is concurrency — simultaneous writes race and conflict — so you need safe merging (reducers), locking, or a turn controller. In LLM systems the shared graph state or a shared doc *is* the blackboard.
+"What is the blackboard pattern and when does it fit?"
+
+Agents coordinate through a *shared workspace* rather than direct messages: the blackboard holds the evolving problem state (facts, partial results, the plan), agents watch it and each contributes the piece it can, and the solution accumulates on the board. It fits problems solved by incremental contributions from diverse specialists, and it decouples agents (add/remove one without rewiring, no direct addressing) so it scales. The main risk is concurrency — simultaneous writes race and conflict — so you need safe merging (reducers), locking, or a turn controller. In LLM systems the shared graph state or a shared doc *is* the blackboard.
 :::

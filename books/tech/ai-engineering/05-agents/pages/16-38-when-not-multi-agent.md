@@ -11,5 +11,7 @@
 - **The frequent right answer:** not multi-agent, and often not even an agent — a **workflow** (14-35). Much of what gets built as a multi-agent system is a fixed pipeline in disguise, better as prompt-chaining or routing.
 
 :::interview
-**"When should you NOT build a multi-agent system?"** Most of the time, honestly. Don't when steps are sequential and dependent (nothing to parallelize), when your agents are near-clones (you're just running one agent N times at N× cost), when a single well-designed agent scores the same on your evals, or when the only reason is that multi-agent "feels advanced." Start with one agent plus good context engineering — it handles more than people expect — and add agents only when you can name the specific benefit (parallelism, specialization, robustness, or isolation), confirm it beats the coordination cost, and prove it against a single-agent baseline. Often the right answer isn't even an agent — it's a workflow. Restraint is the senior skill here.
+"When should you NOT build a multi-agent system?"
+
+Most of the time, honestly. Don't when steps are sequential and dependent (nothing to parallelize), when your agents are near-clones (you're just running one agent N times at N× cost), when a single well-designed agent scores the same on your evals, or when the only reason is that multi-agent "feels advanced." Start with one agent plus good context engineering — it handles more than people expect — and add agents only when you can name the specific benefit (parallelism, specialization, robustness, or isolation), confirm it beats the coordination cost, and prove it against a single-agent baseline. Often the right answer isn't even an agent — it's a workflow. Restraint is the senior skill here.
 :::

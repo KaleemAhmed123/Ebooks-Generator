@@ -18,5 +18,7 @@
 - The same **"learned latents resample variable input to fixed output"** pattern is everywhere in multimodal AI — the Perceiver (its origin), the Q-Former, and the token-pooling layers in modern video VLMs. Learn it once.
 
 :::interview
-**"How do VLMs stop video from exploding the token count?"** They resample. A fixed bank of learned queries/latents cross-attends to however many frame features arrive and emits a constant number of tokens. Cost is then set by the number of latents you chose, not by how long the video is — at the price of detail lost in the squeeze.
+"How do VLMs stop video from exploding the token count?"
+
+They resample. A fixed bank of learned queries/latents cross-attends to however many frame features arrive and emits a constant number of tokens. Cost is then set by the number of latents you chose, not by how long the video is — at the price of detail lost in the squeeze.
 :::

@@ -19,5 +19,7 @@
 - Result: a line that is consistently near the top of open VLM leaderboards on document, chart, and reasoning benchmarks — the "no compromises on the eye" school.
 
 :::interview
-**"Why not just use a stronger LLM to fix a weak VLM?"** Because a VLM cannot reason about detail its encoder never resolved. If the eye is a 300M CLIP at 336 px, a bigger LLM still gets blurry features. InternVL's thesis is that perception and reasoning must scale *together* — sometimes the bottleneck is the eye, and no amount of LLM fixes it.
+"Why not just use a stronger LLM to fix a weak VLM?"
+
+Because a VLM cannot reason about detail its encoder never resolved. If the eye is a 300M CLIP at 336 px, a bigger LLM still gets blurry features. InternVL's thesis is that perception and reasoning must scale *together* — sometimes the bottleneck is the eye, and no amount of LLM fixes it.
 :::

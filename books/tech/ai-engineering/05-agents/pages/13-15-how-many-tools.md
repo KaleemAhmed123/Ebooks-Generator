@@ -19,5 +19,7 @@
   - **Sub-agents.** Give specialized sub-agents their own small toolsets rather than one agent holding all tools (Module 16).
 
 :::interview
-**"Your agent has 40 tools and keeps picking the wrong one. What do you do?"** Reduce and organize. Merge overlapping tools into fewer richer ones, namespace the rest by domain, and — most importantly — only expose the tools relevant to the current task instead of all 40 at once (tool retrieval or task-scoped toolsets). If the domain genuinely needs 40 tools, split the work across sub-agents that each hold a focused subset. Tool overload is a design smell, not a model limitation.
+"Your agent has 40 tools and keeps picking the wrong one. What do you do?"
+
+Reduce and organize. Merge overlapping tools into fewer richer ones, namespace the rest by domain, and — most importantly — only expose the tools relevant to the current task instead of all 40 at once (tool retrieval or task-scoped toolsets). If the domain genuinely needs 40 tools, split the work across sub-agents that each hold a focused subset. Tool overload is a design smell, not a model limitation.
 :::

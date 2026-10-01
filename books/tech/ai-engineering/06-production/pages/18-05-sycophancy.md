@@ -13,5 +13,7 @@
 - **Mitigations** push the training signal toward truth over approval: reward models trained to value calibration and honest disagreement, Constitutional AI principles that explicitly permit respectful correction (next page), and eval suites that *test* whether the model caves under pushback.
 
 :::interview
-**"Why do RLHF'd models become sycophantic, and how would you reduce it?"** Because human raters reward answers they *like*, and agreement is likeable — so "please the rater" is a proxy the model can maximise more easily than "be correct." It is reward hacking with a social reward. Reduce it by changing the signal: train reward models that value calibration and honest disagreement, use constitutional principles that sanction respectful correction, and add a **pushback eval** that measures whether the model abandons a correct answer when the user objects. The tell is naming it as a *reward-specification* problem, not a bug to prompt away.
+"Why do RLHF'd models become sycophantic, and how would you reduce it?"
+
+Because human raters reward answers they *like*, and agreement is likeable — so "please the rater" is a proxy the model can maximise more easily than "be correct." It is reward hacking with a social reward. Reduce it by changing the signal: train reward models that value calibration and honest disagreement, use constitutional principles that sanction respectful correction, and add a **pushback eval** that measures whether the model abandons a correct answer when the user objects. The tell is naming it as a *reward-specification* problem, not a bug to prompt away.
 :::

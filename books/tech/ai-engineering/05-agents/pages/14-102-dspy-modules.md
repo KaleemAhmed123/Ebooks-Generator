@@ -19,5 +19,7 @@
 - **The power:** because modules and signatures are separate, you can swap `Predict` for `ChainOfThought` (or ReAct) to change reasoning strategy with a one-line change — and the compiler re-optimizes for the new strategy.
 
 :::interview
-**"How does DSPy separate what a step does from how it reasons?"** Signatures declare *what* (inputs → outputs); modules define *how* (the reasoning strategy). The same signature can run through `Predict` (direct), `ChainOfThought` (reason first), or `ReAct` (tool-using loop) — you swap the module without rewriting the task. Modules compose into pipelines (a module's `forward` calls other modules), so a whole agent is one program. DSPy then compiles and optimizes the prompts for whatever module strategy you chose — changing strategy is a one-liner, not a prompt rewrite.
+"How does DSPy separate what a step does from how it reasons?"
+
+Signatures declare *what* (inputs → outputs); modules define *how* (the reasoning strategy). The same signature can run through `Predict` (direct), `ChainOfThought` (reason first), or `ReAct` (tool-using loop) — you swap the module without rewriting the task. Modules compose into pipelines (a module's `forward` calls other modules), so a whole agent is one program. DSPy then compiles and optimizes the prompts for whatever module strategy you chose — changing strategy is a one-liner, not a prompt rewrite.
 :::

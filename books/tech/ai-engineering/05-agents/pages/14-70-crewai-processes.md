@@ -22,5 +22,7 @@
 - **The choice mirrors workflow-vs-agent (14-02):** sequential is a fixed pipeline (predictable, cheap); hierarchical hands control to a manager LLM (flexible, less predictable). Prefer sequential unless the task genuinely needs dynamic delegation.
 
 :::interview
-**"Sequential vs hierarchical process in CrewAI?"** Sequential runs tasks in a fixed order, piping each output as context to the next — predictable and cheap, ideal for pipeline work. Hierarchical introduces a manager agent that dynamically delegates tasks to workers and reviews their output — flexible for tasks whose breakdown isn't a straight line, but the manager adds cost and a failure point. It's the workflow-vs-agent tradeoff inside CrewAI: default to sequential, use hierarchical only when you truly need dynamic delegation.
+"Sequential vs hierarchical process in CrewAI?"
+
+Sequential runs tasks in a fixed order, piping each output as context to the next — predictable and cheap, ideal for pipeline work. Hierarchical introduces a manager agent that dynamically delegates tasks to workers and reviews their output — flexible for tasks whose breakdown isn't a straight line, but the manager adds cost and a failure point. It's the workflow-vs-agent tradeoff inside CrewAI: default to sequential, use hierarchical only when you truly need dynamic delegation.
 :::

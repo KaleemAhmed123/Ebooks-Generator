@@ -23,5 +23,7 @@
 - **Benchmarks lie by omission.** A model topping MMMU may still misread your invoices, because MMMU is not DocVQA. Always evaluate on a **held-out set from your own data** — the only benchmark that predicts your production quality.
 
 :::interview
-**"How do you evaluate a VLM for a document product?"** Don't trust a single leaderboard number. Match the benchmark to the capability (DocVQA/OCRBench for documents, not MMMU), then build a small labeled set from *your own* documents and measure exact-match/accuracy on it. Watch for hallucination specifically (next page) — a model can score well on accuracy yet confidently invent fields, which is the failure that erodes user trust.
+"How do you evaluate a VLM for a document product?"
+
+Don't trust a single leaderboard number. Match the benchmark to the capability (DocVQA/OCRBench for documents, not MMMU), then build a small labeled set from *your own* documents and measure exact-match/accuracy on it. Watch for hallucination specifically (next page) — a model can score well on accuracy yet confidently invent fields, which is the failure that erodes user trust.
 :::

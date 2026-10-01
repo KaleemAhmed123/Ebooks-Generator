@@ -17,5 +17,7 @@
 - **The cost is steep.** Generating and evaluating many branches means *many* model calls per problem — often 10–100× a single chain. ToT is for genuinely hard problems where quality justifies the compute, not everyday tasks.
 
 :::interview
-**"When is Tree of Thoughts worth it over chain-of-thought?"** When the problem needs *exploration and backtracking* — the first reasoning path frequently fails and you must compare alternatives (puzzles, planning, search-like tasks). ToT generates multiple candidate thoughts per step, scores them, and expands the best while pruning dead ends. It measurably beats a single chain on such problems, but at 10–100× the model calls, so you reserve it for hard problems where a wrong answer is costlier than the extra compute.
+"When is Tree of Thoughts worth it over chain-of-thought?"
+
+When the problem needs *exploration and backtracking* — the first reasoning path frequently fails and you must compare alternatives (puzzles, planning, search-like tasks). ToT generates multiple candidate thoughts per step, scores them, and expands the best while pruning dead ends. It measurably beats a single chain on such problems, but at 10–100× the model calls, so you reserve it for hard problems where a wrong answer is costlier than the extra compute.
 :::

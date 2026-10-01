@@ -18,5 +18,7 @@
 - **State your assumptions out loud** when the interviewer stays vague: "I'll assume 10M DAU, 20 messages each, 300 ms TTFT — stop me if that's off." That is how staff candidates take control of ambiguity instead of freezing on it.
 
 :::interview
-**"Design a customer-support assistant."** Do not draw anything yet. Ask: how many businesses/end-users and peak QPS? latency target? does it answer from *their* knowledge base (→ RAG) or general knowledge? how fresh must the KB be? multi-turn memory? what is the cost of a wrong answer (→ guardrails, human handoff)? budget and compliance? *Then* size it and design. The clarifying questions themselves are scored — they show you know which requirements bind the architecture.
+"Design a customer-support assistant."
+
+Do not draw anything yet. Ask: how many businesses/end-users and peak QPS? latency target? does it answer from *their* knowledge base (→ RAG) or general knowledge? how fresh must the KB be? multi-turn memory? what is the cost of a wrong answer (→ guardrails, human handoff)? budget and compliance? *Then* size it and design. The clarifying questions themselves are scored — they show you know which requirements bind the architecture.
 :::

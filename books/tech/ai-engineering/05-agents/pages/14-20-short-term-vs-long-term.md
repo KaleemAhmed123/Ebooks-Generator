@@ -12,5 +12,7 @@
 - **The interface between them is retrieval.** Long-term memory is useless until relevant pieces are pulled into short-term (the context) for a given turn. This is RAG (Booklet 4) pointed at the agent's own history instead of documents.
 
 :::interview
-**"How does an agent remember a user across sessions when the model is stateless?"** Long-term memory. You persist facts (preferences, past events, learned info) in an external store keyed to the user. At the start of — or during — a session, you retrieve the relevant memories and inject them into the context (short-term memory), so the model *appears* to remember. The model itself still recalls nothing between calls; the "memory" is an external store plus retrieval, exactly like RAG applied to the user's own history.
+"How does an agent remember a user across sessions when the model is stateless?"
+
+Long-term memory. You persist facts (preferences, past events, learned info) in an external store keyed to the user. At the start of — or during — a session, you retrieve the relevant memories and inject them into the context (short-term memory), so the model *appears* to remember. The model itself still recalls nothing between calls; the "memory" is an external store plus retrieval, exactly like RAG applied to the user's own history.
 :::

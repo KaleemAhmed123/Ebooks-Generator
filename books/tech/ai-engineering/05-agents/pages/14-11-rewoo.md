@@ -15,5 +15,7 @@
 - **The tradeoff:** it plans *blind*. Because it does not observe between steps, it cannot adapt mid-plan — if step 1's real result invalidates the plan, ReWOO cannot notice until the end. It shines when the task structure is predictable, and struggles when steps genuinely depend on surprises.
 
 :::interview
-**"How does ReWOO cut agent token cost versus ReAct?"** It decouples planning from observation. The Planner writes the entire tool chain up front using variables for not-yet-known results, a Worker executes the tools, and a Solver composes the answer — so the expensive reasoning model runs about twice instead of once per step, and the full transcript isn't resent each turn. The cost is adaptivity: ReWOO plans blind and can't course-correct mid-run, so it fits predictable multi-step tasks, not exploratory ones.
+"How does ReWOO cut agent token cost versus ReAct?"
+
+It decouples planning from observation. The Planner writes the entire tool chain up front using variables for not-yet-known results, a Worker executes the tools, and a Solver composes the answer — so the expensive reasoning model runs about twice instead of once per step, and the full transcript isn't resent each turn. The cost is adaptivity: ReWOO plans blind and can't course-correct mid-run, so it fits predictable multi-step tasks, not exploratory ones.
 :::

@@ -19,5 +19,7 @@
 - These compose into a pipeline: hybrid retrieve → re-rank → (decompose if needed) → synthesize with citations. Assembling this by hand is the bulk of production RAG work; here it is configuration.
 
 :::interview
-**"A RAG agent returns plausible but wrong answers — what retrieval fixes do you try?"** In order: hybrid search (so exact terms aren't missed by pure vector search), a re-ranker (cross-encoder rescoring the top-k to cut irrelevant chunks — the usual biggest win), metadata filtering (so it retrieves the *right version/date*), and sub-question decomposition for multi-part questions. LlamaIndex exposes all of these as composable retriever/post-processor options, which is exactly why it's favored for data-heavy agents — the fixes are configuration, not custom infrastructure.
+"A RAG agent returns plausible but wrong answers — what retrieval fixes do you try?"
+
+In order: hybrid search (so exact terms aren't missed by pure vector search), a re-ranker (cross-encoder rescoring the top-k to cut irrelevant chunks — the usual biggest win), metadata filtering (so it retrieves the *right version/date*), and sub-question decomposition for multi-part questions. LlamaIndex exposes all of these as composable retriever/post-processor options, which is exactly why it's favored for data-heavy agents — the fixes are configuration, not custom infrastructure.
 :::

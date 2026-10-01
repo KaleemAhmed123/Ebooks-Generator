@@ -17,5 +17,7 @@
   - You need **deep customization** the abstraction hides → a lower-level framework.
 
 :::interview
-**"When would you pick CrewAI over LangGraph?"** When speed and approachability matter more than control. CrewAI lets you describe a team of role-based agents in a few intuitive lines — ideal for prototypes, team-shaped pipeline tasks, and teams new to agents. LangGraph is more verbose but gives explicit control, persistence, human-in-the-loop, and production reliability. Pick CrewAI to get a plausible multi-agent system fast; move to LangGraph (or CrewAI Flows for the critical paths) when it must be reliable, debuggable, and precisely controlled in production.
+"When would you pick CrewAI over LangGraph?"
+
+When speed and approachability matter more than control. CrewAI lets you describe a team of role-based agents in a few intuitive lines — ideal for prototypes, team-shaped pipeline tasks, and teams new to agents. LangGraph is more verbose but gives explicit control, persistence, human-in-the-loop, and production reliability. Pick CrewAI to get a plausible multi-agent system fast; move to LangGraph (or CrewAI Flows for the critical paths) when it must be reliable, debuggable, and precisely controlled in production.
 :::

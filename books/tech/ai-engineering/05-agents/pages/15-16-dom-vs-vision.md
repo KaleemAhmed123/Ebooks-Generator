@@ -13,5 +13,7 @@
 - **Hybrid is the 2026 default:** use the DOM/accessibility tree to enumerate elements and overlay **set-of-marks** (14-110) numbered labels on the screenshot, so the agent *sees* the page (vision, robust) but *acts* by picking a labeled element (DOM-precise, no pixel guessing). You get vision's robustness and DOM's precision.
 
 :::interview
-**"DOM-based vs vision-based browser agents — tradeoffs?"** DOM reads the HTML: precise element selection, cheap (text tokens), reliable clicks — but brittle to markup changes, drowning in huge noisy DOMs, and blind to canvas/visual-only content. Vision reads a screenshot: robust to markup changes, works on anything rendered, human-like — but suffers pixel-level grounding errors and high image-token cost. The strong 2026 answer is hybrid: enumerate elements via the DOM/accessibility tree, overlay numbered set-of-marks on the screenshot, so the agent perceives visually but acts by choosing a labeled element — vision's robustness with DOM's precision.
+"DOM-based vs vision-based browser agents — tradeoffs?"
+
+DOM reads the HTML: precise element selection, cheap (text tokens), reliable clicks — but brittle to markup changes, drowning in huge noisy DOMs, and blind to canvas/visual-only content. Vision reads a screenshot: robust to markup changes, works on anything rendered, human-like — but suffers pixel-level grounding errors and high image-token cost. The strong 2026 answer is hybrid: enumerate elements via the DOM/accessibility tree, overlay numbered set-of-marks on the screenshot, so the agent perceives visually but acts by choosing a labeled element — vision's robustness with DOM's precision.
 :::

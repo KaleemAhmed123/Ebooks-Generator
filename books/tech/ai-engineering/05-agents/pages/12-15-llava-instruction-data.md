@@ -19,5 +19,7 @@
 - The generated pairs are then matched with the **real image** and used to train the VLM. A text model bootstrapped a *visual* model's training set — ~150k samples at launch, for the cost of API calls.
 
 :::interview
-**"Where does visual instruction-tuning data come from?"** Increasingly, from other models. LLaVA showed you can turn cheap text annotations (captions, boxes) into rich visual Q&A by prompting a text-only LLM, then pairing its output with the source image. This "model-generated training data" is now standard across VLMs — and its ceiling is the teacher model: errors and biases in the generator flow straight into the student.
+"Where does visual instruction-tuning data come from?"
+
+Increasingly, from other models. LLaVA showed you can turn cheap text annotations (captions, boxes) into rich visual Q&A by prompting a text-only LLM, then pairing its output with the source image. This "model-generated training data" is now standard across VLMs — and its ceiling is the teacher model: errors and biases in the generator flow straight into the student.
 :::

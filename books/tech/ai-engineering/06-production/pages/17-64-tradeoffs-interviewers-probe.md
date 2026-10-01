@@ -16,5 +16,7 @@
 - **Never answer "it depends" and stop.** It always depends — the interviewer wants to hear *on what*, and then your decision.
 
 :::interview
-**"Wouldn't a bigger model just fix your quality problem?"** Usually not — most quality gaps in a RAG system are *retrieval* gaps: the model never saw the right context, so a smarter model still can't answer. I would first measure whether failures are retrieval misses or generation errors; if retrieval, better chunking/reranking/hybrid search is far cheaper than a bigger model, and if generation, *then* I consider a stronger model or fine-tuning. Diagnosing before upgrading is the point.
+"Wouldn't a bigger model just fix your quality problem?"
+
+Usually not — most quality gaps in a RAG system are *retrieval* gaps: the model never saw the right context, so a smarter model still can't answer. I would first measure whether failures are retrieval misses or generation errors; if retrieval, better chunking/reranking/hybrid search is far cheaper than a bigger model, and if generation, *then* I consider a stronger model or fine-tuning. Diagnosing before upgrading is the point.
 :::

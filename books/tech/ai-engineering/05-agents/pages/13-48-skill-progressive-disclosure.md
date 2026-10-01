@@ -15,5 +15,7 @@
 - The result: an agent can have vast latent knowledge (hundreds of skills) while its *active* context holds only a short menu plus the one or two skills in play. This is the same context-economy principle as RAG and tool retrieval — **don't pay for what you're not using.**
 
 :::interview
-**"How can an agent have hundreds of skills without exhausting its context?"** Progressive disclosure. Keep only each skill's name and one-line description in context at all times (cheap). Load a skill's full instructions only when the model decides it is relevant, and load the skill's deep reference files or scripts only when the task actually reaches them. Active context stays small — a menu plus the one skill in use — while total available knowledge is unbounded.
+"How can an agent have hundreds of skills without exhausting its context?"
+
+Progressive disclosure. Keep only each skill's name and one-line description in context at all times (cheap). Load a skill's full instructions only when the model decides it is relevant, and load the skill's deep reference files or scripts only when the task actually reaches them. Active context stays small — a menu plus the one skill in use — while total available knowledge is unbounded.
 :::

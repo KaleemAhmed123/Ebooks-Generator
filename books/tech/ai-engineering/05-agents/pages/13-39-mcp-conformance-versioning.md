@@ -13,5 +13,7 @@
 - **Practical hygiene:** pin the protocol version you build against, read the changelog before upgrading (primitives and transports have changed between revisions), and re-run conformance after any SDK bump.
 
 :::interview
-**"MCP revises its spec often — how do you keep integrations from breaking?"** The handshake negotiates a shared protocol version and capabilities, so an older server and newer client use the common subset — you rarely break outright. In practice: send an explicit `protocolVersion`, pin what you build against, gate new features behind capability checks rather than assuming they exist, run conformance tests and the Inspector after upgrades, and read the changelog because transports and primitives have genuinely changed between dated revisions.
+"MCP revises its spec often — how do you keep integrations from breaking?"
+
+The handshake negotiates a shared protocol version and capabilities, so an older server and newer client use the common subset — you rarely break outright. In practice: send an explicit `protocolVersion`, pin what you build against, gate new features behind capability checks rather than assuming they exist, run conformance tests and the Inspector after upgrades, and read the changelog because transports and primitives have genuinely changed between dated revisions.
 :::

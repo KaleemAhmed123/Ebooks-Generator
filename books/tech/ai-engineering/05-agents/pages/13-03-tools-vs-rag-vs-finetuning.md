@@ -15,5 +15,7 @@
 - They combine. A production agent often fine-tunes for its domain voice, uses RAG for background knowledge, and calls tools to act — and RAG itself can be *implemented* as a `search` tool the model calls when it decides it needs to look something up (agentic RAG).
 
 :::interview
-**"The model gives outdated stock prices. RAG or a tool?"** A tool. Stock prices are live, high-frequency data — you want a `get_price` function hitting an API at call time, not documents in a vector store that are stale the moment they're indexed. RAG fits a slowly-changing knowledge base; anything real-time or that must *act* is a tool. Fine-tuning fixes neither — it teaches skills, not current facts.
+"The model gives outdated stock prices. RAG or a tool?"
+
+A tool. Stock prices are live, high-frequency data — you want a `get_price` function hitting an API at call time, not documents in a vector store that are stale the moment they're indexed. RAG fits a slowly-changing knowledge base; anything real-time or that must *act* is a tool. Fine-tuning fixes neither — it teaches skills, not current facts.
 :::

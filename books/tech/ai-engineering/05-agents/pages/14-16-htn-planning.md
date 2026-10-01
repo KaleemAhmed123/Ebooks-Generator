@@ -16,5 +16,7 @@
 - This is the deep reason "workflow vs agent" (14-02) is a spectrum, not a binary — HTN is how you encode the workflow skeleton while keeping agentic flexibility at the tips.
 
 :::interview
-**"Why use classical HTN planning when LLMs can plan?"** Reliability and verifiability. HTN decomposes a goal via hand-written rules, so its plans are deterministic, valid by construction, and auditable — the LLM can't invent a nonexistent step. LLM planning is flexible for open-ended tasks but can hallucinate or produce invalid plans. The strong pattern is hybrid: encode the known workflow structure as HTN-style decomposition and let the LLM fill the genuinely open-ended leaves.
+"Why use classical HTN planning when LLMs can plan?"
+
+Reliability and verifiability. HTN decomposes a goal via hand-written rules, so its plans are deterministic, valid by construction, and auditable — the LLM can't invent a nonexistent step. LLM planning is flexible for open-ended tasks but can hallucinate or produce invalid plans. The strong pattern is hybrid: encode the known workflow structure as HTN-style decomposition and let the LLM fill the genuinely open-ended leaves.
 :::

@@ -17,5 +17,7 @@
 - **Checkpointing at scale** — with many long-running agents, durable state (15-17) per agent lets the fleet survive restarts and rebalance work across machines.
 
 :::interview
-**"What changes when you go from a few agents to a large multi-agent system in production?"** It becomes a distributed-systems problem. You need a task queue to decouple creation from execution (scale workers independently, retry failures, absorb bursts); concurrency limits with backpressure so a flood of tasks doesn't spawn a flood of agents that blow past API rate limits and budgets — you slow intake instead of melting down; fault isolation so one hung or looping agent (run as an isolated worker with a timeout) doesn't take down the pool; and per-agent durable checkpointing so the fleet survives restarts. The agent logic is the easy part; the orchestration infrastructure — queues, backpressure, isolation, durability — is what makes it a reliable service.
+"What changes when you go from a few agents to a large multi-agent system in production?"
+
+It becomes a distributed-systems problem. You need a task queue to decouple creation from execution (scale workers independently, retry failures, absorb bursts); concurrency limits with backpressure so a flood of tasks doesn't spawn a flood of agents that blow past API rate limits and budgets — you slow intake instead of melting down; fault isolation so one hung or looping agent (run as an isolated worker with a timeout) doesn't take down the pool; and per-agent durable checkpointing so the fleet survives restarts. The agent logic is the easy part; the orchestration infrastructure — queues, backpressure, isolation, durability — is what makes it a reliable service.
 :::

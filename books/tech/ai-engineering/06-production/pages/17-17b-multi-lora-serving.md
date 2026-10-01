@@ -17,5 +17,7 @@
 - This is the standard answer to *"multi-tenant, each tenant wants their own model"* — the pattern behind fine-tuning-as-a-service platforms (and a Module 19 mock design).
 
 :::interview
-**"A thousand customers each want a model fine-tuned on their data. How do you serve that affordably?"** Not a thousand models — one base model with **per-customer LoRA adapters**, multi-LoRA served. The base sits in VRAM once; each adapter is a few megabytes loaded on demand, and requests with different adapters batch together. You store adapters cheaply (object storage), page hot ones into GPU, and fall back to the base for un-fine-tuned tenants. It turns a per-tenant-GPU cost into a per-tenant-few-megabytes cost — the whole reason fine-tuning-as-a-service is viable.
+"A thousand customers each want a model fine-tuned on their data. How do you serve that affordably?"
+
+Not a thousand models — one base model with **per-customer LoRA adapters**, multi-LoRA served. The base sits in VRAM once; each adapter is a few megabytes loaded on demand, and requests with different adapters batch together. You store adapters cheaply (object storage), page hot ones into GPU, and fall back to the base for un-fine-tuned tenants. It turns a per-tenant-GPU cost into a per-tenant-few-megabytes cost — the whole reason fine-tuning-as-a-service is viable.
 :::

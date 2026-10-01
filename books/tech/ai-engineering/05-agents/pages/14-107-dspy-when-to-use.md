@@ -16,5 +16,7 @@
 - **Skip it when:** one-off or low-volume work, no examples/metric, or when your real need is orchestration and state (use a framework, optionally with DSPy inside).
 
 :::interview
-**"When is DSPy the right tool, and when is it overkill?"** Right when you have a high-volume, repeated LLM task, examples, and a faithful metric — DSPy compiles and optimizes the prompts against that metric and re-optimizes when you swap models, turning prompt engineering into reproducible training. Overkill for one-off or low-volume prompts (the optimization compute never pays back) or when you have no metric to optimize against. And it's not an orchestration layer — for loops, state, and multi-agent flow you still need a framework, ideally with DSPy-optimized modules inside it.
+"When is DSPy the right tool, and when is it overkill?"
+
+Right when you have a high-volume, repeated LLM task, examples, and a faithful metric — DSPy compiles and optimizes the prompts against that metric and re-optimizes when you swap models, turning prompt engineering into reproducible training. Overkill for one-off or low-volume prompts (the optimization compute never pays back) or when you have no metric to optimize against. And it's not an orchestration layer — for loops, state, and multi-agent flow you still need a framework, ideally with DSPy-optimized modules inside it.
 :::

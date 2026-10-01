@@ -18,5 +18,7 @@
 - **Validate before executing.** Check the model's arguments against the schema first. Reject a hallucinated tool name or a missing required field with a clear error result rather than passing garbage to your function.
 
 :::interview
-**"An agent calls a tool that returns a 500. What should happen?"** Distinguish transient from logical. A 500/timeout is transient — retry a few times with exponential backoff in your own code, invisibly. If it still fails, return an *error tool_result* with a readable message so the model can adapt (try an alternative, or tell the user) rather than the process crashing. Never let a tool failure throw and kill the loop; convert every failure into an observation the model can reason about.
+"An agent calls a tool that returns a 500. What should happen?"
+
+Distinguish transient from logical. A 500/timeout is transient — retry a few times with exponential backoff in your own code, invisibly. If it still fails, return an *error tool_result* with a readable message so the model can adapt (try an alternative, or tell the user) rather than the process crashing. Never let a tool failure throw and kill the loop; convert every failure into an observation the model can reason about.
 :::

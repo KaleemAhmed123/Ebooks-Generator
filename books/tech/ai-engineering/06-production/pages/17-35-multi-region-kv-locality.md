@@ -15,5 +15,7 @@
 - **The tension is locality vs balance.** Perfect stickiness maximises cache hits but can hot-spot one region; pure load-balancing spreads load but cold-prefills conversations. Production routes sticky-with-overflow: prefer the warm region, spill to the next when it saturates.
 
 :::interview
-**"How do you serve a global chat product under a tight TTFT SLO?"** Two layers. **Geographic:** GPUs in regions near users, route to nearest, so network round-trip fits the budget. **KV locality:** sticky-route each conversation to the region holding its warm KV cache so follow-up turns skip re-prefilling the history — with cache replication to a failover region for resilience. The failure mode to call out is a naive global load-balancer that scatters a conversation across regions and cold-prefills every turn.
+"How do you serve a global chat product under a tight TTFT SLO?"
+
+Two layers. **Geographic:** GPUs in regions near users, route to nearest, so network round-trip fits the budget. **KV locality:** sticky-route each conversation to the region holding its warm KV cache so follow-up turns skip re-prefilling the history — with cache replication to a failover region for resilience. The failure mode to call out is a naive global load-balancer that scatters a conversation across regions and cold-prefills every turn.
 :::

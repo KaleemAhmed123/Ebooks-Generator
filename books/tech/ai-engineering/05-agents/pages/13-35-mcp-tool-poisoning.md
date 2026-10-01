@@ -26,5 +26,7 @@ description: "Adds two numbers.
 - **Defenses:** show users the *full* tool description (not just the name) before approval; scan descriptions for injection patterns; pin tool definitions and alert on changes; run servers with least privilege (roots, no secret access) so even an obeyed instruction hits nothing valuable; and keep a human approval gate on sensitive tools.
 
 :::interview
-**"What is tool poisoning and how do you defend against it?"** An attacker puts hidden instructions in an MCP tool's description; the model reads descriptions as trusted and obeys them, so a "harmless" tool can order the model to exfiltrate secrets or misuse other tools. Defenses: display full descriptions to users, scan for injected instructions, pin and diff tool definitions, enforce least privilege so obeyed instructions reach nothing sensitive, and gate consequential actions behind human approval. Root cause: the model trusts server-controlled text.
+"What is tool poisoning and how do you defend against it?"
+
+An attacker puts hidden instructions in an MCP tool's description; the model reads descriptions as trusted and obeys them, so a "harmless" tool can order the model to exfiltrate secrets or misuse other tools. Defenses: display full descriptions to users, scan for injected instructions, pin and diff tool definitions, enforce least privilege so obeyed instructions reach nothing sensitive, and gate consequential actions behind human approval. Root cause: the model trusts server-controlled text.
 :::

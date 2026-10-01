@@ -20,5 +20,7 @@
 - **Specialist routing:** send code to a code model, images to a VLM, long context to a long-context model — route by *capability*, not just size.
 
 :::interview
-**"How would you cut the cost of a high-traffic LLM feature by half without hurting quality?"** Model routing. Profile the traffic: a large share is usually easy. Route those to a small/cheap model by rule or a lightweight classifier, and reserve the flagship for genuinely hard requests — optionally with a cascade that escalates only when the small model's output fails a check. You keep quality where it matters and stop paying flagship prices for trivial requests. Measure with the routing/quality trace before and after.
+"How would you cut the cost of a high-traffic LLM feature by half without hurting quality?"
+
+Model routing. Profile the traffic: a large share is usually easy. Route those to a small/cheap model by rule or a lightweight classifier, and reserve the flagship for genuinely hard requests — optionally with a cascade that escalates only when the small model's output fails a check. You keep quality where it matters and stop paying flagship prices for trivial requests. Measure with the routing/quality trace before and after.
 :::

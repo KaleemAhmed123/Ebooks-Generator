@@ -28,5 +28,7 @@ class AgentState(TypedDict):
 - Why this matters: state + reducers are how LangGraph turns the agent loop's growing `messages` list (14-03) into something *managed*. Parallel nodes both returning `messages` merge correctly via the reducer instead of clobbering each other — the foundation for the persistence and multi-agent features ahead.
 
 :::interview
-**"What is a reducer in LangGraph and why does `messages` need one?"** A reducer defines how a node's returned update merges into existing state. By default a field is replaced. `messages` uses the `add_messages` reducer so new messages **append** to the history instead of overwriting it — essential because the conversation must accumulate across turns, and because parallel nodes both adding messages must merge, not clobber. Reducers are how LangGraph makes state updates composable and safe.
+"What is a reducer in LangGraph and why does `messages` need one?"
+
+A reducer defines how a node's returned update merges into existing state. By default a field is replaced. `messages` uses the `add_messages` reducer so new messages **append** to the history instead of overwriting it — essential because the conversation must accumulate across turns, and because parallel nodes both adding messages must merge, not clobber. Reducers are how LangGraph makes state updates composable and safe.
 :::

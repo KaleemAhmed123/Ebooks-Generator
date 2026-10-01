@@ -19,5 +19,7 @@
   - **Checkpoint** — so a failure resumes from a good state (14-50) rather than restarting.
 
 :::interview
-**"Why do agents struggle with long, multi-step tasks?"** Error compounding. If each step is reliable with probability p, an n-step task succeeds with pⁿ — at 95% per step, 20 steps is only ~36%. Worse, a wrong step corrupts the state, so later steps reason from a bad premise and degrade further, not just stall. You fight it on every front: raise per-step reliability (the 9s matter more at depth), shorten the horizon (decompose, use subagents), verify and recover after each step before errors snowball, and checkpoint so failures resume from a good state rather than the start.
+"Why do agents struggle with long, multi-step tasks?"
+
+Error compounding. If each step is reliable with probability p, an n-step task succeeds with pⁿ — at 95% per step, 20 steps is only ~36%. Worse, a wrong step corrupts the state, so later steps reason from a bad premise and degrade further, not just stall. You fight it on every front: raise per-step reliability (the 9s matter more at depth), shorten the horizon (decompose, use subagents), verify and recover after each step before errors snowball, and checkpoint so failures resume from a good state rather than the start.
 :::

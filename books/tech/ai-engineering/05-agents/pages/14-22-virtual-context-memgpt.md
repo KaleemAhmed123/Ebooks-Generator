@@ -15,5 +15,7 @@
 - MemGPT/Letta also introduced **memory tiers** — a small always-in-context core (who the user is, current task) plus searchable archival memory — the structure the next page (memory blocks) formalizes.
 
 :::interview
-**"Explain the MemGPT / virtual-context idea."** It applies OS virtual memory to LLMs: the context window is RAM (small, fast, in-prompt), an external store is disk (large, out-of-context), and the agent pages information between them using memory-management *tools* it calls itself. When context fills, the model writes less-needed info to storage; when it needs something, it searches storage to bring it back. The key move is making memory management the model's own responsibility, giving it unbounded, self-curated recall.
+"Explain the MemGPT / virtual-context idea."
+
+It applies OS virtual memory to LLMs: the context window is RAM (small, fast, in-prompt), an external store is disk (large, out-of-context), and the agent pages information between them using memory-management *tools* it calls itself. When context fills, the model writes less-needed info to storage; when it needs something, it searches storage to bring it back. The key move is making memory management the model's own responsibility, giving it unbounded, self-curated recall.
 :::

@@ -25,5 +25,7 @@ step 4  no 7:00pm slot — 6:45 and 7:30 available (unexpected state!)
 - **The lesson:** steps 1–3 (the happy path) are easy; the reliability engineering is step 4 — verify, wait, handle the surprise. A demo shows 1–3; a product survives 4. The irreversible action is always human-gated.
 
 :::interview
-**"What separates a browser-agent demo from a production one?"** Handling the unhappy path and gating irreversible actions. A demo shows the happy sequence; a product adds set-of-marks (labeled elements, not guessed pixels), verification after each action (catch a misclick before it compounds), waiting for async loads, and recovery from surprises by reasoning about the goal. Critically, consequential irreversible actions like completing a booking are escalated to a human, never taken on an assumption. Most of the engineering is in the surprises, not the happy path.
+"What separates a browser-agent demo from a production one?"
+
+Handling the unhappy path and gating irreversible actions. A demo shows the happy sequence; a product adds set-of-marks (labeled elements, not guessed pixels), verification after each action (catch a misclick before it compounds), waiting for async loads, and recovery from surprises by reasoning about the goal. Critically, consequential irreversible actions like completing a booking are escalated to a human, never taken on an assumption. Most of the engineering is in the surprises, not the happy path.
 :::

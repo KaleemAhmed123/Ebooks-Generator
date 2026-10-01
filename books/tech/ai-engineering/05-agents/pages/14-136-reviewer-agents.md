@@ -16,5 +16,7 @@
 - **Cost note:** a reviewer doubles the calls for that step. Use it where quality justifies the cost — final outputs, code that ships, consequential decisions — not every trivial step.
 
 :::interview
-**"How do you improve agent output quality with another agent?"** A reviewer agent. The doer produces the work; a *separate* reviewer, with a concrete rubric ("check correctness, security, unmet requirements"), critiques it adversarially; the doer revises. A fresh reviewer beats self-review because it doesn't share the doer's blind spots — the doer made the error precisely because it couldn't see it. Pair the reviewer (subjective judgment) with an objective verification gate (tests/validation) for full coverage, and reserve it for high-value steps since it doubles the cost.
+"How do you improve agent output quality with another agent?"
+
+A reviewer agent. The doer produces the work; a *separate* reviewer, with a concrete rubric ("check correctness, security, unmet requirements"), critiques it adversarially; the doer revises. A fresh reviewer beats self-review because it doesn't share the doer's blind spots — the doer made the error precisely because it couldn't see it. Pair the reviewer (subjective judgment) with an objective verification gate (tests/validation) for full coverage, and reserve it for high-value steps since it doubles the cost.
 :::

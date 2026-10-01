@@ -21,5 +21,7 @@
 - **For LLM agents:** the manager is a supervisor (16-07); bids are agents self-assessing ("I'm well-suited because…"); the award is routing. It is a principled alternative to a supervisor *guessing* who should handle a task — let the candidates make the case.
 
 :::interview
-**"How would you allocate tasks among agents when you don't know upfront who's best?"** The Contract Net Protocol. A manager announces the task and its requirements; capable agents *bid* with their estimated fit (cost, confidence, capability); the manager awards it to the best bid; the winner does the work and reports back. It's decentralized and adaptive — work routes to whoever is best-suited right now, it handles dynamic teams and load balancing (busy agents bid low or abstain), and for LLM agents the 'bid' is each agent self-assessing its suitability. It beats a supervisor blindly guessing the assignment by letting candidates make their own case.
+"How would you allocate tasks among agents when you don't know upfront who's best?"
+
+The Contract Net Protocol. A manager announces the task and its requirements; capable agents *bid* with their estimated fit (cost, confidence, capability); the manager awards it to the best bid; the winner does the work and reports back. It's decentralized and adaptive — work routes to whoever is best-suited right now, it handles dynamic teams and load balancing (busy agents bid low or abstain), and for LLM agents the 'bid' is each agent self-assessing its suitability. It beats a supervisor blindly guessing the assignment by letting candidates make their own case.
 :::

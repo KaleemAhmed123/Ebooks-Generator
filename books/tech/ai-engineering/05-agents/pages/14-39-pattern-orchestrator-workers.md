@@ -18,5 +18,7 @@
 - **The orchestrator is the key risk and cost.** It must decompose well and synthesize the workers' outputs into something coherent (not just concatenate). This is the root of most **multi-agent** systems (Module 16) — a supervisor coordinating specialized workers.
 
 :::interview
-**"Parallelization vs orchestrator-workers — what's the real difference?"** Who decides the split. Parallelization uses a *fixed, pre-coded* decomposition (you always run the same N subtasks). Orchestrator-workers lets an LLM decide the decomposition *at runtime* based on the input — how many workers, doing what — then synthesizes their results. Use orchestrator-workers when you can't know the subtasks in advance (editing an unknown set of files, researching an open question); it's the bridge to true multi-agent systems.
+"Parallelization vs orchestrator-workers — what's the real difference?"
+
+Who decides the split. Parallelization uses a *fixed, pre-coded* decomposition (you always run the same N subtasks). Orchestrator-workers lets an LLM decide the decomposition *at runtime* based on the input — how many workers, doing what — then synthesizes their results. Use orchestrator-workers when you can't know the subtasks in advance (editing an unknown set of files, researching an open question); it's the bridge to true multi-agent systems.
 :::

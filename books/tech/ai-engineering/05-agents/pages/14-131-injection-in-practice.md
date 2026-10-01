@@ -15,5 +15,7 @@
 - **General rules:** treat all tool outputs and fetched content as untrusted, separate high-privilege and untrusted-content flows into different agents/contexts, and default to human approval for anything irreversible.
 
 :::interview
-**"Design a browser agent that reads arbitrary web pages safely."** Break the lethal trifecta at "private data": run the browsing agent in a context with no access to the user's credentials, secrets, or internal systems, and no tools that can send data to attacker-chosen destinations. It can read and summarize the web, but even if a page injects it, there's nothing sensitive to steal and no channel to exfiltrate. Add human approval for any consequential action, sandbox any code execution with no network, and monitor for anomalies. You assume injection succeeds and ensure the blast radius is nil.
+"Design a browser agent that reads arbitrary web pages safely."
+
+Break the lethal trifecta at "private data": run the browsing agent in a context with no access to the user's credentials, secrets, or internal systems, and no tools that can send data to attacker-chosen destinations. It can read and summarize the web, but even if a page injects it, there's nothing sensitive to steal and no channel to exfiltrate. Add human approval for any consequential action, sandbox any code execution with no network, and monitor for anomalies. You assume injection succeeds and ensure the blast radius is nil.
 :::

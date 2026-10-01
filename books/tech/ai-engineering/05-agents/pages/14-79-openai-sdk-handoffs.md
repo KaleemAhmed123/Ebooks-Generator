@@ -25,5 +25,7 @@ result = await Runner.run(triage, "My invoice is wrong.")
 - **Chains and returns.** Handoffs can chain (triage → tech → escalation), and you can design agents that hand back. This composes into supervisor/network multi-agent systems without a separate framework.
 
 :::interview
-**"How does the OpenAI Agents SDK do multi-agent?"** Handoffs. You give an agent a list of other agents it can delegate to; the SDK exposes each as a transfer the model can invoke. When the current agent decides another is better suited, control switches to that specialist, which continues with full context. It's the routing/triage pattern expressed minimally — a triage agent routes to billing or tech specialists — and it composes into supervisor and network topologies without any extra machinery. The elegance is that a handoff is just another tool call.
+"How does the OpenAI Agents SDK do multi-agent?"
+
+Handoffs. You give an agent a list of other agents it can delegate to; the SDK exposes each as a transfer the model can invoke. When the current agent decides another is better suited, control switches to that specialist, which continues with full context. It's the routing/triage pattern expressed minimally — a triage agent routes to billing or tech specialists — and it composes into supervisor and network topologies without any extra machinery. The elegance is that a handoff is just another tool call.
 :::

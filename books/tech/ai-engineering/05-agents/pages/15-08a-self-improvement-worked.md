@@ -23,5 +23,7 @@ gen N  plateaus ~74ms → stop. 100ms → 74ms, all verified correct.
 - **What makes it work:** a **correct, fast evaluator** and **kept diversity** (mutate several survivors, not just the best, to escape local optima — 14-17).
 
 :::interview
-**"Walk through how a self-improving system actually improves code."** Propose-evaluate-keep in a loop with a ground-truth evaluator. Each generation the LLM proposes several code mutations; an executable evaluator runs each and measures quality (speed) *and* correctness (tests); winners are kept and mutated further, losers discarded. A faster-but-wrong variant gets caught by the tests and dropped — without that check the loop would optimize into a wrong answer. It finds big wins early, plateaus as gains shrink (bounded improvement, capped by the search space and the base model), and needs two things: a trustworthy evaluator and kept diversity to escape local optima. The magic is disciplined search, not bootstrapping intelligence.
+"Walk through how a self-improving system actually improves code."
+
+Propose-evaluate-keep in a loop with a ground-truth evaluator. Each generation the LLM proposes several code mutations; an executable evaluator runs each and measures quality (speed) *and* correctness (tests); winners are kept and mutated further, losers discarded. A faster-but-wrong variant gets caught by the tests and dropped — without that check the loop would optimize into a wrong answer. It finds big wins early, plateaus as gains shrink (bounded improvement, capped by the search space and the base model), and needs two things: a trustworthy evaluator and kept diversity to escape local optima. The magic is disciplined search, not bootstrapping intelligence.
 :::

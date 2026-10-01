@@ -24,5 +24,7 @@ Example D — 30-frame video, 336px, 2×2 pooled:
 - **The three dials:** resolution (patches per tile), tiling (how many tiles), pooling (how hard you merge). Every VLM deployment is a choice of these three against a token budget.
 
 :::interview
-**"Estimate the token cost of sending a full-page PDF screenshot to a VLM."** Roughly: a ~1000 px page at 336 px tiles is a 3×3 grid + global = 10 passes × 576 ≈ **~5.7k tokens per page** before pooling. Ten pages ≈ 57k tokens — near many models' whole context. That is why document agents pool, cap tiles, or retrieve pages (ColPali, later) instead of stuffing them all in.
+"Estimate the token cost of sending a full-page PDF screenshot to a VLM."
+
+Roughly: a ~1000 px page at 336 px tiles is a 3×3 grid + global = 10 passes × 576 ≈ **~5.7k tokens per page** before pooling. Ten pages ≈ 57k tokens — near many models' whole context. That is why document agents pool, cap tiles, or retrieve pages (ColPali, later) instead of stuffing them all in.
 :::

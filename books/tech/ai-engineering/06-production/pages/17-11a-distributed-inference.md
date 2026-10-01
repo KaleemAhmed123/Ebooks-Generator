@@ -21,5 +21,7 @@
 - **The rule:** TP and PP to *fit* one copy on the smallest GPU set that holds it, then DP to *scale* copies for throughput. `DP × TP` on one node (e.g. `DP=4, TP=2` on 8 GPUs, page 17-17) is the common shape.
 
 :::interview
-**"The model needs 4 GPUs — how do you split them?"** First ask *why 4* — is it to fit the weights (→ TP within a node, cross-check the interconnect) or for throughput (→ DP replicas)? For fitting, prefer TP up to the NVLink domain, add PP only if a single node still can't hold it. For throughput, replicate with DP. Stating that TP/PP *fit* and DP *scales* — and that TP is interconnect-bound so it doesn't scale across nodes cheaply — is the signal.
+"The model needs 4 GPUs — how do you split them?"
+
+First ask *why 4* — is it to fit the weights (→ TP within a node, cross-check the interconnect) or for throughput (→ DP replicas)? For fitting, prefer TP up to the NVLink domain, add PP only if a single node still can't hold it. For throughput, replicate with DP. Stating that TP/PP *fit* and DP *scales* — and that TP is interconnect-bound so it doesn't scale across nodes cheaply — is the signal.
 :::

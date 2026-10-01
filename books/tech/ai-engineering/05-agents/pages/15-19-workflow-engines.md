@@ -17,5 +17,7 @@
 - **The tradeoff:** a workflow engine is real operational complexity (a server, workers, a new programming model). For a short agent it is overkill; for a long-horizon, high-value, must-not-fail agent, it is the mature answer to durability.
 
 :::interview
-**"How would you make a long-running, multi-step agent survive crashes and not repeat actions?"** Run it on (or like) a durable workflow engine such as Temporal. You model the agent's LLM and tool calls as *activities* whose results are persisted to a durable log; on a crash the engine replays the workflow, skipping already-completed activities by reading their logged results, so it resumes exactly and each side effect runs once. It also handles durable long waits (day-long human approvals) naturally. It's heavyweight for short agents but the right foundation for long-horizon, high-value autonomous runs where restart-from-scratch and double-execution are unacceptable.
+"How would you make a long-running, multi-step agent survive crashes and not repeat actions?"
+
+Run it on (or like) a durable workflow engine such as Temporal. You model the agent's LLM and tool calls as *activities* whose results are persisted to a durable log; on a crash the engine replays the workflow, skipping already-completed activities by reading their logged results, so it resumes exactly and each side effect runs once. It also handles durable long waits (day-long human approvals) naturally. It's heavyweight for short agents but the right foundation for long-horizon, high-value autonomous runs where restart-from-scratch and double-execution are unacceptable.
 :::

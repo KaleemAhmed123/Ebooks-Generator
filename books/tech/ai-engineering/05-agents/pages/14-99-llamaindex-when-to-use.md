@@ -18,5 +18,7 @@
 - **Combine, don't compete.** A common production shape is LangGraph for orchestration with LlamaIndex *inside a node* doing retrieval — each framework where it is strongest.
 
 :::interview
-**"When is LlamaIndex the right framework?"** When retrieval is the hard part. For RAG-centric agents — knowledge assistants, research tools, enterprise doc bots — over many or messy sources, LlamaIndex's mature connectors, indexes, and retrieval (hybrid, re-ranking, sub-question) are a real edge you'd otherwise hand-build. If the challenge is control flow, LangGraph fits better; if the agent barely touches data, a lighter SDK does. And they compose: a common pattern is LangGraph orchestrating, with LlamaIndex doing retrieval inside a node. Pick by where your difficulty lives — for data, it's LlamaIndex.
+"When is LlamaIndex the right framework?"
+
+When retrieval is the hard part. For RAG-centric agents — knowledge assistants, research tools, enterprise doc bots — over many or messy sources, LlamaIndex's mature connectors, indexes, and retrieval (hybrid, re-ranking, sub-question) are a real edge you'd otherwise hand-build. If the challenge is control flow, LangGraph fits better; if the agent barely touches data, a lighter SDK does. And they compose: a common pattern is LangGraph orchestrating, with LlamaIndex doing retrieval inside a node. Pick by where your difficulty lives — for data, it's LlamaIndex.
 :::

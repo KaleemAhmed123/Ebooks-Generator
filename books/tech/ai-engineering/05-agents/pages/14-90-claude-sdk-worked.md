@@ -26,5 +26,7 @@ async for message in query(
 - **This is essentially "Claude Code as a library."** The same loop, tools, and safeguards that run the interactive coding agent, driven programmatically for your own automation.
 
 :::interview
-**"How would you build an agent that autonomously fixes failing tests?"** Use an agent harness with file, shell, and search tools (the Claude Agent SDK is purpose-built for this). Prompt it to run the tests, locate the failure, edit the code, and re-run until green — the agent loop over a real repo. Crucially, bound it: scope `allowed_tools` to what's needed, set a permission mode that gates or auto-accepts appropriately, sandbox it to the repo's working directory, and rely on automatic context compaction for the long transcript. The intelligence is the model; the reliability and safety are in the harness configuration.
+"How would you build an agent that autonomously fixes failing tests?"
+
+Use an agent harness with file, shell, and search tools (the Claude Agent SDK is purpose-built for this). Prompt it to run the tests, locate the failure, edit the code, and re-run until green — the agent loop over a real repo. Crucially, bound it: scope `allowed_tools` to what's needed, set a permission mode that gates or auto-accepts appropriately, sandbox it to the repo's working directory, and rely on automatic context compaction for the long transcript. The intelligence is the model; the reliability and safety are in the harness configuration.
 :::

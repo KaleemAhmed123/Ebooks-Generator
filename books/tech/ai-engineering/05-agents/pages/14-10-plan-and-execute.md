@@ -17,5 +17,7 @@
 - **Re-planning.** Rigid plans break when reality differs. Good plan-and-execute agents **re-plan**: after executing steps, the planner reviews progress and revises the remaining plan. This blends plan-first structure with ReAct-like adaptivity.
 
 :::interview
-**"ReAct vs plan-and-execute — when each?"** ReAct decides step-by-step, adapting to each observation — best for exploratory tasks where you can't plan ahead and the path is short. Plan-and-execute commits to a plan first, then runs it — best for multi-step tasks with a knowable structure, because it reasons once (cheaper), stays on-goal (less drift), and lets you inspect the plan. Long or complex → plan first, re-planning on failure; short/exploratory → ReAct.
+"ReAct vs plan-and-execute — when each?"
+
+ReAct decides step-by-step, adapting to each observation — best for exploratory tasks where you can't plan ahead and the path is short. Plan-and-execute commits to a plan first, then runs it — best for multi-step tasks with a knowable structure, because it reasons once (cheaper), stays on-goal (less drift), and lets you inspect the plan. Long or complex → plan first, re-planning on failure; short/exploratory → ReAct.
 :::

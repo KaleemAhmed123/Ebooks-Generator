@@ -19,5 +19,7 @@
 - These two problems are the reason MARL needs specialized algorithms (16-26) rather than just running single-agent RL per agent.
 
 :::interview
-**"Why is multi-agent RL harder than single-agent RL?"** Two core reasons. Non-stationarity: in single-agent RL the environment is fixed while you learn, but in MARL every agent learns simultaneously, so from each agent's perspective the environment (which includes the others) keeps changing — a moving target that can break convergence. And credit assignment: when a team shares a reward, it's hard for an agent to tell whether *its* action or a teammate's caused the outcome, so learning the right individual behavior is difficult. These don't exist in single-agent RL, which is why MARL needs specialized algorithms and training schemes rather than just running independent learners.
+"Why is multi-agent RL harder than single-agent RL?"
+
+Two core reasons. Non-stationarity: in single-agent RL the environment is fixed while you learn, but in MARL every agent learns simultaneously, so from each agent's perspective the environment (which includes the others) keeps changing — a moving target that can break convergence. And credit assignment: when a team shares a reward, it's hard for an agent to tell whether *its* action or a teammate's caused the outcome, so learning the right individual behavior is difficult. These don't exist in single-agent RL, which is why MARL needs specialized algorithms and training schemes rather than just running independent learners.
 :::

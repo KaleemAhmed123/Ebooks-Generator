@@ -19,5 +19,7 @@
 - **The reversibility principle:** gate by *how hard it is to undo*. A reversible action (an edit you can revert) can run freely; an irreversible one (a sent email, a deleted record, a charge) needs a human, always. Reversibility, not just "importance," is the right axis.
 
 :::interview
-**"How do you decide which agent actions need human approval?"** By risk and reversibility, per action class — not globally. Auto-allow safe, reversible actions (reads, searches, sandboxed test runs) since approving them is pure friction. Require approval for consequential actions (file writes, arbitrary commands, spending, sending). Hard-deny the dangerous and irreversible (prod deploys, deleting data, credential access) regardless of the agent's intent. The key axis is reversibility: if a mistake can be undone, let it run; if it can't — a sent message, a charge, a deletion — a human gates it every time.
+"How do you decide which agent actions need human approval?"
+
+By risk and reversibility, per action class — not globally. Auto-allow safe, reversible actions (reads, searches, sandboxed test runs) since approving them is pure friction. Require approval for consequential actions (file writes, arbitrary commands, spending, sending). Hard-deny the dangerous and irreversible (prod deploys, deleting data, credential access) regardless of the agent's intent. The key axis is reversibility: if a mistake can be undone, let it run; if it can't — a sent message, a charge, a deletion — a human gates it every time.
 :::

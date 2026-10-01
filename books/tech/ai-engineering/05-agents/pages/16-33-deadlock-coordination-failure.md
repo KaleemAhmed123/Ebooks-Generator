@@ -12,5 +12,7 @@
   - **Loop/handoff detection** — spot A→B→A→B and break it.
 
 :::interview
-**"What coordination failures are unique to multi-agent systems and how do you prevent them?"** The distributed-systems classics: deadlock (A waits for B while B waits for A, so nothing proceeds), livelock/oscillation (agents keep acting but make no progress — deferring to each other or passing a task back and forth), and non-termination (the group never decides it's done, debating or re-delegating forever). Prevent them with system-level versions of single-agent stops: a global turn/step budget (not just per-agent), timeouts on every wait with an escalation default, clear ownership of the "are we done?" decision plus an explicit termination condition, and loop/handoff detection to break A→B→A→B cycles. These are flow failures, independent of whether any agent's answer is correct.
+"What coordination failures are unique to multi-agent systems and how do you prevent them?"
+
+The distributed-systems classics: deadlock (A waits for B while B waits for A, so nothing proceeds), livelock/oscillation (agents keep acting but make no progress — deferring to each other or passing a task back and forth), and non-termination (the group never decides it's done, debating or re-delegating forever). Prevent them with system-level versions of single-agent stops: a global turn/step budget (not just per-agent), timeouts on every wait with an escalation default, clear ownership of the "are we done?" decision plus an explicit termination condition, and loop/handoff detection to break A→B→A→B cycles. These are flow failures, independent of whether any agent's answer is correct.
 :::

@@ -19,5 +19,7 @@
 - **The payoff and the trap:** caching can dramatically cut an agent's cost and latency (repeated calls are common). The trap is a *stale cache* serving old data as if fresh (the stale-fact problem, 14-33) — so match the TTL to how fast the data changes, and never cache what must be current or what acts.
 
 :::interview
-**"How and when do you cache an agent's tool calls?"** Key a cache by tool name plus arguments; a hit returns the stored result cheaply, a miss runs the tool and stores it — eliminating redundant searches and lookups within and across runs, which cuts cost and latency substantially. The rules: cache read-only stable data freely, cache time-sensitive data with a short TTL matched to how fast it changes, and *never* cache side-effecting actions (caching an email-send is meaningless — that's idempotency, a different concern). The main risk is a stale cache serving old data as current, so tune TTLs to freshness needs and only cache tools that read, never ones that act.
+"How and when do you cache an agent's tool calls?"
+
+Key a cache by tool name plus arguments; a hit returns the stored result cheaply, a miss runs the tool and stores it — eliminating redundant searches and lookups within and across runs, which cuts cost and latency substantially. The rules: cache read-only stable data freely, cache time-sensitive data with a short TTL matched to how fast it changes, and *never* cache side-effecting actions (caching an email-send is meaningless — that's idempotency, a different concern). The main risk is a stale cache serving old data as current, so tune TTLs to freshness needs and only cache tools that read, never ones that act.
 :::

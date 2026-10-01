@@ -15,5 +15,7 @@
 - **The heuristic:** start with one agent. Add agents only when you can name *which* of the four benefits you are buying and confirm it exceeds the coordination cost. "It felt more sophisticated" is not a reason.
 
 :::interview
-**"How do you decide between a single agent and a multi-agent system?"** By whether the task's structure pays for the coordination overhead. Multi-agent wins with genuinely parallel independent sub-tasks, distinct specializations (different tools/context per role), high-stakes work that benefits from cross-checking, or context too large for one window. A single agent wins when steps are sequential and dependent (nothing to parallelize), one skill suffices, latency/cost is tight, or coordination would cost more than the work itself. Default to one agent and add more only when you can name the specific benefit — parallelism, specialization, robustness, or isolation — that outweighs the extra calls and failure modes.
+"How do you decide between a single agent and a multi-agent system?"
+
+By whether the task's structure pays for the coordination overhead. Multi-agent wins with genuinely parallel independent sub-tasks, distinct specializations (different tools/context per role), high-stakes work that benefits from cross-checking, or context too large for one window. A single agent wins when steps are sequential and dependent (nothing to parallelize), one skill suffices, latency/cost is tight, or coordination would cost more than the work itself. Default to one agent and add more only when you can name the specific benefit — parallelism, specialization, robustness, or isolation — that outweighs the extra calls and failure modes.
 :::

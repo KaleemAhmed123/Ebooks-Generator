@@ -21,5 +21,7 @@ agent.invoke({"messages": [("user", "weather in Paris, times two people?")]})
 - **When to go custom:** anything the prebuilt loop does not express — multiple cooperating nodes, a plan-and-execute structure, a mid-loop guard, branching beyond think/act. Then you build the graph explicitly (14-48) and get full control.
 
 :::interview
-**"Do you always hand-build a LangGraph agent?"** No — start with the prebuilt `create_react_agent` for the standard think-act-loop; it's the same graph you'd write by hand, minus the boilerplate, and it keeps all the persistence/streaming/interrupt features. Drop to an explicit `StateGraph` only when you need something the prebuilt loop can't express — extra nodes (validation, summarization, human approval), custom routing, or a non-ReAct structure like plan-and-execute. Knowing both means you use the shortcut when it fits and control the graph when it doesn't.
+"Do you always hand-build a LangGraph agent?"
+
+No — start with the prebuilt `create_react_agent` for the standard think-act-loop; it's the same graph you'd write by hand, minus the boilerplate, and it keeps all the persistence/streaming/interrupt features. Drop to an explicit `StateGraph` only when you need something the prebuilt loop can't express — extra nodes (validation, summarization, human approval), custom routing, or a non-ReAct structure like plan-and-execute. Knowing both means you use the shortcut when it fits and control the graph when it doesn't.
 :::

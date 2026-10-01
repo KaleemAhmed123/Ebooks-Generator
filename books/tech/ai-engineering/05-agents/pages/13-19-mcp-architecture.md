@@ -20,5 +20,7 @@
 - The clean separation means a server author never thinks about which host will use it, and a host author never hard-codes any tool. Each side implements MCP and trusts the other to as well.
 
 :::interview
-**"In MCP, what's the difference between a host, a client, and a server?"** The host is the user-facing AI app that holds the model and conversation. Inside it, each client is a 1:1 connector to one server. A server is a separate process exposing tools, resources, and prompts. One host runs many clients, each bound to exactly one server. The host mediates consent; the server never talks to the model directly except through the sampling capability the client grants.
+"In MCP, what's the difference between a host, a client, and a server?"
+
+The host is the user-facing AI app that holds the model and conversation. Inside it, each client is a 1:1 connector to one server. A server is a separate process exposing tools, resources, and prompts. One host runs many clients, each bound to exactly one server. The host mediates consent; the server never talks to the model directly except through the sampling capability the client grants.
 :::

@@ -23,5 +23,7 @@ Net speedup = (tokens/step) ÷ (1 + draft_cost_fraction)
 - **The draft cost caps the win.** A stronger drafter (EAGLE-3) raises `α` but costs more compute per step; the net speedup is the accepted-tokens gain divided by the drafting overhead. Feature-level drafters win because they lift `α` a lot for little extra cost.
 
 :::interview
-**"When does speculative decoding *not* help?"** Three cases, all from the math. **Low acceptance** — unpredictable/creative output means `α` is low, so few draft tokens survive and the overhead can exceed the gain. **Saturation** — at max batch the target is already compute-bound (17-37), so there is no spare compute to draft with, and speculation can regress. **Heavy drafter** — if the draft model is too expensive, its cost eats the accepted-token win. The win is largest at *low-to-medium load on predictable text with a cheap, accurate drafter*.
+"When does speculative decoding *not* help?"
+
+Three cases, all from the math. **Low acceptance** — unpredictable/creative output means `α` is low, so few draft tokens survive and the overhead can exceed the gain. **Saturation** — at max batch the target is already compute-bound (17-37), so there is no spare compute to draft with, and speculation can regress. **Heavy drafter** — if the draft model is too expensive, its cost eats the accepted-token win. The win is largest at *low-to-medium load on predictable text with a cheap, accurate drafter*.
 :::

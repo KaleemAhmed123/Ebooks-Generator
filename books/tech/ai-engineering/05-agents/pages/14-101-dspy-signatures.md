@@ -23,5 +23,7 @@ class ExtractInvoice(dspy.Signature):
 - Signatures compose — the output of one becomes the input of another — which is how you build multi-step pipelines (next page) declaratively.
 
 :::interview
-**"What is a DSPy signature?"** A declarative spec of a step's inputs and outputs — like `"document -> summary"` or a typed class with described fields — that says *what* the step should do without you writing the prompt for *how*. DSPy compiles the signature into an actual, optimized prompt, and recompiles it if you switch models. It's the unit you program with instead of prompt strings: you own the interface (fields, types, descriptions), and DSPy owns the phrasing, which is what makes DSPy pipelines portable and optimizable.
+"What is a DSPy signature?"
+
+A declarative spec of a step's inputs and outputs — like `"document -> summary"` or a typed class with described fields — that says *what* the step should do without you writing the prompt for *how*. DSPy compiles the signature into an actual, optimized prompt, and recompiles it if you switch models. It's the unit you program with instead of prompt strings: you own the interface (fields, types, descriptions), and DSPy owns the phrasing, which is what makes DSPy pipelines portable and optimizable.
 :::

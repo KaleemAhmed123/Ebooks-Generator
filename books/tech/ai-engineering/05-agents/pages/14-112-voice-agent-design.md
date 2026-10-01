@@ -16,5 +16,7 @@
 - **Handle the unhappy audio path:** silence (prompt gently), cross-talk, background noise, the user hanging up mid-task. These are the norm on real calls, not edge cases.
 
 :::interview
-**"What makes voice agents harder than text agents?"** Latency and lossy, interruptible input. You have ~500 ms to first audio, so you stream and overlap every stage (STT on the fly, LLM on a partial transcript, streaming TTS) and often pick a faster-but-smaller model — a smooth quick reply beats a slow brilliant one. And speech is unreliable: STT mishears names and numbers, users interrupt (barge-in) and expect the agent to stop instantly, and calls have silence, noise, and cross-talk. So you confirm critical values, keep replies short, and engineer turn-taking as a first-class feature — the pipeline's UX matters as much as the agent's answers.
+"What makes voice agents harder than text agents?"
+
+Latency and lossy, interruptible input. You have ~500 ms to first audio, so you stream and overlap every stage (STT on the fly, LLM on a partial transcript, streaming TTS) and often pick a faster-but-smaller model — a smooth quick reply beats a slow brilliant one. And speech is unreliable: STT mishears names and numbers, users interrupt (barge-in) and expect the agent to stop instantly, and calls have silence, noise, and cross-talk. So you confirm critical values, keep replies short, and engineer turn-taking as a first-class feature — the pipeline's UX matters as much as the agent's answers.
 :::

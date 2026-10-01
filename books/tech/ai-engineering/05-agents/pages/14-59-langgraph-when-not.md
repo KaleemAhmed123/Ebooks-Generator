@@ -15,5 +15,7 @@
 - **When to reach for something else:** a chatbot or single-shot task (just call the model); a fixed pipeline (a plain function or prompt chaining); a quick demo (a lighter framework). Use LangGraph when you genuinely need **control, persistence, and reliability** — and accept the verbosity as the price of that control.
 
 :::interview
-**"When would you NOT use LangGraph?"** When you don't need its core value — explicit control flow plus durable state. A simple chatbot or single-call task should just call the model. A fixed linear pipeline is better as a plain function or prompt chain. A quick prototype is faster in a role-based framework or a provider SDK. LangGraph earns its verbosity only when the agent is long-running, must be reliable and resumable, needs human-in-the-loop or replay, or is a complex/multi-agent flow. Reaching for it by default is over-engineering.
+"When would you NOT use LangGraph?"
+
+When you don't need its core value — explicit control flow plus durable state. A simple chatbot or single-call task should just call the model. A fixed linear pipeline is better as a plain function or prompt chain. A quick prototype is faster in a role-based framework or a provider SDK. LangGraph earns its verbosity only when the agent is long-running, must be reliable and resumable, needs human-in-the-loop or replay, or is a complex/multi-agent flow. Reaching for it by default is over-engineering.
 :::

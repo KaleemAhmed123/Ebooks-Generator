@@ -20,5 +20,7 @@ engine.query("What is our refund policy?")
 - **Configurable at every stage:** the retriever (how chunks are found — vector, hybrid, with re-ranking), the response synthesizer (how chunks become an answer), and post-processors (filtering, re-ranking). This is where LlamaIndex's depth shows — the RAG failure-mode fixes of Booklet 4 (re-ranking, hybrid search) are built-in knobs, not things you assemble.
 
 :::interview
-**"How is RAG expressed in LlamaIndex?"** As an index plus a query engine. You load documents, build a `VectorStoreIndex` (which chunks, embeds, and stores them), and call `.as_query_engine()` to get an object that, on a query, retrieves the top-k relevant chunks, prompts the LLM with them, and returns a grounded, cited answer. Every stage is configurable — the retriever (vector/hybrid/re-ranked), the synthesizer, and post-processors — so the RAG-quality techniques from the retrieval chapter are built-in options rather than custom code. That maturity is why it's the go-to for data-heavy agents.
+"How is RAG expressed in LlamaIndex?"
+
+As an index plus a query engine. You load documents, build a `VectorStoreIndex` (which chunks, embeds, and stores them), and call `.as_query_engine()` to get an object that, on a query, retrieves the top-k relevant chunks, prompts the LLM with them, and returns a grounded, cited answer. Every stage is configurable — the retriever (vector/hybrid/re-ranked), the synthesizer, and post-processors — so the RAG-quality techniques from the retrieval chapter are built-in options rather than custom code. That maturity is why it's the go-to for data-heavy agents.
 :::

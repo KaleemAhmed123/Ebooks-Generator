@@ -16,5 +16,7 @@
 - Mix in ordinary **function tools** (a calculator, an API call) and the agent fluidly combines retrieval and action — answer from docs, compute on the numbers, look up a live value.
 
 :::interview
-**"What is agentic RAG and how does LlamaIndex enable it?"** Agentic RAG puts an agent in charge of retrieval: rather than always fetching from one index, the agent decides *whether*, *what*, and *from where* to retrieve, can retrieve multiple times, and reasons across sources. LlamaIndex enables it by wrapping each query engine as a *tool* (a `QueryEngineTool` with a description), so an agent can choose among several data sources — docs, SQL, tickets — plus ordinary function tools, per question. It turns static single-source RAG into a multi-source, multi-step reasoning process.
+"What is agentic RAG and how does LlamaIndex enable it?"
+
+Agentic RAG puts an agent in charge of retrieval: rather than always fetching from one index, the agent decides *whether*, *what*, and *from where* to retrieve, can retrieve multiple times, and reasons across sources. LlamaIndex enables it by wrapping each query engine as a *tool* (a `QueryEngineTool` with a description), so an agent can choose among several data sources — docs, SQL, tickets — plus ordinary function tools, per question. It turns static single-source RAG into a multi-source, multi-step reasoning process.
 :::

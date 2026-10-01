@@ -21,5 +21,7 @@
 - **What flows in the message:** at minimum the content; better, the *intent* (the ACL performative, 16-03) — is this a request, a result, a proposal, a question? And often a *structured* format (JSON) so receivers parse reliably rather than interpret prose.
 
 :::interview
-**"What are the ways agents communicate in a multi-agent system, and their tradeoffs?"** Three. Direct messaging (agent-to-specific-agent): precise and traceable but you wire the topology and it doesn't scale (N² links). Shared memory / blackboard (agents read-write a common workspace): decoupled and scales to many agents, but needs concurrency control and can become a contention bottleneck. Broadcast / group chat (everyone hears everything): simple and transparent but noisy, expensive, and non-scaling since each agent reprocesses the whole conversation. Beyond the mechanism, good messages carry *intent* (request/inform/propose) and structure (JSON) so agents coordinate on meaning, not just text.
+"What are the ways agents communicate in a multi-agent system, and their tradeoffs?"
+
+Three. Direct messaging (agent-to-specific-agent): precise and traceable but you wire the topology and it doesn't scale (N² links). Shared memory / blackboard (agents read-write a common workspace): decoupled and scales to many agents, but needs concurrency control and can become a contention bottleneck. Broadcast / group chat (everyone hears everything): simple and transparent but noisy, expensive, and non-scaling since each agent reprocesses the whole conversation. Beyond the mechanism, good messages carry *intent* (request/inform/propose) and structure (JSON) so agents coordinate on meaning, not just text.
 :::

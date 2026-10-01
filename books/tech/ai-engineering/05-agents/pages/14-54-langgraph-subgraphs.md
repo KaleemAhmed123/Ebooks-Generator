@@ -20,5 +20,7 @@
 - **Reuse.** The same subgraph (a "web-research" module, say) can be dropped into many agents, like a function. Composition here is the same discipline as functions in code: small, tested, reusable units assembled into larger ones.
 
 :::interview
-**"How do you keep a large LangGraph agent maintainable?"** Subgraphs. Decompose the agent into self-contained sub-flows — research, write, review — each its own compiled graph with its own state schema, and use each as a single node in the parent graph. You get readability (the parent shows the high-level flow), testability (each subgraph tested in isolation), and reuse (drop a subgraph into multiple agents). It's the function-decomposition discipline applied to agent control flow, and it's how multi-agent systems are structured in LangGraph.
+"How do you keep a large LangGraph agent maintainable?"
+
+Subgraphs. Decompose the agent into self-contained sub-flows — research, write, review — each its own compiled graph with its own state schema, and use each as a single node in the parent graph. You get readability (the parent shows the high-level flow), testability (each subgraph tested in isolation), and reuse (drop a subgraph into multiple agents). It's the function-decomposition discipline applied to agent control flow, and it's how multi-agent systems are structured in LangGraph.
 :::

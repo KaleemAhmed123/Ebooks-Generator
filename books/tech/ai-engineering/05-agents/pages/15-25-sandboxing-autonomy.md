@@ -20,5 +20,7 @@
 - **Then promote across the boundary.** The agent works in the sandbox; a controlled, gated step (propose-then-commit, 15-23) moves its verified result out — the only path from sandbox to production.
 
 :::interview
-**"What's the most robust way to run an autonomous agent safely?"** Sandbox it, so the worst case is tolerable by construction rather than by catching every mistake. Run its code in an isolated container/microVM with dropped privileges, give it a copy of data (not production), scoped revocable credentials (never prod keys), and restricted network (blocking exfiltration). Then even a fully hijacked agent can do little, because it *can't reach* anything harmful. Gates and rollback still help, but they depend on the agent's actions being catchable or reversible; the sandbox limits what's possible at all. Promote verified results out through one controlled, gated step.
+"What's the most robust way to run an autonomous agent safely?"
+
+Sandbox it, so the worst case is tolerable by construction rather than by catching every mistake. Run its code in an isolated container/microVM with dropped privileges, give it a copy of data (not production), scoped revocable credentials (never prod keys), and restricted network (blocking exfiltration). Then even a fully hijacked agent can do little, because it *can't reach* anything harmful. Gates and rollback still help, but they depend on the agent's actions being catchable or reversible; the sandbox limits what's possible at all. Promote verified results out through one controlled, gated step.
 :::

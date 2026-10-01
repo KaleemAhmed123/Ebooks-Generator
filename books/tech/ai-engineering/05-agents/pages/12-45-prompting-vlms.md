@@ -18,5 +18,7 @@
 </svg>
 
 :::interview
-**"A VLM keeps miscounting objects. Fixes?"** In order of effort: (1) prompt it to enumerate before counting ("list each item, then give the total") so counting becomes explicit; (2) raise resolution/crop so small items are actually resolved; (3) request structured output to force a definite list; (4) if it still fails, the encoder likely cannot resolve the objects — change the model or the input, not the prompt. Counting failures are usually perception or reasoning-format problems, rarely the LLM being "too small."
+"A VLM keeps miscounting objects. Fixes?"
+
+In order of effort: (1) prompt it to enumerate before counting ("list each item, then give the total") so counting becomes explicit; (2) raise resolution/crop so small items are actually resolved; (3) request structured output to force a definite list; (4) if it still fails, the encoder likely cannot resolve the objects — change the model or the input, not the prompt. Counting failures are usually perception or reasoning-format problems, rarely the LLM being "too small."
 :::

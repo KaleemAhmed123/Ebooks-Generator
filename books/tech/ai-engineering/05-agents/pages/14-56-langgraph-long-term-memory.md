@@ -23,5 +23,7 @@ def remember(state, *, store):                       # store injected
 - This is how you build the memory architectures of the memory cluster *inside* LangGraph: memory blocks and semantic facts in the Store, retrieved and injected into the graph's state at the start of a run.
 
 :::interview
-**"Short-term vs long-term memory in LangGraph — what are the mechanisms?"** Short-term is the **checkpointer + thread**: per-`thread_id` conversation state, restored each call. Long-term is the **Store**: a cross-thread, namespaced key-value store (often with vector search) for facts that must persist across conversations and users. Threads are scoped to one conversation; the Store is scoped by namespace (per user), which is where you implement semantic/episodic memory and keep users' memories isolated. Using threads for long-term memory is a common mistake — it doesn't cross conversations.
+"Short-term vs long-term memory in LangGraph — what are the mechanisms?"
+
+Short-term is the **checkpointer + thread**: per-`thread_id` conversation state, restored each call. Long-term is the **Store**: a cross-thread, namespaced key-value store (often with vector search) for facts that must persist across conversations and users. Threads are scoped to one conversation; the Store is scoped by namespace (per user), which is where you implement semantic/episodic memory and keep users' memories isolated. Using threads for long-term memory is a common mistake — it doesn't cross conversations.
 :::

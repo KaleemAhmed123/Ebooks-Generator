@@ -16,5 +16,7 @@
 - **Budgets are guardrails, not reports.** A monthly cap with a burn-rate alert catches a runaway loop or a viral feature *before* it prints a $50k bill, and per-key quotas stop one team's bug from draining the shared budget.
 
 :::interview
-**"Our LLM bill is up 5× this month — walk me through it."** First **attribute**: break the spend down by feature/model/user from the gateway's cost tags — a 5× jump is almost always one dimension (a new feature, a retry storm, a jailbroken loop, a model swap to a pricier tier). Then **quantify** the driver in tokens, not dollars, to see whether it is more requests or more tokens per request. Then **fix** with the matching lever — cache a repeated prefix, route easy traffic down, move offline jobs to batch, or cap the runaway key. The order — attribute, quantify, then optimise — is the answer; jumping straight to "use a cheaper model" is the junior move.
+"Our LLM bill is up 5× this month — walk me through it."
+
+First **attribute**: break the spend down by feature/model/user from the gateway's cost tags — a 5× jump is almost always one dimension (a new feature, a retry storm, a jailbroken loop, a model swap to a pricier tier). Then **quantify** the driver in tokens, not dollars, to see whether it is more requests or more tokens per request. Then **fix** with the matching lever — cache a repeated prefix, route easy traffic down, move offline jobs to batch, or cap the runaway key. The order — attribute, quantify, then optimise — is the answer; jumping straight to "use a cheaper model" is the junior move.
 :::

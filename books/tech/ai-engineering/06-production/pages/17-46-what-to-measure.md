@@ -16,5 +16,7 @@
 - **Percentiles, never averages.** A mean TTFT of 300 ms can hide a P99 of 6 seconds — and the P99 is the user who churns. Alert on P95/P99; the average is a comfort number that lies about the tail.
 
 :::interview
-**"What would you put on the on-call dashboard for an LLM service?"** The four golden signals at P95/P99 — latency (TTFT/TPOT), traffic, errors (including timeouts and schema failures), saturation (GPU util, KV-pool %, queue depth) — plus the three LLM-specific: cost burn rate, a live quality score, and safety-block counts. The tell of a senior answer is naming **saturation as the KV-pool and queue depth** (the real capacity limits) and insisting on **percentiles**, because the tail is the SLO.
+"What would you put on the on-call dashboard for an LLM service?"
+
+The four golden signals at P95/P99 — latency (TTFT/TPOT), traffic, errors (including timeouts and schema failures), saturation (GPU util, KV-pool %, queue depth) — plus the three LLM-specific: cost burn rate, a live quality score, and safety-block counts. The tell of a senior answer is naming **saturation as the KV-pool and queue depth** (the real capacity limits) and insisting on **percentiles**, because the tail is the SLO.
 :::

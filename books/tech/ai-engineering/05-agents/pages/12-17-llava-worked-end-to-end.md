@@ -22,5 +22,7 @@
 - Total prompt length ≈ 576 + ~10 text tokens. **The image is ~98% of the tokens** — and of the cost. That single fact drives every resolution and pooling decision in the next cluster.
 
 :::interview
-**"A VLM call is suddenly 50× more expensive than a text call — why?"** Because an image is not one token; it is hundreds. At 336 px a single image is ~576 tokens before the user types a word, and high-res tiling multiplies that. You are billed for visual tokens like any other. Cost control in VLMs *is* visual-token control: resolution, tiling, and pooling.
+"A VLM call is suddenly 50× more expensive than a text call — why?"
+
+Because an image is not one token; it is hundreds. At 336 px a single image is ~576 tokens before the user types a word, and high-res tiling multiplies that. You are billed for visual tokens like any other. Cost control in VLMs *is* visual-token control: resolution, tiling, and pooling.
 :::

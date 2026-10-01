@@ -16,5 +16,7 @@
 - **Where it shines:** tasks with a clear success signal and room to retry — coding (run the tests), games, puzzles. The evaluator is essential: without a reliable "did it work?" signal, the reflection has nothing true to learn from.
 
 :::interview
-**"How can an agent improve without any training/fine-tuning?"** Reflexion. After a failed attempt (judged by an evaluator — tests, a checker, or self-critique), the agent writes a natural-language reflection on *why* it failed and stores it, then retries with that reflection in context. No weights change; the improvement is entirely in-context "verbal reinforcement." It needs a trustworthy success signal and the ability to retry, which is why it fits coding and puzzles better than open-ended one-shot tasks.
+"How can an agent improve without any training/fine-tuning?"
+
+Reflexion. After a failed attempt (judged by an evaluator — tests, a checker, or self-critique), the agent writes a natural-language reflection on *why* it failed and stores it, then retries with that reflection in context. No weights change; the improvement is entirely in-context "verbal reinforcement." It needs a trustworthy success signal and the ability to retry, which is why it fits coding and puzzles better than open-ended one-shot tasks.
 :::

@@ -17,5 +17,7 @@
 - **The human in the loop is central.** The client can (and should) show the user what the server wants to generate and let them approve, edit, or deny. The server never touches the model directly; the client mediates every sampling request, which is what keeps a server from silently running up cost or doing something unseen.
 
 :::interview
-**"How can an MCP server use an LLM if it doesn't have one?"** Sampling. The server sends a `sampling/createMessage` request *up* to the client, which runs it on the host's model — with user approval — and returns the completion. This inverts the usual flow (server calling client) and lets servers be intelligent without their own model or key, while the client stays the gatekeeper that mediates and can refuse each request.
+"How can an MCP server use an LLM if it doesn't have one?"
+
+Sampling. The server sends a `sampling/createMessage` request *up* to the client, which runs it on the host's model — with user approval — and returns the completion. This inverts the usual flow (server calling client) and lets servers be intelligent without their own model or key, while the client stays the gatekeeper that mediates and can refuse each request.
 :::

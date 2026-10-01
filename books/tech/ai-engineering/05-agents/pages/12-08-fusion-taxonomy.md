@@ -24,5 +24,7 @@
 - **Late fusion** (encode each modality fully, combine only the final vectors) is the shallow extreme — fine for retrieval (CLIP), too weak for reasoning. **Early fusion** (shared tokens) is the deep extreme. The three middle families are the working VLM designs of 2023–2026.
 
 :::interview
-**"Name the ways to fuse vision and language and when you'd pick each."** Projector — simplest, best default, keeps detail, needs an unfrozen LLM to learn to see. Query bottleneck — when token budget is tight and gist is enough. Cross-attention — when you must keep the LLM frozen (protect its language skill) yet still fuse deeply. Shared-token early fusion — when you train from scratch and want generation *and* understanding in one model.
+"Name the ways to fuse vision and language and when you'd pick each."
+
+Projector — simplest, best default, keeps detail, needs an unfrozen LLM to learn to see. Query bottleneck — when token budget is tight and gist is enough. Cross-attention — when you must keep the LLM frozen (protect its language skill) yet still fuse deeply. Shared-token early fusion — when you train from scratch and want generation *and* understanding in one model.
 :::

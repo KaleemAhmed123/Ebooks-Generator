@@ -24,5 +24,7 @@ Design B — supervisor + 3 parallel workers (map-reduce):
 - **The decision:** compare *both* against the single-agent baseline. B at 4× may be worth it; A at 18× rarely is. Run this math *before* building (16-38).
 
 :::interview
-**"How much more does a multi-agent system cost, and what drives it?"** Often 4×–20×, and the *design* decides where you land. A 4-agent, 3-round group chat hits ~18× because every agent re-reads the whole growing conversation each round — repeated context scales cost super-linearly with agents × rounds. The same task as a supervisor with parallel isolated workers might be only ~4× and faster. Levers: parallel/isolated over shared-growing context, fewer rounds, prune each agent's context. Always measure against a single-agent baseline — an 18× design for a marginal gain shouldn't ship.
+"How much more does a multi-agent system cost, and what drives it?"
+
+Often 4×–20×, and the *design* decides where you land. A 4-agent, 3-round group chat hits ~18× because every agent re-reads the whole growing conversation each round — repeated context scales cost super-linearly with agents × rounds. The same task as a supervisor with parallel isolated workers might be only ~4× and faster. Levers: parallel/isolated over shared-growing context, fewer rounds, prune each agent's context. Always measure against a single-agent baseline — an 18× design for a marginal gain shouldn't ship.
 :::

@@ -31,5 +31,7 @@ graph.add_conditional_edges("think", should_continue, ["act", END])
 </svg>
 
 :::interview
-**"How does a LangGraph agent loop and know when to stop?"** With a conditional edge. After the model node, a router function inspects the state — if the last message has tool calls, it routes to the tool node (which loops back to the model); otherwise it routes to `END`. The loop and its exit are an explicit, testable function over state, not an implicit `while`. That explicitness is the point: you can see, test, and modify exactly when the agent continues versus finishes.
+"How does a LangGraph agent loop and know when to stop?"
+
+With a conditional edge. After the model node, a router function inspects the state — if the last message has tool calls, it routes to the tool node (which loops back to the model); otherwise it routes to `END`. The loop and its exit are an explicit, testable function over state, not an implicit `while`. That explicitness is the point: you can see, test, and modify exactly when the agent continues versus finishes.
 :::

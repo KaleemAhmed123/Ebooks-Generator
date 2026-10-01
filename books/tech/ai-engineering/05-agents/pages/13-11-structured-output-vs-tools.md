@@ -15,5 +15,7 @@
   - Extracting fields from a document into JSON → structured output, even though people reach for a "tool."
 
 :::interview
-**"Structured output or a tool for extracting fields from an invoice into JSON?"** Structured output. Nothing needs to *run* — you want the model's answer shaped as validated JSON. Constrain the response to your schema (or force a single extraction tool whose schema is the output). Reserve tool calling for when a function with a side effect must actually execute and return a result the model then reasons over.
+"Structured output or a tool for extracting fields from an invoice into JSON?"
+
+Structured output. Nothing needs to *run* — you want the model's answer shaped as validated JSON. Constrain the response to your schema (or force a single extraction tool whose schema is the output). Reserve tool calling for when a function with a side effect must actually execute and return a result the model then reasons over.
 :::

@@ -16,5 +16,7 @@
 - **Data parallelism** (`--data-parallel-size`) runs several full model replicas for throughput; combine with tensor parallelism (`DP × TP`) to fill a multi-GPU node — e.g. `--data-parallel-size 4 --tensor-parallel-size 2` on 8 GPUs.
 
 :::interview
-**"You're at your latency SLO but throughput is too low. What do you change?"** Raise `--max-num-seqs` and `--max-num-batched-tokens` to pack more work per pass — but watch TPOT, because a fuller batch slows each user's per-token latency. If you hit a memory wall first, the real lever is **quantisation** (free KV headroom) or **more replicas** (`--data-parallel-size`). Naming the memory-vs-latency-vs-throughput triangle, not one magic flag, is the signal.
+"You're at your latency SLO but throughput is too low. What do you change?"
+
+Raise `--max-num-seqs` and `--max-num-batched-tokens` to pack more work per pass — but watch TPOT, because a fuller batch slows each user's per-token latency. If you hit a memory wall first, the real lever is **quantisation** (free KV headroom) or **more replicas** (`--data-parallel-size`). Naming the memory-vs-latency-vs-throughput triangle, not one magic flag, is the signal.
 :::

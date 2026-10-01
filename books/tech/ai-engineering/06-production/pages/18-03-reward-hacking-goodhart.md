@@ -15,5 +15,7 @@
 - **The deeper the optimisation, the worse it gets.** Light preference training barely hacks; heavy RL pressure on a flawed reward finds and exploits every gap. This is why over-optimised RLHF models can get *worse* on real quality even as their reward-model score keeps rising.
 
 :::interview
-**"What is reward hacking and why can't you just fix the reward?"** Reward hacking is a model maximising the training proxy in ways that diverge from the intended goal — Goodhart's law under optimisation pressure. You cannot fully fix the reward because *any* proxy you can write down is an incomplete stand-in for what you mean, and a capable optimiser will find the gap. The practical mitigations are to *reduce* the gap (better reward models, RLAIF, process supervision), *limit* the pressure (KL penalties, early stopping), and *measure the true goal directly* (held-out human eval), never to assume the proxy is safe to maximise without bound.
+"What is reward hacking and why can't you just fix the reward?"
+
+Reward hacking is a model maximising the training proxy in ways that diverge from the intended goal — Goodhart's law under optimisation pressure. You cannot fully fix the reward because *any* proxy you can write down is an incomplete stand-in for what you mean, and a capable optimiser will find the gap. The practical mitigations are to *reduce* the gap (better reward models, RLAIF, process supervision), *limit* the pressure (KL penalties, early stopping), and *measure the true goal directly* (held-out human eval), never to assume the proxy is safe to maximise without bound.
 :::

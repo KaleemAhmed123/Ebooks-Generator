@@ -26,8 +26,10 @@ Cascade (small first, 25% escalate + re-run on large):
 :::
 
 - **Router vs cascade.** A router *classifies up front* (rules, a small classifier, or a cheap LLM) and picks one model — one call, but the classifier can be wrong. A cascade *tries then checks* — no classifier needed, but escalated requests pay twice (cheap attempt + expensive redo). Pick a router when you can classify reliably, a cascade when "good enough" is easy to judge after the fact.
-- **The quality guard is the escalation signal:** confidence, a verifier, a self-check, or a schema-validation failure. A bad signal either escalates everything (no saving) or nothing (quality drops).
+- **The quality guard is the escalation signal:** confidence, a verifier, or a schema-validation failure. A bad signal escalates everything (no saving) or nothing (quality drops).
 
 :::interview
-**"How do you cut cost without hurting quality on the hard cases?"** Route by difficulty: a small cheap model handles the easy majority, the frontier model handles the hard minority — quality is preserved *because* the hard cases still get the strong model. I would decide router vs cascade by whether difficulty is predictable up front (router) or only judgeable after an attempt (cascade), and I would watch the escalation rate and the small model's error rate as the two dials. The framing — *cheapest model that clears the bar, per request* — is the point.
+"How do you cut cost without hurting quality on the hard cases?"
+
+Route by difficulty: a small cheap model handles the easy majority, the frontier model handles the hard minority — quality is preserved *because* the hard cases still get the strong model. Choose router vs cascade by whether difficulty is predictable up front (router) or only judgeable after an attempt (cascade). The framing — *cheapest model that clears the bar, per request* — is the point.
 :::

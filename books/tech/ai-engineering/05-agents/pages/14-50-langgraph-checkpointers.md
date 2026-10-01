@@ -32,5 +32,7 @@ app.invoke({"messages": [("user", "hi")]}, config)   # state saved per step
 </svg>
 
 :::interview
-**"Why is a checkpointer such a big deal in LangGraph?"** Because saving state after every node turns an ephemeral loop into a durable, resumable process. That single capability gives you crash recovery (resume from the last snapshot, not from scratch), pause/resume, human-in-the-loop approvals, time-travel debugging, and per-`thread_id` durable conversations — all for free once the checkpointer is attached. In production you point it at a real store (Postgres) instead of the in-memory dev saver.
+"Why is a checkpointer such a big deal in LangGraph?"
+
+Because saving state after every node turns an ephemeral loop into a durable, resumable process. That single capability gives you crash recovery (resume from the last snapshot, not from scratch), pause/resume, human-in-the-loop approvals, time-travel debugging, and per-`thread_id` durable conversations — all for free once the checkpointer is attached. In production you point it at a real store (Postgres) instead of the in-memory dev saver.
 :::

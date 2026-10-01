@@ -19,5 +19,7 @@
 - This one fact explains the whole engine cluster ahead: **continuous batching** (interleave many requests' decode steps), **chunked prefill** (slice long prompts so they do not stall decode), and **disaggregated serving** (put prefill and decode on separate GPU pools, page 17-32).
 
 :::interview
-**"Why is the first token slow but the rest fast?"** The first token comes from **prefill** — a compute-bound pass over the entire prompt, so its cost grows with prompt length (this is your TTFT). Every later token comes from **decode** — one memory-bound step reading cached keys/values, roughly constant per token (this is your TPOT). Long prompts hurt TTFT; long outputs hurt total latency. Knowing which phase a latency problem lives in tells you which lever to pull.
+"Why is the first token slow but the rest fast?"
+
+The first token comes from **prefill** — a compute-bound pass over the entire prompt, so its cost grows with prompt length (this is your TTFT). Every later token comes from **decode** — one memory-bound step reading cached keys/values, roughly constant per token (this is your TPOT). Long prompts hurt TTFT; long outputs hurt total latency. Knowing which phase a latency problem lives in tells you which lever to pull.
 :::

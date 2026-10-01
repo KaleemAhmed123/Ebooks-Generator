@@ -17,5 +17,7 @@
 - NaViT-style native-resolution encoding is the modern direction: **Qwen2-VL** and Pixtral process images at their native resolution and emit a variable token count, no fixed tile grid.
 
 :::interview
-**"AnyRes tiling vs native-resolution (NaViT/patch-n-pack) — what's the difference?"** Tiling reuses a fixed-size encoder by chopping the image into encoder-sized squares and gluing the tokens — simple, works with any off-the-shelf CLIP, but adds seams and a global thumbnail. Native resolution changes the encoder to ingest arbitrary sizes directly and pack them efficiently — cleaner and no seams, but you must train that encoder. Tiling is the pragmatic bolt-on; native resolution is the from-scratch answer.
+"AnyRes tiling vs native-resolution (NaViT/patch-n-pack) — what's the difference?"
+
+Tiling reuses a fixed-size encoder by chopping the image into encoder-sized squares and gluing the tokens — simple, works with any off-the-shelf CLIP, but adds seams and a global thumbnail. Native resolution changes the encoder to ingest arbitrary sizes directly and pack them efficiently — cleaner and no seams, but you must train that encoder. Tiling is the pragmatic bolt-on; native resolution is the from-scratch answer.
 :::

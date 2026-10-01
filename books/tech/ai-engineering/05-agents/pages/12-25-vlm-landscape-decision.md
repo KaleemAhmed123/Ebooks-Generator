@@ -23,5 +23,7 @@
 </svg>
 
 :::interview
-**"How would you choose a VLM for a product?"** Start from the task's *perception* demand, not the brand. Fine text/documents → high resolution (Qwen-VL/InternVL or a frontier API). Acting on a screen → a model that emits coordinates. Tight latency/privacy → a small open model on-device. Only then weigh cost and whether you can self-host. The winning answer names the constraint first and the model second.
+"How would you choose a VLM for a product?"
+
+Start from the task's *perception* demand, not the brand. Fine text/documents → high resolution (Qwen-VL/InternVL or a frontier API). Acting on a screen → a model that emits coordinates. Tight latency/privacy → a small open model on-device. Only then weigh cost and whether you can self-host. The winning answer names the constraint first and the model second.
 :::

@@ -21,5 +21,7 @@
 - **Pick the leftmost that works.** If the steps are known, a workflow beats an agent — it is cheaper, faster, and testable. Use a true agent only when the path genuinely cannot be predetermined (the task branches on what it discovers).
 
 :::interview
-**"When would you NOT build an agent?"** Whenever the task has a knowable sequence of steps. If you can draw the flowchart, code it as a workflow with the LLM filling specific slots — you get predictability, lower cost, and easy testing. Reserve agents for open-ended tasks where the next step genuinely depends on runtime discoveries (research, debugging, multi-step tool use with unknown branching). "Use the least autonomy that solves the problem" is the senior answer.
+"When would you NOT build an agent?"
+
+Whenever the task has a knowable sequence of steps. If you can draw the flowchart, code it as a workflow with the LLM filling specific slots — you get predictability, lower cost, and easy testing. Reserve agents for open-ended tasks where the next step genuinely depends on runtime discoveries (research, debugging, multi-step tool use with unknown branching). "Use the least autonomy that solves the problem" is the senior answer.
 :::

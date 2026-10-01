@@ -15,5 +15,7 @@
 - **Combine them.** A mature agent keeps identity/task facts always-in-context (key), searches episodic memory by vector when facing a new problem, and traverses a graph for relational questions. Retrieval quality — not storage — is usually what makes or breaks memory.
 
 :::interview
-**"Vector search or a knowledge graph for agent memory?"** Both, for different queries. Vector search retrieves by *similarity* — ideal for episodic recall and fuzzy "what's like this?" lookups, but poor at precise relationships. A graph retrieves by *relationship* — ideal for multi-hop, entity-linked questions ("the project owned by the person who filed this ticket"), but needs extraction and maintenance. Add direct key lookup for always-needed facts. The strong systems route each query to the method that fits it rather than forcing one.
+"Vector search or a knowledge graph for agent memory?"
+
+Both, for different queries. Vector search retrieves by *similarity* — ideal for episodic recall and fuzzy "what's like this?" lookups, but poor at precise relationships. A graph retrieves by *relationship* — ideal for multi-hop, entity-linked questions ("the project owned by the person who filed this ticket"), but needs extraction and maintenance. Add direct key lookup for always-needed facts. The strong systems route each query to the method that fits it rather than forcing one.
 :::

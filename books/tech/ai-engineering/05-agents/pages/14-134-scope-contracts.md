@@ -18,5 +18,7 @@
 - **Isolation extends it:** run the agent in an isolated environment (a worktree, a container, a copy) so even its allowed actions cannot affect anything outside the scope until you promote the result (propose-then-commit, Module 15).
 
 :::interview
-**"How do you safely run an agent that edits code?"** Give it a scope contract and isolate it. Define upfront exactly what it may touch — specific directories, a whitelist of tools (read, edit, test), no deploy or credential access — and enforce that with roots/permissions so anything outside is denied by construction, not by instruction. Run it in an isolated workspace (a git worktree or container) so its edits are contained until reviewed and promoted. Tight scope shrinks the blast radius, reduces failure modes, and lets you run several agents in parallel on non-overlapping scopes.
+"How do you safely run an agent that edits code?"
+
+Give it a scope contract and isolate it. Define upfront exactly what it may touch — specific directories, a whitelist of tools (read, edit, test), no deploy or credential access — and enforce that with roots/permissions so anything outside is denied by construction, not by instruction. Run it in an isolated workspace (a git worktree or container) so its edits are contained until reviewed and promoted. Tight scope shrinks the blast radius, reduces failure modes, and lets you run several agents in parallel on non-overlapping scopes.
 :::

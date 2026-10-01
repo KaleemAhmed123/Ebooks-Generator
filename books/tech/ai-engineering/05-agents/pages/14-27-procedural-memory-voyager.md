@@ -17,5 +17,7 @@
 - This is the direct ancestor of the **Agent Skills** of Module 13 — packaged, reusable know-how — and of the self-improvement systems in Module 15. Procedural memory turns an agent from a solver into a *learner that accumulates capability*.
 
 :::interview
-**"How did Voyager keep getting better without fine-tuning?"** Procedural memory — a skill library. Each time it solved a task, it wrote the solution as verified, reusable code and stored it indexed by description. New tasks retrieved and *composed* existing skills into more complex ones, so capability compounded over time with no weight changes. The key is that stored skills are executable and pre-verified, making reuse reliable — the ancestor of today's Agent Skills.
+"How did Voyager keep getting better without fine-tuning?"
+
+Procedural memory — a skill library. Each time it solved a task, it wrote the solution as verified, reusable code and stored it indexed by description. New tasks retrieved and *composed* existing skills into more complex ones, so capability compounded over time with no weight changes. The key is that stored skills are executable and pre-verified, making reuse reliable — the ancestor of today's Agent Skills.
 :::

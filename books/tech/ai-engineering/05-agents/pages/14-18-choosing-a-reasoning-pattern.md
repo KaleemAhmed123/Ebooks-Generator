@@ -17,5 +17,7 @@
 - **Two rules that save you:** **default to ReAct** (or plain tool calling) — most production agents need nothing fancier; and **composition beats picking one** — real systems combine (plan first, execute with ReAct, reflect on failure, reserve tree search for the hardest sub-problems). The pattern is a *tool*, not an identity.
 
 :::interview
-**"There are so many agent reasoning patterns — how do you choose?"** Match structure to difficulty and budget. Default to ReAct; add plan-first (plan-and-execute/ReWOO) when the task is multi-step and you want fewer, cheaper reasoning calls; add reflection/self-refine when you have a success signal and room to retry; escalate to tree search (ToT/LATS) only for hard problems where exploration is worth 10–100× the compute. And compose them — production agents mix patterns rather than pledging to one.
+"There are so many agent reasoning patterns — how do you choose?"
+
+Match structure to difficulty and budget. Default to ReAct; add plan-first (plan-and-execute/ReWOO) when the task is multi-step and you want fewer, cheaper reasoning calls; add reflection/self-refine when you have a success signal and room to retry; escalate to tree search (ToT/LATS) only for hard problems where exploration is worth 10–100× the compute. And compose them — production agents mix patterns rather than pledging to one.
 :::

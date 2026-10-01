@@ -26,5 +26,7 @@
 - **Why it beats static assignment:** if `analyst-A` were busy (bidding unavailable or high cost) the task routes to `B` automatically — the protocol *load-balances* and *adapts* to who is free and capable *right now*, with no hard-coded routing table.
 
 :::interview
-**"Walk through Contract Net on a real task."** The manager announces the task and requirements; each capable agent bids with its self-assessed fit (confidence, cost, time) and unsuited agents abstain; the manager scores the bids by what the task values and awards to the best; the winner does the work and reports. If the chosen agent were busy, work auto-routes to the next-best bidder. The award function encodes the cost-vs-quality tradeoff, and the whole thing load-balances without a hard-coded assignment table.
+"Walk through Contract Net on a real task."
+
+The manager announces the task and requirements; each capable agent bids with its self-assessed fit (confidence, cost, time) and unsuited agents abstain; the manager scores the bids by what the task values and awards to the best; the winner does the work and reports. If the chosen agent were busy, work auto-routes to the next-best bidder. The award function encodes the cost-vs-quality tradeoff, and the whole thing load-balances without a hard-coded assignment table.
 :::

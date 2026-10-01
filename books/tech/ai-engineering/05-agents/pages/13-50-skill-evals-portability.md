@@ -17,5 +17,7 @@
 - Avoid host-specific assumptions in the body (hard-coded paths, one provider's quirks) so the skill survives a model or platform swap.
 
 :::interview
-**"How do you know a skill is worth adding to an agent?"** Evaluate it. Assemble a task set the skill targets, run the agent with and without it, and compare on quality, cost, and latency. A skill must measurably improve outcomes to justify the context it consumes; some skills even hurt by adding noise or conflicting with others. Ship on the numbers, keep the skill portable (standard format, no host-specific assumptions) so the win transfers across models and platforms.
+"How do you know a skill is worth adding to an agent?"
+
+Evaluate it. Assemble a task set the skill targets, run the agent with and without it, and compare on quality, cost, and latency. A skill must measurably improve outcomes to justify the context it consumes; some skills even hurt by adding noise or conflicting with others. Ship on the numbers, keep the skill portable (standard format, no host-specific assumptions) so the win transfers across models and platforms.
 :::

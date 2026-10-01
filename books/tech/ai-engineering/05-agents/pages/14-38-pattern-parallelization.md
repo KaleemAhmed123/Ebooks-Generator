@@ -22,5 +22,7 @@
 - **When to use:** sectioning when independent aspects benefit from separate focused calls; voting when a single call is too unreliable and you can afford redundancy for confidence.
 
 :::interview
-**"How can you make an unreliable LLM judgment more trustworthy?"** Voting (parallelization). Run the same judgment several times — with sampling variation or varied prompts — and aggregate: majority vote, or "flag if *any* run catches the problem" for high-recall safety checks. It trades N× cost for higher reliability and gives you a confidence signal (unanimity vs split). Its sibling, sectioning, instead splits *different* aspects of a task into parallel focused calls for speed and quality.
+"How can you make an unreliable LLM judgment more trustworthy?"
+
+Voting (parallelization). Run the same judgment several times — with sampling variation or varied prompts — and aggregate: majority vote, or "flag if *any* run catches the problem" for high-recall safety checks. It trades N× cost for higher reliability and gives you a confidence signal (unanimity vs split). Its sibling, sectioning, instead splits *different* aspects of a task into parallel focused calls for speed and quality.
 :::

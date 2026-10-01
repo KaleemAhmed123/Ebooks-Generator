@@ -15,5 +15,7 @@
 - To measure it you must first *define the SLO*: e.g. "TTFT ≤ 500 ms P95 **and** TPOT ≤ 50 ms P95." Only then can a token be classified as good or wasted.
 
 :::interview
-**"A vendor quotes 30k tokens/sec. What do you ask?"** At what **SLO**, and what is the **goodput**? Throughput without a latency bound is meaningless — I can hit any throughput number by batching deeper and making every user wait. I want tokens/second that meet a stated TTFT and TPOT at P95, plus the concurrency at which goodput peaks. That peak, not the headline throughput, is the real capacity I would size against.
+"A vendor quotes 30k tokens/sec. What do you ask?"
+
+At what **SLO**, and what is the **goodput**? Throughput without a latency bound is meaningless — I can hit any throughput number by batching deeper and making every user wait. I want tokens/second that meet a stated TTFT and TPOT at P95, plus the concurrency at which goodput peaks. That peak, not the headline throughput, is the real capacity I would size against.
 :::

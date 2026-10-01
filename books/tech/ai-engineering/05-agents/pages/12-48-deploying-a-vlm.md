@@ -20,5 +20,7 @@
 - **Right-size the model.** A 3B VLM on-device beats a 70B API call for simple captioning at a fraction of cost and latency. Match model size to task difficulty (the routing idea, Module 13).
 
 :::interview
-**"Your VLM feature is too slow and expensive. Where do you look first?"** Visual tokens. Count them: resolution × tiles ÷ pooling. Cut tiles, pool harder, cache the vision pass for repeated images, and drop to a smaller model where the task allows. Prefill over hundreds of image tokens — not generation — is usually the bottleneck, so shrinking the visual sequence is the highest-leverage fix.
+"Your VLM feature is too slow and expensive. Where do you look first?"
+
+Visual tokens. Count them: resolution × tiles ÷ pooling. Cut tiles, pool harder, cache the vision pass for repeated images, and drop to a smaller model where the task allows. Prefill over hundreds of image tokens — not generation — is usually the bottleneck, so shrinking the visual sequence is the highest-leverage fix.
 :::

@@ -19,5 +19,7 @@
 - **Using them well:** give a clear spec and constraints (14-139), scope them tightly (14-134), let them iterate against tests, and *review the diff* — you are the merge gate. Treat the agent as a fast junior engineer: great at bounded, checkable work; needs supervision on judgment and scope.
 
 :::interview
-**"What coding tasks would you trust an agent with, and which not?"** Trust it with verifiable, localized, well-specified work — fixing a failing test, implementing to a clear spec, writing tests, mechanical refactors, navigating unfamiliar code — because a test or check confirms success. Don't trust it unsupervised with large ambiguous changes ("make it faster"), cross-cutting redesigns, subtle correctness (concurrency, security) that tests miss, or architecture decisions requiring taste — error compounding and the lack of a verifier make those fail. Use it as a fast junior engineer: bounded checkable tasks with you as the reviewing merge gate.
+"What coding tasks would you trust an agent with, and which not?"
+
+Trust it with verifiable, localized, well-specified work — fixing a failing test, implementing to a clear spec, writing tests, mechanical refactors, navigating unfamiliar code — because a test or check confirms success. Don't trust it unsupervised with large ambiguous changes ("make it faster"), cross-cutting redesigns, subtle correctness (concurrency, security) that tests miss, or architecture decisions requiring taste — error compounding and the lack of a verifier make those fail. Use it as a fast junior engineer: bounded checkable tasks with you as the reviewing merge gate.
 :::

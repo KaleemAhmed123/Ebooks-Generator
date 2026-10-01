@@ -15,5 +15,7 @@
 - **The confused deputy.** A "deputy" is a service that acts on others' behalf. A **confused deputy** is tricked into using *its own* authority for an attacker — e.g. an MCP gateway holding broad credentials is manipulated into performing an action the requesting user was never authorized for. The server has the power; the attacker supplies the intent. Defenses: bind tokens to the end user's identity and scope, never let a shared server act with ambient authority beyond the caller's own permissions, and validate the audience of every token.
 
 :::interview
-**"Why does a remote MCP server need OAuth scopes, and what's the confused-deputy risk?"** Scopes enforce least privilege — the token grants only what the task needs, so a compromised server can't do more than its narrow permission. The confused deputy is when a server with broad credentials is tricked into using them for a user who lacks that authority; the fix is binding tokens to the specific user and resource (RFC 8707 resource indicators) and never acting with ambient authority beyond the caller's own scope.
+"Why does a remote MCP server need OAuth scopes, and what's the confused-deputy risk?"
+
+Scopes enforce least privilege — the token grants only what the task needs, so a compromised server can't do more than its narrow permission. The confused deputy is when a server with broad credentials is tricked into using them for a user who lacks that authority; the fix is binding tokens to the specific user and resource (RFC 8707 resource indicators) and never acting with ambient authority beyond the caller's own scope.
 :::

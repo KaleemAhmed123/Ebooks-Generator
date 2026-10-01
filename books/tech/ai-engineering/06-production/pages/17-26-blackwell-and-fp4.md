@@ -19,5 +19,7 @@ Lower precision frees the exact resource that caps concurrency (17-11).
 - Blackwell also adds a faster NVLink fabric, which matters for tensor parallelism: cross-GPU communication is the overhead that makes TP costly, and a fatter link shrinks it.
 
 :::interview
-**"Why does new GPU hardware matter for inference, beyond 'faster'?"** Because inference is **memory-bound in decode** (page 17-09), the wins that matter are memory *capacity* and *bandwidth*, plus support for lower-precision formats that shrink weights and KV cache. Blackwell's native FP4 and larger, faster memory let one GPU hold far more concurrent KV cache — which raises the ceiling on users-per-GPU, the number that actually drives serving cost. Raw FLOPs help prefill; memory helps the decode you spend most time in.
+"Why does new GPU hardware matter for inference, beyond 'faster'?"
+
+Because inference is **memory-bound in decode** (page 17-09), the wins that matter are memory *capacity* and *bandwidth*, plus support for lower-precision formats that shrink weights and KV cache. Blackwell's native FP4 and larger, faster memory let one GPU hold far more concurrent KV cache — which raises the ceiling on users-per-GPU, the number that actually drives serving cost. Raw FLOPs help prefill; memory helps the decode you spend most time in.
 :::
