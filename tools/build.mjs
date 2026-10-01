@@ -407,25 +407,26 @@ async function buildMaster(book) {
         ).filter((v, k, a) => a.indexOf(v) === k)
       : meta.cover?.stack ?? [];
 
-    // Every booklet's divider doubles as its table of contents. Chapter
-    // headings (h1) when the booklet has them, page titles (h2) otherwise.
-    // Page numbers are filled in by assemble() once the full count is known.
-    const chapters = h1s.length >= 10 ? own.filter((h) => h.lvl === 1)
-                                     : own.filter((h) => h.lvl <= 2);
+    // Every booklet's divider doubles as its full, clickable table of contents:
+    // module headings (h1) and every page topic (h2), laid out in columns with a
+    // page number per topic. A long one spills across sheets, so the divider is
+    // measured (data-span) and assemble() accounts for its real height — the page
+    // numbers after it stay correct however many sheets it runs to.
+    const chapters = own.filter((h) => h.lvl <= 2);
 
     const dividerHtml =
-      `<section class="page topic" data-src="topic-${child}" style="--accent:${accent}">\n` +
+      `<section class="page topic" data-span="${child}" style="--accent:${accent}">\n` +
         `<p class="topic-no">${counting ? "Topic" : "Booklet"} ${i + 1} of ${order.length}</p>\n` +
         `<h1 id="${id}">${meta.title}</h1>\n` +
         (meta.subtitle ? `<p class="topic-sub">${meta.subtitle}</p>\n` : "") +
         (meta.cover?.banner && !counting ? `<p class="topic-line">${meta.cover.banner}</p>\n` : "") +
-        `<ul class="topic-chapters"></ul>\n` +
+        `<ul class="topic-chapters${chapters.length > 120 ? " dense" : ""}"></ul>\n` +
         `<p class="topic-count">` +
         (counting ? `${total} terms · alphabetical` : `${modules} modules · ${files.length} pages`) +
         `</p>\n</section>`;
 
     pages.push(
-      chapters.length ? { divider: dividerHtml, chapters } : dividerHtml,
+      chapters.length ? { divider: dividerHtml, chapters, span: child } : dividerHtml,
       ...body
     );
     }
@@ -530,13 +531,18 @@ function assemble({ coverHtml, pages, headings }, tocPages, spans = {}, tocTitle
   let acc = 0;
   for (const p of pages) {
     at.push(before + acc + 1);
-    acc += p?.btoc ? spans[p.btoc.key] ?? 1 : 1;
+    acc += p?.btoc ? spans[p.btoc.key] ?? 1 : p?.span ? spans[p.span] ?? 1 : 1;
   }
   const body = pages.map((p) => {
     if (p?.btoc) return tocSection(p.btoc.headings, at, p.btoc.title, p.btoc.key);
     if (p?.divider) {
+      // Modules (h1) are full-width headers; page topics (h2) get a dotted
+      // leader and the page number they land on, so the divider is a real,
+      // clickable contents page.
       const items = p.chapters.map((h) =>
-        `<li><a href="#${h.id}">${h.text}</a></li>`
+        h.lvl === 1
+          ? `<li class="lvl1"><a href="#${h.id}">${h.text}</a></li>`
+          : `<li class="lvl2"><a href="#${h.id}">${h.text}</a><span class="dots"></span><span class="p">${at[h.page]}</span></li>`
       ).join("\n");
       return p.divider.replace(
         '<ul class="topic-chapters"></ul>',
@@ -668,14 +674,9 @@ function cutAtBlankLine(md, fraction, blocks) {
     rest = "```" + info + "\n" + rest;
   }
 
-  // Carry the page's own title onto the continuation. Two things to avoid: a
-  // second "- continued" when this chunk was already a continuation, and a
-  // heading at all when the chunk has no `##` to continue -- that happens when
-  // cutBeforeHeading already split at a `###`, so the page opens on a real
-  // sub-heading and a synthetic one would say nothing.
-  const raw = (md.match(/^## (.+)$/m) ?? [])[1];
-  const base = raw?.replace(/(\s*-\s*continued)+$/i, "").trim();
-  return [head, (base ? `## ${base} - continued\n\n` : "") + rest];
+  // A continuation is the same idea, so it gets no heading of its own: the
+  // content just carries on from the previous page.
+  return [head, rest];
 }
 
 // Parts are named `<base>-1.md`, `<base>-2.md` ... so they sort in order and
@@ -770,6 +771,11 @@ async function measureTocs(html, config) {
     const spans = {};
     for (const el of document.querySelectorAll(".page.toc[data-toc]")) {
       spans[el.dataset.toc] = mm(el);
+    }
+    // A merged volume's per-booklet divider doubles as its contents and can run
+    // to more than one sheet; measure it the same way so its length is counted.
+    for (const el of document.querySelectorAll(".page.topic[data-span]")) {
+      spans[el.dataset.span] = mm(el);
     }
     return { main: main ? mm(main) : 0, spans };
   });
@@ -962,7 +968,7 @@ for (const book of books) {
   // A booklet's contents may run to two sheets, so the printed length is the
   // sum of what each page actually takes, not the number of pages in the array.
   const printed =
-    1 + tocPages + parts.pages.reduce((n, p) => n + (p?.btoc ? spans[p.btoc.key] ?? 1 : 1), 0);
+    1 + tocPages + parts.pages.reduce((n, p) => n + (p?.btoc ? spans[p.btoc.key] ?? 1 : p?.span ? spans[p.span] ?? 1 : 1), 0);
 
   if (book.cover && !flags.includes("--no-cover")) {
     const c = book.config;
