@@ -23,12 +23,3 @@ If we find the Centroid and remove it, we can divide the paths in the tree into 
 Because the Centroid strictly splits the tree so that no component is larger than N/2, the depth of the recursion tree is at most log₂ N.
 At each level of the recursion tree, we do O(text{Size}) work to process paths. The sum of sizes across a single level is exactly N.
 Total time complexity: O(N log N) or O(N log² N) depending on how you process the paths.
-
-### The Centroid Tree
-
-If you keep track of which Centroid spawned which sub-Centroids, you build a new tree called the **Centroid Tree**.
-- The height of the Centroid Tree is strictly O(log N).
-- The distance between any two nodes U and V in the original tree can be found by looking at their Lowest Common Ancestor (LCA) in the Centroid Tree.
-
-This makes the Centroid Tree perfect for answering dynamic queries like: "Update the color of node U, and query the distance to the nearest red node."
-You just walk up the Centroid Tree from U (which takes log N steps) and update/query the state at each Centroid ancestor.

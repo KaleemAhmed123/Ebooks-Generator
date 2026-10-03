@@ -26,32 +26,3 @@ Every time a node's data is cleared, it must have been part of a Light Child.
 By definition, a Light Child's subtree size is at most half the size of its parent's subtree. 
 Therefore, a node can only be part of a Light Child at most log₂ N times on the path up to the root.
 Since each node is added/cleared at most log N times, the total time for all operations across the entire tree is strictly bounded by O(N log N).
-
-### Implementation Structure
-
-```cpp
-void dfs(int u, int p, bool keep) {
-    // 1. Process all light children, clearing their data
-    for (int v : adj[u]) {
-        if (v != p && v != heavy[u]) {
-            dfs(v, u, false);
-        }
-    }
-    
-    // 2. Process heavy child, keeping its data
-    if (heavy[u] != -1) {
-        dfs(heavy[u], u, true);
-    }
-    
-    // 3. Add u's data and light children's data into the global array
-    add(u, p, 1); 
-    
-    // 4. Record answer for u
-    ans[u] = countDistinct;
-    
-    // 5. If this was a light child call, clear everything
-    if (!keep) {
-        add(u, p, -1);
-    }
-}
-```

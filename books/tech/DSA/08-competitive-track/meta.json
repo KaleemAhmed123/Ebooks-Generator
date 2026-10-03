@@ -19,6 +19,9 @@
       "geometry",
       "advanced structures"
     ],
-    "face": { "brow": "sharp", "mouth": "flat", "tilt": -3 }
+    "face": { "brow": "sharp", "mouth": "flat", "tilt": -3 },
+    "label": "BONUS BOOKLET",
+    "setLine": "COMPANION TO THE 7-BOOKLET SERIES",
+    "moreLine": "MORE INSIDE"
   }
 }
