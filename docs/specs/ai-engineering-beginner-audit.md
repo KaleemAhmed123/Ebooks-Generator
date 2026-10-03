@@ -225,7 +225,16 @@ Each task is independent and sized **S/M/L**. `[x]` = done.
       for query and 2 chunks. Demonstrated cosine similarity calculation showing
       C1 as nearest neighbor, followed by PyTorch :::mint snippet generating
       the prompt. Rebuilt → 0 $$, 0 macros.* (Finding 4)
-- [ ] **B8 · L · B4** — Split RL (`09-xx`) into a proper cluster. (Finding 5)
+- [x] **B8 · L · B4** — RL cluster (`09-xx`). *Done 2026-10-03, but re-scoped —
+      see pushback below. The 13-page RL arc was already a proper, well-paced
+      cluster; it did not need bulk-splitting. Instead: (1) added a "How to read
+      this module" signpost to `09-01` naming the policy-based critical path vs.
+      the grid-world foundations a beginner reads for intuition only; (2) split
+      the one genuinely crammed page — `09-10` jammed PPO **and** GRPO — into
+      `09-10-ppo` (PPO only) + new `09-10a-grpo` (GRPO's mechanism, a worked
+      group-relative-advantage example, sourced to DeepSeekMath 2402.03300).
+      GRPO already in both glossaries. Rebuilt B4 → 0 $$, 0 macros, no overflow.*
+      (Finding 5)
 - [ ] **B9 · L · B4** — Split the LLM-lifecycle (`10-xx`) into a cluster. (Finding 5)
 - [ ] **B10 · M · B2–B4** — Targeted expansion of remaining fast pages. (Finding 2)
 - [ ] **B11 · S · all** — Add exact page numbers to cross-booklet references. (nit)
@@ -237,6 +246,33 @@ Each task is independent and sized **S/M/L**. `[x]` = done.
 ---
 
 ## 6. Updates
+
+### 2026-10-03 (B8) — RL cluster: signpost + PPO/GRPO split (re-scoped)
+
+- **Pushback on the original B8 premise.** Read all 13 RL pages (`09-01`→`09-13`)
+  end to end. The cluster is already strong and correctly ordered (Sutton-&-
+  Barto spine → RLHF). None overflow. The audit's "B4 too fast" was a
+  *booklet-level page-count* comparison (57-page LLM core vs. the 332-page agents
+  booklet) that conflated breadth with pacing. Bulk-splitting good pages to raise
+  a count would violate this repo's zero-bloat rule, so B8 was re-scoped to the
+  two real beginner problems.
+- **(1) Signpost — `09-01`.** Added a "How to read this module" `note`: the
+  grid-world pages (value, Bellman, Q-learning, DQN) teach the *mental model* and
+  are read for intuition; the path that actually trains chat models is
+  policy-based (value&policy → policy gradients → actor-critic → PPO/GRPO →
+  reward model → RLHF). Tells the reader where to skim and where to slow down —
+  pure judgement/taste guidance, the new CLAUDE.md rule in action.
+- **(2) Split the one crammed page.** `09-10` jammed PPO *and* GRPO. Trimmed it to
+  PPO only (ending on "PPO keeps a full-size critic in memory — the next page
+  removes it"), and added **`09-10a-grpo.md`**: GRPO's mechanism explained first
+  (group average as a free baseline, no critic), pseudo-code for the loop, and a
+  worked numeric example (rewards 0.9/0.4/0.8/0.1 → group mean 0.55 → normalized
+  advantages +1.09/−0.47/+0.78/−1.41). Mechanism sourced to the DeepSeekMath
+  paper (arXiv 2402.03300); dropped the prior pass's unsourced "~40% less memory"
+  figure in favor of the mechanism-level reason (one fewer full-size network).
+- GRPO already present and accurate in both the series and Booklet-4 glossaries.
+- **Verified:** rebuilt Booklet 4 → HTML — 0 `$$`, 0 LaTeX macros, no overflow
+  warning, new page + signpost + worked example all render, GRPO in the TOC.
 
 ### 2026-10-03 (review) — audited the B4–B7 worked examples + new CLAUDE.md rule
 
