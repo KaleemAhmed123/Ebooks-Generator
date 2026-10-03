@@ -226,12 +226,16 @@ rebuild + sweep (`$$`=0, leaked LaTeX=0, no new overflow) + commit. **Verify
 every spec/version claim against the primary source again at fix time** — do not
 trust this report's quotes from memory.
 
-- [ ] **A1 · S · `13-39`** — Update the versioning page: extend the timeline
+- [x] **A1 · S · `13-39`** — Update the versioning page: extend the timeline
       diagram + prose through `2025-11-25` and `2026-07-28`; add a compact summary
       of the `2026-07-28` stateless rewrite (handshake + `Mcp-Session-Id` removed,
       resumability dropped) and the Roots/Sampling/Logging deprecation clock
       (removal ≥ `2027-07-28`). Keep the "pin your version, read the changelog"
       advice. (Finding 1 — the single highest-value, self-contained fix.)
+      *Done 2026-10-03. Timeline now 5 dots (2026-07 flagged red "stateless ·
+      breaking"); added the rewrite bullet + scoped the handshake bullet and
+      interview answer to "through 2025-06-18". Rebuilt → 0 $$, 0 LaTeX, 0 VERIFY,
+      no overflow.*
 - [ ] **A2 · S · `13-29`** — Correct the one false claim: Streamable HTTP no longer
       "supports resumable connections" as of `2026-07-28`. Add a one-line note that
       the newest spec makes the transport stateless (no `Mcp-Session-Id`). Keep the
@@ -270,6 +274,22 @@ trust this report's quotes from memory.
 ---
 
 ## 8. Updates
+
+### 2026-10-03 (A1) — MCP versioning page brought current
+
+- **`13-39`:** extended the revision timeline to `2024-11` → `2025-03` →
+  `2025-06` (book baseline) → `2025-11` → `2026-07` (flagged red, "stateless ·
+  breaking"); the SVG grew to `viewBox 0 0 360 82`. Added a bullet summarizing the
+  `2026-07-28` rewrite (drops the `initialize` handshake and `Mcp-Session-Id` →
+  stateless, version + caps per request via `server/discover`; drops SSE
+  resumability; Roots/Sampling/Logging on a deprecation clock, removal ≥
+  `2027-07-28`; not wire-compatible with older revisions). Scoped the
+  handshake-negotiation bullet and the interview answer to "through `2025-06-18`"
+  and added the stateless exception, keeping the deployed-reality framing (most
+  servers still speak `2025-06-18`).
+- All facts re-checked against the primary repo this session (schema folders +
+  `2026-07-28`/`2025-11-25` changelogs). Rebuilt `05-agents` → HTML: 0 `$$`,
+  0 leaked LaTeX, 0 `[VERIFY]`, no overflow.
 
 ### 2026-10-03 — audit complete
 
