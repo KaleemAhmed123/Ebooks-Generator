@@ -24,6 +24,41 @@
 - **Index**: split documents into **chunks**, embed each (page 11-06), store the vectors. **Query**: embed the question, retrieve the top-k nearest chunks, and hand them to the LLM with an instruction like "answer using only the context below."
 - RAG gives the model **fresh, private, citable** knowledge without retraining — update the answer by updating the documents.
 
+### Worked example — the RAG loop
+
+Imagine our index has two chunks, embedded as tiny 2D vectors (assume they are unit length so dot product = cosine similarity):
+
+| ID | text | vector |
+|---|---|---|
+| C1 | "The company was founded in 2018." | (0.8, 0.2) |
+| C2 | "Revenue grew 40% in Q3." | (0.1, 0.9) |
+
+**1. Embed the query:**
+"When was it founded?" → embedder → **(0.9, 0.1)**.
+
+**2. Retrieve (dot product):**
+- Query vs C1: `(0.9 × 0.8) + (0.1 × 0.2) = 0.72 + 0.02 = **0.74**`
+- Query vs C2: `(0.9 × 0.1) + (0.1 × 0.9) = 0.09 + 0.09 = **0.18**`
+C1 is the nearest neighbor. We retrieve it.
+
+**3. Generate:**
+Pass the retrieved text and the question into a prompt template, and send it to the LLM.
+
+:::mint
+```python
+prompt = """Answer the question using ONLY the context provided.
+If the answer is not in the context, say "I don't know".
+
+Context:
+The company was founded in 2018.
+
+Question: When was it founded?"""
+
+answer = llm.generate(prompt)
+print(answer)  # "The company was founded in 2018."
+```
+:::
+
 :::warn
 RAG is only as good as retrieval. If the right chunk is not in the top-k, the model answers from memory or makes something up — and it does so **confidently**, because it cannot tell that retrieval failed. Most "RAG doesn't work" complaints are retrieval-quality problems, which the next pages (chunking, hybrid search, re-ranking) exist to fix.
 :::
