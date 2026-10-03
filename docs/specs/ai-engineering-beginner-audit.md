@@ -243,7 +243,19 @@ Each task is independent and sized **S/M/L**. `[x]` = done.
       real-world path. No page crams two keystones; none overflow. Splitting
       would add pages without adding understanding — bloat. No content change;
       Finding 5 corrected.* (Finding 5)
-- [ ] **B10 · M · B2–B4** — Targeted expansion of remaining fast pages. (Finding 2)
+- [~] **B10 · M · B2–B4** — Re-scoped to the *real* signal. *2026-10-03:
+      "expand short pages" is mostly a non-task — the short B2/B3 pages
+      (`04-03`, `03-20`, `05-15`, `05-32`, …) are tight, not thin; padding them
+      would violate the new rule. The genuine target is the user's observation
+      that pages lean code-heavy. Measured code-vs-prose density across B2–B4:
+      only 3 code-dominant pages, and just `07-23` (transformer capstone) was
+      truly under-explained (25 lines code, 4 of prose). Added a "How to read
+      the architecture" section giving the transferable mental model (residual
+      stream as backbone · attention-mixes-across / FFN-per-position · the causal
+      mask as the one line that makes it a language model). `03-18` and `03-16`
+      are legitimately code-led (the API/loop is the lesson) — left as is. Rebuilt
+      B3 → 0 $$, 0 macros, no overflow.* Remaining: a broader prose-balance pass
+      is optional, not needed — the series is not actually code-bloated. (Finding 2)
 - [ ] **B11 · S · all** — Add exact page numbers to cross-booklet references. (nit)
 - [~] **B12 · S · all** — HTML clean-check DONE 2026-10-03: rebuilt all 7 AE
       booklets to HTML; swept each for `$$`, `[VERIFY]`, leaked LaTeX macros,
@@ -259,6 +271,28 @@ Each task is independent and sized **S/M/L**. `[x]` = done.
 ---
 
 ## 6. Updates
+
+### 2026-10-03 (B10) — re-scoped: prose balance, not page length
+
+- Tested the "thin pages" premise by reading the shortest B2/B3 pages. They are
+  *tight, not thin*: `04-03` (why-not-flatten) lands the idea with one number
+  (150M weights) + a diagram; `03-20` (debugging) is a crisp checklist; `05-15`
+  (pre-transformer attention) is a clean bridge; `05-32` (multilingual) is dense
+  and complete. Expanding them would be padding — against the new rule.
+- Followed the user's actual signal (pages lean code-heavy) instead. Scanned
+  code-vs-prose line density across all of B2–B4: only three code-dominant pages,
+  and only `07-23` (the transformer capstone) was genuinely under-explained —
+  25 lines of code, 4 of prose, a reader could regenerate the code with any
+  agent but got no *reading* of the architecture.
+- **Fix — `07-23`:** added "How to read the architecture", the transferable
+  mental model a tool can't supply: (1) the residual stream is an additive
+  backbone every block writes to, which is why deep stacks train; (2) each block
+  mixes across positions (attention) then processes each position alone (FFN);
+  (3) the causal `-inf` mask is the single line that makes it a next-token model
+  vs. a BERT-style encoder. All facts cross-checked against the booklet's own
+  earlier pages. Fits one page; rebuilt B3 clean (0 $$, 0 macros, no overflow).
+- Conclusion carried forward from B8/B9: the series is not actually code-bloated
+  or shallow. A broader prose-balance pass is optional, not required.
 
 ### 2026-10-03 (B12, HTML half) — full-series clean-check passes
 
