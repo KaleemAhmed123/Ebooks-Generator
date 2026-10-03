@@ -1,6 +1,6 @@
 ## The vLLM knobs that matter
 
-- Most engine args are defaults you never touch. A handful decide whether you hit your SLO. **[VERIFY current names/defaults]**
+- Most engine args are defaults you never touch. A handful decide whether you hit your SLO.
 
 | Arg | Controls | Tune when |
 |---|---|---|
@@ -12,7 +12,7 @@
 | `--quantization` | weight format (fp8, awq, gptq…) | fit a bigger model, cut cost |
 | `--enable-prefix-caching` | reuse shared-prefix KV | many requests share a prompt |
 
-- **Prefix caching** keeps the KV blocks for a shared prompt prefix (system prompt, few-shot block, a document) across requests, so repeated prefixes skip prefill. In the current V1 engine it is on by default; older versions need the flag. **[VERIFY]**
+- **Prefix caching** keeps the KV blocks for a shared prompt prefix (system prompt, few-shot block, a document) across requests, so repeated prefixes skip prefill. In the current V1 engine it is on by default; older versions need the flag.
 - **Data parallelism** (`--data-parallel-size`) runs several full model replicas for throughput; combine with tensor parallelism (`DP × TP`) to fill a multi-GPU node — e.g. `--data-parallel-size 4 --tensor-parallel-size 2` on 8 GPUs.
 
 :::interview

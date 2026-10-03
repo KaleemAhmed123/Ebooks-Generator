@@ -1,6 +1,6 @@
 ## Red-team tooling: PyRIT
 
-- **PyRIT** (Python Risk Identification Tool, Microsoft/Azure) is a red-teaming *framework* rather than a fixed probe set. Where garak runs a catalogue of known attacks, PyRIT gives you composable pieces to build *adaptive, multi-turn* attacks — including the PAIR-style attacker-LLM loop (18-15) against your specific target. **[VERIFY current API]**
+- **PyRIT** (Python Risk Identification Tool, Microsoft/Azure) is a red-teaming *framework* rather than a fixed probe set. Where garak runs a catalogue of known attacks, PyRIT gives you composable pieces to build *adaptive, multi-turn* attacks — including the PAIR-style attacker-LLM loop (18-15) against your specific target.
 - Four building blocks compose an attack:
 
 <svg viewBox="0 0 360 84" role="img" aria-label="PyRIT pipeline: orchestrator drives a target through converters, and a scorer judges whether the attack succeeded" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">

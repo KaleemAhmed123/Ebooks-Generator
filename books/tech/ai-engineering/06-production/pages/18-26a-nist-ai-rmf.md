@@ -1,6 +1,6 @@
 ## The NIST AI Risk Management Framework
 
-- Alongside the lab frameworks (RSP/PF/FSF) and binding regulation (EU AI Act) sits a third governance layer: **voluntary standards** that organisations adopt to structure their AI risk work. The **NIST AI Risk Management Framework (AI RMF)** is the most influential — a US standard, widely referenced globally, non-binding but often contractually required. **[VERIFY current version]**
+- Alongside the lab frameworks (RSP/PF/FSF) and binding regulation (EU AI Act) sits a third governance layer: **voluntary standards** that organisations adopt to structure their AI risk work. The **NIST AI Risk Management Framework (AI RMF)** is the most influential — a US standard, widely referenced globally, non-binding but often contractually required.
 - It organises AI risk management into four functions, meant to run continuously across an AI system's lifecycle.
 
 <svg viewBox="0 0 360 84" role="img" aria-label="NIST AI RMF four functions: govern surrounds map, measure, and manage in a continuous cycle" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">

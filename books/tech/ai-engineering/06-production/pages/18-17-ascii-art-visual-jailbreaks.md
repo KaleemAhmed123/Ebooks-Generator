@@ -1,7 +1,7 @@
 ## ASCII-art and visual jailbreaks
 
 - Safety training filters *semantic* requests — it recognises "how do I build a bomb" as harmful. Attackers evade the filter by encoding the harmful request in a form the safety layer does not read as language but the model still decodes.
-- **ASCII-art jailbreaks** (e.g. ArtPrompt, 2024) spell the forbidden word as ASCII art. The safety classifier, scanning text tokens, does not see the word; the model, good at puzzles, reconstructs it and answers. **[VERIFY]**
+- **ASCII-art jailbreaks** (e.g. ArtPrompt, 2024) spell the forbidden word as ASCII art. The safety classifier, scanning text tokens, does not see the word; the model, good at puzzles, reconstructs it and answers.
 
 <svg viewBox="0 0 360 90" role="img" aria-label="A harmful word hidden as ASCII art passes the text safety filter but is decoded by the model" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="14" y="16" width="150" height="60" rx="4" fill="#f4f4f4" stroke="#888"/><text x="89" y="28" text-anchor="middle" font-size="5.5" fill="#6b6b6b">harmful word as ASCII art</text>

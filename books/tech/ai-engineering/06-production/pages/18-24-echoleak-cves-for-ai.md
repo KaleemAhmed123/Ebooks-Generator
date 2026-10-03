@@ -1,6 +1,6 @@
 ## EchoLeak and CVEs for AI
 
-- Prompt injection stopped being theoretical when it started getting **CVE** numbers — Common Vulnerabilities and Exposures, the industry registry of real, catalogued security flaws. **EchoLeak** (2025) is the emblematic case: an indirect-prompt-injection data-exfiltration flaw in a production AI assistant, assigned a CVE like any other vulnerability. **[VERIFY details]**
+- Prompt injection stopped being theoretical when it started getting **CVE** numbers — Common Vulnerabilities and Exposures, the industry registry of real, catalogued security flaws. **EchoLeak** (2025) is the emblematic case: an indirect-prompt-injection data-exfiltration flaw in a production AI assistant, assigned a CVE like any other vulnerability.
 - The pattern: an attacker sends the victim ordinary-looking content (an email, a shared document) containing a hidden instruction; the AI assistant processes it in the background; the instruction causes it to leak the user's private data through a channel the attacker controls — **zero clicks** from the victim.
 
 <svg viewBox="0 0 360 88" role="img" aria-label="Attacker sends crafted content; the AI assistant auto-processes it and exfiltrates private context with no user action" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">

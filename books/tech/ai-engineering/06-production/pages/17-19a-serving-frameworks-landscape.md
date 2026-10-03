@@ -1,6 +1,6 @@
 ## The wider serving landscape
 
-- vLLM, SGLang, and TensorRT-LLM are the throughput leaders, but the full serving landscape has more names, and knowing where each fits saves you from reaching for the wrong tool. **[VERIFY current status]**
+- vLLM, SGLang, and TensorRT-LLM are the throughput leaders, but the full serving landscape has more names, and knowing where each fits saves you from reaching for the wrong tool.
 
 | Tool | Niche |
 |---|---|

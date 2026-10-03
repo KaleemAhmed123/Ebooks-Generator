@@ -1,6 +1,6 @@
 ## Red-team tooling: garak
 
-- **garak** (NVIDIA) is an open-source vulnerability scanner for LLMs — nmap for language models. It runs a library of **probes** (jailbreaks, prompt injection, data leakage, toxicity, hallucination) against a target and reports which ones landed. Verified against garak's docs. **[VERIFY current CLI]**
+- **garak** (NVIDIA) is an open-source vulnerability scanner for LLMs — nmap for language models. It runs a library of **probes** (jailbreaks, prompt injection, data leakage, toxicity, hallucination) against a target and reports which ones landed. Verified against garak's docs.
 - You point it at a target (an API model, a local Hugging Face model, or a REST endpoint), pick probes, and it produces a JSONL report of attack successes.
 
 :::mint

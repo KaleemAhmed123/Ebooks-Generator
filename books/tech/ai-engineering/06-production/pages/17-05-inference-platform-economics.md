@@ -1,6 +1,6 @@
 ## The inference-platform market
 
-- Between "provider API" and "run your own Kubernetes" sits a market of **inference platforms** — they run open weights for you on rented GPUs, with better developer experience than raw hardware. As of 2026 it splits three ways. **[VERIFY vendors/pricing]**
+- Between "provider API" and "run your own Kubernetes" sits a market of **inference platforms** — they run open weights for you on rented GPUs, with better developer experience than raw hardware. As of 2026 it splits three ways.
 
 <svg viewBox="0 0 360 108" role="img" aria-label="Three market segments: custom silicon, GPU platforms, and API-first marketplaces" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7.5" fill="#1a1a1a">
   <rect x="10" y="14" width="108" height="86" rx="4" fill="#f3ede8" stroke="#8a6d3b"/><text x="64" y="28" text-anchor="middle" font-size="7" fill="#8a6d3b">custom silicon</text>

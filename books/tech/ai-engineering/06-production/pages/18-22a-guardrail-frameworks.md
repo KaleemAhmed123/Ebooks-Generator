@@ -1,6 +1,6 @@
 ## Guardrail frameworks
 
-- You rarely build the runtime safety layer from scratch — you assemble it from **guardrail frameworks** that package input/output checks, policies, and validators. Knowing the named ones is expected in an interview. **[VERIFY current tools]**
+- You rarely build the runtime safety layer from scratch — you assemble it from **guardrail frameworks** that package input/output checks, policies, and validators. Knowing the named ones is expected in an interview.
 
 | Framework | Focus | Shape |
 |---|---|---|

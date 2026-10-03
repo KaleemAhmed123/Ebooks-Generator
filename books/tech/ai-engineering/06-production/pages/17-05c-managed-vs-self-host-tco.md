@@ -4,7 +4,7 @@
 
 :::mint
 ```text
-Workload: 5B tokens/month on an open 70B model.  [VERIFY prices]
+Workload: 5B tokens/month on an open 70B model.
 
 Managed API @ $3/1M blended:
   5,000M × $3/1e6                        = $15,000/mo

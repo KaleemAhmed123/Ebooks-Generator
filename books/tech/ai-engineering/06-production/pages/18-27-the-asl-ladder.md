@@ -1,6 +1,6 @@
 ## The ASL ladder
 
-- Anthropic's **AI Safety Levels** make the tiered-capability idea concrete, modelled on biosafety levels (BSL-1 through 4 for pathogen labs). Each level names a capability regime and the safeguards it requires. **[VERIFY current tiers]**
+- Anthropic's **AI Safety Levels** make the tiered-capability idea concrete, modelled on biosafety levels (BSL-1 through 4 for pathogen labs). Each level names a capability regime and the safeguards it requires.
 
 <svg viewBox="0 0 360 116" role="img" aria-label="ASL ladder from ASL-2 baseline through ASL-3 CBRN to ASL-4 and 5 AI R&D automation, safeguards rising with each rung" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="20" y="92" width="220" height="16" rx="2" fill="#eaf6ea" stroke="#1a3a2a"/><text x="26" y="103" font-size="6">ASL-2 · current frontier baseline · usual safeguards</text>

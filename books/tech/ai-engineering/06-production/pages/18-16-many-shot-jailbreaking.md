@@ -1,6 +1,6 @@
 ## Many-shot jailbreaking
 
-- **Many-shot jailbreaking** (Anthropic, 2024) exploits the thing that made long context valuable: in-context learning. Fill the prompt with *many* fabricated examples of the assistant happily answering harmful questions, then ask your real harmful question — and the model, pattern-matching the established dialogue, complies. **[VERIFY]**
+- **Many-shot jailbreaking** (Anthropic, 2024) exploits the thing that made long context valuable: in-context learning. Fill the prompt with *many* fabricated examples of the assistant happily answering harmful questions, then ask your real harmful question — and the model, pattern-matching the established dialogue, complies.
 - The attack scales with context length: more faked examples → higher success. Long-context models are *more* vulnerable, precisely because they learn from more in-context examples.
 
 <svg viewBox="0 0 360 90" role="img" aria-label="A prompt stuffed with many fake harmful Q and A pairs conditions the model to answer the final real harmful question" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">

@@ -11,7 +11,7 @@
   <defs><marker id="so" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#888"/></marker></defs>
 </svg>
 
-- **Weak-to-strong generalization** (OpenAI, 2023) is the first empirical probe: can a *weak* supervisor elicit the full capability of a *strong* model? They fine-tuned a strong model on labels from a weaker one and found it generalised *beyond* the weak supervisor's own accuracy — hopeful evidence that imperfect oversight can still steer a more capable model, though far from fully recovering its capability. **[VERIFY]**
+- **Weak-to-strong generalization** (OpenAI, 2023) is the first empirical probe: can a *weak* supervisor elicit the full capability of a *strong* model? They fine-tuned a strong model on labels from a weaker one and found it generalised *beyond* the weak supervisor's own accuracy — hopeful evidence that imperfect oversight can still steer a more capable model, though far from fully recovering its capability.
 - **The other approaches** decompose the checking so a weaker overseer can verify pieces they could not judge whole: *debate* (two strong models argue, a weaker judge decides), *recursive reward modelling* (use AI help to evaluate), *task decomposition* (break the unverifiable task into verifiable sub-claims).
 
 :::interview

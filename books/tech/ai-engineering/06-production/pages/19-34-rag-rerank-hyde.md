@@ -5,7 +5,7 @@
 :::mint
 ```python
 from sentence_transformers import CrossEncoder
-reranker = CrossEncoder("BAAI/bge-reranker-v2-m3")     # [VERIFY current model]
+reranker = CrossEncoder("BAAI/bge-reranker-v2-m3")
 
 def rerank(query, candidates, top_n=5):
     pairs = [(query, c["text"]) for c in candidates]

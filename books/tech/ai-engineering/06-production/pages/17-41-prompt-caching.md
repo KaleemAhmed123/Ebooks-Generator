@@ -8,8 +8,8 @@
 | **serving KV prefix cache** | you (vLLM/SGLang/LMCache) | reuse cached KV blocks for a matching prefix |
 | **provider prompt cache** | OpenAI/Anthropic/Google | cache your prompt prefix; charge cached reads at a fraction |
 
-- **The provider economics are the headline.** As of September 2026, cached prompt reads bill at roughly **10%** of the normal input rate on the major providers — a 90% discount on the repeated part of every prompt. For a long fixed system prompt sent on every request, that is a large, direct saving. **[VERIFY current rates]**
-- **The two styles differ.** OpenAI caches automatically once a prefix passes a length threshold (~1k tokens). Anthropic is explicit: you mark cache breakpoints with `cache_control` (a few per request), with a short time-to-live (~5 minutes) that a steady stream of traffic keeps warm. **[VERIFY]**
+- **The provider economics are the headline.** As of September 2026, cached prompt reads bill at roughly **10%** of the normal input rate on the major providers — a 90% discount on the repeated part of every prompt. For a long fixed system prompt sent on every request, that is a large, direct saving.
+- **The two styles differ.** OpenAI caches automatically once a prefix passes a length threshold (~1k tokens). Anthropic is explicit: you mark cache breakpoints with `cache_control` (a few per request), with a short time-to-live (~5 minutes) that a steady stream of traffic keeps warm.
 
 :::mint
 ```text

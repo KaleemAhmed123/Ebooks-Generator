@@ -1,6 +1,6 @@
 ## Watermarking and content provenance
 
-- As AI output becomes indistinguishable from human work, *"was this generated?"* becomes a question with real stakes — misinformation, fraud, academic integrity, training on AI slop. Two complementary answers: **watermarking** (mark the output at generation) and **provenance** (attach verifiable origin metadata). **[VERIFY current standards]**
+- As AI output becomes indistinguishable from human work, *"was this generated?"* becomes a question with real stakes — misinformation, fraud, academic integrity, training on AI slop. Two complementary answers: **watermarking** (mark the output at generation) and **provenance** (attach verifiable origin metadata).
 
 | Approach | What | Example |
 |---|---|---|

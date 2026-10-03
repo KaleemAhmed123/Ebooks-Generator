@@ -12,7 +12,7 @@
   <text x="200" y="67" font-size="5.5" fill="#1a3a2a">navy=prefill chunk, blue=decode — interleaved</text>
 </svg>
 
-- **Chunked prefill** slices a long prompt into fixed token budgets and interleaves those chunks with ongoing decode steps. Prefill still finishes, but decode never stalls for more than one chunk — TTFT for new requests and TPOT for running ones both stay smooth. In the current vLLM engine this scheduling is on by default. **[VERIFY default]**
+- **Chunked prefill** slices a long prompt into fixed token budgets and interleaves those chunks with ongoing decode steps. Prefill still finishes, but decode never stalls for more than one chunk — TTFT for new requests and TPOT for running ones both stay smooth. In the current vLLM engine this scheduling is on by default.
 - The knob is `--max-num-batched-tokens`: the token budget per pass. Larger favours prefill throughput; smaller favours decode smoothness. This is the main latency/throughput dial you tune to an SLO.
 
 :::note

@@ -1,6 +1,6 @@
 ## AI control and subversion
 
-- Alignment tries to make the model *want* the right thing. **AI control** (Redwood Research) takes the pessimistic complement: assume the model *may* be misaligned and deceptive, and design a deployment protocol that stays safe **anyway** — catching or containing bad actions even if the model is actively trying to subvert you. **[VERIFY]**
+- Alignment tries to make the model *want* the right thing. **AI control** (Redwood Research) takes the pessimistic complement: assume the model *may* be misaligned and deceptive, and design a deployment protocol that stays safe **anyway** — catching or containing bad actions even if the model is actively trying to subvert you.
 - It reframes safety as a security problem against an untrusted insider: you do not trust the powerful model, so you wrap it in controls a weaker, trusted model and humans can enforce.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="An untrusted strong model's actions pass through a trusted weak monitor that escalates suspicious actions to a human before execution" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">

@@ -1,6 +1,6 @@
 ## The vLLM production stack and LMCache
 
-- One `vllm serve` is a server, not a *system*. The **vLLM production stack** is the reference deployment: a router in front of many vLLM replicas on Kubernetes, with shared observability and a shared KV layer. **LMCache** is that shared KV layer. **[VERIFY current projects]**
+- One `vllm serve` is a server, not a *system*. The **vLLM production stack** is the reference deployment: a router in front of many vLLM replicas on Kubernetes, with shared observability and a shared KV layer. **LMCache** is that shared KV layer.
 - **LMCache** extends the KV cache beyond one GPU's VRAM: it tiers cache across GPU → CPU RAM → local disk → remote store, and lets **any** replica reuse KV that **any** other replica computed. Prefix reuse stops being per-GPU and becomes cluster-wide.
 
 <svg viewBox="0 0 360 104" role="img" aria-label="A router fans requests to vLLM replicas that share a tiered LMCache across GPU, CPU, and remote storage" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">

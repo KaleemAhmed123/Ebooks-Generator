@@ -1,6 +1,6 @@
 ## Issue-to-PR: SWE-bench and evaluation
 
-- How do you *know* a coding agent (Flagship 13) is any good? **SWE-bench** is the standard benchmark: real GitHub issues from real repos, where the agent must produce a patch that makes the repo's *own hidden tests* pass. It's hard because it's real — navigate an unfamiliar codebase, not a toy. **[VERIFY current numbers]**
+- How do you *know* a coding agent (Flagship 13) is any good? **SWE-bench** is the standard benchmark: real GitHub issues from real repos, where the agent must produce a patch that makes the repo's *own hidden tests* pass. It's hard because it's real — navigate an unfamiliar codebase, not a toy.
 
 <svg viewBox="0 0 360 74" role="img" aria-label="SWE-bench: a real issue and repo go to the agent, which produces a patch, scored by whether the hidden tests pass" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="28" width="66" height="18" rx="3" fill="#f4f4f4" stroke="#888"/><text x="43" y="39" text-anchor="middle" font-size="5.5">real issue + repo</text>

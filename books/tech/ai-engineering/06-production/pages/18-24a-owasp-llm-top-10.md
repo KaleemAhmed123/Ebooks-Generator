@@ -1,6 +1,6 @@
 ## The OWASP LLM Top 10
 
-- Security teams speak in frameworks, and the **OWASP Top 10 for LLM Applications** is the one to know — a community-standard list of the most critical LLM security risks, the LLM analogue of the classic web OWASP Top 10. It organises everything in this cluster into a checklist an auditor recognises. **[VERIFY current list]**
+- Security teams speak in frameworks, and the **OWASP Top 10 for LLM Applications** is the one to know — a community-standard list of the most critical LLM security risks, the LLM analogue of the classic web OWASP Top 10. It organises everything in this cluster into a checklist an auditor recognises.
 
 | Risk | Where this booklet covers it |
 |---|---|

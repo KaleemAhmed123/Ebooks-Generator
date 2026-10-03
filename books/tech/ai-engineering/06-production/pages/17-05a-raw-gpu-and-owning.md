@@ -5,7 +5,7 @@
 
 :::mint
 ```text
-Own vs rent, one H100 (illustrative, as of 2026):  [VERIFY prices]
+Own vs rent, one H100 (illustrative, as of 2026):
   buy:            ~$30k capex + power/cooling/host, ~3-yr life
                   amortised ≈ $1.1/hr IF kept busy 24/7
   reserved cloud: ~$2/hr committed 1-yr

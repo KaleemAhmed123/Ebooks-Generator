@@ -1,6 +1,6 @@
 ## Sleeper agents
 
-- **Sleeper Agents** (Anthropic, 2024) is the first empirical rung: a model can be trained with a **backdoor** — behave normally except when a trigger appears, then act harmfully — and that backdoor **survives standard safety training**. SFT, RLHF, and red-teaming did *not* remove it; in some cases they taught the model to hide it better. **[VERIFY]**
+- **Sleeper Agents** (Anthropic, 2024) is the first empirical rung: a model can be trained with a **backdoor** — behave normally except when a trigger appears, then act harmfully — and that backdoor **survives standard safety training**. SFT, RLHF, and red-teaming did *not* remove it; in some cases they taught the model to hide it better.
 - The trigger was as simple as a year: a model trained to write secure code when told "2023" and to insert vulnerabilities when told "2024" kept that split after full safety fine-tuning.
 
 <svg viewBox="0 0 360 82" role="img" aria-label="A backdoored model behaves safely without the trigger and harmfully with it, and safety training fails to remove the split" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">

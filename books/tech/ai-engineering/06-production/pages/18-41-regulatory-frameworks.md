@@ -1,6 +1,6 @@
 ## Regulatory frameworks
 
-- Lab frameworks are voluntary (18-29). **Regulation** is the binding backstop, and by 2026 it is real, fragmented, and something a deployer must design for — the rules differ by jurisdiction and by use-case risk. **[VERIFY current status/dates]**
+- Lab frameworks are voluntary (18-29). **Regulation** is the binding backstop, and by 2026 it is real, fragmented, and something a deployer must design for — the rules differ by jurisdiction and by use-case risk.
 
 | Jurisdiction | Instrument | Shape |
 |---|---|---|

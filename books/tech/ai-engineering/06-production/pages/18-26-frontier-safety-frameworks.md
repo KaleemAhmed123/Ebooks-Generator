@@ -1,6 +1,6 @@
 ## Frontier safety frameworks
 
-- The frontier labs govern their most capable models with published **safety frameworks** — voluntary commitments that define capability thresholds, required evaluations before scaling, and what safeguards each threshold triggers. Three dominate as of 2026, structurally aligned though differently named. **[VERIFY versions/dates]**
+- The frontier labs govern their most capable models with published **safety frameworks** — voluntary commitments that define capability thresholds, required evaluations before scaling, and what safeguards each threshold triggers. Three dominate as of 2026, structurally aligned though differently named.
 
 | Framework | Lab | Threshold construct | Version |
 |---|---|---|---|

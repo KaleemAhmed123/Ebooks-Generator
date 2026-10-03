@@ -1,7 +1,7 @@
 ## Red-teaming, PAIR and automated attacks
 
 - **Red-teaming** is adversarial testing: deliberately trying to break the model's safety before an attacker does. It started manual — humans crafting jailbreaks — but manual red-teaming does not scale to the size of the attack space, so the field automated it.
-- **PAIR** (Prompt Automatic Iterative Refinement, Chao et al. 2023) is the canonical automated jailbreak: one LLM *attacks* another, using the target's refusals as feedback to refine the next attempt, converging on a working jailbreak in a handful of queries. **[VERIFY]**
+- **PAIR** (Prompt Automatic Iterative Refinement, Chao et al. 2023) is the canonical automated jailbreak: one LLM *attacks* another, using the target's refusals as feedback to refine the next attempt, converging on a working jailbreak in a handful of queries.
 
 <svg viewBox="0 0 360 84" role="img" aria-label="An attacker LLM sends a prompt to the target, reads the refusal, and refines iteratively until the target complies" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="20" y="34" width="76" height="24" rx="3" fill="#24405e"/><text x="58" y="44" text-anchor="middle" font-size="6" fill="#fff">attacker LLM</text><text x="58" y="53" text-anchor="middle" font-size="5.5" fill="#cdd">refines prompt</text>

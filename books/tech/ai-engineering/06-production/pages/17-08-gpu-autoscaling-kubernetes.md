@@ -1,7 +1,7 @@
 ## GPU autoscaling on Kubernetes
 
 - Self-hosting at any real scale means Kubernetes: pods run the serving engine, each pod claims one or more GPUs, and a scaler adds or removes pods with load. The problem is that **GPUs are slow and expensive to add** — a cold pod must pull a multi-gigabyte model into VRAM before it serves a single token.
-- The default CPU-based autoscaler is useless here: GPU utilisation, queue depth, and pending requests are the real signals, so you scale on custom metrics (typically via **KEDA**, the event-driven autoscaler). **[VERIFY]**
+- The default CPU-based autoscaler is useless here: GPU utilisation, queue depth, and pending requests are the real signals, so you scale on custom metrics (typically via **KEDA**, the event-driven autoscaler).
 
 <svg viewBox="0 0 360 100" role="img" aria-label="Requests queue at a gateway; KEDA scales GPU pods on queue depth; cold pods must load the model before serving" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="10" y="40" width="52" height="22" rx="3" fill="#e8f4fd" stroke="#24405e"/><text x="36" y="54" text-anchor="middle" font-size="6.5">gateway</text>

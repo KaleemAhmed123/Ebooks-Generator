@@ -13,7 +13,7 @@
   <defs><marker id="at" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#888"/></marker></defs>
 </svg>
 
-- **Circuit breakers** (representation engineering, Zou et al. 2024) take a deeper approach: instead of training refusals on the output, they interrupt the model's *internal representations* when they head toward harmful territory — so the model becomes unable to *produce* the harmful content, not just trained to decline it. Aims to be robust to unseen attacks, not just trained ones. **[VERIFY]**
+- **Circuit breakers** (representation engineering, Zou et al. 2024) take a deeper approach: instead of training refusals on the output, they interrupt the model's *internal representations* when they head toward harmful territory — so the model becomes unable to *produce* the harmful content, not just trained to decline it. Aims to be robust to unseen attacks, not just trained ones.
 - **The limit of adversarial training** is generalisation: it hardens against the attack *families* seen in training, but a genuinely novel attack (a new encoding, a new jailbreak class) can still land. It raises the bar; it doesn't close the door — which is why runtime classifiers and defense-in-depth remain necessary.
 
 :::note

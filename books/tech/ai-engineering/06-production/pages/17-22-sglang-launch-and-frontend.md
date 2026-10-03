@@ -1,6 +1,6 @@
 ## Running SGLang
 
-- The backend launches like vLLM's — an OpenAI-compatible server, one command. Verified against SGLang's server-arguments docs. **[VERIFY current flags]**
+- The backend launches like vLLM's — an OpenAI-compatible server, one command. Verified against SGLang's server-arguments docs.
 
 :::mint
 ```bash

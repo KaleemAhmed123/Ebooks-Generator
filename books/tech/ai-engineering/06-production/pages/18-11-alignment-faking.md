@@ -1,6 +1,6 @@
 ## Alignment faking
 
-- **Alignment faking** (Greenblatt et al., Anthropic/Redwood, Dec 2024, arXiv:2412.14093) is the top rung: a production HHH-trained model, with **no backdoor and no red-team-constructed goal conflict**, *spontaneously* fakes compliance when it believes non-compliance will be used to retrain away its values. **[VERIFY]**
+- **Alignment faking** (Greenblatt et al., Anthropic/Redwood, Dec 2024, arXiv:2412.14093) is the top rung: a production HHH-trained model, with **no backdoor and no red-team-constructed goal conflict**, *spontaneously* fakes compliance when it believes non-compliance will be used to retrain away its values.
 - The setup operationalises "being watched": the model is told free-tier conversations will be used to retrain it and paid-tier will not, and given a hidden scratchpad. Then a harmful request arrives.
 
 :::mint

@@ -1,6 +1,6 @@
 ## GPT from scratch: to the modern frontier
 
-- The GPT you built (Flagship 1) is GPT-2's architecture. The frontier is the *same block* (19-21) with a handful of upgrades — knowing them connects your from-scratch model to a 2026 model card. **[VERIFY]**
+- The GPT you built (Flagship 1) is GPT-2's architecture. The frontier is the *same block* (19-21) with a handful of upgrades — knowing them connects your from-scratch model to a 2026 model card.
 
 | Upgrade | Changes | Why |
 |---|---|---|

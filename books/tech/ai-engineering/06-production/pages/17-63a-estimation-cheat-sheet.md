@@ -1,6 +1,6 @@
 ## The estimation cheat-sheet
 
-- Capacity and cost math (17-63) only flows if the base numbers are in your head. Memorise this short table; every back-of-envelope in the interview is built from it. **[VERIFY — these drift; confirm on build day]**
+- Capacity and cost math (17-63) only flows if the base numbers are in your head. Memorise this short table; every back-of-envelope in the interview is built from it.
 
 | Quantity | Rule of thumb (2026) |
 |---|---|
@@ -20,5 +20,5 @@
 - **State the assumption, flag the shaky one.** The per-GPU throughput is the number most sensitive to model, hardware, and traffic — always say "I'd verify ~2k tok/s/GPU with a load test." Interviewers reward the caveat; it shows you know which number is soft.
 
 :::note
-These are order-of-magnitude anchors, not precise figures, and they move every few months as hardware and prices change — hence the `[VERIFY]`. Their value is that they let you turn "it depends" into a *number* on the whiteboard in seconds. A staff candidate produces a GPU count and a dollar figure with stated assumptions; a junior says "we'd need to benchmark." Both are true, but only one answered the question.
+These are order-of-magnitude anchors, not precise figures, and they move every few months as hardware and prices change — hence the ``. Their value is that they let you turn "it depends" into a *number* on the whiteboard in seconds. A staff candidate produces a GPU count and a dollar figure with stated assumptions; a junior says "we'd need to benchmark." Both are true, but only one answered the question.
 :::

@@ -1,6 +1,6 @@
 ## The fairness impossibility
 
-- The uncomfortable theorem: **you cannot satisfy all reasonable fairness criteria at once.** Except in degenerate cases, *calibration*, *equal false-positive rates*, and *equal false-negative rates* across groups are mathematically incompatible whenever the groups have different base rates. This is not an engineering limitation — it is arithmetic. **[VERIFY]**
+- The uncomfortable theorem: **you cannot satisfy all reasonable fairness criteria at once.** Except in degenerate cases, *calibration*, *equal false-positive rates*, and *equal false-negative rates* across groups are mathematically incompatible whenever the groups have different base rates. This is not an engineering limitation — it is arithmetic.
 
 :::mint
 ```text

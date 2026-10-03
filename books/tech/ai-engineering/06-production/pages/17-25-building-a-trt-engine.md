@@ -1,6 +1,6 @@
 ## Building a TensorRT-LLM engine
 
-- The workflow is three steps: **quantise** the checkpoint, **build** the engine, **serve** it. Verified against NVIDIA's TensorRT-LLM docs. **[VERIFY current commands]**
+- The workflow is three steps: **quantise** the checkpoint, **build** the engine, **serve** it. Verified against NVIDIA's TensorRT-LLM docs.
 
 :::mint
 ```bash

@@ -1,6 +1,6 @@
 ## Batch APIs
 
-- Not all work is interactive. Nightly summarisation, bulk classification, embedding a corpus, offline evals — these have no user waiting. **Batch APIs** exploit that: submit a large job, accept a slower turnaround (typically within 24 hours), and pay roughly **half** the interactive rate. **[VERIFY current discount]**
+- Not all work is interactive. Nightly summarisation, bulk classification, embedding a corpus, offline evals — these have no user waiting. **Batch APIs** exploit that: submit a large job, accept a slower turnaround (typically within 24 hours), and pay roughly **half** the interactive rate.
 - The provider fills spare capacity with your batch when interactive demand is low, so you rent the trough instead of competing for the peak — hence the discount.
 
 <svg viewBox="0 0 340 78" role="img" aria-label="Interactive traffic peaks during the day; batch jobs fill the overnight trough at half price" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">

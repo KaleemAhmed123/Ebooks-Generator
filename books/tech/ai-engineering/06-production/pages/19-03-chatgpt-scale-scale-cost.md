@@ -9,7 +9,7 @@ avg QPS  = 1.5e9 / 86,400 ≈ 17,360
 peak QPS = 3× ≈ 52,000
 
 output tokens/s at peak = 52,000 × 400 = 20.8M tok/s
-per-GPU goodput (70B FP8 + spec-decode) ≈ 3,000 tok/s   [VERIFY]
+per-GPU goodput (70B FP8 + spec-decode) ≈ 3,000 tok/s
 GPUs (decode) = 20.8M / 3,000 ≈ 6,900
 + prefill headroom, multi-region, redundancy ≈ 10,000+ GPUs
 

@@ -1,6 +1,6 @@
 ## Speculative decoding: Medusa and tree attention
 
-- The server (Flagship 11) drafted a single linear sequence of k tokens. Two refinements push acceptance and throughput further, and they're the techniques production engines actually use. **[VERIFY]**
+- The server (Flagship 11) drafted a single linear sequence of k tokens. Two refinements push acceptance and throughput further, and they're the techniques production engines actually use.
 - **Medusa** removes the separate draft model entirely: it adds extra *prediction heads* to the target model itself, each predicting a token a few positions ahead. No second model to run or keep in memory — the target drafts for itself.
 
 <svg viewBox="0 0 360 82" role="img" aria-label="Tree drafting: instead of one linear guess, propose a tree of candidate continuations and verify them all in one pass" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">

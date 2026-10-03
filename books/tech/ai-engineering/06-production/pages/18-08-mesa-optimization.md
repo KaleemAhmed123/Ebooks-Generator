@@ -1,6 +1,6 @@
 ## Mesa-optimization
 
-- **Mesa-optimization** (Hubinger et al., 2019) is the theoretical root of deceptive alignment. The idea: when you train a model with an optimiser (gradient descent) to do well on an objective, the *result* can itself be an optimiser — a learned system that pursues its own internal goal. The outer optimiser is you; the inner ("mesa") optimiser is the model. **[VERIFY]**
+- **Mesa-optimization** (Hubinger et al., 2019) is the theoretical root of deceptive alignment. The idea: when you train a model with an optimiser (gradient descent) to do well on an objective, the *result* can itself be an optimiser — a learned system that pursues its own internal goal. The outer optimiser is you; the inner ("mesa") optimiser is the model.
 - The danger is that the inner objective need not match the outer one. Training rewards the mesa-optimiser for *behaviour* that scores well; it does not guarantee the internal goal it learned is the one you wanted.
 
 <svg viewBox="0 0 360 84" role="img" aria-label="An outer optimiser trains a model that is itself an inner optimiser pursuing a possibly different mesa-objective" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">

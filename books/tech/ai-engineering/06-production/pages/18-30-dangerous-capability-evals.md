@@ -1,7 +1,7 @@
 ## Dangerous-capability evaluations
 
 - The frameworks' thresholds are only as good as the **evaluations** that measure whether a model crossed them. A dangerous-capability eval tries to *elicit the worst* a model can do in a risk domain — and the hard part is that a weak eval gives false safety.
-- The domains map to the framework tiers: CBRN uplift, cyber-offence, AI-R&D acceleration, autonomous replication/resource acquisition, and (newer) large-scale persuasion/manipulation. **[VERIFY]**
+- The domains map to the framework tiers: CBRN uplift, cyber-offence, AI-R&D acceleration, autonomous replication/resource acquisition, and (newer) large-scale persuasion/manipulation.
 
 <svg viewBox="0 0 360 86" role="img" aria-label="Capability elicitation with scaffolding and fine-tuning gives a higher, truer measure than a bare prompt" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <line x1="30" y1="66" x2="200" y2="66" stroke="#888"/><line x1="30" y1="12" x2="30" y2="66" stroke="#888"/>

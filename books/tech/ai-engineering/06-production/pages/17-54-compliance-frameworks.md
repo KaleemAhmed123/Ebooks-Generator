@@ -12,7 +12,7 @@
 | **EU AI Act** | AI systems by risk tier | transparency, docs, human oversight |
 
 - **The LLM-specific wrinkle is the third party.** The moment you send data to OpenAI/Anthropic/a hyperscaler, *their* compliance posture is part of yours — hence BAAs for HIPAA, data-residency regions for GDPR, and zero-retention settings. The two-provider policy (17-03) has a compliance cost: each provider must clear the same bar.
-- **The EU AI Act** classifies systems by risk (unacceptable / high / limited / minimal) and imposes obligations up the scale — transparency that users are talking to AI, technical documentation, logging, human oversight for high-risk uses. It is the first broad AI-specific regulation; Module 18 covers the regulatory landscape in depth. **[VERIFY current status/dates]**
+- **The EU AI Act** classifies systems by risk (unacceptable / high / limited / minimal) and imposes obligations up the scale — transparency that users are talking to AI, technical documentation, logging, human oversight for high-risk uses. It is the first broad AI-specific regulation; Module 18 covers the regulatory landscape in depth.
 
 :::note
 Compliance is an *architecture* input, not a bolt-on. Data residency decides which regions you deploy in (17-35); retention decides how you log prompts (17-53); the risk tier decides whether you need a human-in-the-loop gate. Retrofitting these after a design is chosen is the expensive path — the senior move is to ask "what compliance regime?" in the *requirements* phase of a system design, before drawing any boxes.

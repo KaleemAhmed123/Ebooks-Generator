@@ -1,6 +1,6 @@
 ## TensorRT-LLM: what and why
 
-- **TensorRT-LLM** is NVIDIA's inference library. Its bet is different from vLLM's and SGLang's: instead of interpreting the model at run time, it **compiles** the model to a hardware-specific engine ahead of time — fusing kernels, picking optimal GEMM implementations, and baking in the precision — to squeeze the last drop of performance out of a specific NVIDIA GPU. **[VERIFY current release]**
+- **TensorRT-LLM** is NVIDIA's inference library. Its bet is different from vLLM's and SGLang's: instead of interpreting the model at run time, it **compiles** the model to a hardware-specific engine ahead of time — fusing kernels, picking optimal GEMM implementations, and baking in the precision — to squeeze the last drop of performance out of a specific NVIDIA GPU.
 - The cost is a build step and NVIDIA lock-in. The reward is the highest peak throughput and lowest latency achievable on that exact hardware.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="TensorRT-LLM adds a compile step that turns a checkpoint into a hardware-specific engine before serving" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">

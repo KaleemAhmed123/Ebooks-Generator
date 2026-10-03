@@ -1,6 +1,6 @@
 ## Serving a model with vLLM
 
-- One command turns a Hugging Face model into a production OpenAI-compatible endpoint. Verified against the vLLM stable serving docs. **[VERIFY current flags]**
+- One command turns a Hugging Face model into a production OpenAI-compatible endpoint. Verified against the vLLM stable serving docs.
 
 :::mint
 ```bash

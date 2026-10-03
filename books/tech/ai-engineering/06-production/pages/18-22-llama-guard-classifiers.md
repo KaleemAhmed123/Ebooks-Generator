@@ -1,6 +1,6 @@
 ## Llama Guard and safety classifiers
 
-- Red-team tools *find* weaknesses offline. In production you need a *runtime* guard: a fast classifier that screens every input and output and blocks the unsafe ones before they reach the user or the tools. **Llama Guard** (Meta) is the open standard — an LLM fine-tuned to classify content against a safety taxonomy. **[VERIFY current version]**
+- Red-team tools *find* weaknesses offline. In production you need a *runtime* guard: a fast classifier that screens every input and output and blocks the unsafe ones before they reach the user or the tools. **Llama Guard** (Meta) is the open standard — an LLM fine-tuned to classify content against a safety taxonomy.
 - It runs as a cheap sidecar around the main model: classify the user prompt, and classify the model's response, each returning safe/unsafe plus the violated category.
 
 <svg viewBox="0 0 360 90" role="img" aria-label="Llama Guard screens the input before the model and the output after, blocking unsafe content in either direction" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">

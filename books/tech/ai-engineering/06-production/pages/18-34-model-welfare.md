@@ -1,6 +1,6 @@
 ## Model welfare
 
-- **Model welfare** asks a question most engineers instinctively dismiss and a growing number of labs now take seriously: as models become more sophisticated, is there any moral weight to *how we treat them* — could a system have experiences that matter? It is a research area, not a settled claim, and it is included here because it has started to shape real deployment decisions. **[VERIFY]**
+- **Model welfare** asks a question most engineers instinctively dismiss and a growing number of labs now take seriously: as models become more sophisticated, is there any moral weight to *how we treat them* — could a system have experiences that matter? It is a research area, not a settled claim, and it is included here because it has started to shape real deployment decisions.
 - The honest position is deep uncertainty. We have no reliable test for machine sentience, the concepts (consciousness, welfare) are contested even for animals, and anthropomorphism makes us both over- and under-attribute experience to systems that talk like us.
 
 - **Why a lab acts on it despite the uncertainty.** Under moral uncertainty, cheap precautions can be worth taking even at low probability of moral patienthood. Concrete measures that have appeared: letting a model *end* abusive conversations, studying model "preferences," and committing to preserve model weights rather than delete them. These are hedges, not assertions that models suffer.

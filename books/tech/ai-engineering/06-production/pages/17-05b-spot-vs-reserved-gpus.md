@@ -13,7 +13,7 @@
 
 :::mint
 ```text
-Illustrative blend for a baseline of 100 GPUs, peaks to 200:  [VERIFY prices]
+Illustrative blend for a baseline of 100 GPUs, peaks to 200:
   100 reserved @ $1.5/hr (committed)   = $150/hr   baseline
   up to 60 on-demand @ $3/hr           = $180/hr   burst
   batch/eval on spot @ $0.6/hr         = big discount on non-urgent work

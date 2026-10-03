@@ -1,6 +1,6 @@
 ## Race dynamics and competitor-adjustment
 
-- Voluntary safety frameworks have a game-theory problem: if safeguards slow you down and a competitor ships without them, the safety-conscious lab loses the market. All three 2025+ frameworks answer this with a **competitor-adjustment clause** — permission to relax requirements if a peer lab deploys comparable capability without comparable safeguards. **[VERIFY]**
+- Voluntary safety frameworks have a game-theory problem: if safeguards slow you down and a competitor ships without them, the safety-conscious lab loses the market. All three 2025+ frameworks answer this with a **competitor-adjustment clause** — permission to relax requirements if a peer lab deploys comparable capability without comparable safeguards.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="A payoff-style diagram: if one lab defects on safety, others' adjustment clauses shift the equilibrium toward defection" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="20" y="20" width="150" height="26" rx="3" fill="#eaf6ea" stroke="#1a3a2a"/><text x="95" y="31" text-anchor="middle" font-size="6">all keep safeguards</text><text x="95" y="41" text-anchor="middle" font-size="5.5" fill="#6b6b6b">best collective outcome</text>

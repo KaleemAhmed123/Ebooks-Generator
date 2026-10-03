@@ -1,6 +1,6 @@
 ## Flagship 10: MCP server with registry — build
 
-- **Goal:** build a Model Context Protocol server (Booklet 5) that exposes tools to any MCP client, plus a **registry** so an agent can discover and load servers dynamically. This turns Flagship 4's local tools into a shareable, standardised ecosystem. Verified against the MCP Python SDK idiom. **[VERIFY current API]**
+- **Goal:** build a Model Context Protocol server (Booklet 5) that exposes tools to any MCP client, plus a **registry** so an agent can discover and load servers dynamically. This turns Flagship 4's local tools into a shareable, standardised ecosystem. Verified against the MCP Python SDK idiom.
 
 :::mint
 ```python

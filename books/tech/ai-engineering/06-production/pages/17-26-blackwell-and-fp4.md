@@ -1,6 +1,6 @@
 ## Blackwell and FP4
 
-- NVIDIA's **Blackwell** generation (B200, and the GB200 Grace-Blackwell superchip) is the 2025–2026 datacentre GPU, and its headline inference feature is native **FP4** — a 4-bit floating-point format with hardware support in the tensor cores. TensorRT-LLM is the engine that exploits it first and most fully. **[VERIFY specs/dates]**
+- NVIDIA's **Blackwell** generation (B200, and the GB200 Grace-Blackwell superchip) is the 2025–2026 datacentre GPU, and its headline inference feature is native **FP4** — a 4-bit floating-point format with hardware support in the tensor cores. TensorRT-LLM is the engine that exploits it first and most fully.
 - FP4 halves memory and roughly doubles math throughput versus FP8 for the parts of the model that tolerate it — a large step for both the weight footprint and the KV cache.
 
 :::mint

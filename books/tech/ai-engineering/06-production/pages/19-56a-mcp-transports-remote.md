@@ -1,6 +1,6 @@
 ## MCP: transports and remote servers
 
-- The MCP server (Flagship 10) ran over stdio — perfect for a *local* tool process. Real deployments need **remote** servers (a shared tool hosted for many agents), which changes the transport and adds auth. **[VERIFY current spec]**
+- The MCP server (Flagship 10) ran over stdio — perfect for a *local* tool process. Real deployments need **remote** servers (a shared tool hosted for many agents), which changes the transport and adds auth.
 
 | Transport | For | Auth |
 |---|---|---|

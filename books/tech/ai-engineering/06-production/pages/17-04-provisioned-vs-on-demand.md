@@ -1,7 +1,7 @@
 ## Provisioned throughput vs on-demand
 
 - Managed platforms sell inference two ways. **On-demand:** pay per token, share GPUs with every other tenant, accept variable tail latency. **Provisioned:** reserve dedicated GPU capacity for a fixed hourly price, get stable latency, pay whether you use it or not.
-- Azure calls the reserved unit a **PTU** (Provisioned Throughput Unit — a block of reserved inference GPUs). Bedrock calls it Provisioned Throughput, roughly $21–$50/hour per unit. **[VERIFY pricing]**
+- Azure calls the reserved unit a **PTU** (Provisioned Throughput Unit — a block of reserved inference GPUs). Bedrock calls it Provisioned Throughput, roughly $21–$50/hour per unit.
 
 - The whole decision is a **utilisation break-even.** Reserved capacity is a fixed cost; on-demand is variable. Below the crossover, on-demand is cheaper because you pay for no idle. Above it, reserved wins.
 

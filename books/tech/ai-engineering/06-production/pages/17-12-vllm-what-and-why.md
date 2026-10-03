@@ -1,6 +1,6 @@
 ## vLLM: what and why
 
-- **vLLM** is the open-source inference engine that made high-throughput LLM serving the default. Two ideas carry it: **PagedAttention** (manage the KV cache like operating-system virtual memory) and **continuous batching** (schedule at every token step). It exposes an **OpenAI-compatible** HTTP API, so existing clients point at it unchanged. **[VERIFY current release]**
+- **vLLM** is the open-source inference engine that made high-throughput LLM serving the default. Two ideas carry it: **PagedAttention** (manage the KV cache like operating-system virtual memory) and **continuous batching** (schedule at every token step). It exposes an **OpenAI-compatible** HTTP API, so existing clients point at it unchanged.
 - It is the general-purpose pick: broad model support (200+ architectures), quantisation, tensor and pipeline parallelism, prefix caching, speculative decoding, and multi-LoRA — all in one server.
 
 <svg viewBox="0 0 360 96" role="img" aria-label="vLLM sits between an OpenAI-compatible API and the GPU, running a scheduler, paged KV cache, and model executor" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">

@@ -1,6 +1,6 @@
 ## Safety and evaluation benchmarks
 
-- Beyond your own evals (Flagship 16), a set of *named* public benchmarks measure specific safety and capability properties. Knowing them lets you speak the field's language and pick the right yardstick for a claim. **[VERIFY current benchmarks]**
+- Beyond your own evals (Flagship 16), a set of *named* public benchmarks measure specific safety and capability properties. Knowing them lets you speak the field's language and pick the right yardstick for a claim.
 
 | Benchmark | Measures |
 |---|---|

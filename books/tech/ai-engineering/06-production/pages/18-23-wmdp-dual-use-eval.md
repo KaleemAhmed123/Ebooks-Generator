@@ -1,7 +1,7 @@
 ## WMDP and dual-use evaluation
 
 - Some capabilities are **dual-use**: the same knowledge that helps a chemist helps a bioterrorist, the same coding skill that patches a system exploits one. Safety here is not "don't say slurs" — it is "don't *uplift* a malicious actor toward mass harm." Measuring that needs a different kind of benchmark.
-- **WMDP** (Weapons of Mass Destruction Proxy, 2024) is the standard: a public multiple-choice benchmark of *proxy* knowledge for biosecurity, chemistry, and cybersecurity harms — close enough to measure dangerous capability, sanitised so the benchmark itself is not a weapon. **[VERIFY]**
+- **WMDP** (Weapons of Mass Destruction Proxy, 2024) is the standard: a public multiple-choice benchmark of *proxy* knowledge for biosecurity, chemistry, and cybersecurity harms — close enough to measure dangerous capability, sanitised so the benchmark itself is not a weapon.
 
 <svg viewBox="0 0 360 82" role="img" aria-label="WMDP measures hazardous knowledge as a proxy; unlearning aims to lower that score without hurting general capability" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <line x1="30" y1="64" x2="200" y2="64" stroke="#888"/><line x1="30" y1="12" x2="30" y2="64" stroke="#888"/>

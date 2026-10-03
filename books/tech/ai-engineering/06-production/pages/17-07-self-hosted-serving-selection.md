@@ -15,7 +15,7 @@ and ~10–20% runtime overhead. Never size to the weights alone.
 ```
 :::
 
-- **GPU choice** follows: H100/H200 for frontier throughput, L40S/A6000 for cost-sensitive INT4 serving, B200/GB200 for the largest models and FP4. **[VERIFY current SKUs]**
+- **GPU choice** follows: H100/H200 for frontier throughput, L40S/A6000 for cost-sensitive INT4 serving, B200/GB200 for the largest models and FP4.
 - **Engine choice** is the next cluster: vLLM (general default), SGLang (shared-prefix / structured workloads), TensorRT-LLM (peak NVIDIA performance at a compile cost).
 - **Who runs it** is the hidden cost. Self-hosting is not just GPU rent — it is on-call, upgrades, autoscaling, and a serving engine that changes monthly. Budget an engineer, not just a GPU.
 

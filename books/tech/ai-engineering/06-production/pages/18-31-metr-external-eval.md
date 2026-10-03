@@ -1,6 +1,6 @@
 ## METR and external evaluation
 
-- Labs evaluating their own models have an obvious conflict of interest. **External evaluation** — independent third parties who test frontier models before or after release — is the check. **METR** (Model Evaluation & Threat Research) is the prominent independent evaluator, focused on autonomous-capability and dangerous-capability assessment. **[VERIFY]**
+- Labs evaluating their own models have an obvious conflict of interest. **External evaluation** — independent third parties who test frontier models before or after release — is the check. **METR** (Model Evaluation & Threat Research) is the prominent independent evaluator, focused on autonomous-capability and dangerous-capability assessment.
 - METR's signature contribution is the **task-horizon** metric (Booklet 5): measure the *length* of task a model can complete autonomously, expressed as the human time the task would take, and track how it grows.
 
 <svg viewBox="0 0 340 80" role="img" aria-label="Autonomous task horizon (human-time-equivalent a model can complete) rising over successive model generations" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
