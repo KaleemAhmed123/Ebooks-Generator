@@ -1,6 +1,6 @@
 ## What are the common ways agents (especially multi-agent systems) fail?
 
-- Failures cluster into categories — knowing them speeds debugging. [VERIFY: MAST taxonomy source.]
+- Failures cluster into categories — knowing them speeds debugging.
   - **Specification** — bad goal/role/prompt: the agent optimises the wrong thing or misunderstands the task from the start.
   - **Inter-agent / coordination** — in multi-agent systems: miscommunication, dropped context on handoff, agents duplicating or contradicting each other, waiting on each other (deadlock).
   - **Verification** — no/weak checks, so errors aren't caught and compound; the agent declares success wrongly.

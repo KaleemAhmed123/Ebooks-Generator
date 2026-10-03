@@ -1,6 +1,6 @@
 ## What do agent benchmarks like SWE-bench and GAIA measure, and how do you read them critically?
 
-- They test end-to-end agent capability on realistic tasks. [VERIFY: current leaderboard numbers.]
+- They test end-to-end agent capability on realistic tasks.
   - **SWE-bench (Verified)** — resolve real GitHub issues in real repos; success = the hidden tests pass. The standard for coding agents.
   - **GAIA** — general assistant tasks needing tool use, web browsing, and multi-step reasoning; questions are easy for humans, hard for agents.
   - **WebArena / OSWorld** — operating a browser / a real OS to complete tasks; test computer-use agents.

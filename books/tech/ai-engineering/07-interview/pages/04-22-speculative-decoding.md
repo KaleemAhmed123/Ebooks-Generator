@@ -3,7 +3,7 @@
 - Decoding is **memory-bound**: generating one token reads the whole model from memory, so the GPU is underused. Speculative decoding exploits the spare compute.
 - A small, fast **draft model** proposes several tokens ahead. The big **target model** then verifies all of them in **one parallel forward pass** (it can score many positions at once cheaply). Accepted drafts are kept; at the first rejection it falls back to the target's own token.
 - **Lossless:** a rejection-sampling check guarantees the accepted tokens follow **exactly** the target model's distribution — the output is identical in distribution to normal decoding. You only gain speed, not different text.
-- Speedup depends on the **acceptance rate** (how often the draft agrees). Variants: self-speculation (early-exit layers), Medusa/EAGLE (extra prediction heads instead of a separate draft model). [VERIFY: EAGLE/Medusa current.]
+- Speedup depends on the **acceptance rate** (how often the draft agrees). Variants: self-speculation (early-exit layers), Medusa/EAGLE (extra prediction heads instead of a separate draft model).
 
 <svg viewBox="0 0 290 56" role="img" aria-label="Draft model proposes several tokens; target model verifies them in one pass, accepting a prefix" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7.5" fill="#1a1a1a">
   <text x="6" y="14" fill="#6b6b6b">draft proposes:</text>

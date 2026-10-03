@@ -12,6 +12,8 @@
              ["Q: design RAG for 10M docs, 500 qps", 0], ["$ offer --level senior  ✓", 2]],
     "stack": ["conceptual depth", "transformers & LLMs", "RAG & agents",
               "serving & system design", "safety & alignment", "behavioral & product"],
-    "face": {"brow": "raised", "mouth": "smile", "tilt": 0}
+    "face": {"brow": "raised", "mouth": "smile", "tilt": 0},
+    "label": "BONUS BOOKLET",
+    "setLine": "COMPANION TO THE 6-BOOKLET SERIES"
   }
 }

@@ -2,7 +2,7 @@
 
 - **Multi-head attention (MHA):** every query head has its own Key and Value head. Best quality, biggest KV cache.
 - **Multi-query attention (MQA):** all query heads **share one** K and V head. Shrinks the KV cache by the head count (e.g. 8–64×), big serving win — but can lose quality and destabilise training.
-- **Grouped-query attention (GQA):** the middle ground — groups of query heads share a K/V head (e.g. 8 KV heads for 64 query heads). Most of MQA's memory savings, nearly MHA's quality. Now the standard in large models. [VERIFY: GQA prevalence current.]
+- **Grouped-query attention (GQA):** the middle ground — groups of query heads share a K/V head (e.g. 8 KV heads for 64 query heads). Most of MQA's memory savings, nearly MHA's quality. Now the standard in large models.
 - The whole point is the **KV cache**: fewer KV heads → smaller cache → more concurrent requests and longer context on the same GPU.
 
 <svg viewBox="0 0 280 60" role="img" aria-label="MHA has one KV per query head, MQA shares one KV across all, GQA shares KV within groups" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">

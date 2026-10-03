@@ -1,6 +1,6 @@
 ## What should an AI engineer know about regulation like the EU AI Act?
 
-- You don't need to be a lawyer, but you must know that AI products face **real legal obligations** that shape design — and build so compliance is possible. [VERIFY: EU AI Act status/dates.]
+- You don't need to be a lawyer, but you must know that AI products face **real legal obligations** that shape design — and build so compliance is possible.
 - Core ideas of the **EU AI Act** (the leading framework):
   - **Risk-tiered** — obligations scale with risk: **unacceptable** uses are banned; **high-risk** uses (hiring, credit, medical, law enforcement) require risk management, data governance, logging, human oversight, and conformity assessment; **limited-risk** needs transparency (tell users it's AI, label AI content); **minimal-risk** is largely unregulated.
   - **GPAI (general-purpose model) rules** — documentation, copyright, and systemic-risk duties for large models.

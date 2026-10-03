@@ -3,7 +3,7 @@
 - FlashAttention computes **exact** attention — same output — but reorders the computation to avoid the memory bottleneck. It is an **IO-aware** algorithm, not an approximation.
 - The naive path materialises the full n×n score matrix in slow GPU memory (HBM), writing and re-reading it. That memory traffic, not the arithmetic, is the bottleneck.
 - FlashAttention **tiles** the computation and uses an **online softmax**: it streams blocks of K,V through fast on-chip SRAM, accumulating the result without ever writing the full matrix to HBM. Far fewer memory reads/writes → large speedups and O(n) memory instead of O(n²).
-- Later versions (FlashAttention-2, -3) add better GPU utilisation and hardware-specific kernels. [VERIFY: FA-3 is Hopper/FP8, current status 2026.]
+- Later versions (FlashAttention-2, -3) add better GPU utilisation and hardware-specific kernels.
 
 :::note
 The lesson generalises: on modern GPUs, moving data is the cost, not the math. Many "speedups" are really memory-traffic reductions.

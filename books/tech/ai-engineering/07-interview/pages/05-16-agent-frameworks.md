@@ -1,6 +1,6 @@
 ## How do you choose an agent framework (LangGraph, CrewAI, OpenAI/Claude Agent SDKs, etc.)?
 
-- Frameworks differ mainly in **how much control vs abstraction** they give. [VERIFY: all framework specifics on fact pass.]
+- Frameworks differ mainly in **how much control vs abstraction** they give.
   - **LangGraph** — model your agent as an explicit **graph of nodes/edges with state**, built-in checkpointing, human-in-the-loop, and streaming. Low-level and controllable; good when you need custom control flow, durability, and observability.
   - **CrewAI** — high-level **role-based crews** (agents with roles collaborating). Fast to prototype role-playing teams; less fine control.
   - **OpenAI Agents SDK / Claude Agent SDK** — lighter, provider-aligned loops with handoffs, guardrails, tool use; good when you're on that provider and want a thin, supported layer.

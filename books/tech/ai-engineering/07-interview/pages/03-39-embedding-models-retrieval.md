@@ -2,7 +2,7 @@
 
 - An **embedding model** maps text to a vector so that semantically similar texts are near in cosine distance — the backbone of semantic search and RAG.
 - Selection axes:
-  - **Retrieval quality** on *your* domain — benchmarks like **MTEB** are a starting point, not the answer; always test on your own queries/documents. [VERIFY: current MTEB leaders.]
+  - **Retrieval quality** on *your* domain — benchmarks like **MTEB** are a starting point, not the answer; always test on your own queries/documents.
   - **Dimension** — bigger vectors can be more accurate but cost more to store and search; some models support **Matryoshka** truncation to trade off.
   - **Max sequence length** — must cover your chunk size.
   - **Cost/latency** — API vs self-hosted; throughput for indexing millions of docs.

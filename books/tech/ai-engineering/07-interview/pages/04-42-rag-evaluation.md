@@ -6,7 +6,7 @@
   - **Faithfulness / groundedness** — is every claim supported by the retrieved context (no hallucination)?
   - **Answer relevance** — does it actually address the question?
   - **Context relevance / precision** — was the retrieved context on-topic, or padded with noise?
-- These three (context relevance, faithfulness, answer relevance) are the **RAG triad**; frameworks like RAGAS automate them with an LLM judge. [VERIFY: current eval tooling.]
+- These three (context relevance, faithfulness, answer relevance) are the **RAG triad**; frameworks like RAGAS automate them with an LLM judge.
 - Build a **golden set** from real queries and score continuously; add human spot-checks for the judge's blind spots.
 
 :::interview

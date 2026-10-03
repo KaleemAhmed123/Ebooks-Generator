@@ -1,6 +1,6 @@
 ## DPO has several successors (KTO, ORPO, SimPO, IPO). What does each fix?
 
-- They all tweak DPO's objective to fix a specific weakness. [VERIFY: all four against current literature on the fact pass.]
+- They all tweak DPO's objective to fix a specific weakness.
   - **IPO** — DPO can **overfit** when preferences are near-deterministic (it pushes the margin to infinity). IPO adds regularisation so the margin stays bounded.
   - **KTO** — needs only **unpaired** labels ("this output was good/bad"), not chosen-vs-rejected pairs. Far cheaper data collection, inspired by prospect theory.
   - **ORPO** — folds preference optimisation **into SFT** with an odds-ratio penalty, so you skip the separate reference model and do alignment in one stage.

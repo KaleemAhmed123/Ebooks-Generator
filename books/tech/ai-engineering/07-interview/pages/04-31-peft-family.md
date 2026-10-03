@@ -2,7 +2,7 @@
 
 - **PEFT (parameter-efficient fine-tuning)** = adapt a model by training a small set of extra/selected parameters while freezing the base. The family:
   - **LoRA / QLoRA** — low-rank weight updates; the dominant choice.
-  - **DoRA** — splits the update into magnitude + direction; often a bit better than LoRA at similar cost. [VERIFY.]
+  - **DoRA** — splits the update into magnitude + direction; often a bit better than LoRA at similar cost.
   - **Adapters** — small bottleneck layers inserted between transformer sublayers; trained, base frozen. Add a little inference latency.
   - **Prefix / prompt tuning** — prepend trainable "virtual tokens" to the input; the model and real tokens stay frozen. Very few parameters, weaker for hard tasks.
   - **(IA)³** — learn to rescale activations with tiny vectors; extremely few parameters.

@@ -5,7 +5,7 @@
   - **Sinusoidal** (original): fixed sine/cosine patterns added to embeddings. No parameters, extrapolates somewhat.
   - **Learned absolute** (BERT/GPT-2): a trainable vector per position. Simple, but caps at the trained length.
   - **Rotary (RoPE)**: rotates Q and K by an angle proportional to position, so attention depends on **relative** distance. Now dominant in modern LLMs.
-- The trend is toward **relative** position (RoPE, ALiBi) because relative distance is what language actually depends on, and it extends to longer contexts better. [VERIFY: RoPE prevalence current as of 2026.]
+- The trend is toward **relative** position (RoPE, ALiBi) because relative distance is what language actually depends on, and it extends to longer contexts better.
 
 :::interview
 What's really being tested:

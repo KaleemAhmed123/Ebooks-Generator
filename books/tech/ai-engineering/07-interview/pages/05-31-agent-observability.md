@@ -6,7 +6,7 @@
   - **Tool calls** (arguments, results, errors, latency).
   - **Retrieved context** (what chunks, from where).
   - **Decisions** (why it chose a tool, confidence if available), **cost**, and **latency** per step and per run.
-- Use **tracing** with spans (OpenTelemetry GenAI conventions; tools like LangSmith/Langfuse) so a run is a navigable tree, and aggregate for metrics (success rate, steps, cost, tool error rates). [VERIFY: tool/spec names.]
+- Use **tracing** with spans (OpenTelemetry GenAI conventions; tools like LangSmith/Langfuse) so a run is a navigable tree, and aggregate for metrics (success rate, steps, cost, tool error rates).
 - Why harder: non-determinism (same input, different path), long branching traces, and failures that only make sense in the context of earlier steps.
 - Observability isn't optional for agents — without the trace you can't diagnose, eval, or improve them.
 
