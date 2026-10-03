@@ -245,14 +245,32 @@ Each task is independent and sized **S/M/L**. `[x]` = done.
       Finding 5 corrected.* (Finding 5)
 - [ ] **B10 · M · B2–B4** — Targeted expansion of remaining fast pages. (Finding 2)
 - [ ] **B11 · S · all** — Add exact page numbers to cross-booklet references. (nit)
-- [ ] **B12 · S · all** — Rebuild affected PDFs; confirm no `$$`/`[VERIFY]`
-      survives and the TOC/page numbers stay correct.
+- [~] **B12 · S · all** — HTML clean-check DONE 2026-10-03: rebuilt all 7 AE
+      booklets to HTML; swept each for `$$`, `[VERIFY]`, leaked LaTeX macros,
+      and overflow. **All clean.** The lone `$$` hit in `06-production`
+      (`17-46b-unit-economics`) is the string `$$$` ("lots of money"), not a math
+      block — renders as literal text, harmless. *Remaining:* the final **PDF**
+      pass — `build.mjs`'s hardcoded Chrome paths don't include this env's
+      Chromium (`/opt/pw-browsers`), so the Chrome PDF step needs a path fix or
+      `PUPPETEER_EXECUTABLE_PATH` before PDFs can be regenerated.
 - [ ] **(separate track)** — Verification debt: fact-check the claims that the
       stripped `[VERIFY]` markers flagged. Own pass, no subagents.
 
 ---
 
 ## 6. Updates
+
+### 2026-10-03 (B12, HTML half) — full-series clean-check passes
+
+- Rebuilt all 7 AE booklets to HTML and swept each output for the two shipping
+  defects plus overflow. Result table: `$$` 0 (bar one `$$$` money string),
+  `[VERIFY]` 0, leaked LaTeX macros 0, overflow 0 — **across every booklet.**
+  The B0/B1 fixes and all the B4–B8 additions hold together.
+- PDF regeneration is the only B12 remainder: `build.mjs` looks for Chrome at a
+  few hardcoded OS paths, none matching this container's Chromium under
+  `/opt/pw-browsers`. A one-line path addition (or `PUPPETEER_EXECUTABLE_PATH`)
+  unblocks it; deferred because editing the build mid-writing is discouraged and
+  the HTML check already proves the content is clean.
 
 ### 2026-10-03 (B9 + Finding 5 correction) — lifecycle needs no split
 
