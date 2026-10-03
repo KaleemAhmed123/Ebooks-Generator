@@ -637,6 +637,16 @@ Three pieces of standing debt closed this session. Verification debt still defer
 
 **Still open (unchanged):** series-wide `[VERIFY]` fact + consistency passes (deferred, user's call). Note: the old Status line's "B6 211" is stale — B6 is 323.
 
+### 2026-10-01 — Per-booklet divider = full clickable columnar TOC (volume + standalone)
+
+User wanted each inner booklet in the merged volume to open on a navigable table of contents (one page, two max, columns, clickable), not the 3-module summary my earlier fix produced.
+
+- **Volume dividers** (`buildMaster`): now render the booklet's full TOC — module headers (h1) + every page topic (h2) with dotted leader + page number, in columns. Reused the dormant `btoc`/`spans` measuring path: the divider carries `data-span`, `measureTocs` measures it, `assemble`/printed count it via `p.span`, so a multi-sheet divider never drifts the numbers after it. Verified monotonic end-to-end. Big booklets (>120 topics) use a `dense` 3-column class.
+- **Standalone booklets**: TOC now 2-column via `.page.toc > ul` CSS (no build change — their TOC was already measured). Each booklet came out 1–3 sheets shorter.
+- **Bug fixed mid-build:** dense dividers rendered empty because the `assemble` string-replace didn't match the extra `dense` class; switched to a regex that preserves the class.
+- **Divider sheet counts:** small booklets 2, Agents (331 topics) 3, Production (315) 3 — 3 is the readable minimum for 300+ topics, not 2.
+- **Rebuilt:** all 7 standalone booklets (B1 77 · B2 76 · B3 65 · B4 59 · B5 336 · B6 321 · B7-interview 283 — B7 grew to 275 questions this session) + complete volume **1009 pages**. All clean (the 2 about-author/copyright warnings are cosmetic — fixed-height CSS, confirmed harmless).
+
 ## Explanation
 
 Extended as pages ship. See the per-page recipe above for how a source lesson becomes our page.

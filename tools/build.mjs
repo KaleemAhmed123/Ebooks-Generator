@@ -545,8 +545,8 @@ function assemble({ coverHtml, pages, headings }, tocPages, spans = {}, tocTitle
           : `<li class="lvl2"><a href="#${h.id}">${h.text}</a><span class="dots"></span><span class="p">${at[h.page]}</span></li>`
       ).join("\n");
       return p.divider.replace(
-        '<ul class="topic-chapters"></ul>',
-        `<ul class="topic-chapters">\n${items}\n</ul>`
+        /<ul class="(topic-chapters[^"]*)"><\/ul>/,
+        `<ul class="$1">\n${items}\n</ul>`
       );
     }
     return p;
@@ -732,6 +732,7 @@ async function autoSplit(book) {
     }
     for (const o of over) {
       const file = path.join(book.dir, "pages", `${o.src}.md`);
+      if (!existsSync(file)) continue; // backmatter pages live outside this book's pages/
       const md = await readFile(file, "utf8");
 
       // Fill the page: keep every heading that fitted, cut before the first
@@ -893,8 +894,10 @@ for (const b of books) {
   // "BOOKLET 3 OF 9" comes from the series' order list. A standalone book is
   // 1 of 1, and its cover data usually carries its own label anyway.
   const name = path.basename(b.dir);
-  b.index = b.order ? b.order.indexOf(name) + 1 || 1 : 1;
-  b.seriesTotal = b.order ? b.order.length : 1;
+  // frontmatter and backmatter are not booklets — strip them before numbering.
+  const bookletOrder = b.order?.filter((n) => n !== "frontmatter" && n !== "backmatter") ?? null;
+  b.index = bookletOrder ? bookletOrder.indexOf(name) + 1 || 1 : 1;
+  b.seriesTotal = bookletOrder ? bookletOrder.length : 1;
   // A merged volume is not a booklet and must not wear a booklet's cover. It
   // names its own generator, which is the one case where the cascade's
   // deepest-wins rule gives the wrong answer.
