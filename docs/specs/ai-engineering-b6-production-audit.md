@@ -231,12 +231,23 @@ Each item independent and sized S/M/L. `[x]` = done, `[~]` = done/re-scoped,
       on-demand `~$3-4/hr` sits at the high end of current ranges (some clouds now
       ~$2-3) but is within the hedge; PTU `$21-50/hr` and token rates are in range.
       Left as illustrative. Not a defect.* (Finding 5)
-- [ ] **P6-6 · M · build + `theme.css`** — *(recommendation, needs owner OK —
-      touches the build, which CLAUDE.md says not to edit mid-writing)* Make PDF
-      rendering **deterministic across environments** by bundling a serif + mono
-      (+ heading) webfont via `@font-face` instead of relying on OS-installed
-      Georgia/Consolas. Until then, overflow warnings on Linux-without-those-fonts
-      are noise and must not drive content edits. *(Finding 6)*
+- [x] **P6-6 · M · build + `theme.css`** — Made PDF rendering **deterministic
+      across environments**. *Done 2026-10-03. Embedded the author's own declared
+      fallbacks as subset, Latin-only woff2 `@font-face` (base64, no binary files
+      added): Questrial (sans body), Gelasio (metric-compatible Georgia, serif
+      headings), DejaVu Sans Mono (code) — each placed AFTER the real font in its
+      stack, so a machine that has Century Gothic/Georgia/Consolas is unaffected.
+      Also fixed a latent build bug: `build.mjs` now blocks on
+      `document.fonts.ready` before measuring (data: fonts + `font-display:swap`
+      were measured before they loaded). **Proven deterministic:** with a valid
+      alternate fontconfig that changes only the generic fallback, the overflow
+      set is now IDENTICAL to default (embedded fonts win; OS fonts no longer
+      move page heights). Embedded faces are more compact than DejaVu, so no
+      booklet regresses.* (Finding 6)
+- [ ] **P6-7 · M · B6 pages** — With rendering now deterministic, fit the pages
+      that genuinely overflow one printed page under the embedded-font build
+      (15 pages, 1–13mm over; worst `18-28a` at 199mm). Light compression per the
+      house rule, re-measured until clean. *(Finding 6 follow-on)*
 - [ ] **(separate track) · verification debt** — Fact-pass the module-19 GPT-build
       and finetune numeric claims (LR defaults, weight-decay, clip values,
       sizing) against current PyTorch/library docs. Own pass, no subagents.
