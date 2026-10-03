@@ -3,7 +3,7 @@
 ## 1. Task
 
 - **Name:** AI Engineering series — beginner-followability audit + progressive upgrade plan
-- **Status:** audit comprehensive · B0–B4 done (markers, LaTeX, optional-marks, CLAUDE.md rule, gradient examples) · rest planned
+- **Status:** audit comprehensive · B0–B7 done (markers, LaTeX, optional-marks, CLAUDE.md rule, gradient, backprop, attention, RAG examples) · rest planned
 - **Started:** 2026-10-03
 - **Last updated:** 2026-10-03
 
@@ -209,11 +209,22 @@ Each task is independent and sized **S/M/L**. `[x]` = done.
       `01-18` gradient-descent. *Done 2026-10-03. Two-weight bowl (E=w1²+w2²) at
       (3,1) → gradient (6,2) → step to (2.4,0.8); error drops 10→6.4→4.1.
       PyTorch :::mint snippets on both pages. Rebuilt → 0 $$, 0 macros.* (Finding 4)
-- [ ] **B5 · M · B2** — Numeric walk-through for `03-09` backprop + the training
-      loop page. (Finding 4)
-- [ ] **B6 · M · B3** — Run-the-numbers example in the self-attention cluster
-      (`07-03`/`07-05`). (Finding 4)
-- [ ] **B7 · M · B4** — Worked example on `11-07` RAG (query → chunk → answer).
+- [x] **B5 · M · B2** — Numeric walk-through for `03-09` backprop + the training
+      loop page. *Done 2026-10-03. Tiniest network (1→1→1 ReLU, MSE): forward
+      pass with numbers, then backward chain-rule at every step showing w1.grad=8,
+      w2.grad=−4. Training loop page: 3 steps showing loss 4→1→stuck (dead ReLU
+      teaching moment). PyTorch :::mint snippets confirm both. Rebuilt → 0 $$,
+      0 macros.* (Finding 4)
+- [x] **B6 · M · B3** — Run-the-numbers example in the self-attention cluster
+      (`07-03`/`07-05`). *Done 2026-10-03. 07-03: 3-token 2D example — score,
+      softmax, blend for "cat" row; output (0.58,0.58). 07-05: unscaled vs
+      scaled softmax at d_k=64 showing spike→spread. PyTorch :::mint snippets
+      on both pages. Rebuilt → 0 $$, 0 macros.* (Finding 4)
+- [x] **B7 · M · B4** — Worked example on `11-07` RAG (query → chunk → answer).
+      *Done 2026-10-03. Added "Worked example — the RAG loop" with 2D vectors
+      for query and 2 chunks. Demonstrated cosine similarity calculation showing
+      C1 as nearest neighbor, followed by PyTorch :::mint snippet generating
+      the prompt. Rebuilt → 0 $$, 0 macros.* (Finding 4)
 - [ ] **B8 · L · B4** — Split RL (`09-xx`) into a proper cluster. (Finding 5)
 - [ ] **B9 · L · B4** — Split the LLM-lifecycle (`10-xx`) into a cluster. (Finding 5)
 - [ ] **B10 · M · B2–B4** — Targeted expansion of remaining fast pages. (Finding 2)
@@ -226,6 +237,46 @@ Each task is independent and sized **S/M/L**. `[x]` = done.
 ---
 
 ## 6. Updates
+
+### 2026-10-03 (B7) — worked numeric example: RAG
+
+- **11-07 (RAG core loop):** added "Worked example — the RAG loop". Uses 2D
+  vectors for two chunks and a query. Computes dot product (cosine similarity)
+  to show why Chunk 1 is retrieved. Concludes with a `:::mint` snippet showing
+  the prompt template construction.
+- Keeps existing SVGs and warnings intact.
+- **Verified:** rebuilt Booklet 4 to HTML — 0 `$$` hits, 0 LaTeX macro hits,
+  new h3 heading present.
+
+### 2026-10-03 (B6) — worked numeric examples: self-attention + scaling
+
+- **07-03 (self-attention from scratch):** added "Worked example — three tokens,
+  two dimensions". Setup table with Q/K/V for The/cat/sat. Focused on "cat" row:
+  dot-product scores (1, 1, 0) → softmax weights (0.42, 0.42, 0.16) → blended
+  output (0.58, 0.58). PyTorch `:::mint` snippet confirms the weights and output.
+- **07-05 (scaled dot-product attention):** added "Worked example — with and
+  without the scale". Scores (56, 58, 48) at d_k=64: unscaled softmax collapses
+  to near-one-hot (0.12, 0.88, 0.00); scaled (÷8) gives spread (0.35, 0.40,
+  0.25). Explains the gradient consequence. PyTorch `:::mint` snippet.
+- Both pages keep their existing SVGs and code blocks unchanged.
+- **Verified:** rebuilt Booklet 3 to HTML — 0 `$$` hits, 0 LaTeX macro hits,
+  both new h3 headings present.
+
+### 2026-10-03 (B5) — worked numeric examples: backprop + training loop
+
+- **03-09 (backpropagation):** added "Worked example — backprop through the
+  tiniest network". Setup table (x=2, w1=0.5, w2=−1, target=1), forward-pass
+  table (h=1, pred=−1, loss=4), then a backward-pass table tracing every
+  chain-rule step: d(loss)/d(pred)=−4 → d(loss)/d(w2)=−4 → through ReLU gate
+  → d(loss)/d(w1)=8. PyTorch `:::mint` snippet confirms `w1.grad=8, w2.grad=−4`.
+- **03-16 (training loop):** added "Worked example — watching the loop learn".
+  Same network, lr=0.1, 3 steps. Step table shows loss dropping 4.0→1.0 then
+  stalling at 1.0 because w1 goes negative and ReLU kills the hidden neuron.
+  This naturally surfaces the **dead ReLU** concept (cross-ref to page 03-06)
+  and motivates initialization/activation choices from later pages.
+- Both pages keep their existing SVG diagrams and original :::mint snippets.
+- **Verified:** rebuilt Booklet 2 to HTML — 0 `$$` hits, 0 LaTeX macro hits,
+  both new h3 headings present.
 
 ### 2026-10-03 (B4) — worked numeric examples: gradient + gradient descent
 
