@@ -67,6 +67,7 @@ zero-bloat rule. **Do not invent structural work for this booklet.**
 | **3** | TGI "maintenance-mode" — currency claim to verify/soften | 🟡 low | verify | `17-19a` |
 | **4** | "as of 2026" currency pins (EAGLE-3 SOTA, Blackwell FP4) — verify against primary | 🟡 low | verify | `17-26`, `17-38` |
 | **5** | Illustrative GPU/token prices — spot-verify within current ranges (all hedged `~`, low risk) | 🟢 info | verify | `17-04/05x/06/41` |
+| **6** | **Overflow can't be measured in this container — the booklet's declared fonts are absent, so page height is font-substitution noise, not content** | 🔵 build/env | documented | build + `theme.css` |
 
 ### 3.0 ✅ Shipping defects — already clean
 
@@ -119,6 +120,33 @@ explicit caching and add one line that OpenAI (~50%) and Google (~75%) differ.
 Keeps the math; removes the wrong generalization. (Note: `17-56` FinOps also uses
 "reads @10%" but in a single-frontier-API example — acceptable; revisit only if
 Finding 2's wording suggests a cross-ref.)
+
+### 3.6 🔵 Finding 6 — overflow is unmeasurable in this container (font substitution)
+
+Investigating P6-2 I ran the **PDF** pass (the only path that measures overflow —
+`--html` never does; the check lives in `toPdf`, `build.mjs:808`). It flagged
+pages over the 186mm printable height — but the result is **not trustworthy here**,
+and that is the finding:
+
+- `theme.css` declares **Georgia/Cambria** (body), **Consolas** (code), and
+  **Century Gothic/Questrial/Trebuchet** (headings). **None are installed in this
+  container** (`fc-list`: only DejaVu, Liberation, FreeFont). Chrome silently
+  substitutes, and the substitutes have **larger vertical metrics** than the
+  intended faces, inflating measured page height.
+- **Proof it is font-driven, not content:** re-measuring with metric-compatible
+  Liberation (Times/Courier-metric) substitutes produced a **different and larger**
+  overflow set (23 vs 14 pages; e.g. `18-28a` 199mm→207mm, `19-22` appeared,
+  `19-44a` dropped). The variance between two *wrong* fonts on one page (up to
+  ~8mm) **exceeds** most pages' overflow margin (1–6mm). The author's real
+  environment (Georgia/Consolas) yields yet another set — which is why the prior
+  B12 PDF regen did not record these.
+- **Conclusion:** do **not** compress or `--split` these pages to chase a
+  font-dependent target — that would damage author-validated pages to satisfy a
+  misconfigured container. The *real* fix is build determinism (see P6-6), not
+  content edits.
+- **The one page worth a human eye regardless** is `18-28a` (worst under both
+  substitutes, ~7–11% over). Even there the margin is plausibly substitution, so
+  it is a *look*, not a confirmed defect.
 
 ### 3.3–3.5 Verification list (likely fine, confirm per item)
 
@@ -179,9 +207,11 @@ Each item independent and sized S/M/L. `[x]` = done, `[~]` = done/re-scoped,
       `(1−α^(γ+1))/(1−α)` (exponent γ+1) is the Leviathan et al. 2211.17192
       result; `(1−0.9⁷)/0.1 = 5.22`. The two other cases (k=4) were already
       correct. Rebuilt → 0 `$$`, 0 macros, no overflow.* (Finding 1)
-- [ ] **P6-2 · S · `17-41`** — Scope the "~10% / 90% discount" claim to Anthropic
-      explicit caching; add one line that OpenAI (~50%) and Google (~75%) differ.
-      Keep the worked `:::mint` example (label it Anthropic). *(Finding 2)*
+- [x] **P6-2 · S · `17-41`** — Scoped the cache-read discount by provider.
+      *Done 2026-10-03. Headline now reads: Anthropic ~10% (90% off), Gemini
+      ~25% (~75% off, plus a per-hour storage fee), OpenAI ~50%; worked
+      `:::mint` example labelled "(Anthropic)". Verified OpenAI 50% and Gemini
+      ~75% against 2026 sources. Rebuilt → clean.* (Finding 2)
 - [ ] **P6-3 · S · `17-19a`** — Verify TGI's current status against a primary HF
       source; soften "maintenance-mode" to the exact wording if overstated.
       *(Finding 3)*
@@ -190,6 +220,12 @@ Each item independent and sized S/M/L. `[x]` = done, `[~]` = done/re-scoped,
 - [ ] **P6-5 · M · `17-04/05a/05b/05c/06/41`** — Spot-verify illustrative
       GPU/token prices sit in current ranges; re-hedge any outlier. Low risk.
       *(Finding 5)*
+- [ ] **P6-6 · M · build + `theme.css`** — *(recommendation, needs owner OK —
+      touches the build, which CLAUDE.md says not to edit mid-writing)* Make PDF
+      rendering **deterministic across environments** by bundling a serif + mono
+      (+ heading) webfont via `@font-face` instead of relying on OS-installed
+      Georgia/Consolas. Until then, overflow warnings on Linux-without-those-fonts
+      are noise and must not drive content edits. *(Finding 6)*
 - [ ] **(separate track) · verification debt** — Fact-pass the module-19 GPT-build
       and finetune numeric claims (LR defaults, weight-decay, clip values,
       sizing) against current PyTorch/library docs. Own pass, no subagents.
@@ -205,6 +241,24 @@ Each item independent and sized S/M/L. `[x]` = done, `[~]` = done/re-scoped,
 ---
 
 ## 7. Updates
+
+### 2026-10-03 (P6-2 + Finding 6) — prompt-cache discount scoped; overflow is font noise
+
+- `17-41`: replaced "cached reads bill at ~10% … on the major providers — a 90%
+  discount" (true only for Anthropic) with the real per-provider spread —
+  Anthropic ~10%, Gemini ~25% (+ storage fee), OpenAI ~50% — and labelled the
+  worked `:::mint` example "(Anthropic)". OpenAI's 50% and Gemini's ~75% confirmed
+  against 2026 sources; platform.openai.com and docs.anthropic.com are
+  egress-blocked here, so the primary numbers came via corroborating pages.
+- **Environment note (Finding 6):** running the PDF pass to check overflow
+  revealed the container has none of the booklet's declared fonts; Chrome
+  substitutes DejaVu/Liberation, which inflates page height. Two different
+  substitutes gave two different overflow sets (14 vs 23 pages), with per-page
+  variance larger than the overflow margin. Overflow is therefore **not
+  measurable here** and must not drive content edits; logged P6-6 to fix build
+  determinism. (The `fitz`/PyMuPDF cover-swap step also fails here — cosmetic,
+  after the measurement.)
+- Rebuilt `06-production` → HTML clean; `17-41` overflows under neither substitute.
 
 ### 2026-10-03 (P6-1) — spec-decode acceptance math corrected
 
