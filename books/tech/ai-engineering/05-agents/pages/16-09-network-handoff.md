@@ -1,6 +1,6 @@
 ## The network and handoff pattern
 
-- Opposite the supervisor's central control is the **network** topology: agents talk **peer-to-peer**, any agent handing off to any other, with no central coordinator. It is the most flexible and the hardest to control. **[VERIFY]**
+- Opposite the supervisor's central control is the **network** topology: agents talk **peer-to-peer**, any agent handing off to any other, with no central coordinator. It is the most flexible and the hardest to control.
 
 <svg viewBox="0 0 360 96" role="img" aria-label="A fully connected network of agents that can each hand off to any other" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <circle cx="120" cy="30" r="15" fill="#24405e"/><text x="120" y="33" text-anchor="middle" fill="#fff" font-size="5.5">triage</text>

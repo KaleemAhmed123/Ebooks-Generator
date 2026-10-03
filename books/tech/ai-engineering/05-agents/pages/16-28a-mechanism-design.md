@@ -1,6 +1,6 @@
 ## Mechanism design and auctions
 
-- If agent economies (16-28) let agents transact, **mechanism design** is the engineering of the *rules* so that self-interested agents, each pursuing its own goal, collectively produce a good outcome. It is "economics in reverse" — design the game so rational play yields what you want. **[VERIFY]**
+- If agent economies (16-28) let agents transact, **mechanism design** is the engineering of the *rules* so that self-interested agents, each pursuing its own goal, collectively produce a good outcome. It is "economics in reverse" — design the game so rational play yields what you want.
 
 <svg viewBox="0 0 360 80" role="img" aria-label="A well-designed mechanism makes self-interested bids produce an efficient, truthful allocation" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="28" width="90" height="24" rx="3" fill="#e8f4fd" stroke="#24405e"/><text x="55" y="37" text-anchor="middle">self-interested</text><text x="55" y="47" text-anchor="middle" font-size="5.5" fill="#6b6b6b">agents bid</text>

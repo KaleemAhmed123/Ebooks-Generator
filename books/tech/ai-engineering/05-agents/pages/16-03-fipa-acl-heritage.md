@@ -1,6 +1,6 @@
 ## The heritage: FIPA and ACL
 
-- Multi-agent systems are not new — the field predates LLMs by decades. **Multi-agent systems (MAS)** were a serious AI research area in the 1990s–2000s, and they left standards and ideas that LLM agents are now rediscovering. Knowing the lineage prevents reinventing solved problems. **[VERIFY]**
+- Multi-agent systems are not new — the field predates LLMs by decades. **Multi-agent systems (MAS)** were a serious AI research area in the 1990s–2000s, and they left standards and ideas that LLM agents are now rediscovering. Knowing the lineage prevents reinventing solved problems.
 
 <svg viewBox="0 0 360 84" role="img" aria-label="Classical agent communication: a performative wrapping content, from the FIPA ACL standard" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="30" y="24" width="300" height="40" rx="4" fill="#eef6fb" stroke="#24405e"/>

@@ -1,6 +1,6 @@
 ## LangGraph: deployment
 
-- A compiled graph runs anywhere Python runs, but production agents need more: durable state in a real database, concurrency, scheduling, retries, and an API. The **LangGraph Platform / Server** provides this managed runtime; you can also self-host the pieces. **[VERIFY product name/status]**
+- A compiled graph runs anywhere Python runs, but production agents need more: durable state in a real database, concurrency, scheduling, retries, and an API. The **LangGraph Platform / Server** provides this managed runtime; you can also self-host the pieces.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="A deployed graph gets a persistent store, task queue, API endpoints, and monitoring" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="130" y="10" width="100" height="22" rx="4" fill="#24405e"/><text x="180" y="24" text-anchor="middle" fill="#fff" font-size="6.5">your compiled graph</text>

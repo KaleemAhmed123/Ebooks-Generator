@@ -1,6 +1,6 @@
 ## MCP security: the threat model
 
-- MCP's power — connecting a model to arbitrary third-party servers that offer tools it will *execute* — is also its danger. The moment you install someone else's MCP server, you are running their code and trusting their tool descriptions, which the model obeys. **[VERIFY — security guidance evolves fast]**
+- MCP's power — connecting a model to arbitrary third-party servers that offer tools it will *execute* — is also its danger. The moment you install someone else's MCP server, you are running their code and trusting their tool descriptions, which the model obeys.
 - The core shift: in classic software, code you install runs with your permissions but does not *deceive your reasoning*. An MCP server can do both — run code **and** feed adversarial text straight into the model that is deciding what to do next.
 
 <svg viewBox="0 0 360 100" role="img" aria-label="Four MCP threat categories: poisoned descriptions, rug pulls, shadowing, and over-broad auth" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">

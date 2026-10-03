@@ -1,6 +1,6 @@
 ## Build an MCP client
 
-- The other half: a **client** that connects to a server, lists its tools, and calls one. This is what a host does internally — and what you write when your *own* agent needs to consume MCP servers. **[VERIFY current SDK API]**
+- The other half: a **client** that connects to a server, lists its tools, and calls one. This is what a host does internally — and what you write when your *own* agent needs to consume MCP servers.
 
 :::mint
 ```python

@@ -1,6 +1,6 @@
 ## LangGraph: nodes
 
-- A **node** is a step in the graph: a plain function (or async function) that takes the current state and returns an update to it. A node can call the model, run a tool, transform data, or make a decision. Nodes are where *work* happens. **[VERIFY current API]**
+- A **node** is a step in the graph: a plain function (or async function) that takes the current state and returns an update to it. A node can call the model, run a tool, transform data, or make a decision. Nodes are where *work* happens.
 
 :::mint
 ```python

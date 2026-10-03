@@ -1,6 +1,6 @@
 ## Role specialization
 
-- The single biggest source of value in multi-agent systems is **specialization** — giving each agent a focused role, tools, and context so it outperforms a generalist at its slice. Getting specialization *right* is what makes a team more than the sum of overlapping agents. **[VERIFY]**
+- The single biggest source of value in multi-agent systems is **specialization** — giving each agent a focused role, tools, and context so it outperforms a generalist at its slice. Getting specialization *right* is what makes a team more than the sum of overlapping agents.
 
 <svg viewBox="0 0 360 84" role="img" aria-label="Specialized agents each with a distinct role, prompt, and toolset covering the task without overlap" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6" fill="#1a1a1a">
   <rect x="10" y="18" width="82" height="48" rx="4" fill="#e8f4fd" stroke="#24405e"/><text x="51" y="32" text-anchor="middle" font-size="6.5">researcher</text><text x="51" y="45" text-anchor="middle" fill="#6b6b6b">tools: search</text><text x="51" y="56" text-anchor="middle" fill="#6b6b6b">goal: gather facts</text>

@@ -1,6 +1,6 @@
 ## LlamaIndex: the data framework
 
-- **LlamaIndex** started as *the* framework for RAG (Booklet 4) — connecting LLMs to your data — and grew agent capabilities on top. Its distinguishing strength is **data**: if your agent's core job is answering over documents, LlamaIndex's retrieval machinery is its reason to exist. **[VERIFY current API]**
+- **LlamaIndex** started as *the* framework for RAG (Booklet 4) — connecting LLMs to your data — and grew agent capabilities on top. Its distinguishing strength is **data**: if your agent's core job is answering over documents, LlamaIndex's retrieval machinery is its reason to exist.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="LlamaIndex ingests data into indexes, retrieves relevant chunks, and an agent reasons over them with tools" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="10" y="34" width="60" height="24" rx="3" fill="#e8f4fd" stroke="#24405e"/><text x="40" y="46" text-anchor="middle" font-size="6">your docs</text><text x="40" y="55" text-anchor="middle" font-size="5.5" fill="#6b6b6b">PDF/DB/web</text>

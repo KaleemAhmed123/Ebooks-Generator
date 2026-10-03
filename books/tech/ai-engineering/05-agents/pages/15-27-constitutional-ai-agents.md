@@ -1,6 +1,6 @@
 ## Constitutional AI for agents
 
-- Applying constitutional principles to *agents* — systems that take actions, not just produce text — extends the idea from "what to say" to "what to do." An agent can be given a constitution governing its **actions** and made to check proposed actions against it before acting. **[VERIFY]**
+- Applying constitutional principles to *agents* — systems that take actions, not just produce text — extends the idea from "what to say" to "what to do." An agent can be given a constitution governing its **actions** and made to check proposed actions against it before acting.
 
 <svg viewBox="0 0 360 84" role="img" aria-label="Before acting, the agent checks a proposed action against action principles and blocks disallowed ones" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="32" width="80" height="26" rx="3" fill="#24405e"/><text x="50" y="48" text-anchor="middle" fill="#fff" font-size="6">proposed action</text>

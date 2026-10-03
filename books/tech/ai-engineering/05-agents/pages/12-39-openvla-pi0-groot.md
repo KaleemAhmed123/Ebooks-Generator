@@ -1,6 +1,6 @@
 ## OpenVLA, π0, and GR00T
 
-- Three VLAs mark the open and frontier state of the art as of 2026. **[VERIFY all specs/versions]**
+- Three VLAs mark the open and frontier state of the art as of 2026.
 
 | Model | Who | Idea |
 |---|---|---|

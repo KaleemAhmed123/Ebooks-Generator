@@ -1,6 +1,6 @@
 ## External evaluation and red-teaming
 
-- Two practices give the governance frameworks teeth: **external evaluation** (independent parties test the model) and **red-teaming** (experts actively try to make it misbehave). Both counter the core problem that a lab evaluating its own model has every incentive to under-find risk. **[VERIFY]**
+- Two practices give the governance frameworks teeth: **external evaluation** (independent parties test the model) and **red-teaming** (experts actively try to make it misbehave). Both counter the core problem that a lab evaluating its own model has every incentive to under-find risk.
 
 <svg viewBox="0 0 360 84" role="img" aria-label="Independent evaluators and red-teamers probe a model for dangerous capabilities before release" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="130" y="12" width="100" height="20" rx="4" fill="#24405e"/><text x="180" y="25" text-anchor="middle" fill="#fff">model (pre-release)</text>

@@ -1,7 +1,7 @@
 ## MCP: the M×N problem
 
 - Every AI app needs tools, and every tool needs wiring into every app. With **M** apps (Claude Desktop, Cursor, your agent) and **N** tools (GitHub, Postgres, Slack, your API), the naive world builds **M×N** bespoke integrations — each app hand-codes each tool, again and again.
-- The **Model Context Protocol (MCP)** (Anthropic, open-sourced late 2024) is a standard that turns M×N into **M+N**. Each app speaks MCP once; each tool exposes MCP once; any app talks to any tool. It is "USB-C for AI tools" — one connector, not a drawer of adapters. **[VERIFY spec status/date]**
+- The **Model Context Protocol (MCP)** (Anthropic, open-sourced late 2024) is a standard that turns M×N into **M+N**. Each app speaks MCP once; each tool exposes MCP once; any app talks to any tool. It is "USB-C for AI tools" — one connector, not a drawer of adapters.
 
 <svg viewBox="0 0 360 116" role="img" aria-label="Without MCP every app wires to every tool; with MCP each speaks one protocol" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <text x="88" y="12" text-anchor="middle" font-size="6.5" fill="#a03050">M×N (tangled)</text>

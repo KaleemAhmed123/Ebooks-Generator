@@ -1,6 +1,6 @@
 ## Transfusion: autoregression + diffusion in one
 
-- **Transfusion** (Meta, 2024) unifies without discretizing images. One transformer carries **two losses at once**: next-token prediction on text tokens, and a **diffusion** objective on *continuous* image patches. Text stays autoregressive; images stay continuous (high fidelity). **[VERIFY]**
+- **Transfusion** (Meta, 2024) unifies without discretizing images. One transformer carries **two losses at once**: next-token prediction on text tokens, and a **diffusion** objective on *continuous* image patches. Text stays autoregressive; images stay continuous (high fidelity).
 - Inside one sequence, text spans are trained/generated left-to-right with causal attention, while image spans are trained to **denoise** (bidirectional attention within the image), the way a diffusion model does.
 
 <svg viewBox="0 0 360 96" role="img" aria-label="One transformer applies a language loss to text tokens and a diffusion denoising loss to image patches" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">

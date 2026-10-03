@@ -1,6 +1,6 @@
 ## Dangerous-capability evaluations
 
-- The frameworks (15-31, 15-32) all hinge on one thing: **measuring** whether a model has a dangerous capability. **Dangerous-capability evaluations** are the tests that decide whether a threshold has been crossed — the empirical trigger for safeguards. **[VERIFY]**
+- The frameworks (15-31, 15-32) all hinge on one thing: **measuring** whether a model has a dangerous capability. **Dangerous-capability evaluations** are the tests that decide whether a threshold has been crossed — the empirical trigger for safeguards.
 
 <svg viewBox="0 0 360 86" role="img" aria-label="Evaluations probe for dangerous capabilities; crossing a threshold triggers required safeguards" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="18" width="100" height="50" rx="4" fill="#e8f4fd" stroke="#24405e"/><text x="60" y="32" text-anchor="middle" font-size="6.5">eval the model</text><text x="60" y="45" text-anchor="middle" font-size="5.5" fill="#6b6b6b">cyber, bio,</text><text x="60" y="54" text-anchor="middle" font-size="5.5" fill="#6b6b6b">autonomy, persuasion</text>

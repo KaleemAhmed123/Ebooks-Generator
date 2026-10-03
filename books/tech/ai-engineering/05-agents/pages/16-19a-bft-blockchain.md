@@ -1,6 +1,6 @@
 ## BFT in practice: from consensus to blockchain
 
-- Byzantine fault tolerance (16-19) is not just theory — it is the engine of real distributed systems, most famously **blockchains**, and understanding that connection sharpens when (and whether) agent systems need it. **[VERIFY]**
+- Byzantine fault tolerance (16-19) is not just theory — it is the engine of real distributed systems, most famously **blockchains**, and understanding that connection sharpens when (and whether) agent systems need it.
 
 <svg viewBox="0 0 360 82" role="img" aria-label="Nodes reach agreement on a shared ledger despite some faulty or malicious nodes" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <g fill="#24405e"><circle cx="60" cy="30" r="12"/><circle cx="120" cy="30" r="12"/><circle cx="60" cy="66" r="12"/></g>

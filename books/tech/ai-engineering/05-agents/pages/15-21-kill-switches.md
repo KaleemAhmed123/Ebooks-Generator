@@ -1,6 +1,6 @@
 ## Kill switches
 
-- Every autonomous agent needs an **off switch** — a reliable way to stop it *now*, from outside, no matter what it is doing. It sounds obvious; getting it to actually work under all conditions is a real design problem, and it is the last line of defense when everything else fails. **[VERIFY]**
+- Every autonomous agent needs an **off switch** — a reliable way to stop it *now*, from outside, no matter what it is doing. It sounds obvious; getting it to actually work under all conditions is a real design problem, and it is the last line of defense when everything else fails.
 
 <svg viewBox="0 0 360 82" role="img" aria-label="A kill switch outside the agent can halt the loop and revoke its access immediately" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <circle cx="70" cy="42" r="24" fill="#24405e"/><text x="70" y="45" text-anchor="middle" fill="#fff" font-size="6.5">agent loop</text>

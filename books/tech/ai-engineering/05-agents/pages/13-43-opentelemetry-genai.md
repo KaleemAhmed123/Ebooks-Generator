@@ -1,6 +1,6 @@
 ## OpenTelemetry for GenAI
 
-- When an agent misbehaves in production, you need to see *what it did* — every model call, tool call, and their inputs/outputs. **OpenTelemetry (OTel)** is the industry-standard framework for this "observability," and it now has **GenAI semantic conventions** — an agreed schema for recording LLM and agent operations. **[VERIFY conventions status]**
+- When an agent misbehaves in production, you need to see *what it did* — every model call, tool call, and their inputs/outputs. **OpenTelemetry (OTel)** is the industry-standard framework for this "observability," and it now has **GenAI semantic conventions** — an agreed schema for recording LLM and agent operations.
 - Two core concepts:
   - **Span** — a timed unit of work with attributes: one model call, one tool call, one retrieval. It records start/end time, inputs, outputs, and metadata (model name, token counts, cost).
   - **Trace** — a tree of spans for one end-to-end request. An agent run is a trace; each step is a span nested under it.

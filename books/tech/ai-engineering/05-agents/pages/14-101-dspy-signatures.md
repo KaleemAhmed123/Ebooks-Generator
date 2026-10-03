@@ -1,6 +1,6 @@
 ## DSPy: signatures
 
-- A **signature** declares a task's **inputs and outputs** — *what* the step does — without writing the prompt for *how*. It is a typed spec the compiler turns into an actual prompt. **[VERIFY current API]**
+- A **signature** declares a task's **inputs and outputs** — *what* the step does — without writing the prompt for *how*. It is a typed spec the compiler turns into an actual prompt.
 
 :::mint
 ```python

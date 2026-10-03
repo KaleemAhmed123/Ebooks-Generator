@@ -1,6 +1,6 @@
 ## InternVL and native multimodal pretraining
 
-- **InternVL** (Shanghai AI Lab / OpenGVLab) takes the opposite bet from LLaVA on one axis: instead of a small frozen CLIP eye, it trains a **very large vision encoder** (InternViT, up to ~6B parameters) so the perception side is as strong as the language side. **[VERIFY versions/specs]**
+- **InternVL** (Shanghai AI Lab / OpenGVLab) takes the opposite bet from LLaVA on one axis: instead of a small frozen CLIP eye, it trains a **very large vision encoder** (InternViT, up to ~6B parameters) so the perception side is as strong as the language side.
 - The intuition: a tiny 300M-param CLIP is a bottleneck no LLM can reason past. Scale the eye and the whole model sees more.
 
 <svg viewBox="0 0 360 86" role="img" aria-label="A small vision encoder bottlenecks a large LLM, so InternVL scales the encoder up" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7.5" fill="#1a1a1a">

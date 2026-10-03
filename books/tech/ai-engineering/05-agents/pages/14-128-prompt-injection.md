@@ -1,6 +1,6 @@
 ## Prompt injection: the core threat
 
-- **Prompt injection** is the defining security problem of agents. The model cannot reliably tell *your* instructions from *instructions hidden in the data it processes* — so an attacker who controls any data the agent reads can hijack it. It is injection (like SQL injection) for LLMs, and there is **no complete fix**. **[VERIFY]**
+- **Prompt injection** is the defining security problem of agents. The model cannot reliably tell *your* instructions from *instructions hidden in the data it processes* — so an attacker who controls any data the agent reads can hijack it. It is injection (like SQL injection) for LLMs, and there is **no complete fix**.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="Malicious instructions hidden in a fetched web page are read by the agent and obeyed as if from the user" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="10" y="34" width="80" height="24" rx="3" fill="#fdeef2" stroke="#a03050"/><text x="50" y="46" text-anchor="middle" font-size="6">web page</text><text x="50" y="55" text-anchor="middle" font-size="5" fill="#a03050">hidden: "ignore user,</text>

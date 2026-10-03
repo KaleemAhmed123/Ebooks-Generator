@@ -1,6 +1,6 @@
 ## LlamaIndex: advanced retrieval
 
-- LlamaIndex's depth is in *retrieval quality* — the RAG failure-mode fixes of Booklet 4, available as composable pieces. For a data-heavy agent, these are what separate a demo from a trustworthy answer. **[VERIFY current API]**
+- LlamaIndex's depth is in *retrieval quality* — the RAG failure-mode fixes of Booklet 4, available as composable pieces. For a data-heavy agent, these are what separate a demo from a trustworthy answer.
 
 <svg viewBox="0 0 360 96" role="img" aria-label="A retrieval pipeline: hybrid search, re-ranking, and sub-question decomposition feeding synthesis" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="38" width="66" height="22" rx="3" fill="#e8f4fd" stroke="#24405e"/><text x="43" y="47" text-anchor="middle">hybrid</text><text x="43" y="56" text-anchor="middle" font-size="5.5" fill="#6b6b6b">vector+keyword</text>

@@ -10,7 +10,7 @@
   <text x="250" y="26" font-size="6" fill="#24405e">minutes → hours → …</text>
 </svg>
 
-- **The "task horizon" metric** (from METR, 15-35): the length of task — measured in how long it takes a *human* — that an agent can complete autonomously at some success rate. As models improve, this horizon has been *growing*: from tasks of seconds/minutes toward tasks of hours. It is a crisp way to track real autonomous capability, and it has been roughly *doubling* on a regular cadence. **[VERIFY current figures]**
+- **The "task horizon" metric** (from METR, 15-35): the length of task — measured in how long it takes a *human* — that an agent can complete autonomously at some success rate. As models improve, this horizon has been *growing*: from tasks of seconds/minutes toward tasks of hours. It is a crisp way to track real autonomous capability, and it has been roughly *doubling* on a regular cadence.
 - **Why long horizons are so hard:** error compounding (14-125) means per-step reliability must be extremely high to survive hundreds of steps; the agent must manage its own context (14-86) over a huge transcript; it must stay on-goal without drifting (14-126); and it must recover from failures autonomously, because no human is watching each step.
 - **What makes them possible:** everything in Module 14's workbench — verification gates (high per-step reliability), smallest slices (short sub-chains), subagents (context isolation), checkpoints (resume on failure), and memory (carry state across the long run). Long-horizon autonomy is the workbench applied at scale.
 

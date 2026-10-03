@@ -1,6 +1,6 @@
 ## Memory: a worked example
 
-- Trace a personal coding assistant across two sessions to see the types work together. **[VERIFY — illustrative]**
+- Trace a personal coding assistant across two sessions to see the types work together.
 
 :::mint
 ```text

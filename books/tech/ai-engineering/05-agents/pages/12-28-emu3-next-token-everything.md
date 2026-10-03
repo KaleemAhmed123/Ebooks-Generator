@@ -1,6 +1,6 @@
 ## Emu3: next-token prediction for everything
 
-- **Emu3** (BAAI, 2024) pushes early fusion to its logical end: **one objective, next-token prediction, over text, images, and video** — no diffusion, no CLIP, no separate generation head. **[VERIFY]**
+- **Emu3** (BAAI, 2024) pushes early fusion to its logical end: **one objective, next-token prediction, over text, images, and video** — no diffusion, no CLIP, no separate generation head.
 - Everything is tokenized to discrete IDs (text by BPE, image/video by a VQ tokenizer), concatenated, and the model just predicts the next ID. Generation is autoregressive sampling; understanding is reading. The same loop that writes a sentence paints an image, one patch-token at a time.
 
 <svg viewBox="0 0 360 84" role="img" aria-label="Emu3 uses one next-token loss over text, image and video tokens for both understanding and generation" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7.5" fill="#1a1a1a">

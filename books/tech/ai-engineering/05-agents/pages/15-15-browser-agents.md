@@ -1,6 +1,6 @@
 ## Browser agents
 
-- A **browser agent** autonomously operates a web browser to accomplish tasks — book a flight, fill a form, gather data across sites, complete a purchase. It is computer-use (14-109) narrowed to the browser, the most common and commercially important autonomous-agent surface after coding. **[VERIFY]**
+- A **browser agent** autonomously operates a web browser to accomplish tasks — book a flight, fill a form, gather data across sites, complete a purchase. It is computer-use (14-109) narrowed to the browser, the most common and commercially important autonomous-agent surface after coding.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="A browser agent loop: perceive the page, decide an action, act, observe the new page" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="20" y="36" width="70" height="24" rx="3" fill="#e8f4fd" stroke="#24405e"/><text x="55" y="48" text-anchor="middle" font-size="6">perceive page</text><text x="55" y="57" text-anchor="middle" font-size="5.5" fill="#6b6b6b">DOM or pixels</text>

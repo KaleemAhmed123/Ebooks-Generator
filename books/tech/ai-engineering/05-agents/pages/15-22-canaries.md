@@ -1,6 +1,6 @@
 ## Canaries and gradual rollout
 
-- You never trust a new or changed autonomous agent at full scale on day one. **Canary deployment** and **gradual rollout** limit the blast radius of a bad agent by exposing it to a little traffic first and widening only as it proves safe. Borrowed straight from software deployment, essential for agents because their failures are non-deterministic. **[VERIFY]**
+- You never trust a new or changed autonomous agent at full scale on day one. **Canary deployment** and **gradual rollout** limit the blast radius of a bad agent by exposing it to a little traffic first and widening only as it proves safe. Borrowed straight from software deployment, essential for agents because their failures are non-deterministic.
 
 <svg viewBox="0 0 360 84" role="img" aria-label="A new agent version serves 1 percent, then 10, then 100 percent as metrics stay healthy" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="14" y="34" width="60" height="24" rx="3" fill="#eaf6ea" stroke="#1a3a2a"/><text x="44" y="45" text-anchor="middle" font-size="6">1% canary</text><text x="44" y="54" text-anchor="middle" font-size="5.5" fill="#6b6b6b">watch metrics</text>

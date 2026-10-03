@@ -1,6 +1,6 @@
 ## Coding agents in practice
 
-- Where coding agents genuinely work in 2026, where they still fail, and how to use them well — the practitioner's view, since this is likely the agent you will build or use first. **[VERIFY]**
+- Where coding agents genuinely work in 2026, where they still fail, and how to use them well — the practitioner's view, since this is likely the agent you will build or use first.
 
 - **Where they shine:**
   - **Well-specified, verifiable tasks** — fix a failing test, implement a function to a spec, add a small feature, write tests, do a mechanical refactor. Anything with a clear success check (14-135) plays to their strength.

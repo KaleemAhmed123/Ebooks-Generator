@@ -1,6 +1,6 @@
 ## Tool choice: auto, any, forced, none
 
-- By default the model *decides* whether to call a tool. Sometimes you need to override that decision. **Tool choice** is the control. **[VERIFY exact names per provider]**
+- By default the model *decides* whether to call a tool. Sometimes you need to override that decision. **Tool choice** is the control.
 
 | Setting | Behavior | Use when |
 |---|---|---|

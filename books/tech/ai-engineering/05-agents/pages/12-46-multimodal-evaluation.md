@@ -1,6 +1,6 @@
 ## Multimodal evaluation
 
-- You cannot ship what you cannot measure. Multimodal benchmarks each probe a *different* capability, and picking the wrong one hides the failure that will hurt you in production. **[VERIFY current leaderboards]**
+- You cannot ship what you cannot measure. Multimodal benchmarks each probe a *different* capability, and picking the wrong one hides the failure that will hurt you in production.
 
 | Benchmark | Tests | Use it when |
 |---|---|---|

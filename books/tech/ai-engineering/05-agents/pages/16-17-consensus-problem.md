@@ -1,6 +1,6 @@
 ## The consensus problem
 
-- When multiple agents must agree on *one* answer or decision — which plan to execute, whether a task is done, what the correct result is — you have a **consensus problem**. It is a deep, classical distributed-systems topic, and LLM agents inherit it whenever they must converge rather than just divide work. **[VERIFY]**
+- When multiple agents must agree on *one* answer or decision — which plan to execute, whether a task is done, what the correct result is — you have a **consensus problem**. It is a deep, classical distributed-systems topic, and LLM agents inherit it whenever they must converge rather than just divide work.
 
 <svg viewBox="0 0 360 88" role="img" aria-label="Several agents with different answers must converge on one agreed decision" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <circle cx="40" cy="30" r="13" fill="#24405e"/><text x="40" y="33" text-anchor="middle" fill="#fff" font-size="5.5">"A"</text>

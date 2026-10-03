@@ -1,6 +1,6 @@
 ## Byzantine fault tolerance
 
-- Voting assumes agents are merely *diverse*. **Byzantine fault tolerance (BFT)** handles the harder case: some agents are *arbitrarily faulty* — buggy, compromised, or adversarial — and may send *conflicting lies* to different peers. BFT is how a system reaches correct consensus *despite* such traitors. **[VERIFY]**
+- Voting assumes agents are merely *diverse*. **Byzantine fault tolerance (BFT)** handles the harder case: some agents are *arbitrarily faulty* — buggy, compromised, or adversarial — and may send *conflicting lies* to different peers. BFT is how a system reaches correct consensus *despite* such traitors.
 
 <svg viewBox="0 0 360 90" role="img" aria-label="With 3f+1 agents the honest majority can outvote f traitors to reach correct consensus" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <g fill="#24405e"><circle cx="60" cy="34" r="12"/><circle cx="110" cy="34" r="12"/><circle cx="160" cy="34" r="12"/></g>

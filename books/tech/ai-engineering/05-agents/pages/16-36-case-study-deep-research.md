@@ -1,6 +1,6 @@
 ## Case study: deep research systems
 
-- The multi-agent success story of 2025–2026 is **deep research** — systems that autonomously research a question across many sources and produce a thorough report. Several labs shipped these, and they are the clearest example of multi-agent done *right*, so they repay study. **[VERIFY specifics]**
+- The multi-agent success story of 2025–2026 is **deep research** — systems that autonomously research a question across many sources and produce a thorough report. Several labs shipped these, and they are the clearest example of multi-agent done *right*, so they repay study.
 
 <svg viewBox="0 0 360 96" role="img" aria-label="A lead research agent spawns parallel sub-researchers for sub-questions, then synthesizes a report" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="130" y="10" width="100" height="20" rx="4" fill="#a03050"/><text x="180" y="23" text-anchor="middle" fill="#fff">lead researcher</text>

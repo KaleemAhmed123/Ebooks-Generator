@@ -1,6 +1,6 @@
 ## LlamaIndex: from RAG to agents
 
-- A query engine answers *one* question over *one* index. Real questions need more: choosing among several data sources, multi-step reasoning, and calling tools. Wrapping query engines as **tools** an agent can call turns RAG into an agent. **[VERIFY current API]**
+- A query engine answers *one* question over *one* index. Real questions need more: choosing among several data sources, multi-step reasoning, and calling tools. Wrapping query engines as **tools** an agent can call turns RAG into an agent.
 
 <svg viewBox="0 0 360 96" role="img" aria-label="An agent chooses among multiple query-engine tools and function tools to answer a complex question" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="130" y="10" width="100" height="22" rx="4" fill="#24405e"/><text x="180" y="24" text-anchor="middle" fill="#fff" font-size="6.5">agent (decides)</text>

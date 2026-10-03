@@ -1,6 +1,6 @@
 ## Routing: a worked cascade
 
-- Make the routing layer (13-45) concrete with a **cascade** — try the cheap model first, escalate to the expensive one only when needed. It is the routing strategy with the best cost/quality tradeoff, and a favorite system-design answer. **[VERIFY — illustrative]**
+- Make the routing layer (13-45) concrete with a **cascade** — try the cheap model first, escalate to the expensive one only when needed. It is the routing strategy with the best cost/quality tradeoff, and a favorite system-design answer.
 
 :::mint
 ```text

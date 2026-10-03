@@ -1,6 +1,6 @@
 ## AutoGen: a worked team
 
-- A minimal two-agent team that writes and refines copy, with an explicit stop condition. This is the shape of most AutoGen programs. **[VERIFY current AgentChat API]**
+- A minimal two-agent team that writes and refines copy, with an explicit stop condition. This is the shape of most AutoGen programs.
 
 :::mint
 ```python

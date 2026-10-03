@@ -1,6 +1,6 @@
 ## DSPy: metrics and the optimization loop
 
-- The optimizer is only as good as the **metric** you give it — the function that scores an output. Choosing the metric *is* the design work in DSPy, because it defines what "better" means. **[VERIFY current API]**
+- The optimizer is only as good as the **metric** you give it — the function that scores an output. Choosing the metric *is* the design work in DSPy, because it defines what "better" means.
 
 :::mint
 ```python

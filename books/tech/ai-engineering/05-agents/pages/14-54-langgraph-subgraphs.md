@@ -1,6 +1,6 @@
 ## LangGraph: subgraphs
 
-- A **subgraph** is a graph used as a **node** inside another graph. It is how you compose complex agents from smaller, self-contained ones — the modularity that keeps large systems maintainable. **[VERIFY current API]**
+- A **subgraph** is a graph used as a **node** inside another graph. It is how you compose complex agents from smaller, self-contained ones — the modularity that keeps large systems maintainable.
 
 <svg viewBox="0 0 360 96" role="img" aria-label="A parent graph whose research node is itself a full subgraph of nodes" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="8" y="30" width="60" height="24" rx="3" fill="#24405e"/><text x="38" y="45" text-anchor="middle" fill="#fff" font-size="6">plan</text>

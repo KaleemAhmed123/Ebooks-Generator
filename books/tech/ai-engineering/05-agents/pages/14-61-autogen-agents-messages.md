@@ -1,13 +1,13 @@
 ## AutoGen: agents and messages
 
-- The building block is an **agent** with a role, an LLM, and optionally tools. You create a few, give each a system prompt defining its job, and set them talking. **[VERIFY current AgentChat API]**
+- The building block is an **agent** with a role, an LLM, and optionally tools. You create a few, give each a system prompt defining its job, and set them talking.
 
 :::mint
 ```python
 from autogen_agentchat.agents import AssistantAgent
 from autogen_ext.models.openai import OpenAIChatCompletionClient
 
-model = OpenAIChatCompletionClient(model="gpt-...")   # [VERIFY]
+model = OpenAIChatCompletionClient(model="gpt-...")
 
 writer = AssistantAgent("writer", model_client=model,
     system_message="You write concise marketing copy.")

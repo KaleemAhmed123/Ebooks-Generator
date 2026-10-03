@@ -1,6 +1,6 @@
 ## The skill format
 
-- A skill is, at its simplest, a Markdown file with a little structured **frontmatter** (metadata at the top) plus a body of instructions. Optional folders add scripts and resources. **[VERIFY exact format]**
+- A skill is, at its simplest, a Markdown file with a little structured **frontmatter** (metadata at the top) plus a body of instructions. Optional folders add scripts and resources.
 
 :::mint
 ```markdown

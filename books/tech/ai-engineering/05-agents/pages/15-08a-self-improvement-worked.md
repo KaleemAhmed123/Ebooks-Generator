@@ -1,6 +1,6 @@
 ## Self-improvement: a worked loop
 
-- Trace an AlphaEvolve-style loop (15-06) on a concrete task — optimizing a sorting-related routine — so the propose→evaluate→keep engine (15-04) is unambiguous. **[VERIFY — illustrative]**
+- Trace an AlphaEvolve-style loop (15-06) on a concrete task — optimizing a sorting-related routine — so the propose→evaluate→keep engine (15-04) is unambiguous.
 
 :::mint
 ```text

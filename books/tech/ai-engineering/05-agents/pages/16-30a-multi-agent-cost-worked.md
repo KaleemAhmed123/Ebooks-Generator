@@ -1,6 +1,6 @@
 ## Worked: multi-agent cost math
 
-- Put real numbers on the multi-agent cost tax (16-30), because the blowup is bigger than intuition suggests, and this is the calculation that justifies — or kills — a multi-agent design. **[VERIFY — illustrative]**
+- Put real numbers on the multi-agent cost tax (16-30), because the blowup is bigger than intuition suggests, and this is the calculation that justifies — or kills — a multi-agent design.
 
 :::mint
 ```text

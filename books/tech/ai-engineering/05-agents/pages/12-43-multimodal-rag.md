@@ -1,7 +1,7 @@
 ## Multimodal and cross-modal RAG
 
 - **Multimodal RAG** retrieves across modalities: the knowledge base holds text, images, tables, and charts, and any of them can be the answer. **Cross-modal** means the query and the result are *different* modalities — text query → image result, or image query → text result.
-- Two architectures, and the choice matters. **[VERIFY]**
+- Two architectures, and the choice matters.
 
 <svg viewBox="0 0 360 100" role="img" aria-label="Shared embedding space retrieval versus caption-everything-into-text retrieval" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <text x="90" y="14" text-anchor="middle" font-size="6" fill="#24405e">A · shared space (CLIP)</text>

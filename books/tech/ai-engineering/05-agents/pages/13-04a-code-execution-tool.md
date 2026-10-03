@@ -1,6 +1,6 @@
 ## Code execution as a tool
 
-- The most powerful single tool you can give an agent is a **code interpreter** — the ability to write and run code. One tool covers a near-infinite space of tasks, because code can compute anything, transform any data, and call any library. **[VERIFY]**
+- The most powerful single tool you can give an agent is a **code interpreter** — the ability to write and run code. One tool covers a near-infinite space of tasks, because code can compute anything, transform any data, and call any library.
 
 <svg viewBox="0 0 360 84" role="img" aria-label="The model writes code, a sandbox runs it, and the real output returns for the model to use" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="12" y="32" width="72" height="24" rx="3" fill="#24405e"/><text x="48" y="47" text-anchor="middle" fill="#fff" font-size="6">writes code</text>

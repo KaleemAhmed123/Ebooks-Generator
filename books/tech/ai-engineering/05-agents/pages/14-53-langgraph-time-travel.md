@@ -1,6 +1,6 @@
 ## LangGraph: breakpoints and time travel
 
-- Because every step is checkpointed (14-50), you can inspect the run's *history* and even **rewind** it — "time travel." This turns debugging an agent from guesswork into stepping through saved states. **[VERIFY current API]**
+- Because every step is checkpointed (14-50), you can inspect the run's *history* and even **rewind** it — "time travel." This turns debugging an agent from guesswork into stepping through saved states.
 
 <svg viewBox="0 0 360 74" role="img" aria-label="A run's checkpoints form a history you can inspect, rewind to, and re-run from with an edit" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <line x1="20" y1="30" x2="300" y2="30" stroke="#888"/>

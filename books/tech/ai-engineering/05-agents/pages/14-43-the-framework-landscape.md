@@ -1,6 +1,6 @@
 ## The agent framework landscape
 
-- You can build an agent in raw code — the loop is ten lines (14-03). Frameworks add structure, persistence, streaming, observability, and multi-agent plumbing so you do not rebuild them each time. Seven matter as of 2026; the next clusters cover each in depth. **[VERIFY versions/status]**
+- You can build an agent in raw code — the loop is ten lines (14-03). Frameworks add structure, persistence, streaming, observability, and multi-agent plumbing so you do not rebuild them each time. Seven matter as of 2026; the next clusters cover each in depth.
 
 | Framework | Core abstraction | Best at |
 |---|---|---|

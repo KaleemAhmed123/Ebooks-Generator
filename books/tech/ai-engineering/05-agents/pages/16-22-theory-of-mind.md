@@ -1,6 +1,6 @@
 ## Theory of mind
 
-- Effective coordination often needs an agent to model *what other agents know, want, or intend* — a **theory of mind** (ToM), the ability to attribute mental states to others. For multi-agent systems, ToM is what lets agents cooperate, negotiate, and communicate *efficiently* rather than blindly. **[VERIFY]**
+- Effective coordination often needs an agent to model *what other agents know, want, or intend* — a **theory of mind** (ToM), the ability to attribute mental states to others. For multi-agent systems, ToM is what lets agents cooperate, negotiate, and communicate *efficiently* rather than blindly.
 
 <svg viewBox="0 0 360 84" role="img" aria-label="Agent A models what agent B knows and wants, and acts accordingly" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <circle cx="70" cy="44" r="22" fill="#24405e"/><text x="70" y="41" text-anchor="middle" fill="#fff" font-size="6">agent A</text><text x="70" y="51" text-anchor="middle" fill="#cdd" font-size="5">models B</text>

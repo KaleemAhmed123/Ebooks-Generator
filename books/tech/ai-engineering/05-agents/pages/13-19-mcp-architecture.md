@@ -1,6 +1,6 @@
 ## MCP architecture: host, client, server
 
-- MCP has exactly three roles. Confusing them is the most common MCP misunderstanding, so pin them down. **[VERIFY against current spec]**
+- MCP has exactly three roles. Confusing them is the most common MCP misunderstanding, so pin them down.
 
 <svg viewBox="0 0 360 118" role="img" aria-label="A host contains clients, each connecting one-to-one to a server exposing tools, resources, prompts" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="8" y="14" width="140" height="96" rx="5" fill="#eef6fb" stroke="#24405e"/><text x="78" y="28" text-anchor="middle" font-size="7" fill="#24405e">HOST (the AI app)</text><text x="78" y="39" text-anchor="middle" font-size="5.5" fill="#6b6b6b">Claude Desktop · your agent</text>

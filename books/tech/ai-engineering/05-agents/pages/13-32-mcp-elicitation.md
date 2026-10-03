@@ -1,6 +1,6 @@
 ## MCP elicitation
 
-- **Elicitation** lets a server ask the *user* for input mid-task, through the client — a structured "I need more information" request. Added in a 2025 spec revision, it fills the gap between "the server has everything" and "the server must guess." **[VERIFY capability status]**
+- **Elicitation** lets a server ask the *user* for input mid-task, through the client — a structured "I need more information" request. Added in a 2025 spec revision, it fills the gap between "the server has everything" and "the server must guess."
 
 <svg viewBox="0 0 360 90" role="img" aria-label="A server requests structured input, the client shows the user a form and returns their answer" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="260" y="28" width="90" height="34" rx="4" fill="#fdeef2" stroke="#a03050"/><text x="305" y="42" text-anchor="middle" font-size="6.5">server</text><text x="305" y="53" text-anchor="middle" font-size="5.5" fill="#6b6b6b">needs a value</text>

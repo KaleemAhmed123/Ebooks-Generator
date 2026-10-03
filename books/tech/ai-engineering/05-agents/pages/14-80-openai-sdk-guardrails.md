@@ -1,6 +1,6 @@
 ## OpenAI SDK: guardrails
 
-- **Guardrails** are validation checks that run alongside the agent and can **halt** it if something is wrong — an off-topic request, unsafe input, or malformed output. They are the SDK's built-in safety and validation layer. **[VERIFY current API]**
+- **Guardrails** are validation checks that run alongside the agent and can **halt** it if something is wrong — an off-topic request, unsafe input, or malformed output. They are the SDK's built-in safety and validation layer.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="Input guardrail checks the request before the agent; output guardrail checks the result before returning" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="8" y="34" width="50" height="24" rx="3" fill="#e8f4fd" stroke="#24405e"/><text x="33" y="49" text-anchor="middle" font-size="6">input</text>

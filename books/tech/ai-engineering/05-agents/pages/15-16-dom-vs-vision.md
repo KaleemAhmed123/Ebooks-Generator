@@ -1,6 +1,6 @@
 ## Browser agents: DOM vs vision
 
-- The defining architecture choice for a browser agent is *how it sees the page*: read the **DOM** (the page's underlying HTML structure) or look at a **screenshot** (pixels, like a human). Each has sharp tradeoffs, and modern agents increasingly combine them. **[VERIFY]**
+- The defining architecture choice for a browser agent is *how it sees the page*: read the **DOM** (the page's underlying HTML structure) or look at a **screenshot** (pixels, like a human). Each has sharp tradeoffs, and modern agents increasingly combine them.
 
 <svg viewBox="0 0 360 96" role="img" aria-label="DOM approach reads HTML structure; vision approach reads a screenshot; hybrid uses both" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="16" width="108" height="60" rx="4" fill="#eef6fb" stroke="#24405e"/><text x="64" y="30" text-anchor="middle" font-size="6.5">DOM</text><text x="64" y="44" text-anchor="middle" font-size="5.5" fill="#6b6b6b">read HTML tree</text><text x="64" y="54" text-anchor="middle" font-size="5.5" fill="#1a3a2a">precise, cheap</text><text x="64" y="66" text-anchor="middle" font-size="5.5" fill="#a03050">brittle, huge, hidden UI</text>

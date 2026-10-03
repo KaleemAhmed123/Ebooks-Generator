@@ -1,6 +1,6 @@
 ## Multi-agent reinforcement learning
 
-- **Multi-agent reinforcement learning (MARL)** extends the RL of Booklet 4 to *multiple learning agents* sharing an environment. Instead of hand-designing coordination, agents *learn* to cooperate (or compete) through reward. It is how you get emergent teamwork in games, robotics, and simulations — and it is fundamentally harder than single-agent RL. **[VERIFY]**
+- **Multi-agent reinforcement learning (MARL)** extends the RL of Booklet 4 to *multiple learning agents* sharing an environment. Instead of hand-designing coordination, agents *learn* to cooperate (or compete) through reward. It is how you get emergent teamwork in games, robotics, and simulations — and it is fundamentally harder than single-agent RL.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="Multiple agents each take actions in a shared environment and receive rewards, learning policies together" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <circle cx="50" cy="34" r="14" fill="#24405e"/><text x="50" y="37" text-anchor="middle" fill="#fff" font-size="5.5">agent 1</text>

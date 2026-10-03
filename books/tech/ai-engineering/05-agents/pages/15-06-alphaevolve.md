@@ -1,6 +1,6 @@
 ## AlphaEvolve: evolving algorithms
 
-- **AlphaEvolve** (DeepMind, 2025) uses an LLM inside an **evolutionary loop** to discover new algorithms and optimizations — and produced results good enough to be *deployed* and to improve on long-standing human bests. It is self-improvement pointed at code and math, with a machine-checkable evaluator. **[VERIFY specifics]**
+- **AlphaEvolve** (DeepMind, 2025) uses an LLM inside an **evolutionary loop** to discover new algorithms and optimizations — and produced results good enough to be *deployed* and to improve on long-standing human bests. It is self-improvement pointed at code and math, with a machine-checkable evaluator.
 
 <svg viewBox="0 0 360 96" role="img" aria-label="AlphaEvolve: LLM proposes program variants, an automated evaluator scores them, the best survive and are mutated further" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="38" width="76" height="24" rx="3" fill="#24405e"/><text x="48" y="47" text-anchor="middle" fill="#fff" font-size="6">LLM mutates</text><text x="48" y="56" text-anchor="middle" fill="#cdd" font-size="5">program variants</text>

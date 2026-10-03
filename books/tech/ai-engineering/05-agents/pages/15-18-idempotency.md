@@ -1,6 +1,6 @@
 ## Idempotency and side effects
 
-- The hard part of durable execution is **side effects**. Reloading state is easy; ensuring a tool that already *acted on the world* does not act *again* on resume is not. The tool for this is **idempotency** — designing actions so that doing them twice is the same as doing them once. **[VERIFY]**
+- The hard part of durable execution is **side effects**. Reloading state is easy; ensuring a tool that already *acted on the world* does not act *again* on resume is not. The tool for this is **idempotency** — designing actions so that doing them twice is the same as doing them once.
 
 <svg viewBox="0 0 360 90" role="img" aria-label="A resume replays a step; an idempotency key ensures the side effect happens only once" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="34" width="70" height="24" rx="3" fill="#24405e"/><text x="45" y="43" text-anchor="middle" fill="#fff" font-size="6">resume →</text><text x="45" y="52" text-anchor="middle" fill="#cdd" font-size="5">replay step</text>

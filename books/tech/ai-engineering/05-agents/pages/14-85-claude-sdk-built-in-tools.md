@@ -1,6 +1,6 @@
 ## Claude Agent SDK: built-in tools
 
-- Most agent frameworks make you supply every tool. The Claude Agent SDK ships a **capable default toolset** for operating a computer, so an agent is useful out of the box. **[VERIFY current tool set]**
+- Most agent frameworks make you supply every tool. The Claude Agent SDK ships a **capable default toolset** for operating a computer, so an agent is useful out of the box.
 
 <svg viewBox="0 0 360 88" role="img" aria-label="Built-in tools: read, write, edit files; run bash; search files and content; fetch web; call MCP" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="16" width="104" height="22" rx="3" fill="#e8f4fd" stroke="#24405e"/><text x="62" y="30" text-anchor="middle">file: read/write/edit</text>

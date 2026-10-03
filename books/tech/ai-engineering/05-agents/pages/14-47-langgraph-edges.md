@@ -1,6 +1,6 @@
 ## LangGraph: edges and conditional edges
 
-- **Edges** connect nodes — they define what runs next. A normal edge is unconditional ("after `act`, always `think`"). A **conditional edge** branches based on the state, which is how the agent *loops* and *decides*. **[VERIFY current API]**
+- **Edges** connect nodes — they define what runs next. A normal edge is unconditional ("after `act`, always `think`"). A **conditional edge** branches based on the state, which is how the agent *loops* and *decides*.
 
 :::mint
 ```python

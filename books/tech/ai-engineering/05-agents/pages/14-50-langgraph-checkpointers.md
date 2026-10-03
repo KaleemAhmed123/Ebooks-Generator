@@ -1,6 +1,6 @@
 ## LangGraph: checkpointers and persistence
 
-- A **checkpointer** saves the graph's state **after every node**. This one feature unlocks most of what makes LangGraph production-grade: crash recovery, pause/resume, human-in-the-loop, and time travel. Add it at compile time. **[VERIFY current API]**
+- A **checkpointer** saves the graph's state **after every node**. This one feature unlocks most of what makes LangGraph production-grade: crash recovery, pause/resume, human-in-the-loop, and time travel. Add it at compile time.
 
 :::mint
 ```python

@@ -1,6 +1,6 @@
 ## OpenAI SDK: agents and tools
 
-- Defining an agent is a few lines; tools are just decorated Python functions, with the SDK generating the schema from type hints and docstring. **[VERIFY current API]**
+- Defining an agent is a few lines; tools are just decorated Python functions, with the SDK generating the schema from type hints and docstring.
 
 :::mint
 ```python
@@ -15,7 +15,7 @@ assistant = Agent(
     name="Assistant",
     instructions="You are helpful. Use tools for live data.",
     tools=[get_weather],
-    model="gpt-...",                            # [VERIFY]
+    model="gpt-...",
 )
 ```
 :::

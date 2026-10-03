@@ -1,6 +1,6 @@
 ## LangGraph: why graphs
 
-- **LangGraph** (from the LangChain team) models an agent as an explicit **graph**: nodes are steps, edges are transitions, and a shared **state** object flows through and is updated by each node. Instead of hoping a while-loop behaves, you *draw the control flow*. **[VERIFY current API]**
+- **LangGraph** (from the LangChain team) models an agent as an explicit **graph**: nodes are steps, edges are transitions, and a shared **state** object flows through and is updated by each node. Instead of hoping a while-loop behaves, you *draw the control flow*.
 - The bet: production agents need **explicit, inspectable control flow and durable state**, not clever prompting. That is why it is the default for complex, long-running, must-be-reliable agents.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="An agent as a graph: nodes for think and act, a conditional edge to end, state flowing through" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7.5" fill="#1a1a1a">

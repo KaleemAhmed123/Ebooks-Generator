@@ -1,6 +1,6 @@
 ## MARL algorithms
 
-- Three CTDE algorithms (16-25) are the names to know — each extends a single-agent RL method (Booklet 4) to the multi-agent case. You do not need to implement them, but you should recognize what each does. **[VERIFY]**
+- Three CTDE algorithms (16-25) are the names to know — each extends a single-agent RL method (Booklet 4) to the multi-agent case. You do not need to implement them, but you should recognize what each does.
 
 | Algorithm | Extends | Idea |
 |---|---|---|

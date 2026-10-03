@@ -1,6 +1,6 @@
 ## The initialize handshake
 
-- Before any tool is called, client and server **negotiate** — agree on a protocol version and declare what each can do. Getting this handshake wrong is why "my MCP server won't connect." **[VERIFY current protocol version strings]**
+- Before any tool is called, client and server **negotiate** — agree on a protocol version and declare what each can do. Getting this handshake wrong is why "my MCP server won't connect."
 
 <svg viewBox="0 0 360 116" role="img" aria-label="Client sends initialize, server replies with capabilities, client sends initialized notification" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <text x="70" y="14" text-anchor="middle" font-size="6.5" fill="#24405e">CLIENT</text><line x1="70" y1="18" x2="70" y2="110" stroke="#24405e"/>

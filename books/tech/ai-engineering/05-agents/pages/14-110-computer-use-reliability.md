@@ -1,6 +1,6 @@
 ## Computer-use: making it reliable
 
-- Computer-use demos dazzle and computer-use products struggle, because the real world of screens is hostile to a naive loop. The techniques that close the gap: **[VERIFY]**
+- Computer-use demos dazzle and computer-use products struggle, because the real world of screens is hostile to a naive loop. The techniques that close the gap:
 
 <svg viewBox="0 0 360 88" role="img" aria-label="Reliability techniques: set-of-marks, verification, waiting, and recovery" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="16" width="108" height="24" rx="3" fill="#eaf6ea" stroke="#1a3a2a"/><text x="64" y="31" text-anchor="middle">set-of-marks</text>

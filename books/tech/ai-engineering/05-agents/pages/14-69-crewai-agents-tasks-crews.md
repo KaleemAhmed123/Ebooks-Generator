@@ -1,6 +1,6 @@
 ## CrewAI: agents, tasks, and crews
 
-- CrewAI has three core objects. Get these and you can read any CrewAI program. **[VERIFY current API]**
+- CrewAI has three core objects. Get these and you can read any CrewAI program.
 
 :::mint
 ```python

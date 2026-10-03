@@ -1,6 +1,6 @@
 ## Society of Mind
 
-- **Society of Mind** (Marvin Minsky, 1986) is the foundational idea that intelligence *emerges from many simple interacting agents*, none intelligent alone. It predates LLMs by decades and now inspires a concrete technique: solve a hard problem with *many* LLM agents whose interaction produces a better answer than any one. **[VERIFY]**
+- **Society of Mind** (Marvin Minsky, 1986) is the foundational idea that intelligence *emerges from many simple interacting agents*, none intelligent alone. It predates LLMs by decades and now inspires a concrete technique: solve a hard problem with *many* LLM agents whose interaction produces a better answer than any one.
 
 <svg viewBox="0 0 360 88" role="img" aria-label="Many simple agents interacting produce collective intelligence greater than any single agent" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <g fill="#6a9bd0"><circle cx="50" cy="30" r="9"/><circle cx="90" cy="52" r="9"/><circle cx="60" cy="70" r="9"/><circle cx="110" cy="28" r="9"/><circle cx="130" cy="60" r="9"/></g>

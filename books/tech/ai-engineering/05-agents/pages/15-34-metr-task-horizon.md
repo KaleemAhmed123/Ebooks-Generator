@@ -1,6 +1,6 @@
 ## METR and task-horizon
 
-- **METR** (Model Evaluation & Threat Research) is an independent nonprofit that evaluates frontier models for dangerous *autonomous* capabilities — and produced the **task-horizon** metric (15-03) that has become the field's clearest measure of agentic progress. **[VERIFY current figures]**
+- **METR** (Model Evaluation & Threat Research) is an independent nonprofit that evaluates frontier models for dangerous *autonomous* capabilities — and produced the **task-horizon** metric (15-03) that has become the field's clearest measure of agentic progress.
 
 <svg viewBox="0 0 360 88" role="img" aria-label="The length of task a model can autonomously complete has grown roughly exponentially over time" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <line x1="34" y1="70" x2="345" y2="70" stroke="#888"/><line x1="34" y1="10" x2="34" y2="70" stroke="#888"/>

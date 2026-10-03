@@ -1,6 +1,6 @@
 ## Societal risk: a bridge
 
-- Beyond any single agent's safety lies the *aggregate* impact of autonomous agents on society — economic, informational, and structural. This is the domain of Booklet 6 (Production Safety & Society); here is the bridge, because an agent engineer's choices roll up into these effects. **[VERIFY]**
+- Beyond any single agent's safety lies the *aggregate* impact of autonomous agents on society — economic, informational, and structural. This is the domain of Booklet 6 (Production Safety & Society); here is the bridge, because an agent engineer's choices roll up into these effects.
 
 <svg viewBox="0 0 360 90" role="img" aria-label="Individual agent safety scales up to societal effects: labor, information, security, concentration" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="130" y="10" width="100" height="18" rx="3" fill="#24405e"/><text x="180" y="22" text-anchor="middle" fill="#fff">many autonomous agents</text>

@@ -1,6 +1,6 @@
 ## Claude Agent SDK: permissions and hooks
 
-- An agent that can edit files and run shell commands is powerful and dangerous. The SDK's **permission system** and **hooks** are how you keep that power controlled. **[VERIFY current API]**
+- An agent that can edit files and run shell commands is powerful and dangerous. The SDK's **permission system** and **hooks** are how you keep that power controlled.
 
 <svg viewBox="0 0 360 90" role="img" aria-label="A tool call passes through permission checks and hooks that can allow, block, or modify it" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="10" y="34" width="66" height="24" rx="3" fill="#24405e"/><text x="43" y="49" text-anchor="middle" fill="#fff" font-size="6">tool call</text>

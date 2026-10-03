@@ -1,6 +1,6 @@
 ## A2A: agents talking to agents
 
-- MCP connects an agent to **tools**. **A2A (Agent2Agent)** connects an agent to **other agents** — a standard for agents built by different teams or companies to discover each other and delegate work. Announced 2025 (Google, then broadly adopted). **[VERIFY status/governance]**
+- MCP connects an agent to **tools**. **A2A (Agent2Agent)** connects an agent to **other agents** — a standard for agents built by different teams or companies to discover each other and delegate work. Announced 2025 (Google, then broadly adopted).
 - The difference in one line: MCP treats the other side as a *tool you call*; A2A treats it as a *peer you delegate a task to* — an autonomous agent that may take time, ask clarifying questions, and stream progress back.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="MCP connects an agent to tools; A2A connects an agent to peer agents" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">

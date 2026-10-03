@@ -1,6 +1,6 @@
 ## Mixture-of-Agents
 
-- **Mixture-of-Agents (MoA)** (2024) is a concrete, strong Society-of-Mind architecture: layers of agents where each layer's agents read *all* the previous layer's outputs and refine them, producing a final answer better than any single model — even beating larger models by combining smaller ones. **[VERIFY]**
+- **Mixture-of-Agents (MoA)** (2024) is a concrete, strong Society-of-Mind architecture: layers of agents where each layer's agents read *all* the previous layer's outputs and refine them, producing a final answer better than any single model — even beating larger models by combining smaller ones.
 
 <svg viewBox="0 0 360 96" role="img" aria-label="Layered agents where each layer reads all prior outputs and refines, aggregated into a final answer" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <text x="40" y="14" text-anchor="middle" font-size="5.5" fill="#6b6b6b">layer 1</text>

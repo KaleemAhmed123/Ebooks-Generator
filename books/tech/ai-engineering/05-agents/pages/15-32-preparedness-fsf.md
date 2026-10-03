@@ -1,6 +1,6 @@
 ## Preparedness and Frontier Safety Frameworks
 
-- Anthropic's RSP is one of three parallel frameworks; the other frontier labs published their own, broadly convergent in structure. Knowing all three by name is standard for anyone working near frontier models. **[VERIFY current versions]**
+- Anthropic's RSP is one of three parallel frameworks; the other frontier labs published their own, broadly convergent in structure. Knowing all three by name is standard for anyone working near frontier models.
 
 <svg viewBox="0 0 360 82" role="img" aria-label="Three lab frameworks sharing the same structure: evaluate capability, gate on thresholds, add safeguards" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="16" width="108" height="50" rx="4" fill="#e8f4fd" stroke="#24405e"/><text x="64" y="30" text-anchor="middle" font-size="6.5">Anthropic</text><text x="64" y="44" text-anchor="middle" font-size="6">RSP / ASL</text><text x="64" y="56" text-anchor="middle" font-size="5.5" fill="#6b6b6b">safety levels</text>

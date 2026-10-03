@@ -1,6 +1,6 @@
 ## CrewAI Flows
 
-- Crews are great for autonomous collaboration but weak on *precise control*. CrewAI answered with **Flows** — an event-driven layer for deterministic, structured orchestration that can *contain* crews. It is CrewAI's move toward the control end of the spectrum. **[VERIFY current API]**
+- Crews are great for autonomous collaboration but weak on *precise control*. CrewAI answered with **Flows** — an event-driven layer for deterministic, structured orchestration that can *contain* crews. It is CrewAI's move toward the control end of the spectrum.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="A Flow orchestrates deterministic steps, some of which invoke autonomous crews" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="14" y="34" width="60" height="24" rx="3" fill="#24405e"/><text x="44" y="49" text-anchor="middle" fill="#fff" font-size="6">step: fetch</text>

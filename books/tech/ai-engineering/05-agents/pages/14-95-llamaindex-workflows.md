@@ -1,6 +1,6 @@
 ## LlamaIndex: agents and workflows
 
-- LlamaIndex offers both a high-level agent and a low-level **Workflows** system for control — the same convenience-vs-control pairing as the other frameworks. **[VERIFY current API]**
+- LlamaIndex offers both a high-level agent and a low-level **Workflows** system for control — the same convenience-vs-control pairing as the other frameworks.
 
 :::mint
 ```python

@@ -1,6 +1,6 @@
 ## DSPy: programming, not prompting
 
-- **DSPy** (Stanford) is the odd one out. It is not an orchestration framework — it is a way to **program** LLM pipelines and then **compile** them, so the prompts are *generated and optimized automatically* instead of hand-written. The pitch: stop tweaking prompt strings; declare *what* you want and let DSPy figure out the prompt. **[VERIFY current API]**
+- **DSPy** (Stanford) is the odd one out. It is not an orchestration framework — it is a way to **program** LLM pipelines and then **compile** them, so the prompts are *generated and optimized automatically* instead of hand-written. The pitch: stop tweaking prompt strings; declare *what* you want and let DSPy figure out the prompt.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="You declare intent; DSPy's compiler generates and optimizes the actual prompts against a metric" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="10" y="34" width="90" height="26" rx="3" fill="#e8f4fd" stroke="#24405e"/><text x="55" y="47" text-anchor="middle" font-size="6">you declare</text><text x="55" y="56" text-anchor="middle" font-size="5.5" fill="#6b6b6b">"question → answer"</text>

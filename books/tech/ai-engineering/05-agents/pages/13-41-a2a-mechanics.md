@@ -1,6 +1,6 @@
 ## A2A: Agent Cards, tasks, artifacts
 
-- Three concepts run A2A: discovery via an **Agent Card**, work as a **task**, and results as **artifacts**. **[VERIFY current spec]**
+- Three concepts run A2A: discovery via an **Agent Card**, work as a **task**, and results as **artifacts**.
 
 <svg viewBox="0 0 360 104" role="img" aria-label="A client agent reads a remote agent's card, sends a task, and receives artifacts with status updates" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="10" y="40" width="70" height="28" rx="4" fill="#eef6fb" stroke="#24405e"/><text x="45" y="57" text-anchor="middle" font-size="6.5">client agent</text>

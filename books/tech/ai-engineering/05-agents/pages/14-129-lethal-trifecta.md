@@ -1,6 +1,6 @@
 ## The lethal trifecta
 
-- Simon Willison's **"lethal trifecta"** names exactly when prompt injection turns dangerous. An agent is at serious risk only when it combines **all three** of these — remove any one and the attack cannot complete. **[VERIFY]**
+- Simon Willison's **"lethal trifecta"** names exactly when prompt injection turns dangerous. An agent is at serious risk only when it combines **all three** of these — remove any one and the attack cannot complete.
 
 <svg viewBox="0 0 360 118" role="img" aria-label="Three overlapping capabilities — private data access, untrusted content, external communication — whose intersection is the danger zone" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <circle cx="130" cy="46" r="40" fill="#24405e" fill-opacity="0.18" stroke="#24405e"/><circle cx="230" cy="46" r="40" fill="#a03050" fill-opacity="0.18" stroke="#a03050"/><circle cx="180" cy="82" r="40" fill="#1a3a2a" fill-opacity="0.18" stroke="#1a3a2a"/>

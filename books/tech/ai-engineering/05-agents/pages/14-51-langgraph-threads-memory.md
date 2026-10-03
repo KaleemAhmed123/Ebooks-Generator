@@ -1,6 +1,6 @@
 ## LangGraph: threads and short-term memory
 
-- A **thread** is one conversation's persisted history, keyed by `thread_id`. With a checkpointer, threads give an agent **short-term memory for free** — the state (including all `messages`) survives between separate `invoke` calls. **[VERIFY current API]**
+- A **thread** is one conversation's persisted history, keyed by `thread_id`. With a checkpointer, threads give an agent **short-term memory for free** — the state (including all `messages`) survives between separate `invoke` calls.
 
 :::mint
 ```python

@@ -1,6 +1,6 @@
 ## Sleep-time compute and consolidation
 
-- Humans consolidate memory during sleep — replaying the day, moving what matters into long-term storage. Agents can do the same: **sleep-time compute** is background processing *between* interactions that reorganizes memory while the user is away. **[VERIFY term/status]**
+- Humans consolidate memory during sleep — replaying the day, moving what matters into long-term storage. Agents can do the same: **sleep-time compute** is background processing *between* interactions that reorganizes memory while the user is away.
 
 <svg viewBox="0 0 360 96" role="img" aria-label="Between sessions, a background process summarizes and reorganizes raw memory into clean facts" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="14" y="34" width="80" height="30" rx="3" fill="#f4f4f4" stroke="#888"/><text x="54" y="46" text-anchor="middle" font-size="6">raw session</text><text x="54" y="57" text-anchor="middle" font-size="5.5" fill="#6b6b6b">messy transcript</text>

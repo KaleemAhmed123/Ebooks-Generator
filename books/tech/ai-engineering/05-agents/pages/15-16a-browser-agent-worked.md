@@ -1,6 +1,6 @@
 ## Browser agent: a worked session
 
-- Trace a browser agent (15-15) booking a restaurant, showing where reliability techniques (14-110) actually fire. Hybrid perception (16... set-of-marks, 14-110). **[VERIFY — illustrative]**
+- Trace a browser agent (15-15) booking a restaurant, showing where reliability techniques (14-110) actually fire. Hybrid perception (16... set-of-marks, 14-110).
 
 :::mint
 ```text

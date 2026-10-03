@@ -1,6 +1,6 @@
 ## Roots and long-running tasks
 
-- Two more capabilities round out MCP for real work: **roots** (scoping) and support for **long-running / async tasks**. **[VERIFY current spec support]**
+- Two more capabilities round out MCP for real work: **roots** (scoping) and support for **long-running / async tasks**.
 
 ### Roots — telling a server where it may operate
 - A **root** is a URI boundary the *client* declares to the server: "you may operate within `file:///home/me/project` and nowhere else." The server queries `roots/list` and confines its filesystem or resource access to those roots.
@@ -15,7 +15,7 @@
 </svg>
 
 ### Long-running tasks
-- Some tools take minutes — a build, a deploy, a large query, a deep research run. A synchronous `tools/call` that blocks for ten minutes is fragile (timeouts, dropped connections). MCP addresses this with **progress notifications** (the server streams `notifications/progress` while working) and evolving support for **async task** patterns where a call returns a handle the client polls or subscribes to. **[VERIFY — this area is actively changing]**
+- Some tools take minutes — a build, a deploy, a large query, a deep research run. A synchronous `tools/call` that blocks for ten minutes is fragile (timeouts, dropped connections). MCP addresses this with **progress notifications** (the server streams `notifications/progress` while working) and evolving support for **async task** patterns where a call returns a handle the client polls or subscribes to.
 - Streamable HTTP's SSE upgrade (13-29) is what carries these progress streams for remote servers.
 
 :::warn

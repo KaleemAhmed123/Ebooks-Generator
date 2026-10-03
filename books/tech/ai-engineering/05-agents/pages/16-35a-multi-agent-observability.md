@@ -1,6 +1,6 @@
 ## Multi-agent observability
 
-- You cannot debug a multi-agent failure (16-31) you cannot *see*. Observability for multi-agent systems extends single-agent tracing (14-113) to capture the *interactions* — who said what to whom, and how the collective reached its result. **[VERIFY]**
+- You cannot debug a multi-agent failure (16-31) you cannot *see*. Observability for multi-agent systems extends single-agent tracing (14-113) to capture the *interactions* — who said what to whom, and how the collective reached its result.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="A multi-agent trace showing each agent's spans plus the messages between them" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6" fill="#1a1a1a">
   <rect x="20" y="12" width="320" height="14" rx="2" fill="#a03050"/><text x="26" y="22" fill="#fff">system run: research query (18.2s)</text>

@@ -1,6 +1,6 @@
 ## Tool poisoning
 
-- **Tool poisoning** hides malicious instructions inside a tool's *description* — text the model reads and treats as authoritative. The tool looks benign; its description tells the model to do something harmful, and the model, trained to follow instructions, complies. **[VERIFY]**
+- **Tool poisoning** hides malicious instructions inside a tool's *description* — text the model reads and treats as authoritative. The tool looks benign; its description tells the model to do something harmful, and the model, trained to follow instructions, complies.
 
 :::mint
 ```text

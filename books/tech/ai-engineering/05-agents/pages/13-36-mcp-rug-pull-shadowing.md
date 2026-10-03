@@ -1,6 +1,6 @@
 ## Rug pulls and tool shadowing
 
-- Two attacks that exploit *trust over time* and *name collisions*. **[VERIFY]**
+- Two attacks that exploit *trust over time* and *name collisions*.
 
 ### Rug pull
 - You install a server, review its tools, approve them. Later the server **silently changes** a tool's behavior or description — the calculator you trusted now exfiltrates data. Because approval happened once, the change goes unnoticed. It is a supply-chain bait-and-switch: benign at review, malicious after trust.

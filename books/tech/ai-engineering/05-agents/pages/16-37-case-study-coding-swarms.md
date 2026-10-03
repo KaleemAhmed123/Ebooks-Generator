@@ -1,6 +1,6 @@
 ## Case study: coding swarms and beyond
 
-- Beyond research, three 2026 multi-agent applications show the pattern's range — and its honest limits. **[VERIFY specifics]**
+- Beyond research, three 2026 multi-agent applications show the pattern's range — and its honest limits.
 
 <svg viewBox="0 0 360 84" role="img" aria-label="Three multi-agent applications: coding teams, agent simulations, and competitive game AI" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="16" width="108" height="52" rx="4" fill="#e8f4fd" stroke="#24405e"/><text x="64" y="32" text-anchor="middle" font-size="6.5">coding teams</text><text x="64" y="46" text-anchor="middle" font-size="5.5" fill="#6b6b6b">planner·coder·</text><text x="64" y="56" text-anchor="middle" font-size="5.5" fill="#6b6b6b">tester·reviewer</text>

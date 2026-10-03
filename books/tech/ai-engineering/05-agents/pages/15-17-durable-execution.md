@@ -1,6 +1,6 @@
 ## Durable execution
 
-- A long-horizon agent (15-03) runs for minutes to hours across many steps and external calls. Any of a thousand things can interrupt it — a crash, a timeout, a deploy, a network blip. **Durable execution** is the discipline of making an agent's run *survive* interruptions: pause, and resume from exactly where it stopped, not from the beginning. **[VERIFY]**
+- A long-horizon agent (15-03) runs for minutes to hours across many steps and external calls. Any of a thousand things can interrupt it — a crash, a timeout, a deploy, a network blip. **Durable execution** is the discipline of making an agent's run *survive* interruptions: pause, and resume from exactly where it stopped, not from the beginning.
 
 <svg viewBox="0 0 360 90" role="img" aria-label="Without durability a crash restarts the whole run; with durability it resumes from the last saved step" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <text x="90" y="12" text-anchor="middle" font-size="6.5" fill="#a03050">fragile</text>

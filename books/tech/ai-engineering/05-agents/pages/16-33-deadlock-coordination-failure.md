@@ -1,6 +1,6 @@
 ## Deadlock and coordination failure
 
-- The classic distributed-systems failures appear in multi-agent LLM systems too: agents that *wait on each other forever* (deadlock), *never settle* (livelock), or *never stop* (non-termination). These are failures of *flow*, not of any agent's answer. **[VERIFY]**
+- The classic distributed-systems failures appear in multi-agent LLM systems too: agents that *wait on each other forever* (deadlock), *never settle* (livelock), or *never stop* (non-termination). These are failures of *flow*, not of any agent's answer.
 
 - **Deadlock** — agent A waits for agent B to do something, while B waits for A — neither proceeds. In LLM systems this shows up as agents each expecting the other to act ("I'll wait for the researcher's input" / "I'll wait for the writer's request"), and the whole system hangs.
 - **Livelock / oscillation** — agents keep *acting* but make no progress — two agents politely deferring to each other forever ("you decide" / "no, you decide"), or handing a task back and forth (the network-topology loop, 16-09).

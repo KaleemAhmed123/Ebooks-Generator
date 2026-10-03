@@ -1,6 +1,6 @@
 ## Multi-agent debate
 
-- **Debate** is a structured Society-of-Mind technique: multiple agents argue *different positions* on a question over several rounds, then a judge (or a vote) decides. The adversarial structure forces flaws into the open, improving accuracy and — importantly — *oversight*. **[VERIFY]**
+- **Debate** is a structured Society-of-Mind technique: multiple agents argue *different positions* on a question over several rounds, then a judge (or a vote) decides. The adversarial structure forces flaws into the open, improving accuracy and — importantly — *oversight*.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="Two agents debate opposing positions over rounds; a judge reads the debate and decides" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="14" y="30" width="80" height="26" rx="4" fill="#24405e"/><text x="54" y="46" text-anchor="middle" fill="#fff" font-size="6.5">agent A: pro</text>

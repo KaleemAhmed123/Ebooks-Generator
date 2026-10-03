@@ -1,6 +1,6 @@
 ## Self-improvement: the idea
 
-- The most striking frontier of autonomy: agents that **improve themselves** — getting better at a task, or at improving, without a human writing the improvement. It is the oldest dream and deepest fear of AI ("recursive self-improvement"), and as of 2026 it has concrete, bounded, working instances worth understanding precisely. **[VERIFY frontier claims]**
+- The most striking frontier of autonomy: agents that **improve themselves** — getting better at a task, or at improving, without a human writing the improvement. It is the oldest dream and deepest fear of AI ("recursive self-improvement"), and as of 2026 it has concrete, bounded, working instances worth understanding precisely.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="A self-improvement loop: the system generates an improvement, evaluates it, and keeps it if better" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="30" y="34" width="76" height="24" rx="3" fill="#24405e"/><text x="68" y="49" text-anchor="middle" fill="#fff" font-size="6">propose change</text>

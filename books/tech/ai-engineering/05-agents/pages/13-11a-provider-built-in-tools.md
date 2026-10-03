@@ -1,6 +1,6 @@
 ## Provider built-in tools
 
-- Beyond the tools *you* define, model providers increasingly ship **built-in (server-side) tools** the model can use directly — web search, code execution, file handling — run by the provider, not your code. Knowing they exist saves you building what you can just enable. **[VERIFY per provider]**
+- Beyond the tools *you* define, model providers increasingly ship **built-in (server-side) tools** the model can use directly — web search, code execution, file handling — run by the provider, not your code. Knowing they exist saves you building what you can just enable.
 
 <svg viewBox="0 0 360 84" role="img" aria-label="Provider-hosted tools run on the provider side; custom tools run in your code" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="16" width="165" height="56" rx="4" fill="#eef6fb" stroke="#24405e"/><text x="92" y="30" text-anchor="middle" font-size="6.5">provider-hosted</text><text x="92" y="44" text-anchor="middle" font-size="6">web search · code · files</text><text x="92" y="55" text-anchor="middle" font-size="5.5" fill="#6b6b6b">runs on their side, you enable it</text><text x="92" y="66" text-anchor="middle" font-size="5.5" fill="#6b6b6b">no infra to build</text>

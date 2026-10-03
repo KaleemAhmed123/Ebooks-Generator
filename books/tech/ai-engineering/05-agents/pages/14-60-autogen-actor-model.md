@@ -1,6 +1,6 @@
 ## AutoGen: the actor model
 
-- **AutoGen** (Microsoft) models a system as **conversing agents**. Where LangGraph draws a graph of steps, AutoGen sets up autonomous agents that **talk to each other** to solve a task — the abstraction is a conversation, not a control-flow diagram. **[VERIFY version — v0.4+ rewrite]**
+- **AutoGen** (Microsoft) models a system as **conversing agents**. Where LangGraph draws a graph of steps, AutoGen sets up autonomous agents that **talk to each other** to solve a task — the abstraction is a conversation, not a control-flow diagram.
 - Its foundation is the **actor model**: independent units (agents) that hold their own state and communicate *only* by **asynchronous messages** — no shared memory. Each agent processes messages and sends messages; the system's behavior emerges from the exchange.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="Independent agents exchange asynchronous messages with no shared memory" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
@@ -13,7 +13,7 @@
 </svg>
 
 - **Why the actor model fits multi-agent:** agents are naturally independent — each has its own role, tools, and context. Message-passing (no shared state) means agents can run concurrently, on different machines, and be added or removed without rewiring a central graph. It is the concurrency model built for many independent, communicating units.
-- **The v0.4 rewrite** (2024) rebuilt AutoGen around this async, event-driven actor core for scalability and robustness, layering an easier **AgentChat** API on top for common patterns (next pages). **[VERIFY]**
+- **The v0.4 rewrite** (2024) rebuilt AutoGen around this async, event-driven actor core for scalability and robustness, layering an easier **AgentChat** API on top for common patterns (next pages).
 
 :::note
 The framing contrast to hold: **LangGraph is control-flow-first** (you design the graph of steps), **AutoGen is conversation-first** (you design agents and let them talk). Neither is universally better — graph-first gives tight control and reliability; conversation-first gives flexible, emergent multi-agent behavior that is faster to set up for research and exploration. The best choice depends on whether you want to *engineer* the flow or *cultivate* it.

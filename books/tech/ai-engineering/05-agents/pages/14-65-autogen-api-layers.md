@@ -1,6 +1,6 @@
 ## AutoGen: the API layers
 
-- After its v0.4 rewrite, AutoGen is layered — a low-level core for control, a high-level API for speed, and a no-code studio for exploration. Knowing which layer you are in avoids confusion when reading docs. **[VERIFY layer names/status]**
+- After its v0.4 rewrite, AutoGen is layered — a low-level core for control, a high-level API for speed, and a no-code studio for exploration. Knowing which layer you are in avoids confusion when reading docs.
 
 <svg viewBox="0 0 360 100" role="img" aria-label="Three AutoGen layers: Core actor runtime, AgentChat high-level API, and Studio no-code" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="40" y="14" width="280" height="22" rx="3" fill="#eaf6ea" stroke="#1a3a2a"/><text x="180" y="28" text-anchor="middle" font-size="6.5">Studio — no-code, drag-and-drop prototyping</text>

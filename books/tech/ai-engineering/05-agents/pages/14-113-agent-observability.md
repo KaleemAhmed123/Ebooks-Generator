@@ -1,6 +1,6 @@
 ## Agent observability
 
-- You cannot improve an agent you cannot see. **Observability** — capturing every model call, tool call, and decision of every run — is how agents move from "works in the demo" to "reliable in production." The dedicated tools are **LangSmith** and **Langfuse**. **[VERIFY current products]**
+- You cannot improve an agent you cannot see. **Observability** — capturing every model call, tool call, and decision of every run — is how agents move from "works in the demo" to "reliable in production." The dedicated tools are **LangSmith** and **Langfuse**.
 
 <svg viewBox="0 0 360 88" role="img" aria-label="An observability platform ingests traces from agent runs and shows debugging, cost, and quality views" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="14" y="34" width="70" height="24" rx="3" fill="#e8f4fd" stroke="#24405e"/><text x="49" y="46" text-anchor="middle" font-size="6">agent runs</text><text x="49" y="55" text-anchor="middle" font-size="5.5" fill="#6b6b6b">emit traces</text>
@@ -13,7 +13,7 @@
 </svg>
 
 - **What they do:** ingest **traces** (13-43) from your agent — each run a tree of spans for model and tool calls — and give you a UI to inspect them, plus dashboards for cost, latency, and quality, and hooks to run evaluations. It is the tracing of 13-44 as a product, tuned for LLM apps.
-- **LangSmith** (LangChain) integrates tightly with LangChain/LangGraph but works with any framework; **Langfuse** is open-source and framework-agnostic. Both speak OpenTelemetry-style tracing (13-43) underneath, so you instrument once and view in either. Choose on open-source preference, existing stack, and features. **[VERIFY]**
+- **LangSmith** (LangChain) integrates tightly with LangChain/LangGraph but works with any framework; **Langfuse** is open-source and framework-agnostic. Both speak OpenTelemetry-style tracing (13-43) underneath, so you instrument once and view in either. Choose on open-source preference, existing stack, and features.
 - **Why dedicated tools over generic logging:** LLM traces have special structure — prompts, completions, token counts, tool calls, nested agent steps — that these tools understand and render natively (13-44). Generic logs bury the story; a purpose-built trace view surfaces it.
 
 :::note

@@ -1,6 +1,6 @@
 ## CrewAI: a worked crew
 
-- A research-and-write crew end to end, showing how tasks chain and outputs flow. **[VERIFY current API]**
+- A research-and-write crew end to end, showing how tasks chain and outputs flow.
 
 :::mint
 ```python

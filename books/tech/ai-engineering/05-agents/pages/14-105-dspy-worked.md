@@ -1,6 +1,6 @@
 ## DSPy: a worked program
 
-- A small multi-step DSPy program — retrieve, then reason — compiled against a metric. This shows the full shape: declare, compose, compile. **[VERIFY current API]**
+- A small multi-step DSPy program — retrieve, then reason — compiled against a metric. This shows the full shape: declare, compose, compile.
 
 :::mint
 ```python

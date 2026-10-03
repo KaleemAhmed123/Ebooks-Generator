@@ -1,6 +1,6 @@
 ## LlamaIndex: indexes and query engines
 
-- The two core objects are the **index** (your data, made searchable) and the **query engine** (the thing that answers questions over it). Together they are RAG in a few lines. **[VERIFY current API]**
+- The two core objects are the **index** (your data, made searchable) and the **query engine** (the thing that answers questions over it). Together they are RAG in a few lines.
 
 :::mint
 ```python

@@ -1,6 +1,6 @@
 ## Swarm intelligence
 
-- **Swarm intelligence** is collective problem-solving by many *simple* agents following *local* rules, with no central control — inspired by ants, bees, and bird flocks. It solves hard optimization problems that no single simple agent could, and its algorithms are a distinct branch of multi-agent systems worth knowing. **[VERIFY]**
+- **Swarm intelligence** is collective problem-solving by many *simple* agents following *local* rules, with no central control — inspired by ants, bees, and bird flocks. It solves hard optimization problems that no single simple agent could, and its algorithms are a distinct branch of multi-agent systems worth knowing.
 
 <svg viewBox="0 0 360 90" role="img" aria-label="Simple agents following local rules produce complex global behavior like flocking or pathfinding" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <g fill="#24405e"><path d="M40 40 l8 4 l-8 4 z"/><path d="M60 30 l8 4 l-8 4 z"/><path d="M55 55 l8 4 l-8 4 z"/><path d="M80 44 l8 4 l-8 4 z"/><path d="M72 60 l8 4 l-8 4 z"/><path d="M95 34 l8 4 l-8 4 z"/></g>

@@ -1,6 +1,6 @@
 ## Why frontier labs self-govern
 
-- Everything so far is *engineering* safety — what *you* build around *your* agent. This cluster is *governance* — how the labs building the frontier models manage the risk that a *sufficiently capable* model is dangerous regardless of the app around it. It matters to an AI engineer because these frameworks shape what models you can use, when, and under what constraints. **[VERIFY]**
+- Everything so far is *engineering* safety — what *you* build around *your* agent. This cluster is *governance* — how the labs building the frontier models manage the risk that a *sufficiently capable* model is dangerous regardless of the app around it. It matters to an AI engineer because these frameworks shape what models you can use, when, and under what constraints.
 
 <svg viewBox="0 0 360 88" role="img" aria-label="As model capability rises, potential for misuse rises, so labs tie safeguards to capability thresholds" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <line x1="30" y1="70" x2="345" y2="70" stroke="#888"/><line x1="30" y1="12" x2="30" y2="70" stroke="#888"/>

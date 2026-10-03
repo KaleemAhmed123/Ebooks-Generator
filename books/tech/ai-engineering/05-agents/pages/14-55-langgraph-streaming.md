@@ -1,6 +1,6 @@
 ## LangGraph: streaming
 
-- A long agent run is silent by default — the user waits with no feedback while it thinks and calls tools. **Streaming** surfaces the run as it happens. LangGraph streams at several granularities. **[VERIFY current API — `stream_mode`]**
+- A long agent run is silent by default — the user waits with no feedback while it thinks and calls tools. **Streaming** surfaces the run as it happens. LangGraph streams at several granularities.
 
 :::mint
 ```python

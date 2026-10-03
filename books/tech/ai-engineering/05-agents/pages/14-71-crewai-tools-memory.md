@@ -1,6 +1,6 @@
 ## CrewAI: tools and memory
 
-- CrewAI agents use tools and can be given memory, so a crew is not just talk — it acts and remembers across a run. **[VERIFY current API]**
+- CrewAI agents use tools and can be given memory, so a crew is not just talk — it acts and remembers across a run.
 
 - **Tools** attach per-agent. You give the researcher a `search_tool`, the analyst a `code_tool`. CrewAI ships a library of prebuilt tools (web search, file I/O, scraping) and accepts custom ones — a Python function with a description, the schema-design rules of 13-12 unchanged. An agent only sees the tools you gave *it*, which naturally scopes tools per role (13-15).
 

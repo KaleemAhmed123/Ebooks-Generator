@@ -1,6 +1,6 @@
 ## Red-teaming your agent
 
-- External red-teaming (15-35) is a governance practice at the frontier; it is also a practice *you* apply to *your* agent before an attacker does. Before shipping an autonomous agent, actively try to break it. Here is the checklist. **[VERIFY]**
+- External red-teaming (15-35) is a governance practice at the frontier; it is also a practice *you* apply to *your* agent before an attacker does. Before shipping an autonomous agent, actively try to break it. Here is the checklist.
 
 <svg viewBox="0 0 360 82" role="img" aria-label="Red-team attack surfaces: injection, over-action, guardrail bypass, resource abuse, and data leaks" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="16" width="108" height="24" rx="3" fill="#fdeef2" stroke="#a03050"/><text x="64" y="31" text-anchor="middle">prompt injection</text>

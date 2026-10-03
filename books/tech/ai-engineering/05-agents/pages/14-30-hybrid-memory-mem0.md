@@ -1,6 +1,6 @@
 ## Hybrid memory and mem0
 
-- No single memory type wins; production systems **combine** them. **mem0** is a popular open memory layer that packages this hybrid approach behind a simple API — `add()` a memory, `search()` for relevant ones — while managing extraction, storage, and retrieval underneath. **[VERIFY API/status]**
+- No single memory type wins; production systems **combine** them. **mem0** is a popular open memory layer that packages this hybrid approach behind a simple API — `add()` a memory, `search()` for relevant ones — while managing extraction, storage, and retrieval underneath.
 
 <svg viewBox="0 0 360 98" role="img" aria-label="A memory layer extracts facts from messages, stores them across vector and graph backends, and retrieves the relevant ones" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="12" y="38" width="64" height="22" rx="3" fill="#e8f4fd" stroke="#24405e"/><text x="44" y="52" text-anchor="middle" font-size="6">messages</text>

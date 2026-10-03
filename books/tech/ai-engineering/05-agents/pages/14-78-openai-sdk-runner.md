@@ -1,6 +1,6 @@
 ## OpenAI SDK: the Runner loop
 
-- You do not write the agent loop — the **Runner** does. You hand it an agent and an input; it runs the think→act→observe cycle (14-03) until the agent produces a final output. **[VERIFY current API]**
+- You do not write the agent loop — the **Runner** does. You hand it an agent and an input; it runs the think→act→observe cycle (14-03) until the agent produces a final output.
 
 :::mint
 ```python

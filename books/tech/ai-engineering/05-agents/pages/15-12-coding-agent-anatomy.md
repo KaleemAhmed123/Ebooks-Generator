@@ -1,6 +1,6 @@
 ## Anatomy of a coding agent
 
-- Under the form factors, all coding agents share the same organs — the Module 14 workbench, specialized for code. Knowing the anatomy explains why some agents are reliable and others flail. **[VERIFY]**
+- Under the form factors, all coding agents share the same organs — the Module 14 workbench, specialized for code. Knowing the anatomy explains why some agents are reliable and others flail.
 
 <svg viewBox="0 0 360 100" role="img" aria-label="Coding agent components: navigation, edit, execution/tests, context management, and review" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="16" width="104" height="24" rx="3" fill="#e8f4fd" stroke="#24405e"/><text x="62" y="27" text-anchor="middle">navigate: grep/glob</text><text x="62" y="36" text-anchor="middle" font-size="5.5" fill="#6b6b6b">find the code</text>

@@ -1,6 +1,6 @@
 ## Workflow engines (Temporal)
 
-- Durable execution and idempotency are hard to build correctly, so you often do not — you use a **workflow engine** that provides them as infrastructure. **Temporal** is the leading one; agent frameworks increasingly integrate with or resemble it. **[VERIFY]**
+- Durable execution and idempotency are hard to build correctly, so you often do not — you use a **workflow engine** that provides them as infrastructure. **Temporal** is the leading one; agent frameworks increasingly integrate with or resemble it.
 
 <svg viewBox="0 0 360 88" role="img" aria-label="A workflow engine persists every step's result and replays deterministically to resume after failure" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="120" y="10" width="120" height="20" rx="4" fill="#24405e"/><text x="180" y="24" text-anchor="middle" fill="#fff">workflow engine</text>

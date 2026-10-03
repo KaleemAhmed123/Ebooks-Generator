@@ -1,6 +1,6 @@
 ## Virtual context and MemGPT
 
-- **MemGPT** (Packer et al., 2023; now the **Letta** project) gave agent memory its most influential idea: treat the context window like a computer's **RAM** and external storage like its **disk**, and let the agent **page information between them** — "virtual context," borrowed straight from operating-system virtual memory. **[VERIFY project status]**
+- **MemGPT** (Packer et al., 2023; now the **Letta** project) gave agent memory its most influential idea: treat the context window like a computer's **RAM** and external storage like its **disk**, and let the agent **page information between them** — "virtual context," borrowed straight from operating-system virtual memory.
 
 <svg viewBox="0 0 360 100" role="img" aria-label="The agent pages memory between a small in-context main memory and a large external store" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="20" y="20" width="120" height="60" rx="4" fill="#eef6fb" stroke="#24405e"/><text x="80" y="34" text-anchor="middle" font-size="6.5">main context (RAM)</text><text x="80" y="48" text-anchor="middle" font-size="5.5" fill="#6b6b6b">small, in the prompt</text><text x="80" y="62" text-anchor="middle" font-size="5.5" fill="#6b6b6b">system + recent + core facts</text>

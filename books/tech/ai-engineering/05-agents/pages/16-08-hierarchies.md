@@ -1,6 +1,6 @@
 ## Hierarchies
 
-- One supervisor over many workers hits a limit: a single coordinator cannot manage dozens of agents or a deeply nested task. **Hierarchies** solve this by nesting supervisors — supervisors of supervisors — so coordination scales like a company org chart. **[VERIFY]**
+- One supervisor over many workers hits a limit: a single coordinator cannot manage dozens of agents or a deeply nested task. **Hierarchies** solve this by nesting supervisors — supervisors of supervisors — so coordination scales like a company org chart.
 
 <svg viewBox="0 0 360 100" role="img" aria-label="A top supervisor manages mid-level supervisors, each managing their own worker teams" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="150" y="10" width="60" height="16" rx="3" fill="#a03050"/><text x="180" y="21" text-anchor="middle" fill="#fff" font-size="6">CEO agent</text>

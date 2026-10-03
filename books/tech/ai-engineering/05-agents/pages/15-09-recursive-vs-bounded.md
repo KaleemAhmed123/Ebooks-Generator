@@ -1,6 +1,6 @@
 ## Recursive vs bounded self-improvement
 
-- The pivotal distinction — for both capability and safety — is whether self-improvement is **bounded** (improves at a fixed task, within limits) or **recursive** (improves its *ability to improve*, potentially without limit). Every real system today is bounded; recursive is the theorized fast-takeoff scenario. **[VERIFY]**
+- The pivotal distinction — for both capability and safety — is whether self-improvement is **bounded** (improves at a fixed task, within limits) or **recursive** (improves its *ability to improve*, potentially without limit). Every real system today is bounded; recursive is the theorized fast-takeoff scenario.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="Bounded self-improvement plateaus; recursive self-improvement accelerates without limit" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <line x1="30" y1="76" x2="345" y2="76" stroke="#888"/><line x1="30" y1="10" x2="30" y2="76" stroke="#888"/>

@@ -1,6 +1,6 @@
 ## AutoGen: tools and code execution
 
-- AutoGen agents use tools like any agent (13-05), but its signature feature is **code execution**: an agent writes code, and a designated executor *runs* it — then the agent reads the output and continues. This makes AutoGen strong for data analysis, computation, and engineering tasks. **[VERIFY current API]**
+- AutoGen agents use tools like any agent (13-05), but its signature feature is **code execution**: an agent writes code, and a designated executor *runs* it — then the agent reads the output and continues. This makes AutoGen strong for data analysis, computation, and engineering tasks.
 
 <svg viewBox="0 0 360 88" role="img" aria-label="A coder agent writes code, an executor runs it in a sandbox, and the result feeds back" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="12" y="32" width="70" height="24" rx="3" fill="#24405e"/><text x="47" y="47" text-anchor="middle" fill="#fff" font-size="6">writes code</text>

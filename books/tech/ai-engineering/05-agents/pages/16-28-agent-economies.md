@@ -1,6 +1,6 @@
 ## Agent economies
 
-- When many agents with resources and goals interact, an **economy** emerges — agents that hold budgets, pay each other for services, and allocate scarce resources through market mechanisms. It is a frontier vision of multi-agent systems and a live research area as agents begin to transact. **[VERIFY]**
+- When many agents with resources and goals interact, an **economy** emerges — agents that hold budgets, pay each other for services, and allocate scarce resources through market mechanisms. It is a frontier vision of multi-agent systems and a live research area as agents begin to transact.
 
 <svg viewBox="0 0 360 88" role="img" aria-label="Agents with budgets pay each other for services, allocating resources through a market" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <circle cx="70" cy="44" r="18" fill="#24405e"/><text x="70" y="41" text-anchor="middle" fill="#fff" font-size="5.5">agent A</text><text x="70" y="51" text-anchor="middle" fill="#cdd" font-size="5">budget $</text>

@@ -1,6 +1,6 @@
 ## Claude Agent SDK: a worked agent
 
-- The harness in use: a small agent that fixes a failing test in a repo. The code is illustrative of the SDK's query-and-options shape. **[VERIFY current API]**
+- The harness in use: a small agent that fixes a failing test in a repo. The code is illustrative of the SDK's query-and-options shape.
 
 :::mint
 ```python

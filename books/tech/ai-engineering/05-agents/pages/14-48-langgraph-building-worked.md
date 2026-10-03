@@ -1,6 +1,6 @@
 ## LangGraph: building a graph (worked)
 
-- Everything so far, assembled into a complete, runnable ReAct agent. This is the canonical LangGraph program. **[VERIFY current API]**
+- Everything so far, assembled into a complete, runnable ReAct agent. This is the canonical LangGraph program.
 
 :::mint
 ```python

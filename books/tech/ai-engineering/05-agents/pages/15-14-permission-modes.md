@@ -1,6 +1,6 @@
 ## Permission modes
 
-- **Permission modes** are the concrete control that sets an agent's place on the autonomy ladder (15-02): they decide which actions run freely, which need approval, and which are forbidden. Choosing them is how you tune autonomy per deployment. **[VERIFY]**
+- **Permission modes** are the concrete control that sets an agent's place on the autonomy ladder (15-02): they decide which actions run freely, which need approval, and which are forbidden. Choosing them is how you tune autonomy per deployment.
 
 <svg viewBox="0 0 360 96" role="img" aria-label="A permission spectrum from ask-everything to full-auto, with allow/ask/deny per action class" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="18" width="108" height="22" rx="3" fill="#eef6fb" stroke="#24405e"/><text x="64" y="32" text-anchor="middle">ask before everything</text>

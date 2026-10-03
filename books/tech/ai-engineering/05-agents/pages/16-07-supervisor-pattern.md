@@ -1,6 +1,6 @@
 ## The supervisor pattern
 
-- The **supervisor** (or orchestrator) pattern is the workhorse of production multi-agent systems: one coordinating agent directs a team of worker agents, delegating sub-tasks and synthesizing their results. It is orchestrator-workers (14-39) as a standing architecture. **[VERIFY]**
+- The **supervisor** (or orchestrator) pattern is the workhorse of production multi-agent systems: one coordinating agent directs a team of worker agents, delegating sub-tasks and synthesizing their results. It is orchestrator-workers (14-39) as a standing architecture.
 
 <svg viewBox="0 0 360 96" role="img" aria-label="A supervisor delegates to specialized workers and synthesizes their outputs into a final answer" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="140" y="10" width="80" height="22" rx="4" fill="#a03050"/><text x="180" y="24" text-anchor="middle" fill="#fff" font-size="6.5">supervisor</text>

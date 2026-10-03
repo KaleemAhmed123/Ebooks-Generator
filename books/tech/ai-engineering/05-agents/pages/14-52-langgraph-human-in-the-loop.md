@@ -1,6 +1,6 @@
 ## LangGraph: human-in-the-loop
 
-- Some actions need a human's approval before they run — sending an email, spending money, deleting data. LangGraph's **interrupt** pauses the graph, hands control back to your app for a human decision, and resumes exactly where it stopped. This is why checkpointers matter. **[VERIFY current API — `interrupt`/`Command`]**
+- Some actions need a human's approval before they run — sending an email, spending money, deleting data. LangGraph's **interrupt** pauses the graph, hands control back to your app for a human decision, and resumes exactly where it stopped. This is why checkpointers matter.
 
 :::mint
 ```python

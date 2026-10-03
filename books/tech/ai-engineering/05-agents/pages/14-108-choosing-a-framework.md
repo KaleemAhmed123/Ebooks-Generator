@@ -16,7 +16,7 @@
   - **Start without a framework.** The loop is ten lines (14-03). If a plain loop or a provider SDK does the job, you need nothing more. Frameworks are for what the loop lacks.
   - **Choose by center of gravity**, per the table. Control → LangGraph; multi-agent → AutoGen/CrewAI; data → LlamaIndex; computer → Claude SDK; optimization → DSPy.
   - **They compose.** Real systems mix — LangGraph orchestrating, LlamaIndex retrieving in a node, DSPy-optimized prompts inside. Do not force one framework to do everything.
-  - **Beware lock-in and churn.** These frameworks change fast (hence the `[VERIFY]` tags). Keep your *business logic* separable from the framework so you can swap it.
+  - **Beware lock-in and churn.** These frameworks change fast (hence the `` tags). Keep your *business logic* separable from the framework so you can swap it.
 
 :::interview
 "How do you choose an agent framework?"

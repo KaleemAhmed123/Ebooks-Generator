@@ -1,6 +1,6 @@
 ## Responsible Scaling Policies (RSP / ASL)
 
-- Anthropic's **Responsible Scaling Policy (RSP)** introduced the framework the others echo: **AI Safety Levels (ASL)**, modeled on the biosafety levels (BSL) used for pathogens. Each level pairs a *capability* range with the *safety and security measures* required to develop and deploy models in it. **[VERIFY current ASL definitions]**
+- Anthropic's **Responsible Scaling Policy (RSP)** introduced the framework the others echo: **AI Safety Levels (ASL)**, modeled on the biosafety levels (BSL) used for pathogens. Each level pairs a *capability* range with the *safety and security measures* required to develop and deploy models in it.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="Ascending AI Safety Levels, each requiring stronger safeguards as capability and risk rise" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="20" y="14" width="300" height="16" rx="2" fill="#eef6fb" stroke="#24405e"/><text x="28" y="25" font-size="6">ASL-2 — present models: basic safeguards</text>

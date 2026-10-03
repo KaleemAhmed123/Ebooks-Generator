@@ -1,6 +1,6 @@
 ## Self-play and emergent communication
 
-- Two striking MARL phenomena (16-24) worth knowing, because they show what *learned* multi-agent systems can do that orchestrated LLM systems cannot: agents that **train against copies of themselves** and agents that **invent their own communication.** **[VERIFY]**
+- Two striking MARL phenomena (16-24) worth knowing, because they show what *learned* multi-agent systems can do that orchestrated LLM systems cannot: agents that **train against copies of themselves** and agents that **invent their own communication.**
 
 <svg viewBox="0 0 360 84" role="img" aria-label="Self-play: an agent improves by playing copies of itself; emergent communication: agents invent signals" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <text x="90" y="12" text-anchor="middle" font-size="6.5" fill="#24405e">self-play</text>

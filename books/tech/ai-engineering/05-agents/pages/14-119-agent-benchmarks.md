@@ -1,6 +1,6 @@
 ## Agent benchmarks
 
-- Your own eval set (14-116) measures *your* agent on *your* task. **Benchmarks** are shared, standardized tests that measure agents on common tasks — how the field compares models and tracks progress. Knowing the major ones tells you what "state of the art" means and what to expect. **[VERIFY current leaderboards]**
+- Your own eval set (14-116) measures *your* agent on *your* task. **Benchmarks** are shared, standardized tests that measure agents on common tasks — how the field compares models and tracks progress. Knowing the major ones tells you what "state of the art" means and what to expect.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="Four agent benchmarks by domain: coding, general assistant, web, and computer use" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="16" width="82" height="60" rx="4" fill="#e8f4fd" stroke="#24405e"/><text x="51" y="32" text-anchor="middle" font-size="6.5">SWE-bench</text><text x="51" y="46" text-anchor="middle" font-size="5.5" fill="#6b6b6b">fix real</text><text x="51" y="55" text-anchor="middle" font-size="5.5" fill="#6b6b6b">GitHub issues</text><text x="51" y="68" text-anchor="middle" font-size="5.5">coding</text>

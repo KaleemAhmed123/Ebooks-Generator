@@ -1,6 +1,6 @@
 ## Group chat and speaker selection
 
-- When several agents share one conversation (the AutoGen team, 14-62), the defining problem is **who speaks next.** Speaker selection is the control mechanism of group-chat multi-agent systems — get it wrong and the chat loops, stalls, or descends into noise. **[VERIFY]**
+- When several agents share one conversation (the AutoGen team, 14-62), the defining problem is **who speaks next.** Speaker selection is the control mechanism of group-chat multi-agent systems — get it wrong and the chat loops, stalls, or descends into noise.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="Speaker-selection strategies: round-robin, model-picks-next, and rule-based, choosing which agent talks" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="16" width="108" height="56" rx="4" fill="#eef6fb" stroke="#24405e"/><text x="64" y="30" text-anchor="middle" font-size="6.5">round-robin</text><text x="64" y="44" text-anchor="middle" font-size="5.5" fill="#6b6b6b">fixed rotation</text><text x="64" y="55" text-anchor="middle" font-size="5.5" fill="#1a3a2a">predictable</text><text x="64" y="65" text-anchor="middle" font-size="5.5" fill="#a03050">rigid</text>

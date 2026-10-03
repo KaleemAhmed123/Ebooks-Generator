@@ -1,6 +1,6 @@
 ## The VLM landscape: picking one
 
-- The closed frontier VLMs (GPT-class, Gemini, Claude — all natively multimodal) lead on hard reasoning; the open line (Qwen-VL, InternVL, Pixtral, Molmo, Llama Vision, Gemma Vision) wins on cost, privacy, and control. Here is the working decision grid. **[VERIFY model availability — Sept 2026]**
+- The closed frontier VLMs (GPT-class, Gemini, Claude — all natively multimodal) lead on hard reasoning; the open line (Qwen-VL, InternVL, Pixtral, Molmo, Llama Vision, Gemma Vision) wins on cost, privacy, and control. Here is the working decision grid.
 
 | Need | Reach for | Why |
 |---|---|---|

@@ -1,6 +1,6 @@
 ## Transport: Streamable HTTP
 
-- For **remote** servers — a SaaS integration, a shared team server, anything not on the user's machine — MCP uses **Streamable HTTP**, the transport that replaced the older HTTP+SSE design in the 2025 spec revisions. **[VERIFY current transport name/status]**
+- For **remote** servers — a SaaS integration, a shared team server, anything not on the user's machine — MCP uses **Streamable HTTP**, the transport that replaced the older HTTP+SSE design in the 2025 spec revisions.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="Client POSTs to one endpoint; the server replies with JSON or upgrades to a streamed SSE response" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="14" y="30" width="80" height="34" rx="4" fill="#eef6fb" stroke="#24405e"/><text x="54" y="50" text-anchor="middle" font-size="7">client</text>

@@ -1,6 +1,6 @@
 ## Build an MCP server, part 1
 
-- Build a real server with the official **Python SDK** (`mcp`, which ships `FastMCP`, a high-level decorator API). This is runnable as of the 2025 SDK. **[VERIFY current SDK API]**
+- Build a real server with the official **Python SDK** (`mcp`, which ships `FastMCP`, a high-level decorator API). This is runnable as of the 2025 SDK.
 
 :::mint
 ```python

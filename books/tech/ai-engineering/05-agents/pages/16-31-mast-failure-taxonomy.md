@@ -1,6 +1,6 @@
 ## The multi-agent failure taxonomy (MAST)
 
-- Multi-agent systems fail in ways single agents cannot — failures *of coordination*, not just of individual agents. Research cataloging real multi-agent failures (the **MAST** taxonomy, 2025) found that most failures are *specification and coordination* problems, not model incapability. Knowing the taxonomy is how you design against it. **[VERIFY]**
+- Multi-agent systems fail in ways single agents cannot — failures *of coordination*, not just of individual agents. Research cataloging real multi-agent failures (the **MAST** taxonomy, 2025) found that most failures are *specification and coordination* problems, not model incapability. Knowing the taxonomy is how you design against it.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="Three failure categories: specification, inter-agent misalignment, and verification gaps" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="16" width="108" height="60" rx="4" fill="#fdeef2" stroke="#a03050"/><text x="64" y="30" text-anchor="middle" font-size="6.5">specification</text><text x="64" y="44" text-anchor="middle" font-size="5.5" fill="#6b6b6b">unclear roles/tasks</text><text x="64" y="54" text-anchor="middle" font-size="5.5" fill="#6b6b6b">bad decomposition</text><text x="64" y="66" text-anchor="middle" font-size="5.5" fill="#6b6b6b">step out of order</text>

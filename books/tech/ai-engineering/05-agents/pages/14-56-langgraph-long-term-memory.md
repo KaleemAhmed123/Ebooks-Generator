@@ -1,6 +1,6 @@
 ## LangGraph: long-term memory (the Store)
 
-- Threads (14-51) give short-term memory *within* a conversation. For memory that persists *across* conversations and users — the semantic/episodic memory of the memory cluster — LangGraph provides a separate **Store**: a cross-thread key-value store the graph can read and write, with optional vector search. **[VERIFY current API — `BaseStore`]**
+- Threads (14-51) give short-term memory *within* a conversation. For memory that persists *across* conversations and users — the semantic/episodic memory of the memory cluster — LangGraph provides a separate **Store**: a cross-thread key-value store the graph can read and write, with optional vector search.
 
 :::mint
 ```python

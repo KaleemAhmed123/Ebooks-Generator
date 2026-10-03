@@ -1,7 +1,7 @@
 ## ColPali: vision-native retrieval
 
 - RAG (Booklet 4) retrieves relevant pages before answering. The standard pipeline for PDFs is brutal: OCR each page → chunk the text → embed → search. Every stage loses something — OCR mangles tables, chunking severs layout, and figures/charts vanish entirely because they are not text.
-- **ColPali** (2024) throws the pipeline out. It **embeds the page image directly** with a VLM (built on PaliGemma) — no OCR, no chunking. The page's text, tables, and figures are all retrievable because the model *sees* them. **[VERIFY]**
+- **ColPali** (2024) throws the pipeline out. It **embeds the page image directly** with a VLM (built on PaliGemma) — no OCR, no chunking. The page's text, tables, and figures are all retrievable because the model *sees* them.
 
 <svg viewBox="0 0 360 96" role="img" aria-label="ColPali embeds page images with a VLM using multi-vector late interaction instead of OCR and text chunking" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="10" y="24" width="52" height="44" rx="2" fill="#fff" stroke="#24405e"/><g stroke="#bbb"><line x1="16" y1="34" x2="56" y2="34"/><line x1="16" y1="42" x2="56" y2="42"/><rect x="16" y="48" width="18" height="14" fill="#d5e8fb" stroke="none"/></g><text x="36" y="78" text-anchor="middle" font-size="5.5" fill="#6b6b6b">page image</text>

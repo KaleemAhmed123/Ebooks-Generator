@@ -1,6 +1,6 @@
 ## Agent Skills
 
-- Tools give an agent *capabilities*. **Skills** give it *know-how* — packaged instructions, and optionally scripts and resources, that teach an agent how to do a specific task well. A skill is a folder the agent loads on demand. **[VERIFY — Agent Skills format, 2025]**
+- Tools give an agent *capabilities*. **Skills** give it *know-how* — packaged instructions, and optionally scripts and resources, that teach an agent how to do a specific task well. A skill is a folder the agent loads on demand.
 - Where MCP standardizes *access* to tools, skills standardize *procedural knowledge*: "here is how to review a PR," "here is our deploy checklist," "here is how to format a report." The agent reads the skill when the task calls for it and follows it.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="A skill folder bundles instructions, optional scripts, and resources the agent loads on demand" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">

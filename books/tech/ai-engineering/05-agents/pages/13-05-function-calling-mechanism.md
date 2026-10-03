@@ -1,7 +1,7 @@
 ## Function calling: the mechanism
 
 - **Function calling** (also "tool calling") is how the model requests a tool. The mechanism is trained, not bolted on: during post-training the model learned to emit a special, structured block when it decides a tool is needed, instead of plain prose.
-- You pass the tool definitions with your request. The model, generating token by token, can produce either **text** (a normal answer) or a **tool-call block** (a request to run a function). A field on the response — `stop_reason: "tool_use"` (Anthropic) / `finish_reason: "tool_calls"` (OpenAI) — tells you which happened. **[VERIFY field names per provider]**
+- You pass the tool definitions with your request. The model, generating token by token, can produce either **text** (a normal answer) or a **tool-call block** (a request to run a function). A field on the response — `stop_reason: "tool_use"` (Anthropic) / `finish_reason: "tool_calls"` (OpenAI) — tells you which happened.
 
 <svg viewBox="0 0 360 100" role="img" aria-label="With tools attached the model branches into either a text answer or a structured tool call" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7.5" fill="#1a1a1a">
   <rect x="8" y="40" width="70" height="24" rx="3" fill="#e8f4fd" stroke="#24405e"/><text x="43" y="55" text-anchor="middle" font-size="6">request + tools</text>

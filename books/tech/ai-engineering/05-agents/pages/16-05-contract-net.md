@@ -1,6 +1,6 @@
 ## The Contract Net Protocol
 
-- How does a task get assigned to the *right* agent when you do not know in advance who is best? The **Contract Net Protocol** (Smith, 1980) — a classical MAS staple — solves it with a market-like bidding process. It is the canonical task-allocation pattern, and it maps cleanly onto LLM agents. **[VERIFY]**
+- How does a task get assigned to the *right* agent when you do not know in advance who is best? The **Contract Net Protocol** (Smith, 1980) — a classical MAS staple — solves it with a market-like bidding process. It is the canonical task-allocation pattern, and it maps cleanly onto LLM agents.
 
 <svg viewBox="0 0 360 100" role="img" aria-label="A manager announces a task, agents bid, the manager awards it to the best bidder, who reports back" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="140" y="10" width="80" height="18" rx="3" fill="#a03050"/><text x="180" y="22" text-anchor="middle" fill="#fff">manager</text>

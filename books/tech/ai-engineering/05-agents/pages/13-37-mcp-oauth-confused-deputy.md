@@ -1,6 +1,6 @@
 ## OAuth 2.1, scopes, and the confused deputy
 
-- Remote MCP servers (Streamable HTTP) need **authentication** — proving who is calling and limiting what they may do. The MCP auth spec builds on **OAuth 2.1**, the standard for delegated access ("let this app act on my behalf, within these limits"). **[VERIFY current auth spec]**
+- Remote MCP servers (Streamable HTTP) need **authentication** — proving who is calling and limiting what they may do. The MCP auth spec builds on **OAuth 2.1**, the standard for delegated access ("let this app act on my behalf, within these limits").
 
 <svg viewBox="0 0 360 80" role="img" aria-label="OAuth issues a scoped token so the server acts only within granted permissions" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="10" y="30" width="70" height="24" rx="3" fill="#eaf6ea" stroke="#1a3a2a"/><text x="45" y="45" text-anchor="middle" font-size="6">user grants</text>

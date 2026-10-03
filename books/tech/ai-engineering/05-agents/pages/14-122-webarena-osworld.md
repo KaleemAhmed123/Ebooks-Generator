@@ -1,6 +1,6 @@
 ## WebArena and OSWorld
 
-- Two benchmarks test agents that **operate real software** — the computer-use frontier (14-109). They are the hardest and most predictive of "can this agent actually do knowledge work?" **[VERIFY current scores]**
+- Two benchmarks test agents that **operate real software** — the computer-use frontier (14-109). They are the hardest and most predictive of "can this agent actually do knowledge work?"
 
 ### WebArena — agents on the web
 - Tasks on **realistic, fully-functional web applications** (a mock e-commerce site, a forum, a wiki, a code host) hosted in a controlled environment. The agent must accomplish goals like "post a reply in the thread about X" or "find the cheapest product matching Y and add it to the cart" by navigating and acting in the browser.

@@ -1,6 +1,6 @@
 ## The coding-agent landscape
 
-- Coding is the flagship autonomous-agent application — the domain with the best verifier (tests, 14-135), the highest economic value, and the most mature tools. As of 2026 coding agents come in three form factors, each a different point on the autonomy ladder. **[VERIFY current tools]**
+- Coding is the flagship autonomous-agent application — the domain with the best verifier (tests, 14-135), the highest economic value, and the most mature tools. As of 2026 coding agents come in three form factors, each a different point on the autonomy ladder.
 
 <svg viewBox="0 0 360 96" role="img" aria-label="Three coding-agent form factors: IDE assistant, terminal agent, and cloud agent, by autonomy" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="20" width="108" height="60" rx="4" fill="#eef6fb" stroke="#24405e"/><text x="64" y="34" text-anchor="middle" font-size="6.5">IDE assistant</text><text x="64" y="48" text-anchor="middle" font-size="5.5" fill="#6b6b6b">in your editor</text><text x="64" y="58" text-anchor="middle" font-size="5.5" fill="#6b6b6b">suggest / edit</text><text x="64" y="70" text-anchor="middle" font-size="5.5">low autonomy</text>

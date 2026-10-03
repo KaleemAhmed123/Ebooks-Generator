@@ -1,6 +1,6 @@
 ## Safety classifiers (Llama Guard)
 
-- A practical guardrail: a dedicated **safety classifier** — a smaller model trained to flag unsafe content — that screens an agent's inputs and outputs. **Llama Guard** (Meta) is the best-known open one; providers ship their own. It is a cheap, fast tripwire around a capable agent. **[VERIFY]**
+- A practical guardrail: a dedicated **safety classifier** — a smaller model trained to flag unsafe content — that screens an agent's inputs and outputs. **Llama Guard** (Meta) is the best-known open one; providers ship their own. It is a cheap, fast tripwire around a capable agent.
 
 <svg viewBox="0 0 360 84" role="img" aria-label="A safety classifier screens input before the agent and output before it returns, flagging unsafe content" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="8" y="32" width="46" height="22" rx="3" fill="#e8f4fd" stroke="#24405e"/><text x="31" y="46" text-anchor="middle">input</text>

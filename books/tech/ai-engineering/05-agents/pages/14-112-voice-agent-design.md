@@ -1,6 +1,6 @@
 ## Voice agents: design for latency and error
 
-- Two forces dominate voice-agent engineering: the **latency budget** and the fact that **speech is lossy and interruptible**. Design choices follow from both. **[VERIFY]**
+- Two forces dominate voice-agent engineering: the **latency budget** and the fact that **speech is lossy and interruptible**. Design choices follow from both.
 
 - **Chase latency at every stage.** Target roughly **sub-second** to first audio, ideally ~500 ms. Techniques: stream STT (transcribe as they speak, do not wait for silence), start the LLM on a partial transcript, stream TTS (speak the first words before the sentence is done), and pick fast models — a smaller LLM that answers in 300 ms often beats a smarter one that takes two seconds, because the pause kills the conversation (12-33).
 

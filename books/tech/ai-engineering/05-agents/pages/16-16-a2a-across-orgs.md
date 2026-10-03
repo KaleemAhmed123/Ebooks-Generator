@@ -1,6 +1,6 @@
 ## A2A across organizations
 
-- The multi-agent patterns so far assume agents you control, in one system. **A2A** (13-40) extends multi-agent coordination *across organizational boundaries* — your agent delegating to an agent built and run by someone else, whom you do not control and only partially trust. **[VERIFY]**
+- The multi-agent patterns so far assume agents you control, in one system. **A2A** (13-40) extends multi-agent coordination *across organizational boundaries* — your agent delegating to an agent built and run by someone else, whom you do not control and only partially trust.
 
 <svg viewBox="0 0 360 88" role="img" aria-label="An agent in one org delegates via A2A to an agent in another org across a trust boundary" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="24" width="130" height="48" rx="5" fill="#eef6fb" stroke="#24405e"/><text x="75" y="38" text-anchor="middle" font-size="6">your org</text><circle cx="75" cy="56" r="12" fill="#24405e"/><text x="75" y="59" text-anchor="middle" fill="#fff" font-size="5.5">agent</text>

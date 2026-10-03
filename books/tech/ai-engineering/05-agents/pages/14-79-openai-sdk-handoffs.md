@@ -1,6 +1,6 @@
 ## OpenAI SDK: handoffs
 
-- **Handoffs** are the SDK's multi-agent primitive: one agent can **delegate** the conversation to another, more specialized agent. A handoff is itself exposed to the model as a kind of tool — the agent "calls" a handoff to transfer control. **[VERIFY current API]**
+- **Handoffs** are the SDK's multi-agent primitive: one agent can **delegate** the conversation to another, more specialized agent. A handoff is itself exposed to the model as a kind of tool — the agent "calls" a handoff to transfer control.
 
 :::mint
 ```python

@@ -1,6 +1,6 @@
 ## LangGraph: state
 
-- **State** is the object that flows through the graph — the agent's working memory for a run. Every node reads it and returns updates to it. You define its shape as a typed dictionary. **[VERIFY current API]**
+- **State** is the object that flows through the graph — the agent's working memory for a run. Every node reads it and returns updates to it. You define its shape as a typed dictionary.
 
 :::mint
 ```python

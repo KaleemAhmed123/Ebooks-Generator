@@ -1,6 +1,6 @@
 ## Caching tool results
 
-- Agents repeat themselves — the same search, the same lookup, across turns and runs. **Caching** tool results turns a repeated expensive call into a cheap lookup, cutting cost and latency, and is a quick, high-leverage optimization once an agent is working. **[VERIFY]**
+- Agents repeat themselves — the same search, the same lookup, across turns and runs. **Caching** tool results turns a repeated expensive call into a cheap lookup, cutting cost and latency, and is a quick, high-leverage optimization once an agent is working.
 
 <svg viewBox="0 0 360 82" role="img" aria-label="A cache returns a stored result for a repeated tool call, skipping the expensive execution" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="30" width="70" height="22" rx="3" fill="#24405e"/><text x="45" y="44" text-anchor="middle" fill="#fff" font-size="6">tool call</text>

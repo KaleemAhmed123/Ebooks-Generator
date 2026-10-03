@@ -1,6 +1,6 @@
 ## The Darwin-Gödel Machine
 
-- The **Darwin-Gödel Machine (DGM)** (2025) goes a step further than AlphaEvolve: it improves not a *solution* but **the agent itself** — an agent that rewrites its own code to become a better agent, keeping changes that empirically raise its performance. It is the closest working system to "self-improving agent." **[VERIFY]**
+- The **Darwin-Gödel Machine (DGM)** (2025) goes a step further than AlphaEvolve: it improves not a *solution* but **the agent itself** — an agent that rewrites its own code to become a better agent, keeping changes that empirically raise its performance. It is the closest working system to "self-improving agent."
 
 <svg viewBox="0 0 360 94" role="img" aria-label="An agent proposes edits to its own code, tests the new version on benchmarks, and keeps improvements in an archive" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="12" y="36" width="80" height="26" rx="3" fill="#24405e"/><text x="52" y="46" text-anchor="middle" fill="#fff" font-size="6">agent edits</text><text x="52" y="56" text-anchor="middle" fill="#cdd" font-size="5">its OWN code</text>

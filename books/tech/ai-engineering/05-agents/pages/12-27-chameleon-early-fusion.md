@@ -1,6 +1,6 @@
 ## Chameleon: mixed-modal from scratch
 
-- **Chameleon** (Meta, 2024) is the reference early-fusion model: one transformer trained from scratch on **interleaved** text and image tokens, able to read and generate both in any order within a single sequence. **[VERIFY]**
+- **Chameleon** (Meta, 2024) is the reference early-fusion model: one transformer trained from scratch on **interleaved** text and image tokens, able to read and generate both in any order within a single sequence.
 - Because everything is one token stream, Chameleon can produce a reply that *mixes* text and images natively — a paragraph, then a generated diagram, then more text — without switching models or calling an image tool.
 
 <svg viewBox="0 0 360 78" role="img" aria-label="A single Chameleon sequence interleaves text and image tokens and outputs both" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">

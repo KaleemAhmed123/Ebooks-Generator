@@ -1,6 +1,6 @@
 ## Build an MCP server, part 2
 
-- Add a **resource** and a **prompt**, then run the server. Same `FastMCP` instance from part 1. **[VERIFY current SDK API]**
+- Add a **resource** and a **prompt**, then run the server. Same `FastMCP` instance from part 1.
 
 :::mint
 ```python
@@ -31,7 +31,7 @@ if __name__ == "__main__":
 ```
 :::
 
-- **Test without a host** using the MCP **Inspector** (`npx @modelcontextprotocol/inspector python server.py`) — a dev UI that connects to your server, lists its tools/resources/prompts, and lets you call them by hand. Always inspect before wiring into an agent. **[VERIFY tool name]**
+- **Test without a host** using the MCP **Inspector** (`npx @modelcontextprotocol/inspector python server.py`) — a dev UI that connects to your server, lists its tools/resources/prompts, and lets you call them by hand. Always inspect before wiring into an agent.
 
 :::warn
 The most common "it works in Inspector but not in Claude" bug is the config path or environment. The host launches your server as a fresh subprocess with a minimal environment — it will not have your shell's `PATH`, virtualenv, or API keys unless you specify them in the config (`env`, absolute paths, the venv's Python). Debug the subprocess launch, not the MCP code.

@@ -1,6 +1,6 @@
 ## Agentic alignment risks
 
-- Autonomy introduces failure modes that a single text completion cannot have — risks tied to an agent *pursuing goals over time*. These are the harder, more speculative concerns the governance frameworks track, and worth understanding precisely rather than dismissing or catastrophizing. **[VERIFY — active research]**
+- Autonomy introduces failure modes that a single text completion cannot have — risks tied to an agent *pursuing goals over time*. These are the harder, more speculative concerns the governance frameworks track, and worth understanding precisely rather than dismissing or catastrophizing.
 
 <svg viewBox="0 0 360 88" role="img" aria-label="Four agentic alignment risks: reward hacking, deception, situational awareness, and instrumental goals" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="16" width="108" height="24" rx="3" fill="#fdeef2" stroke="#a03050"/><text x="64" y="31" text-anchor="middle">reward hacking</text>

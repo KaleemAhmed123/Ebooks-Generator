@@ -1,6 +1,6 @@
 ## Cost governors
 
-- An autonomous agent spends money *on its own* — every model call and many tools cost. Without limits, a stuck loop (14-05) or a runaway task can burn a fortune before anyone notices. A **cost governor** is the safeguard that caps and controls agent spend. **[VERIFY]**
+- An autonomous agent spends money *on its own* — every model call and many tools cost. Without limits, a stuck loop (14-05) or a runaway task can burn a fortune before anyone notices. A **cost governor** is the safeguard that caps and controls agent spend.
 
 <svg viewBox="0 0 360 88" role="img" aria-label="A cost governor tracks spend per run and halts or downgrades when a budget is hit" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="14" y="34" width="70" height="24" rx="3" fill="#24405e"/><text x="49" y="49" text-anchor="middle" fill="#fff" font-size="6">agent step</text>

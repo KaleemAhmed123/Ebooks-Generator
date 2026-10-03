@@ -1,6 +1,6 @@
 ## Pixtral, Molmo, and open recipes
 
-- Two more open VLMs worth knowing by name, each contributing a distinct idea. **[VERIFY versions/specs]**
+- Two more open VLMs worth knowing by name, each contributing a distinct idea.
 
 ### Pixtral (Mistral, 2024)
 - A ~12B VLM with a from-scratch **400M vision encoder** built for **native resolution** — images enter at their own size and aspect ratio, producing a variable token count (NaViT lineage), with a special token marking row breaks so the LLM reconstructs 2-D layout.

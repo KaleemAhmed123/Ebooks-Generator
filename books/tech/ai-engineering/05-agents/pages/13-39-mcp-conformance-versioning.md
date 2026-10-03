@@ -1,6 +1,6 @@
 ## Conformance and versioning
 
-- MCP is a living spec, revised on **dated versions** (e.g. `2024-11-05`, `2025-03-26`, `2025-06-18`). Two practical concerns follow: staying compatible as it changes, and knowing a server actually implements it correctly. **[VERIFY exact version strings/dates]**
+- MCP is a living spec, revised on **dated versions** (e.g. `2024-11-05`, `2025-03-26`, `2025-06-18`). Two practical concerns follow: staying compatible as it changes, and knowing a server actually implements it correctly.
 
 <svg viewBox="0 0 360 74" role="img" aria-label="Dated spec versions; client and server agree on the newest both support" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <line x1="20" y1="40" x2="340" y2="40" stroke="#888"/>

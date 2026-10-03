@@ -1,6 +1,6 @@
 ## LlamaIndex: a worked RAG agent
 
-- A knowledge assistant over two data sources, choosing between them and computing on results. **[VERIFY current API]**
+- A knowledge assistant over two data sources, choosing between them and computing on results.
 
 :::mint
 ```python

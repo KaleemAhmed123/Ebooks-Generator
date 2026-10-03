@@ -1,6 +1,6 @@
 ## LLM agents vs MARL
 
-- A crucial clarification, because the two are easily conflated: most **LLM multi-agent systems** (Modules 14–16) are *not* MARL. They coordinate *pretrained* language models through prompting and orchestration; MARL *trains* agents' policies from scratch through reward. Different tools for different problems. **[VERIFY]**
+- A crucial clarification, because the two are easily conflated: most **LLM multi-agent systems** (Modules 14–16) are *not* MARL. They coordinate *pretrained* language models through prompting and orchestration; MARL *trains* agents' policies from scratch through reward. Different tools for different problems.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="LLM multi-agent systems orchestrate pretrained models; MARL trains policies via reward" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="16" width="165" height="66" rx="4" fill="#eef6fb" stroke="#24405e"/><text x="92" y="30" text-anchor="middle" font-size="6.5">LLM multi-agent</text><text x="92" y="44" text-anchor="middle" font-size="6">pretrained models</text><text x="92" y="55" text-anchor="middle" font-size="6">coordinated by prompting</text><text x="92" y="66" text-anchor="middle" font-size="6">no training loop</text><text x="92" y="77" text-anchor="middle" font-size="5.5" fill="#6b6b6b">this booklet</text>

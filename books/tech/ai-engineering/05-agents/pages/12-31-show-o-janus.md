@@ -1,6 +1,6 @@
 ## Show-o and Janus-Pro
 
-- Two more unified designs, each with a distinct trick worth naming. **[VERIFY]**
+- Two more unified designs, each with a distinct trick worth naming.
 
 ### Show-o (2024)
 - One transformer that runs **autoregression for text** and **discrete diffusion for images** in the same model. Discrete diffusion generates image tokens by iteratively *unmasking* them (predict all, keep the confident ones, repeat) instead of strictly left-to-right — faster than token-by-token autoregression, and it can use a masked-prediction objective familiar from BERT.

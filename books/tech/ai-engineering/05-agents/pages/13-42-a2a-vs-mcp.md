@@ -1,6 +1,6 @@
 ## A2A vs MCP: when each
 
-- They are asked about together because they look similar and are not. Here is the clean separation. **[VERIFY]**
+- They are asked about together because they look similar and are not. Here is the clean separation.
 
 | | **MCP** | **A2A** |
 |---|---|---|

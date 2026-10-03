@@ -1,6 +1,6 @@
 ## Procedural memory: skill libraries
 
-- **Procedural memory** stores *how to do things* — learned skills the agent can reuse. Its landmark is **Voyager** (Wang et al., 2023), an agent that plays Minecraft by writing code for each new skill and saving it to a growing **skill library**. **[VERIFY]**
+- **Procedural memory** stores *how to do things* — learned skills the agent can reuse. Its landmark is **Voyager** (Wang et al., 2023), an agent that plays Minecraft by writing code for each new skill and saving it to a growing **skill library**.
 
 <svg viewBox="0 0 360 100" role="img" aria-label="Voyager writes a skill as code, verifies it works, stores it, and reuses it later" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="12" y="34" width="66" height="26" rx="3" fill="#24405e"/><text x="45" y="46" text-anchor="middle" fill="#fff" font-size="6">write skill</text><text x="45" y="55" text-anchor="middle" fill="#cdd" font-size="5">(code)</text>

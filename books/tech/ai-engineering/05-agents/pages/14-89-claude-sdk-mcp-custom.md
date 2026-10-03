@@ -1,6 +1,6 @@
 ## Claude Agent SDK: MCP and custom tools
 
-- The built-in toolset (14-85) covers a computer's basics; **MCP servers and custom tools** extend the agent to everything else — your APIs, databases, and third-party integrations. **[VERIFY current API]**
+- The built-in toolset (14-85) covers a computer's basics; **MCP servers and custom tools** extend the agent to everything else — your APIs, databases, and third-party integrations.
 
 - **MCP integration.** The agent is an MCP **client** (13-27): point it at MCP servers (a GitHub server, a Postgres server, your internal tools) and their tools appear alongside the built-ins. This is how the harness reaches your systems without you writing wrappers — you reuse the MCP ecosystem (13-18). The permission and hook layer (14-88) applies to MCP tools too, so third-party servers are gated the same way.
 - **Custom tools.** For anything not worth an MCP server, register a plain function as a tool — the schema-design rules of 13-12 unchanged. Use custom tools for app-specific actions ("create a ticket in *our* system") that live inside your agent's process.

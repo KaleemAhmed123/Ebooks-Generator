@@ -1,6 +1,6 @@
 ## Evaluation in production
 
-- Offline evals (next cluster) test an agent before release. **Online evaluation** watches it *in production*, on real traffic — because real users do things no test set anticipated, and quality drifts as data, models, and usage change. **[VERIFY]**
+- Offline evals (next cluster) test an agent before release. **Online evaluation** watches it *in production*, on real traffic — because real users do things no test set anticipated, and quality drifts as data, models, and usage change.
 
 <svg viewBox="0 0 360 84" role="img" aria-label="Production runs are scored by feedback, auto-graders, and sampling to detect drift" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="10" y="34" width="70" height="22" rx="3" fill="#e8f4fd" stroke="#24405e"/><text x="45" y="47" text-anchor="middle" font-size="6">live runs</text>

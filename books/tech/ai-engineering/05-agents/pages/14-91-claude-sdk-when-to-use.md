@@ -15,7 +15,7 @@
   - You need **intricate custom control flow** or durable graph replay → LangGraph.
   - It is a **simple tool-using agent** with no computer-operating needs → the OpenAI Agents SDK's minimalism.
   - You want a **role-based multi-agent prototype** fast → CrewAI.
-- **Model-family note:** the harness is built around Claude; weigh that if you need provider flexibility. **[VERIFY]**
+- **Model-family note:** the harness is built around Claude; weigh that if you need provider flexibility.
 
 :::interview
 "When is the Claude Agent SDK the right tool?"

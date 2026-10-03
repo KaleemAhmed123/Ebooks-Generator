@@ -1,6 +1,6 @@
 ## Parallel swarms and map-reduce
 
-- The simplest and often most valuable multi-agent pattern: **fan out** a task to many agents working in parallel, then **fan in** their results. It is **map-reduce** (the classic distributed-computing pattern) applied to agents, and it is where multi-agent parallelism pays most cleanly. **[VERIFY]**
+- The simplest and often most valuable multi-agent pattern: **fan out** a task to many agents working in parallel, then **fan in** their results. It is **map-reduce** (the classic distributed-computing pattern) applied to agents, and it is where multi-agent parallelism pays most cleanly.
 
 <svg viewBox="0 0 360 96" role="img" aria-label="One task splits to many parallel worker agents whose results are combined by a reducer" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="14" y="40" width="56" height="20" rx="3" fill="#24405e"/><text x="42" y="53" text-anchor="middle" fill="#fff">split (map)</text>

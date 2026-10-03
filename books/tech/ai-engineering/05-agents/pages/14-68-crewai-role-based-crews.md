@@ -1,6 +1,6 @@
 ## CrewAI: role-based crews
 
-- **CrewAI** models a multi-agent system as a **crew** — a team of role-playing agents, each with a job title, a goal, and a backstory, collaborating on tasks. Its bet is **intuition**: describe agents the way you would describe people on a team, and let them work. **[VERIFY current API]**
+- **CrewAI** models a multi-agent system as a **crew** — a team of role-playing agents, each with a job title, a goal, and a backstory, collaborating on tasks. Its bet is **intuition**: describe agents the way you would describe people on a team, and let them work.
 
 <svg viewBox="0 0 360 96" role="img" aria-label="A crew of role-based agents (researcher, writer, editor) each with a goal, working tasks together" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="16" y="24" width="96" height="48" rx="5" fill="#e8f4fd" stroke="#24405e"/><text x="64" y="40" text-anchor="middle" font-size="6.5">researcher</text><text x="64" y="52" text-anchor="middle" font-size="5.5" fill="#6b6b6b">goal: find facts</text><text x="64" y="62" text-anchor="middle" font-size="5.5" fill="#6b6b6b">tools: search</text>

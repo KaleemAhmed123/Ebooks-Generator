@@ -1,6 +1,6 @@
 ## MCP sampling
 
-- **Sampling** lets a *server* ask the *client's* LLM to generate text — the reverse of the normal direction. The server has no model and no API key of its own; it borrows the host's, through the client, under the user's control. **[VERIFY capability status]**
+- **Sampling** lets a *server* ask the *client's* LLM to generate text — the reverse of the normal direction. The server has no model and no API key of its own; it borrows the host's, through the client, under the user's control.
 
 <svg viewBox="0 0 360 94" role="img" aria-label="A server requests a completion, the client asks its LLM with user approval and returns the result" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="250" y="30" width="96" height="34" rx="4" fill="#fdeef2" stroke="#a03050"/><text x="298" y="44" text-anchor="middle" font-size="6.5">server</text><text x="298" y="55" text-anchor="middle" font-size="5.5" fill="#6b6b6b">no LLM of its own</text>

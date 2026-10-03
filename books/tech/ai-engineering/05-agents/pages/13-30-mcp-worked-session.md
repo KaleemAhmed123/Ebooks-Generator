@@ -1,6 +1,6 @@
 ## A worked MCP session
 
-- One full session on the wire, from launch to answer, so every prior page connects. Client ↔ a weather server over stdio. **[VERIFY message shapes against current spec]**
+- One full session on the wire, from launch to answer, so every prior page connects. Client ↔ a weather server over stdio.
 
 :::mint
 ```json

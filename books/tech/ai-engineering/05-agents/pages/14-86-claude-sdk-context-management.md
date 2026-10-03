@@ -1,6 +1,6 @@
 ## Claude Agent SDK: context management
 
-- Long-horizon agents — ones that work for many steps on a big task — run into the context wall (14-06) fast: a coding session touches dozens of files and runs many commands, and the transcript overflows. The SDK's **automatic context management** is a headline feature. **[VERIFY current behavior]**
+- Long-horizon agents — ones that work for many steps on a big task — run into the context wall (14-06) fast: a coding session touches dozens of files and runs many commands, and the transcript overflows. The SDK's **automatic context management** is a headline feature.
 
 <svg viewBox="0 0 360 84" role="img" aria-label="As context fills, the SDK compacts older content into a summary so the agent keeps working" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <g fill="#6a9bd0"><rect x="20" y="52" width="14" height="14"/><rect x="20" y="36" width="14" height="14"/><rect x="20" y="20" width="14" height="14"/><rect x="38" y="52" width="14" height="14"/><rect x="38" y="36" width="14" height="14"/><rect x="38" y="20" width="14" height="14"/></g>

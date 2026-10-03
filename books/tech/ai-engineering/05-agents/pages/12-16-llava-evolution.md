@@ -1,6 +1,6 @@
 ## LLaVA-1.5 → NeXT → OneVision
 
-- The original LLaVA proved the recipe; three follow-ups turned it into a serious model. Each change is a lesson in what actually moves VLM quality. **[VERIFY dates/specs — 2023–2024]**
+- The original LLaVA proved the recipe; three follow-ups turned it into a serious model. Each change is a lesson in what actually moves VLM quality.
 
 | Version | Key changes | Lesson |
 |---|---|---|

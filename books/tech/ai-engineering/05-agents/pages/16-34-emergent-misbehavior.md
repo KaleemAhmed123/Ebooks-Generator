@@ -1,6 +1,6 @@
 ## Emergent misbehavior
 
-- The subtlest multi-agent risk: behaviors that *no single agent was designed to produce* emerge from their interaction — sometimes useful (16-21's Valentine's party), sometimes harmful. Multi-agent systems can misbehave in ways you cannot predict from any one agent, which is both their power and their danger. **[VERIFY]**
+- The subtlest multi-agent risk: behaviors that *no single agent was designed to produce* emerge from their interaction — sometimes useful (16-21's Valentine's party), sometimes harmful. Multi-agent systems can misbehave in ways you cannot predict from any one agent, which is both their power and their danger.
 
 <svg viewBox="0 0 360 84" role="img" aria-label="Individually fine agents produce a harmful collective behavior no single agent intended" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <g fill="#eaf6ea" stroke="#1a3a2a"><circle cx="45" cy="42" r="13"/><circle cx="95" cy="42" r="13"/><circle cx="145" cy="42" r="13"/></g>

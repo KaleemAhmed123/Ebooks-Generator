@@ -1,6 +1,6 @@
 ## AutoGen: group chat and teams
 
-- Two agents is a dialogue; many agents is a **team** (AutoGen calls the classic version a **group chat**). Several specialized agents share a conversation, and a **speaker-selection** policy decides who talks next. **[VERIFY current team API — e.g. RoundRobin/Selector]**
+- Two agents is a dialogue; many agents is a **team** (AutoGen calls the classic version a **group chat**). Several specialized agents share a conversation, and a **speaker-selection** policy decides who talks next.
 
 <svg viewBox="0 0 360 96" role="img" aria-label="A manager selects which of several specialist agents speaks next in a shared conversation" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="140" y="10" width="80" height="20" rx="3" fill="#24405e"/><text x="180" y="23" text-anchor="middle" fill="#fff" font-size="6">manager / selector</text>

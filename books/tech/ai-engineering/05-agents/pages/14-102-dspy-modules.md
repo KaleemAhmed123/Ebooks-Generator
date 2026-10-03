@@ -1,6 +1,6 @@
 ## DSPy: modules
 
-- A **module** is a reusable strategy for *running* a signature — the reasoning approach applied to it. Swapping modules changes *how* the step thinks, without touching the signature. DSPy ships modules for the reasoning patterns you already know. **[VERIFY current API]**
+- A **module** is a reusable strategy for *running* a signature — the reasoning approach applied to it. Swapping modules changes *how* the step thinks, without touching the signature. DSPy ships modules for the reasoning patterns you already know.
 
 <svg viewBox="0 0 360 84" role="img" aria-label="The same signature run through Predict, ChainOfThought, or ReAct modules" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="130" y="10" width="100" height="20" rx="3" fill="#24405e"/><text x="180" y="23" text-anchor="middle" fill="#fff" font-size="6">signature: q → a</text>

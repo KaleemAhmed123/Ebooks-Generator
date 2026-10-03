@@ -1,6 +1,6 @@
 ## Blackboard and shared memory
 
-- The **blackboard** pattern (another classical MAS idea) coordinates agents through a **shared workspace** instead of direct messages. Agents read the current state, contribute what they can, and the solution emerges on the shared board — like specialists collaborating around a physical whiteboard. **[VERIFY]**
+- The **blackboard** pattern (another classical MAS idea) coordinates agents through a **shared workspace** instead of direct messages. Agents read the current state, contribute what they can, and the solution emerges on the shared board — like specialists collaborating around a physical whiteboard.
 
 <svg viewBox="0 0 360 96" role="img" aria-label="Multiple specialist agents read from and write to a shared blackboard that accumulates the solution" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="100" y="16" width="160" height="34" rx="4" fill="#eaf6ea" stroke="#1a3a2a"/><text x="180" y="30" text-anchor="middle" font-size="6.5">blackboard (shared state)</text><text x="180" y="43" text-anchor="middle" font-size="5.5" fill="#6b6b6b">facts · partial results · plan</text>

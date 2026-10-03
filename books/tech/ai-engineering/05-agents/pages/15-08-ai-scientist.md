@@ -1,6 +1,6 @@
 ## The AI Scientist
 
-- **The AI Scientist** (Sakana AI, 2024–2025) automates the *entire research loop*: generate a hypothesis, write the code to test it, run experiments, analyze results, and write up a paper — end to end, autonomously. It is self-improvement's cousin: an agent doing open-ended *knowledge creation*, not just optimizing a metric. **[VERIFY]**
+- **The AI Scientist** (Sakana AI, 2024–2025) automates the *entire research loop*: generate a hypothesis, write the code to test it, run experiments, analyze results, and write up a paper — end to end, autonomously. It is self-improvement's cousin: an agent doing open-ended *knowledge creation*, not just optimizing a metric.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="The research loop: idea, code, experiment, analyze, write paper, review" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6" fill="#1a1a1a">
   <rect x="8" y="40" width="52" height="20" rx="3" fill="#24405e"/><text x="34" y="53" text-anchor="middle" fill="#fff">idea</text>

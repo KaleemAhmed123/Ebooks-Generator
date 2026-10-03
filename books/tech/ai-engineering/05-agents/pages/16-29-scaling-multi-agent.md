@@ -1,6 +1,6 @@
 ## Scaling multi-agent systems
 
-- Running a few agents on a laptop is easy; running *many* agents reliably in production is a distributed-systems problem. The infrastructure concerns — **queues, concurrency, backpressure, and fault isolation** — are what separate a multi-agent demo from a multi-agent service. **[VERIFY]**
+- Running a few agents on a laptop is easy; running *many* agents reliably in production is a distributed-systems problem. The infrastructure concerns — **queues, concurrency, backpressure, and fault isolation** — are what separate a multi-agent demo from a multi-agent service.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="A task queue feeds a pool of agent workers with backpressure and per-agent fault isolation" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="36" width="70" height="24" rx="3" fill="#e8f4fd" stroke="#24405e"/><text x="45" y="45" text-anchor="middle">task queue</text><text x="45" y="55" text-anchor="middle" font-size="5.5" fill="#6b6b6b">buffers work</text>

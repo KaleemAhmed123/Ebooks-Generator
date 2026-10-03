@@ -1,6 +1,6 @@
 ## SWE-bench
 
-- **SWE-bench** is the benchmark that made coding agents credible. Each task is a **real GitHub issue** from a real open-source project; the agent must produce a **code patch that fixes it**, and the fix is graded by running the project's **actual test suite**. Pass the tests, pass the task. **[VERIFY current scores]**
+- **SWE-bench** is the benchmark that made coding agents credible. Each task is a **real GitHub issue** from a real open-source project; the agent must produce a **code patch that fixes it**, and the fix is graded by running the project's **actual test suite**. Pass the tests, pass the task.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="An agent reads a real issue, edits the repo, and is graded by running the project's tests" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="10" y="34" width="66" height="24" rx="3" fill="#e8f4fd" stroke="#24405e"/><text x="43" y="46" text-anchor="middle" font-size="6">real issue</text><text x="43" y="55" text-anchor="middle" font-size="5.5" fill="#6b6b6b">+ the repo</text>
@@ -13,7 +13,7 @@
 
 - **Why it is a strong benchmark:** the grading is **objective and grounded** — the project's own tests decide, not a fuzzy judge. And the tasks are **real** — genuine bugs and features from projects like Django, not toy problems. An agent that scores well on SWE-bench can actually fix real code, which is why it became the headline coding-agent metric.
 - **What it demands of an agent:** understand a codebase it did not write (navigate, search — the Claude Agent SDK's tools, 14-85), localize the bug, make a *correct* edit, and often run tests and iterate (the evaluator-optimizer loop, 14-40, with tests as the evaluator). It exercises the whole coding-agent stack.
-- **Progress has been dramatic.** Scores climbed from single digits to a large fraction of tasks within a couple of years — the clearest evidence that coding agents crossed from demo to genuinely useful. **SWE-bench Verified** (a human-validated subset) is the cleaner variant to cite. **[VERIFY]**
+- **Progress has been dramatic.** Scores climbed from single digits to a large fraction of tasks within a couple of years — the clearest evidence that coding agents crossed from demo to genuinely useful. **SWE-bench Verified** (a human-validated subset) is the cleaner variant to cite.
 
 :::interview
 "What does SWE-bench measure and why is it respected?"

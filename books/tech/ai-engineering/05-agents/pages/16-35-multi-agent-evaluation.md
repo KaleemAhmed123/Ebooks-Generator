@@ -1,6 +1,6 @@
 ## Evaluating multi-agent systems
 
-- Evaluating a multi-agent system is harder than evaluating one agent (14-116), because you must assess not just *outcomes* but *coordination* — and failures hide in the interaction. The eval must look at the system, not just the parts. **[VERIFY]**
+- Evaluating a multi-agent system is harder than evaluating one agent (14-116), because you must assess not just *outcomes* but *coordination* — and failures hide in the interaction. The eval must look at the system, not just the parts.
 
 - **What to measure, beyond single-agent evals:**
   - **Outcome** — did the *system* produce the right result (14-117)? The bottom line, but insufficient alone.

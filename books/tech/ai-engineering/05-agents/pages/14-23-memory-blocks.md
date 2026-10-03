@@ -1,6 +1,6 @@
 ## Memory blocks
 
-- Raw conversation history is a poor long-term memory — it is long, repetitive, and buries facts. **Memory blocks** (from the MemGPT/Letta line) replace the transcript with a small set of **structured, rewritable units** the agent actively maintains, always kept in context. **[VERIFY]**
+- Raw conversation history is a poor long-term memory — it is long, repetitive, and buries facts. **Memory blocks** (from the MemGPT/Letta line) replace the transcript with a small set of **structured, rewritable units** the agent actively maintains, always kept in context.
 
 <svg viewBox="0 0 360 100" role="img" aria-label="Structured memory blocks for persona, human, and task, each rewritten as facts change" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="14" y="18" width="106" height="74" rx="4" fill="#e8f4fd" stroke="#24405e"/><text x="67" y="32" text-anchor="middle" font-size="6.5">persona</text><text x="67" y="46" text-anchor="middle" font-size="5.5" fill="#6b6b6b">"I am a helpful</text><text x="67" y="55" text-anchor="middle" font-size="5.5" fill="#6b6b6b">coding assistant"</text>

@@ -1,6 +1,6 @@
 ## Gateways, registries, and supply chain
 
-- As organizations run many MCP servers, three pieces of infrastructure appear. **[VERIFY — ecosystem is young and moving]**
+- As organizations run many MCP servers, three pieces of infrastructure appear.
 
 <svg viewBox="0 0 360 100" role="img" aria-label="A gateway fronts many servers; a registry lists discoverable servers; supply chain is the trust of what you install" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="14" y="40" width="60" height="24" rx="3" fill="#eef6fb" stroke="#24405e"/><text x="44" y="55" text-anchor="middle" font-size="6">clients</text>

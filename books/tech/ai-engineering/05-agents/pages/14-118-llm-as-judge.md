@@ -1,6 +1,6 @@
 ## LLM-as-judge
 
-- Much of what an agent produces has no exact right answer — is this summary *good*? is this response *helpful*? You cannot string-match quality. **LLM-as-judge** uses a model to score outputs against a rubric, making fuzzy quality measurable at scale. **[VERIFY]**
+- Much of what an agent produces has no exact right answer — is this summary *good*? is this response *helpful*? You cannot string-match quality. **LLM-as-judge** uses a model to score outputs against a rubric, making fuzzy quality measurable at scale.
 
 <svg viewBox="0 0 360 82" role="img" aria-label="A judge model scores an agent output against a rubric, producing a score and rationale" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="10" y="30" width="76" height="24" rx="3" fill="#e8f4fd" stroke="#24405e"/><text x="48" y="42" text-anchor="middle" font-size="6">agent output</text><text x="48" y="51" text-anchor="middle" font-size="5.5" fill="#6b6b6b">+ the input</text>

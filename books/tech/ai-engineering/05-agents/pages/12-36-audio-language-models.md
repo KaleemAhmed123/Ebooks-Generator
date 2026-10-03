@@ -14,7 +14,7 @@
 </svg>
 
 - **Beyond transcription.** Plain ASR (Whisper) only writes down words. An audio-LM *reasons about sound*: "is this cough wet or dry?", "what genre is this?", "how many speakers, and is anyone angry?", "summarize this meeting recording." It hears tone, music, and non-speech audio, not just words.
-- The line runs from Qwen2-Audio to **Audio Flamingo 3 (AF3)** and the audio half of omni models — increasingly folded into the any-to-any models two pages back. **[VERIFY model names/versions]**
+- The line runs from Qwen2-Audio to **Audio Flamingo 3 (AF3)** and the audio half of omni models — increasingly folded into the any-to-any models two pages back.
 
 :::note
 The unifying idea of this whole module lands here: *every* modality becomes tokens for one transformer. An image is patch tokens, a video is sampled-frame tokens, audio is spectrogram tokens, and — next cluster — a robot action is an action token. Learn the pattern once and each new "X-language model" is just a new encoder feeding the same brain.

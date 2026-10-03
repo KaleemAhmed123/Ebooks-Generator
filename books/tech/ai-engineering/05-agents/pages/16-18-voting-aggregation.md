@@ -1,6 +1,6 @@
 ## Voting and aggregation
 
-- The practical, everyday consensus mechanism for LLM agents: run several agents on the same question and **aggregate** their answers into one. Simple, effective, and the basis of the reliability gains from ensembles (14-38 voting). **[VERIFY]**
+- The practical, everyday consensus mechanism for LLM agents: run several agents on the same question and **aggregate** their answers into one. Simple, effective, and the basis of the reliability gains from ensembles (14-38 voting).
 
 <svg viewBox="0 0 360 84" role="img" aria-label="Several agent answers aggregated by majority vote, weighting, or a judge into a final decision" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <g fill="#6a9bd0"><rect x="14" y="16" width="60" height="14" rx="2"/><rect x="14" y="34" width="60" height="14" rx="2"/><rect x="14" y="52" width="60" height="14" rx="2"/></g>

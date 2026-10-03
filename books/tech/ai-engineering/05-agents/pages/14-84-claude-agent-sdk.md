@@ -1,6 +1,6 @@
 ## Claude Agent SDK
 
-- The **Claude Agent SDK** (2025, formerly the "Claude Code SDK") exposes the **harness that powers Claude Code** — the agent loop, tools, context management, and permission system that make a coding agent work — as a library for building your own agents. Its distinguishing bet: give agents a **computer**, not just an API. **[VERIFY name/status]**
+- The **Claude Agent SDK** (2025, formerly the "Claude Code SDK") exposes the **harness that powers Claude Code** — the agent loop, tools, context management, and permission system that make a coding agent work — as a library for building your own agents. Its distinguishing bet: give agents a **computer**, not just an API.
 
 <svg viewBox="0 0 360 96" role="img" aria-label="The Claude Agent SDK wraps a model with file, terminal, and search tools plus context and permission management" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="130" y="10" width="100" height="22" rx="4" fill="#24405e"/><text x="180" y="24" text-anchor="middle" fill="#fff" font-size="6.5">Claude + agent loop</text>

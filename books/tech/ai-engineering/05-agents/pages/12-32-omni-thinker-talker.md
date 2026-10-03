@@ -1,7 +1,7 @@
 ## Omni models: thinker-talker
 
 - An **omni** model handles **any-to-any**: text, image, audio, and video in; text *and* speech out. The problem it solves is that speech output is not just text — it needs timing, prosody, and to start speaking before the full answer is planned.
-- The dominant design (Qwen2.5-Omni and kin, 2025) is **thinker-talker**. **[VERIFY]**
+- The dominant design (Qwen2.5-Omni and kin, 2025) is **thinker-talker**.
 
 <svg viewBox="0 0 360 100" role="img" aria-label="A thinker module produces text and semantics that a talker module turns into streaming speech tokens" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7.5" fill="#1a1a1a">
   <rect x="8" y="34" width="56" height="34" rx="3" fill="#e8f4fd" stroke="#24405e"/><text x="36" y="48" text-anchor="middle" font-size="6">any input</text><text x="36" y="59" text-anchor="middle" font-size="5.5">text/img/audio</text>

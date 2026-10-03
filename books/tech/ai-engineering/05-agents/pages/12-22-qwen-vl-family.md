@@ -1,6 +1,6 @@
 ## The Qwen-VL family
 
-- **Qwen-VL** (Alibaba) is, as of September 2026, the most widely deployed open VLM line, because it pairs strong quality with a genuinely flexible vision path. **[VERIFY versions/specs]**
+- **Qwen-VL** (Alibaba) is, as of September 2026, the most widely deployed open VLM line, because it pairs strong quality with a genuinely flexible vision path.
 - Two design choices define it:
   - **Naive dynamic resolution.** Images enter at (near) native resolution and produce a *variable* number of visual tokens — no fixed tile grid, NaViT-style. A small icon costs a few tokens; a dense page costs many.
   - **M-RoPE** (Multimodal Rotary Position Embedding). RoPE (Booklet 3) extended to encode position along **time, height, and width** separately, so the model knows a patch's 2-D location and a frame's moment in a video, not just its index in a flat sequence.

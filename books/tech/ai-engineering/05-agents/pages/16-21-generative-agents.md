@@ -1,6 +1,6 @@
 ## Generative agents and simulation
 
-- A different use of multi-agent systems: not to *do a task*, but to *simulate a world*. **Generative agents** (Park et al., Stanford, 2023 — the "Smallville" study) populate a simulated environment with LLM-driven characters that remember, plan, and interact — producing believable emergent social behavior. **[VERIFY]**
+- A different use of multi-agent systems: not to *do a task*, but to *simulate a world*. **Generative agents** (Park et al., Stanford, 2023 — the "Smallville" study) populate a simulated environment with LLM-driven characters that remember, plan, and interact — producing believable emergent social behavior.
 
 <svg viewBox="0 0 360 88" role="img" aria-label="Simulated agents with memory and planning interact in a world, producing emergent social behavior" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="14" y="16" width="150" height="56" rx="5" fill="#eef6fb" stroke="#24405e"/><text x="89" y="28" text-anchor="middle" font-size="6">simulated town</text>

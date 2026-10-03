@@ -1,6 +1,6 @@
 ## CrewAI: processes
 
-- A **process** governs how a crew's tasks run. CrewAI offers two, and the choice changes the whole coordination model. **[VERIFY current API]**
+- A **process** governs how a crew's tasks run. CrewAI offers two, and the choice changes the whole coordination model.
 
 <svg viewBox="0 0 360 100" role="img" aria-label="Sequential process runs tasks in order; hierarchical process uses a manager to delegate" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <text x="90" y="12" text-anchor="middle" font-size="6.5" fill="#24405e">sequential</text>

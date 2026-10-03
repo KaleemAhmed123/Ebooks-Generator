@@ -1,6 +1,6 @@
 ## Contract Net: a worked allocation
 
-- Trace the Contract Net Protocol (16-05) on a concrete task, so the bidding mechanism is unambiguous. A manager must get a data-analysis task done by one of three worker agents. **[VERIFY — illustrative]**
+- Trace the Contract Net Protocol (16-05) on a concrete task, so the bidding mechanism is unambiguous. A manager must get a data-analysis task done by one of three worker agents.
 
 :::mint
 ```text

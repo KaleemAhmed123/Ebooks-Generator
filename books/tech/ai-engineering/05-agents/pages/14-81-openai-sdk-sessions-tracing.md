@@ -1,6 +1,6 @@
 ## OpenAI SDK: sessions and tracing
 
-- Two more built-ins round out the SDK: **sessions** (memory) and **tracing** (observability), both on by default-ish so you get them without extra wiring. **[VERIFY current API]**
+- Two more built-ins round out the SDK: **sessions** (memory) and **tracing** (observability), both on by default-ish so you get them without extra wiring.
 
 ### Sessions — automatic memory
 - A **session** keeps conversation history across `Runner.run` calls, so the agent remembers earlier turns without you managing a message list. Pass the same session and the second turn sees the first — the short-term memory of 14-20, handled by the SDK (the equivalent of LangGraph's thread, 14-51).

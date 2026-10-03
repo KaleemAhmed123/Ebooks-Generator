@@ -1,6 +1,6 @@
 ## OpenAI SDK: a worked triage system
 
-- The primitives combined: a triage agent that routes to specialists, with a guardrail and a session. A complete small multi-agent app. **[VERIFY current API]**
+- The primitives combined: a triage agent that routes to specialists, with a guardrail and a session. A complete small multi-agent app.
 
 :::mint
 ```python

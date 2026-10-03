@@ -1,6 +1,6 @@
 ## The wire format, field by field
 
-- Here is the actual conversation on the wire for one tool call, Anthropic-style (OpenAI differs in field names, same shape). Reading it once demystifies every framework. **[VERIFY exact schema per provider/date]**
+- Here is the actual conversation on the wire for one tool call, Anthropic-style (OpenAI differs in field names, same shape). Reading it once demystifies every framework.
 
 :::mint
 ```json

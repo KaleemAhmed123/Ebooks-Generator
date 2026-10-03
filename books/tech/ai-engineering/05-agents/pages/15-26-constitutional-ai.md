@@ -1,6 +1,6 @@
 ## Constitutional AI
 
-- **Constitutional AI (CAI)** (Anthropic, 2022) is a method for making a model's *behavior* safer by training it against an explicit set of written principles — a **constitution** — instead of relying only on human feedback for every case. You met it in Booklet 4's alignment; here is why it matters for autonomous agents. **[VERIFY]**
+- **Constitutional AI (CAI)** (Anthropic, 2022) is a method for making a model's *behavior* safer by training it against an explicit set of written principles — a **constitution** — instead of relying only on human feedback for every case. You met it in Booklet 4's alignment; here is why it matters for autonomous agents.
 
 <svg viewBox="0 0 360 88" role="img" aria-label="The model critiques and revises its own outputs against a written constitution, then trains on the revisions" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <rect x="10" y="34" width="70" height="24" rx="3" fill="#24405e"/><text x="45" y="49" text-anchor="middle" fill="#fff" font-size="6">draft answer</text>

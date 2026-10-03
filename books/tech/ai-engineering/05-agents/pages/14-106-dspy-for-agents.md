@@ -1,6 +1,6 @@
 ## DSPy for agents
 
-- DSPy is not an orchestration framework, but it *builds agents* — via its `ReAct` module and composed pipelines — and, uniquely, it can **optimize** them. That optimization angle is why it belongs alongside the orchestration frameworks. **[VERIFY current API]**
+- DSPy is not an orchestration framework, but it *builds agents* — via its `ReAct` module and composed pipelines — and, uniquely, it can **optimize** them. That optimization angle is why it belongs alongside the orchestration frameworks.
 
 <svg viewBox="0 0 360 86" role="img" aria-label="A DSPy ReAct agent's prompts are optimized against a task metric, unlike hand-prompted agents" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="14" y="30" width="90" height="26" rx="3" fill="#e8f4fd" stroke="#24405e"/><text x="59" y="43" text-anchor="middle" font-size="6">dspy.ReAct(sig,</text><text x="59" y="52" text-anchor="middle" font-size="6">tools)</text>

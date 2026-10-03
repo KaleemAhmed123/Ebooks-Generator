@@ -1,6 +1,6 @@
 ## Negotiation and bargaining
 
-- When agents have *different goals* — not just different answers to one shared question — they must **negotiate**: reach a deal both accept. This is central to cross-org agents (16-16) and agent economies (16-30), and it borrows a clean concept from human negotiation theory: the **ZOPA**. **[VERIFY]**
+- When agents have *different goals* — not just different answers to one shared question — they must **negotiate**: reach a deal both accept. This is central to cross-org agents (16-16) and agent economies (16-30), and it borrows a clean concept from human negotiation theory: the **ZOPA**.
 
 <svg viewBox="0 0 360 84" role="img" aria-label="The zone of possible agreement between a buyer's maximum and a seller's minimum" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <line x1="20" y1="44" x2="340" y2="44" stroke="#888"/>

@@ -1,6 +1,6 @@
 ## DSPy: the optimizers
 
-- The payoff is the **optimizer** (historically "teleprompter"): given your program, a **metric**, and some training examples, it automatically searches for the prompts — wording and few-shot examples — that maximize the metric. This is the "compile" step that makes DSPy more than a wrapper. **[VERIFY current API]**
+- The payoff is the **optimizer** (historically "teleprompter"): given your program, a **metric**, and some training examples, it automatically searches for the prompts — wording and few-shot examples — that maximize the metric. This is the "compile" step that makes DSPy more than a wrapper.
 
 <svg viewBox="0 0 360 92" role="img" aria-label="The optimizer takes the program, examples, and a metric, and searches prompts to maximize the metric" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
   <rect x="10" y="16" width="80" height="18" rx="3" fill="#e8f4fd" stroke="#24405e"/><text x="50" y="28" text-anchor="middle" font-size="6">program</text>
@@ -14,7 +14,7 @@
 
 - **Three inputs, one compiled output:** your **program** (signatures + modules), a set of **examples** (inputs, ideally with expected outputs), and a **metric** (a function scoring an output — accuracy, a rubric, an LLM-judge). The optimizer runs the program on examples, scores them, and iteratively improves the prompts to raise the score.
 - **What it optimizes:** which **few-shot examples** to include (it can bootstrap good demonstrations from your data), the **instructions** wording, and for some optimizers, more. The result is a program with tuned prompts baked in — often beating hand-written prompts, and reproducibly.
-- **Optimizer families** (names evolve): bootstrapping few-shot demonstrations, instruction-search methods, and heavier joint optimizers — you pick based on data size and budget. **[VERIFY names]**
+- **Optimizer families** (names evolve): bootstrapping few-shot demonstrations, instruction-search methods, and heavier joint optimizers — you pick based on data size and budget.
 
 :::interview
 "What does DSPy actually optimize, and how?"

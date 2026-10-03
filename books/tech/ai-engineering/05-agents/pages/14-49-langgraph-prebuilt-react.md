@@ -1,6 +1,6 @@
 ## LangGraph: the prebuilt ReAct agent
 
-- Building the graph by hand (14-48) is the right first exercise; in practice, LangGraph ships a **prebuilt** ReAct agent so you skip the boilerplate for the common case. **[VERIFY current API — `create_react_agent`]**
+- Building the graph by hand (14-48) is the right first exercise; in practice, LangGraph ships a **prebuilt** ReAct agent so you skip the boilerplate for the common case.
 
 :::mint
 ```python

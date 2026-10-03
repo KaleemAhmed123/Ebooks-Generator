@@ -1,6 +1,6 @@
 ## Groupthink and cascades
 
-- Two coordination failures where agents influence each other *wrongly* — and the diversity that was supposed to make multi-agent systems robust (16-18) collapses into correlated error. **[VERIFY]**
+- Two coordination failures where agents influence each other *wrongly* — and the diversity that was supposed to make multi-agent systems robust (16-18) collapses into correlated error.
 
 <svg viewBox="0 0 360 84" role="img" aria-label="One agent's wrong answer spreads through the group until all agents agree on the error" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <circle cx="40" cy="42" r="14" fill="#a03050"/><text x="40" y="45" text-anchor="middle" fill="#fff" font-size="5.5">✗ wrong</text>

@@ -1,6 +1,6 @@
 ## LangGraph: multi-agent
 
-- Multiple agents in LangGraph are just **nodes (or subgraphs) that are themselves agents**, wired by edges. The graph *is* the orchestration — no separate multi-agent framework needed. Two common shapes. **[VERIFY current API]**
+- Multiple agents in LangGraph are just **nodes (or subgraphs) that are themselves agents**, wired by edges. The graph *is* the orchestration — no separate multi-agent framework needed. Two common shapes.
 
 <svg viewBox="0 0 360 96" role="img" aria-label="Supervisor topology routes to worker agents; network topology lets agents hand off to each other" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
   <text x="90" y="12" text-anchor="middle" font-size="6.5" fill="#24405e">supervisor</text>
