@@ -24,6 +24,50 @@ for epoch in range(epochs):
 ```
 :::
 
+### Worked example — watching the loop learn
+
+Same tiny network from the backprop page: input = 2, target = 1, one hidden
+ReLU neuron, MSE loss, learning rate 0.1. Starting weights: w1 = 0.5, w2 = −1.
+
+| step | w1 | w2 | pred | loss | w1 grad | w2 grad |
+|---|---|---|---|---|---|---|
+| 0 | 0.50 | −1.00 | −1.00 | 4.00 | 8.0 | −4.0 |
+| 1 | 0.50 − 0.1×8 = **−0.30** | −1 − 0.1×(−4) = **−0.60** | — | — | — | — |
+| 1 (fwd) | −0.30 | −0.60 | ReLU(2×−0.3)×−0.6 = 0×−0.6 = **0.00** | 1.00 | 0.0 | 0.0 |
+| 2 | −0.30 | −0.60 | 0.00 | 1.00 | 0.0 | 0.0 |
+
+- **Step 0 → 1:** the gradients are large, so both weights jump. Loss drops from **4.0** to **1.0**.
+- **Step 1 → 2:** the hidden neuron hits zero (ReLU kills negative inputs), so the gradient is zero and the weights freeze. The network is stuck — a **dead ReLU** (page 03-06).
+- This is why initialization and activation choice matter. With better starting weights or a Leaky ReLU, the network keeps improving.
+
+:::mint
+```python
+import torch
+
+x  = torch.tensor([[2.0]])
+y  = torch.tensor([[1.0]])
+w1 = torch.tensor([[0.5]], requires_grad=True)
+w2 = torch.tensor([[-1.0]], requires_grad=True)
+lr = 0.1
+
+for step in range(3):
+    h    = torch.relu(x @ w1)
+    pred = h @ w2
+    loss = ((pred - y) ** 2).mean()
+    print(f"step {step}  w1={w1.item():.2f}  w2={w2.item():.2f}"
+          f"  pred={pred.item():.2f}  loss={loss.item():.2f}")
+    loss.backward()
+    with torch.no_grad():
+        w1 -= lr * w1.grad
+        w2 -= lr * w2.grad
+    w1.grad.zero_()
+    w2.grad.zero_()
+# step 0  w1=0.50  w2=-1.00  pred=-1.00  loss=4.00
+# step 1  w1=-0.30  w2=-0.60  pred=0.00  loss=1.00
+# step 2  w1=-0.30  w2=-0.60  pred=0.00  loss=1.00
+```
+:::
+
 :::note
 That is the entire engine of deep learning. Whisper, ResNet, and GPT are all trained by this exact loop — only the model, the data, and the scale change. Learn these five lines and the rest is detail.
 :::

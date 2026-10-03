@@ -91,6 +91,23 @@ syntax. Then stop.
   constraint, or impressive fact. Never add trivia merely to satisfy this
   pattern.
 
+## Math is a black box
+
+Applied AI engineers need little math, and much less of it up front. Treat math
+as a black box in every book here that carries it.
+
+- **Teach what a math idea *does* and *why it matters* — never how to derive it.**
+  No proofs, no symbol-pushing, no notation the reader must parse to follow along.
+- **Each math page answers three things and stops:** what it does · why it
+  matters · what it looks like in code — plus one worked numeric example where it
+  earns its place.
+- **Mark genuine deep-math pages optional.** Open them with a `note` block —
+  "**Optional deep-dive — safe to skip on a first read.**" — so a beginner skips
+  without losing the thread, while the page stays for whoever wants it.
+- **Never use `$$…$$` or `$…$` LaTeX.** The build (`marked`) does not render it;
+  it prints as raw text (`\frac`, `\nabla`). Write the idea in plain words, a
+  small table, a diagram, or code.
+
 ## Diagrams
 
 - Diagram anything with flow, structure, relationships, or more than three
