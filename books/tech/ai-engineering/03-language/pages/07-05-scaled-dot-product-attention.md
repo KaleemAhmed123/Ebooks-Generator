@@ -26,6 +26,30 @@ softmax → weights · `× V` = blend
   <line x1="20" y1="62" x2="120" y2="62" stroke="#1a1a1a"/><line x1="220" y1="62" x2="320" y2="62" stroke="#1a1a1a"/>
 </svg>
 
+### Worked example — with and without the scale
+
+Suppose d_k = 64 and one token's raw dot-product scores against three keys are
+`(56, 58, 48)`. Without scaling vs. dividing by √64 = 8:
+
+| | raw scores | softmax |
+|---|---|---|
+| **Unscaled** | (56, 58, 48) | (0.12, **0.88**, 0.00) — nearly one-hot |
+| **Scaled (÷ 8)** | (7.0, 7.25, 6.0) | (0.35, **0.40**, 0.25) — smooth spread |
+
+- Without scaling, the model **only sees key 2** — the other tokens contribute almost nothing. The gradient through the near-zero weights is almost zero too, so the model can't learn to redistribute attention.
+- With scaling, all three tokens contribute meaningfully. The model can learn nuanced blends instead of always picking one winner.
+
+:::mint
+```python
+import torch, torch.nn.functional as F
+
+scores = torch.tensor([56.0, 58.0, 48.0])
+d_k = 64
+print(F.softmax(scores, dim=-1))             # tensor([0.1192, 0.8788, 0.0020])
+print(F.softmax(scores / d_k**0.5, dim=-1))  # tensor([0.3487, 0.3974, 0.2539])
+```
+:::
+
 :::warn
 Skip the scaling and large models simply fail to train — the loss plateaus and nobody can see why. It is one square-root that beginners drop when re-implementing attention, and the model quietly refuses to learn. When your from-scratch transformer won't converge, check the `/ √d_k` first.
 :::

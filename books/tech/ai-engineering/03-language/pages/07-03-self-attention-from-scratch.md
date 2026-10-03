@@ -28,6 +28,49 @@ def self_attention(Q, K, V):
   <text x="200" y="58" font-size="7" fill="#6b6b6b">darker = more attention</text>
 </svg>
 
+### Worked example — three tokens, two dimensions
+
+Three tokens with tiny 2D query, key, and value vectors (pretend the Wq/Wk/Wv
+projections already happened):
+
+| token | query (q) | key (k) | value (v) |
+|---|---|---|---|
+| The | (1, 0) | (0, 1) | (1, 0) |
+| cat | (0, 1) | (1, 1) | (0, 1) |
+| sat | (1, 1) | (1, 0) | (1, 1) |
+
+**Focus on "cat" (row 2).** Its query is `(0, 1)`.
+
+| step | vs The | vs cat | vs sat |
+|---|---|---|---|
+| **Score** (q_cat · k) | 0×0 + 1×1 = **1** | 0×1 + 1×1 = **1** | 0×1 + 1×0 = **0** |
+| **Softmax weight** | e¹/(e¹+e¹+e⁰) = **0.42** | **0.42** | **0.16** |
+
+- "cat" attends equally to "The" and itself (both score 1), and less to "sat" (score 0).
+
+**Blend** — the output for "cat" is the weighted sum of all value vectors:
+
+`0.42 × (1,0) + 0.42 × (0,1) + 0.16 × (1,1) = (0.42, 0) + (0, 0.42) + (0.16, 0.16) = **(0.58, 0.58)**`
+
+- The output is a mix of every token's value, tilted toward the ones with high scores. That is all self-attention does.
+
+:::mint
+```python
+import torch
+import torch.nn.functional as F
+
+Q = torch.tensor([[1,0],[0,1],[1,1]], dtype=torch.float)
+K = torch.tensor([[0,1],[1,1],[1,0]], dtype=torch.float)
+V = torch.tensor([[1,0],[0,1],[1,1]], dtype=torch.float)
+
+scores  = Q @ K.T                        # (3,3)
+weights = F.softmax(scores, dim=-1)      # rows sum to 1
+output  = weights @ V                    # (3,2)
+print(weights[1])   # tensor([0.4223, 0.4223, 0.1554])  — "cat" row
+print(output[1])    # tensor([0.5777, 0.5777])           — blended vector
+```
+:::
+
 :::note
 No recurrence, no loop over positions — the whole thing is two matrix multiplies and a softmax, so a GPU computes every token's new vector **at once**. That parallelism is the transformer's superpower. The cost: the `n × n` score matrix grows with the *square* of sequence length — the quadratic wall that pages 07-17 to 07-22 spend their time fighting.
 :::
