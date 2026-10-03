@@ -1,0 +1,9 @@
+## Cassandra
+
+- **Cassandra** is the open-source embodiment of Booklet 3's hard choices: a **leaderless** (every node equal, no primary), **wide-column** store built on an **LSM** engine (Module 1). Data is placed by **consistent hashing** of the partition key; within a partition, **clustering columns** keep rows sorted on disk. It's built for **very high write throughput**, **multi-datacentre** deployment, and **no single point of failure** — any node can take any request, and losing nodes degrades rather than stops the cluster.
+- Its signature feature is **tunable consistency per query**. You pick a level — `ONE`, `QUORUM`, `ALL`, or `LOCAL_QUORUM` (quorum within the local datacentre) — on each read and write, which sets how many replicas must respond. Satisfy Booklet 3's **`R + W > N`** and you get strong-ish reads; drop below it for speed and availability. The same cluster can serve a critical write at `QUORUM` and a metrics write at `ONE`.
+- Modelling is **query-first and denormalised**: because there are no joins, you build **one table per query**, duplicating data across tables so each read hits exactly one partition. "Store it the way you'll read it" — the inverse of relational normalization, and a genuine mental adjustment for SQL-trained engineers.
+
+:::warn
+Two Cassandra-specific traps, both from the LSM engine. **(1) Large partitions:** a partition key that accumulates unbounded rows (all events for one tenant, forever) creates a giant partition that slows reads and strains compaction — bound partitions by time or bucket. **(2) Tombstone pileups:** deletes write **tombstones** (Module 1), and a query that scans many tombstones (common with queue-like or frequently-deleted data) gets slow and can even error on tombstone thresholds. Cassandra is superb for append-heavy, time-series, and write-scaled workloads — and a poor fit for queue-like delete-heavy patterns, which is exactly what Module 5's message systems are for.
+:::

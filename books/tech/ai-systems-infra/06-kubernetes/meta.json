@@ -1,0 +1,28 @@
+{
+  "title": "Kubernetes: How It Actually Works",
+  "subtitle": "The Control Loop, the Objects, and Operating a Cluster",
+  "seriesLine": "The Infrastructure Engineer",
+  "tocTitle": "Contents",
+  "cover": {
+    "accent": "#2a5db0",
+    "title": ["Kubernetes", "From the Loop Out"],
+    "banner": "NOT KUBECTL INCANTATIONS — THE CONTROL LOOP.",
+    "kicker": "CONTROL PLANE · PODS · SERVICES · GATEWAY API · SCHEDULING · HPA · OPERATORS · GITOPS",
+    "term": [
+      ["$ kubectl apply -f deploy.yaml", 0],
+      ["deployment.apps/api configured", 0],
+      ["# reconcile: actual → desired, forever", 0],
+      ["\"...the cluster heals itself.\"", 1],
+      ["$ _", 2]
+    ],
+    "stack": [
+      "reconcile loop · control plane",
+      "pods · deployments · services",
+      "requests/limits · probes · QoS",
+      "CNI · DNS · Gateway API · CSI",
+      "HPA · Karpenter · operators",
+      "GitOps · rollouts · debugging"
+    ],
+    "face": { "brow": "sharp", "mouth": "flat", "tilt": -2 }
+  }
+}

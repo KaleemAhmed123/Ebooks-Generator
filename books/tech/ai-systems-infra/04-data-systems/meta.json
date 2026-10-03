@@ -1,0 +1,28 @@
+{
+  "title": "Data Systems: Storage Engines to Streaming",
+  "subtitle": "Databases, Caches, and Logs — How to Choose and Reason",
+  "seriesLine": "The Infrastructure Engineer",
+  "tocTitle": "Contents",
+  "cover": {
+    "accent": "#6a4c93",
+    "title": ["Data", "Systems"],
+    "banner": "DON'T MEMORISE DATABASES. REASON ABOUT THEM.",
+    "kicker": "B-TREE · LSM · POSTGRES · DYNAMODB · CASSANDRA · REDIS · KAFKA · ETCD",
+    "term": [
+      ["$ EXPLAIN ANALYZE SELECT …", 0],
+      ["Index Scan using orders_pkey", 0],
+      ["  rows=1  actual time=0.03ms", 0],
+      ["\"...it used the index.\"", 1],
+      ["$ _", 2]
+    ],
+    "stack": [
+      "storage engines",
+      "B-tree vs LSM · WAL",
+      "Postgres · MVCC",
+      "DynamoDB · Cassandra",
+      "caching · stampede",
+      "RabbitMQ vs Kafka"
+    ],
+    "face": { "brow": "sharp", "mouth": "flat", "tilt": -2 }
+  }
+}

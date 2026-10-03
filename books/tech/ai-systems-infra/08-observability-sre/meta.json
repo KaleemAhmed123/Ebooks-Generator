@@ -1,0 +1,28 @@
+{
+  "title": "Observability & SRE",
+  "subtitle": "The Signals, the Stack, and Running It in Production",
+  "seriesLine": "The Infrastructure Engineer",
+  "tocTitle": "Contents",
+  "cover": {
+    "accent": "#a63d57",
+    "title": ["Observability", "& SRE"],
+    "banner": "TRACE THE REQUEST. NAME WHERE IT BROKE.",
+    "kicker": "METRICS · LOGS · TRACES · PROFILES · OTEL · SLO · ERROR BUDGETS · INCIDENTS",
+    "term": [
+      ["$ curl -w '%{time_starttransfer}'", 0],
+      ["trace_id=4bf92f… span=db.query 3.1s", 0],
+      ["# the oversized span names the cause", 0],
+      ["\"...good enough is a number, not a feeling.\"", 1],
+      ["$ _", 2]
+    ],
+    "stack": [
+      "metrics · logs · traces · profiles",
+      "OpenTelemetry · the collector",
+      "Prometheus · PromQL · Grafana",
+      "SLI · SLO · error budgets",
+      "capacity · k6 · chaos",
+      "incident method · RCA"
+    ],
+    "face": { "brow": "sharp", "mouth": "flat", "tilt": -2 }
+  }
+}

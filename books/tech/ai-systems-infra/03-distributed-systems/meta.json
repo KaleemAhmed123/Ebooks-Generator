@@ -1,0 +1,30 @@
+{
+  "title": "Distributed Systems: Reasoning About Failure",
+  "subtitle": "Replication, Consensus, and Surviving Partial Failure",
+  "seriesLine": "The Infrastructure Engineer",
+  "tocTitle": "Contents",
+  "cover": {
+    "accent": "#1f487e",
+    "title": ["Distributed", "Systems"],
+    "banner": "PARTIAL FAILURE IS THE DEFAULT. DESIGN FOR IT.",
+    "kicker": "CLOCKS · REPLICATION · PARTITIONING · CONSISTENCY · CONSENSUS · SAGAS · TAIL LATENCY",
+    "term": [
+      ["$ etcdctl endpoint status", 0],
+      ["leader: node-2   term: 7", 0],
+      ["node-1  node-2  node-3   quorum 2/3", 0],
+      ["\"...they agreed.\"", 1],
+      ["$ _", 2]
+    ],
+    "stack": [
+      "partial failure",
+      "clocks & ordering",
+      "replication",
+      "partitioning",
+      "consistency & CAP",
+      "consensus · Raft",
+      "transactions · sagas",
+      "resilience · tail latency"
+    ],
+    "face": { "brow": "sharp", "mouth": "flat", "tilt": -3 }
+  }
+}

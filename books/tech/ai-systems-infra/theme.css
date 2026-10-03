@@ -1,0 +1,70 @@
+/* The Infrastructure Engineer — series theme.
+   The domain theme (books/tech/theme.css) already styles .mint, .note and
+   .interview. This file adds the three blocks this series leans on that the
+   domain leaves unstyled, and is concatenated AFTER the domain theme, so these
+   rules win. Keep the visual language consistent with .note / .mint. */
+
+/* ---------- .warn : a hazard, a failure mode, a gotcha ---------- */
+.warn {
+  background: #fdf2f2;
+  border-left: 1mm solid #c0392b;
+  padding: 3mm 4mm;
+  margin: 3mm 0;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.warn::before {
+  content: "Failure mode";
+  display: block;
+  font-family: "Consolas", monospace;
+  font-size: 7.2pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #c0392b;
+  margin-bottom: 1mm;
+}
+.warn p:last-child { margin-bottom: 0; }
+
+/* ---------- .lab : a hands-on exercise (local/free first) ---------- */
+.lab {
+  background: #eef6f1;
+  border: 0.4mm solid #2f7d4f;
+  border-radius: 2mm;
+  padding: 3mm 4mm;
+  margin: 3mm 0;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.lab::before {
+  content: "Hands-on";
+  display: block;
+  font-family: "Consolas", monospace;
+  font-size: 7.2pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #2f7d4f;
+  margin-bottom: 1mm;
+}
+.lab pre { background: #0f2a1d; }
+.lab p:last-child { margin-bottom: 0; }
+
+/* ---------- .incident : a debugging / failure drill ("debug this") ---------- */
+.incident {
+  background: #fbf4e9;
+  border-left: 1mm solid #b5651d;
+  padding: 3mm 4mm;
+  margin: 3mm 0;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.incident::before {
+  content: "Debug this";
+  display: block;
+  font-family: "Consolas", monospace;
+  font-size: 7.2pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #b5651d;
+  margin-bottom: 1mm;
+}
+.incident p:last-child { margin-bottom: 0; }

@@ -1,0 +1,20 @@
+# The Signals
+
+## Metrics, logs, traces — and the fourth
+
+- **Observability** is the ability to ask *new* questions of a running system from the data it already emits — not just watch pre-built dashboards, but answer "why is *this* request slow?" without shipping new code. Three classic **signals** carry that data, each answering a different question, and a fourth has joined them.
+- The distinction is **what question each answers**, and using the wrong one wastes hours:
+
+<svg viewBox="0 0 360 104" role="img" aria-label="Four signals: metrics answer is it bad and when, logs answer what exactly happened, traces answer where in the request path, profiles answer which line of code" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
+  <rect x="8" y="12" width="82" height="80" rx="4" fill="#fbe9ee" stroke="#a63d57"/><text x="49" y="26" text-anchor="middle" font-size="6.6" fill="#a63d57">metrics</text><text x="49" y="42" text-anchor="middle" font-size="5.6">"is it bad?</text><text x="49" y="52" text-anchor="middle" font-size="5.6">when?"</text><text x="49" y="68" text-anchor="middle" font-size="5" fill="#777">aggregates,</text><text x="49" y="77" text-anchor="middle" font-size="5" fill="#777">cheap, trends</text>
+  <rect x="98" y="12" width="82" height="80" rx="4" fill="#f6dce3" stroke="#a63d57"/><text x="139" y="26" text-anchor="middle" font-size="6.6" fill="#a63d57">logs</text><text x="139" y="42" text-anchor="middle" font-size="5.6">"what exactly</text><text x="139" y="52" text-anchor="middle" font-size="5.6">happened?"</text><text x="139" y="68" text-anchor="middle" font-size="5" fill="#777">discrete events,</text><text x="139" y="77" text-anchor="middle" font-size="5" fill="#777">detail</text>
+  <rect x="188" y="12" width="82" height="80" rx="4" fill="#fbe9ee" stroke="#a63d57"/><text x="229" y="26" text-anchor="middle" font-size="6.6" fill="#a63d57">traces</text><text x="229" y="42" text-anchor="middle" font-size="5.6">"where in the</text><text x="229" y="52" text-anchor="middle" font-size="5.6">request path?"</text><text x="229" y="68" text-anchor="middle" font-size="5" fill="#777">one request,</text><text x="229" y="77" text-anchor="middle" font-size="5" fill="#777">across services</text>
+  <rect x="278" y="12" width="82" height="80" rx="4" fill="#e7efe9" stroke="#2f7d4f"/><text x="319" y="26" text-anchor="middle" font-size="6.6" fill="#2f7d4f">profiles</text><text x="319" y="42" text-anchor="middle" font-size="5.6">"which line</text><text x="319" y="52" text-anchor="middle" font-size="5.6">of code?"</text><text x="319" y="68" text-anchor="middle" font-size="5" fill="#777">CPU/mem by</text><text x="319" y="77" text-anchor="middle" font-size="5" fill="#777">function (4th)</text>
+</svg>
+
+- **Metrics** are cheap numeric aggregates over time (request rate, error %, p99, CPU) — they tell you *that* something is wrong and *when*, and they're what you alert on. **Logs** are discrete, detailed events — they tell you *what exactly* happened in one place. **Traces** follow *one request* across every service it touches — they tell you *where* in the path the time or the error went. **Profiles** (next pages) go deeper still: *which function or line* burned the CPU or memory.
+- The skill is **correlation, not collection.** A metric alert ("p99 spiked") sends you to a trace ("the DB span is 3s") which names the service, whose logs show the error and whose profile shows the hot function. Each signal narrows the search; used alone, each is a dead end. The rest of this module is how to emit each one *well enough to correlate*.
+
+:::note
+"Three pillars" is the old framing, and it undersells the goal — three separate silos you check in turn isn't observability, it's three dashboards. The 2026 shift is **one correlated stream**: a single **trace ID** (Module 1.4) stamped on logs, linked from metrics (via exemplars), and now joined to profiles, so you pivot between signals on *the same request* in one click. OpenTelemetry (Module 2) exists to make that correlation the default, not a heroic integration.
+:::

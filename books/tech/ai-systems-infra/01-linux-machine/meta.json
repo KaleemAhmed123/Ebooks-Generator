@@ -1,0 +1,28 @@
+{
+  "title": "Linux & the Machine",
+  "subtitle": "Processes, Memory, and Containers",
+  "seriesLine": "The Infrastructure Engineer",
+  "tocTitle": "Contents",
+  "cover": {
+    "accent": "#3a3f58",
+    "title": ["Linux &", "the Machine"],
+    "banner": "EVERY PRODUCTION MYSTERY BOTTOMS OUT HERE.",
+    "kicker": "PROCESSES · SCHEDULING · MEMORY · FILE DESCRIPTORS · NAMESPACES · CGROUPS · EBPF",
+    "term": [
+      ["$ cat /proc/self/status", 0],
+      ["State:   R (running)", 0],
+      ["VmRSS:   41216 kB", 0],
+      ["# a container is just this", 1],
+      ["$ _", 2]
+    ],
+    "stack": [
+      "a process is the unit",
+      "the scheduler shares the CPU",
+      "virtual memory · the OOM killer",
+      "file descriptors · epoll",
+      "namespaces · cgroups",
+      "perf · strace · eBPF"
+    ],
+    "face": { "brow": "sharp", "mouth": "flat", "tilt": -2 }
+  }
+}

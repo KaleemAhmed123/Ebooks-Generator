@@ -1,0 +1,8 @@
+:::warn
+The best fix is often to **not put the secret in Terraform at all**. Let the cloud generate and hold it: an RDS instance with `manage_master_user_password = true` has **AWS create and store the password in Secrets Manager**, so it never passes through your code *or* your state. On Kubernetes, the **External Secrets Operator** (Booklet 6/11) syncs secrets from the store into the cluster at runtime, outside IaC entirely. Design so the secret's **only home is the secret store** — Terraform references it, never holds it.
+:::
+
+### Module 2 — checkpoint
+- **Key concepts:** **providers** (API plugins) create **resources** (`type.name`); **references build the dependency graph**; **data sources** read existing infra · **variables** (inputs, typed, validated) / **locals** (computed) / **outputs** (exposed) · **modules** = reusable input/output packages, composed by wiring outputs→inputs; pin + version them · **remote state** in **versioned, encrypted S3** with **locking** — **S3-native `use_lockfile` (TF 1.11+)** replaces the deprecated DynamoDB table; split by `key` · **multi-env** via directory-per-env + shared modules (explicit, safe) over workspaces (hidden selection) · **secrets**: never hardcode/commit; pull from a store or let the cloud own them; state still needs encryption + IAM + `sensitive`.
+- **Task + questions:** refactor duplicated VPC HCL into a module, call it from `envs/dev` and `envs/prod` with different CIDRs and separate S3 state. Why does `sensitive = true` not make a value secure? Why is S3-native locking preferred over the DynamoDB table now?
+- **Next:** Module 3 — build the real stack in code (VPC → EKS → data → IAM → monitoring).

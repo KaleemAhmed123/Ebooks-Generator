@@ -1,0 +1,28 @@
+{
+  "title": "AWS: Operating a Cloud for Real Systems",
+  "subtitle": "Identity, Networking, Compute, and the Cost Model",
+  "seriesLine": "The Infrastructure Engineer",
+  "tocTitle": "Contents",
+  "cover": {
+    "accent": "#8a5a00",
+    "title": ["AWS for", "Real Systems"],
+    "banner": "DESIGN IT, SECURE IT, AND KNOW THE BILL.",
+    "kicker": "IAM · VPC · EC2 · ECS · EKS · LAMBDA · RDS · S3 · SQS · KMS · COST",
+    "term": [
+      ["$ aws sts get-caller-identity", 0],
+      ["Arn: …/role/eks-irsa-app", 0],
+      ["# temporary creds, least privilege", 0],
+      ["\"...no long-lived keys.\"", 1],
+      ["$ _", 2]
+    ],
+    "stack": [
+      "IAM · least privilege",
+      "VPC · subnets · SG/NACL",
+      "EC2 · ECS · EKS · Lambda",
+      "RDS · DynamoDB · S3",
+      "SQS · SNS · EventBridge",
+      "cost · design for scale"
+    ],
+    "face": { "brow": "sharp", "mouth": "flat", "tilt": -2 }
+  }
+}

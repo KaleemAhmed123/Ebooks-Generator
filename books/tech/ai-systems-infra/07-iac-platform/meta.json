@@ -1,0 +1,28 @@
+{
+  "title": "Infrastructure as Code & Platform Engineering",
+  "subtitle": "Terraform/OpenTofu, State, and the Paved Road",
+  "seriesLine": "The Infrastructure Engineer",
+  "tocTitle": "Contents",
+  "cover": {
+    "accent": "#5c4b8a",
+    "title": ["Infrastructure", "as Code"],
+    "banner": "YOUR INFRA IS A REVIEWED, VERSIONED ARTIFACT.",
+    "kicker": "DECLARATIVE · STATE · TERRAFORM · OPENTOFU · MODULES · POLICY · GOLDEN PATHS",
+    "term": [
+      ["$ tofu plan", 0],
+      ["Plan: 7 to add, 1 to change, 0 to destroy", 0],
+      ["# review the diff BEFORE you trust it", 0],
+      ["\"...describe the end state, not the steps.\"", 1],
+      ["$ _", 2]
+    ],
+    "stack": [
+      "declarative · state · drift",
+      "Terraform vs OpenTofu (BSL)",
+      "providers · modules · remote state",
+      "VPC → EKS → RDS → IAM in code",
+      "policy as code · plan-on-PR",
+      "golden paths · platforms"
+    ],
+    "face": { "brow": "sharp", "mouth": "flat", "tilt": -2 }
+  }
+}

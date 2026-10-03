@@ -1,0 +1,57 @@
+{
+  "title": "The Infrastructure Engineer",
+  "author": "Kaleem Ahmed",
+  "subtitle": "AI Systems · Cloud · Distributed Platforms — from the Kernel Up",
+  "seriesLine": "The Infrastructure Engineer · From the kernel to a production AI platform",
+  "tocTitle": "Contents",
+  "contents": "per-topic",
+  "masterVolume": { "name": "ai-systems-infra-complete" },
+  "blocks": ["mint", "note", "interview", "warn", "lab", "incident"],
+  "order": [
+    "frontmatter",
+    "01-linux-machine",
+    "02-networking",
+    "03-distributed-systems",
+    "04-data-systems",
+    "05-aws",
+    "06-kubernetes",
+    "07-iac-platform",
+    "08-observability-sre",
+    "09-gpu-ai-infra",
+    "10-serving-ai-platform",
+    "11-security",
+    "12-architecture-capstones",
+    "13-interview-bank",
+    "backmatter"
+  ],
+  "cover": {
+    "accent": "#1f487e",
+    "title": ["The Infrastructure", "Engineer"],
+    "banner": "FROM THE KERNEL TO A PRODUCTION AI PLATFORM.",
+    "kicker": "LINUX · NETWORKING · DISTRIBUTED · CLOUD · KUBERNETES · GPUS · SERVING · SECURITY",
+    "term": [
+      ["$ kubectl get pods -o wide", 0],
+      ["NAME            READY   STATUS    NODE", 0],
+      ["infer-vllm-0    1/1     Running   gpu-a1", 0],
+      ["\"...and it stays up.\"", 1],
+      ["$ _", 2]
+    ],
+    "stack": [
+      "Linux & the Machine",
+      "Networking",
+      "Distributed Systems",
+      "Data Systems",
+      "AWS",
+      "Kubernetes",
+      "IaC & Platform",
+      "Observability & SRE",
+      "GPU & AI Infrastructure",
+      "Serving & AI Platform",
+      "Security",
+      "Architecture & Capstones"
+    ],
+    "label": "COMPLETE VOLUME",
+    "setLine": "12 BOOKLETS + INTERVIEW BANK IN ONE VOLUME",
+    "face": { "brow": "sharp", "mouth": "flat", "tilt": -3 }
+  }
+}

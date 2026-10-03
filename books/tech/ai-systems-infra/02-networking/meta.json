@@ -1,0 +1,28 @@
+{
+  "title": "Networking for Infrastructure Engineers",
+  "subtitle": "Packets, Protocols, and Why A Can't Reach B",
+  "seriesLine": "The Infrastructure Engineer",
+  "tocTitle": "Contents",
+  "cover": {
+    "accent": "#0f6e6e",
+    "title": ["Networking", "for Infra"],
+    "banner": "FIND THE LAYER. THEN FIND THE FAULT.",
+    "kicker": "IP · CIDR · TCP · UDP · DNS · TLS · HTTP/3 · gRPC · LOAD BALANCING · EBPF",
+    "term": [
+      ["$ dig +short api.internal", 0],
+      ["10.0.4.12", 0],
+      ["$ curl -v https://api.internal", 0],
+      ["* TLSv1.3 handshake, done", 1],
+      ["$ _", 2]
+    ],
+    "stack": [
+      "the layered stack",
+      "IP · CIDR · routing · NAT",
+      "TCP · UDP · flow control",
+      "DNS · TLS · mTLS",
+      "HTTP/1.1 · 2 · 3 · gRPC",
+      "load balancing · proxies · CDN"
+    ],
+    "face": { "brow": "sharp", "mouth": "flat", "tilt": -2 }
+  }
+}

@@ -1,0 +1,16 @@
+## Jobs, CronJobs, DaemonSets
+
+- Deployments keep pods running **forever**. Three other controllers cover the shapes that aren't a long-lived server — and each is just the reconcile loop over a different notion of "done."
+- **Job** — runs a pod **to completion** and stops. Its spec has `completions` (how many successful runs you need) and `parallelism` (how many at once), so a Job can fan out 100 work items across 10 pods and finish when all succeed. On failure it retries up to `backoffLimit`, then marks the Job failed. This is the primitive for migrations, batch processing, and — in Booklet 9 — **GPU training/batch inference jobs**.
+- **CronJob** — a Job on a **schedule** (standard cron syntax). It creates a new Job at each firing; `concurrencyPolicy` decides whether a slow run may overlap the next tick (`Forbid`/`Replace`/`Allow`), and history limits cap how many finished Jobs it keeps.
+- **DaemonSet** — exactly **one pod per node** (matching nodes), and automatically a pod on every node that *joins* later. This is how cluster-wide agents run: the CNI (Module 4), log shippers, metrics/eBPF agents (Booklet 8), the GPU device plugin (Booklet 9). You don't pick a replica count; the count *is* the node count.
+
+<svg viewBox="0 0 360 84" role="img" aria-label="Job runs pods to completion; CronJob creates Jobs on a schedule; DaemonSet runs one pod on every node" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
+  <rect x="6" y="10" width="108" height="64" rx="4" fill="#f3f7fc" stroke="#2a5db0"/><text x="60" y="23" text-anchor="middle" font-size="6.4" fill="#2a5db0">Job</text><text x="60" y="40" text-anchor="middle" font-size="5.8">run to completion</text><text x="60" y="52" text-anchor="middle" font-size="5.8">parallelism × completions</text><text x="60" y="66" text-anchor="middle" font-size="5.2" fill="#777">migrations, batch</text>
+  <rect x="126" y="10" width="108" height="64" rx="4" fill="#f3f7fc" stroke="#2a5db0"/><text x="180" y="23" text-anchor="middle" font-size="6.4" fill="#2a5db0">CronJob</text><text x="180" y="40" text-anchor="middle" font-size="5.8">Job on a schedule</text><text x="180" y="52" text-anchor="middle" font-size="5.8">concurrencyPolicy</text><text x="180" y="66" text-anchor="middle" font-size="5.2" fill="#777">nightly tasks</text>
+  <rect x="246" y="10" width="108" height="64" rx="4" fill="#eaf1fb" stroke="#2a5db0"/><text x="300" y="23" text-anchor="middle" font-size="6.4" fill="#2a5db0">DaemonSet</text><text x="300" y="40" text-anchor="middle" font-size="5.8">one pod / node</text><text x="300" y="52" text-anchor="middle" font-size="5.8">auto on new nodes</text><text x="300" y="66" text-anchor="middle" font-size="5.2" fill="#777">agents, CNI, logs</text>
+</svg>
+
+:::warn
+A **CronJob with `concurrencyPolicy: Allow`** (the default) whose job runs longer than its interval will **stack up overlapping runs** — a nightly export that one day takes 25 hours spawns a second, then a third, each competing for the same resources and often the same rows. For anything non-idempotent or long-running, set `Forbid` (skip if the last run is still going) or `Replace`, and set `activeDeadlineSeconds` so a hung run is killed rather than blocking forever.
+:::

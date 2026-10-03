@@ -1,0 +1,4 @@
+### Module 3 — checkpoint
+- **Key concepts:** **SLI** (measured, user-centric ratio) → **SLO** (internal target, "good enough") → **SLA** (looser external promise + penalty); don't chase 100% · **error budget** = `1 − SLO` (99.9% ≈ 43m/30d) turns reliability into a ship-vs-freeze **decision**; alert on **burn rate** (fast = page, slow = ticket) · **percentiles**: the tail (p99+) is the real experience, **can't average percentiles** (merge histograms), beware **coordinated omission** · **MTTD + MTTR** = impact; **alert on symptoms (SLO), not causes**; kill alert fatigue.
+- **Task + questions:** define an SLI + SLO for one service, compute its monthly error budget, and write one symptom-based burn-rate alert. Why is an SLO stricter than the SLA? Why can't you average the p99 of ten pods?
+- **Next:** Module 4 — keeping it up (capacity, load testing, chaos).

@@ -1,0 +1,9 @@
+## The write-ahead log
+
+- Both engines share one trick for the **D** in ACID: the **write-ahead log (WAL)**. Before a change touches the real data structure, the database **appends a record of it to a sequential log and `fsync`s that log to disk.** Only then is the write acknowledged. If the process crashes, recovery **replays** the WAL to re-apply any committed changes that hadn't yet made it into the data pages. The data structure can lag; the log is the truth.
+- Why not just write the data page directly? Because data writes are **random** (a B-tree page anywhere on disk; many SSTables) and random durable writes are slow. The WAL turns "make this durable" into a **sequential append** — the fastest thing a disk does — and lets the slower, random data writes happen **lazily** and in batches afterward. You get durability at sequential-write speed instead of random-write speed.
+- The real cost is **`fsync`** — forcing the OS to actually push the log to physical storage, not just the page cache (Booklet 1). `fsync` is expensive, so databases use **group commit**: batch many transactions' log records and `fsync` once for all of them, trading a tiny latency increase for far higher throughput. This is the knob behind "how many commits/sec can this database do."
+
+:::note
+The WAL is also the backbone of two things from Booklet 3. **Replication** ships the WAL to followers, who replay it to stay in sync — Postgres streaming replication is literally "stream the WAL." And **Change Data Capture (CDC)** — the reliable engine of the **outbox pattern** — works by *tailing this same WAL* (Debezium reading Postgres's WAL), turning every committed change into an event stream. So the log that exists for crash recovery is reused, unchanged, for replication and event streaming. One mechanism, three jobs.
+:::

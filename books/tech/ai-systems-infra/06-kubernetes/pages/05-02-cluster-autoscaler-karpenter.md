@@ -1,0 +1,16 @@
+## Cluster Autoscaler and Karpenter
+
+- HPA adds *pods*; if no node has room, those pods go **`Pending`**. Node autoscaling adds *machines* to fit them — and this is the single biggest **cost lever** in a cluster, because nodes are what you pay for (Booklet 5).
+- **Cluster Autoscaler (CA)** — the long-standing approach. It works over **pre-defined node groups** (an AWS Auto Scaling Group per instance type). When pods can't schedule, it increases the matching group's size; when nodes sit underused, it drains and removes them (respecting PDBs — Module 3.5). The limitation: you must **predefine the instance types**, and CA only scales the counts of those groups — a coarse fit.
+- **Karpenter** — a newer node-lifecycle controller (built at AWS, **donated to the CNCF**, now under Kubernetes SIG Autoscaling). Instead of fixed groups, it looks at the **actual resource shape of pending pods** and provisions a **right-sized node** directly from the cloud — picking instance type, size, zone, and **spot vs on-demand** to fit the pending work. It also **consolidates**: when pods could pack onto fewer/cheaper nodes, it reschedules them and removes the excess.
+
+<svg viewBox="0 0 360 86" role="img" aria-label="Cluster Autoscaler scales fixed node groups up and down; Karpenter provisions a right-sized node per pending pod shape and consolidates onto cheaper nodes" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="7" fill="#1a1a1a">
+  <rect x="8" y="12" width="166" height="62" rx="4" fill="#f3f7fc" stroke="#2a5db0"/><text x="91" y="25" text-anchor="middle" font-size="6.2" fill="#2a5db0">Cluster Autoscaler</text><text x="91" y="40" text-anchor="middle" font-size="5.6">predefined node groups</text><text x="91" y="52" text-anchor="middle" font-size="5.6">scale group counts ↑↓</text><text x="91" y="65" text-anchor="middle" font-size="5.2" fill="#777">coarse fit</text>
+  <rect x="186" y="12" width="166" height="62" rx="4" fill="#e7efe9" stroke="#2f7d4f"/><text x="269" y="25" text-anchor="middle" font-size="6.2" fill="#2f7d4f">Karpenter</text><text x="269" y="40" text-anchor="middle" font-size="5.6">node shaped to pending pods</text><text x="269" y="52" text-anchor="middle" font-size="5.6">spot-aware · consolidates</text><text x="269" y="65" text-anchor="middle" font-size="5.2" fill="#777">tight fit = lower cost</text>
+</svg>
+
+- The cost mechanism is bin-packing (Booklet 5's design-for-scale): tighter packing and automatic **spot** usage mean fewer, cheaper, fuller nodes. For **GPU** nodes (Booklet 9) this matters even more — idle GPU capacity is the most expensive waste in the cluster, and provisioning exactly the GPU node a pending job needs, then removing it when done, is the core of GPU cost control.
+
+:::warn
+Aggressive **consolidation** reschedules pods to pack them tighter — which means pods get **evicted and moved** during normal operation, not just during upgrades. Without **PodDisruptionBudgets** (Module 3.5) and solid readiness probes, consolidation can disrupt a service it's only trying to make cheaper. And **spot** nodes can be reclaimed with ~2 minutes' notice; stateless, replicated, PDB-protected workloads tolerate it — stateful singletons don't.
+:::

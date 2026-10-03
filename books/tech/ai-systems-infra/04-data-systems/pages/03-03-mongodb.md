@@ -1,0 +1,9 @@
+## MongoDB, revisited
+
+- **MongoDB** stores **documents** — JSON-like records (BSON on disk) with nested fields and arrays — grouped in collections. Its appeal is **shape**: when your data is naturally hierarchical and read/written **as a unit** (a product with its variants, an order with its line-items, a CMS page with its blocks), a document maps directly to your application object with no join to reassemble it. One read returns the whole thing. Flexible schema means you can add fields without a migration, which is genuinely useful early in a project's life.
+- It scales with **replica sets** (leader-follower, automatic failover — Booklet 3) and **sharding** (partition by a shard key — the same hot-key cautions apply), and offers secondary indexes and an aggregation pipeline for richer queries than a pure KV store.
+- The decisive modelling choice is **embed vs reference**: nest related data inside the document (fast reads, atomic single-document updates) **or** store it separately and link by id (avoids duplication and unbounded growth). Embed what you read together and that doesn't grow without bound; reference what's shared or ever-growing.
+
+:::warn
+Two document-model failures. **(1) Unbounded embedded arrays:** embedding a list that grows forever (every comment in a post, every event on a user) eventually blows past the **document size limit** and makes every read of that document huge — reference instead once a child set is unbounded. **(2) Schema drift:** "flexible schema" with no discipline becomes **ten shapes of the same entity** across one collection, and the cleanup burden lands on your application code forever. Use schema validation and treat flexibility as a migration convenience, not a licence. Note too that **Postgres JSONB** gives you indexed documents *inside* a transactional relational database — for many "we need Mongo" cases, it's the lower-risk answer (Module 2).
+:::

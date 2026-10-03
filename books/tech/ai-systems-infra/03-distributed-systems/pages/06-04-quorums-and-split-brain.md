@@ -1,0 +1,9 @@
+## Quorums and split-brain
+
+- A **quorum** is a majority: `⌊N/2⌋ + 1` nodes. Consensus requires a quorum to agree before anything commits, and the reason is a single elegant property: **any two majorities of the same set must overlap on at least one node.** That overlap is what guarantees a newly elected leader shares at least one member with the last commit's majority — so no committed entry is ever lost, and two different leaders can't both hold a majority at once.
+- This is why cluster sizes are **odd**. With `N=3` a quorum is 2, tolerating **1** failure. With `N=5`, quorum 3, tolerating **2**. An **even** size wins nothing: `N=4` also tolerates only 1 (quorum is 3), so you've paid for a fourth node and gained no fault tolerance, while adding tie risk. Run **3 or 5** members for etcd/ZooKeeper; 7 only when the extra read capacity is worth the slower commits.
+- **Split-brain** is the disease quorums cure: two nodes both believing they're in charge, each accepting writes, silently diverging — the nightmare that naive failover (Module 3) invites. Under a partition, only the side with a **majority** can form a quorum; the minority side **cannot elect a leader or commit anything**, so it stops rather than diverge. When the partition heals, the minority rejoins, sees the higher term, and catches up. No two-leaders, no divergence — by construction.
+
+:::warn
+The subtle killer is an **even split with no majority** — e.g. a 2+2 partition of a 4-node cluster, or losing 2 of 3 nodes. **Neither side has a quorum, so the whole system halts** (correctly: it would rather be unavailable than inconsistent — that's the CP choice from Module 5). Teams discover this when a second control-plane node dies and the cluster "freezes": etcd has no majority and refuses writes. The fix is capacity planning (run 5 so you tolerate 2), not forcing a minority to act — forcing it is exactly how you manufacture split-brain.
+:::
