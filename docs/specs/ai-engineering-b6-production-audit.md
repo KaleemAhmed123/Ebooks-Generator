@@ -6,7 +6,10 @@
 - **Scope:** `books/tech/ai-engineering/06-production/` — 316 pages across three
   modules: **17 Infrastructure & Production** (100pp), **18 Ethics, Safety &
   Alignment** (73pp), **19 Capstones & System Design** (142pp).
-- **Status:** audit complete · backlog ranked · fixes in progress
+- **Status:** audit complete · 2 content defects fixed (P6-1 `17-38a`, P6-2
+  `17-41`) · 3 currency items verified clean, no change (P6-3/4/5) · Finding 6
+  (overflow = font noise here) documented, P6-6 build-determinism recommendation
+  open pending owner OK · verification-debt track (module-19 numbers) remains
 - **Started:** 2026-10-03
 - **Last updated:** 2026-10-03
 - **Build:** `node tools/build.mjs 06-production --html` (needs `marked`; the repo
@@ -62,11 +65,11 @@ zero-bloat rule. **Do not invent structural work for this booklet.**
 | # | Finding | Severity | Status | Where |
 |---|---------|----------|--------|-------|
 | **0** | Shipping defects (`$$` LaTeX, `[VERIFY]` markers, leaked macros) | — | ✅ **already clean** | whole booklet |
-| **1** | **Spec-decode acceptance math is internally wrong:** `α=0.9, k=6 ≈ 4.7` — the page's own formula gives **≈5.2** (4.7 is the k=5 value) | 🟠 medium | open → fixing | `17-38a` |
-| **2** | **Prompt-cache discount overgeneralized:** "cached reads bill at ~10% … on the major providers — a 90% discount" is **Anthropic-only**; OpenAI ≈50% off, Google ≈75% off | 🟠 medium | open | `17-41` |
-| **3** | TGI "maintenance-mode" — currency claim to verify/soften | 🟡 low | verify | `17-19a` |
-| **4** | "as of 2026" currency pins (EAGLE-3 SOTA, Blackwell FP4) — verify against primary | 🟡 low | verify | `17-26`, `17-38` |
-| **5** | Illustrative GPU/token prices — spot-verify within current ranges (all hedged `~`, low risk) | 🟢 info | verify | `17-04/05x/06/41` |
+| **1** | **Spec-decode acceptance math is internally wrong:** `α=0.9, k=6 ≈ 4.7` — the page's own formula gives **≈5.2** (4.7 is the k=5 value) | 🟠 medium | ✅ **fixed** | `17-38a` |
+| **2** | **Prompt-cache discount overgeneralized:** "cached reads bill at ~10% … on the major providers — a 90% discount" is **Anthropic-only**; OpenAI ≈50% off, Google ≈75% off | 🟠 medium | ✅ **fixed** | `17-41` |
+| **3** | TGI "maintenance-mode" — currency claim to verify/soften | 🟡 low | ✅ **verified accurate, no change** | `17-19a` |
+| **4** | "as of 2026" currency pins (EAGLE-3 SOTA, Blackwell FP4) — verify against primary | 🟡 low | ✅ **verified, no change** | `17-26`, `17-38` |
+| **5** | Illustrative GPU/token prices — spot-verify within current ranges (all hedged `~`, low risk) | 🟢 info | ✅ **spot-checked, acceptable** | `17-04/05x/06/41` |
 | **6** | **Overflow can't be measured in this container — the booklet's declared fonts are absent, so page height is font-substitution noise, not content** | 🔵 build/env | documented | build + `theme.css` |
 
 ### 3.0 ✅ Shipping defects — already clean
@@ -212,14 +215,22 @@ Each item independent and sized S/M/L. `[x]` = done, `[~]` = done/re-scoped,
       ~25% (~75% off, plus a per-hour storage fee), OpenAI ~50%; worked
       `:::mint` example labelled "(Anthropic)". Verified OpenAI 50% and Gemini
       ~75% against 2026 sources. Rebuilt → clean.* (Finding 2)
-- [ ] **P6-3 · S · `17-19a`** — Verify TGI's current status against a primary HF
-      source; soften "maintenance-mode" to the exact wording if overstated.
-      *(Finding 3)*
-- [ ] **P6-4 · S · `17-26`, `17-38`** — Confirm Blackwell FP4 + EAGLE-3 currency
-      against primary pages; adjust only if a claim is stale. *(Finding 4)*
-- [ ] **P6-5 · M · `17-04/05a/05b/05c/06/41`** — Spot-verify illustrative
-      GPU/token prices sit in current ranges; re-hedge any outlier. Low risk.
-      *(Finding 5)*
+- [~] **P6-3 · S · `17-19a`** — TGI "maintenance-mode": **verified accurate, no
+      change.** *2026-10-03: TGI is in maintenance mode and the repo was archived
+      read-only in March 2026 — if anything the page understates it. The claim is
+      correct and not overstated.* (Finding 3)
+- [~] **P6-4 · S · `17-26`, `17-38`** — Blackwell FP4 + EAGLE-3: **verified, no
+      change.** *2026-10-03: EAGLE-3 confirmed as the production-grade/SOTA
+      drafting method in 2026 (deliberately did not add the single-source,
+      bleeding-edge "P-EAGLE" — aging risk for a niche variant). Blackwell
+      B200/GB200 + native FP4 + 192GB HBM3e all current and date-qualified.*
+      (Finding 4)
+- [~] **P6-5 · S · `17-04/05a/05b/05c/06/41`** — Illustrative prices:
+      **spot-checked, acceptable as hedged worked examples.** *2026-10-03: all
+      carry `~`/`-style`/`blended` and drive worked math, not a price list. H100
+      on-demand `~$3-4/hr` sits at the high end of current ranges (some clouds now
+      ~$2-3) but is within the hedge; PTU `$21-50/hr` and token rates are in range.
+      Left as illustrative. Not a defect.* (Finding 5)
 - [ ] **P6-6 · M · build + `theme.css`** — *(recommendation, needs owner OK —
       touches the build, which CLAUDE.md says not to edit mid-writing)* Make PDF
       rendering **deterministic across environments** by bundling a serif + mono
@@ -241,6 +252,19 @@ Each item independent and sized S/M/L. `[x]` = done, `[~]` = done/re-scoped,
 ---
 
 ## 7. Updates
+
+### 2026-10-03 (P6-3/4/5) — currency checks all pass, no content changes
+
+- **TGI (`17-19a`):** "maintenance-mode" verified accurate — the repo was archived
+  read-only in March 2026, so the claim is correct/conservative. No change.
+- **EAGLE-3 (`17-38`), Blackwell/FP4 (`17-26`):** both verified current and
+  date-qualified. Chose not to add the bleeding-edge "P-EAGLE" variant (single
+  source, niche) to avoid adding exact-fact aging risk. No change.
+- **Illustrative prices (`17-04/05x/06/41`):** spot-checked; all hedged and in
+  range (H100 on-demand `~$3-4/hr` is at the high end but within the `~`). Left as
+  illustrative worked-example inputs. No change.
+- **Pushback confirmed:** three of the five flagged items needed *no* edit — the
+  booklet's currency claims are sound. Real content defects were only Findings 1–2.
 
 ### 2026-10-03 (P6-2 + Finding 6) — prompt-cache discount scoped; overflow is font noise
 
