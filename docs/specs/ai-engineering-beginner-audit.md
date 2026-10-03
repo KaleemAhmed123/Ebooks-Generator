@@ -3,7 +3,7 @@
 ## 1. Task
 
 - **Name:** AI Engineering series — beginner-followability audit + progressive upgrade plan
-- **Status:** audit comprehensive · B0–B7 done (markers, LaTeX, optional-marks, CLAUDE.md rule, gradient, backprop, attention, RAG examples) · rest planned
+- **Status:** audit comprehensive · B0–B7 done + reviewed (markers, LaTeX, optional-marks, CLAUDE.md rule, gradient, backprop, attention, RAG examples; 07-05 figures corrected) · "explain > code" rule added to CLAUDE.md · B8–B12 planned
 - **Started:** 2026-10-03
 - **Last updated:** 2026-10-03
 
@@ -237,6 +237,27 @@ Each task is independent and sized **S/M/L**. `[x]` = done.
 ---
 
 ## 6. Updates
+
+### 2026-10-03 (review) — audited the B4–B7 worked examples + new CLAUDE.md rule
+
+- **Reviewed the cheap-model B4–B7 work** (gradient, GD, backprop, training loop,
+  attention, scaling, RAG). Hand-checked the arithmetic on every worked example.
+  Verdict: pedagogy is sound; all four AE booklets rebuild clean (0 `$$`, 0
+  leaked LaTeX macros).
+- **Found + fixed one factual error (07-05, scaled dot-product attention).** The
+  "Scaled (÷ 8)" softmax row and its `:::mint` comment were wrong:
+  softmax([7.0, 7.25, 6.0]) is **(0.377, 0.484, 0.139)**, not the
+  `(0.3487, 0.3974, 0.2539)` the cheap model printed. Corrected the table to
+  `(0.38, 0.48, 0.14)` and the mint comments to the true values (also fixed the
+  unscaled tiny value: ~0.000, not 0.0020). The teaching point — scaling turns a
+  near-one-hot spike into a usable spread — is unchanged; only the numbers were
+  off. Rebuilt B3 → corrected figures present, old wrong ones gone.
+- **New governing rule added to `CLAUDE.md`: "Code is not the bottleneck —
+  explain for understanding."** Agents write code well; the scarce thing is the
+  mental model, trade-offs, system-design reasoning, judgement, and taste a tool
+  can't supply. Lead with prose + reasoning; pseudo-code is first-class; keep
+  code small and in service of a sentence. This reframes B8–B10 toward
+  **explanation-first expansion**, not more code.
 
 ### 2026-10-03 (B7) — worked numeric example: RAG
 
