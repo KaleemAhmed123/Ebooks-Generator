@@ -33,8 +33,8 @@ print(state["cat"], state["answer"])
 ```
 :::
 
-- `sgl.gen(..., choices=[...])` constrains the output to a set (structured decoding); `sgl.fork` runs parallel branches that share their common prefix in the cache. The DSL and RadixAttention are designed together — branches fork off one cached context instead of re-sending it.
+- `sgl.gen(..., choices=[...])` constrains the output to a set (structured decoding); `sgl.fork` runs parallel branches that share their common prefix in the cache. The DSL and RadixAttention are designed together — branches fork off one cached context.
 
 :::note
-`--mem-fraction-static` is SGLang's equivalent of vLLM's `--gpu-memory-utilization`: the slice of VRAM reserved for weights plus the KV pool. Same failure mode — too high OOMs the box, too low starves the cache and caps concurrency. If you have internalised the vLLM knobs, SGLang's map onto them almost one-to-one; only the names differ.
+`--mem-fraction-static` is SGLang's equivalent of vLLM's `--gpu-memory-utilization`: the slice of VRAM reserved for weights plus the KV pool. Same failure mode — too high OOMs the box, too low starves the cache and caps concurrency. Internalise the vLLM knobs and SGLang's map onto them almost one-to-one; only the names differ.
 :::

@@ -25,9 +25,9 @@ registry.register("read_file", ReadFileArgs, lambda a: open(a.path).read())
 ```
 :::
 
-- **Validation is a safety and reliability boundary.** The model *will* occasionally emit malformed arguments (wrong types, missing fields, a hallucinated path). Validating against the schema turns that into a *clean error the model can read and retry* — not a crash, not an undefined action. The error message is part of the contract: it teaches the model how to fix the call.
-- **The schema is also the model's documentation** — `specs()` is what you send in the tool definitions (Booklet 5), so the schema does double duty: it tells the model how to call the tool *and* enforces that it did.
+- **Validation is a safety and reliability boundary.** The model *will* occasionally emit malformed arguments (wrong types, missing fields, a hallucinated path). Validating against the schema turns that into a *clean error the model can read and retry* — not a crash, not an undefined action. The error message is part of the contract.
+- **The schema is also the model's documentation** — `specs()` is what you send in the tool definitions (Booklet 5): it tells the model how to call the tool *and* enforces that it did.
 
 :::warn
-Two registry disciplines prevent the worst failures. **Least privilege:** register only the tools this agent needs — a code-review agent gets `read_file` and `run_tests`, not `delete_file` (trifecta-breaking, Module 18). **Confirmation:** mark destructive tools (write, delete, shell) so the dispatcher requires confirmation or the sandbox. A registry that hands every agent a full shell is a prompt injection away from a wiped repo — the tools you *don't* register matter as much as the ones you do.
+Two registry disciplines prevent the worst failures. **Least privilege:** register only the tools this agent needs — a code-review agent gets `read_file` and `run_tests`, not `delete_file` (trifecta-breaking, Module 18). **Confirmation:** mark destructive tools (write, delete, shell) so the dispatcher requires confirmation or the sandbox. The tools you *don't* register matter as much as the ones you do — a registry that hands every agent a full shell is a prompt injection away from a wiped repo.
 :::

@@ -600,6 +600,16 @@ async function prepare(page, config) {
   });
 }
 
+// Wait for @font-face fonts to actually load before measuring. setContent with
+// networkidle0 does NOT wait for this: our fonts are embedded as data: URIs (no
+// network request) with font-display:swap, so Chrome renders a fallback first
+// and measures the wrong height unless we block on document.fonts.ready. This is
+// what makes the overflow check deterministic across machines (the embedded
+// Questrial/Gelasio win instead of whatever serif/sans the OS happens to have).
+async function fontsReady(page) {
+  await page.evaluate(() => document.fonts.ready.then(() => undefined));
+}
+
 async function measure(page) {
   return page.evaluate(() => {
     const pxPerMm = 96 / 25.4;
@@ -734,6 +744,7 @@ async function autoSplit(book) {
     await page.setContent(document(assemble(await buildBook(book), 1), book), {
       waitUntil: "load",
     });
+    await fontsReady(page);
     const over = (await measure(page)).filter((p) => p.mm > H);
     if (!over.length) {
       console.log(`  packed in ${pass - 1} passes, ${cuts} cuts`);
@@ -775,6 +786,7 @@ async function measureTocs(html, config) {
   const page = await browser.newPage();
   await prepare(page, config);
   await page.setContent(html, { waitUntil: "networkidle0" });
+  await fontsReady(page);
   const raw = await page.evaluate(() => {
     const mm = (el) => el.getBoundingClientRect().height / (96 / 25.4);
     const main = document.querySelector(".page.toc.main");
@@ -804,6 +816,7 @@ async function toPdf(html, outFile, book) {
   const page = await browser.newPage();
   await prepare(page, c);
   await page.setContent(html, { waitUntil: "networkidle0" });
+  await fontsReady(page);
 
   for (const o of (await measure(page)).filter((p) => p.mm > H)) {
     console.warn(`  overflow  ${o.src}  ${o.mm.toFixed(0)}mm of ${H}mm — run --split`);
