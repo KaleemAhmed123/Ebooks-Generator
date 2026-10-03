@@ -244,10 +244,15 @@ Each item independent and sized S/M/L. `[x]` = done, `[~]` = done/re-scoped,
       set is now IDENTICAL to default (embedded fonts win; OS fonts no longer
       move page heights). Embedded faces are more compact than DejaVu, so no
       booklet regresses.* (Finding 6)
-- [ ] **P6-7 · M · B6 pages** — With rendering now deterministic, fit the pages
-      that genuinely overflow one printed page under the embedded-font build
-      (15 pages, 1–13mm over; worst `18-28a` at 199mm). Light compression per the
-      house rule, re-measured until clean. *(Finding 6 follow-on)*
+- [x] **P6-7 · M · B6 pages** — Fit the 15 pages that overflowed one printed
+      page under the deterministic embedded-font build. *Done 2026-10-03. Light
+      compression per the house rule — cut closing flourishes, redundant clauses,
+      and a few standalone code comments/blank lines; no reasoning, mechanism,
+      example, or cross-reference removed. Re-measured iteratively until **0
+      overflow** across the booklet (worst `18-28a` 199→fit). Pages: 17-22,
+      17-63b, 18-28a, 19-20, 19-21, 19-24, 19-28, 19-29a, 19-32, 19-35, 19-37,
+      19-43a, 19-44a, 19-49, 19-62. Rebuilt → 0 overflow, 0 `$$`, 0 macros, all
+      `:::` blocks balanced.* (Finding 6 follow-on)
 - [ ] **(separate track) · verification debt** — Fact-pass the module-19 GPT-build
       and finetune numeric claims (LR defaults, weight-decay, clip values,
       sizing) against current PyTorch/library docs. Own pass, no subagents.
@@ -263,6 +268,19 @@ Each item independent and sized S/M/L. `[x]` = done, `[~]` = done/re-scoped,
 ---
 
 ## 7. Updates
+
+### 2026-10-03 (P6-7) — fit all overflowing pages (0 overflow)
+
+- With the build now deterministic (P6-6), the PDF pass flagged 15 pages over the
+  186mm one-page limit (1–13mm; worst `18-28a` 199mm). Fixed all 15 by light
+  compression per the house rule — removed closing flourishes and redundant
+  clauses, merged a couple of sentences, and dropped a few standalone code
+  comments/blank lines. No mechanism, worked example, number, or cross-reference
+  was cut; the information density is unchanged or higher.
+- Re-measured after every pass until the booklet reports **0 overflow**. Verified
+  all `:::` blocks remain balanced and the HTML build is clean (0 `$$`, 0 macros).
+- Pages: 17-22, 17-63b, 18-28a, 19-20, 19-21, 19-24, 19-28, 19-29a, 19-32, 19-35,
+  19-37, 19-43a, 19-44a, 19-49, 19-62.
 
 ### 2026-10-03 (P6-3/4/5) — currency checks all pass, no content changes
 

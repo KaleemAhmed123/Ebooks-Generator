@@ -18,7 +18,7 @@ class Block(nn.Module):
 ```
 :::
 
-- **Two sub-layers, two residuals.** Attention lets tokens *mix information*; the MLP lets each token *process* its representation (the 4× expansion holds most parameters). Each is wrapped in `x + sublayer(norm(x))`.
+- **Two sub-layers, two residuals.** Attention lets tokens *mix information*; the MLP lets each token *process* its representation (the 4× expansion holds most parameters).
 - **Pre-norm** (LayerNorm *before* the sub-layer) is the modern default — it keeps the residual path clean so deep stacks train (Booklet 3).
 
 <svg viewBox="0 0 300 96" role="img" aria-label="A block: input splits to a residual and a pre-norm attention, sums, then residual and pre-norm MLP, sums" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="6.5" fill="#1a1a1a">
@@ -35,5 +35,5 @@ class Block(nn.Module):
 </svg>
 
 :::note
-The residual connection is the quiet hero: `x + sublayer(x)` gives gradients a direct path back through every layer, making a deep stack trainable (Booklet 2's vanishing gradients). That one `x +` is why "just add more layers" works — and why every model from GPT-2 to the frontier is this same block, stacked deeper and wider.
+The residual connection is the quiet hero: `x + sublayer(x)` gives gradients a direct path back through every layer, making a deep stack trainable (Booklet 2's vanishing gradients). That one `x +` is why "just add more layers" works.
 :::

@@ -21,8 +21,8 @@ def issue_to_pr(issue, repo):
 :::
 
 - **The flow is locate → fix → verify → PR.** Retrieval finds the relevant files (the repo exceeds the context window, Flagship 3), the coder edits with the sandbox harness (Flagship 4), and — the crux — a **passing test suite gates the PR**. No green tests, no PR. The agent proves the fix rather than claiming it.
-- **The PR is the human handoff.** The agent doesn't merge; it opens a PR for human review — the propose-then-commit pattern (Booklet 5) at the workflow level, keeping a human in the loop on the actual change to the codebase.
+- **The PR is the human handoff.** The agent doesn't merge; it opens a PR for human review — the propose-then-commit pattern (Booklet 5), keeping a human in the loop on the actual change to the codebase.
 
 :::note
-This flagship is the honest form of "AI fixes bugs": it succeeds on well-specified issues with good test coverage (reproduce, fix, tests confirm) and fails gracefully on vague or untestable ones (comments instead of a bad PR). SWE-bench scores exist precisely because this is *hard* and *measurable* — the agent must navigate a real codebase, not a toy. The reliability comes from the same place as Flagship 4: the harness (retrieval + sandbox + test gate), not the model's confidence. A test-gated PR is a claim you can trust; an ungated one is a liability.
+This flagship is the honest form of "AI fixes bugs": it succeeds on well-specified issues with good test coverage (reproduce, fix, tests confirm) and fails gracefully on vague or untestable ones (comments instead of a bad PR). SWE-bench scores exist precisely because this is *hard* and *measurable*. The reliability comes from the same place as Flagship 4: the harness (retrieval + sandbox + test gate), not the model's confidence. A test-gated PR is a claim you can trust.
 :::

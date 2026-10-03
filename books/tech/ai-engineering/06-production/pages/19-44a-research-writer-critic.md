@@ -19,9 +19,9 @@ def write_report(state):
 ```
 :::
 
-- **Grounding forces citation.** The writer may use *only* the loop's actual findings and must cite each claim to a finding-id — the RAG faithfulness discipline (19-35) applied to the agent's own results. A claim with no supporting finding is a hallucination, and the structure makes it visible.
+- **Grounding forces citation.** The writer may use *only* the loop's actual findings and must cite each claim to a finding-id — the RAG faithfulness discipline (19-35) applied to the agent's own results. A claim with no supporting finding is a hallucination the structure makes visible.
 - **The critic verifies citations, not vibes.** A separate critic role (fresh context, Flagship 5) checks that each cited claim is *actually supported* by the finding it points to — catching miscitations and unsupported leaps the writer is blind to. Only a citation-audited report is returned.
 
 :::note
-The writer-critic pair is the research agent's last line against confident fabrication, and it mirrors the whole booklet's stance: don't trust the model to be honest, *structure the task so dishonesty is caught*. Grounding every claim in a specific finding, forcing citations, and having a separate critic verify those citations converts "the agent wrote a plausible report" into "the agent wrote a report whose every claim traces to a verified result." For any agent whose output a human will *act on* — a research summary, a code review, a diagnosis — this grounded-and-audited pattern is what makes the output trustworthy rather than merely fluent.
+The writer-critic pair is the research agent's last line against confident fabrication, and it mirrors the whole booklet's stance: don't trust the model to be honest, *structure the task so dishonesty is caught*. Grounding every claim in a specific finding, forcing citations, and having a separate critic verify those citations converts "the agent wrote a plausible report" into "the agent wrote a report whose every claim traces to a verified result." For any agent whose output a human will *act on* — a research summary, a code review, a diagnosis — this grounded-and-audited pattern is what makes it trustworthy rather than merely fluent.
 :::

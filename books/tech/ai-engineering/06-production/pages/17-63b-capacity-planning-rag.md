@@ -23,10 +23,10 @@ Requirements: 500k employees, 5 queries/day each, peak 3× avg,
 :::
 
 - **Size each stage separately** — they have different profiles. Embedding is prefill-only and tiny (17-28a). Vector search is memory-bound, sized by *index RAM* not QPS (17-28c). Rerank is a moderate cross-encoder load. Generation dominates, as always. A single "how many GPUs?" number hides that these are four different pools.
-- **The bottleneck names the priority.** Generation is 90% of the GPU spend here, so that's where the cost levers (quantization, routing, caching the retrieved context) pay off most — optimising the embedding service would save almost nothing.
+- **The bottleneck names the priority.** Generation is 90% of the GPU spend here, so that's where the cost levers (quantization, routing, caching the retrieved context) pay off most.
 
 :::interview
 "Size a production RAG service for 500k employees."
 
-Decompose by stage, because RAG isn't one workload. QPS from DAU×queries → peak. Then size each pool: **embedding** (prefill-only, batches at ingest, ~1 GPU), **vector DB** (memory-bound, sized by index RAM not QPS), **reranker** (a modest cross-encoder pool), and **generation** (the dominant cost — output tok/s ÷ per-GPU goodput, ~18 GPUs here). The insight to surface: generation is ~90% of the GPU bill, so that's where quantization/routing/context-caching pay off, and the vector DB is sized by memory not throughput. Naming four distinct pools with different scaling profiles — not one GPU count — is the staff-level RAG answer.
+Decompose by stage, because RAG isn't one workload. QPS from DAU×queries → peak. Then size each pool: **embedding** (prefill-only, batches at ingest, ~1 GPU), **vector DB** (memory-bound, sized by index RAM not QPS), **reranker** (a modest cross-encoder pool), and **generation** (the dominant cost — output tok/s ÷ per-GPU goodput, ~18 GPUs here). The insight to surface: generation is ~90% of the GPU bill, so that's where quantization/routing/context-caching pay off. Naming four distinct pools with different scaling profiles — not one GPU count — is the staff-level RAG answer.
 :::

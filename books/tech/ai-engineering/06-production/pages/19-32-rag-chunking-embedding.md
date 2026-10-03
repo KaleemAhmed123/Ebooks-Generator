@@ -32,5 +32,5 @@ vector_db.upsert(ids, vectors, metadatas=[{"text": c, "doc": doc_id} for c in ch
 :::
 
 :::warn
-Store the **chunk text and its source metadata alongside the vector**, not just the vector — a vector alone is useless at generation time, when you need the actual text to put in the prompt and the source to cite. And keep a **doc→chunks mapping** so that when a document changes, you can delete and re-embed *its* chunks specifically, not rebuild the whole index. A RAG system that can't do incremental updates re-embeds everything on every doc change — fine for a demo, ruinous at 500k daily-updated docs.
+Store the **chunk text and its source metadata alongside the vector**, not just the vector — a vector alone is useless at generation time, when you need the actual text to put in the prompt and the source to cite. And keep a **doc→chunks mapping** so that when a document changes, you delete and re-embed *its* chunks specifically, not rebuild the whole index — the difference between a demo and a system that survives 500k daily-updated docs.
 :::

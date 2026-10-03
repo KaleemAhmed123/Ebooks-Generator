@@ -1,6 +1,6 @@
 ## GPT from scratch: multi-head attention
 
-- The heart of the model. **Causal multi-head self-attention** (Booklet 3): each token attends to earlier tokens, in several parallel "heads," with a mask that forbids looking ahead. Runnable, in full.
+- The heart of the model. **Causal multi-head self-attention** (Booklet 3): each token attends to earlier tokens, in several parallel "heads," with a mask that forbids looking ahead.
 
 :::mint
 ```python
@@ -23,8 +23,8 @@ class MultiHeadAttention(nn.Module):
 :::
 
 - **The four moves:** project to Q, K, V; score every query against every key (`q @ kᵀ`), scaled by `1/√d_head` to keep gradients stable; **mask** the upper triangle so token *t* cannot see *t+1*; softmax to weights, then weight the values.
-- **Heads split the channel dimension** — `n_heads` parallel attentions over `d_head = d_model/n_heads` each, recombined by `proj`. Different heads learn different relationships (syntax, coreference, position), all in one matmul.
+- **Heads split the channel dimension** — `n_heads` parallel attentions over `d_head = d_model/n_heads` each, recombined by `proj`. Different heads learn different relationships (syntax, coreference, position) in one matmul.
 
 :::note
-This causal mask is what makes it a *generative* GPT rather than a bidirectional BERT (Booklet 3): forbidding a token from attending to the future is exactly what lets the trained model generate left-to-right, one token at a time, at inference. In production the same computation is what the **KV cache** (Module 17) accelerates — it stores the K and V for past tokens so each new token's attention is O(1), not O(T). You just built the thing the entire serving stack optimises.
+This causal mask is what makes it a *generative* GPT rather than a bidirectional BERT (Booklet 3): forbidding a token from attending to the future is exactly what lets the trained model generate left-to-right, one token at a time, at inference. In production the same computation is what the **KV cache** (Module 17) accelerates — it stores the K and V for past tokens so each new token's attention is O(1), not O(T).
 :::

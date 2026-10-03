@@ -13,7 +13,6 @@ def lr_lambda(step, warmup, total):
     p = (step - warmup) / (total - warmup)
     return 0.5 * (1 + math.cos(math.pi * p))                # decay to 0
 sched = LambdaLR(opt, lambda s: lr_lambda(s, warmup=200, total=5000))
-
 # 2) mixed precision (AMP): faster, less memory
 scaler = torch.amp.GradScaler()
 with torch.amp.autocast("cuda", dtype=torch.bfloat16):
