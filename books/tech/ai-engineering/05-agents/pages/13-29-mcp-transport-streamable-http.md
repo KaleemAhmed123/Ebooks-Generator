@@ -11,8 +11,9 @@
 </svg>
 
 - **One endpoint, two response modes.** The client `POST`s a JSON-RPC request to a single URL (e.g. `/mcp`). The server either replies with a plain JSON response (fast, done) or **upgrades to Server-Sent Events (SSE)** — a stream — when it needs to push multiple messages (progress updates, streamed results, server-initiated requests). One connection covers both.
-- **Why it replaced HTTP+SSE:** the old design needed two separate endpoints and a long-lived SSE channel that was awkward to scale and resume. Streamable HTTP works over ordinary request/response infra (load balancers, serverless), streaming only when needed, and supports **resumable** connections.
+- **Why it replaced HTTP+SSE:** the old design needed two separate endpoints and a long-lived SSE channel that was awkward to scale and resume. Streamable HTTP works over ordinary request/response infra (load balancers, serverless), streaming only when needed. In the `2025-06-18` revision a session (the `Mcp-Session-Id` header) could also be **resumed** after a dropped stream via an event ID.
 - **Now security matters.** A remote endpoint is on the network, so it needs authentication (OAuth 2.1, 13-37), origin validation, and TLS — none of which stdio required. Remote transport is where MCP's threat model (next cluster) becomes real.
+- **Recency (`2026-07-28`):** the current spec makes this transport **stateless** — it drops `Mcp-Session-Id` and SSE stream resumability, so any server instance behind a plain load balancer can answer any request (13-39). Most deployed servers still speak `2025-06-18`; the model above is what you will meet in the wild today.
 
 :::interview
 "stdio vs Streamable HTTP — how do you choose?"

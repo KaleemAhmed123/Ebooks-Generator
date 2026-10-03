@@ -25,3 +25,7 @@ Why RL is in an LLM book: the last step of aligning a chat model — **RLHF** (r
 :::warn
 RL's hard problem is **credit assignment**: a reward arrives long after the action that earned it. Win a chess game in 40 moves — which move won it? RL has to spread one late reward back across many earlier actions, and getting that wrong is why RL is famously unstable.
 :::
+
+:::note
+**How to read this module.** The next pages build RL's vocabulary on small grid-world problems — states, value, the Bellman equation, Q-learning, DQN. That half teaches the *mental model*; you will never write those algorithms for an LLM. The path that actually trains chat models is **policy-based**: value & policy → policy gradients → actor-critic → PPO/GRPO → reward model → RLHF. Read the grid-world pages for intuition, not to memorize; slow down when the policy-based pages begin.
+:::

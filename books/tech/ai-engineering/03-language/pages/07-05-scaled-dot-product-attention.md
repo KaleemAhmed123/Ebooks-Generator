@@ -34,7 +34,7 @@ Suppose d_k = 64 and one token's raw dot-product scores against three keys are
 | | raw scores | softmax |
 |---|---|---|
 | **Unscaled** | (56, 58, 48) | (0.12, **0.88**, 0.00) — nearly one-hot |
-| **Scaled (÷ 8)** | (7.0, 7.25, 6.0) | (0.35, **0.40**, 0.25) — smooth spread |
+| **Scaled (÷ 8)** | (7.0, 7.25, 6.0) | (0.38, **0.48**, 0.14) — smooth spread |
 
 - Without scaling, the model **only sees key 2** — the other tokens contribute almost nothing. The gradient through the near-zero weights is almost zero too, so the model can't learn to redistribute attention.
 - With scaling, all three tokens contribute meaningfully. The model can learn nuanced blends instead of always picking one winner.
@@ -45,8 +45,8 @@ import torch, torch.nn.functional as F
 
 scores = torch.tensor([56.0, 58.0, 48.0])
 d_k = 64
-print(F.softmax(scores, dim=-1))             # tensor([0.1192, 0.8788, 0.0020])
-print(F.softmax(scores / d_k**0.5, dim=-1))  # tensor([0.3487, 0.3974, 0.2539])
+print(F.softmax(scores, dim=-1))             # ≈ [0.119, 0.881, 0.000]
+print(F.softmax(scores / d_k**0.5, dim=-1))  # ≈ [0.377, 0.484, 0.139]
 ```
 :::
 

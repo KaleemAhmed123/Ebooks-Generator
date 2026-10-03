@@ -10,7 +10,7 @@
   <defs><marker id="jm" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#888"/></marker></defs>
 </svg>
 
-- **How it works:** give a judge model the input, the agent's output, and a **rubric** ("rate faithfulness to sources 1–5"), and ask for a score *with a rationale*. The rationale both improves the score (chain-of-thought, 14-08) and lets you audit the judgment. Run it over your eval set for a quality metric, or over production samples for online eval (14-115).
+- **How it works:** give a judge model the input, the agent's output, and a **rubric** ("rate faithfulness to sources 1–5"), and ask for a score *with a rationale*. The rationale both improves the score (chain-of-thought, 14-08) and lets you audit the judgment. Run it over your eval set for a quality metric, or over production samples for online eval (14-118a).
 - **Variants:** **reference-based** (compare to a gold answer), **reference-free** (judge on criteria alone), and **pairwise** (which of two outputs is better — often more reliable than absolute scores, since relative judgments are easier).
 - **The catches — judges are fallible:**
   - **Bias.** Judges favor longer answers, their own model family's style, and the first option in a pair (position bias). Mitigate: randomize order, control for length, calibrate against human labels.

@@ -14,6 +14,7 @@
 - **The flow:** the server sends `elicitation/create` with a message and a **JSON schema** for the answer it needs ("which repository?", "confirm delete?", "enter the date range"). The client renders it as a form or prompt, the user responds, and the client returns the structured answer — which the client validates against the schema.
 - **Why it matters:** it turns servers into genuine **interactive workflows** instead of one-shot calls. A booking server can ask for missing dates; a deploy server can ask for confirmation; a query server can ask which environment. Before elicitation, servers had to fail or guess.
 - **Contrast with sampling:** sampling asks the *model*; elicitation asks the *human*. Both flow server→client→up, both are mediated by the client, both keep the server from acting unilaterally.
+- **Recency (`2026-07-28`):** elicitation survives but is **reshaped** around the stateless rewrite — it moves to a multi-round-trip pattern (the server returns an "input required" result the client answers on a retry) and drops the old `elicitationId` handle (13-39). The `elicitation/create` flow above is the `2025-06-18` form you will see in current clients.
 
 :::note
 Sampling and elicitation together make MCP servers first-class participants: a server can consult the model (sampling) and consult the user (elicitation), all through the client that stays in control. This is why MCP is more than a tool-calling shim — it is a bidirectional protocol where servers run real workflows, not just answer single requests.

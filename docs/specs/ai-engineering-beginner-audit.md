@@ -3,7 +3,12 @@
 ## 1. Task
 
 - **Name:** AI Engineering series — beginner-followability audit + progressive upgrade plan
-- **Status:** audit comprehensive · B0–B7 done (markers, LaTeX, optional-marks, CLAUDE.md rule, gradient, backprop, attention, RAG examples) · rest planned
+- **Status:** audit complete · B0–B10 + B12 done; B11 declined (see backlog) ·
+  B8 RL signpost + PPO/GRPO split · B9 lifecycle assessed (no split, Finding 5
+  corrected) · B10 capstone mental-model (re-scoped to prose-balance) · B12 all 7
+  PDFs regenerated via a portable build · B4–B7 reviewed, 07-05 figures fixed ·
+  "explain > code" rule added to CLAUDE.md · only the fact-verification debt
+  track remains
 - **Started:** 2026-10-03
 - **Last updated:** 2026-10-03
 
@@ -74,7 +79,7 @@ plus **three depth/pacing gaps**.
 | 2 | **On-ramp is the thinnest part of the book** | 🟠 high | open | B1–B4 vs B5–B6 |
 | 3 | **Math pages still carry notation (black-box)** | 🟠 medium | open | B1 (~11 pages) |
 | 4 | **Few worked, end-to-end numeric examples** | 🟠 medium | open | keystone pages |
-| 5 | **Pacing jumps too fast in places** | 🟡 low–med | open | B4 (RL, lifecycle) |
+| 5 | **Pacing jumps too fast in places** | 🟡 low–med | ⚠️ **overstated** | B4 — see note |
 
 **Order verdict: PASS, minor nits** (§4.4). This is depth + rendering work, not a
 re-ordering job.
@@ -225,18 +230,170 @@ Each task is independent and sized **S/M/L**. `[x]` = done.
       for query and 2 chunks. Demonstrated cosine similarity calculation showing
       C1 as nearest neighbor, followed by PyTorch :::mint snippet generating
       the prompt. Rebuilt → 0 $$, 0 macros.* (Finding 4)
-- [ ] **B8 · L · B4** — Split RL (`09-xx`) into a proper cluster. (Finding 5)
-- [ ] **B9 · L · B4** — Split the LLM-lifecycle (`10-xx`) into a cluster. (Finding 5)
-- [ ] **B10 · M · B2–B4** — Targeted expansion of remaining fast pages. (Finding 2)
-- [ ] **B11 · S · all** — Add exact page numbers to cross-booklet references. (nit)
-- [ ] **B12 · S · all** — Rebuild affected PDFs; confirm no `$$`/`[VERIFY]`
-      survives and the TOC/page numbers stay correct.
+- [x] **B8 · L · B4** — RL cluster (`09-xx`). *Done 2026-10-03, but re-scoped —
+      see pushback below. The 13-page RL arc was already a proper, well-paced
+      cluster; it did not need bulk-splitting. Instead: (1) added a "How to read
+      this module" signpost to `09-01` naming the policy-based critical path vs.
+      the grid-world foundations a beginner reads for intuition only; (2) split
+      the one genuinely crammed page — `09-10` jammed PPO **and** GRPO — into
+      `09-10-ppo` (PPO only) + new `09-10a-grpo` (GRPO's mechanism, a worked
+      group-relative-advantage example, sourced to DeepSeekMath 2402.03300).
+      GRPO already in both glossaries. Rebuilt B4 → 0 $$, 0 macros, no overflow.*
+      (Finding 5)
+- [x] **B9 · L · B4** — LLM-lifecycle (`10-xx`). *Done 2026-10-03 — assessed, NO
+      split needed (pushback, see below). The 18-page lifecycle arc is already a
+      strong, granular, well-ordered cluster: `10-01` signposts the pipeline and
+      the applied-vs-pretraining divide, `10-08` carries the "RLHF vs DPO — when
+      to use which" judgement note, `10-18` is a proper capstone with the
+      real-world path. No page crams two keystones; none overflow. Splitting
+      would add pages without adding understanding — bloat. No content change;
+      Finding 5 corrected.* (Finding 5)
+- [~] **B10 · M · B2–B4** — Re-scoped to the *real* signal. *2026-10-03:
+      "expand short pages" is mostly a non-task — the short B2/B3 pages
+      (`04-03`, `03-20`, `05-15`, `05-32`, …) are tight, not thin; padding them
+      would violate the new rule. The genuine target is the user's observation
+      that pages lean code-heavy. Measured code-vs-prose density across B2–B4:
+      only 3 code-dominant pages, and just `07-23` (transformer capstone) was
+      truly under-explained (25 lines code, 4 of prose). Added a "How to read
+      the architecture" section giving the transferable mental model (residual
+      stream as backbone · attention-mixes-across / FFN-per-position · the causal
+      mask as the one line that makes it a language model). `03-18` and `03-16`
+      are legitimately code-led (the API/loop is the lesson) — left as is. Rebuilt
+      B3 → 0 $$, 0 macros, no overflow.* Remaining: a broader prose-balance pass
+      is optional, not needed — the series is not actually code-bloated. (Finding 2)
+- [skip] **B11 · S · all** — *Deliberately not done, 2026-10-03.* There are 94
+      bare `(Booklet N)` refs, almost all in B6, and in context they are broad
+      "you met this concept in that booklet" prose pointers (autodiff → B1,
+      self-attention → B3, bi-/cross-encoder → B4), not "flip to this exact page"
+      references. Pinning all 94 would clutter the prose and risk *wrong* page
+      numbers — an accuracy regression worse than the nit. Cost/benefit fails;
+      left as broad refs by design. (nit)
+- [x] **B12 · S · all** — DONE 2026-10-03. (1) HTML clean-check: rebuilt all 7 AE
+      booklets to HTML; swept each for `$$`, `[VERIFY]`, leaked LaTeX macros, and
+      overflow — **all clean** (the lone `$$` hit is the string `$$$`, "lots of
+      money", in `17-46b-unit-economics`, harmless). (2) PDF pass: made
+      `build.mjs` portable (honours `PUPPETEER_EXECUTABLE_PATH`/`CHROME_PATH`,
+      drops the Chrome sandbox when running as root, unless `CHROME_SANDBOX=1`),
+      installed PyMuPDF for the cover step, and **regenerated all 7 PDFs**
+      (01-foundations … 07-interview, 283 pp) with exit 0. TOC/footers intact —
+      the cover swap replaces page 1 rather than inserting, so page numbers hold.
 - [ ] **(separate track)** — Verification debt: fact-check the claims that the
       stripped `[VERIFY]` markers flagged. Own pass, no subagents.
 
 ---
 
 ## 6. Updates
+
+### 2026-10-03 (B11 skip + B12 PDF) — series PDFs regenerated; cross-ref pin declined
+
+- **B11 declined.** 94 bare `(Booklet N)` refs, almost all broad in-prose concept
+  pointers. Pinning them to exact pages would clutter the text and risk wrong
+  numbers (accuracy regression) for negligible reader gain. Closed as skip, not
+  open.
+- **B12 finished.** Made the build portable instead of hand-editing a path:
+  `build.mjs` now reads `PUPPETEER_EXECUTABLE_PATH`/`CHROME_PATH` first and runs
+  Chrome with `--no-sandbox` when root (override with `CHROME_SANDBOX=1`).
+  Installed PyMuPDF for the cover-swap helper. Rebuilt the whole series to PDF —
+  all 7 booklets, exit 0, covers drawn, page numbering intact. The only
+  committed change is `tools/build.mjs` (PDFs live in gitignored `dist/`).
+
+### 2026-10-03 (B10) — re-scoped: prose balance, not page length
+
+- Tested the "thin pages" premise by reading the shortest B2/B3 pages. They are
+  *tight, not thin*: `04-03` (why-not-flatten) lands the idea with one number
+  (150M weights) + a diagram; `03-20` (debugging) is a crisp checklist; `05-15`
+  (pre-transformer attention) is a clean bridge; `05-32` (multilingual) is dense
+  and complete. Expanding them would be padding — against the new rule.
+- Followed the user's actual signal (pages lean code-heavy) instead. Scanned
+  code-vs-prose line density across all of B2–B4: only three code-dominant pages,
+  and only `07-23` (the transformer capstone) was genuinely under-explained —
+  25 lines of code, 4 of prose, a reader could regenerate the code with any
+  agent but got no *reading* of the architecture.
+- **Fix — `07-23`:** added "How to read the architecture", the transferable
+  mental model a tool can't supply: (1) the residual stream is an additive
+  backbone every block writes to, which is why deep stacks train; (2) each block
+  mixes across positions (attention) then processes each position alone (FFN);
+  (3) the causal `-inf` mask is the single line that makes it a next-token model
+  vs. a BERT-style encoder. All facts cross-checked against the booklet's own
+  earlier pages. Fits one page; rebuilt B3 clean (0 $$, 0 macros, no overflow).
+- Conclusion carried forward from B8/B9: the series is not actually code-bloated
+  or shallow. A broader prose-balance pass is optional, not required.
+
+### 2026-10-03 (B12, HTML half) — full-series clean-check passes
+
+- Rebuilt all 7 AE booklets to HTML and swept each output for the two shipping
+  defects plus overflow. Result table: `$$` 0 (bar one `$$$` money string),
+  `[VERIFY]` 0, leaked LaTeX macros 0, overflow 0 — **across every booklet.**
+  The B0/B1 fixes and all the B4–B8 additions hold together.
+- PDF regeneration is the only B12 remainder: `build.mjs` looks for Chrome at a
+  few hardcoded OS paths, none matching this container's Chromium under
+  `/opt/pw-browsers`. A one-line path addition (or `PUPPETEER_EXECUTABLE_PATH`)
+  unblocks it; deferred because editing the build mid-writing is discouraged and
+  the HTML check already proves the content is clean.
+
+### 2026-10-03 (B9 + Finding 5 correction) — lifecycle needs no split
+
+- **Read all 18 lifecycle pages (`10-01`→`10-18`).** Verdict: no structural work
+  needed. `10-01` already signposts the pipeline and the "pretraining costs
+  millions / applied work is SFT+align+quant+serve" divide; `10-08` already
+  carries the RLHF-vs-DPO selection note; `10-18` is a capstone with the
+  real-world path and a "most products never train a model" note. Every page is
+  one topic with a diagram and a failure mode. Nothing crams, nothing overflows.
+- **Finding 5 was overstated.** Reading B8 (RL) and B9 (lifecycle) end to end
+  shows Booklet 4 is dense, well-ordered, signposted, and full of decision
+  guidance — not "too fast." The original severity came from a *booklet
+  page-count* comparison (57-page LLM core vs. the 332-page agents booklet) that
+  mistook breadth for pacing. The only real B4 pacing wins were the two targeted
+  B8 fixes (signpost + PPO/GRPO split); there is no further split work.
+- No files changed for B9 beyond this spec note.
+
+### 2026-10-03 (B8) — RL cluster: signpost + PPO/GRPO split (re-scoped)
+
+- **Pushback on the original B8 premise.** Read all 13 RL pages (`09-01`→`09-13`)
+  end to end. The cluster is already strong and correctly ordered (Sutton-&-
+  Barto spine → RLHF). None overflow. The audit's "B4 too fast" was a
+  *booklet-level page-count* comparison (57-page LLM core vs. the 332-page agents
+  booklet) that conflated breadth with pacing. Bulk-splitting good pages to raise
+  a count would violate this repo's zero-bloat rule, so B8 was re-scoped to the
+  two real beginner problems.
+- **(1) Signpost — `09-01`.** Added a "How to read this module" `note`: the
+  grid-world pages (value, Bellman, Q-learning, DQN) teach the *mental model* and
+  are read for intuition; the path that actually trains chat models is
+  policy-based (value&policy → policy gradients → actor-critic → PPO/GRPO →
+  reward model → RLHF). Tells the reader where to skim and where to slow down —
+  pure judgement/taste guidance, the new CLAUDE.md rule in action.
+- **(2) Split the one crammed page.** `09-10` jammed PPO *and* GRPO. Trimmed it to
+  PPO only (ending on "PPO keeps a full-size critic in memory — the next page
+  removes it"), and added **`09-10a-grpo.md`**: GRPO's mechanism explained first
+  (group average as a free baseline, no critic), pseudo-code for the loop, and a
+  worked numeric example (rewards 0.9/0.4/0.8/0.1 → group mean 0.55 → normalized
+  advantages +1.09/−0.47/+0.78/−1.41). Mechanism sourced to the DeepSeekMath
+  paper (arXiv 2402.03300); dropped the prior pass's unsourced "~40% less memory"
+  figure in favor of the mechanism-level reason (one fewer full-size network).
+- GRPO already present and accurate in both the series and Booklet-4 glossaries.
+- **Verified:** rebuilt Booklet 4 → HTML — 0 `$$`, 0 LaTeX macros, no overflow
+  warning, new page + signpost + worked example all render, GRPO in the TOC.
+
+### 2026-10-03 (review) — audited the B4–B7 worked examples + new CLAUDE.md rule
+
+- **Reviewed the cheap-model B4–B7 work** (gradient, GD, backprop, training loop,
+  attention, scaling, RAG). Hand-checked the arithmetic on every worked example.
+  Verdict: pedagogy is sound; all four AE booklets rebuild clean (0 `$$`, 0
+  leaked LaTeX macros).
+- **Found + fixed one factual error (07-05, scaled dot-product attention).** The
+  "Scaled (÷ 8)" softmax row and its `:::mint` comment were wrong:
+  softmax([7.0, 7.25, 6.0]) is **(0.377, 0.484, 0.139)**, not the
+  `(0.3487, 0.3974, 0.2539)` the cheap model printed. Corrected the table to
+  `(0.38, 0.48, 0.14)` and the mint comments to the true values (also fixed the
+  unscaled tiny value: ~0.000, not 0.0020). The teaching point — scaling turns a
+  near-one-hot spike into a usable spread — is unchanged; only the numbers were
+  off. Rebuilt B3 → corrected figures present, old wrong ones gone.
+- **New governing rule added to `CLAUDE.md`: "Code is not the bottleneck —
+  explain for understanding."** Agents write code well; the scarce thing is the
+  mental model, trade-offs, system-design reasoning, judgement, and taste a tool
+  can't supply. Lead with prose + reasoning; pseudo-code is first-class; keep
+  code small and in service of a sentence. This reframes B8–B10 toward
+  **explanation-first expansion**, not more code.
 
 ### 2026-10-03 (B7) — worked numeric example: RAG
 

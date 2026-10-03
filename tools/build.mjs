@@ -24,11 +24,20 @@ const BOOKS = path.join(ROOT, "books");
 const SHARED = path.join(ROOT, "shared");
 
 const CHROME = [
+  // Honour the standard env vars first, so CI / containers can point at their
+  // own Chromium (e.g. Playwright's) without editing this list.
+  process.env.PUPPETEER_EXECUTABLE_PATH,
+  process.env.CHROME_PATH,
   "C:/Program Files/Google/Chrome/Application/chrome.exe",
   "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe",
   "/usr/bin/google-chrome",
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-].find((p) => existsSync(p));
+].find((p) => p && existsSync(p));
+
+// Chrome refuses to run as root (CI/containers) unless sandboxing is off. The
+// build only ever renders our own trusted HTML, so dropping the sandbox here is
+// safe; set CHROME_SANDBOX=1 to force it back on locally.
+const CHROME_ARGS = process.env.CHROME_SANDBOX ? [] : ["--no-sandbox"];
 
 const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const isDir = async (p) => existsSync(p) && (await stat(p)).isDirectory();
@@ -716,7 +725,7 @@ async function autoSplit(book) {
   const H = printableH(book.config);
   const blocks = book.config.blocks ?? [];
 
-  const browser = await puppeteer.launch({ executablePath: CHROME, headless: true });
+  const browser = await puppeteer.launch({ executablePath: CHROME, headless: true, args: CHROME_ARGS });
   const page = await browser.newPage();
   await prepare(page, book.config);
 
@@ -762,7 +771,7 @@ async function autoSplit(book) {
 // one of them shifts the printed number of everything after it, so all of them
 // are measured together and fed back until the numbers stop moving.
 async function measureTocs(html, config) {
-  const browser = await puppeteer.launch({ executablePath: CHROME, headless: true });
+  const browser = await puppeteer.launch({ executablePath: CHROME, headless: true, args: CHROME_ARGS });
   const page = await browser.newPage();
   await prepare(page, config);
   await page.setContent(html, { waitUntil: "networkidle0" });
@@ -791,7 +800,7 @@ async function measureTocs(html, config) {
 async function toPdf(html, outFile, book) {
   if (!CHROME) throw new Error("Chrome not found — set the path in tools/build.mjs");
   const c = book.config, H = printableH(c);
-  const browser = await puppeteer.launch({ executablePath: CHROME, headless: true });
+  const browser = await puppeteer.launch({ executablePath: CHROME, headless: true, args: CHROME_ARGS });
   const page = await browser.newPage();
   await prepare(page, c);
   await page.setContent(html, { waitUntil: "networkidle0" });
@@ -831,7 +840,7 @@ async function toPdf(html, outFile, book) {
 
 async function renderCoverPdf(book, svg, outFile) {
   const c = book.config;
-  const browser = await puppeteer.launch({ executablePath: CHROME, headless: true });
+  const browser = await puppeteer.launch({ executablePath: CHROME, headless: true, args: CHROME_ARGS });
   const page = await browser.newPage();
   await page.setContent(
     // Sized in absolute units, not percentages. A percentage height resolves

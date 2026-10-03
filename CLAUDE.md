@@ -108,6 +108,33 @@ as a black box in every book here that carries it.
   it prints as raw text (`\frac`, `\nabla`). Write the idea in plain words, a
   small table, a diagram, or code.
 
+## Code is not the bottleneck — explain for understanding
+
+AI agents already write code well. A reader with an agent beside them does not
+need us to hand them a runnable file; they need the understanding an agent
+*cannot* supply for them — the mental model, the "why this and not that," the
+failure mode they'd never think to ask about. So the scarce thing on every page
+is **explanation that builds judgement, not more code**.
+
+- **Lead with the idea and the reasoning, not a code dump.** Prose first: what
+  this is, why it exists, what breaks without it, when you'd reach for it versus
+  the alternative. The explanation is the product; code only illustrates it.
+- **Pseudo-code is first-class.** When the point is the *shape* of an algorithm
+  or the *flow* of a system, a few lines of pseudo-code (or a diagram) beat a
+  complete, idiomatic implementation that buries the idea in boilerplate. Use
+  real, runnable code only when an exact API call, a surprising detail, or a
+  concrete number is itself the lesson.
+- **Keep code small and in service of a sentence.** A snippet should make one
+  already-explained idea undeniable, then stop. If the reader could regenerate
+  it from the explanation in ten seconds with any agent, it is not pulling its
+  weight — cut it or shrink it, and spend the space on reasoning.
+- **Aim at the skills that transfer:** mental models, system design, trade-offs,
+  taste, and knowing *which* question to ask. These outlast any specific
+  framework or API, and they are exactly what a reader cannot offload to a tool.
+- This refines "Show, Don't Tell": still show the mechanism — but the mechanism
+  is usually a diagram, a worked example, or a crisp explanation, and only
+  *sometimes* a block of code.
+
 ## Diagrams
 
 - Diagram anything with flow, structure, relationships, or more than three

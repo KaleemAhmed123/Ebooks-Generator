@@ -14,7 +14,7 @@
 
 - **The canary:** route a small fraction (say 1%) of traffic to the new agent version while the rest stays on the trusted one. Watch its metrics — success rate, cost, latency, error rate, user feedback (14-114) — against the baseline. If it holds up, widen to 10%, 50%, 100%; if anything degrades, **roll back** automatically before most users are affected.
 - **Why agents especially need this:** an agent's behavior is non-deterministic and emergent — offline evals (14-116) catch a lot but not everything, and a change that scored well in testing can misbehave on real traffic in ways you did not anticipate. A canary is the *production* safety net that catches what offline testing missed, at 1% blast radius instead of 100%.
-- **Pair with online evaluation** (14-115): the canary is only as good as the metrics you watch. Automated graders and quality signals on the canary traffic are what tell you, quickly, whether to promote or roll back.
+- **Pair with online evaluation** (14-118a): the canary is only as good as the metrics you watch. Automated graders and quality signals on the canary traffic are what tell you, quickly, whether to promote or roll back.
 
 :::note
 Canaries encode humility: *you will ship a bad agent change sometimes, and you cannot fully predict its behavior before real traffic sees it.* Rather than pretend testing is perfect, you limit the damage of the inevitable bad release to a tiny slice and catch it fast. Combined with kill switches (stop a bad agent) and cost governors (bound a runaway one), gradual rollout completes the operational safety stack: you deploy changes in a way where the worst case is small and reversible, never large and sudden.
