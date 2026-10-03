@@ -16,14 +16,3 @@
 | **02-05** | "exactly K distinct / odd" | exactly = atMost(K) − atMost(K − 1) |
 | **02-06** | "remove from either end" | what stays is one middle window |
 | **02-07** | "choose values by their spread" | sorted, the best subset is contiguous |
-
-### The skeleton
-
-```ts
-let left = 0;
-for (let right = 0; right < a.length; right++) {
-  add(a[right]);                        // enter on the right
-  while (!valid()) remove(a[left++]);   // leave on the left
-  record(left, right);                  // longest / count here
-}
-```

@@ -1,9 +1,9 @@
-## The 78 patterns - continued <span class="lv lv1"></span>
+## The 84 patterns - continued <span class="lv lv1"></span>
 
 - Part B: the non-linear families — lists, trees, graphs, DP — plus the unnamed patterns and range structures
 
 :::mint
-<svg viewBox="0 0 470 374" role="img" aria-label="Patterns 42 to 78 of this book, part B, chapters 12 to 19, grouped by chapter with each pattern's number, name and move count. Every row links to its page." xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 470 414" role="img" aria-label="Patterns of chapters 12 to 19 (part B): 42 to 78 in reading order, plus the later additions 79, 81, 82 and 83 in their chapters, grouped by chapter with each pattern's number, name and move count. Every row links to its page." xmlns="http://www.w3.org/2000/svg">
   <style>
     .ch { font: bold 8.6px Georgia, serif; fill: #1d4e89; }
     .rule { stroke: #1d4e89; stroke-width: 0.5; }
@@ -38,10 +38,11 @@
   <a href="#p-15-04"><text x="18.0" y="288.0" class="num" text-anchor="end">51</text><text x="24.0" y="288.0" class="nm">Balance Two Heaps</text></a>
   <a href="#p-15-05"><text x="18.0" y="301.4" class="num" text-anchor="end">52</text><text x="24.0" y="301.4" class="nm">Merge the Two Smallest</text></a>
   <a href="#p-15-06"><text x="18.0" y="314.8" class="num" text-anchor="end">53</text><text x="24.0" y="314.8" class="nm">Take Now, Regret Later</text></a>
-  <a href="#p-16-02"><text x="4" y="328.19999999999993" class="ch">16  Graphs &amp; Dependency</text></a>
-  <line x1="4" y1="331.2" x2="230" y2="331.2" class="rule"/>
-  <a href="#p-16-02"><text x="18.0" y="341.6" class="num" text-anchor="end">54</text><text x="24.0" y="341.6" class="nm">Find the Hidden Edge</text></a>
-  <a href="#p-16-03"><text x="18.0" y="355.0" class="num" text-anchor="end">55</text><text x="24.0" y="355.0" class="nm">Flood from the Border</text></a>
+  <a href="#p-15-07"><text x="18.0" y="328.2" class="num" text-anchor="end">79</text><text x="24.0" y="328.2" class="nm">Ordered Set</text></a>
+  <a href="#p-16-02"><text x="4" y="341.6" class="ch">16  Graphs &amp; Dependency</text></a>
+  <line x1="4" y1="344.6" x2="230" y2="344.6" class="rule"/>
+  <a href="#p-16-02"><text x="18.0" y="355.0" class="num" text-anchor="end">54</text><text x="24.0" y="355.0" class="nm">Find the Hidden Edge</text></a>
+  <a href="#p-16-03"><text x="18.0" y="368.4" class="num" text-anchor="end">55</text><text x="24.0" y="368.4" class="nm">Flood from the Border</text></a>
   <a href="#p-16-04"><text x="252.0" y="20.0" class="num" text-anchor="end">56</text><text x="258.0" y="20.0" class="nm">Order the Dependencies</text></a>
   <a href="#p-16-05"><text x="252.0" y="33.4" class="num" text-anchor="end">57</text><text x="258.0" y="33.4" class="nm">Flood the Component</text></a>
   <a href="#p-16-06"><text x="252.0" y="46.8" class="num" text-anchor="end">58</text><text x="258.0" y="46.8" class="nm">Shortest Path by Layers</text></a>
@@ -71,5 +72,8 @@
   <a href="#p-19-01"><text x="238" y="341.5999999999999" class="ch">19  Range Structures</text></a>
   <line x1="238" y1="344.6" x2="464" y2="344.6" class="rule"/>
   <a href="#p-19-01"><text x="252.0" y="355.0" class="num" text-anchor="end">78</text><text x="258.0" y="355.0" class="nm">Choose the Range Structure</text></a>
+  <a href="#p-19-02"><text x="252.0" y="368.4" class="num" text-anchor="end">81</text><text x="258.0" y="368.4" class="nm">Coordinate Compression</text></a>
+  <a href="#p-19-03"><text x="252.0" y="381.8" class="num" text-anchor="end">82</text><text x="258.0" y="381.8" class="nm">Segment Tree</text></a>
+  <a href="#p-19-04"><text x="252.0" y="395.2" class="num" text-anchor="end">83</text><text x="258.0" y="395.2" class="nm">Fenwick for Counting</text></a>
 </svg>
 :::

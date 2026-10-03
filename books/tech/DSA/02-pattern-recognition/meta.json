@@ -46,7 +46,8 @@
       "brow": "sharp",
       "mouth": "flat",
       "tilt": -3
-    }
+    },
+    "moreLine": "MORE INSIDE"
   },
   "patterns": {
     "02-01": "Pattern 1 · Sliding Window · overview",
@@ -97,7 +98,7 @@
     "08-04": "Pattern 24 · Sort, then Assign · move 1/2",
     "08-05": "Pattern 24 · Sort, then Assign · move 2/2",
     "08-06": "Pattern 22 · Reach and Restart · move 2/2",
-    "09-01": "Patterns 25–27 · Binary Search · overview",
+    "09-01": "Patterns 25–27, 80 · Binary Search · overview",
     "09-02": "Pattern 25 · Binary Search on the Answer · move 1/2",
     "09-03": "Pattern 26 · Find the Sorted Half",
     "09-04": "Pattern 25 · Binary Search on the Answer · move 2/2",
@@ -146,7 +147,7 @@
     "14-09": "Pattern 48 · Traversal-Order Facts · move 2/3",
     "14-10": "Pattern 48 · Traversal-Order Facts · move 3/3",
     "14-11": "Pattern 49 · Tree DP",
-    "15-01": "Patterns 50–53 · Heaps · overview",
+    "15-01": "Patterns 50–53, 79 · Heaps · overview",
     "15-03": "Pattern 50 · Merge from Every Head",
     "15-04": "Pattern 51 · Balance Two Heaps",
     "15-05": "Pattern 52 · Merge the Two Smallest",
@@ -178,6 +179,12 @@
     "18-01": "Patterns 76–77 · Unnamed Patterns · overview",
     "18-02": "Pattern 76 · Maintain the Frontier",
     "18-06": "Pattern 77 · Throw Out the Dominated",
-    "19-01": "Pattern 78 · Choose the Range Structure"
+    "19-01": "Pattern 78 · Choose the Range Structure",
+    "03-08": "Pattern 84 · Keep a Set of What You've Seen",
+    "09-06": "Pattern 80 · Partition Two Sorted Arrays",
+    "15-07": "Pattern 79 · Ordered Set",
+    "19-02": "Pattern 81 · Coordinate Compression",
+    "19-03": "Pattern 82 · Segment Tree",
+    "19-04": "Pattern 83 · Fenwick for Counting"
   }
 }

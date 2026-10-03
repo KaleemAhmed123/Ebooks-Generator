@@ -1,3 +1,14 @@
+### The skeleton
+
+```ts
+let left = 0;
+for (let right = 0; right < a.length; right++) {
+  add(a[right]);                        // enter on the right
+  while (!valid()) remove(a[left++]);   // leave on the left
+  record(left, right);                  // longest / count here
+}
+```
+
 ### The trap
 
 - **Negative numbers.** Adding a value can lower a sum, so shrinking stops being safe. Sum = K → 03-03; sum ≥ K → a deque of prefix sums, 10-10
