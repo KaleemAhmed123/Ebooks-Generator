@@ -3,7 +3,6 @@
 - **Kullback–Leibler (KL) divergence** measures how different one probability distribution is from another. Read `KL(p ‖ q)` as "how much q loses when used in place of the true p."
 - It is 0 when the two distributions are identical, and grows as they diverge.
 
-$$ \text{KL}(p \parallel q) = \sum_i p_i \log \frac{p_i}{q_i} $$
 
 ### Two properties that matter in practice
 

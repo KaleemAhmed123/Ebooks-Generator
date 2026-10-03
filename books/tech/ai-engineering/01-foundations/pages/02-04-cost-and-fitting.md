@@ -3,7 +3,6 @@
 - "Fitting" means choosing the weights that make the line pass as close to the points as possible. To do that you need a number for *how far off* the line is.
 - That number is the **cost** (or loss). For regression it is **mean squared error (MSE)**: the average of the squared gaps between prediction and truth.
 
-$$ \text{MSE} = \frac{1}{n}\sum_i (\hat{y}_i - y_i)^2 $$
 
 ### Why square the errors
 

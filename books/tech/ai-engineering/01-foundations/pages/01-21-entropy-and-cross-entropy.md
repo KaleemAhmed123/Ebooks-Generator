@@ -3,7 +3,6 @@
 - **Entropy** measures surprise. A predictable outcome (the sun rises) carries little information; a rare one (snow in July) carries a lot.
 - A fair coin has more entropy than a biased one, because you are more uncertain about the result. Entropy peaks when every outcome is equally likely.
 
-$$ H(p) = -\sum_i p_i \log p_i $$
 
 ### Cross-entropy: the loss for classifiers
 

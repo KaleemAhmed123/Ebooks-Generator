@@ -6,9 +6,7 @@
 
 ### The number is really an angle
 
-The dot product hides a geometric fact:
-
-$$ a \cdot b = \|a\|\,\|b\|\,\cos(\theta) $$
+The dot product hides a geometric fact: it equals the two vectors' lengths multiplied together, times the **cosine** of the angle between them.
 
 - When both vectors are **unit vectors** (length 1), the sizes drop out and the dot product *is* `cos(θ)` — the **cosine similarity**.
 

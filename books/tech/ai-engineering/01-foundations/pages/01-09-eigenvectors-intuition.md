@@ -1,5 +1,9 @@
 ## Eigenvectors: the directions a matrix leaves alone
 
+:::note
+**Optional deep-dive — safe to skip on a first read.** Come back when a later page (PCA, compression) puts it to use.
+:::
+
 - Apply a matrix to most vectors and they swing to a new direction.
 - A few special vectors don't turn — they only get longer or shorter. These are the matrix's **eigenvectors**.
 - The factor each one is stretched by is its **eigenvalue**. An eigenvalue of 2 means "this direction gets doubled."

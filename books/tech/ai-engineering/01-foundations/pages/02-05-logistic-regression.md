@@ -3,7 +3,6 @@
 - Despite the name, **logistic regression** is a *classifier* — it predicts a category, not a number.
 - It takes the same weighted sum as linear regression, then squashes the result through the **sigmoid** function into a probability between 0 and 1.
 
-$$ \sigma(z) = \frac{1}{1 + e^{-z}} $$
 
 <svg viewBox="0 0 300 100" role="img" aria-label="The sigmoid curve mapping any input to a value between 0 and 1, crossing 0.5 at the origin" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" font-size="9.5" fill="#1a1a1a">
   <line x1="20" y1="55" x2="285" y2="55" stroke="#ccc"/>

@@ -1,5 +1,9 @@
 ## Two more tools: Fourier and graphs
 
+:::note
+**Optional deep-dive — safe to skip on a first read.** These return when you reach audio models and graph-based retrieval; meet them then.
+:::
+
 Two mathematical ideas you will not use daily, but that underpin whole families of models. Know what they are and why they appear.
 
 ### The Fourier transform: any signal is a sum of waves

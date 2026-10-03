@@ -3,7 +3,6 @@
 - Bayes' theorem is the rule for changing your mind when new evidence arrives.
 - You start with a belief, see data, and end with a revised belief. That is all it does — but it is the backbone of how machines reason under uncertainty.
 
-$$ P(H \mid E) = \frac{P(E \mid H)\,P(H)}{P(E)} $$
 
 - **`P(H)` — prior**: how likely the hypothesis was *before* the evidence.
 - **`P(E | H)` — likelihood**: how well the hypothesis explains the evidence.

@@ -4,7 +4,6 @@
 - To find how an early weight affects the final error, you need the slope through *all* the layers in between.
 - The **chain rule** does this: to differentiate nested functions, multiply the slopes together.
 
-$$ \frac{dz}{dx} = \frac{dz}{dy} \cdot \frac{dy}{dx} $$
 
 ### Read it as a rate of rates
 

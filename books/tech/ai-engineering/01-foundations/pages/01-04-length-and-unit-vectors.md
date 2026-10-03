@@ -4,7 +4,6 @@
 - Compute it with the Pythagorean theorem: square every entry, add, take the square root.
 - `[3, 4]` has length `√(9 + 16) = 5`.
 
-$$ \|v\| = \sqrt{v_1^2 + v_2^2 + \dots + v_n^2} $$
 
 ### A unit vector keeps the direction, drops the size
 

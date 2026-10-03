@@ -1,10 +1,8 @@
 ## Gradient descent: the algorithm
 
-- Gradient descent is the downhill walk written as a rule you can run. One line:
+- Gradient descent is the downhill walk written as a rule you can run:
 
-$$ w \leftarrow w - \eta \, \nabla L(w) $$
-
-- Read it: **new weight = old weight − step size × gradient**. Repeat until the gradient is near zero and the loss stops falling.
+- The rule: **new weight = old weight − step size × gradient**. Repeat until the gradient is near zero and the loss stops falling.
 - `η` (eta) is the **learning rate** — how big a step you take. It is the single most important knob in training.
 
 ### Getting the step size wrong
@@ -31,11 +29,35 @@ $$ w \leftarrow w - \eta \, \nabla L(w) $$
   <defs><marker id="s" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="currentColor"/></marker></defs>
 </svg>
 
+### Worked example — continuing the two-weight bowl
+
+Same setup as the gradient page: **E = w1² + w2²**, starting at `(w1, w2) = (3, 1)`.
+The learning rate is `η = 0.1`.
+
+| step | w1 | w2 | gradient | update | error E |
+|---|---|---|---|---|---|
+| 0 | 3.0 | 1.0 | (6.0, 2.0) | — | 10.00 |
+| 1 | 3.0 − 0.1×6.0 = **2.4** | 1.0 − 0.1×2.0 = **0.8** | (4.8, 1.6) | stepped downhill | 6.40 |
+| 2 | 2.4 − 0.1×4.8 = **1.92** | 0.8 − 0.1×1.6 = **0.64** | (3.84, 1.28) | stepped again | 4.10 |
+
+- Every step, the error shrinks and both weights slide toward zero — the bottom of the bowl.
+- The gradient shrinks too, so the steps naturally get smaller as you approach the minimum.
+
 :::mint
 ```python
-for step in range(1000):
-    grad = compute_gradient(w)     # slope of the loss at w
-    w = w - lr * grad              # step downhill
+import torch
+w = torch.tensor([3.0, 1.0], requires_grad=True)
+lr = 0.1
+for step in range(3):
+    E = (w ** 2).sum()
+    print(f"step {step}  w={w.data.tolist()}  E={E.item():.2f}")
+    E.backward()
+    with torch.no_grad():
+        w -= lr * w.grad
+    w.grad.zero_()
+# step 0  w=[3.0, 1.0]  E=10.00
+# step 1  w=[2.4, 0.8]  E=6.40
+# step 2  w=[1.92, 0.64]  E=4.10
 ```
 :::
 

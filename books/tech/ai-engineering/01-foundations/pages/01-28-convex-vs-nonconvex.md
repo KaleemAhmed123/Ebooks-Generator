@@ -1,5 +1,9 @@
 ## Convex vs non-convex, and why training works anyway
 
+:::note
+**Optional deep-dive — safe to skip on a first read.** The one thing to keep: training a deep network has no guarantee of finding the best answer, yet it works well in practice.
+:::
+
 - A function is **convex** if it has a single bowl shape — one bottom, and downhill always leads to it. Gradient descent on a convex loss is guaranteed to find the best answer.
 - Classical models (linear and logistic regression) have convex losses. That is why they train reliably to the true optimum.
 - Neural networks are **non-convex**: their loss surface is a wild landscape of many valleys. There is no guarantee gradient descent finds the deepest one.

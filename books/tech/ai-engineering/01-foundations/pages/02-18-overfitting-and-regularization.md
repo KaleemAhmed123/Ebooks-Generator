@@ -10,9 +10,7 @@
 - **More data** — the strongest regularizer of all. Harder to memorize a large, varied dataset than a small one.
 - **Early stopping** — halt training when validation error starts rising, before the model begins memorizing.
 
-$$ \text{Loss}_{\text{total}} = \text{Loss}_{\text{data}} + \lambda \sum_i w_i^2 \quad (\text{L2}) $$
-
-- `λ` (lambda) sets the strength: 0 means no regularization; too large forces the model toward a flat, underfit line.
+- The penalty strength is a knob, **`λ` (lambda)**: 0 means no regularization; too large forces the model toward a flat, underfit line.
 
 :::note
 Every regularizer encodes the same bet — that the *simpler* explanation generalizes better. In deep learning you will meet the same idea wearing new names: dropout, weight decay, and data augmentation are all regularization.
