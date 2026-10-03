@@ -18,6 +18,7 @@
       "greedy detection",
       "exchange & stays-ahead"
     ],
-    "face": { "brow": "sharp", "mouth": "flat", "tilt": -3 }
+    "face": { "brow": "sharp", "mouth": "flat", "tilt": -3 },
+    "moreLine": "MORE INSIDE"
   }
 }
