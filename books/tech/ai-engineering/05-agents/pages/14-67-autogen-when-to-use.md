@@ -15,6 +15,7 @@
   - You need **production reliability, persistence, or human approval gates** → LangGraph's explicit, checkpointed graphs.
   - The task has a **known structure** → a workflow (14-35) is cheaper and more predictable than a conversation.
   - You want the **simplest** multi-agent setup with intuitive roles → CrewAI (next) is faster to stand up.
+- **Starting fresh in 2026?** Build new systems on the **Microsoft Agent Framework** (GA April 2026), which absorbs AutoGen's actor/conversation model; AutoGen is now maintenance-only (14-60). The decision logic above is unchanged — it is the *lineage* you are choosing.
 
 :::interview
 "AutoGen vs LangGraph — how do you decide?"

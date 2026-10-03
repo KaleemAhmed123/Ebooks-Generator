@@ -3,7 +3,7 @@
 ## 1. Task
 
 - **Name:** AI Engineering · Booklet 5 (Agents) — audit-and-fix pass
-- **Status:** audit complete · backlog ranked · fixes not started
+- **Status:** audit complete · backlog ranked · **all 6 items (A1–A3, B1, C1, D1) done** — only optional follow-ups remain
 - **Started:** 2026-10-03
 - **Last updated:** 2026-10-03
 - **Scope:** `books/tech/ai-engineering/05-agents/` — 332 content pages across
@@ -236,26 +236,47 @@ trust this report's quotes from memory.
       breaking"); added the rewrite bullet + scoped the handshake bullet and
       interview answer to "through 2025-06-18". Rebuilt → 0 $$, 0 LaTeX, 0 VERIFY,
       no overflow.*
-- [ ] **A2 · S · `13-29`** — Correct the one false claim: Streamable HTTP no longer
+- [x] **A2 · S · `13-29`** — Correct the one false claim: Streamable HTTP no longer
       "supports resumable connections" as of `2026-07-28`. Add a one-line note that
       the newest spec makes the transport stateless (no `Mcp-Session-Id`). Keep the
       2025-06-18 teaching as the deployed reality. (Finding 1.)
-- [ ] **A3 · M · `13-21`,`13-31`,`13-33`,`13-32`** — Add a one-line recency
+      *Done 2026-10-03. Scoped resumability/`Mcp-Session-Id` to the `2025-06-18`
+      revision and added a "Recency (2026-07-28)" bullet (stateless; resumability
+      dropped). Rebuilt clean.*
+- [x] **A3 · M · `13-21`,`13-31`,`13-33`,`13-32`** — Add a one-line recency
       `:::note` to each: this page teaches `2025-06-18` (still the deployed
       revision), and the current `2026-07-28` spec removes the handshake
       (`13-21`) / deprecates Sampling (`13-31`) and Roots (`13-33`) / redesigns
       elicitation to MRTR (`13-32`). No content deletion. (Finding 1.)
-- [ ] **B1 · M · `14-60`/`14-67`,`14-43`,`14-108`** — AutoGen recency: `:::note` on
+      *Done 2026-10-03. Added a compact "Recency (2026-07-28)" bullet to each of
+      the four pages (not a stacked block — avoids overflow), each cross-linking to
+      13-39. Roots page also notes the `tasks` extension. Rebuilt clean.*
+- [x] **B1 · M · `14-60`/`14-67`,`14-43`,`14-108`** — AutoGen recency: `:::note` on
       `14-60` (and/or `14-67`) noting Microsoft Agent Framework 1.0 GA (2026-04-02)
       as AutoGen's successor and AutoGen's maintenance-mode status; update the
       AutoGen row in the `14-43` landscape table and the `14-108` decision table.
       Keep the actor-model teaching. (Finding 2.)
-- [ ] **C1 · S/M · `14-115`,`14-116`,`14-117`** — Fix the eval ordering so "why
-      evaluate" + the eval levels precede online/production eval; adjust the
-      "next/previous cluster" wording and re-sweep for cross-refs to the renamed
-      pages. (Finding 3.)
-- [ ] **D1 · S · `14-108`** — Reword the dangling "hence the `` tags" so it names a
+      *Done 2026-10-03. Recency bullet on `14-60` (converged into MS Agent
+      Framework, GA Apr 2026; AutoGen maintenance-only) and a "starting fresh in
+      2026?" bullet on `14-67`; flagged the AutoGen rows in the `14-43` and `14-108`
+      tables. Actor-model teaching kept intact. Rebuilt clean.*
+- [x] **C1 · S/M · eval cluster** — Fix the eval ordering so "why evaluate" + the
+      eval levels precede online/production eval; adjust the cluster-pointer wording
+      and re-sweep for cross-refs. (Finding 3.)
+      *Done 2026-10-03. Re-scoped vs the audit's first guess: the heavy inbound
+      reference graph pins `14-116` (as "your eval set") and `14-117` (eval levels)
+      from ~8 pages, so renumbering them would risk wrong pointers. Instead moved
+      only `14-115` → **`14-118a`** (eval-in-production now sits after why→levels→
+      judge, before benchmarks — consistent with the booklet's letter-suffix
+      convention), repointed its 2 inbound refs (`14-118`, `15-22`), and fixed its
+      "next cluster" → "previous pages" wording. Output order verified:
+      Why → Levels → Judge → In-production → Benchmarks. Rebuilt clean.*
+- [x] **D1 · S · `14-108`** — Reword the dangling "hence the `` tags" so it names a
       real signal and leaves no empty inline-code span. (Finding 4.)
+      *Done 2026-10-03 (folded into B1's `14-108` edit). Now reads "…AutoGen was
+      folded into the Microsoft Agent Framework within a year (14-60), and every
+      page here is dated *as of 2026* for that reason." 0 empty-backtick spans in
+      the build.*
 
 ---
 
@@ -274,6 +295,30 @@ trust this report's quotes from memory.
 ---
 
 ## 8. Updates
+
+### 2026-10-03 (A2–D1) — remaining backlog cleared in one batch
+
+- **A2 `13-29`:** scoped the resumable-session claim to `2025-06-18`; added a
+  "Recency (2026-07-28)" bullet (stateless; `Mcp-Session-Id` + resumability
+  dropped).
+- **A3 `13-21`/`13-31`/`13-33`/`13-32`:** one compact recency bullet each — the
+  current spec removes the handshake, deprecates Sampling and Roots (removal ≥
+  `2027-07-28`), moves long-running work to the `tasks` extension, and reshapes
+  elicitation to MRTR — each cross-linking to `13-39`, no deletions.
+- **B1 `14-60`/`14-67`/`14-43`/`14-108`:** AutoGen now flagged as converged into
+  the **Microsoft Agent Framework** (GA 2026-04-02) with AutoGen in maintenance
+  mode; table rows in `14-43`/`14-108` point new work to the successor; the
+  actor-model teaching is untouched.
+- **C1 eval order:** moved `14-115` → `14-118a` (re-scoped from the audit's first
+  idea to avoid renumbering the heavily-referenced `14-116`/`14-117`); eval
+  cluster now reads Why → Levels → Judge → In-production → Benchmarks; 2 inbound
+  refs repointed; internal "next cluster" wording corrected.
+- **D1 `14-108`:** the empty-backtick artifact is gone (reworded into the AutoGen
+  churn example).
+- **Verification:** rebuilt `05-agents` → HTML after the batch — `$$`=0, leaked
+  LaTeX=0, `[VERIFY]`=0, empty-backtick spans=0, no overflow warnings. All
+  recency facts checked against the primary MCP repo + Microsoft release coverage
+  this session.
 
 ### 2026-10-03 (A1) — MCP versioning page brought current
 

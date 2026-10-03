@@ -5,7 +5,7 @@
 | Framework | Core abstraction | Best at |
 |---|---|---|
 | **LangGraph** | a graph of nodes + state | control, persistence, reliability |
-| **AutoGen** | conversing agents (actors) | research, multi-agent chat |
+| **AutoGen** ⟶ MS Agent Framework | conversing agents (actors) | research, multi-agent chat |
 | **CrewAI** | role-based "crew" | quick multi-agent, intuitive |
 | **OpenAI Agents SDK** | agents + handoffs | lightweight, OpenAI-native |
 | **Claude Agent SDK** | the agent harness | long-running coding agents |

@@ -14,6 +14,7 @@
 
 - **Why the actor model fits multi-agent:** agents are naturally independent — each has its own role, tools, and context. Message-passing (no shared state) means agents can run concurrently, on different machines, and be added or removed without rewiring a central graph. It is the concurrency model built for many independent, communicating units.
 - **The v0.4 rewrite** (2024) rebuilt AutoGen around this async, event-driven actor core for scalability and robustness, layering an easier **AgentChat** API on top for common patterns (next pages).
+- **Recency (as of 2026):** Microsoft has converged AutoGen and Semantic Kernel into the **Microsoft Agent Framework** (1.0 GA, April 2026), now the recommended path for new work; **AutoGen itself is in maintenance mode** (bug/security fixes, community-managed, no new features). The actor-model and conversation-first ideas in this cluster are exactly what carry forward — learn them here, ship them on Agent Framework.
 
 :::note
 The framing contrast to hold: **LangGraph is control-flow-first** (you design the graph of steps), **AutoGen is conversation-first** (you design agents and let them talk). Neither is universally better — graph-first gives tight control and reliability; conversation-first gives flexible, emergent multi-agent behavior that is faster to set up for research and exploration. The best choice depends on whether you want to *engineer* the flow or *cultivate* it.

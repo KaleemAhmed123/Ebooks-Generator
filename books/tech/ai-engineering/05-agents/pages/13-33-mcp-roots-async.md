@@ -18,6 +18,8 @@
 - Some tools take minutes — a build, a deploy, a large query, a deep research run. A synchronous `tools/call` that blocks for ten minutes is fragile (timeouts, dropped connections). MCP addresses this with **progress notifications** (the server streams `notifications/progress` while working) and evolving support for **async task** patterns where a call returns a handle the client polls or subscribes to.
 - Streamable HTTP's SSE upgrade (13-29) is what carries these progress streams for remote servers.
 
+- **Recency (`2026-07-28`):** the current spec **deprecates roots** (earliest removal ≥ `2027-07-28`), folding scoping into tool parameters, and graduates long-running work into an official **`tasks`** extension (a call returns a handle you poll via `tasks/get`) rather than a blocking call. Both still work as described under `2025-06-18`; see the versioning page (13-39).
+
 :::warn
 Long-running MCP tools are where naive agents hang. If a tool can take minutes, do not block the whole agent on a single synchronous call with a short timeout — use progress notifications to keep the connection alive and the user informed, and design the tool so a dropped connection can resume rather than restart. This is the MCP-level version of the durable-execution problem in Module 15.
 :::

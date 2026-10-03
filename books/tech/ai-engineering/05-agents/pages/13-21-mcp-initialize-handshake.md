@@ -17,6 +17,7 @@
 3. **Client → `notifications/initialized`**: "Ready." Only now may real calls flow.
 
 - **Capabilities are the contract.** Neither side assumes a feature exists; each *declares* it. A server that offers no `prompts` capability will never be asked for prompts. This is how MCP evolves without breaking — new features are opt-in capabilities, and an old client and new server simply use the intersection of what they both support.
+- **Recency (`2026-07-28`):** the current spec **removes this handshake** — it goes stateless, carrying the protocol version and capabilities on *every* request and exposing a `server/discover` call instead (13-39). The handshake above is still what `2025-06-18` servers do, which is almost everything deployed today.
 
 :::interview
 "Why does MCP negotiate capabilities instead of assuming a fixed feature set?"

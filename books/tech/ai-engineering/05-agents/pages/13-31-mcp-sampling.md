@@ -15,6 +15,7 @@
 - **The flow:** the server sends `sampling/createMessage` with the messages it wants completed. The client — with the user's approval — runs it on the host's LLM and returns the completion. The server got a model call without owning a model.
 - **Why it exists:** it makes servers *agentic without an API key*. A server that summarizes a document, classifies input, or plans a sub-task can use the host's model — the user pays once, for one model, and the server ships intelligence, not just plumbing.
 - **The human in the loop is central.** The client can (and should) show the user what the server wants to generate and let them approve, edit, or deny. The server never touches the model directly; the client mediates every sampling request, which is what keeps a server from silently running up cost or doing something unseen.
+- **Recency (`2026-07-28`):** the current spec **deprecates sampling** (alongside roots and logging; earliest removal ≥ `2027-07-28`), steering servers toward their own provider APIs instead. It is still valid and widely used under `2025-06-18` — know it, and watch the changelog (13-39).
 
 :::interview
 "How can an MCP server use an LLM if it doesn't have one?"
