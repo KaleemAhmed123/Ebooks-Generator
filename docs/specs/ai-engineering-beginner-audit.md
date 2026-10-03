@@ -3,7 +3,7 @@
 ## 1. Task
 
 - **Name:** AI Engineering series — beginner-followability audit + progressive upgrade plan
-- **Status:** audit comprehensive · B0–B7 done + reviewed (markers, LaTeX, optional-marks, CLAUDE.md rule, gradient, backprop, attention, RAG examples; 07-05 figures corrected) · "explain > code" rule added to CLAUDE.md · B8–B12 planned
+- **Status:** audit comprehensive · B0–B9 done (B8 RL signpost + PPO/GRPO split; B9 lifecycle assessed — no split needed, Finding 5 corrected) · B4–B7 reviewed, 07-05 figures corrected · "explain > code" rule added to CLAUDE.md · B10–B12 remain
 - **Started:** 2026-10-03
 - **Last updated:** 2026-10-03
 
@@ -74,7 +74,7 @@ plus **three depth/pacing gaps**.
 | 2 | **On-ramp is the thinnest part of the book** | 🟠 high | open | B1–B4 vs B5–B6 |
 | 3 | **Math pages still carry notation (black-box)** | 🟠 medium | open | B1 (~11 pages) |
 | 4 | **Few worked, end-to-end numeric examples** | 🟠 medium | open | keystone pages |
-| 5 | **Pacing jumps too fast in places** | 🟡 low–med | open | B4 (RL, lifecycle) |
+| 5 | **Pacing jumps too fast in places** | 🟡 low–med | ⚠️ **overstated** | B4 — see note |
 
 **Order verdict: PASS, minor nits** (§4.4). This is depth + rendering work, not a
 re-ordering job.
@@ -235,7 +235,14 @@ Each task is independent and sized **S/M/L**. `[x]` = done.
       group-relative-advantage example, sourced to DeepSeekMath 2402.03300).
       GRPO already in both glossaries. Rebuilt B4 → 0 $$, 0 macros, no overflow.*
       (Finding 5)
-- [ ] **B9 · L · B4** — Split the LLM-lifecycle (`10-xx`) into a cluster. (Finding 5)
+- [x] **B9 · L · B4** — LLM-lifecycle (`10-xx`). *Done 2026-10-03 — assessed, NO
+      split needed (pushback, see below). The 18-page lifecycle arc is already a
+      strong, granular, well-ordered cluster: `10-01` signposts the pipeline and
+      the applied-vs-pretraining divide, `10-08` carries the "RLHF vs DPO — when
+      to use which" judgement note, `10-18` is a proper capstone with the
+      real-world path. No page crams two keystones; none overflow. Splitting
+      would add pages without adding understanding — bloat. No content change;
+      Finding 5 corrected.* (Finding 5)
 - [ ] **B10 · M · B2–B4** — Targeted expansion of remaining fast pages. (Finding 2)
 - [ ] **B11 · S · all** — Add exact page numbers to cross-booklet references. (nit)
 - [ ] **B12 · S · all** — Rebuild affected PDFs; confirm no `$$`/`[VERIFY]`
@@ -246,6 +253,22 @@ Each task is independent and sized **S/M/L**. `[x]` = done.
 ---
 
 ## 6. Updates
+
+### 2026-10-03 (B9 + Finding 5 correction) — lifecycle needs no split
+
+- **Read all 18 lifecycle pages (`10-01`→`10-18`).** Verdict: no structural work
+  needed. `10-01` already signposts the pipeline and the "pretraining costs
+  millions / applied work is SFT+align+quant+serve" divide; `10-08` already
+  carries the RLHF-vs-DPO selection note; `10-18` is a capstone with the
+  real-world path and a "most products never train a model" note. Every page is
+  one topic with a diagram and a failure mode. Nothing crams, nothing overflows.
+- **Finding 5 was overstated.** Reading B8 (RL) and B9 (lifecycle) end to end
+  shows Booklet 4 is dense, well-ordered, signposted, and full of decision
+  guidance — not "too fast." The original severity came from a *booklet
+  page-count* comparison (57-page LLM core vs. the 332-page agents booklet) that
+  mistook breadth for pacing. The only real B4 pacing wins were the two targeted
+  B8 fixes (signpost + PPO/GRPO split); there is no further split work.
+- No files changed for B9 beyond this spec note.
 
 ### 2026-10-03 (B8) — RL cluster: signpost + PPO/GRPO split (re-scoped)
 
