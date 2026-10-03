@@ -3,7 +3,12 @@
 ## 1. Task
 
 - **Name:** AI Engineering series — beginner-followability audit + progressive upgrade plan
-- **Status:** audit comprehensive · B0–B9 done (B8 RL signpost + PPO/GRPO split; B9 lifecycle assessed — no split needed, Finding 5 corrected) · B4–B7 reviewed, 07-05 figures corrected · "explain > code" rule added to CLAUDE.md · B10–B12 remain
+- **Status:** audit complete · B0–B10 + B12 done; B11 declined (see backlog) ·
+  B8 RL signpost + PPO/GRPO split · B9 lifecycle assessed (no split, Finding 5
+  corrected) · B10 capstone mental-model (re-scoped to prose-balance) · B12 all 7
+  PDFs regenerated via a portable build · B4–B7 reviewed, 07-05 figures fixed ·
+  "explain > code" rule added to CLAUDE.md · only the fact-verification debt
+  track remains
 - **Started:** 2026-10-03
 - **Last updated:** 2026-10-03
 
@@ -256,21 +261,41 @@ Each task is independent and sized **S/M/L**. `[x]` = done.
       are legitimately code-led (the API/loop is the lesson) — left as is. Rebuilt
       B3 → 0 $$, 0 macros, no overflow.* Remaining: a broader prose-balance pass
       is optional, not needed — the series is not actually code-bloated. (Finding 2)
-- [ ] **B11 · S · all** — Add exact page numbers to cross-booklet references. (nit)
-- [~] **B12 · S · all** — HTML clean-check DONE 2026-10-03: rebuilt all 7 AE
-      booklets to HTML; swept each for `$$`, `[VERIFY]`, leaked LaTeX macros,
-      and overflow. **All clean.** The lone `$$` hit in `06-production`
-      (`17-46b-unit-economics`) is the string `$$$` ("lots of money"), not a math
-      block — renders as literal text, harmless. *Remaining:* the final **PDF**
-      pass — `build.mjs`'s hardcoded Chrome paths don't include this env's
-      Chromium (`/opt/pw-browsers`), so the Chrome PDF step needs a path fix or
-      `PUPPETEER_EXECUTABLE_PATH` before PDFs can be regenerated.
+- [skip] **B11 · S · all** — *Deliberately not done, 2026-10-03.* There are 94
+      bare `(Booklet N)` refs, almost all in B6, and in context they are broad
+      "you met this concept in that booklet" prose pointers (autodiff → B1,
+      self-attention → B3, bi-/cross-encoder → B4), not "flip to this exact page"
+      references. Pinning all 94 would clutter the prose and risk *wrong* page
+      numbers — an accuracy regression worse than the nit. Cost/benefit fails;
+      left as broad refs by design. (nit)
+- [x] **B12 · S · all** — DONE 2026-10-03. (1) HTML clean-check: rebuilt all 7 AE
+      booklets to HTML; swept each for `$$`, `[VERIFY]`, leaked LaTeX macros, and
+      overflow — **all clean** (the lone `$$` hit is the string `$$$`, "lots of
+      money", in `17-46b-unit-economics`, harmless). (2) PDF pass: made
+      `build.mjs` portable (honours `PUPPETEER_EXECUTABLE_PATH`/`CHROME_PATH`,
+      drops the Chrome sandbox when running as root, unless `CHROME_SANDBOX=1`),
+      installed PyMuPDF for the cover step, and **regenerated all 7 PDFs**
+      (01-foundations … 07-interview, 283 pp) with exit 0. TOC/footers intact —
+      the cover swap replaces page 1 rather than inserting, so page numbers hold.
 - [ ] **(separate track)** — Verification debt: fact-check the claims that the
       stripped `[VERIFY]` markers flagged. Own pass, no subagents.
 
 ---
 
 ## 6. Updates
+
+### 2026-10-03 (B11 skip + B12 PDF) — series PDFs regenerated; cross-ref pin declined
+
+- **B11 declined.** 94 bare `(Booklet N)` refs, almost all broad in-prose concept
+  pointers. Pinning them to exact pages would clutter the text and risk wrong
+  numbers (accuracy regression) for negligible reader gain. Closed as skip, not
+  open.
+- **B12 finished.** Made the build portable instead of hand-editing a path:
+  `build.mjs` now reads `PUPPETEER_EXECUTABLE_PATH`/`CHROME_PATH` first and runs
+  Chrome with `--no-sandbox` when root (override with `CHROME_SANDBOX=1`).
+  Installed PyMuPDF for the cover-swap helper. Rebuilt the whole series to PDF —
+  all 7 booklets, exit 0, covers drawn, page numbering intact. The only
+  committed change is `tools/build.mjs` (PDFs live in gitignored `dist/`).
 
 ### 2026-10-03 (B10) — re-scoped: prose balance, not page length
 
