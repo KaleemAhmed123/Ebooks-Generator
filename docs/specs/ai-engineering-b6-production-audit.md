@@ -174,9 +174,11 @@ production courses.
 Each item independent and sized S/M/L. `[x]` = done, `[~]` = done/re-scoped,
 `[ ]` = open.
 
-- [ ] **P6-1 · S · `17-38a`** — Correct the spec-decode acceptance figure
-      `α=0.9, k=6`: `4.7 → ≈5.2` (the page's own formula; verify exponent
-      convention vs arXiv 2211.17192). *(Finding 1)*
+- [x] **P6-1 · S · `17-38a`** — Corrected the spec-decode acceptance figure
+      `α=0.9, k=6`: `4.7 → ≈5.2`. *Done 2026-10-03. Verified the formula
+      `(1−α^(γ+1))/(1−α)` (exponent γ+1) is the Leviathan et al. 2211.17192
+      result; `(1−0.9⁷)/0.1 = 5.22`. The two other cases (k=4) were already
+      correct. Rebuilt → 0 `$$`, 0 macros, no overflow.* (Finding 1)
 - [ ] **P6-2 · S · `17-41`** — Scope the "~10% / 90% discount" claim to Anthropic
       explicit caching; add one line that OpenAI (~50%) and Google (~75%) differ.
       Keep the worked `:::mint` example (label it Anthropic). *(Finding 2)*
@@ -203,6 +205,19 @@ Each item independent and sized S/M/L. `[x]` = done, `[~]` = done/re-scoped,
 ---
 
 ## 7. Updates
+
+### 2026-10-03 (P6-1) — spec-decode acceptance math corrected
+
+- `17-38a`: the worked case `α=0.9, k=6` printed `≈ 4.7 tokens/step`, but the
+  page's own formula `(1−α^(k+1))/(1−α)` gives `(1−0.9⁷)/0.1 = 5.22`. The 4.7
+  was the `k=5` value — the label and number disagreed. Corrected to `≈ 5.2`
+  (same width, table alignment preserved; the "big win" framing is unaffected).
+- Verified the formula/exponent convention is the Leviathan et al. result
+  (arXiv 2211.17192): `E[tokens/step] = (1−α^(γ+1))/(1−α)`, exponent `γ+1`
+  (γ drafts + 1 bonus token). The other two cases (`α=0.8,k=4→3.36`;
+  `α=0.5,k=4→1.94`) were already correct.
+- Rebuilt `06-production` → HTML: `$$`=0 (bar `$$$` money), leaked macros=0,
+  no overflow.
 
 ### 2026-10-03 — audit complete
 

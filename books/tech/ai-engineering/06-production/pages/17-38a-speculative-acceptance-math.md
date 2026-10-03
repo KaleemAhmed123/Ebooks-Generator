@@ -12,7 +12,7 @@ Draft k tokens, per-token accept prob α (i.i.d. approximation):
   vs 1 token/step baseline  ->  ~3.3× fewer target passes
 
 α = 0.5, k = 4:  (1 − 0.5^5)/0.5 ≈ 1.94 tokens/step  -> ~1.9×
-α = 0.9, k = 6:  ≈ 4.7 tokens/step                    -> big win
+α = 0.9, k = 6:  ≈ 5.2 tokens/step                    -> big win
 
 Net speedup = (tokens/step) ÷ (1 + draft_cost_fraction)
   the draft isn't free; a heavy drafter eats into the gain.
